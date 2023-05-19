@@ -442,6 +442,614 @@
           "visible": true
         }
       ]
+    },
+    {
+      "_$id": "1rnmusn0",
+      "_$type": "Sprite",
+      "name": "path",
+      "x": 269,
+      "y": 519,
+      "width": 98,
+      "height": 100,
+      "_$child": [
+        {
+          "_$id": "7xaa4ym6",
+          "_$type": "Sprite",
+          "name": "universal",
+          "x": 33,
+          "y": 33,
+          "width": 31.5,
+          "height": 31.5,
+          "_$child": [
+            {
+              "_$id": "2xhdhs2f",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "0",
+              "active": true,
+              "x": -214,
+              "y": 40,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "e14tbxo5",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "1",
+              "active": true,
+              "x": -257,
+              "y": 40,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "qro5cw3l",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "2",
+              "active": true,
+              "x": -299,
+              "y": 40,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "5kt9ii9q",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "3",
+              "active": true,
+              "x": -299,
+              "y": -3,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "zb97jf1m",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "4",
+              "active": true,
+              "x": -299,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "ligznfwt",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "5",
+              "active": true,
+              "x": -257,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
+                  "scriptPath": "../src/Door.ts",
+                  "color": "green"
+                }
+              ]
+            },
+            {
+              "_$id": "rixym1p1",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "6",
+              "active": true,
+              "x": -214,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "v5zjsf5i",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "7",
+              "active": true,
+              "x": -172,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "awh4tp4u",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "8",
+              "active": true,
+              "x": -130,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "hcnm3q82",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "9",
+              "active": true,
+              "x": -87,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "gtfxbsx5",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "10",
+              "active": true,
+              "x": -45,
+              "y": -87,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "ol20dvbu",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "11",
+              "active": true,
+              "x": -45,
+              "y": -129,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "tbejcg6j",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "12",
+              "active": true,
+              "x": -45,
+              "y": -172,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "epcr8nn6",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "13",
+              "active": true,
+              "x": -45,
+              "y": -214,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "if1qr3yt",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "14",
+              "active": true,
+              "x": -45,
+              "y": -257,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "xjd3pfkn",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "15",
+              "active": true,
+              "x": -45,
+              "y": -299,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "fqf9y9eb",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "16",
+              "active": true,
+              "x": -3,
+              "y": -299,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "h6lrpl7h",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "17",
+              "active": true,
+              "x": 39,
+              "y": -299,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "wzixp1z8",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "18",
+              "active": true,
+              "x": 40,
+              "y": -257,
+              "visible": true,
+              "width": 38,
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
+                  "scriptPath": "../src/Door.ts",
+                  "color": "yellow"
+                }
+              ]
+            },
+            {
+              "_$id": "64jn7r17",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "19",
+              "active": true,
+              "x": 39,
+              "y": -214,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "bykr4oxq",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "20",
+              "active": true,
+              "x": 39,
+              "y": -172,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "is0g41l7",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "21",
+              "active": true,
+              "x": 39,
+              "y": -130,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "4wwfjf3g",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "22",
+              "active": true,
+              "x": 39,
+              "y": -87,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "16fd6z2b",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "23",
+              "active": true,
+              "x": 82,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "hst77dpj",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "24",
+              "active": true,
+              "x": 124,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "6jek906j",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "25",
+              "active": true,
+              "x": 166,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "8rcnc2sp",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "26",
+              "active": true,
+              "x": 209,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "y9s0ntvv",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "27",
+              "active": true,
+              "x": 251,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "d6vplusb",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "28",
+              "active": true,
+              "x": 293,
+              "y": -45,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "8mduggq3",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "29",
+              "active": true,
+              "x": 293,
+              "y": -2,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "u7htyt6i",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "30",
+              "active": true,
+              "x": 293,
+              "y": 39,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "2jhwsjlg",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "31",
+              "active": true,
+              "x": 251,
+              "y": 40,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "k14xh2qt",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "32",
+              "active": true,
+              "x": 209,
+              "y": 40,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "bwbcdf2u",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "33",
+              "active": true,
+              "x": 166,
+              "y": 40,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "xx3dn95b",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "34",
+              "active": true,
+              "x": 124,
+              "y": 39,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "dtb9c9l4",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "35",
+              "active": true,
+              "x": 82,
+              "y": 40,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "0v6whsfx",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "36",
+              "active": true,
+              "x": 40,
+              "y": 82,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "2c5mbom0",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "37",
+              "active": true,
+              "x": 40,
+              "y": 124,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "0ohvergr",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "38",
+              "active": true,
+              "x": 40,
+              "y": 166,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "f9hzncy6",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "39",
+              "active": true,
+              "x": 40,
+              "y": 210,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "cnmg4y1o",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "40",
+              "active": true,
+              "x": 39,
+              "y": 251,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "nt33iuae",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "41",
+              "active": true,
+              "x": 39,
+              "y": 293,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "lkfgkdj9",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "42",
+              "active": true,
+              "x": -3,
+              "y": 293,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "c9fi9yeq",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "43",
+              "active": true,
+              "x": -45,
+              "y": 293,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "1ppqscv2",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "44",
+              "active": true,
+              "x": -45,
+              "y": 250,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "cgpqeja5",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "45",
+              "active": true,
+              "x": -45,
+              "y": 208,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "102es1so",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "46",
+              "active": true,
+              "x": -45,
+              "y": 167,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "tkm54zbx",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "47",
+              "active": true,
+              "x": -45,
+              "y": 124,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "1t319nbx",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "48",
+              "active": true,
+              "x": -45,
+              "y": 82,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "6d3jjlmm",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "49",
+              "active": true,
+              "x": -87,
+              "y": 39,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "hji759wx",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "50",
+              "active": true,
+              "x": -130,
+              "y": 39,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "v920vg47",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "51",
+              "active": true,
+              "x": -172,
+              "y": 39,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            }
+          ]
+        }
+      ]
     }
   ]
 }

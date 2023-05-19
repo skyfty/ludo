@@ -1,0 +1,10 @@
+{
+  "_$ver": 1,
+  "_$id": "rd04rktwvf",
+  "_$type": "Box",
+  "name": "Box",
+  "x": 20,
+  "width": 100,
+  "height": 100,
+  "bgColor": "rgba(247, 13, 13, 1)"
+}

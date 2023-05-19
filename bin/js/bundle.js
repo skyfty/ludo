@@ -23,5 +23,21 @@
   Main = __decorateClass([
     regClass("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Main.ts")
   ], Main);
+
+  // src/Door.ts
+  var { regClass: regClass2, property: property2 } = Laya;
+  var Door = class extends Laya.Script {
+    constructor() {
+      super();
+      this.color = "";
+    }
+  };
+  __name(Door, "Door");
+  __decorateClass([
+    property2(String)
+  ], Door.prototype, "color", 2);
+  Door = __decorateClass([
+    regClass2("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
+  ], Door);
 })();
 //# sourceMappingURL=bundle.js.map

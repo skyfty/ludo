@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../../src/Main.ts"],
-  "sourcesContent": ["const { regClass, property } = Laya;\r\n\r\n@regClass('7bad1742-6eed-4d8d-81c0-501dc5bf03d6', '../src/Main.ts')\r\nexport class Main extends Laya.Script {\r\n\r\n    onStart() {\r\n        console.log(\"Game start\");\r\n    }\r\n}"],
-  "mappings": ";;;;;;;;;;;;;;;AAAA,MAAM,EAAE,UAAU,SAAS,IAAI;AAGxB,MAAM,OAAN,cAAmB,KAAK,OAAO;AAAA,IAElC,UAAU;AACN,cAAQ,IAAI,YAAY;AAAA,IAC5B;AAAA,EACJ;AALa;AAAA,SAAN;AAAA,IADN,SAAS,wCAAwC,gBAAgB;AAAA,KACrD;",
-  "names": []
+  "sources": ["../../src/Main.ts", "../../src/Door.ts"],
+  "sourcesContent": ["const { regClass, property } = Laya;\r\n\r\n@regClass('7bad1742-6eed-4d8d-81c0-501dc5bf03d6', '../src/Main.ts')\r\nexport class Main extends Laya.Script {\r\n\r\n    onStart() {\r\n        console.log(\"Game start\");\r\n    }\r\n}", "const { regClass, property } = Laya;\r\n\r\n@regClass('679087f6-f6b5-4a60-9f2e-ff9a7d356e0f', '../src/Door.ts')\r\nexport class Door extends Laya.Script {\r\n    //declare owner : Laya.Sprite3D;\r\n\r\n    @property(String)\r\n    public color: string = \"\";\r\n\r\n    constructor() {\r\n        super();\r\n    }\r\n}"],
+  "mappings": ";;;;;;;;;;;;;;;AAAA,MAAM,EAAE,UAAU,SAAS,IAAI;AAGxB,MAAM,OAAN,cAAmB,KAAK,OAAO;AAAA,IAElC,UAAU;AACN,cAAQ,IAAI,YAAY;AAAA,IAC5B;AAAA,EACJ;AALa;AAAA,SAAN;AAAA,IADN,SAAS,wCAAwC,gBAAgB;AAAA,KACrD;;;ACHb,MAAM,EAAE,UAAAA,WAAU,UAAAC,UAAS,IAAI;AAGxB,MAAM,OAAN,cAAmB,KAAK,OAAO;AAAA,IAMlC,cAAc;AACV,YAAM;AAHV,WAAO,QAAgB;AAAA,IAIvB;AAAA,EACJ;AATa;AAIF;AAAA,IADNA,UAAS,MAAM;AAAA,KAHP,KAIF;AAJE,SAAN;AAAA,IADND,UAAS,wCAAwC,gBAAgB;AAAA,KACrD;",
+  "names": ["regClass", "property"]
 }
