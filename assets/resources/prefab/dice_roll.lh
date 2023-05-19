@@ -1,0 +1,24 @@
+{
+  "_$ver": 1,
+  "_$id": "mq1ogpg85m",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 158,
+  "height": 158,
+  "_$child": [
+    {
+      "_$id": "qcfikkgm",
+      "_$type": "Clip",
+      "name": "Clip",
+      "width": 158,
+      "height": 158,
+      "clipWidth": 158,
+      "clipHeight": 158,
+      "clipX": 6,
+      "clipY": 5,
+      "index": 11,
+      "interval": 50,
+      "skin": "res://4343c882-a431-42eb-a427-377877bd4711"
+    }
+  ]
+}

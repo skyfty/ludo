@@ -1,0 +1,26 @@
+{
+  "_$ver": 1,
+  "_$id": "0p2xsv94re",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 156,
+  "height": 156,
+  "_$child": [
+    {
+      "_$id": "shc45j35",
+      "_$type": "Clip",
+      "name": "Clip",
+      "x": -1,
+      "y": 1,
+      "width": 156,
+      "height": 156,
+      "clipWidth": 156,
+      "clipHeight": 156,
+      "clipX": 2,
+      "clipY": 3,
+      "index": 0,
+      "interval": 50,
+      "skin": "res://a093d9bf-16ee-4e80-9a67-f9258a5730df"
+    }
+  ]
+}
