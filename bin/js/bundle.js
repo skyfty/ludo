@@ -39,5 +39,37 @@
   Door = __decorateClass([
     regClass2("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
   ], Door);
+
+  // src/home.ts
+  var { regClass: regClass3, property: property3 } = Laya;
+  var Home = class extends Laya.Script {
+    constructor() {
+      super();
+      this.color = "";
+    }
+  };
+  __name(Home, "Home");
+  __decorateClass([
+    property3(String)
+  ], Home.prototype, "color", 2);
+  Home = __decorateClass([
+    regClass3("89bff9be-f51c-4750-99d3-78678aa44983", "../src/home.ts")
+  ], Home);
+
+  // src/Entry.ts
+  var { regClass: regClass4, property: property4 } = Laya;
+  var Entry = class extends Laya.Script {
+    constructor() {
+      super();
+      this.color = "";
+    }
+  };
+  __name(Entry, "Entry");
+  __decorateClass([
+    property4(String)
+  ], Entry.prototype, "color", 2);
+  Entry = __decorateClass([
+    regClass4("576d4faf-0e5b-428d-b1f6-dcbd42473423", "../src/Entry.ts")
+  ], Entry);
 })();
 //# sourceMappingURL=bundle.js.map

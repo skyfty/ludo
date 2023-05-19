@@ -470,7 +470,14 @@
               "y": 40,
               "visible": true,
               "width": 38,
-              "height": 38
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
+                  "scriptPath": "../src/Entry.ts",
+                  "color": "green"
+                }
+              ]
             },
             {
               "_$id": "e14tbxo5",
@@ -521,7 +528,7 @@
               "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
               "name": "5",
               "active": true,
-              "x": -257,
+              "x": -256,
               "y": -45,
               "visible": true,
               "width": 38,
@@ -620,7 +627,14 @@
               "y": -214,
               "visible": true,
               "width": 38,
-              "height": 38
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
+                  "scriptPath": "../src/Entry.ts",
+                  "color": "green"
+                }
+              ]
             },
             {
               "_$id": "if1qr3yt",
@@ -672,7 +686,7 @@
               "name": "18",
               "active": true,
               "x": 40,
-              "y": -257,
+              "y": -256,
               "visible": true,
               "width": 38,
               "height": 38,
@@ -770,7 +784,14 @@
               "y": -45,
               "visible": true,
               "width": 38,
-              "height": 38
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
+                  "scriptPath": "../src/Entry.ts",
+                  "color": "yellow"
+                }
+              ]
             },
             {
               "_$id": "y9s0ntvv",
@@ -825,7 +846,14 @@
               "y": 40,
               "visible": true,
               "width": 38,
-              "height": 38
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
+                  "scriptPath": "../src/Door.ts",
+                  "color": "blue"
+                }
+              ]
             },
             {
               "_$id": "k14xh2qt",
@@ -909,11 +937,18 @@
               "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
               "name": "39",
               "active": true,
-              "x": 40,
-              "y": 210,
+              "x": 39,
+              "y": 209,
               "visible": true,
               "width": 38,
-              "height": 38
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
+                  "scriptPath": "../src/Entry.ts",
+                  "color": "blue"
+                }
+              ]
             },
             {
               "_$id": "cnmg4y1o",
@@ -965,10 +1000,17 @@
               "name": "44",
               "active": true,
               "x": -45,
-              "y": 250,
+              "y": 251,
               "visible": true,
               "width": 38,
-              "height": 38
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
+                  "scriptPath": "../src/Door.ts",
+                  "color": "red"
+                }
+              ]
             },
             {
               "_$id": "cgpqeja5",
@@ -976,7 +1018,7 @@
               "name": "45",
               "active": true,
               "x": -45,
-              "y": 208,
+              "y": 209,
               "visible": true,
               "width": 38,
               "height": 38
@@ -1046,6 +1088,336 @@
               "visible": true,
               "width": 38,
               "height": 38
+            }
+          ]
+        },
+        {
+          "_$id": "o61g60ol",
+          "_$type": "Sprite",
+          "name": "blue",
+          "x": -5.684341886080802e-14,
+          "width": 100,
+          "height": 100,
+          "_$child": [
+            {
+              "_$id": "67zkek26",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "0",
+              "active": true,
+              "x": 284,
+              "y": 31.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "bbxyswx4",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "1",
+              "active": true,
+              "x": 242,
+              "y": 30.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "ojuy2i88",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "2",
+              "active": true,
+              "x": 200,
+              "y": 30.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "92ywjo8h",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "3",
+              "active": true,
+              "x": 157,
+              "y": 31.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "gbi1q8ni",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "4",
+              "active": true,
+              "x": 115,
+              "y": 30.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "xna9ttjy",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "5",
+              "active": true,
+              "x": 73,
+              "y": 30.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "89bff9be-f51c-4750-99d3-78678aa44983",
+                  "scriptPath": "../src/home.ts",
+                  "color": "blue"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_$id": "a7afqfrw",
+          "_$type": "Sprite",
+          "name": "yellow",
+          "x": -5.684341886080802e-14,
+          "width": 100,
+          "height": 100,
+          "_$child": [
+            {
+              "_$id": "6qqo5wwb",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "0",
+              "active": true,
+              "x": 31.000000000000114,
+              "y": -223.9999999999999,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "mdmc32fs",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "1",
+              "active": true,
+              "x": 31.000000000000114,
+              "y": -180.9999999999999,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "fty9a7er",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "2",
+              "active": true,
+              "x": 30.000000000000114,
+              "y": -137.9999999999999,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "mx3w0hpc",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "3",
+              "active": true,
+              "x": 31.000000000000114,
+              "y": -96.99999999999989,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "734h9kap",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "4",
+              "active": true,
+              "x": 31.000000000000114,
+              "y": -53.999999999999886,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "3v8nkaxb",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "5",
+              "active": true,
+              "x": 31.00000000000003,
+              "y": -11.999999999999886,
+              "visible": true,
+              "width": 38,
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "89bff9be-f51c-4750-99d3-78678aa44983",
+                  "scriptPath": "../src/home.ts",
+                  "color": "yellow"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_$id": "jnr4fv9u",
+          "_$type": "Sprite",
+          "name": "red",
+          "width": 100,
+          "height": 100,
+          "_$child": [
+            {
+              "_$id": "gtdebx29",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "0",
+              "active": true,
+              "x": 30.00000000000003,
+              "y": 284.0000000000001,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "qbsxojr7",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "1",
+              "active": true,
+              "x": 30.00000000000003,
+              "y": 242.0000000000001,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "jkm2qxzs",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "2",
+              "active": true,
+              "x": 30.00000000000003,
+              "y": 199.0000000000001,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "ys6bfnmr",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "3",
+              "active": true,
+              "x": 30.00000000000003,
+              "y": 157.0000000000001,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "0ap00vl8",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "4",
+              "active": true,
+              "x": 30.00000000000003,
+              "y": 115.00000000000011,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "6zlm8xkl",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "5",
+              "active": true,
+              "x": 32.00000000000003,
+              "y": 70,
+              "visible": true,
+              "width": 38,
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "89bff9be-f51c-4750-99d3-78678aa44983",
+                  "scriptPath": "../src/home.ts",
+                  "color": "red"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_$id": "ugpgd2q4",
+          "_$type": "Sprite",
+          "name": "green",
+          "width": 100,
+          "height": 100,
+          "_$child": [
+            {
+              "_$id": "p2bl7rio",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "0",
+              "active": true,
+              "x": -222.99999999999994,
+              "y": 31.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "b1mmoa17",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "1",
+              "active": true,
+              "x": -179.99999999999997,
+              "y": 31.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "b9pteals",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "2",
+              "active": true,
+              "x": -138.99999999999997,
+              "y": 31.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "mks2ox50",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "3",
+              "active": true,
+              "x": -96.99999999999997,
+              "y": 30.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "t3wj7d3j",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "4",
+              "active": true,
+              "x": -54.99999999999994,
+              "y": 31.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38
+            },
+            {
+              "_$id": "jmlipw9z",
+              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "name": "5",
+              "active": true,
+              "x": -10.999999999999972,
+              "y": 30.000000000000114,
+              "visible": true,
+              "width": 38,
+              "height": 38,
+              "_$comp": [
+                {
+                  "_$type": "89bff9be-f51c-4750-99d3-78678aa44983",
+                  "scriptPath": "../src/home.ts",
+                  "color": "greed"
+                }
+              ]
             }
           ]
         }
