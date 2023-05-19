@@ -2,6 +2,7 @@
   "resolution": {
     "designWidth": 640,
     "designHeight": 1136,
+    "scaleMode": "fixedwidth",
     "screenMode": "vertical"
   },
   "3D": {

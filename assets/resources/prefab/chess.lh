@@ -1,0 +1,26 @@
+{
+  "_$ver": 1,
+  "_$id": "4bcnq8x6j5",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 38,
+  "height": 38,
+  "_$comp": [
+    {
+      "_$type": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
+      "scriptPath": "../src/Chess.ts",
+      "text": ""
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "t8h17dpc",
+      "_$type": "Image",
+      "name": "Image",
+      "width": 38,
+      "height": 38,
+      "skin": "res://c13c1b8e-c516-4a0f-98ad-e356f45f0365",
+      "color": "#ffffff"
+    }
+  ]
+}

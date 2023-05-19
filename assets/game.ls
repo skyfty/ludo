@@ -46,6 +46,12 @@
           "y": -268,
           "width": 253,
           "height": 253,
+          "_$comp": [
+            {
+              "_$type": "e36a4cc4-5c60-47d3-b295-dd7dcfe4fd6c",
+              "scriptPath": "../src/Origin.ts"
+            }
+          ],
           "_$child": [
             {
               "_$id": "7c2mfmh6",
@@ -71,56 +77,43 @@
                   "_$id": "9hp82ne6",
                   "_$type": "Image",
                   "name": "0",
-                  "x": 1369,
-                  "y": 1371,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": -1,
+                  "y": 1,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "1l50bte9",
                   "_$type": "Image",
                   "name": "1",
-                  "x": 1412,
-                  "y": 1371,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 41,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "xucdmya1",
                   "_$type": "Image",
                   "name": "2",
-                  "x": 1369,
-                  "y": 1413,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": -1,
+                  "y": 43,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "xlwzsen2",
                   "_$type": "Image",
                   "name": "3",
-                  "x": 1411,
-                  "y": 1413,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 41,
+                  "y": 42,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 }
               ]
@@ -160,56 +153,42 @@
                   "_$id": "yjcs0zom",
                   "_$type": "Image",
                   "name": "0",
-                  "x": 1370,
-                  "y": 1421,
-                  "width": 53,
-                  "height": 55,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "y": 2,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "m6y7ukv0",
                   "_$type": "Image",
                   "name": "1",
-                  "x": 1413,
-                  "y": 1421,
-                  "width": 53,
-                  "height": 55,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 43,
+                  "y": 2,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "oehxaf93",
                   "_$type": "Image",
                   "name": "2",
-                  "x": 1370,
-                  "y": 1464,
-                  "width": 53,
-                  "height": 55,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "y": 45,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "rzp10h8s",
                   "_$type": "Image",
                   "name": "3",
-                  "x": 1413,
-                  "y": 1464,
-                  "width": 53,
-                  "height": 55,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 43,
+                  "y": 45,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 }
               ]
@@ -249,56 +228,44 @@
                   "_$id": "8wwq60fn",
                   "_$type": "Image",
                   "name": "0",
-                  "x": 1369,
-                  "y": 1371,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": -2,
+                  "y": 4,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "dbyp16ye",
                   "_$type": "Image",
                   "name": "1",
-                  "x": 1412,
-                  "y": 1372,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 41,
+                  "y": 4,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "hc47b8dq",
                   "_$type": "Image",
                   "name": "2",
-                  "x": 1368,
-                  "y": 1413,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": -2,
+                  "y": 46,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "6aii7jm6",
                   "_$type": "Image",
                   "name": "3",
-                  "x": 1413,
-                  "y": 1413,
-                  "width": 53,
-                  "height": 53,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 41,
+                  "y": 45,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 }
               ]
@@ -313,6 +280,12 @@
           "y": 113,
           "width": 253,
           "height": 253,
+          "_$comp": [
+            {
+              "_$type": "e36a4cc4-5c60-47d3-b295-dd7dcfe4fd6c",
+              "scriptPath": "../src/Origin.ts"
+            }
+          ],
           "_$child": [
             {
               "_$id": "b7ycl5iq",
@@ -338,56 +311,42 @@
                   "_$id": "l8yzcoao",
                   "_$type": "Image",
                   "name": "0",
-                  "x": 1370,
-                  "y": 1268,
-                  "width": 53,
-                  "height": 49,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "y": 1,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "7o37weh7",
                   "_$type": "Image",
                   "name": "1",
-                  "x": 1413,
-                  "y": 1268,
-                  "width": 53,
-                  "height": 49,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 41,
+                  "y": 2,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "pa58bzix",
                   "_$type": "Image",
                   "name": "2",
-                  "x": 1370,
-                  "y": 1311,
-                  "width": 53,
-                  "height": 49,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "y": 44,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 },
                 {
                   "_$id": "ydkv1o56",
                   "_$type": "Image",
                   "name": "3",
-                  "x": 1413,
-                  "y": 1311,
-                  "width": 53,
-                  "height": 49,
-                  "anchorX": 26,
-                  "anchorY": 26,
+                  "x": 42,
+                  "y": 44,
+                  "width": 38,
+                  "height": 38,
                   "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "useSourceSize": true,
                   "color": "#ffffff"
                 }
               ]
@@ -412,7 +371,40 @@
           "active": true,
           "x": -257.99999999999994,
           "y": 372.00000000000006,
-          "visible": true
+          "visible": true,
+          "_$comp": [
+            {
+              "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
+              "scriptPath": "../src/Player.ts",
+              "entry": {
+                "_$ref": "2xhdhs2f"
+              },
+              "diceRoll": {
+                "_$ref": [
+                  "hqy9lgmf",
+                  "dn8vhuyq"
+                ]
+              },
+              "diceDefault": {
+                "_$ref": [
+                  "hqy9lgmf",
+                  "dm1y2zws"
+                ]
+              },
+              "origin": {
+                "_$ref": "gr9e599v",
+                "_$type": "e36a4cc4-5c60-47d3-b295-dd7dcfe4fd6c"
+              },
+              "universal": {
+                "_$ref": "7xaa4ym6"
+              },
+              "personal": null,
+              "chessPrefab": {
+                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
+                "_$type": "Prefab"
+              }
+            }
+          ]
         },
         {
           "_$id": "hknjlm1h",
@@ -421,7 +413,30 @@
           "active": true,
           "x": -255.99999999999994,
           "y": -349.99999999999994,
-          "visible": true
+          "visible": true,
+          "_$comp": [
+            {
+              "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
+              "scriptPath": "../src/Player.ts",
+              "entry": null,
+              "diceRoll": {
+                "_$ref": [
+                  "hknjlm1h",
+                  "dn8vhuyq"
+                ]
+              },
+              "diceDefault": {
+                "_$ref": [
+                  "hknjlm1h",
+                  "dm1y2zws"
+                ]
+              },
+              "origin": null,
+              "universal": null,
+              "personal": null,
+              "chessPrefab": null
+            }
+          ]
         },
         {
           "_$id": "b7zhaso0",
@@ -430,7 +445,30 @@
           "active": true,
           "x": 204,
           "y": 372,
-          "visible": true
+          "visible": true,
+          "_$comp": [
+            {
+              "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
+              "scriptPath": "../src/Player.ts",
+              "entry": null,
+              "diceRoll": {
+                "_$ref": [
+                  "b7zhaso0",
+                  "22dm2a74"
+                ]
+              },
+              "diceDefault": {
+                "_$ref": [
+                  "b7zhaso0",
+                  "o95ydlsr"
+                ]
+              },
+              "origin": null,
+              "universal": null,
+              "personal": null,
+              "chessPrefab": null
+            }
+          ]
         },
         {
           "_$id": "qs7wy01p",
@@ -439,7 +477,30 @@
           "active": true,
           "x": 198,
           "y": -347,
-          "visible": true
+          "visible": true,
+          "_$comp": [
+            {
+              "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
+              "scriptPath": "../src/Player.ts",
+              "entry": null,
+              "diceRoll": {
+                "_$ref": [
+                  "qs7wy01p",
+                  "22dm2a74"
+                ]
+              },
+              "diceDefault": {
+                "_$ref": [
+                  "qs7wy01p",
+                  "o95ydlsr"
+                ]
+              },
+              "origin": null,
+              "universal": null,
+              "personal": null,
+              "chessPrefab": null
+            }
+          ]
         }
       ]
     },
@@ -468,14 +529,13 @@
               "active": true,
               "x": -214,
               "y": 40,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
                 {
-                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
-                  "scriptPath": "../src/Entry.ts",
-                  "color": "green"
+                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
+                  "scriptPath": "../src/Entry.ts"
                 }
               ]
             },
@@ -486,7 +546,7 @@
               "active": true,
               "x": -257,
               "y": 40,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -497,7 +557,7 @@
               "active": true,
               "x": -299,
               "y": 40,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -508,7 +568,7 @@
               "active": true,
               "x": -299,
               "y": -3,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -519,7 +579,7 @@
               "active": true,
               "x": -299,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -530,7 +590,7 @@
               "active": true,
               "x": -256,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
@@ -548,7 +608,7 @@
               "active": true,
               "x": -214,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -559,7 +619,7 @@
               "active": true,
               "x": -172,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -570,7 +630,7 @@
               "active": true,
               "x": -130,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -581,7 +641,7 @@
               "active": true,
               "x": -87,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -592,7 +652,7 @@
               "active": true,
               "x": -45,
               "y": -87,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -603,7 +663,7 @@
               "active": true,
               "x": -45,
               "y": -129,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -614,7 +674,7 @@
               "active": true,
               "x": -45,
               "y": -172,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -625,14 +685,13 @@
               "active": true,
               "x": -45,
               "y": -214,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
                 {
-                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
-                  "scriptPath": "../src/Entry.ts",
-                  "color": "green"
+                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
+                  "scriptPath": "../src/Entry.ts"
                 }
               ]
             },
@@ -643,7 +702,7 @@
               "active": true,
               "x": -45,
               "y": -257,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -654,7 +713,7 @@
               "active": true,
               "x": -45,
               "y": -299,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -665,7 +724,7 @@
               "active": true,
               "x": -3,
               "y": -299,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -676,7 +735,7 @@
               "active": true,
               "x": 39,
               "y": -299,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -687,7 +746,7 @@
               "active": true,
               "x": 40,
               "y": -256,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
@@ -705,7 +764,7 @@
               "active": true,
               "x": 39,
               "y": -214,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -716,7 +775,7 @@
               "active": true,
               "x": 39,
               "y": -172,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -727,7 +786,7 @@
               "active": true,
               "x": 39,
               "y": -130,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -738,7 +797,7 @@
               "active": true,
               "x": 39,
               "y": -87,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -749,7 +808,7 @@
               "active": true,
               "x": 82,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -760,7 +819,7 @@
               "active": true,
               "x": 124,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -771,7 +830,7 @@
               "active": true,
               "x": 166,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -782,14 +841,13 @@
               "active": true,
               "x": 209,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
                 {
-                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
-                  "scriptPath": "../src/Entry.ts",
-                  "color": "yellow"
+                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
+                  "scriptPath": "../src/Entry.ts"
                 }
               ]
             },
@@ -800,7 +858,7 @@
               "active": true,
               "x": 251,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -811,7 +869,7 @@
               "active": true,
               "x": 293,
               "y": -45,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -822,7 +880,7 @@
               "active": true,
               "x": 293,
               "y": -2,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -833,7 +891,7 @@
               "active": true,
               "x": 293,
               "y": 39,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -844,7 +902,7 @@
               "active": true,
               "x": 251,
               "y": 40,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
@@ -862,7 +920,7 @@
               "active": true,
               "x": 209,
               "y": 40,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -873,7 +931,7 @@
               "active": true,
               "x": 166,
               "y": 40,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -884,7 +942,7 @@
               "active": true,
               "x": 124,
               "y": 39,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -895,7 +953,7 @@
               "active": true,
               "x": 82,
               "y": 40,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -906,7 +964,7 @@
               "active": true,
               "x": 40,
               "y": 82,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -917,7 +975,7 @@
               "active": true,
               "x": 40,
               "y": 124,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -928,7 +986,7 @@
               "active": true,
               "x": 40,
               "y": 166,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -939,14 +997,13 @@
               "active": true,
               "x": 39,
               "y": 209,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
                 {
-                  "_$type": "576d4faf-0e5b-428d-b1f6-dcbd42473423",
-                  "scriptPath": "../src/Entry.ts",
-                  "color": "blue"
+                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
+                  "scriptPath": "../src/Entry.ts"
                 }
               ]
             },
@@ -957,7 +1014,7 @@
               "active": true,
               "x": 39,
               "y": 251,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -968,7 +1025,7 @@
               "active": true,
               "x": 39,
               "y": 293,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -979,7 +1036,7 @@
               "active": true,
               "x": -3,
               "y": 293,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -990,7 +1047,7 @@
               "active": true,
               "x": -45,
               "y": 293,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1001,7 +1058,7 @@
               "active": true,
               "x": -45,
               "y": 251,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
@@ -1019,7 +1076,7 @@
               "active": true,
               "x": -45,
               "y": 209,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1030,7 +1087,7 @@
               "active": true,
               "x": -45,
               "y": 167,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1041,7 +1098,7 @@
               "active": true,
               "x": -45,
               "y": 124,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1052,7 +1109,7 @@
               "active": true,
               "x": -45,
               "y": 82,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1063,7 +1120,7 @@
               "active": true,
               "x": -87,
               "y": 39,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1074,7 +1131,7 @@
               "active": true,
               "x": -130,
               "y": 39,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1085,7 +1142,7 @@
               "active": true,
               "x": -172,
               "y": 39,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             }
@@ -1106,7 +1163,7 @@
               "active": true,
               "x": 284,
               "y": 31.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1117,7 +1174,7 @@
               "active": true,
               "x": 242,
               "y": 30.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1128,7 +1185,7 @@
               "active": true,
               "x": 200,
               "y": 30.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1139,7 +1196,7 @@
               "active": true,
               "x": 157,
               "y": 31.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1150,7 +1207,7 @@
               "active": true,
               "x": 115,
               "y": 30.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1161,7 +1218,7 @@
               "active": true,
               "x": 73,
               "y": 30.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
@@ -1189,7 +1246,7 @@
               "active": true,
               "x": 31.000000000000114,
               "y": -223.9999999999999,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1200,7 +1257,7 @@
               "active": true,
               "x": 31.000000000000114,
               "y": -180.9999999999999,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1211,7 +1268,7 @@
               "active": true,
               "x": 30.000000000000114,
               "y": -137.9999999999999,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1222,7 +1279,7 @@
               "active": true,
               "x": 31.000000000000114,
               "y": -96.99999999999989,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1233,7 +1290,7 @@
               "active": true,
               "x": 31.000000000000114,
               "y": -53.999999999999886,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1244,7 +1301,7 @@
               "active": true,
               "x": 31.00000000000003,
               "y": -11.999999999999886,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
@@ -1271,7 +1328,7 @@
               "active": true,
               "x": 30.00000000000003,
               "y": 284.0000000000001,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1282,7 +1339,7 @@
               "active": true,
               "x": 30.00000000000003,
               "y": 242.0000000000001,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1293,7 +1350,7 @@
               "active": true,
               "x": 30.00000000000003,
               "y": 199.0000000000001,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1304,7 +1361,7 @@
               "active": true,
               "x": 30.00000000000003,
               "y": 157.0000000000001,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1315,7 +1372,7 @@
               "active": true,
               "x": 30.00000000000003,
               "y": 115.00000000000011,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1326,7 +1383,7 @@
               "active": true,
               "x": 32.00000000000003,
               "y": 70,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [
@@ -1353,7 +1410,7 @@
               "active": true,
               "x": -222.99999999999994,
               "y": 31.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1364,7 +1421,7 @@
               "active": true,
               "x": -179.99999999999997,
               "y": 31.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1375,7 +1432,7 @@
               "active": true,
               "x": -138.99999999999997,
               "y": 31.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1386,7 +1443,7 @@
               "active": true,
               "x": -96.99999999999997,
               "y": 30.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1397,7 +1454,7 @@
               "active": true,
               "x": -54.99999999999994,
               "y": 31.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38
             },
@@ -1408,7 +1465,7 @@
               "active": true,
               "x": -10.999999999999972,
               "y": 30.000000000000114,
-              "visible": true,
+              "visible": false,
               "width": 38,
               "height": 38,
               "_$comp": [

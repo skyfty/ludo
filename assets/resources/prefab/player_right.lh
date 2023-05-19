@@ -19,43 +19,36 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "iwc7j7o8",
-      "_$type": "Sprite",
-      "name": "box",
-      "x": 8,
-      "y": 3,
-      "width": 67.5,
-      "height": 62.5,
-      "_$child": [
-        {
-          "_$id": "8gvrhs2u",
-          "_$prefab": "1a3f2e89-debf-4dc0-9e1b-3adbe1fb27f6",
-          "name": "dice_roll",
-          "active": true,
-          "x": 0,
-          "y": 0,
-          "visible": false,
-          "width": 152,
-          "height": 152,
-          "scaleX": 0.4,
-          "scaleY": 0.4,
-          "bgColor": null
-        },
-        {
-          "_$id": "u10ork93",
-          "_$prefab": "c01c6ba2-a4cc-4c85-a214-b0d0767c5358",
-          "name": "dice",
-          "active": true,
-          "x": -3,
-          "y": -8,
-          "visible": true,
-          "scaleX": 0.5,
-          "scaleY": 0.5,
-          "bgColor": null,
-          "width": 156,
-          "height": 156
-        }
-      ]
+      "_$id": "o95ydlsr",
+      "_$type": "Clip",
+      "name": "default",
+      "x": -2,
+      "y": -9,
+      "width": 87,
+      "height": 87,
+      "clipWidth": 158,
+      "clipHeight": 158,
+      "clipX": 2,
+      "clipY": 3,
+      "index": 0,
+      "interval": 50,
+      "skin": "res://a093d9bf-16ee-4e80-9a67-f9258a5730df"
+    },
+    {
+      "_$id": "22dm2a74",
+      "_$type": "Clip",
+      "name": "roll",
+      "y": -8,
+      "width": 87,
+      "height": 87,
+      "visible": false,
+      "clipWidth": 158,
+      "clipHeight": 158,
+      "clipX": 6,
+      "clipY": 5,
+      "index": 0,
+      "interval": 50,
+      "skin": "res://4343c882-a431-42eb-a427-377877bd4711"
     }
   ]
 }
