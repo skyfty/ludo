@@ -2,8 +2,6 @@ const { regClass, property} = Laya;
 
 @regClass()
 export class Chess extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
-
     public hole: Laya.Sprite;
 
     @property(Laya.Sprite)
@@ -36,7 +34,7 @@ export class Chess extends Laya.Script {
         this.chess.getComponent(Laya.Animator2D).play("hop");
     }
 
-    public stopHop() {
+    public stop() {
         this.chess.getComponent(Laya.Animator2D).play("idle");
     }
 }

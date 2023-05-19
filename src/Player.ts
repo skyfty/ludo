@@ -54,29 +54,80 @@ export class Player extends Laya.Script {
         this.diceDefault.index = idx;
     }
 
-    private onRollTimeout() {
-        this.diceRoll.stop();
-        this.setDiceNumber(this.currentDiceNumber);
-        this.departure(this.entry);
-        this.chooseChess(Laya.Handler.create(this, () => {
 
-        }));
-
-        // if (this.chippy.length == 6) {
-    
-        //     this.departure(this.entry);
-
-        // } else if (this.chippy.length > 1) {
-        //     let chess = this.chippy[0].getComponent(Chess);
-        //     let stepNumber = this.currentDiceNumber + 1;
-        //     chess.step(stepNumber, Laya.Handler.create(this, () => {
-        //         console.log("lskjf");
-        //     }));
-        // }
+    private scaleChessInHole() {
+        for(let i = 0;i < this.chippy.length - 1;++i) {
+            let child = this.chippy[i] as Laya.Sprite;
+            let childChess = child.getComponent(Chess) as Chess;
+            for(let j = i + 1;j < this.chippy.length;++j) {
+                let nextChild = this.chippy[j] as Laya.Sprite;
+                let nextChildChess = nextChild.getComponent(Chess) as Chess;
+                if (childChess.hole == nextChildChess.hole) {
+                    child.scale(0.5, 0.5);
+                    nextChild.scale(0.5, 0.5);
+                }
+            }
+        }
     }
 
-    private chooseChess(complete: Laya.Handler) {
-        this.groove.getComponent(Groove).hop();
+
+    private onChessForwordComplete(node:Laya.Sprite) {
+        this.scaleChessInHole();
+    }
+
+    private forwordChess(node:Laya.Sprite,stepNumber:number) {
+        let chess = node.getComponent(Chess) as Chess;
+        chess.step(stepNumber, Laya.Handler.create(this, () => {
+            this.onChessForwordComplete(node);
+        }));
+    }
+
+    private onRollTimeout() {
+        this.diceRoll.stop();
+        this.currentDiceNumber = 5;
+        this.setDiceNumber(this.currentDiceNumber);
+
+        if (this.currentDiceNumber != 5 && this.chippy.length > 0) {
+            let setpNumber = this.currentDiceNumber + 1;
+            if (this.chippy.length > 1) {
+                this.chooseChess(this.chippy, Laya.Handler.create(this, (chess:Laya.Sprite) => {
+                    this.forwordChess(chess,setpNumber);
+                }));
+            } else {
+                this.forwordChess(this.chippy[0], setpNumber);
+            }
+        } else if (this.currentDiceNumber == 5) {
+            let chesses:Laya.Sprite[] = [];
+            chesses = chesses.concat(this.chippy);
+    
+            for(let i = 0;i < this.groove.numChildren;++i) {
+                let child = this.groove.getChildAt(i) as Laya.Sprite;
+                if (child.visible) {
+                    chesses.push(child);
+                }
+            }
+            this.chooseChess(chesses, Laya.Handler.create(this, (chess:Laya.Sprite) => {
+                if (this.chippy.indexOf(chess) != -1) {
+                    this.forwordChess(chess, this.currentDiceNumber + 1);
+                } else {
+                    this.departure(chess);
+                }
+            }));
+        }
+    }
+
+    private chooseChess(chesses:Laya.Sprite[], complete: Laya.Handler) {
+        let o:any = "chooseChess";
+        for(let i = 0; i < chesses.length; ++i) {
+            chesses[i].getComponent(Chess).hop();
+            chesses[i].on(Laya.Event.CLICK, o, ()=>{
+                for(let i = 0; i < chesses.length; ++i) {
+                    chesses[i].getComponent(Chess).stop();
+                    chesses[i].offAllCaller(o);
+                }
+                complete.runWith(chesses[i]);
+            });
+        }
     }
 
     public cloneNewChess(childNode:Laya.Image) {
@@ -84,24 +135,22 @@ export class Player extends Laya.Script {
         newChess.width = childNode.width;
         newChess.height = childNode.height;
         let newChessImage = newChess.getComponent(Chess);
+        newChessImage.hole = this.entry;
         newChessImage.image.skin = childNode.getComponent(Chess).image.skin;
         return newChess;
     }
 
     
-    public departure(destNode:Laya.Sprite) {
-        
-        let childNode = this.groove.getChildAt(0) as Laya.Sprite;
+    public departure(childNode:Laya.Sprite) {
         let newChess = this.cloneNewChess(childNode as Laya.Image);
-        let newChessHole = newChess.getComponent(Chess);
-        newChessHole.hole = destNode;
 
         let originPoint = this.groove.localToGlobal(new Laya.Point(childNode.x,childNode.y));
         Laya.stage.addChild(newChess.pos(originPoint.x, originPoint.y));
 
-        let destPoint = this.universal.localToGlobal(new Laya.Point(destNode.x,destNode.y));
-        Laya.Tween.to(newChess, { y: destPoint.y, x: destPoint.x }, 700, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
-            this.universal.addChild(newChess.pos(destNode.x, destNode.y));
+        let destPoint = this.universal.localToGlobal(new Laya.Point(this.entry.x,this.entry.y));
+        
+        Laya.Tween.to(newChess, { y: destPoint.y, x: destPoint.x }, 600, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
+            this.universal.addChild(newChess.pos(this.entry.x, this.entry.y));
         }));
         childNode.visible = false;
         this.chippy.push(newChess);
