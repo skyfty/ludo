@@ -4,8 +4,13 @@ const { regClass, property} = Laya;
 export class Chess extends Laya.Script {
     //declare owner : Laya.Sprite3D;
 
-    @property(Laya.Sprite)
     public hole: Laya.Sprite;
+
+    @property(Laya.Sprite)
+    public chess: Laya.Sprite;
+
+    @property(Laya.Image)
+    public image: Laya.Image;
 
     constructor() {
         super();
@@ -27,5 +32,11 @@ export class Chess extends Laya.Script {
         this.hole = nextHole;
     }
 
+    public hop() {
+        this.chess.getComponent(Laya.Animator2D).play("hop");
+    }
 
+    public stopHop() {
+        this.chess.getComponent(Laya.Animator2D).play("idle");
+    }
 }

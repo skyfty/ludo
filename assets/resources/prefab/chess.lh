@@ -9,18 +9,71 @@
     {
       "_$type": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
       "scriptPath": "../src/Chess.ts",
-      "text": ""
+      "chess": {
+        "_$ref": "lbsblna6"
+      },
+      "image": {
+        "_$ref": "t8h17dpc"
+      }
     }
   ],
   "_$child": [
     {
-      "_$id": "t8h17dpc",
-      "_$type": "Image",
-      "name": "Image",
+      "_$id": "lbsblna6",
+      "_$type": "Sprite",
+      "name": "chess",
       "width": 38,
       "height": 38,
-      "skin": "res://c13c1b8e-c516-4a0f-98ad-e356f45f0365",
-      "color": "#ffffff"
+      "_$comp": [
+        {
+          "_$type": "Animator2D",
+          "controller": {
+            "_$uuid": "a5c1f81f-8dd7-4f95-83ba-382a090c1455",
+            "_$type": "AnimationController2D"
+          },
+          "controllerLayers": [
+            {
+              "_$type": "AnimatorControllerLayer2D",
+              "name": "Base Layer",
+              "states": [
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "idle",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "64162b6e-abb0-4e29-ac5b-50fa14b41f17",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                },
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "hop",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "4e04c9fa-9fc6-46c9-b87d-a57c8d6f93ae",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                }
+              ],
+              "playOnWake": false,
+              "defaultStateName": "idle"
+            }
+          ]
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "t8h17dpc",
+          "_$type": "Image",
+          "name": "image",
+          "width": 38,
+          "height": 38,
+          "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
+          "color": "#ffffff"
+        }
+      ]
     }
   ]
 }

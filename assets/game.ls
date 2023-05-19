@@ -306,48 +306,73 @@
               "y": 85,
               "width": 80,
               "height": 80,
+              "_$comp": [
+                {
+                  "_$type": "9423b787-8e07-485d-bf20-a0797b54ba35",
+                  "scriptPath": "../src/Groove.ts",
+                  "text": ""
+                }
+              ],
               "_$child": [
                 {
-                  "_$id": "l8yzcoao",
-                  "_$type": "Image",
+                  "_$id": "nbm65fbg",
+                  "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "0",
-                  "y": 1,
-                  "width": 38,
-                  "height": 38,
-                  "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "color": "#ffffff"
+                  "active": true,
+                  "x": 0,
+                  "y": -1.1368683772161603e-13,
+                  "visible": true,
+                  "_$child": [
+                    {
+                      "_$override": "t8h17dpc",
+                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                    }
+                  ]
                 },
                 {
-                  "_$id": "7o37weh7",
-                  "_$type": "Image",
+                  "_$id": "68srqc97",
+                  "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "1",
-                  "x": 41,
-                  "y": 2,
-                  "width": 38,
-                  "height": 38,
-                  "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "color": "#ffffff"
+                  "active": true,
+                  "x": 41.00000000000006,
+                  "y": -1.1368683772161603e-13,
+                  "visible": true,
+                  "_$child": [
+                    {
+                      "_$override": "t8h17dpc",
+                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                    }
+                  ]
                 },
                 {
-                  "_$id": "pa58bzix",
-                  "_$type": "Image",
+                  "_$id": "kd87dtw1",
+                  "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
+                  "active": true,
+                  "x": 0,
                   "y": 44,
-                  "width": 38,
-                  "height": 38,
-                  "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "color": "#ffffff"
+                  "visible": true,
+                  "_$child": [
+                    {
+                      "_$override": "t8h17dpc",
+                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                    }
+                  ]
                 },
                 {
-                  "_$id": "ydkv1o56",
-                  "_$type": "Image",
+                  "_$id": "g45ccbxm",
+                  "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
-                  "x": 42,
-                  "y": 44,
-                  "width": 38,
-                  "height": 38,
-                  "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
-                  "color": "#ffffff"
+                  "active": true,
+                  "x": 42.00000000000003,
+                  "y": 44.000000000000114,
+                  "visible": true,
+                  "_$child": [
+                    {
+                      "_$override": "t8h17dpc",
+                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                    }
+                  ]
                 }
               ]
             }
@@ -391,14 +416,15 @@
                   "dm1y2zws"
                 ]
               },
-              "origin": {
-                "_$ref": "gr9e599v",
-                "_$type": "e36a4cc4-5c60-47d3-b295-dd7dcfe4fd6c"
+              "groove": {
+                "_$ref": "37thijbt"
               },
               "universal": {
                 "_$ref": "7xaa4ym6"
               },
-              "personal": null,
+              "personal": {
+                "_$ref": "jnr4fv9u"
+              },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
@@ -418,7 +444,9 @@
             {
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
               "scriptPath": "../src/Player.ts",
-              "entry": null,
+              "entry": {
+                "_$ref": "epcr8nn6"
+              },
               "diceRoll": {
                 "_$ref": [
                   "hknjlm1h",
@@ -431,10 +459,19 @@
                   "dm1y2zws"
                 ]
               },
-              "origin": null,
-              "universal": null,
-              "personal": null,
-              "chessPrefab": null
+              "groove": {
+                "_$ref": "x1uq1m5z"
+              },
+              "universal": {
+                "_$ref": "7xaa4ym6"
+              },
+              "personal": {
+                "_$ref": "ugpgd2q4"
+              },
+              "chessPrefab": {
+                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
+                "_$type": "Prefab"
+              }
             }
           ]
         },
@@ -450,7 +487,9 @@
             {
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
               "scriptPath": "../src/Player.ts",
-              "entry": null,
+              "entry": {
+                "_$ref": "f9hzncy6"
+              },
               "diceRoll": {
                 "_$ref": [
                   "b7zhaso0",
@@ -463,10 +502,19 @@
                   "o95ydlsr"
                 ]
               },
-              "origin": null,
-              "universal": null,
-              "personal": null,
-              "chessPrefab": null
+              "groove": {
+                "_$ref": "etgip090"
+              },
+              "universal": {
+                "_$ref": "7xaa4ym6"
+              },
+              "personal": {
+                "_$ref": "o61g60ol"
+              },
+              "chessPrefab": {
+                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
+                "_$type": "Prefab"
+              }
             }
           ]
         },
@@ -482,7 +530,9 @@
             {
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
               "scriptPath": "../src/Player.ts",
-              "entry": null,
+              "entry": {
+                "_$ref": "8rcnc2sp"
+              },
               "diceRoll": {
                 "_$ref": [
                   "qs7wy01p",
@@ -495,10 +545,19 @@
                   "o95ydlsr"
                 ]
               },
-              "origin": null,
-              "universal": null,
-              "personal": null,
-              "chessPrefab": null
+              "groove": {
+                "_$ref": "g2g1c6jq"
+              },
+              "universal": {
+                "_$ref": "7xaa4ym6"
+              },
+              "personal": {
+                "_$ref": "a7afqfrw"
+              },
+              "chessPrefab": {
+                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
+                "_$type": "Prefab"
+              }
             }
           ]
         }
@@ -839,7 +898,7 @@
               "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
               "name": "26",
               "active": true,
-              "x": 209,
+              "x": 208.99999999999994,
               "y": -45,
               "visible": false,
               "width": 38,
@@ -1479,6 +1538,16 @@
           ]
         }
       ]
+    },
+    {
+      "_$id": "1urbm6ja",
+      "_$type": "Animation",
+      "name": "Animation",
+      "x": 275,
+      "y": 598,
+      "width": 100,
+      "height": 100,
+      "interval": 50
     }
   ]
 }

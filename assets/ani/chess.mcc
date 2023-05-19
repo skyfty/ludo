@@ -1,0 +1,60 @@
+{
+  "_$type": "Animator2D",
+  "enabled": true,
+  "controllerLayers": [
+    {
+      "name": "Base Layer",
+      "defaultStateName": "hop",
+      "playOnWake": false,
+      "blendingMode": 0,
+      "states": [
+        {
+          "name": "hop",
+          "clip": {
+            "_$uuid": "4e04c9fa-9fc6-46c9-b87d-a57c8d6f93ae"
+          },
+          "loop": -1,
+          "speed": 1,
+          "clipEnd": 1,
+          "x": 1212.4968540425557,
+          "y": 770.8952030935894,
+          "id": "0"
+        },
+        {
+          "x": 10,
+          "y": 100,
+          "id": "-1",
+          "name": "进入",
+          "speed": 1,
+          "clipEnd": 1,
+          "soloTransitions": [
+            {
+              "id": "1"
+            }
+          ]
+        },
+        {
+          "x": 2018,
+          "y": 100,
+          "id": "-2",
+          "name": "任何状态",
+          "speed": 1,
+          "clipEnd": 1
+        },
+        {
+          "x": 1543.0524531504466,
+          "y": 114.02261079382185,
+          "id": "1",
+          "name": "idle",
+          "speed": 1,
+          "clipEnd": 1,
+          "clip": {
+            "_$uuid": "64162b6e-abb0-4e29-ac5b-50fa14b41f17"
+          }
+        }
+      ],
+      "defaultWeight": 1
+    }
+  ],
+  "layerW": 150
+}

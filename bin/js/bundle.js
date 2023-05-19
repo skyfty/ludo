@@ -74,20 +74,8 @@
     regClass4("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Main.ts")
   ], Main);
 
-  // src/Origin.ts
-  var { regClass: regClass5, property: property5 } = Laya;
-  var Origin = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-  };
-  __name(Origin, "Origin");
-  Origin = __decorateClass([
-    regClass5("e36a4cc4-5c60-47d3-b295-dd7dcfe4fd6c", "../src/Origin.ts")
-  ], Origin);
-
   // src/Chess.ts
-  var { regClass: regClass6, property: property6 } = Laya;
+  var { regClass: regClass5, property: property5 } = Laya;
   var Chess = class extends Laya.Script {
     constructor() {
       super();
@@ -106,14 +94,44 @@
       }));
       this.hole = nextHole;
     }
+    hop() {
+      this.chess.getComponent(Laya.Animator2D).play("hop");
+    }
+    stopHop() {
+      this.chess.getComponent(Laya.Animator2D).play("idle");
+    }
   };
   __name(Chess, "Chess");
   __decorateClass([
-    property6(Laya.Sprite)
-  ], Chess.prototype, "hole", 2);
+    property5(Laya.Sprite)
+  ], Chess.prototype, "chess", 2);
+  __decorateClass([
+    property5(Laya.Image)
+  ], Chess.prototype, "image", 2);
   Chess = __decorateClass([
-    regClass6("2be80ad6-1bcc-440d-a7c9-809c6c1eef91", "../src/Chess.ts")
+    regClass5("2be80ad6-1bcc-440d-a7c9-809c6c1eef91", "../src/Chess.ts")
   ], Chess);
+
+  // src/Groove.ts
+  var { regClass: regClass6, property: property6 } = Laya;
+  var Groove = class extends Laya.Script {
+    constructor() {
+      super();
+      this.text = "";
+    }
+    hop() {
+      for (let i = 0; i < this.owner.numChildren; ++i) {
+        this.owner.getChildAt(i).getComponent(Chess).hop();
+      }
+    }
+  };
+  __name(Groove, "Groove");
+  __decorateClass([
+    property6(String)
+  ], Groove.prototype, "text", 2);
+  Groove = __decorateClass([
+    regClass6("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
+  ], Groove);
 
   // src/Player.ts
   var { regClass: regClass7, property: property7 } = Laya;
@@ -137,26 +155,27 @@
     onRollTimeout() {
       this.diceRoll.stop();
       this.setDiceNumber(this.currentDiceNumber);
+      this.departure(this.entry);
       this.chooseChess(Laya.Handler.create(this, () => {
       }));
     }
     chooseChess(complete) {
+      this.groove.getComponent(Groove).hop();
     }
     cloneNewChess(childNode) {
       let newChess = this.chessPrefab.create();
       newChess.width = childNode.width;
       newChess.height = childNode.height;
-      let newChessImage = newChess.getChildByName("Image");
-      newChessImage.skin = childNode.skin;
+      let newChessImage = newChess.getComponent(Chess);
+      newChessImage.image.skin = childNode.getComponent(Chess).image.skin;
       return newChess;
     }
     departure(destNode) {
-      let groove = this.origin.owner.getChildByName("groove");
-      let childNode = groove.getChildAt(0);
+      let childNode = this.groove.getChildAt(0);
       let newChess = this.cloneNewChess(childNode);
       let newChessHole = newChess.getComponent(Chess);
       newChessHole.hole = destNode;
-      let originPoint = groove.localToGlobal(new Laya.Point(childNode.x, childNode.y));
+      let originPoint = this.groove.localToGlobal(new Laya.Point(childNode.x, childNode.y));
       Laya.stage.addChild(newChess.pos(originPoint.x, originPoint.y));
       let destPoint = this.universal.localToGlobal(new Laya.Point(destNode.x, destNode.y));
       Laya.Tween.to(newChess, { y: destPoint.y, x: destPoint.x }, 700, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
@@ -184,8 +203,8 @@
     property7(Laya.Clip)
   ], Player.prototype, "diceDefault", 2);
   __decorateClass([
-    property7(Origin)
-  ], Player.prototype, "origin", 2);
+    property7(Laya.Sprite)
+  ], Player.prototype, "groove", 2);
   __decorateClass([
     property7(Laya.Sprite)
   ], Player.prototype, "universal", 2);
@@ -211,5 +230,17 @@
   Entry = __decorateClass([
     regClass8("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
   ], Entry);
+
+  // src/Origin.ts
+  var { regClass: regClass9, property: property9 } = Laya;
+  var Origin = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+  };
+  __name(Origin, "Origin");
+  Origin = __decorateClass([
+    regClass9("e36a4cc4-5c60-47d3-b295-dd7dcfe4fd6c", "../src/Origin.ts")
+  ], Origin);
 })();
 //# sourceMappingURL=bundle.js.map

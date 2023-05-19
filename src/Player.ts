@@ -1,6 +1,6 @@
 import { Entry } from "./Entry";
 import { Dice } from "./Dice";
-import { Origin } from "./Origin";
+import { Groove } from "./Groove";
 import { Chess } from "./Chess";
 
 
@@ -19,8 +19,8 @@ export class Player extends Laya.Script {
     @property(Laya.Clip)
     public diceDefault:Laya.Clip;
 
-    @property(Origin)
-    public origin:Origin;
+    @property(Laya.Sprite)
+    public groove:Laya.Sprite;
 
     @property(Laya.Sprite)
     public universal:Laya.Sprite;
@@ -57,7 +57,7 @@ export class Player extends Laya.Script {
     private onRollTimeout() {
         this.diceRoll.stop();
         this.setDiceNumber(this.currentDiceNumber);
-
+        this.departure(this.entry);
         this.chooseChess(Laya.Handler.create(this, () => {
 
         }));
@@ -76,28 +76,27 @@ export class Player extends Laya.Script {
     }
 
     private chooseChess(complete: Laya.Handler) {
-        
+        this.groove.getComponent(Groove).hop();
     }
 
     public cloneNewChess(childNode:Laya.Image) {
         let newChess =  this.chessPrefab.create() as Laya.Sprite;
         newChess.width = childNode.width;
         newChess.height = childNode.height;
-        let newChessImage = newChess.getChildByName("Image")as  Laya.Image;
-        newChessImage.skin = childNode.skin;
+        let newChessImage = newChess.getComponent(Chess);
+        newChessImage.image.skin = childNode.getComponent(Chess).image.skin;
         return newChess;
     }
 
     
     public departure(destNode:Laya.Sprite) {
-        let groove = this.origin.owner.getChildByName("groove") as Laya.Sprite;
         
-        let childNode = groove.getChildAt(0) as Laya.Sprite;
+        let childNode = this.groove.getChildAt(0) as Laya.Sprite;
         let newChess = this.cloneNewChess(childNode as Laya.Image);
         let newChessHole = newChess.getComponent(Chess);
         newChessHole.hole = destNode;
 
-        let originPoint = groove.localToGlobal(new Laya.Point(childNode.x,childNode.y));
+        let originPoint = this.groove.localToGlobal(new Laya.Point(childNode.x,childNode.y));
         Laya.stage.addChild(newChess.pos(originPoint.x, originPoint.y));
 
         let destPoint = this.universal.localToGlobal(new Laya.Point(destNode.x,destNode.y));
