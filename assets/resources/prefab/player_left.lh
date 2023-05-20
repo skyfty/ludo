@@ -8,48 +8,63 @@
   "bgColor": "rgba(255, 255, 255, 1)",
   "_$child": [
     {
-      "_$id": "cfxctmx8",
-      "_$type": "Image",
-      "name": "avatar",
-      "x": 8,
-      "y": 5,
-      "width": 58.436244006145216,
-      "height": 58.11159820611101,
-      "skin": "res://1c10cf2a-0f9b-47aa-b116-ca6e65dea7b1",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "dm1y2zws",
-      "_$type": "Clip",
-      "name": "default",
-      "x": 71,
-      "y": -9,
-      "width": 87,
-      "height": 86.5,
-      "clipWidth": 158,
-      "clipHeight": 158,
-      "clipX": 2,
-      "clipY": 3,
-      "index": 0,
-      "interval": 50,
-      "skin": "res://a093d9bf-16ee-4e80-9a67-f9258a5730df"
-    },
-    {
-      "_$id": "dn8vhuyq",
-      "_$type": "Clip",
-      "name": "roll",
-      "x": 69,
-      "y": -8,
-      "width": 87,
-      "height": 87,
-      "visible": false,
-      "clipWidth": 158,
-      "clipHeight": 158,
-      "clipX": 6,
-      "clipY": 5,
-      "index": 0,
-      "interval": 50,
-      "skin": "res://4343c882-a431-42eb-a427-377877bd4711"
+      "_$id": "sc3b00yx",
+      "_$type": "Sprite",
+      "name": "trade",
+      "x": 2,
+      "y": 1,
+      "width": 153,
+      "height": 66,
+      "texture": {
+        "_$uuid": "00000000-0000-0000-0001-000000000000",
+        "_$type": "Texture"
+      },
+      "_$child": [
+        {
+          "_$id": "cfxctmx8",
+          "_$type": "Image",
+          "name": "avatar",
+          "x": 6,
+          "y": 4,
+          "width": 58.436244006145216,
+          "height": 58.11159820611101,
+          "skin": "res://1c10cf2a-0f9b-47aa-b116-ca6e65dea7b1",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "dm1y2zws",
+          "_$type": "Clip",
+          "name": "default",
+          "x": 69,
+          "y": -10,
+          "width": 87,
+          "height": 86.5,
+          "clipWidth": 158,
+          "clipHeight": 158,
+          "clipX": 2,
+          "clipY": 3,
+          "index": 0,
+          "interval": 50,
+          "skin": "res://a093d9bf-16ee-4e80-9a67-f9258a5730df"
+        },
+        {
+          "_$id": "dn8vhuyq",
+          "_$type": "Clip",
+          "name": "roll",
+          "x": 67,
+          "y": -9,
+          "width": 87,
+          "height": 87,
+          "visible": false,
+          "clipWidth": 158,
+          "clipHeight": 158,
+          "clipX": 6,
+          "clipY": 5,
+          "index": 0,
+          "interval": 50,
+          "skin": "res://4343c882-a431-42eb-a427-377877bd4711"
+        }
+      ]
     }
   ]
 }

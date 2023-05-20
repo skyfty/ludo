@@ -4,8 +4,8 @@ const { regClass, property } = Laya;
 export class Door extends Laya.Script {
     //declare owner : Laya.Sprite3D;
 
-    @property(String)
-    public color: string = "";
+    @property(Laya.Sprite)
+    public player: Laya.Sprite;
 
     constructor() {
         super();

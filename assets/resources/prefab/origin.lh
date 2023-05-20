@@ -1,0 +1,62 @@
+{
+  "_$ver": 1,
+  "_$id": "igiejx1qui",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 168,
+  "height": 168,
+  "_$child": [
+    {
+      "_$id": "p59dqqpf",
+      "_$type": "Sprite",
+      "name": "0",
+      "x": 43,
+      "y": 43,
+      "width": 38,
+      "height": 38,
+      "texture": {
+        "_$uuid": "00000000-0000-0000-0001-000000000000",
+        "_$type": "Texture"
+      }
+    },
+    {
+      "_$id": "zbrikq5h",
+      "_$type": "Sprite",
+      "name": "1",
+      "x": 85,
+      "y": 43,
+      "width": 38,
+      "height": 38,
+      "texture": {
+        "_$uuid": "00000000-0000-0000-0001-000000000000",
+        "_$type": "Texture"
+      }
+    },
+    {
+      "_$id": "qy4hoqjh",
+      "_$type": "Sprite",
+      "name": "2",
+      "x": 43,
+      "y": 85,
+      "width": 38,
+      "height": 38,
+      "texture": {
+        "_$uuid": "00000000-0000-0000-0001-000000000000",
+        "_$type": "Texture"
+      }
+    },
+    {
+      "_$id": "fssqgfr1",
+      "_$type": "Sprite",
+      "name": "3",
+      "x": 85,
+      "y": 85,
+      "width": 38,
+      "height": 38,
+      "texture": {
+        "_$uuid": "00000000-0000-0000-0001-000000000000",
+        "_$type": "Texture"
+      }
+    }
+  ]
+}
