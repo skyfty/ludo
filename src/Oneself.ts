@@ -1,9 +1,11 @@
 const { regClass, property } = Laya;
-import { Performer } from "./Performer";
 import { Chess } from "./Chess";
+import { Performer } from "./Performer";
+import * as Player from "./Player";
 
 @regClass()
 export class Oneself extends Performer {
+    private isAdvanceing = false;
 
     constructor() {
         super();
@@ -15,36 +17,51 @@ export class Oneself extends Performer {
         this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
     }
 
+
     onClickTrade() {
+        if (this.state != Player.State.Running || this.isAdvanceing) {
+            return;
+        }
+
+        this.isAdvanceing = true;
+        this.owner.event(Player.Event.RollStart, this.owner);
         this.player.startRoll();
-        Laya.timer.once(100, this, this.onRollTimeout);
+        Laya.timer.once(600, this, this.onRollTimeout);
     }
 
     private onRollTimeout() {
-        this.currentDiceNumber = 5;// Math.floor(Math.random()* 6);
+        this.currentDiceNumber = Math.floor(Math.random()* 6);
         this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
     }
 
     private onRollStop() {
+        this.owner.event(Player.Event.RollEnd, [this.owner, this.currentDiceNumber]);
         this.player.setDiceNumber(this.currentDiceNumber);
-        this.reckonChess(this.currentDiceNumber, Laya.Handler.create(this,  (chesses:Laya.Sprite[])=>{
-            if (chesses == null) {
-                
-            } else {
+        this.player.reckonChess(this.currentDiceNumber, Laya.Handler.create(this,  (chesses:Laya.Sprite[])=>{
+            if (chesses != null) {
+                this.owner.event(Player.Event.Choose, [this.owner]);
                 this.onReckonChessComplete(chesses, Laya.Handler.create(this,  this.onChooseChessesComplete));
+            } else {
+                this.isAdvanceing = false;
+                this.owner.event(Player.Event.Achieve, null);
             }
         }));
     }
 
     private onChooseChessesComplete(chess:Laya.Sprite) {
-        this.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
+        this.player.advance(chess, this.currentDiceNumber,Laya.Handler.create(this,  this.onAdvanceComplete));
     }
 
-    private onAdvanceComplete(chess:Laya.Sprite) {
-
+    private onAdvanceComplete(node:Laya.Sprite) {
+        this.isAdvanceing = false;
+        let chess = node.getComponent(Chess);
+        if (chess.hole == this.player.entry) {
+            return;
+        }
+        this.owner.event(Player.Event.Achieve, node);
     }
 
-    private onReckonChessComplete(chesses:Laya.Sprite[], complete: Laya.Handler) {
+    private onReckonMultiChessComplete(chesses:Laya.Sprite[], complete: Laya.Handler) {
         let o:any = "chooseChess";
         for(let i = 0; i < chesses.length; ++i) {
             chesses[i].on(Laya.Event.CLICK, o, ()=>{
@@ -56,6 +73,14 @@ export class Oneself extends Performer {
             });
         }
         this.player.hopChesses(chesses);
+    }
+
+    private onReckonChessComplete(chesses:Laya.Sprite[], complete: Laya.Handler) {
+        if (chesses.length == 1) {
+            complete.runWith(chesses[0]);
+        } else {
+           this.onReckonMultiChessComplete(chesses, complete);
+        }
     }
 
     onDestroy(): void {

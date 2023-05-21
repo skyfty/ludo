@@ -1,11 +1,6 @@
-import { Door } from "./Door";
 import { Player } from "./Player";
 
 const { regClass, property} = Laya;
-
-interface StepProvider {
-    next():number;
-}
 
 @regClass()
 export class Chess extends Laya.Script {

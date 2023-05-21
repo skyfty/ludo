@@ -1,5 +1,6 @@
 const { regClass, property } = Laya;
 import { Performer } from "./Performer";
+import { Player,Event,State } from "./Player";
 
 @regClass()
 export class Extreme extends Performer {
@@ -8,9 +9,15 @@ export class Extreme extends Performer {
     constructor() {
         super();
     }
+    onStart(): void {
+        this.owner.on(Event.StateChange, this, this.onStateChange);
+    }
 
-    // protected  chooseChess(chesses:Laya.Sprite[], complete: Laya.Handler): void {
-    //     complete.runWith(chesses[0]);
-    // }
+    
+    onStateChange() {
+        if (this.state == State.Running) {
+
+        }
+    }
 
 }

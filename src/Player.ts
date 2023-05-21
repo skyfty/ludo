@@ -1,7 +1,33 @@
 import { Chess } from "./Chess";
-import { Door } from "./Door";
 
 const { regClass, property } = Laya;
+
+export class Event {
+    static EntryRoom = "ENTRY_ROOM";
+    static ExitRoom = "EXIT_ROOM";
+    static StateChange = "STATE_CHANGE";
+    static RollStart = "ROLL_START";
+    static RollEnd = "ROLL_END";
+    static Choose = "CHOOSE";
+    static Achieve = "ACHIEVE";
+}
+
+export interface Profile {
+    name:string;
+    avatar:string;
+}
+
+export enum Type {
+    Online,
+    Computer,
+    Oneself
+}
+
+
+export enum State {
+    Idle = 0,
+    Running = 1
+}
 
 @regClass()
 export class Player extends Laya.Script {
@@ -36,6 +62,8 @@ export class Player extends Laya.Script {
     @property(Laya.Prefab)
     public chessPrefab:Laya.Prefab;
 
+    protected chippy: Laya.Sprite[] = [];
+
     constructor() {
         super();
     }
@@ -43,6 +71,14 @@ export class Player extends Laya.Script {
         this.numberUniversalHold = this.universal.numChildren;
         this.numberPersonalHold = this.personal.numChildren;
     }
+    onStart(): void {
+        this.owner.on(Event.StateChange, this, this.onStateChange);
+    }
+
+    onStateChange() {
+
+    }
+
     public setDiceNumber(idx:number) {
         this.diceDefault.visible = true;
         this.diceRoll.visible = false;
@@ -64,17 +100,6 @@ export class Player extends Laya.Script {
         // }
     }
 
-    private onChessForwordComplete(node:Laya.Sprite) {
-        this.scaleChessInHole();
-    }
-
-    public forwordChess(node:Laya.Sprite,stepNumber:number, complete: Laya.Handler) {
-        let chess = node.getComponent(Chess) as Chess;
-        chess.step(stepNumber, 1, Laya.Handler.create(this, () => {
-            this.onChessForwordComplete(node);
-            complete.runWith(node);
-        }));
-    }
 
     public startRoll() {
         this.diceDefault.visible = false;
@@ -100,4 +125,44 @@ export class Player extends Laya.Script {
         }
     }
 
+    
+    public reckonChess(diceNumber:number, complete: Laya.Handler): void {
+        if (diceNumber != 5 && this.chippy.length > 0) {
+            if (this.chippy.length > 1) {
+                complete.runWith([this.chippy]);
+            } else {
+                complete.runWith([new Array(this.chippy[0])]);
+            }
+        } else if (diceNumber == 5) {
+            let chesses:Laya.Sprite[] = [];
+            chesses = chesses.concat(this.chippy);
+            for(let i = 0;i < this.groove.numChildren;++i) {
+                chesses.push(this.groove.getChildAt(i) as Laya.Sprite);
+            }
+            complete.runWith([chesses]);
+        }
+        else
+        {
+            complete.runWith(null);
+        }
+    }
+
+    private onAdvanceComplete(node:Laya.Sprite, complete: Laya.Handler) {
+        this.scaleChessInHole();
+        complete.runWith(node);
+    }
+
+    public advance(node:Laya.Sprite, diceNumber:number, complete: Laya.Handler) {
+        let chess = node.getComponent(Chess) as Chess;
+        if (this.chippy.indexOf(node) != -1) {
+            chess.step(diceNumber + 1, 1, Laya.Handler.create(this, () => {
+                this.onAdvanceComplete(node, complete);
+            }));
+        } else {
+            chess.step(1, 1, Laya.Handler.create(this, () => {
+                this.chippy.push(node);
+                this.onAdvanceComplete(node, complete);
+            }));
+        }
+    }
 }
