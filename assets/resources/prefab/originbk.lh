@@ -1,0 +1,38 @@
+{
+  "_$ver": 1,
+  "_$id": "v9y89kgamt",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 253,
+  "height": 253,
+  "alpha": 0.8049659259259259,
+  "bgColor": "rgba(0, 0, 0, 1)",
+  "_$comp": [
+    {
+      "_$type": "Animator2D",
+      "controller": {
+        "_$uuid": "eca07def-6967-43fc-922f-59f1aea472e1",
+        "_$type": "AnimationController2D"
+      },
+      "controllerLayers": [
+        {
+          "_$type": "AnimatorControllerLayer2D",
+          "name": "Base Layer",
+          "states": [
+            {
+              "_$type": "AnimatorState2D",
+              "name": "recess",
+              "clipStart": 0,
+              "clip": {
+                "_$uuid": "17019a00-cf30-412d-b229-4c491973e0ee",
+                "_$type": "AnimationClip2D"
+              },
+              "soloTransitions": []
+            }
+          ],
+          "defaultStateName": "recess"
+        }
+      ]
+    }
+  ]
+}

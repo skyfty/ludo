@@ -64,636 +64,480 @@
           "height": 31.5,
           "_$child": [
             {
-              "_$id": "2xhdhs2f",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "ue2g43ow",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "0",
               "active": true,
-              "x": -214,
-              "y": 40,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
-                  "scriptPath": "../src/Entry.ts"
-                }
-              ]
+              "x": -45,
+              "y": 251,
+              "visible": true,
+              "bgColor": "rgba(255, 0, 0, 1)"
             },
             {
-              "_$id": "e14tbxo5",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "agumts0y",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "1",
               "active": true,
-              "x": -257,
-              "y": 40,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -45,
+              "y": 209,
+              "visible": true
             },
             {
-              "_$id": "qro5cw3l",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "qo4p0ufz",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "2",
               "active": true,
-              "x": -299,
-              "y": 40,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -45,
+              "y": 166,
+              "visible": true
             },
             {
-              "_$id": "5kt9ii9q",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "fprjjpya",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "3",
               "active": true,
-              "x": -299,
-              "y": -3,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -45,
+              "y": 124,
+              "visible": true
             },
             {
-              "_$id": "zb97jf1m",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "us4zyq6w",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "4",
               "active": true,
-              "x": -299,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -45,
+              "y": 82,
+              "visible": true
             },
             {
-              "_$id": "ligznfwt",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "xbe4zaw7",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "5",
               "active": true,
-              "x": -256,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
-                  "scriptPath": "../src/Door.ts",
-                  "player": {
-                    "_$ref": "hknjlm1h"
-                  }
-                }
-              ]
+              "x": -87,
+              "y": 40,
+              "visible": true
             },
             {
-              "_$id": "rixym1p1",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "p2tawgio",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "6",
               "active": true,
-              "x": -214,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -130,
+              "y": 40,
+              "visible": true
             },
             {
-              "_$id": "v5zjsf5i",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "712s7zuy",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "7",
               "active": true,
               "x": -172,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "y": 40,
+              "visible": true
             },
             {
-              "_$id": "awh4tp4u",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "dfikr92o",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "8",
               "active": true,
-              "x": -130,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -214,
+              "y": 39,
+              "visible": true,
+              "bgColor": "rgba(100, 100, 100, 1)"
             },
             {
-              "_$id": "hcnm3q82",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "chf2wu9b",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "9",
+              "active": true,
+              "x": -257,
+              "y": 40,
+              "visible": true
+            },
+            {
+              "_$id": "208bdk9g",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "10",
+              "active": true,
+              "x": -299,
+              "y": 40,
+              "visible": true
+            },
+            {
+              "_$id": "qjqrb3oy",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "11",
+              "active": true,
+              "x": -299,
+              "y": -3,
+              "visible": true
+            },
+            {
+              "_$id": "0dhkgcuk",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "12",
+              "active": true,
+              "x": -299,
+              "y": -45,
+              "visible": true
+            },
+            {
+              "_$id": "myx9g8dx",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "13",
+              "active": true,
+              "x": -256,
+              "y": -45,
+              "visible": true,
+              "bgColor": "rgba(0, 163, 0, 1)"
+            },
+            {
+              "_$id": "s3ype9zt",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "14",
+              "active": true,
+              "x": -214,
+              "y": -45,
+              "visible": true
+            },
+            {
+              "_$id": "v9jzmnnv",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "15",
+              "active": true,
+              "x": -172,
+              "y": -45,
+              "visible": true
+            },
+            {
+              "_$id": "2mkaise8",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "16",
+              "active": true,
+              "x": -129,
+              "y": -45,
+              "visible": true
+            },
+            {
+              "_$id": "tev1005a",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "17",
               "active": true,
               "x": -87,
               "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "visible": true
             },
             {
-              "_$id": "gtfxbsx5",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "10",
-              "active": true,
-              "x": -45,
-              "y": -87,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "ol20dvbu",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "11",
-              "active": true,
-              "x": -45,
-              "y": -129,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "tbejcg6j",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "12",
-              "active": true,
-              "x": -45,
-              "y": -172,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "epcr8nn6",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "13",
-              "active": true,
-              "x": -45,
-              "y": -214,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
-                  "scriptPath": "../src/Entry.ts"
-                }
-              ]
-            },
-            {
-              "_$id": "if1qr3yt",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "14",
-              "active": true,
-              "x": -45,
-              "y": -257,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "xjd3pfkn",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "15",
-              "active": true,
-              "x": -45,
-              "y": -299,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "fqf9y9eb",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "16",
-              "active": true,
-              "x": -3,
-              "y": -299,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "h6lrpl7h",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "17",
-              "active": true,
-              "x": 39,
-              "y": -299,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "wzixp1z8",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "9yaejm1b",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "18",
               "active": true,
-              "x": 40,
-              "y": -256,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
-                  "scriptPath": "../src/Door.ts",
-                  "player": {
-                    "_$ref": "qs7wy01p"
-                  }
-                }
-              ]
+              "x": -44,
+              "y": -87,
+              "visible": true
             },
             {
-              "_$id": "64jn7r17",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "q599wst2",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "19",
               "active": true,
-              "x": 39,
-              "y": -214,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -44,
+              "y": -130,
+              "visible": true
             },
             {
-              "_$id": "bykr4oxq",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "ssiqlxsz",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "20",
               "active": true,
-              "x": 39,
+              "x": -44,
               "y": -172,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "visible": true
             },
             {
-              "_$id": "is0g41l7",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "7jgf4gqg",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "21",
               "active": true,
-              "x": 39,
-              "y": -130,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -45,
+              "y": -214,
+              "visible": true,
+              "bgColor": "rgba(100, 100, 100, 1)"
             },
             {
-              "_$id": "4wwfjf3g",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "pagtbgh0",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "22",
               "active": true,
-              "x": 39,
-              "y": -87,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -45,
+              "y": -256,
+              "visible": true
             },
             {
-              "_$id": "16fd6z2b",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "e5up88ie",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "23",
               "active": true,
-              "x": 82,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -44,
+              "y": -298,
+              "visible": true
             },
             {
-              "_$id": "hst77dpj",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "azwlhb6r",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "24",
               "active": true,
-              "x": 124,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -2,
+              "y": -299,
+              "visible": true
             },
             {
-              "_$id": "6jek906j",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "6es96uai",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "25",
               "active": true,
-              "x": 166,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 40,
+              "y": -299,
+              "visible": true
             },
             {
-              "_$id": "8rcnc2sp",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "xugteoiy",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "26",
               "active": true,
-              "x": 208.99999999999994,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
-                  "scriptPath": "../src/Entry.ts"
-                }
-              ]
+              "x": 40,
+              "y": -257,
+              "visible": true,
+              "bgColor": "rgba(255, 196, 0, 1)"
             },
             {
-              "_$id": "y9s0ntvv",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "yvao2qkp",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "27",
               "active": true,
-              "x": 251,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 40,
+              "y": -214,
+              "visible": true
             },
             {
-              "_$id": "d6vplusb",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "yrpguk4a",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "28",
               "active": true,
-              "x": 293,
-              "y": -45,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 40,
+              "y": -172,
+              "visible": true
             },
             {
-              "_$id": "8mduggq3",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "0vv0zfud",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "29",
               "active": true,
-              "x": 293,
-              "y": -2,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 40,
+              "y": -129,
+              "visible": true
             },
             {
-              "_$id": "u7htyt6i",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "bv1ermw6",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "30",
               "active": true,
-              "x": 293,
-              "y": 39,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 40,
+              "y": -87,
+              "visible": true
             },
             {
-              "_$id": "2jhwsjlg",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "38anoq0g",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "31",
               "active": true,
-              "x": 251,
-              "y": 40,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
-                  "scriptPath": "../src/Door.ts",
-                  "player": {
-                    "_$ref": "b7zhaso0"
-                  }
-                }
-              ]
+              "x": 82,
+              "y": -45,
+              "visible": true
             },
             {
-              "_$id": "k14xh2qt",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "cenir7yl",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "32",
               "active": true,
-              "x": 209,
-              "y": 40,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 125,
+              "y": -45,
+              "visible": true
             },
             {
-              "_$id": "bwbcdf2u",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "kpp0rbgu",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "33",
+              "active": true,
+              "x": 167,
+              "y": -45,
+              "visible": true
+            },
+            {
+              "_$id": "tn1qjimp",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "34",
+              "active": true,
+              "x": 209,
+              "y": -45,
+              "visible": true,
+              "bgColor": "rgba(100, 100, 100, 1)"
+            },
+            {
+              "_$id": "jitbeyna",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "35",
+              "active": true,
+              "x": 252,
+              "y": -45,
+              "visible": true
+            },
+            {
+              "_$id": "3qcmdiza",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "36",
+              "active": true,
+              "x": 294,
+              "y": -45,
+              "visible": true
+            },
+            {
+              "_$id": "8dfxcpyq",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "37",
+              "active": true,
+              "x": 293,
+              "y": -3,
+              "visible": true
+            },
+            {
+              "_$id": "bwnimtrx",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "38",
+              "active": true,
+              "x": 294,
+              "y": 39,
+              "visible": true
+            },
+            {
+              "_$id": "7ha7izqj",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "39",
+              "active": true,
+              "x": 251,
+              "y": 39,
+              "visible": true,
+              "bgColor": "rgba(0, 140, 248, 1)"
+            },
+            {
+              "_$id": "3xdcazmg",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "40",
+              "active": true,
+              "x": 209,
+              "y": 39,
+              "visible": true
+            },
+            {
+              "_$id": "r9jk4nf8",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "41",
               "active": true,
               "x": 166,
               "y": 40,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "visible": true
             },
             {
-              "_$id": "xx3dn95b",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "34",
+              "_$id": "g7eu52s2",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "42",
               "active": true,
-              "x": 124,
-              "y": 39,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 125,
+              "y": 40,
+              "visible": true
             },
             {
-              "_$id": "dtb9c9l4",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "35",
+              "_$id": "dvfp4bhv",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "43",
               "active": true,
               "x": 82,
               "y": 40,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "visible": true
             },
             {
-              "_$id": "0v6whsfx",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "36",
+              "_$id": "f9q0xpq3",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "44",
               "active": true,
-              "x": 40,
+              "x": 39,
               "y": 82,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "visible": true
             },
             {
-              "_$id": "2c5mbom0",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "37",
+              "_$id": "yzxeembh",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "45",
               "active": true,
               "x": 40,
-              "y": 124,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "y": 125,
+              "visible": true
             },
             {
-              "_$id": "0ohvergr",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "38",
+              "_$id": "3jvfjhya",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+              "name": "46",
               "active": true,
               "x": 40,
               "y": 166,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "visible": true
             },
             {
-              "_$id": "f9hzncy6",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "39",
-              "active": true,
-              "x": 39,
-              "y": 209,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "e3ae5b8d-b787-4412-854b-2c694a132fb2",
-                  "scriptPath": "../src/Entry.ts"
-                }
-              ]
-            },
-            {
-              "_$id": "cnmg4y1o",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "40",
-              "active": true,
-              "x": 39,
-              "y": 251,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "nt33iuae",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "41",
-              "active": true,
-              "x": 39,
-              "y": 293,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "lkfgkdj9",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "42",
-              "active": true,
-              "x": -3,
-              "y": 293,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "c9fi9yeq",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "43",
-              "active": true,
-              "x": -45,
-              "y": 293,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "1ppqscv2",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "44",
-              "active": true,
-              "x": -45,
-              "y": 251,
-              "visible": false,
-              "width": 38,
-              "height": 38,
-              "_$comp": [
-                {
-                  "_$type": "679087f6-f6b5-4a60-9f2e-ff9a7d356e0f",
-                  "scriptPath": "../src/Door.ts",
-                  "player": {
-                    "_$ref": "hqy9lgmf"
-                  }
-                }
-              ]
-            },
-            {
-              "_$id": "cgpqeja5",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "45",
-              "active": true,
-              "x": -45,
-              "y": 209,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "102es1so",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
-              "name": "46",
-              "active": true,
-              "x": -45,
-              "y": 167,
-              "visible": false,
-              "width": 38,
-              "height": 38
-            },
-            {
-              "_$id": "tkm54zbx",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "nmog5je3",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "47",
               "active": true,
-              "x": -45,
-              "y": 124,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 39,
+              "y": 209,
+              "visible": true,
+              "bgColor": "rgba(100, 100, 100, 1)"
             },
             {
-              "_$id": "1t319nbx",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "wbjifsd0",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "48",
               "active": true,
-              "x": -45,
-              "y": 82,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 40,
+              "y": 251,
+              "visible": true
             },
             {
-              "_$id": "6d3jjlmm",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "6t8myb5k",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "49",
               "active": true,
-              "x": -87,
-              "y": 39,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": 40,
+              "y": 293,
+              "visible": true
             },
             {
-              "_$id": "hji759wx",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "834vqins",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "50",
               "active": true,
-              "x": -130,
-              "y": 39,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -2,
+              "y": 293,
+              "visible": true
             },
             {
-              "_$id": "v920vg47",
-              "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+              "_$id": "35qi90er",
+              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
               "name": "51",
               "active": true,
-              "x": -172,
-              "y": 39,
-              "visible": false,
-              "width": 38,
-              "height": 38
+              "x": -45,
+              "y": 293,
+              "visible": true
             }
           ]
         }
@@ -707,6 +551,7 @@
       "y": 521,
       "width": 100,
       "height": 100,
+      "visible": false,
       "_$child": [
         {
           "_$id": "hqy9lgmf",
@@ -723,13 +568,13 @@
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
               "scriptPath": "../src/Player.ts",
               "entry": {
-                "_$ref": "2xhdhs2f"
+                "_$ref": "ue2g43ow"
               },
               "goal": {
                 "_$ref": "6zlm8xkl"
               },
               "door": {
-                "_$ref": "1ppqscv2"
+                "_$ref": "834vqins"
               },
               "diceRoll": {
                 "_$ref": [
@@ -758,6 +603,9 @@
               "personal": {
                 "_$ref": "jnr4fv9u"
               },
+              "originTwinkle": {
+                "_$ref": "60gakblm"
+              },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
@@ -780,8 +628,19 @@
               "x": 91.5
             },
             {
-              "_$id": "b7ycl5iq",
+              "_$id": "60gakblm",
+              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
               "_$index": 1,
+              "name": "originbk",
+              "active": true,
+              "x": -9,
+              "y": -261.00000000000006,
+              "visible": true,
+              "bgColor": "rgba(0, 0, 0, 1)"
+            },
+            {
+              "_$id": "b7ycl5iq",
+              "_$index": 2,
               "_$type": "Image",
               "name": "border",
               "x": 33.00000000000006,
@@ -793,7 +652,7 @@
             },
             {
               "_$id": "jnr4fv9u",
-              "_$index": 2,
+              "_$index": 3,
               "_$type": "Sprite",
               "name": "path",
               "x": 257.9999999999999,
@@ -872,7 +731,7 @@
             {
               "_$id": "h6q90dh9",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 3,
+              "_$index": 4,
               "name": "origin",
               "active": true,
               "x": 32,
@@ -1039,13 +898,13 @@
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
               "scriptPath": "../src/Player.ts",
               "entry": {
-                "_$ref": "epcr8nn6"
+                "_$ref": "myx9g8dx"
               },
               "goal": {
                 "_$ref": "jmlipw9z"
               },
               "door": {
-                "_$ref": "ligznfwt"
+                "_$ref": "qjqrb3oy"
               },
               "diceRoll": {
                 "_$ref": [
@@ -1074,6 +933,9 @@
               "personal": {
                 "_$ref": "ugpgd2q4"
               },
+              "originTwinkle": {
+                "_$ref": "yi8aaacw"
+              },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
@@ -1087,8 +949,18 @@
               "y": -55
             },
             {
-              "_$id": "7c2mfmh6",
+              "_$id": "yi8aaacw",
+              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
               "_$index": 1,
+              "name": "originbk",
+              "active": true,
+              "x": -12,
+              "y": 81,
+              "visible": true
+            },
+            {
+              "_$id": "7c2mfmh6",
+              "_$index": 2,
               "_$type": "Image",
               "name": "border",
               "x": 31.000000000000057,
@@ -1101,7 +973,7 @@
             {
               "_$id": "bj7phns4",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 2,
+              "_$index": 3,
               "name": "origin",
               "active": true,
               "x": 32,
@@ -1110,7 +982,7 @@
             },
             {
               "_$id": "ugpgd2q4",
-              "_$index": 3,
+              "_$index": 4,
               "_$type": "Sprite",
               "name": "path",
               "x": 255.99999999999994,
@@ -1340,13 +1212,13 @@
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
               "scriptPath": "../src/Player.ts",
               "entry": {
-                "_$ref": "f9hzncy6"
+                "_$ref": "7ha7izqj"
               },
               "goal": {
                 "_$ref": "xna9ttjy"
               },
               "door": {
-                "_$ref": "2jhwsjlg"
+                "_$ref": "8dfxcpyq"
               },
               "diceRoll": {
                 "_$ref": [
@@ -1375,6 +1247,9 @@
               "personal": {
                 "_$ref": "o61g60ol"
               },
+              "originTwinkle": {
+                "_$ref": "256t4cwd"
+              },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
@@ -1388,8 +1263,18 @@
               "y": 26
             },
             {
-              "_$id": "vkqmkb6p",
+              "_$id": "256t4cwd",
+              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
               "_$index": 1,
+              "name": "originbk",
+              "active": true,
+              "x": -91,
+              "y": -261,
+              "visible": true
+            },
+            {
+              "_$id": "vkqmkb6p",
+              "_$index": 2,
               "_$type": "Image",
               "name": "border",
               "x": -48,
@@ -1402,7 +1287,7 @@
             {
               "_$id": "ves81bgi",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 2,
+              "_$index": 3,
               "name": "origin",
               "active": true,
               "x": -48,
@@ -1411,7 +1296,7 @@
             },
             {
               "_$id": "o61g60ol",
-              "_$index": 3,
+              "_$index": 4,
               "_$type": "Sprite",
               "name": "path",
               "x": -204.00000000000006,
@@ -1616,13 +1501,13 @@
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
               "scriptPath": "../src/Player.ts",
               "entry": {
-                "_$ref": "8rcnc2sp"
+                "_$ref": "xugteoiy"
               },
               "goal": {
                 "_$ref": "3v8nkaxb"
               },
               "door": {
-                "_$ref": "wzixp1z8"
+                "_$ref": "azwlhb6r"
               },
               "diceRoll": {
                 "_$ref": [
@@ -1651,6 +1536,9 @@
               "personal": {
                 "_$ref": "a7afqfrw"
               },
+              "originTwinkle": {
+                "_$ref": "lks891a9"
+              },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
@@ -1664,8 +1552,18 @@
               "x": -25
             },
             {
-              "_$id": "dw3zrzzu",
+              "_$id": "lks891a9",
+              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
               "_$index": 1,
+              "name": "originbk",
+              "active": true,
+              "x": -85,
+              "y": 77,
+              "visible": true
+            },
+            {
+              "_$id": "dw3zrzzu",
+              "_$index": 2,
               "_$type": "Image",
               "name": "border",
               "x": -43.00000000000017,
@@ -1678,7 +1576,7 @@
             {
               "_$id": "2r52rn68",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 2,
+              "_$index": 3,
               "name": "origin",
               "active": true,
               "x": -43,
@@ -1687,7 +1585,7 @@
             },
             {
               "_$id": "a7afqfrw",
-              "_$index": 3,
+              "_$index": 4,
               "_$type": "Sprite",
               "name": "path",
               "x": -198.00000000000006,

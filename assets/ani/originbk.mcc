@@ -4,20 +4,20 @@
   "controllerLayers": [
     {
       "name": "Base Layer",
-      "defaultStateName": "hop",
-      "playOnWake": false,
+      "defaultStateName": "recess",
+      "playOnWake": true,
       "blendingMode": 0,
       "states": [
         {
-          "name": "hop",
+          "name": "recess",
           "clip": {
-            "_$uuid": "4e04c9fa-9fc6-46c9-b87d-a57c8d6f93ae"
+            "_$uuid": "17019a00-cf30-412d-b229-4c491973e0ee"
           },
           "loop": -1,
           "speed": 1,
           "clipEnd": 1,
-          "x": 1212.4968540425557,
-          "y": 770.8952030935894,
+          "x": 1796.0128121293887,
+          "y": 532.3056433028732,
           "id": "0"
         },
         {
@@ -29,7 +29,7 @@
           "clipEnd": 1,
           "soloTransitions": [
             {
-              "id": "1"
+              "id": "0"
             }
           ]
         },
@@ -42,16 +42,15 @@
           "clipEnd": 1
         },
         {
-          "x": 1543.0524531504466,
-          "y": 114.02261079382185,
+          "x": 1589.937669111802,
+          "y": 504.6688302263337,
           "id": "1",
-          "name": "idle",
+          "name": "gleam",
           "speed": 1,
           "clipEnd": 1,
           "clip": {
-            "_$uuid": "64162b6e-abb0-4e29-ac5b-50fa14b41f17"
-          },
-          "loop": -1
+            "_$uuid": "f41e2d37-1d3f-4987-8636-bfb68c6150ed"
+          }
         }
       ],
       "defaultWeight": 1

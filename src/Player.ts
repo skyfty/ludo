@@ -62,6 +62,9 @@ export class Player extends Laya.Script {
     public personal:Laya.Sprite;
 
     
+    @property(Laya.Sprite)
+    public originTwinkle: Laya.Sprite;
+
     public numberPersonalHold:number;
 
     @property(Laya.Prefab)
@@ -81,8 +84,12 @@ export class Player extends Laya.Script {
         this.owner.on(Event.StateChange, this, this.onStateChange);
     }
 
-    onStateChange() {
-
+    onStateChange(state:State) {
+        if (state == State.Running) {
+            this.originTwinkle.getComponent(Laya.Animator2D).play("gleam");
+        } else {
+            this.originTwinkle.getComponent(Laya.Animator2D).play("recess");
+        }
     }
 
     public setDiceNumber(idx:number) {

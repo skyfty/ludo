@@ -97,7 +97,12 @@
     onStart() {
       this.owner.on(Event.StateChange, this, this.onStateChange);
     }
-    onStateChange() {
+    onStateChange(state) {
+      if (state == 1 /* Running */) {
+        this.originTwinkle.getComponent(Laya.Animator2D).play("gleam");
+      } else {
+        this.originTwinkle.getComponent(Laya.Animator2D).play("recess");
+      }
     }
     setDiceNumber(idx) {
       this.diceDefault.visible = true;
@@ -199,6 +204,9 @@
   __decorateClass([
     property2(Laya.Sprite)
   ], Player.prototype, "personal", 2);
+  __decorateClass([
+    property2(Laya.Sprite)
+  ], Player.prototype, "originTwinkle", 2);
   __decorateClass([
     property2(Laya.Prefab)
   ], Player.prototype, "chessPrefab", 2);
@@ -447,8 +455,32 @@
     regClass10("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
   ], Groove);
 
-  // src/Main.ts
+  // src/Intelligent.ts
   var { regClass: regClass11, property: property11 } = Laya;
+  var Intelligent = class extends Laya.Script {
+    constructor(num) {
+      super();
+      this.num = 0;
+      this.num = Math.min(num, 3);
+    }
+    onStart() {
+      let info = {
+        "name": "sdfsdf",
+        "avatar": ""
+      };
+      for (let i = 0; i < this.num; ++i) {
+        this.owner.event(Event.EntryRoom, [Intelligent.colors[i], 1 /* Computer */, Event.EntryRoom, info]);
+      }
+    }
+  };
+  __name(Intelligent, "Intelligent");
+  Intelligent.colors = ["yellow", "green", "blue"];
+  Intelligent = __decorateClass([
+    regClass11("d7c1a2b6-2bc8-401a-bfb0-325e0a8341ac", "../src/Intelligent.ts")
+  ], Intelligent);
+
+  // src/Main.ts
+  var { regClass: regClass12, property: property12 } = Laya;
   var Main = class extends Laya.Script {
     onStart() {
       console.log("Game start");
@@ -456,11 +488,11 @@
   };
   __name(Main, "Main");
   Main = __decorateClass([
-    regClass11("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Main.ts")
+    regClass12("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Main.ts")
   ], Main);
 
   // src/Oneself.ts
-  var { regClass: regClass12, property: property12 } = Laya;
+  var { regClass: regClass13, property: property13 } = Laya;
   var Oneself = class extends Performer {
     constructor() {
       super();
@@ -538,35 +570,23 @@
   };
   __name(Oneself, "Oneself");
   Oneself = __decorateClass([
-    regClass12("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
+    regClass13("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
   ], Oneself);
 
-  // src/Intelligent.ts
-  var { regClass: regClass13, property: property13 } = Laya;
-  var Intelligent = class extends Laya.Script {
-    constructor(num) {
+  // src/Online.ts
+  var { regClass: regClass14, property: property14 } = Laya;
+  var Online = class extends Laya.Script {
+    constructor() {
       super();
-      this.num = 0;
-      this.num = Math.min(num, 3);
-    }
-    onStart() {
-      let info = {
-        "name": "sdfsdf",
-        "avatar": ""
-      };
-      for (let i = 0; i < this.num; ++i) {
-        this.owner.event(Event.EntryRoom, [Intelligent.colors[i], 1 /* Computer */, Event.EntryRoom, info]);
-      }
     }
   };
-  __name(Intelligent, "Intelligent");
-  Intelligent.colors = ["yellow", "green", "blue"];
-  Intelligent = __decorateClass([
-    regClass13("d7c1a2b6-2bc8-401a-bfb0-325e0a8341ac", "../src/Intelligent.ts")
-  ], Intelligent);
+  __name(Online, "Online");
+  Online = __decorateClass([
+    regClass14("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
+  ], Online);
 
   // src/Principal.ts
-  var { regClass: regClass14, property: property14 } = Laya;
+  var { regClass: regClass15, property: property15 } = Laya;
   var Principal = class extends Laya.Script {
     constructor() {
       super();
@@ -581,20 +601,8 @@
   };
   __name(Principal, "Principal");
   Principal = __decorateClass([
-    regClass14("90b87526-7df3-43b1-ba8e-f6b9dcd24c3e", "../src/Principal.ts")
+    regClass15("90b87526-7df3-43b1-ba8e-f6b9dcd24c3e", "../src/Principal.ts")
   ], Principal);
-
-  // src/Online.ts
-  var { regClass: regClass15, property: property15 } = Laya;
-  var Online = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-  };
-  __name(Online, "Online");
-  Online = __decorateClass([
-    regClass15("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
-  ], Online);
 
   // src/Room.ts
   var { regClass: regClass16, property: property16 } = Laya;
