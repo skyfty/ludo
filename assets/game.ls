@@ -144,7 +144,21 @@
               "x": -214,
               "y": 39,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)"
+              "bgColor": "rgba(100, 100, 100, 1)",
+              "_$child": [
+                {
+                  "_$id": "d0axgzl3",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 2,
+                  "y": 3,
+                  "width": 33.5,
+                  "height": 33.5,
+                  "alpha": 0.33,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#69adca"
+                }
+              ]
             },
             {
               "_$id": "chf2wu9b",
@@ -263,7 +277,21 @@
               "x": -45,
               "y": -214,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)"
+              "bgColor": "rgba(100, 100, 100, 1)",
+              "_$child": [
+                {
+                  "_$id": "ru1w2n31",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 2.9999999999998863,
+                  "y": 3,
+                  "width": 33.5,
+                  "height": 33.5,
+                  "alpha": 0.33,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#ffffff"
+                }
+              ]
             },
             {
               "_$id": "pagtbgh0",
@@ -382,7 +410,21 @@
               "x": 209,
               "y": -45,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)"
+              "bgColor": "rgba(100, 100, 100, 1)",
+              "_$child": [
+                {
+                  "_$id": "z56dk1ry",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 3,
+                  "y": 3,
+                  "width": 33.5,
+                  "height": 33.5,
+                  "alpha": 0.33,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#ffffff"
+                }
+              ]
             },
             {
               "_$id": "jitbeyna",
@@ -501,7 +543,21 @@
               "x": 39,
               "y": 209,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)"
+              "bgColor": "rgba(100, 100, 100, 1)",
+              "_$child": [
+                {
+                  "_$id": "fyaqvfzh",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 2.999999999999943,
+                  "y": 2.999999999999943,
+                  "width": 33.5,
+                  "height": 33.5,
+                  "alpha": 0.33,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#ffffff"
+                }
+              ]
             },
             {
               "_$id": "wbjifsd0",
@@ -551,7 +607,6 @@
       "y": 521,
       "width": 100,
       "height": 100,
-      "visible": false,
       "_$child": [
         {
           "_$id": "hqy9lgmf",
