@@ -1,0 +1,59 @@
+{
+  "_$type": "Animator2D",
+  "enabled": true,
+  "controllerLayers": [
+    {
+      "name": "Base Layer",
+      "defaultStateName": "puddle",
+      "playOnWake": true,
+      "blendingMode": 0,
+      "states": [
+        {
+          "name": "puddle",
+          "clip": {
+            "_$uuid": "6d30d81f-a349-41ca-9a09-2610f54b501e"
+          },
+          "loop": -1,
+          "speed": 1,
+          "clipEnd": 1,
+          "x": 1729.9360292669926,
+          "y": 591.4847421269305,
+          "id": "0"
+        },
+        {
+          "x": 8,
+          "y": 99,
+          "id": "-1",
+          "name": "进入",
+          "speed": 1,
+          "clipEnd": 1,
+          "soloTransitions": [
+            {
+              "id": "1"
+            }
+          ]
+        },
+        {
+          "x": 2018,
+          "y": 100,
+          "id": "-2",
+          "name": "任何状态",
+          "speed": 1,
+          "clipEnd": 1
+        },
+        {
+          "x": 1319,
+          "y": 209,
+          "id": "1",
+          "name": "New State",
+          "speed": 1,
+          "clipEnd": 1
+        }
+      ],
+      "defaultWeight": 1,
+      "stageX": -1,
+      "stageY": 4
+    }
+  ],
+  "layerW": 150
+}

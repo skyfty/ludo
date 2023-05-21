@@ -71,7 +71,13 @@
               "x": -45,
               "y": 251,
               "visible": true,
-              "bgColor": "rgba(255, 0, 0, 1)"
+              "bgColor": "rgba(255, 0, 0, 1)",
+              "_$child": [
+                {
+                  "_$override": "kckv5do3",
+                  "visible": false
+                }
+              ]
             },
             {
               "_$id": "agumts0y",

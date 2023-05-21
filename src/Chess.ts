@@ -1,4 +1,5 @@
 import { Player } from "./Player";
+import { Route } from "./Route";
 
 const { regClass, property} = Laya;
 
@@ -80,6 +81,7 @@ export class Chess extends Laya.Script {
         let destPoint = new Laya.Point(nextHole.x,nextHole.y);
         Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
             this.hole = nextHole;
+            nextHole.getComponent(Route).puddleAni(this.player.owner.name);
             complete.run();
         }));
     }

@@ -5,5 +5,50 @@
   "name": "route",
   "width": 38,
   "height": 38,
-  "bgColor": "rgba(255, 255, 255, 1)"
+  "bgColor": "rgba(255, 255, 255, 1)",
+  "_$comp": [
+    {
+      "_$type": "Animator2D",
+      "controller": {
+        "_$uuid": "13d18d48-fef7-4b1d-96e0-070f4ac5d9da",
+        "_$type": "AnimationController2D"
+      },
+      "controllerLayers": [
+        {
+          "_$type": "AnimatorControllerLayer2D",
+          "name": "Base Layer",
+          "states": [
+            {
+              "_$type": "AnimatorState2D",
+              "name": "puddle",
+              "clipStart": 0,
+              "clip": {
+                "_$uuid": "6d30d81f-a349-41ca-9a09-2610f54b501e",
+                "_$type": "AnimationClip2D"
+              },
+              "soloTransitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$type": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+      "scriptPath": "../src/Route.ts"
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "kckv5do3",
+      "_$type": "Sprite",
+      "name": "puddle",
+      "x": 8,
+      "y": 7,
+      "width": 22.5,
+      "height": 22.5,
+      "visible": false,
+      "alpha": 0.96,
+      "_gcmds": []
+    }
+  ]
 }

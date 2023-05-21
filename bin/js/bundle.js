@@ -12,56 +12,8 @@
     return result;
   };
 
-  // assets/Script.ts
-  var { regClass, property } = Laya;
-  var Script = class extends Laya.Script {
-    constructor() {
-      super();
-      this.text = "";
-    }
-    /**
-     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-     */
-    //onAwake(): void {}
-    /**
-     * 组件被启用后执行，例如节点被添加到舞台后
-     */
-    //onEnable(): void {}
-    /**
-     * 组件被禁用时执行，例如从节点从舞台移除后
-     */
-    //onDisable(): void {}
-    /**
-     * 第一次执行update之前执行，只会执行一次
-     */
-    //onStart(): void {}
-    /**
-     * 手动调用节点销毁时执行
-     */
-    //onDestroy(): void {
-    /**
-     * 每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onUpdate(): void {}
-    /**
-     * 每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onLateUpdate(): void {}
-    /**
-     * 鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
-     */
-    //onMouseClick(): void {}
-  };
-  __name(Script, "Script");
-  __decorateClass([
-    property(String)
-  ], Script.prototype, "text", 2);
-  Script = __decorateClass([
-    regClass("28427133-6af9-475d-8edc-33eecae53767", "Script.ts")
-  ], Script);
-
   // src/Player.ts
-  var { regClass: regClass2, property: property2 } = Laya;
+  var { regClass, property } = Laya;
   var Event = class {
   };
   __name(Event, "Event");
@@ -178,41 +130,60 @@
   };
   __name(Player, "Player");
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "entry", 2);
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "goal", 2);
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "door", 2);
   __decorateClass([
-    property2(Laya.Clip)
+    property(Laya.Clip)
   ], Player.prototype, "diceRoll", 2);
   __decorateClass([
-    property2(Laya.Clip)
+    property(Laya.Clip)
   ], Player.prototype, "diceDefault", 2);
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "groove", 2);
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "universal", 2);
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "trade", 2);
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "personal", 2);
   __decorateClass([
-    property2(Laya.Sprite)
+    property(Laya.Sprite)
   ], Player.prototype, "originTwinkle", 2);
   __decorateClass([
-    property2(Laya.Prefab)
+    property(Laya.Prefab)
   ], Player.prototype, "chessPrefab", 2);
   Player = __decorateClass([
-    regClass2("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
+    regClass("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
   ], Player);
+
+  // src/Route.ts
+  var { regClass: regClass2, property: property2 } = Laya;
+  var Route = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    puddleAni(color) {
+      let node = this.owner;
+      let puddle = node.getChildByName("puddle");
+      puddle.graphics.clear();
+      puddle.graphics.drawCircle(0.5, 0.5, 0.5, color);
+      this.owner.getComponent(Laya.Animator2D).play("puddle");
+    }
+  };
+  __name(Route, "Route");
+  Route = __decorateClass([
+    regClass2("f65b0a36-8072-43b6-ba82-0cc45e25162f", "../src/Route.ts")
+  ], Route);
 
   // src/Chess.ts
   var { regClass: regClass3, property: property3 } = Laya;
@@ -274,6 +245,7 @@
       let destPoint = new Laya.Point(nextHole.x, nextHole.y);
       Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
         this.hole = nextHole;
+        nextHole.getComponent(Route).puddleAni(this.player.owner.name);
         complete.run();
       }));
     }
