@@ -12,10 +12,8 @@
       "_$id": "ikgjaepj",
       "_$type": "Image",
       "name": "desk",
-      "x": 3,
-      "y": -1,
-      "width": 636.1538461538464,
-      "height": 1134.7692307692314,
+      "width": 640,
+      "height": 1136,
       "skin": "res://d061e0a6-9110-4ae3-9fdd-9b58b82fd336",
       "color": "#ffffff"
     },
@@ -727,6 +725,9 @@
               "entry": {
                 "_$ref": "2xhdhs2f"
               },
+              "goal": {
+                "_$ref": "6zlm8xkl"
+              },
               "door": {
                 "_$ref": "1ppqscv2"
               },
@@ -764,6 +765,20 @@
             }
           ],
           "_$child": [
+            {
+              "_$override": "sc3b00yx",
+              "x": -10,
+              "y": 25
+            },
+            {
+              "_$override": "dm1y2zws",
+              "y": 0,
+              "x": 92
+            },
+            {
+              "_$override": "dn8vhuyq",
+              "x": 91.5
+            },
             {
               "_$id": "b7ycl5iq",
               "_$index": 1,
@@ -1026,6 +1041,9 @@
               "entry": {
                 "_$ref": "epcr8nn6"
               },
+              "goal": {
+                "_$ref": "jmlipw9z"
+              },
               "door": {
                 "_$ref": "ligznfwt"
               },
@@ -1063,6 +1081,11 @@
             }
           ],
           "_$child": [
+            {
+              "_$override": "sc3b00yx",
+              "x": -12,
+              "y": -55
+            },
             {
               "_$id": "7c2mfmh6",
               "_$index": 1,
@@ -1319,6 +1342,9 @@
               "entry": {
                 "_$ref": "f9hzncy6"
               },
+              "goal": {
+                "_$ref": "xna9ttjy"
+              },
               "door": {
                 "_$ref": "2jhwsjlg"
               },
@@ -1356,6 +1382,11 @@
             }
           ],
           "_$child": [
+            {
+              "_$override": "5a788y2g",
+              "x": -32,
+              "y": 26
+            },
             {
               "_$id": "vkqmkb6p",
               "_$index": 1,
@@ -1587,6 +1618,9 @@
               "entry": {
                 "_$ref": "8rcnc2sp"
               },
+              "goal": {
+                "_$ref": "3v8nkaxb"
+              },
               "door": {
                 "_$ref": "wzixp1z8"
               },
@@ -1624,6 +1658,11 @@
             }
           ],
           "_$child": [
+            {
+              "_$override": "5a788y2g",
+              "y": -59,
+              "x": -25
+            },
             {
               "_$id": "dw3zrzzu",
               "_$index": 1,

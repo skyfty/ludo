@@ -10,6 +10,7 @@ export class Event {
     static RollEnd = "ROLL_END";
     static Choose = "CHOOSE";
     static Achieve = "ACHIEVE";
+    static Victory = "VICTORY";
 }
 
 export interface Profile {
@@ -31,10 +32,12 @@ export enum State {
 
 @regClass()
 export class Player extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
 
     @property(Laya.Sprite)
     public entry:Laya.Sprite;
+
+    @property(Laya.Sprite)
+    public goal:Laya.Sprite;
 
     @property(Laya.Sprite)
     public door:Laya.Sprite;
@@ -57,12 +60,15 @@ export class Player extends Laya.Script {
     
     @property(Laya.Sprite)
     public personal:Laya.Sprite;
+
+    
     public numberPersonalHold:number;
 
     @property(Laya.Prefab)
     public chessPrefab:Laya.Prefab;
 
     protected chippy: Laya.Sprite[] = [];
+    protected home: Laya.Sprite[] = [];
 
     constructor() {
         super();
@@ -85,7 +91,7 @@ export class Player extends Laya.Script {
         this.diceDefault.index = idx;
     }
 
-    private scaleChessInHole() {
+    private scaleChessInHole(node:Laya.Sprite) {
         // for(let i = 0;i < this.chippy.length - 1;++i) {
         //     let child = this.chippy[i] as Laya.Sprite;
         //     let childChess = child.getComponent(Chess) as Chess;
@@ -147,8 +153,20 @@ export class Player extends Laya.Script {
         }
     }
 
+    public isAllHome() {
+        return this.home.length == 4;
+    }
+
     private onAdvanceComplete(node:Laya.Sprite, complete: Laya.Handler) {
-        this.scaleChessInHole();
+        let chess = node.getComponent(Chess) as Chess;
+        this.scaleChessInHole(node);
+
+        if (chess.hole == this.goal) {
+            let idx = this.chippy.indexOf(node);
+            if (idx != -1) {
+                this.home.push(this.chippy.splice(idx, 1)[0]);
+            }
+        }
         complete.runWith(node);
     }
 
@@ -158,7 +176,7 @@ export class Player extends Laya.Script {
             chess.step(diceNumber + 1, 1, Laya.Handler.create(this, () => {
                 this.onAdvanceComplete(node, complete);
             }));
-        } else {
+        } else if (node.parent == this.groove) {
             chess.step(1, 1, Laya.Handler.create(this, () => {
                 this.chippy.push(node);
                 this.onAdvanceComplete(node, complete);

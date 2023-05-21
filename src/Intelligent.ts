@@ -7,14 +7,18 @@ export class Intelligent extends Laya.Script {
 
     constructor(num:number) {
         super();
-        this.num = num;
+        this.num = Math.min(num, 3);
     }
+
+    static colors = ["yellow", "green", "blue"];
 
     onStart(): void {
         let info:Player.Profile = {
             "name":"sdfsdf",
             "avatar":""
         };
-        this.owner.event(Player.Event.EntryRoom,["green", Player.Type.Computer, Player.Event.EntryRoom,info]);
+        for(let i = 0; i < this.num; ++i) {
+            this.owner.event(Player.Event.EntryRoom,[Intelligent.colors[i], Player.Type.Computer, Player.Event.EntryRoom,info]);
+        }
     }
 }

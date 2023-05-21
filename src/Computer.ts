@@ -28,7 +28,7 @@ export class Computer extends Performer {
     }
 
     private onRollTimeout() {
-        this.currentDiceNumber = Math.floor(Math.random()* 6);
+        this.currentDiceNumber = 5;//Math.floor(Math.random()* 6);
         this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
     }
 
@@ -53,5 +53,8 @@ export class Computer extends Performer {
             return;
         }
         this.owner.event(Player.Event.Achieve, node);
+        if (this.player.isAllHome()) {
+            this.owner.event(Player.Event.Victory);
+        }
     }
 }

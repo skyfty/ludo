@@ -72,6 +72,7 @@
   Event.RollEnd = "ROLL_END";
   Event.Choose = "CHOOSE";
   Event.Achieve = "ACHIEVE";
+  Event.Victory = "VICTORY";
   var Type = /* @__PURE__ */ ((Type2) => {
     Type2[Type2["Online"] = 0] = "Online";
     Type2[Type2["Computer"] = 1] = "Computer";
@@ -87,6 +88,7 @@
     constructor() {
       super();
       this.chippy = [];
+      this.home = [];
     }
     onAwake() {
       this.numberUniversalHold = this.universal.numChildren;
@@ -102,7 +104,7 @@
       this.diceRoll.visible = false;
       this.diceDefault.index = idx;
     }
-    scaleChessInHole() {
+    scaleChessInHole(node) {
     }
     startRoll() {
       this.diceDefault.visible = false;
@@ -141,8 +143,18 @@
         complete.runWith(null);
       }
     }
+    isAllHome() {
+      return this.home.length == 4;
+    }
     onAdvanceComplete(node, complete) {
-      this.scaleChessInHole();
+      let chess = node.getComponent(Chess);
+      this.scaleChessInHole(node);
+      if (chess.hole == this.goal) {
+        let idx = this.chippy.indexOf(node);
+        if (idx != -1) {
+          this.home.push(this.chippy.splice(idx, 1)[0]);
+        }
+      }
       complete.runWith(node);
     }
     advance(node, diceNumber, complete) {
@@ -151,7 +163,7 @@
         chess.step(diceNumber + 1, 1, Laya.Handler.create(this, () => {
           this.onAdvanceComplete(node, complete);
         }));
-      } else {
+      } else if (node.parent == this.groove) {
         chess.step(1, 1, Laya.Handler.create(this, () => {
           this.chippy.push(node);
           this.onAdvanceComplete(node, complete);
@@ -163,6 +175,9 @@
   __decorateClass([
     property2(Laya.Sprite)
   ], Player.prototype, "entry", 2);
+  __decorateClass([
+    property2(Laya.Sprite)
+  ], Player.prototype, "goal", 2);
   __decorateClass([
     property2(Laya.Sprite)
   ], Player.prototype, "door", 2);
@@ -322,7 +337,7 @@
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
-      this.currentDiceNumber = Math.floor(Math.random() * 6);
+      this.currentDiceNumber = 5;
       this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
@@ -345,6 +360,9 @@
         return;
       }
       this.owner.event(Event.Achieve, node);
+      if (this.player.isAllHome()) {
+        this.owner.event(Event.Victory);
+      }
     }
   };
   __name(Computer, "Computer");
@@ -464,7 +482,7 @@
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
-      this.currentDiceNumber = Math.floor(Math.random() * 6);
+      this.currentDiceNumber = 5;
       this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
@@ -490,6 +508,9 @@
         return;
       }
       this.owner.event(Event.Achieve, node);
+      if (this.player.isAllHome()) {
+        this.owner.event(Event.Victory);
+      }
     }
     onReckonMultiChessComplete(chesses, complete) {
       let o = "chooseChess";
@@ -526,17 +547,20 @@
     constructor(num) {
       super();
       this.num = 0;
-      this.num = num;
+      this.num = Math.min(num, 3);
     }
     onStart() {
       let info = {
         "name": "sdfsdf",
         "avatar": ""
       };
-      this.owner.event(Event.EntryRoom, ["green", 1 /* Computer */, Event.EntryRoom, info]);
+      for (let i = 0; i < this.num; ++i) {
+        this.owner.event(Event.EntryRoom, [Intelligent.colors[i], 1 /* Computer */, Event.EntryRoom, info]);
+      }
     }
   };
   __name(Intelligent, "Intelligent");
+  Intelligent.colors = ["yellow", "green", "blue"];
   Intelligent = __decorateClass([
     regClass13("d7c1a2b6-2bc8-401a-bfb0-325e0a8341ac", "../src/Intelligent.ts")
   ], Intelligent);
@@ -595,6 +619,10 @@
       this.greenPlayer.on(Event.Achieve, this, this.onAchieve);
       this.yellowPlayer.on(Event.Achieve, this, this.onAchieve);
       this.bluePlayer.on(Event.Achieve, this, this.onAchieve);
+      this.redPlayer.on(Event.Victory, this, this.onVictory);
+      this.greenPlayer.on(Event.Victory, this, this.onVictory);
+      this.yellowPlayer.on(Event.Victory, this, this.onVictory);
+      this.bluePlayer.on(Event.Victory, this, this.onVictory);
       this.owner.on(Event.EntryRoom, this, this.onEntryRoom);
       this.owner.on(Event.ExitRoom, this, this.onExitRoom);
     }
@@ -604,6 +632,8 @@
       this.owner.addComponentInstance(new Principal());
       this.owner.addComponentInstance(new Intelligent(1));
       this.owner.addComponentInstance(new Online());
+    }
+    onVictory(player) {
     }
     onAchieve(player) {
       let current = this.players[this.currentIdx].getComponent(Performer);

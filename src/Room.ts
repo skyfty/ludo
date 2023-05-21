@@ -46,6 +46,12 @@ export class Room extends Laya.Script {
         this.greenPlayer.on(Player.Event.Achieve, this, this.onAchieve);
         this.yellowPlayer.on(Player.Event.Achieve, this, this.onAchieve);
         this.bluePlayer.on(Player.Event.Achieve, this, this.onAchieve);
+
+        this.redPlayer.on(Player.Event.Victory, this, this.onVictory);
+        this.greenPlayer.on(Player.Event.Victory, this, this.onVictory);
+        this.yellowPlayer.on(Player.Event.Victory, this, this.onVictory);
+        this.bluePlayer.on(Player.Event.Victory, this, this.onVictory);
+
         this.owner.on(Player.Event.EntryRoom, this, this.onEntryRoom);
         this.owner.on(Player.Event.ExitRoom, this, this.onExitRoom);
     }
@@ -56,6 +62,11 @@ export class Room extends Laya.Script {
         this.owner.addComponentInstance(new Principal());
         this.owner.addComponentInstance(new Intelligent(1));
         this.owner.addComponentInstance(new Online());
+    }
+
+    onVictory(player:Laya.Sprite) {
+
+        
     }
 
     onAchieve(player:Laya.Sprite) {
