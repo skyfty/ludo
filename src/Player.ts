@@ -185,6 +185,9 @@ export class Player extends Laya.Script {
                 let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber);
                 let resultChesses = this.getKickChesses(nextHole.getComponent(Route));
                 if (resultChesses.length > 0) {
+                    resultChesses.map((c)=>{
+                        c.kicked();
+                    });
                     deduceResult.push({chess:chesses[i], reason:"kick"});
                 } else {
                     deduceResult.push({chess:chesses[i], reason:"advance"});
@@ -261,7 +264,6 @@ export class Player extends Laya.Script {
             let route = chess.hole.getComponent(Route);
             this.kick(route);
         }
-
 
         complete.runWith(node);
     }

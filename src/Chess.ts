@@ -17,6 +17,9 @@ export class Chess extends Laya.Script {
 
     @property(Laya.Image)
     public image: Laya.Image;
+    
+    @property(Laya.Image)
+    public shoe: Laya.Image;
 
     constructor() {
         super();
@@ -136,6 +139,12 @@ export class Chess extends Laya.Script {
     }
 
     public stop() {
+        this.shoe.visible = false;
         this.chess.getComponent(Laya.Animator2D).play("idle");
+    }
+
+    public kicked() {
+        this.shoe.visible = true;
+        this.chess.getComponent(Laya.Animator2D).play("kick");
     }
 }

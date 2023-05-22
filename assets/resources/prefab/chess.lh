@@ -9,11 +9,16 @@
     {
       "_$type": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
       "scriptPath": "../src/Chess.ts",
+      "player": null,
+      "hole": null,
       "chess": {
         "_$ref": "lbsblna6"
       },
       "image": {
         "_$ref": "t8h17dpc"
+      },
+      "shoe": {
+        "_$ref": "rd9ghrr6"
       }
     }
   ],
@@ -36,6 +41,16 @@
               "_$type": "AnimatorControllerLayer2D",
               "name": "Base Layer",
               "states": [
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "kick",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "4e5c241e-daef-42bf-bfb5-53ebec2dd466",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                },
                 {
                   "_$type": "AnimatorState2D",
                   "name": "idle",
@@ -71,6 +86,20 @@
           "width": 38,
           "height": 38,
           "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "rd9ghrr6",
+          "_$type": "Image",
+          "name": "shoe",
+          "x": 2,
+          "y": 15,
+          "width": 30,
+          "height": 17,
+          "anchorY": 0.9411764705882353,
+          "visible": false,
+          "skin": "res://52585135-c650-46fe-b873-974c25b33195",
+          "useSourceSize": true,
           "color": "#ffffff"
         }
       ]

@@ -126,12 +126,40 @@
       }
       return chesses;
     }
+    getUniversalNextNumber(currentNumber, step) {
+      let num = currentNumber + step;
+      if (num > this.numberUniversalHold) {
+        num = num - this.numberUniversalHold;
+      } else if (num < 0) {
+        num = this.numberUniversalHold - num;
+      }
+      return num;
+    }
+    getUniversalNextHole(currentNumber, diceNumber) {
+      let nextNumber = this.getUniversalNextNumber(currentNumber, diceNumber);
+      return this.universal.getChildByName(nextNumber.toString());
+    }
     deduce(diceNumber, chesses, complete) {
       let deduceResult = [];
       for (let i = 0; i < chesses.length; ++i) {
         let chess = chesses[i].getComponent(Chess);
-        if (chesses[i].parent == this.personal) {
+        if (chesses[i].parent == this.groove && diceNumber == 5) {
+          deduceResult.push({ chess: chesses[i], reason: "entry" });
+        } else if (chesses[i].parent == this.universal) {
+          let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber);
+          let resultChesses = this.getKickChesses(nextHole.getComponent(Route));
+          if (resultChesses.length > 0) {
+            deduceResult.push({ chess: chesses[i], reason: "kick" });
+          } else {
+            deduceResult.push({ chess: chesses[i], reason: "advance" });
+          }
+        } else {
           let currentHoleNumber = Number.parseInt(chess.hole.name);
+          if (currentHoleNumber + diceNumber == 5) {
+            deduceResult.unshift({ chess: chesses[i], reason: "home" });
+          } else {
+            deduceResult.push({ chess: chesses[i], reason: "advance" });
+          }
         }
       }
       complete.runWith([deduceResult]);
@@ -149,8 +177,11 @@
       }
       return chesses;
     }
-    kick(route) {
-      let num = 0;
+    getKickChesses(route) {
+      let resultChesses = [];
+      if (route.safe) {
+        return resultChesses;
+      }
       for (let i = 0; i < route.chess.length; ++i) {
         let chess = route.chess[i].getComponent(Chess);
         if (chess.player == this) {
@@ -158,15 +189,22 @@
         }
         let chesses = this.getChesses(route, chess.player);
         if (chesses.length == 1) {
-          chesses[0].revert(Laya.Handler.create(this, () => {
-          }));
+          resultChesses.push(chess);
         }
       }
-      return num;
+      return resultChesses;
+    }
+    kick(route) {
+      let chesses = this.getKickChesses(route);
+      chesses.map((chess) => {
+        chess.revert(Laya.Handler.create(this, () => {
+        }));
+      });
     }
     onAdvanceComplete(node, complete) {
       let chess = node.getComponent(Chess);
       this.scaleChessInHole(node);
+      chess.kick();
       if (chess.hole == this.goal) {
         let idx = this.chippy.indexOf(node);
         if (idx != -1) {
@@ -178,9 +216,7 @@
         this.crown.getComponent(Laya.Animator2D).play("elastic");
       } else {
         let route = chess.hole.getComponent(Route);
-        if (!route.safe) {
-          this.kick(route);
-        }
+        this.kick(route);
       }
       complete.runWith(node);
     }
@@ -349,7 +385,12 @@
       this.chess.getComponent(Laya.Animator2D).play("hop");
     }
     stop() {
+      this.shoe.visible = false;
       this.chess.getComponent(Laya.Animator2D).play("idle");
+    }
+    kick() {
+      this.shoe.visible = true;
+      this.chess.getComponent(Laya.Animator2D).play("kick");
     }
   };
   __name(Chess, "Chess");
@@ -365,6 +406,9 @@
   __decorateClass([
     property3(Laya.Image)
   ], Chess.prototype, "image", 2);
+  __decorateClass([
+    property3(Laya.Image)
+  ], Chess.prototype, "shoe", 2);
   Chess = __decorateClass([
     regClass3("2be80ad6-1bcc-440d-a7c9-809c6c1eef91", "../src/Chess.ts")
   ], Chess);
@@ -423,15 +467,15 @@
       if (chesses.length > 0) {
         this.owner.event(Event.Choose, [this.owner]);
         this.player.hopChesses(chesses);
-        Laya.timer.once(2e3, this, () => {
-          this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, this.onDeduceComplete));
-        });
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, this.onDeduceComplete));
       } else {
         this.owner.event(Event.Achieve, null);
       }
     }
     onDeduceComplete(deduceResult) {
-      this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
+      Laya.timer.once(2e3, this, () => {
+        this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
+      });
     }
     onAdvanceComplete(node) {
       let chess = node.getComponent(Chess);
@@ -595,7 +639,9 @@
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
         this.owner.event(Event.Choose, [this.owner]);
-        this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, () => {
+          this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
+        }));
       } else {
         this.isAdvanceing = false;
         this.owner.event(Event.Achieve, null);
