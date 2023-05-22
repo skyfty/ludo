@@ -169,15 +169,24 @@ export class Player extends Laya.Script {
             if (chesses[i].parent == this.groove && diceNumber == 5) {
                 deduceResult.push({chess:chesses[i], reason:"entry"});
             } else if (chesses[i].parent == this.universal) {
-                let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber + 1);
-                let resultChesses = this.getKickChesses(nextHole.getComponent(Route.Route));
-                if (resultChesses.length > 0) {
-                    resultChesses.map((c)=>{
-                        c.kicked();
-                    });
-                    deduceResult.push({chess:chesses[i], reason:"kick"});
-                } else {
+                let currentNumber = Number.parseInt(chess.hole.name);
+                let nextStep = diceNumber + 1;
+                let nextNumber = currentNumber + nextStep;
+                if (nextNumber > Number.parseInt(this.door.name)) {
                     deduceLast.push({chess:chesses[i], reason:"advance"});
+                } else {
+                    let nextHole =this.getUniversalNextHole(currentNumber, nextStep);
+                    if (nextHole != null) {
+                        let resultChesses = this.getKickChesses(nextHole.getComponent(Route.Route));
+                        if (resultChesses.length > 0) {
+                            resultChesses.map((c)=>{c.kicked();});
+                            deduceResult.push({chess:chesses[i], reason:"kick"});
+                        } else {
+                            deduceLast.push({chess:chesses[i], reason:"advance"});
+                        }
+                    } else {
+                        deduceLast.push({chess:chesses[i], reason:"advance"});
+                    }
                 }
             }else {
                 let currentHoleNumber:number = Number.parseInt(chess.hole.name);
@@ -215,9 +224,9 @@ export class Player extends Laya.Script {
         
         for(let i = 0; i < route.chess.length; ++i) {
             let chess = route.chess[i].getComponent(Chess) as Chess;
-            if (chess.player == this) {
-                continue;
-            }
+            // if (chess.player == this) {
+            //     continue;
+            // }
 
             let chesses = this.getChesses(route, chess.player);
             if (chesses.length == 1) {
@@ -236,7 +245,6 @@ export class Player extends Laya.Script {
 
     private onAdvanceComplete(node:Laya.Sprite, complete: Laya.Handler) {
         let chess = node.getComponent(Chess) as Chess;
-
         if (chess.hole == this.goal) {
             let idx = this.chippy.indexOf(node);
             if (idx != -1) {
