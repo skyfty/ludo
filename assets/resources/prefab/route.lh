@@ -10,45 +10,35 @@
     {
       "_$type": "Animator2D",
       "controller": {
-        "_$uuid": "13d18d48-fef7-4b1d-96e0-070f4ac5d9da",
+        "_$uuid": "b41f1709-bbfe-440e-856e-02195acf9ec2",
         "_$type": "AnimationController2D"
       },
-      "controllerLayers": [
-        {
-          "_$type": "AnimatorControllerLayer2D",
-          "name": "Base Layer",
-          "states": [
-            {
-              "_$type": "AnimatorState2D",
-              "name": "puddle",
-              "clipStart": 0,
-              "clip": {
-                "_$uuid": "6d30d81f-a349-41ca-9a09-2610f54b501e",
-                "_$type": "AnimationClip2D"
-              },
-              "soloTransitions": []
-            }
-          ]
-        }
-      ]
+      "controllerLayers": []
     },
     {
       "_$type": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-      "scriptPath": "../src/Route.ts"
+      "scriptPath": "../src/Route.ts",
+      "puddle": {
+        "_$ref": "jpxjv1gb"
+      }
     }
   ],
   "_$child": [
     {
-      "_$id": "kckv5do3",
-      "_$type": "Sprite",
+      "_$id": "jpxjv1gb",
+      "_$type": "Clip",
       "name": "puddle",
-      "x": 8,
-      "y": 7,
-      "width": 22.5,
-      "height": 22.5,
+      "width": 38,
+      "height": 38,
       "visible": false,
-      "alpha": 0.96,
-      "_gcmds": []
+      "clipWidth": 38,
+      "clipHeight": 38,
+      "clipX": 6,
+      "clipY": 4,
+      "index": 9,
+      "interval": 100,
+      "skin": "res://86436151-c880-4b5c-9bd7-e681bded4cc4",
+      "sizeGrid": "0,0,0,0,0"
     }
   ]
 }

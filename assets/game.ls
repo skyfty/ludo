@@ -72,10 +72,25 @@
               "y": 251,
               "visible": true,
               "bgColor": "rgba(255, 0, 0, 1)",
+              "alpha": 0.51,
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
               "_$child": [
                 {
-                  "_$override": "kckv5do3",
-                  "visible": false
+                  "_$id": "3hyr3qgk",
+                  "_$index": 0,
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 2,
+                  "y": 1,
+                  "width": 34,
+                  "height": 34,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#ffffff"
                 }
               ]
             },
@@ -150,17 +165,23 @@
               "x": -214,
               "y": 39,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)",
+              "bgColor": null,
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
               "_$child": [
                 {
                   "_$id": "d0axgzl3",
                   "_$type": "Image",
                   "name": "Image",
                   "x": 2,
-                  "y": 3,
-                  "width": 33.5,
-                  "height": 33.5,
-                  "alpha": 0.33,
+                  "y": 2,
+                  "width": 34,
+                  "height": 34,
+                  "alpha": 0.28,
                   "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
                   "color": "#69adca"
                 }
@@ -210,7 +231,28 @@
               "x": -256,
               "y": -45,
               "visible": true,
-              "bgColor": "rgba(0, 163, 0, 1)"
+              "bgColor": "rgba(0, 163, 0, 1)",
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
+              "_$child": [
+                {
+                  "_$id": "7zrwgcx0",
+                  "_$index": 0,
+                  "_$type": "Image",
+                  "name": "Image(1)",
+                  "x": 2.000000000000057,
+                  "y": 0.9999999999997726,
+                  "width": 34,
+                  "height": 34,
+                  "alpha": 0.4,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#ffffff"
+                }
+              ]
             },
             {
               "_$id": "s3ype9zt",
@@ -283,7 +325,13 @@
               "x": -45,
               "y": -214,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)",
+              "bgColor": null,
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
               "_$child": [
                 {
                   "_$id": "ru1w2n31",
@@ -343,7 +391,28 @@
               "x": 40,
               "y": -257,
               "visible": true,
-              "bgColor": "rgba(255, 196, 0, 1)"
+              "bgColor": "rgba(255, 196, 0, 1)",
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
+              "_$child": [
+                {
+                  "_$id": "y6gg9oek",
+                  "_$index": 0,
+                  "_$type": "Image",
+                  "name": "Image(1)",
+                  "x": 2.000000000000057,
+                  "y": 1.9999999999998863,
+                  "width": 34,
+                  "height": 34,
+                  "alpha": 0.4,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#ffffff"
+                }
+              ]
             },
             {
               "_$id": "yvao2qkp",
@@ -416,7 +485,13 @@
               "x": 209,
               "y": -45,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)",
+              "bgColor": null,
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
               "_$child": [
                 {
                   "_$id": "z56dk1ry",
@@ -424,7 +499,7 @@
                   "name": "Image",
                   "x": 3,
                   "y": 3,
-                  "width": 33.5,
+                  "width": 34,
                   "height": 33.5,
                   "alpha": 0.33,
                   "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
@@ -476,7 +551,27 @@
               "x": 251,
               "y": 39,
               "visible": true,
-              "bgColor": "rgba(0, 140, 248, 1)"
+              "bgColor": "rgba(0, 140, 248, 1)",
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
+              "_$child": [
+                {
+                  "_$id": "qjy72wjs",
+                  "_$type": "Image",
+                  "name": "Image(2)",
+                  "x": 2,
+                  "y": 3,
+                  "width": 34,
+                  "height": 34,
+                  "alpha": 0.4,
+                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+                  "color": "#ffffff"
+                }
+              ]
             },
             {
               "_$id": "3xdcazmg",
@@ -549,7 +644,13 @@
               "x": 39,
               "y": 209,
               "visible": true,
-              "bgColor": "rgba(100, 100, 100, 1)",
+              "bgColor": null,
+              "_$comp": [
+                {
+                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                  "safe": 0
+                }
+              ],
               "_$child": [
                 {
                   "_$id": "fyaqvfzh",

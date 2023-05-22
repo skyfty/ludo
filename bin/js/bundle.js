@@ -50,11 +50,6 @@
       this.owner.on(Event.StateChange, this, this.onStateChange);
     }
     onStateChange(state) {
-      if (state == 1 /* Running */) {
-        this.originTwinkle.getComponent(Laya.Animator2D).play("gleam");
-      } else {
-        this.originTwinkle.getComponent(Laya.Animator2D).play("recess");
-      }
     }
     setDiceNumber(idx) {
       this.diceDefault.visible = true;
@@ -168,19 +163,32 @@
 
   // src/Route.ts
   var { regClass: regClass2, property: property2 } = Laya;
+  var Safe = /* @__PURE__ */ ((Safe2) => {
+    Safe2[Safe2["yes"] = 0] = "yes";
+    Safe2[Safe2["no"] = 1] = "no";
+    return Safe2;
+  })(Safe || {});
   var Route = class extends Laya.Script {
     constructor() {
       super();
+      this.safe = 1 /* no */;
     }
     puddleAni(color) {
-      let node = this.owner;
-      let puddle = node.getChildByName("puddle");
-      puddle.graphics.clear();
-      puddle.graphics.drawCircle(0.5, 0.5, 0.5, color);
-      this.owner.getComponent(Laya.Animator2D).play("puddle");
+      let idxs = { "red": [0, 5], "green": [6, 11], "yellow": [12, 17], "blue": [18, 23] }[color];
+      this.puddle.visible = true;
+      this.puddle.play(idxs[0], idxs[1]);
+      Laya.timer.once(700, this, () => {
+        this.puddle.visible = false;
+      });
     }
   };
   __name(Route, "Route");
+  __decorateClass([
+    property2(Laya.Clip)
+  ], Route.prototype, "puddle", 2);
+  __decorateClass([
+    property2({ type: Safe })
+  ], Route.prototype, "safe", 2);
   Route = __decorateClass([
     regClass2("f65b0a36-8072-43b6-ba82-0cc45e25162f", "../src/Route.ts")
   ], Route);

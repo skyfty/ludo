@@ -85,11 +85,7 @@ export class Player extends Laya.Script {
     }
 
     onStateChange(state:State) {
-        if (state == State.Running) {
-            this.originTwinkle.getComponent(Laya.Animator2D).play("gleam");
-        } else {
-            this.originTwinkle.getComponent(Laya.Animator2D).play("recess");
-        }
+
     }
 
     public setDiceNumber(idx:number) {
