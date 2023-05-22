@@ -1,0 +1,22 @@
+{
+  "name": "ludo",
+  "version": "1.0.0",
+  "description": "ludo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skyfty/ludo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skyfty/ludo/issues"
+  },
+  "homepage": "https://github.com/skyfty/ludo#readme",
+  "dependencies": {
+    "sfs2x-api": "^1.7.20"
+  }
+}
