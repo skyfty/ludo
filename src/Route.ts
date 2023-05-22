@@ -14,6 +14,8 @@ export class Route extends Laya.Script {
     @property( { type : Safe } )
     safe : Safe = Safe.no;
 
+    public chess:Laya.Sprite[] = [];
+
     constructor() {
         super();
     }

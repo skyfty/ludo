@@ -1,4 +1,5 @@
 import { Chess } from "./Chess";
+import { Route } from "./Route";
 
 const { regClass, property } = Laya;
 
@@ -28,6 +29,11 @@ export enum Type {
 export enum State {
     Idle = 0,
     Running = 1
+}
+
+export interface DeduceResult {
+    chess:Laya.Sprite;
+    reason:string;
 }
 
 @regClass()
@@ -61,9 +67,12 @@ export class Player extends Laya.Script {
     @property(Laya.Sprite)
     public personal:Laya.Sprite;
 
+    @property(Laya.Sprite)
+    public crown: Laya.Sprite;
+
     
     @property(Laya.Sprite)
-    public originTwinkle: Laya.Sprite;
+    public origin: Laya.Sprite;
 
     public numberPersonalHold:number;
 
@@ -134,30 +143,104 @@ export class Player extends Laya.Script {
         }
     }
 
-    
-    public reckonChess(diceNumber:number, complete: Laya.Handler): void {
+    public reckonChess(diceNumber:number): Laya.Sprite[] {
+        let chesses:Laya.Sprite[] = [];
         if (diceNumber != 5 && this.chippy.length > 0) {
             if (this.chippy.length > 1) {
-                complete.runWith([this.chippy]);
+                chesses = this.chippy;
             } else {
-                complete.runWith([new Array(this.chippy[0])]);
+                chesses.push(this.chippy[0]);
             }
         } else if (diceNumber == 5) {
-            let chesses:Laya.Sprite[] = [];
             chesses = chesses.concat(this.chippy);
             for(let i = 0;i < this.groove.numChildren;++i) {
                 chesses.push(this.groove.getChildAt(i) as Laya.Sprite);
             }
-            complete.runWith([chesses]);
         }
-        else
-        {
-            complete.runWith(null);
+        return chesses;
+    }
+
+    private getUniversalNextNumber(currentNumber:number, step:number):number {
+        let num = currentNumber + step;
+        if (num > this.numberUniversalHold) {
+            num = num - this.numberUniversalHold
+        } else if (num < 0) {
+            num = this.numberUniversalHold - num;
         }
+        return num;
+    }
+
+    public getUniversalNextHole(currentNumber:number, diceNumber:number): Laya.Sprite {
+        let nextNumber:number = this.getUniversalNextNumber(currentNumber, diceNumber);
+        return this.universal.getChildByName(nextNumber.toString()) as Laya.Sprite;
+    }
+
+    public deduce(diceNumber:number, chesses:Laya.Sprite[], complete: Laya.Handler) {
+        let deduceResult:DeduceResult[] = [];
+        for(let i = 0; i < chesses.length; ++i) {
+            let chess = chesses[i].getComponent(Chess) as Chess;
+            if (chesses[i].parent == this.groove && diceNumber == 5) {
+                deduceResult.push({chess:chesses[i], reason:"entry"});
+            } else if (chesses[i].parent == this.universal) {
+                let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber);
+                let resultChesses = this.getKickChesses(nextHole.getComponent(Route));
+                if (resultChesses.length > 0) {
+                    deduceResult.push({chess:chesses[i], reason:"kick"});
+                } else {
+                    deduceResult.push({chess:chesses[i], reason:"advance"});
+                }
+            }else {
+                let currentHoleNumber:number = Number.parseInt(chess.hole.name);
+                if (currentHoleNumber + diceNumber == 5) {
+                    deduceResult.unshift({chess:chesses[i], reason:"home"});
+                } else {
+                    deduceResult.push({chess:chesses[i], reason:"advance"});
+                }
+            } 
+        }
+        complete.runWith([deduceResult]);
     }
 
     public isAllHome() {
         return this.home.length == 4;
+    }
+
+    private getChesses(route:Route, player:Player) {
+        let chesses:Chess[] = [];
+        for(let i = 0; i < route.chess.length; ++i) {
+            let chess = route.chess[i].getComponent(Chess) as Chess;
+            if (chess.player == player) {
+                chesses.push(chess)
+            }
+        }
+        return chesses;
+    }
+
+    public getKickChesses(route:Route) {
+        let resultChesses:Chess[] = [];
+        if (route.safe) {
+            return resultChesses;
+        }
+        
+        for(let i = 0; i < route.chess.length; ++i) {
+            let chess = route.chess[i].getComponent(Chess) as Chess;
+            if (chess.player == this) {
+                continue;
+            }
+
+            let chesses = this.getChesses(route, chess.player);
+            if (chesses.length == 1) {
+                resultChesses.push(chess)
+            }
+        }
+        return resultChesses;
+    }
+
+    private kick(route:Route) {
+        let chesses = this.getKickChesses(route);
+        chesses.map((chess:Chess)=>{
+            chess.revert(Laya.Handler.create(this, ()=>{}));
+        });
     }
 
     private onAdvanceComplete(node:Laya.Sprite, complete: Laya.Handler) {
@@ -170,6 +253,16 @@ export class Player extends Laya.Script {
                 this.home.push(this.chippy.splice(idx, 1)[0]);
             }
         }
+
+        if (this.isAllHome()) {
+            this.crown.visible = true;
+            this.crown.getComponent(Laya.Animator2D).play("elastic");
+        } else {
+            let route = chess.hole.getComponent(Route);
+            this.kick(route);
+        }
+
+
         complete.runWith(node);
     }
 

@@ -37,15 +37,16 @@ export class Oneself extends Performer {
     private onRollStop() {
         this.owner.event(Player.Event.RollEnd, [this.owner, this.currentDiceNumber]);
         this.player.setDiceNumber(this.currentDiceNumber);
-        this.player.reckonChess(this.currentDiceNumber, Laya.Handler.create(this,  (chesses:Laya.Sprite[])=>{
-            if (chesses != null) {
-                this.owner.event(Player.Event.Choose, [this.owner]);
+        let chesses = this.player.reckonChess(this.currentDiceNumber);
+        if (chesses.length > 0) {
+            this.owner.event(Player.Event.Choose, [this.owner]);
+            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, ()=>{
                 this.onReckonChessComplete(chesses, Laya.Handler.create(this,  this.onChooseChessesComplete));
-            } else {
-                this.isAdvanceing = false;
-                this.owner.event(Player.Event.Achieve, null);
-            }
-        }));
+            }));
+        } else {
+            this.isAdvanceing = false;
+            this.owner.event(Player.Event.Achieve, null);
+        }
     }
 
     private onChooseChessesComplete(chess:Laya.Sprite) {

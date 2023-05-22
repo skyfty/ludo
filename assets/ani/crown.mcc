@@ -1,0 +1,63 @@
+{
+  "_$type": "Animator2D",
+  "enabled": true,
+  "controllerLayers": [
+    {
+      "name": "Base Layer",
+      "defaultStateName": "elastic",
+      "playOnWake": true,
+      "blendingMode": 0,
+      "states": [
+        {
+          "name": "elastic",
+          "clip": {
+            "_$uuid": "361f85a7-4689-4658-81d6-cef8699dffa8"
+          },
+          "loop": -1,
+          "speed": 1,
+          "clipEnd": 1,
+          "x": 772.390443066533,
+          "y": 174.30047360491756,
+          "id": "0"
+        },
+        {
+          "x": 10,
+          "y": 100,
+          "id": "-1",
+          "name": "进入",
+          "speed": 1,
+          "clipEnd": 1,
+          "soloTransitions": [
+            {
+              "id": "1"
+            }
+          ]
+        },
+        {
+          "x": 2018,
+          "y": 100,
+          "id": "-2",
+          "name": "任何状态",
+          "speed": 1,
+          "clipEnd": 1
+        },
+        {
+          "x": 594,
+          "y": 351,
+          "id": "1",
+          "name": "New State",
+          "speed": 1,
+          "clipEnd": 1,
+          "loop": -1,
+          "soloTransitions": [
+            {
+              "id": "0"
+            }
+          ]
+        }
+      ],
+      "defaultWeight": 1
+    }
+  ],
+  "layerW": 150
+}

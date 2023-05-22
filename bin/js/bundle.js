@@ -12,8 +12,41 @@
     return result;
   };
 
-  // src/Player.ts
+  // src/Route.ts
   var { regClass, property } = Laya;
+  var Safe = /* @__PURE__ */ ((Safe2) => {
+    Safe2[Safe2["yes"] = 0] = "yes";
+    Safe2[Safe2["no"] = 1] = "no";
+    return Safe2;
+  })(Safe || {});
+  var Route = class extends Laya.Script {
+    constructor() {
+      super();
+      this.safe = 1 /* no */;
+      this.chess = [];
+    }
+    puddleAni(color) {
+      let idxs = { "red": [0, 5], "green": [6, 11], "yellow": [12, 17], "blue": [18, 23] }[color];
+      this.puddle.visible = true;
+      this.puddle.play(idxs[0], idxs[1]);
+      Laya.timer.once(700, this, () => {
+        this.puddle.visible = false;
+      });
+    }
+  };
+  __name(Route, "Route");
+  __decorateClass([
+    property(Laya.Clip)
+  ], Route.prototype, "puddle", 2);
+  __decorateClass([
+    property({ type: Safe })
+  ], Route.prototype, "safe", 2);
+  Route = __decorateClass([
+    regClass("f65b0a36-8072-43b6-ba82-0cc45e25162f", "../src/Route.ts")
+  ], Route);
+
+  // src/Player.ts
+  var { regClass: regClass2, property: property2 } = Laya;
   var Event = class {
   };
   __name(Event, "Event");
@@ -77,26 +110,59 @@
         chesses[i].getComponent(Chess).stop();
       }
     }
-    reckonChess(diceNumber, complete) {
+    reckonChess(diceNumber) {
+      let chesses = [];
       if (diceNumber != 5 && this.chippy.length > 0) {
         if (this.chippy.length > 1) {
-          complete.runWith([this.chippy]);
+          chesses = this.chippy;
         } else {
-          complete.runWith([new Array(this.chippy[0])]);
+          chesses.push(this.chippy[0]);
         }
       } else if (diceNumber == 5) {
-        let chesses = [];
         chesses = chesses.concat(this.chippy);
         for (let i = 0; i < this.groove.numChildren; ++i) {
           chesses.push(this.groove.getChildAt(i));
         }
-        complete.runWith([chesses]);
-      } else {
-        complete.runWith(null);
       }
+      return chesses;
+    }
+    deduce(diceNumber, chesses, complete) {
+      let deduceResult = [];
+      for (let i = 0; i < chesses.length; ++i) {
+        let chess = chesses[i].getComponent(Chess);
+        if (chesses[i].parent == this.personal) {
+          let currentHoleNumber = Number.parseInt(chess.hole.name);
+        }
+      }
+      complete.runWith([deduceResult]);
     }
     isAllHome() {
       return this.home.length == 4;
+    }
+    getChesses(route, player) {
+      let chesses = [];
+      for (let i = 0; i < route.chess.length; ++i) {
+        let chess = route.chess[i].getComponent(Chess);
+        if (chess.player == player) {
+          chesses.push(chess);
+        }
+      }
+      return chesses;
+    }
+    kick(route) {
+      let num = 0;
+      for (let i = 0; i < route.chess.length; ++i) {
+        let chess = route.chess[i].getComponent(Chess);
+        if (chess.player == this) {
+          continue;
+        }
+        let chesses = this.getChesses(route, chess.player);
+        if (chesses.length == 1) {
+          chesses[0].revert(Laya.Handler.create(this, () => {
+          }));
+        }
+      }
+      return num;
     }
     onAdvanceComplete(node, complete) {
       let chess = node.getComponent(Chess);
@@ -105,6 +171,15 @@
         let idx = this.chippy.indexOf(node);
         if (idx != -1) {
           this.home.push(this.chippy.splice(idx, 1)[0]);
+        }
+      }
+      if (this.isAllHome()) {
+        this.crown.visible = true;
+        this.crown.getComponent(Laya.Animator2D).play("elastic");
+      } else {
+        let route = chess.hole.getComponent(Route);
+        if (!route.safe) {
+          this.kick(route);
         }
       }
       complete.runWith(node);
@@ -125,73 +200,44 @@
   };
   __name(Player, "Player");
   __decorateClass([
-    property(Laya.Sprite)
+    property2(Laya.Sprite)
   ], Player.prototype, "entry", 2);
   __decorateClass([
-    property(Laya.Sprite)
+    property2(Laya.Sprite)
   ], Player.prototype, "goal", 2);
   __decorateClass([
-    property(Laya.Sprite)
+    property2(Laya.Sprite)
   ], Player.prototype, "door", 2);
   __decorateClass([
-    property(Laya.Clip)
+    property2(Laya.Clip)
   ], Player.prototype, "diceRoll", 2);
   __decorateClass([
-    property(Laya.Clip)
+    property2(Laya.Clip)
   ], Player.prototype, "diceDefault", 2);
   __decorateClass([
-    property(Laya.Sprite)
+    property2(Laya.Sprite)
   ], Player.prototype, "groove", 2);
   __decorateClass([
-    property(Laya.Sprite)
+    property2(Laya.Sprite)
   ], Player.prototype, "universal", 2);
   __decorateClass([
-    property(Laya.Sprite)
+    property2(Laya.Sprite)
   ], Player.prototype, "trade", 2);
   __decorateClass([
-    property(Laya.Sprite)
+    property2(Laya.Sprite)
   ], Player.prototype, "personal", 2);
   __decorateClass([
-    property(Laya.Sprite)
-  ], Player.prototype, "originTwinkle", 2);
+    property2(Laya.Sprite)
+  ], Player.prototype, "crown", 2);
   __decorateClass([
-    property(Laya.Prefab)
+    property2(Laya.Sprite)
+  ], Player.prototype, "origin", 2);
+  __decorateClass([
+    property2(Laya.Prefab)
   ], Player.prototype, "chessPrefab", 2);
   Player = __decorateClass([
-    regClass("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
+    regClass2("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
   ], Player);
-
-  // src/Route.ts
-  var { regClass: regClass2, property: property2 } = Laya;
-  var Safe = /* @__PURE__ */ ((Safe2) => {
-    Safe2[Safe2["yes"] = 0] = "yes";
-    Safe2[Safe2["no"] = 1] = "no";
-    return Safe2;
-  })(Safe || {});
-  var Route = class extends Laya.Script {
-    constructor() {
-      super();
-      this.safe = 1 /* no */;
-    }
-    puddleAni(color) {
-      let idxs = { "red": [0, 5], "green": [6, 11], "yellow": [12, 17], "blue": [18, 23] }[color];
-      this.puddle.visible = true;
-      this.puddle.play(idxs[0], idxs[1]);
-      Laya.timer.once(700, this, () => {
-        this.puddle.visible = false;
-      });
-    }
-  };
-  __name(Route, "Route");
-  __decorateClass([
-    property2(Laya.Clip)
-  ], Route.prototype, "puddle", 2);
-  __decorateClass([
-    property2({ type: Safe })
-  ], Route.prototype, "safe", 2);
-  Route = __decorateClass([
-    regClass2("f65b0a36-8072-43b6-ba82-0cc45e25162f", "../src/Route.ts")
-  ], Route);
 
   // src/Chess.ts
   var { regClass: regClass3, property: property3 } = Laya;
@@ -202,13 +248,15 @@
     onAwake() {
       super.onAwake();
     }
-    jump(dest, parent, complete) {
+    jump(dest, complete) {
+      let parent = dest.parent;
       let ownerSprite = this.owner;
       let parentSprite = this.owner.parent;
       let originPoint = parentSprite.localToGlobal(new Laya.Point(ownerSprite.x, ownerSprite.y));
       Laya.stage.addChild(ownerSprite.pos(originPoint.x, originPoint.y));
       let destPoint = parent.localToGlobal(new Laya.Point(dest.x, dest.y));
       Laya.Tween.to(ownerSprite, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
+        this.pass(dest);
         this.hole = dest;
         parent.addChild(ownerSprite.pos(dest.x, dest.y));
         complete.run();
@@ -221,11 +269,11 @@
         return;
       }
       if (roadway == this.player.groove) {
-        this.jump(this.player.entry, this.player.universal, complete);
+        this.jump(this.player.entry, complete);
       } else if (this.hole == this.player.door) {
         let personal = this.player.personal;
         let firstHole = personal.getChildByName("0");
-        this.jump(firstHole, this.player.personal, Laya.Handler.create(this, () => {
+        this.jump(firstHole, Laya.Handler.create(this, () => {
           this.step(--step, director, complete);
         }));
       } else {
@@ -244,16 +292,56 @@
         if (nextHole == null) {
           nextHole = roadway.getChildByName("0");
         }
-        this.moveTo(nextHole, Laya.Handler.create(this, () => {
+        this.moveTo(nextHole, 200, Laya.Handler.create(this, () => {
           this.step(--step, director, complete);
         }));
       }
     }
-    moveTo(nextHole, complete) {
+    pass(nextHole) {
+      let route = this.hole.getComponent(Route);
+      if (route != null) {
+        let idx = route.chess.indexOf(this.owner);
+        if (idx != -1) {
+          route.chess.splice(idx, 1);
+        }
+      }
+      let nextRoute = nextHole.getComponent(Route);
+      if (nextRoute != null) {
+        nextRoute.chess.push(this.owner);
+        nextRoute.puddleAni(this.player.owner.name);
+      }
+    }
+    backoff(dest, complete) {
+      if (dest == this.hole) {
+        complete.run();
+        return;
+      }
+      let roadway = this.owner.parent;
+      let currentHoleNumber = Number.parseInt(this.hole.name);
+      if (currentHoleNumber < 0) {
+        currentHoleNumber = this.player.numberUniversalHold - 1;
+      } else {
+        currentHoleNumber -= 1;
+      }
+      let nextHole = roadway.getChildByName(currentHoleNumber.toString());
+      if (nextHole == null) {
+        nextHole = roadway.getChildByName("0");
+      }
+      this.moveTo(nextHole, 20, Laya.Handler.create(this, () => {
+        this.backoff(dest, complete);
+      }));
+    }
+    revert(complete) {
+      this.backoff(this.player.entry, Laya.Handler.create(this, () => {
+        let dest = this.player.origin.getChildByName(this.owner.name);
+        this.jump(dest, complete);
+      }));
+    }
+    moveTo(nextHole, duration, complete) {
       let destPoint = new Laya.Point(nextHole.x, nextHole.y);
-      Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
+      Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, duration, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
+        this.pass(nextHole);
         this.hole = nextHole;
-        nextHole.getComponent(Route).puddleAni(this.player.owner.name);
         complete.run();
       }));
     }
@@ -331,15 +419,19 @@
     onRollStop() {
       this.owner.event(Event.RollEnd, [this.owner, this.currentDiceNumber]);
       this.player.setDiceNumber(this.currentDiceNumber);
-      this.player.reckonChess(this.currentDiceNumber, Laya.Handler.create(this, (chesses) => {
-        if (chesses != null) {
-          this.owner.event(Event.Choose, [this.owner]);
-          let idx = Math.floor(Math.random() * chesses.length);
-          this.player.advance(chesses[idx], this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
-        } else {
-          this.owner.event(Event.Achieve, null);
-        }
-      }));
+      let chesses = this.player.reckonChess(this.currentDiceNumber);
+      if (chesses.length > 0) {
+        this.owner.event(Event.Choose, [this.owner]);
+        this.player.hopChesses(chesses);
+        Laya.timer.once(2e3, this, () => {
+          this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, this.onDeduceComplete));
+        });
+      } else {
+        this.owner.event(Event.Achieve, null);
+      }
+    }
+    onDeduceComplete(deduceResult) {
+      this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
     }
     onAdvanceComplete(node) {
       let chess = node.getComponent(Chess);
@@ -500,15 +592,14 @@
     onRollStop() {
       this.owner.event(Event.RollEnd, [this.owner, this.currentDiceNumber]);
       this.player.setDiceNumber(this.currentDiceNumber);
-      this.player.reckonChess(this.currentDiceNumber, Laya.Handler.create(this, (chesses) => {
-        if (chesses != null) {
-          this.owner.event(Event.Choose, [this.owner]);
-          this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
-        } else {
-          this.isAdvanceing = false;
-          this.owner.event(Event.Achieve, null);
-        }
-      }));
+      let chesses = this.player.reckonChess(this.currentDiceNumber);
+      if (chesses.length > 0) {
+        this.owner.event(Event.Choose, [this.owner]);
+        this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
+      } else {
+        this.isAdvanceing = false;
+        this.owner.event(Event.Achieve, null);
+      }
     }
     onChooseChessesComplete(chess) {
       this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));

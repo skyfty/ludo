@@ -733,7 +733,7 @@
                 "_$ref": "ue2g43ow"
               },
               "goal": {
-                "_$ref": "6zlm8xkl"
+                "_$ref": "u64bq3bj"
               },
               "door": {
                 "_$ref": "834vqins"
@@ -765,8 +765,11 @@
               "personal": {
                 "_$ref": "jnr4fv9u"
               },
-              "originTwinkle": {
-                "_$ref": "60gakblm"
+              "crown": {
+                "_$ref": "p4fglvnm"
+              },
+              "origin": {
+                "_$ref": "h6q90dh9"
               },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
@@ -823,70 +826,64 @@
               "height": 100,
               "_$child": [
                 {
-                  "_$id": "gtdebx29",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "eya05ymp",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "0",
                   "active": true,
-                  "x": 30.00000000000003,
-                  "y": 284.0000000000001,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": 284,
+                  "visible": true,
+                  "bgColor": "rgba(243, 0, 0, 1)"
                 },
                 {
-                  "_$id": "qbsxojr7",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "uosu3lkw",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "1",
                   "active": true,
-                  "x": 30.00000000000003,
-                  "y": 242.0000000000001,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": 242,
+                  "visible": true,
+                  "bgColor": "rgba(243, 15, 0, 1)"
                 },
                 {
-                  "_$id": "jkm2qxzs",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "7916xp5g",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "2",
                   "active": true,
-                  "x": 30.00000000000003,
-                  "y": 199.0000000000001,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": 199,
+                  "visible": true,
+                  "bgColor": "rgba(243, 15, 0, 1)"
                 },
                 {
-                  "_$id": "ys6bfnmr",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "bwmrcedr",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "3",
                   "active": true,
-                  "x": 30.00000000000003,
-                  "y": 157.0000000000001,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": 157,
+                  "visible": true,
+                  "bgColor": "rgba(243, 15, 0, 1)"
                 },
                 {
-                  "_$id": "0ap00vl8",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "4jo8gq9i",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "4",
                   "active": true,
-                  "x": 30.00000000000003,
-                  "y": 115.00000000000011,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": 115,
+                  "visible": true,
+                  "bgColor": "rgba(243, 15, 0, 1)"
                 },
                 {
-                  "_$id": "6zlm8xkl",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "u64bq3bj",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "5",
                   "active": true,
-                  "x": 32.00000000000003,
-                  "y": 70,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 29,
+                  "y": 72,
+                  "visible": true,
+                  "bgColor": "rgba(243, 15, 0, 1)"
                 }
               ]
             },
@@ -908,6 +905,7 @@
             },
             {
               "_$id": "37thijbt",
+              "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
               "x": 75.99999999999997,
@@ -1042,6 +1040,15 @@
                   ]
                 }
               ]
+            },
+            {
+              "_$id": "p4fglvnm",
+              "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "name": "crown",
+              "active": true,
+              "x": -10.000000000000057,
+              "y": -260.00000000000006,
+              "visible": false
             }
           ]
         },
@@ -1063,7 +1070,7 @@
                 "_$ref": "myx9g8dx"
               },
               "goal": {
-                "_$ref": "jmlipw9z"
+                "_$ref": "jamcuxu2"
               },
               "door": {
                 "_$ref": "qjqrb3oy"
@@ -1095,8 +1102,11 @@
               "personal": {
                 "_$ref": "ugpgd2q4"
               },
-              "originTwinkle": {
-                "_$ref": "yi8aaacw"
+              "crown": {
+                "_$ref": "f26bc4fu"
+              },
+              "origin": {
+                "_$ref": "bj7phns4"
               },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
@@ -1153,75 +1163,70 @@
               "height": 100,
               "_$child": [
                 {
-                  "_$id": "p2bl7rio",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "unz1x99w",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "0",
                   "active": true,
-                  "x": -222.99999999999994,
-                  "y": 31.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": -223,
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 163, 0, 1)"
                 },
                 {
-                  "_$id": "b1mmoa17",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "qd79551o",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "1",
                   "active": true,
-                  "x": -179.99999999999997,
-                  "y": 31.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": -181,
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 163, 0, 1)"
                 },
                 {
-                  "_$id": "b9pteals",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "dt7nen2s",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "2",
                   "active": true,
-                  "x": -138.99999999999997,
-                  "y": 31.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": -139,
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 163, 0, 1)"
                 },
                 {
-                  "_$id": "mks2ox50",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "n16nm47k",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "3",
                   "active": true,
-                  "x": -96.99999999999997,
-                  "y": 30.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": -97,
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 163, 0, 1)"
                 },
                 {
-                  "_$id": "t3wj7d3j",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "tbvv0hnw",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "4",
                   "active": true,
-                  "x": -54.99999999999994,
-                  "y": 31.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": -54,
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 163, 0, 1)"
                 },
                 {
-                  "_$id": "jmlipw9z",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "jamcuxu2",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "5",
                   "active": true,
-                  "x": -10.999999999999972,
-                  "y": 30.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": -11,
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 163, 0, 1)"
                 }
               ]
             },
             {
               "_$id": "x1uq1m5z",
+              "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
               "x": 76.99999999999994,
@@ -1356,6 +1361,15 @@
                   ]
                 }
               ]
+            },
+            {
+              "_$id": "f26bc4fu",
+              "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "name": "crown",
+              "active": true,
+              "x": -12.000000000000057,
+              "y": 78.99999999999994,
+              "visible": false
             }
           ]
         },
@@ -1377,7 +1391,7 @@
                 "_$ref": "7ha7izqj"
               },
               "goal": {
-                "_$ref": "xna9ttjy"
+                "_$ref": "wx4r6qlc"
               },
               "door": {
                 "_$ref": "8dfxcpyq"
@@ -1409,8 +1423,11 @@
               "personal": {
                 "_$ref": "o61g60ol"
               },
-              "originTwinkle": {
-                "_$ref": "256t4cwd"
+              "crown": {
+                "_$ref": "36vb08z2"
+              },
+              "origin": {
+                "_$ref": "ves81bgi"
               },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
@@ -1467,75 +1484,70 @@
               "height": 100,
               "_$child": [
                 {
-                  "_$id": "67zkek26",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "b2lu0qm0",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "0",
                   "active": true,
                   "x": 284,
-                  "y": 31.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 140, 248, 1)"
                 },
                 {
-                  "_$id": "bbxyswx4",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "82jrhhgr",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "1",
                   "active": true,
                   "x": 242,
-                  "y": 30.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 140, 248, 1)"
                 },
                 {
-                  "_$id": "ojuy2i88",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "ts0urzy0",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "2",
                   "active": true,
                   "x": 200,
-                  "y": 30.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 140, 248, 1)"
                 },
                 {
-                  "_$id": "92ywjo8h",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "vlsbbbsy",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "3",
                   "active": true,
                   "x": 157,
-                  "y": 31.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 140, 248, 1)"
                 },
                 {
-                  "_$id": "gbi1q8ni",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "1mg1pky0",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "4",
                   "active": true,
                   "x": 115,
-                  "y": 30.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 140, 248, 1)"
                 },
                 {
-                  "_$id": "xna9ttjy",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "wx4r6qlc",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "5",
                   "active": true,
-                  "x": 73,
-                  "y": 30.000000000000114,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 72,
+                  "y": 30,
+                  "visible": true,
+                  "bgColor": "rgba(0, 140, 248, 1)"
                 }
               ]
             },
             {
               "_$id": "etgip090",
+              "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
               "x": -3.0000000000001137,
@@ -1646,6 +1658,15 @@
                   ]
                 }
               ]
+            },
+            {
+              "_$id": "36vb08z2",
+              "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "name": "crown",
+              "active": true,
+              "x": -91.00000000000006,
+              "y": -261.00000000000006,
+              "visible": false
             }
           ]
         },
@@ -1666,7 +1687,7 @@
                 "_$ref": "xugteoiy"
               },
               "goal": {
-                "_$ref": "3v8nkaxb"
+                "_$ref": "cob4jpcv"
               },
               "door": {
                 "_$ref": "azwlhb6r"
@@ -1698,8 +1719,11 @@
               "personal": {
                 "_$ref": "a7afqfrw"
               },
-              "originTwinkle": {
-                "_$ref": "lks891a9"
+              "crown": {
+                "_$ref": "4tlcx9lc"
+              },
+              "origin": {
+                "_$ref": "2r52rn68"
               },
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
@@ -1756,75 +1780,70 @@
               "height": 100,
               "_$child": [
                 {
-                  "_$id": "6qqo5wwb",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "j0vip9eg",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "0",
                   "active": true,
-                  "x": 31.000000000000114,
-                  "y": -223.9999999999999,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": -223,
+                  "visible": true,
+                  "bgColor": "rgba(255, 196, 0, 1)"
                 },
                 {
-                  "_$id": "mdmc32fs",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "m64dec33",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "1",
                   "active": true,
-                  "x": 31.000000000000114,
-                  "y": -180.9999999999999,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": -181,
+                  "visible": true,
+                  "bgColor": "rgba(255, 196, 0, 1)"
                 },
                 {
-                  "_$id": "fty9a7er",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "ld9rg8ru",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "2",
                   "active": true,
-                  "x": 30.000000000000114,
-                  "y": -137.9999999999999,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": -139,
+                  "visible": true,
+                  "bgColor": "rgba(255, 196, 0, 1)"
                 },
                 {
-                  "_$id": "mx3w0hpc",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "obmqjw17",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "3",
                   "active": true,
-                  "x": 31.000000000000114,
-                  "y": -96.99999999999989,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": -97,
+                  "visible": true,
+                  "bgColor": "rgba(255, 196, 0, 1)"
                 },
                 {
-                  "_$id": "734h9kap",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "p716bvtc",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "4",
                   "active": true,
-                  "x": 31.000000000000114,
-                  "y": -53.999999999999886,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": -54,
+                  "visible": true,
+                  "bgColor": "rgba(255, 196, 0, 1)"
                 },
                 {
-                  "_$id": "3v8nkaxb",
-                  "_$prefab": "16a96e74-d6ea-45aa-8bce-72d8caec0786",
+                  "_$id": "cob4jpcv",
+                  "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
                   "name": "5",
                   "active": true,
-                  "x": 31.00000000000003,
-                  "y": -11.999999999999886,
-                  "visible": false,
-                  "width": 38,
-                  "height": 38
+                  "x": 30,
+                  "y": -11,
+                  "visible": true,
+                  "bgColor": "rgba(255, 196, 0, 1)"
                 }
               ]
             },
             {
               "_$id": "g2g1c6jq",
+              "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
               "x": 1,
@@ -1959,6 +1978,15 @@
                   ]
                 }
               ]
+            },
+            {
+              "_$id": "4tlcx9lc",
+              "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "name": "crown",
+              "active": true,
+              "x": -85.00000000000006,
+              "y": 77.99999999999994,
+              "visible": false
             }
           ]
         }

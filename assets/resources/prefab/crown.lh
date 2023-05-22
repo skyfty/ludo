@@ -1,0 +1,61 @@
+{
+  "_$ver": 1,
+  "_$id": "nomb76r3or",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 253,
+  "height": 253,
+  "visible": false,
+  "_$comp": [
+    {
+      "_$type": "Animator2D",
+      "controller": {
+        "_$uuid": "cb43c2fd-b7e7-4aec-9f4c-741af46c588a",
+        "_$type": "AnimationController2D"
+      },
+      "controllerLayers": [
+        {
+          "_$type": "AnimatorControllerLayer2D",
+          "name": "Base Layer",
+          "states": [
+            {
+              "_$type": "AnimatorState2D",
+              "name": "elastic",
+              "clipStart": 0,
+              "clip": {
+                "_$uuid": "361f85a7-4689-4658-81d6-cef8699dffa8",
+                "_$type": "AnimationClip2D"
+              },
+              "soloTransitions": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "oh0md4tj",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "width": 253,
+      "height": 253,
+      "alpha": 0.64,
+      "skin": "res://00000000-0000-0000-0001-000000000001",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "nx0zmla7",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 126,
+      "y": 126,
+      "width": 206.94294879560087,
+      "height": 158.5217525552752,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "skin": "res://589b171f-3034-49ad-834d-3ecee2671cb3",
+      "color": "#ffffff"
+    }
+  ]
+}
