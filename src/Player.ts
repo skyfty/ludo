@@ -164,15 +164,15 @@ export class Player extends Laya.Script {
     private getUniversalNextNumber(currentNumber:number, step:number):number {
         let num = currentNumber + step;
         if (num > this.numberUniversalHold) {
-            num = num - this.numberUniversalHold
+            num = num - this.numberUniversalHold + 1
         } else if (num < 0) {
             num = this.numberUniversalHold - num;
         }
         return num;
     }
 
-    public getUniversalNextHole(currentNumber:number, diceNumber:number): Laya.Sprite {
-        let nextNumber:number = this.getUniversalNextNumber(currentNumber, diceNumber);
+    public getUniversalNextHole(currentNumber:number, step:number): Laya.Sprite {
+        let nextNumber:number = this.getUniversalNextNumber(currentNumber, step);
         return this.universal.getChildByName(nextNumber.toString()) as Laya.Sprite;
     }
 
@@ -184,7 +184,7 @@ export class Player extends Laya.Script {
             if (chesses[i].parent == this.groove && diceNumber == 5) {
                 deduceResult.push({chess:chesses[i], reason:"entry"});
             } else if (chesses[i].parent == this.universal) {
-                let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber);
+                let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber + 1);
                 let resultChesses = this.getKickChesses(nextHole.getComponent(Route));
                 if (resultChesses.length > 0) {
                     resultChesses.map((c)=>{
