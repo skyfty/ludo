@@ -224,9 +224,9 @@ export class Player extends Laya.Script {
         
         for(let i = 0; i < route.chess.length; ++i) {
             let chess = route.chess[i].getComponent(Chess) as Chess;
-            // if (chess.player == this) {
-            //     continue;
-            // }
+            if (chess.player == this) {
+                continue;
+            }
 
             let chesses = this.getChesses(route, chess.player);
             if (chesses.length == 1) {

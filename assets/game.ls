@@ -12,7 +12,7 @@
       "_$id": "ikgjaepj",
       "_$type": "Image",
       "name": "desk",
-      "width": 640,
+      "width": 636,
       "height": 1136,
       "skin": "res://d061e0a6-9110-4ae3-9fdd-9b58b82fd336",
       "color": "#ffffff"
@@ -691,7 +691,21 @@
               "active": true,
               "x": -2,
               "y": 293,
-              "visible": true
+              "visible": true,
+              "_$child": [
+                {
+                  "_$id": "jzutr65r",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 9,
+                  "y": 1,
+                  "width": 16,
+                  "height": 28,
+                  "skin": "res://63f4363b-55f9-4905-a16e-0f27d42b24b4",
+                  "useSourceSize": true,
+                  "color": "#ffffff"
+                }
+              ]
             },
             {
               "_$id": "35qi90er",
@@ -774,7 +788,8 @@
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
-              }
+              },
+              "chippy": []
             }
           ],
           "_$child": [
@@ -800,7 +815,7 @@
               "active": true,
               "x": -9,
               "y": -261.00000000000006,
-              "visible": true,
+              "visible": false,
               "bgColor": "rgba(0, 0, 0, 1)"
             },
             {
@@ -898,8 +913,24 @@
               "visible": true,
               "_$child": [
                 {
-                  "_$override": "p59dqqpf",
-                  "name": "0"
+                  "_$override": "3ubclldw",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "e4x4xmeu",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "nhfenhzp",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "k3onbzgu",
+                  "width": 40,
+                  "height": 40
                 }
               ]
             },
@@ -930,12 +961,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "h6q90dh9",
-                          "p59dqqpf"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -960,12 +986,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "h6q90dh9",
-                          "zbrikq5h"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -990,12 +1011,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "h6q90dh9",
-                          "qy4hoqjh"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1020,12 +1036,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "h6q90dh9",
-                          "fssqgfr1"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1111,7 +1122,8 @@
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
-              }
+              },
+              "chippy": []
             }
           ],
           "_$child": [
@@ -1128,7 +1140,7 @@
               "active": true,
               "x": -12,
               "y": 81,
-              "visible": true
+              "visible": false
             },
             {
               "_$id": "7c2mfmh6",
@@ -1150,7 +1162,29 @@
               "active": true,
               "x": 32,
               "y": 123.00000000000006,
-              "visible": true
+              "visible": true,
+              "_$child": [
+                {
+                  "_$override": "3ubclldw",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "e4x4xmeu",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "nhfenhzp",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "k3onbzgu",
+                  "width": 40,
+                  "height": 40
+                }
+              ]
             },
             {
               "_$id": "ugpgd2q4",
@@ -1251,12 +1285,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "bj7phns4",
-                          "p59dqqpf"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1281,12 +1310,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "bj7phns4",
-                          "zbrikq5h"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1311,12 +1335,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "bj7phns4",
-                          "qy4hoqjh"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1341,12 +1360,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "bj7phns4",
-                          "fssqgfr1"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1432,7 +1446,8 @@
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
-              }
+              },
+              "chippy": []
             }
           ],
           "_$child": [
@@ -1449,7 +1464,7 @@
               "active": true,
               "x": -91,
               "y": -261,
-              "visible": true
+              "visible": false
             },
             {
               "_$id": "vkqmkb6p",
@@ -1471,7 +1486,29 @@
               "active": true,
               "x": -48,
               "y": -216.9999999999999,
-              "visible": true
+              "visible": true,
+              "_$child": [
+                {
+                  "_$override": "3ubclldw",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "e4x4xmeu",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "nhfenhzp",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "k3onbzgu",
+                  "width": 40,
+                  "height": 40
+                }
+              ]
             },
             {
               "_$id": "o61g60ol",
@@ -1572,12 +1609,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "ves81bgi",
-                          "p59dqqpf"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1596,12 +1628,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "ves81bgi",
-                          "zbrikq5h"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1620,12 +1647,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "ves81bgi",
-                          "qy4hoqjh"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1644,12 +1666,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "ves81bgi",
-                          "fssqgfr1"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1728,7 +1745,8 @@
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
-              }
+              },
+              "chippy": []
             }
           ],
           "_$child": [
@@ -1745,7 +1763,7 @@
               "active": true,
               "x": -85,
               "y": 77,
-              "visible": true
+              "visible": false
             },
             {
               "_$id": "dw3zrzzu",
@@ -1767,7 +1785,29 @@
               "active": true,
               "x": -43,
               "y": 120,
-              "visible": true
+              "visible": true,
+              "_$child": [
+                {
+                  "_$override": "3ubclldw",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "e4x4xmeu",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "nhfenhzp",
+                  "width": 40,
+                  "height": 40
+                },
+                {
+                  "_$override": "k3onbzgu",
+                  "width": 40,
+                  "height": 40
+                }
+              ]
             },
             {
               "_$id": "a7afqfrw",
@@ -1868,12 +1908,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "2r52rn68",
-                          "p59dqqpf"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1898,12 +1933,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "2r52rn68",
-                          "p59dqqpf"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1928,12 +1958,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "2r52rn68",
-                          "p59dqqpf"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1958,12 +1983,7 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": {
-                        "_$ref": [
-                          "2r52rn68",
-                          "p59dqqpf"
-                        ]
-                      },
+                      "hole": null,
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"

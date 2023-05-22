@@ -129,7 +129,6 @@
       super();
       this.chippy = [];
       this.home = [];
-      this.ggg = 0;
     }
     onAwake() {
       this.numberUniversalHold = this.universal.numChildren;
@@ -254,6 +253,9 @@
       }
       for (let i = 0; i < route.chess.length; ++i) {
         let chess = route.chess[i].getComponent(Chess);
+        if (chess.player == this) {
+          continue;
+        }
         let chesses = this.getChesses(route, chess.player);
         if (chesses.length == 1) {
           resultChesses.push(chess);
@@ -276,15 +278,12 @@
           this.home.push(this.chippy.splice(idx, 1)[0]);
         }
       }
-      this.ggg++;
-      if (this.ggg > 5) {
-        let route = chess.hole.getComponent(Route);
-        this.kick(route);
-      }
       if (this.isAllHome()) {
         this.crown.visible = true;
         this.crown.getComponent(Laya.Animator2D).play("elastic");
       } else {
+        let route = chess.hole.getComponent(Route);
+        this.kick(route);
       }
       complete.runWith(node);
     }
