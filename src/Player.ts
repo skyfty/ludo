@@ -1,5 +1,5 @@
 import { Chess } from "./Chess";
-import { Route } from "./Route";
+import { Route, Safe } from "./Route";
 
 const { regClass, property } = Laya;
 
@@ -79,6 +79,7 @@ export class Player extends Laya.Script {
     @property(Laya.Prefab)
     public chessPrefab:Laya.Prefab;
 
+    @property([Laya.Sprite])
     protected chippy: Laya.Sprite[] = [];
     protected home: Laya.Sprite[] = [];
 
@@ -177,6 +178,7 @@ export class Player extends Laya.Script {
 
     public deduce(diceNumber:number, chesses:Laya.Sprite[], complete: Laya.Handler) {
         let deduceResult:DeduceResult[] = [];
+        let deduceLast:DeduceResult[] = [];
         for(let i = 0; i < chesses.length; ++i) {
             let chess = chesses[i].getComponent(Chess) as Chess;
             if (chesses[i].parent == this.groove && diceNumber == 5) {
@@ -190,18 +192,18 @@ export class Player extends Laya.Script {
                     });
                     deduceResult.push({chess:chesses[i], reason:"kick"});
                 } else {
-                    deduceResult.push({chess:chesses[i], reason:"advance"});
+                    deduceLast.push({chess:chesses[i], reason:"advance"});
                 }
             }else {
                 let currentHoleNumber:number = Number.parseInt(chess.hole.name);
                 if (currentHoleNumber + diceNumber == 5) {
                     deduceResult.unshift({chess:chesses[i], reason:"home"});
                 } else {
-                    deduceResult.push({chess:chesses[i], reason:"advance"});
+                    deduceLast.push({chess:chesses[i], reason:"advance"});
                 }
             } 
         }
-        complete.runWith([deduceResult]);
+        complete.runWith([deduceResult.concat(deduceLast)]);
     }
 
     public isAllHome() {
@@ -221,7 +223,7 @@ export class Player extends Laya.Script {
 
     public getKickChesses(route:Route) {
         let resultChesses:Chess[] = [];
-        if (route.safe) {
+        if (route.safe == Safe.yes) {
             return resultChesses;
         }
         

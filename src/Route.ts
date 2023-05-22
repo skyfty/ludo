@@ -1,8 +1,8 @@
 const { regClass, property } = Laya;
 
-enum Safe {
-    yes,
-    no
+export enum Safe {
+    no,
+    yes
 };
 
 @regClass()
@@ -14,6 +14,7 @@ export class Route extends Laya.Script {
     @property( { type : Safe } )
     safe : Safe = Safe.no;
 
+    @property([Laya.Sprite])
     public chess:Laya.Sprite[] = [];
 
     constructor() {
