@@ -30,7 +30,7 @@ export class Oneself extends Performer {
     }
 
     private onRollTimeout() {
-        this.currentDiceNumber = 5;//Math.floor(Math.random()* 6);
+        this.currentDiceNumber = Math.floor(Math.random()* 6);
         this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
     }
 

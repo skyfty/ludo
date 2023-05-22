@@ -1,5 +1,5 @@
 import { Player } from "./Player";
-import { Route } from "./Route";
+import * as Route from "./Route";
 
 const { regClass, property} = Laya;
 
@@ -39,8 +39,10 @@ export class Chess extends Laya.Script {
         let destPoint = parent.localToGlobal(new Laya.Point(dest.x,dest.y));
         Laya.Tween.to(ownerSprite, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
             this.pass(dest);
+            this.hole.event(Route.Event.Exit,[ownerSprite]);
             this.hole = dest;
             parent.addChild(ownerSprite.pos(dest.x, dest.y));
+            this.hole.event(Route.Event.Enter),[ownerSprite];
             complete.run();
         }));
     }
@@ -83,14 +85,14 @@ export class Chess extends Laya.Script {
     }
 
     private pass(nextHole:Laya.Sprite) {
-        let route = this.hole.getComponent(Route);
+        let route = this.hole.getComponent(Route.Route);
         if (route != null) {
             let idx = route.chess.indexOf(this.owner as Laya.Sprite);
             if (idx != -1) {
                 route.chess.splice(idx, 1);
             }
         }
-        let nextRoute = nextHole.getComponent(Route);
+        let nextRoute = nextHole.getComponent(Route.Route);
         if (nextRoute != null) {
             nextRoute.chess.push(this.owner as Laya.Sprite);
             nextRoute.puddleAni(this.player.owner.name);
@@ -129,7 +131,9 @@ export class Chess extends Laya.Script {
         let destPoint = new Laya.Point(nextHole.x,nextHole.y);
         Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, duration, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
             this.pass(nextHole);
+            this.hole.event(Route.Event.Exit,[this.owner]);
             this.hole = nextHole;
+            this.hole.event(Route.Event.Enter,[this.owner]);
             complete.run();
         }));
     }

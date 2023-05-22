@@ -1,5 +1,5 @@
 import { Chess } from "./Chess";
-import { Route, Safe } from "./Route";
+import * as Route from "./Route";
 
 const { regClass, property } = Laya;
 
@@ -104,21 +104,6 @@ export class Player extends Laya.Script {
         this.diceDefault.index = idx;
     }
 
-    private scaleChessInHole(node:Laya.Sprite) {
-        // for(let i = 0;i < this.chippy.length - 1;++i) {
-        //     let child = this.chippy[i] as Laya.Sprite;
-        //     let childChess = child.getComponent(Chess) as Chess;
-        //     for(let j = i + 1;j < this.chippy.length;++j) {
-        //         let nextChild = this.chippy[j] as Laya.Sprite;
-        //         let nextChildChess = nextChild.getComponent(Chess) as Chess;
-        //         if (childChess.hole == nextChildChess.hole) {
-        //             child.scale(0.5, 0.5);
-        //             nextChild.scale(0.5, 0.5);
-        //         }
-        //     }
-        // }
-    }
-
 
     public startRoll() {
         this.diceDefault.visible = false;
@@ -185,7 +170,7 @@ export class Player extends Laya.Script {
                 deduceResult.push({chess:chesses[i], reason:"entry"});
             } else if (chesses[i].parent == this.universal) {
                 let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber + 1);
-                let resultChesses = this.getKickChesses(nextHole.getComponent(Route));
+                let resultChesses = this.getKickChesses(nextHole.getComponent(Route.Route));
                 if (resultChesses.length > 0) {
                     resultChesses.map((c)=>{
                         c.kicked();
@@ -203,6 +188,7 @@ export class Player extends Laya.Script {
                 }
             } 
         }
+        deduceLast.sort(() => Math.random() - 0.5);
         complete.runWith([deduceResult.concat(deduceLast)]);
     }
 
@@ -210,7 +196,7 @@ export class Player extends Laya.Script {
         return this.home.length == 4;
     }
 
-    private getChesses(route:Route, player:Player) {
+    private getChesses(route:Route.Route, player:Player) {
         let chesses:Chess[] = [];
         for(let i = 0; i < route.chess.length; ++i) {
             let chess = route.chess[i].getComponent(Chess) as Chess;
@@ -221,9 +207,9 @@ export class Player extends Laya.Script {
         return chesses;
     }
 
-    public getKickChesses(route:Route) {
+    public getKickChesses(route:Route.Route) {
         let resultChesses:Chess[] = [];
-        if (route.safe == Safe.yes) {
+        if (route.safe == Route.Safe.yes) {
             return resultChesses;
         }
         
@@ -241,7 +227,7 @@ export class Player extends Laya.Script {
         return resultChesses;
     }
 
-    private kick(route:Route) {
+    private kick(route:Route.Route) {
         let chesses = this.getKickChesses(route);
         chesses.map((chess:Chess)=>{
             chess.revert(Laya.Handler.create(this, ()=>{}));
@@ -250,7 +236,6 @@ export class Player extends Laya.Script {
 
     private onAdvanceComplete(node:Laya.Sprite, complete: Laya.Handler) {
         let chess = node.getComponent(Chess) as Chess;
-        this.scaleChessInHole(node);
 
         if (chess.hole == this.goal) {
             let idx = this.chippy.indexOf(node);
@@ -263,7 +248,7 @@ export class Player extends Laya.Script {
             this.crown.visible = true;
             this.crown.getComponent(Laya.Animator2D).play("elastic");
         } else {
-            let route = chess.hole.getComponent(Route);
+            let route = chess.hole.getComponent(Route.Route);
             this.kick(route);
         }
 

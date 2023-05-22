@@ -15,15 +15,31 @@
   // src/Route.ts
   var { regClass, property } = Laya;
   var Safe = /* @__PURE__ */ ((Safe2) => {
-    Safe2[Safe2["yes"] = 0] = "yes";
-    Safe2[Safe2["no"] = 1] = "no";
+    Safe2[Safe2["no"] = 0] = "no";
+    Safe2[Safe2["yes"] = 1] = "yes";
     return Safe2;
   })(Safe || {});
+  var Event = class {
+  };
+  __name(Event, "Event");
+  Event.Enter = "ROUTE_ENTER";
+  Event.Exit = "ROUTE_EXIT";
   var Route = class extends Laya.Script {
     constructor() {
       super();
-      this.safe = 1 /* no */;
+      this.safe = 0 /* no */;
       this.chess = [];
+    }
+    onAwake() {
+      super.onAwake();
+      this.owner.on(Event.Enter, this, this.onChessEnter);
+      this.owner.on(Event.Exit, this, this.onChessExit);
+    }
+    onChessEnter(node) {
+      this.scaleChess();
+    }
+    onChessExit(node) {
+      this.scaleChess();
     }
     puddleAni(color) {
       let idxs = { "red": [0, 5], "green": [6, 11], "yellow": [12, 17], "blue": [18, 23] }[color];
@@ -33,6 +49,42 @@
         this.puddle.visible = false;
       });
     }
+    scaleChess() {
+      let hole = this.owner;
+      if (this.chess.length == 1) {
+        this.chess[0].scale(1, 1).pos(hole.x, hole.y);
+      } else if (this.chess.length == 2) {
+        this.chess[0].scale(0.7, 0.7).pos(hole.x, hole.y);
+        this.chess[1].scale(0.7, 0.7).pos(hole.x + 14, hole.y + 14);
+      } else if (this.chess.length == 3) {
+        this.chess[0].scale(0.7, 0.7).pos(hole.x - 6, hole.y - 5);
+        this.chess[1].scale(0.7, 0.7).pos(hole.x + 15, hole.y - 5);
+        this.chess[2].scale(0.7, 0.7).pos(hole.x + 6, hole.y + 14);
+      } else if (this.chess.length == 4) {
+        this.chess[0].scale(0.7, 0.7).pos(hole.x - 6, hole.y - 5);
+        this.chess[1].scale(0.7, 0.7).pos(hole.x + 15, hole.y - 5);
+        this.chess[2].scale(0.7, 0.7).pos(hole.x - 6, hole.y + 14);
+        this.chess[3].scale(0.7, 0.7).pos(hole.x + 15, hole.y + 14);
+      } else if (this.chess.length == 5) {
+        this.chess[0].scale(0.6, 0.6).pos(hole.x - 6, hole.y - 6);
+        this.chess[1].scale(0.6, 0.6).pos(hole.x + 19, hole.y - 6);
+        this.chess[2].scale(0.6, 0.6).pos(hole.x - 6, hole.y + 20);
+        this.chess[3].scale(0.6, 0.6).pos(hole.x + 19, hole.y + 20);
+        this.chess[4].scale(0.6, 0.6).pos(hole.x + 7, hole.y + 7);
+      } else {
+        let x = 0;
+        let y = hole.y - 20;
+        for (let i = 0; i < this.chess.length; ++i) {
+          if (i % 3 == 0) {
+            y += 15;
+            x = hole.x - 6;
+          } else {
+            x += 15;
+          }
+          this.chess[i].scale(0.5, 0.5).pos(x, y);
+        }
+      }
+    }
   };
   __name(Route, "Route");
   __decorateClass([
@@ -41,23 +93,26 @@
   __decorateClass([
     property({ type: Safe })
   ], Route.prototype, "safe", 2);
+  __decorateClass([
+    property([Laya.Sprite])
+  ], Route.prototype, "chess", 2);
   Route = __decorateClass([
     regClass("f65b0a36-8072-43b6-ba82-0cc45e25162f", "../src/Route.ts")
   ], Route);
 
   // src/Player.ts
   var { regClass: regClass2, property: property2 } = Laya;
-  var Event = class {
+  var Event2 = class {
   };
-  __name(Event, "Event");
-  Event.EntryRoom = "ENTRY_ROOM";
-  Event.ExitRoom = "EXIT_ROOM";
-  Event.StateChange = "STATE_CHANGE";
-  Event.RollStart = "ROLL_START";
-  Event.RollEnd = "ROLL_END";
-  Event.Choose = "CHOOSE";
-  Event.Achieve = "ACHIEVE";
-  Event.Victory = "VICTORY";
+  __name(Event2, "Event");
+  Event2.EntryRoom = "ENTRY_ROOM";
+  Event2.ExitRoom = "EXIT_ROOM";
+  Event2.StateChange = "STATE_CHANGE";
+  Event2.RollStart = "ROLL_START";
+  Event2.RollEnd = "ROLL_END";
+  Event2.Choose = "CHOOSE";
+  Event2.Achieve = "ACHIEVE";
+  Event2.Victory = "VICTORY";
   var Type = /* @__PURE__ */ ((Type2) => {
     Type2[Type2["Online"] = 0] = "Online";
     Type2[Type2["Computer"] = 1] = "Computer";
@@ -80,7 +135,7 @@
       this.numberPersonalHold = this.personal.numChildren;
     }
     onStart() {
-      this.owner.on(Event.StateChange, this, this.onStateChange);
+      this.owner.on(Event2.StateChange, this, this.onStateChange);
     }
     onStateChange(state) {
     }
@@ -88,8 +143,6 @@
       this.diceDefault.visible = true;
       this.diceRoll.visible = false;
       this.diceDefault.index = idx;
-    }
-    scaleChessInHole(node) {
     }
     startRoll() {
       this.diceDefault.visible = false;
@@ -129,40 +182,45 @@
     getUniversalNextNumber(currentNumber, step) {
       let num = currentNumber + step;
       if (num > this.numberUniversalHold) {
-        num = num - this.numberUniversalHold;
+        num = num - this.numberUniversalHold + 1;
       } else if (num < 0) {
         num = this.numberUniversalHold - num;
       }
       return num;
     }
-    getUniversalNextHole(currentNumber, diceNumber) {
-      let nextNumber = this.getUniversalNextNumber(currentNumber, diceNumber);
+    getUniversalNextHole(currentNumber, step) {
+      let nextNumber = this.getUniversalNextNumber(currentNumber, step);
       return this.universal.getChildByName(nextNumber.toString());
     }
     deduce(diceNumber, chesses, complete) {
       let deduceResult = [];
+      let deduceLast = [];
       for (let i = 0; i < chesses.length; ++i) {
         let chess = chesses[i].getComponent(Chess);
         if (chesses[i].parent == this.groove && diceNumber == 5) {
           deduceResult.push({ chess: chesses[i], reason: "entry" });
         } else if (chesses[i].parent == this.universal) {
-          let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber);
+          let nextHole = this.getUniversalNextHole(Number.parseInt(chess.hole.name), diceNumber + 1);
           let resultChesses = this.getKickChesses(nextHole.getComponent(Route));
           if (resultChesses.length > 0) {
+            resultChesses.map((c) => {
+              c.kicked();
+            });
             deduceResult.push({ chess: chesses[i], reason: "kick" });
           } else {
-            deduceResult.push({ chess: chesses[i], reason: "advance" });
+            deduceLast.push({ chess: chesses[i], reason: "advance" });
           }
         } else {
           let currentHoleNumber = Number.parseInt(chess.hole.name);
           if (currentHoleNumber + diceNumber == 5) {
             deduceResult.unshift({ chess: chesses[i], reason: "home" });
           } else {
-            deduceResult.push({ chess: chesses[i], reason: "advance" });
+            deduceLast.push({ chess: chesses[i], reason: "advance" });
           }
         }
       }
-      complete.runWith([deduceResult]);
+      deduceLast.sort(() => Math.random() - 0.5);
+      complete.runWith([deduceResult.concat(deduceLast)]);
     }
     isAllHome() {
       return this.home.length == 4;
@@ -179,7 +237,7 @@
     }
     getKickChesses(route) {
       let resultChesses = [];
-      if (route.safe) {
+      if (route.safe == 1 /* yes */) {
         return resultChesses;
       }
       for (let i = 0; i < route.chess.length; ++i) {
@@ -203,8 +261,6 @@
     }
     onAdvanceComplete(node, complete) {
       let chess = node.getComponent(Chess);
-      this.scaleChessInHole(node);
-      chess.kick();
       if (chess.hole == this.goal) {
         let idx = this.chippy.indexOf(node);
         if (idx != -1) {
@@ -271,6 +327,9 @@
   __decorateClass([
     property2(Laya.Prefab)
   ], Player.prototype, "chessPrefab", 2);
+  __decorateClass([
+    property2([Laya.Sprite])
+  ], Player.prototype, "chippy", 2);
   Player = __decorateClass([
     regClass2("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
   ], Player);
@@ -293,8 +352,10 @@
       let destPoint = parent.localToGlobal(new Laya.Point(dest.x, dest.y));
       Laya.Tween.to(ownerSprite, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
         this.pass(dest);
+        this.hole.event(Event.Exit, [ownerSprite]);
         this.hole = dest;
         parent.addChild(ownerSprite.pos(dest.x, dest.y));
+        this.hole.event(Event.Enter), [ownerSprite];
         complete.run();
       }));
     }
@@ -377,7 +438,9 @@
       let destPoint = new Laya.Point(nextHole.x, nextHole.y);
       Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, duration, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
         this.pass(nextHole);
+        this.hole.event(Event.Exit, [this.owner]);
         this.hole = nextHole;
+        this.hole.event(Event.Enter, [this.owner]);
         complete.run();
       }));
     }
@@ -388,7 +451,7 @@
       this.shoe.visible = false;
       this.chess.getComponent(Laya.Animator2D).play("idle");
     }
-    kick() {
+    kicked() {
       this.shoe.visible = true;
       this.chess.getComponent(Laya.Animator2D).play("kick");
     }
@@ -428,7 +491,7 @@
     }
     setState(state) {
       this.state = state;
-      this.owner.event(Event.StateChange, [state]);
+      this.owner.event(Event2.StateChange, [state]);
     }
   };
   __name(Performer, "Performer");
@@ -443,7 +506,7 @@
       super();
     }
     onStart() {
-      this.owner.on(Event.StateChange, this, this.onStateChange);
+      this.owner.on(Event2.StateChange, this, this.onStateChange);
     }
     onStateChange() {
       if (this.state != 1 /* Running */) {
@@ -452,30 +515,30 @@
       this.startRoll();
     }
     startRoll() {
-      this.owner.event(Event.RollStart, this.owner);
+      this.owner.event(Event2.RollStart, this.owner);
       this.player.startRoll();
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
-      this.currentDiceNumber = 5;
+      this.currentDiceNumber = Math.floor(Math.random() * 6);
       this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
-      this.owner.event(Event.RollEnd, [this.owner, this.currentDiceNumber]);
+      this.owner.event(Event2.RollEnd, [this.owner, this.currentDiceNumber]);
       this.player.setDiceNumber(this.currentDiceNumber);
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
-        this.owner.event(Event.Choose, [this.owner]);
+        this.owner.event(Event2.Choose, [this.owner]);
         this.player.hopChesses(chesses);
-        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, this.onDeduceComplete));
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+          Laya.timer.once(500, this, () => {
+            this.player.stopChesses(chesses);
+            this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
+          });
+        }));
       } else {
-        this.owner.event(Event.Achieve, null);
+        this.owner.event(Event2.Achieve, null);
       }
-    }
-    onDeduceComplete(deduceResult) {
-      Laya.timer.once(2e3, this, () => {
-        this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
-      });
     }
     onAdvanceComplete(node) {
       let chess = node.getComponent(Chess);
@@ -483,9 +546,9 @@
         this.startRoll();
         return;
       }
-      this.owner.event(Event.Achieve, node);
+      this.owner.event(Event2.Achieve, node);
       if (this.player.isAllHome()) {
-        this.owner.event(Event.Victory);
+        this.owner.event(Event2.Victory);
       }
     }
   };
@@ -542,7 +605,7 @@
       super();
     }
     onStart() {
-      this.owner.on(Event.StateChange, this, this.onStateChange);
+      this.owner.on(Event2.StateChange, this, this.onStateChange);
     }
     onStateChange() {
       if (this.state == 1 /* Running */) {
@@ -585,7 +648,7 @@
         "avatar": ""
       };
       for (let i = 0; i < this.num; ++i) {
-        this.owner.event(Event.EntryRoom, [Intelligent.colors[i], 1 /* Computer */, Event.EntryRoom, info]);
+        this.owner.event(Event2.EntryRoom, [Intelligent.colors[i], 1 /* Computer */, Event2.EntryRoom, info]);
       }
     }
   };
@@ -625,26 +688,26 @@
         return;
       }
       this.isAdvanceing = true;
-      this.owner.event(Event.RollStart, this.owner);
+      this.owner.event(Event2.RollStart, this.owner);
       this.player.startRoll();
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
-      this.currentDiceNumber = 5;
+      this.currentDiceNumber = Math.floor(Math.random() * 6);
       this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
-      this.owner.event(Event.RollEnd, [this.owner, this.currentDiceNumber]);
+      this.owner.event(Event2.RollEnd, [this.owner, this.currentDiceNumber]);
       this.player.setDiceNumber(this.currentDiceNumber);
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
-        this.owner.event(Event.Choose, [this.owner]);
+        this.owner.event(Event2.Choose, [this.owner]);
         this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, () => {
           this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
         }));
       } else {
         this.isAdvanceing = false;
-        this.owner.event(Event.Achieve, null);
+        this.owner.event(Event2.Achieve, null);
       }
     }
     onChooseChessesComplete(chess) {
@@ -656,9 +719,9 @@
       if (chess.hole == this.player.entry) {
         return;
       }
-      this.owner.event(Event.Achieve, node);
+      this.owner.event(Event2.Achieve, node);
       if (this.player.isAllHome()) {
-        this.owner.event(Event.Victory);
+        this.owner.event(Event2.Victory);
       }
     }
     onReckonMultiChessComplete(chesses, complete) {
@@ -713,7 +776,7 @@
         "name": "sdfsdf",
         "avatar": ""
       };
-      this.owner.event(Event.EntryRoom, ["red", 2 /* Oneself */, Event.EntryRoom, info]);
+      this.owner.event(Event2.EntryRoom, ["red", 2 /* Oneself */, Event2.EntryRoom, info]);
     }
   };
   __name(Principal, "Principal");
@@ -740,16 +803,16 @@
       this.yellowPlayer.visible = false;
     }
     initEventListener() {
-      this.redPlayer.on(Event.Achieve, this, this.onAchieve);
-      this.greenPlayer.on(Event.Achieve, this, this.onAchieve);
-      this.yellowPlayer.on(Event.Achieve, this, this.onAchieve);
-      this.bluePlayer.on(Event.Achieve, this, this.onAchieve);
-      this.redPlayer.on(Event.Victory, this, this.onVictory);
-      this.greenPlayer.on(Event.Victory, this, this.onVictory);
-      this.yellowPlayer.on(Event.Victory, this, this.onVictory);
-      this.bluePlayer.on(Event.Victory, this, this.onVictory);
-      this.owner.on(Event.EntryRoom, this, this.onEntryRoom);
-      this.owner.on(Event.ExitRoom, this, this.onExitRoom);
+      this.redPlayer.on(Event2.Achieve, this, this.onAchieve);
+      this.greenPlayer.on(Event2.Achieve, this, this.onAchieve);
+      this.yellowPlayer.on(Event2.Achieve, this, this.onAchieve);
+      this.bluePlayer.on(Event2.Achieve, this, this.onAchieve);
+      this.redPlayer.on(Event2.Victory, this, this.onVictory);
+      this.greenPlayer.on(Event2.Victory, this, this.onVictory);
+      this.yellowPlayer.on(Event2.Victory, this, this.onVictory);
+      this.bluePlayer.on(Event2.Victory, this, this.onVictory);
+      this.owner.on(Event2.EntryRoom, this, this.onEntryRoom);
+      this.owner.on(Event2.ExitRoom, this, this.onExitRoom);
     }
     onStart() {
       this.numberOfPlayer = 2;
@@ -759,6 +822,9 @@
       this.owner.addComponentInstance(new Online());
     }
     onVictory(player) {
+      this.players.map((node) => {
+        node.getComponent(Performer).setState(0 /* Idle */);
+      });
     }
     onAchieve(player) {
       let current = this.players[this.currentIdx].getComponent(Performer);

@@ -28,7 +28,7 @@ export class Computer extends Performer {
     }
 
     private onRollTimeout() {
-        this.currentDiceNumber = 5;//Math.floor(Math.random()* 6);
+        this.currentDiceNumber = Math.floor(Math.random()* 6);
         this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
     }
 
@@ -39,17 +39,15 @@ export class Computer extends Performer {
         if (chesses.length > 0) {
             this.owner.event(Player.Event.Choose, [this.owner]);
             this.player.hopChesses(chesses);
-            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, this.onDeduceComplete));
+            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult:Player.DeduceResult[])=>{
+                Laya.timer.once(500, this, ()=>{
+                    this.player.stopChesses(chesses);
+                    this.player.advance(deduceResult[0].chess, this.currentDiceNumber,Laya.Handler.create(this,  this.onAdvanceComplete));
+                });
+            }));
         } else {
             this.owner.event(Player.Event.Achieve, null);
         }
-    }
-
-    private onDeduceComplete(deduceResult:Player.DeduceResult[]) {
-        // let idx = Math.floor(Math.random()* chesses.length);
-        Laya.timer.once(2000, this, ()=>{
-            this.player.advance(deduceResult[0].chess, this.currentDiceNumber,Laya.Handler.create(this,  this.onAdvanceComplete));
-        });
     }
 
     private onAdvanceComplete(node:Laya.Sprite) {

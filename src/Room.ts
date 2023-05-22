@@ -65,20 +65,21 @@ export class Room extends Laya.Script {
     }
 
     onVictory(player:Laya.Sprite) {
-
-        
+        this.players.map((node:Laya.Sprite)=>{
+            node.getComponent(Performer).setState(Player.State.Idle);
+        });
     }
 
     onAchieve(player:Laya.Sprite) {
-        // let current = this.players[this.currentIdx].getComponent(Performer);
-        // current.setState(Player.State.Idle);
-        // if (this.currentIdx == this.players.length - 1) {
-        //     this.currentIdx = 0;
-        // } else {
-        //     this.currentIdx++;
-        // }
-        // let next = this.players[this.currentIdx].getComponent(Performer);
-        // next.setState(Player.State.Running);
+        let current = this.players[this.currentIdx].getComponent(Performer);
+        current.setState(Player.State.Idle);
+        if (this.currentIdx == this.players.length - 1) {
+            this.currentIdx = 0;
+        } else {
+            this.currentIdx++;
+        }
+        let next = this.players[this.currentIdx].getComponent(Performer);
+        next.setState(Player.State.Running);
     }
 
     private getPlayer(color:string) {
