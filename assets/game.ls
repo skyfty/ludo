@@ -8,6 +8,7 @@
   "top": 0,
   "bottom": 0,
   "name": "game",
+  "autoDestroyAtClosed": true,
   "_$comp": [
     {
       "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b",
@@ -204,7 +205,21 @@
           "active": true,
           "x": -299,
           "y": -3,
-          "visible": true
+          "visible": true,
+          "_$child": [
+            {
+              "_$id": "qlgm84dy",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 7,
+              "y": 10,
+              "width": 28,
+              "height": 16,
+              "skin": "res://ff425710-3b43-48b1-bc29-25c6c371a0bd",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            }
+          ]
         },
         {
           "_$id": "0dhkgcuk",
@@ -364,7 +379,21 @@
           "active": true,
           "x": -2,
           "y": -299,
-          "visible": true
+          "visible": true,
+          "_$child": [
+            {
+              "_$id": "u8yhtogm",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 10,
+              "y": 6,
+              "width": 16,
+              "height": 28,
+              "skin": "res://667d58c7-87c5-440d-ac59-b7a4cf41368e",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            }
+          ]
         },
         {
           "_$id": "6es96uai",
@@ -524,7 +553,21 @@
           "active": true,
           "x": 293,
           "y": -3,
-          "visible": true
+          "visible": true,
+          "_$child": [
+            {
+              "_$id": "48kwqhlk",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 3,
+              "y": 11,
+              "width": 28,
+              "height": 16,
+              "skin": "res://1f919408-a275-4dad-8bcd-3111b7cd3dd9",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            }
+          ]
         },
         {
           "_$id": "bwnimtrx",
@@ -2239,6 +2282,36 @@
               "visible": false
             }
           ]
+        }
+      ]
+    },
+    {
+      "_$id": "a5gt28ns",
+      "_$type": "Box",
+      "name": "toolbar",
+      "x": 18,
+      "y": 24,
+      "width": 598,
+      "height": 34,
+      "mouseEnabled": true,
+      "_$comp": [
+        {
+          "_$type": "2eaec3fb-1805-4cbc-89c7-008aa7b68c01",
+          "scriptPath": "../src/GameToolbar.ts",
+          "backButton": {
+            "_$ref": "hlessq2o"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "hlessq2o",
+          "_$type": "Image",
+          "name": "back",
+          "width": 40,
+          "height": 40,
+          "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+          "color": "#ffffff"
         }
       ]
     }
