@@ -3,18 +3,24 @@ import { Performer } from "./Performer";
 import * as Player from "./Player";
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Chess } from "./Chess";
+import { Trade } from "./Trade";
 
 @regClass()
 export class Extreme extends Performer {
     constructor() {
         super();
     }
-
-    onStart(): void {
+    onAwake(): void {
+        super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
+    }
+    onStart(): void {
+        this.owner.event(Player.Event.StateChange);
     }
 
     onStateChange() {
+        let trade = this.player.trade.getComponent(Trade);
+        trade.disabled(this.state != Player.State.Running);
     }
 
     public processEvent(inEvent:any) {

@@ -2,6 +2,7 @@ const { regClass, property } = Laya;
 import { Chess } from "./Chess";
 import { Performer } from "./Performer";
 import * as Player from "./Player";
+import { Trade } from "./Trade";
 
 @regClass()
 export class Oneself extends Performer {
@@ -20,15 +21,17 @@ export class Oneself extends Performer {
      */
     onStart(): void {
         this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+        this.owner.event(Player.Event.StateChange);
     }
 
     onStateChange(state:Player.State) {
-        let ani = this.player.trade.getComponent(Laya.Animator2D);
+        let trade = this.player.trade.getComponent(Trade);
         if (this.state != Player.State.Running) {
-            ani.play("idle");
+            trade.stop();
         } else {
-            ani.play("becareful");
+            trade.becareful();
         }
+        trade.disabled(this.state != Player.State.Running);
     }
 
     onClickTrade() {
@@ -43,7 +46,7 @@ export class Oneself extends Performer {
     }
 
     private onRollTimeout() {
-        this.currentDiceNumber = 5;//Math.floor(Math.random()* 6);
+        this.currentDiceNumber = Math.floor(Math.random()* 6);
         this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
     }
 

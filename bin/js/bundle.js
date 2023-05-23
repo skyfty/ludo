@@ -10736,9 +10736,9 @@
       chesses.map((chess) => {
         chess.stop();
         chess.revert(Laya.Handler.create(this, () => {
-          let idx = this.chippy.indexOf(chess.owner);
+          let idx = chess.player.chippy.indexOf(chess.owner);
           if (idx != -1) {
-            this.chippy.splice(idx, 1);
+            chess.player.chippy.splice(idx, 1);
           }
         }));
       });
@@ -10978,20 +10978,51 @@
     regClass4("a1b4fee2-5dd4-483e-bf42-a9f391634e69", "../src/Performer.ts")
   ], Performer);
 
-  // src/Computer.ts
+  // src/Trade.ts
   var { regClass: regClass5, property: property5 } = Laya;
+  var Trade = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    stop() {
+      let ani = this.owner.getComponent(Laya.Animator2D);
+      ani.play("idle");
+    }
+    disabled(b) {
+      this.disabledBk.visible = b;
+    }
+    becareful() {
+      let ani = this.owner.getComponent(Laya.Animator2D);
+      ani.play("becareful");
+    }
+  };
+  __name(Trade, "Trade");
+  __decorateClass([
+    property5(Laya.Image)
+  ], Trade.prototype, "disabledBk", 2);
+  Trade = __decorateClass([
+    regClass5("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
+  ], Trade);
+
+  // src/Computer.ts
+  var { regClass: regClass6, property: property6 } = Laya;
   var Computer = class extends Performer {
     constructor() {
       super();
     }
-    onStart() {
+    onAwake() {
+      super.onAwake();
       this.owner.on(Event2.StateChange, this, this.onStateChange);
     }
+    onStart() {
+      this.owner.event(Event2.StateChange);
+    }
     onStateChange() {
-      if (this.state != 1 /* Running */) {
-        return;
+      let trade = this.player.trade.getComponent(Trade);
+      if (this.state == 1 /* Running */) {
+        this.startRoll();
       }
-      this.startRoll();
+      trade.disabled(this.state != 1 /* Running */);
     }
     startRoll() {
       this.owner.event(Event2.RollStart, this.owner);
@@ -11033,20 +11064,20 @@
   };
   __name(Computer, "Computer");
   Computer = __decorateClass([
-    regClass5("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
+    regClass6("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
   ], Computer);
 
   // src/Dialog.ts
-  var { regClass: regClass6, property: property6 } = Laya;
+  var { regClass: regClass7, property: property7 } = Laya;
   var Dialog = class extends Laya.Dialog {
   };
   __name(Dialog, "Dialog");
   Dialog = __decorateClass([
-    regClass6("b162ad1a-cdc1-48a5-bc94-b89651a443fa", "../src/Dialog.ts")
+    regClass7("b162ad1a-cdc1-48a5-bc94-b89651a443fa", "../src/Dialog.ts")
   ], Dialog);
 
   // src/Dice.ts
-  var { regClass: regClass7, property: property7 } = Laya;
+  var { regClass: regClass8, property: property8 } = Laya;
   var Dice = class extends Laya.Script {
     constructor() {
       super();
@@ -11054,11 +11085,11 @@
   };
   __name(Dice, "Dice");
   Dice = __decorateClass([
-    regClass7("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
+    regClass8("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
   ], Dice);
 
   // src/Door.ts
-  var { regClass: regClass8, property: property8 } = Laya;
+  var { regClass: regClass9, property: property9 } = Laya;
   var Door = class extends Laya.Script {
     constructor() {
       super();
@@ -11066,14 +11097,14 @@
   };
   __name(Door, "Door");
   __decorateClass([
-    property8(Laya.Sprite)
+    property9(Laya.Sprite)
   ], Door.prototype, "player", 2);
   Door = __decorateClass([
-    regClass8("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
+    regClass9("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
   ], Door);
 
   // src/Entry.ts
-  var { regClass: regClass9, property: property9 } = Laya;
+  var { regClass: regClass10, property: property10 } = Laya;
   var Entry = class extends Laya.Script {
     //declare owner : Laya.Sprite3D;
     constructor() {
@@ -11082,19 +11113,25 @@
   };
   __name(Entry, "Entry");
   Entry = __decorateClass([
-    regClass9("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
+    regClass10("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
   ], Entry);
 
   // src/Extreme.ts
-  var { regClass: regClass10, property: property10 } = Laya;
+  var { regClass: regClass11, property: property11 } = Laya;
   var Extreme = class extends Performer {
     constructor() {
       super();
     }
-    onStart() {
+    onAwake() {
+      super.onAwake();
       this.owner.on(Event2.StateChange, this, this.onStateChange);
     }
+    onStart() {
+      this.owner.event(Event2.StateChange);
+    }
     onStateChange() {
+      let trade = this.player.trade.getComponent(Trade);
+      trade.disabled(this.state != 1 /* Running */);
     }
     processEvent(inEvent) {
       switch (inEvent.event) {
@@ -11156,11 +11193,11 @@
   };
   __name(Extreme, "Extreme");
   Extreme = __decorateClass([
-    regClass10("054e9a6b-c8fa-4318-af0a-6684a99b4f50", "../src/Extreme.ts")
+    regClass11("054e9a6b-c8fa-4318-af0a-6684a99b4f50", "../src/Extreme.ts")
   ], Extreme);
 
   // src/Oneself.ts
-  var { regClass: regClass11, property: property11 } = Laya;
+  var { regClass: regClass12, property: property12 } = Laya;
   var Oneself = class extends Performer {
     constructor() {
       super();
@@ -11175,14 +11212,16 @@
      */
     onStart() {
       this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+      this.owner.event(Event2.StateChange);
     }
     onStateChange(state) {
-      let ani = this.player.trade.getComponent(Laya.Animator2D);
+      let trade = this.player.trade.getComponent(Trade);
       if (this.state != 1 /* Running */) {
-        ani.play("idle");
+        trade.stop();
       } else {
-        ani.play("becareful");
+        trade.becareful();
       }
+      trade.disabled(this.state != 1 /* Running */);
     }
     onClickTrade() {
       if (this.state != 1 /* Running */ || this.isAdvanceing) {
@@ -11194,7 +11233,7 @@
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
-      this.currentDiceNumber = 5;
+      this.currentDiceNumber = Math.floor(Math.random() * 6);
       this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
@@ -11251,11 +11290,11 @@
   };
   __name(Oneself, "Oneself");
   Oneself = __decorateClass([
-    regClass11("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
+    regClass12("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
   ], Oneself);
 
   // src/Room.ts
-  var { regClass: regClass12, property: property12 } = Laya;
+  var { regClass: regClass13, property: property13 } = Laya;
   var Room = class extends Laya.Script {
     constructor() {
       super();
@@ -11366,24 +11405,24 @@
   };
   __name(Room, "Room");
   __decorateClass([
-    property12(Laya.Sprite)
+    property13(Laya.Sprite)
   ], Room.prototype, "redPlayer", 2);
   __decorateClass([
-    property12(Laya.Sprite)
+    property13(Laya.Sprite)
   ], Room.prototype, "greenPlayer", 2);
   __decorateClass([
-    property12(Laya.Sprite)
+    property13(Laya.Sprite)
   ], Room.prototype, "bluePlayer", 2);
   __decorateClass([
-    property12(Laya.Sprite)
+    property13(Laya.Sprite)
   ], Room.prototype, "yellowPlayer", 2);
   Room = __decorateClass([
-    regClass12("fed491b4-6b8a-46f9-8167-977c47e8a79b", "../src/Room.ts")
+    regClass13("fed491b4-6b8a-46f9-8167-977c47e8a79b", "../src/Room.ts")
   ], Room);
 
   // src/Online.ts
   var SFS2X = __toESM(require_sfs2x_api());
-  var { regClass: regClass13, property: property13 } = Laya;
+  var { regClass: regClass14, property: property14 } = Laya;
   var Online = class extends Laya.Script {
     constructor(st) {
       super();
@@ -11425,12 +11464,12 @@
   };
   __name(Online, "Online");
   Online = __decorateClass([
-    regClass13("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
+    regClass14("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
   ], Online);
 
   // src/Sender.ts
   var SFS2X2 = __toESM(require_sfs2x_api());
-  var { regClass: regClass14, property: property14 } = Laya;
+  var { regClass: regClass15, property: property15 } = Laya;
   var Sender = class extends Laya.Script {
     constructor(st) {
       super();
@@ -11479,11 +11518,11 @@
   };
   __name(Sender, "Sender");
   Sender = __decorateClass([
-    regClass14("6390de23-70be-4e01-af2f-17838191304f", "../src/Sender.ts")
+    regClass15("6390de23-70be-4e01-af2f-17838191304f", "../src/Sender.ts")
   ], Sender);
 
   // src/Game.ts
-  var { regClass: regClass15, property: property15 } = Laya;
+  var { regClass: regClass16, property: property16 } = Laya;
   var Game = class extends Laya.Scene {
     constructor() {
       super();
@@ -11537,11 +11576,11 @@
   __name(Game, "Game");
   Game.colors = ["yellow", "green", "blue"];
   Game = __decorateClass([
-    regClass15("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
+    regClass16("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
   ], Game);
 
   // src/Groove.ts
-  var { regClass: regClass16, property: property16 } = Laya;
+  var { regClass: regClass17, property: property17 } = Laya;
   var Groove = class extends Laya.Script {
     constructor() {
       super();
@@ -11554,23 +11593,23 @@
   };
   __name(Groove, "Groove");
   Groove = __decorateClass([
-    regClass16("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
+    regClass17("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
   ], Groove);
 
   // src/Lunch.ts
-  var { regClass: regClass17, property: property17 } = Laya;
+  var { regClass: regClass18, property: property18 } = Laya;
   var Lunch = class extends Laya.Script {
     onStart() {
     }
   };
   __name(Lunch, "Lunch");
   Lunch = __decorateClass([
-    regClass17("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
+    regClass18("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
   ], Lunch);
 
   // src/Station.ts
   var SFS2X3 = __toESM(require_sfs2x_api());
-  var { regClass: regClass18, property: property18 } = Laya;
+  var { regClass: regClass19, property: property19 } = Laya;
   var Event3 = class {
   };
   __name(Event3, "Event");
@@ -11658,15 +11697,15 @@
   };
   __name(Station, "Station");
   __decorateClass([
-    property18(String)
+    property19(String)
   ], Station.prototype, "playerName", 2);
   Station = __decorateClass([
-    regClass18("7e713f81-07d8-440c-a6dd-6f4538227cee", "../src/Station.ts")
+    regClass19("7e713f81-07d8-440c-a6dd-6f4538227cee", "../src/Station.ts")
   ], Station);
 
   // src/Parallel.ts
   var SFS2X4 = __toESM(require_sfs2x_api());
-  var { regClass: regClass19, property: property19 } = Laya;
+  var { regClass: regClass20, property: property20 } = Laya;
   var Parallel = class extends Laya.Script {
     constructor() {
       super();
@@ -11694,17 +11733,17 @@
   };
   __name(Parallel, "Parallel");
   __decorateClass([
-    property19(Laya.Button)
+    property20(Laya.Button)
   ], Parallel.prototype, "closeBtn", 2);
   __decorateClass([
-    property19(Laya.RadioGroup)
+    property20(Laya.RadioGroup)
   ], Parallel.prototype, "colorGroup", 2);
   Parallel = __decorateClass([
-    regClass19("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
+    regClass20("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
   ], Parallel);
 
   // src/Menu.ts
-  var { regClass: regClass20, property: property20 } = Laya;
+  var { regClass: regClass21, property: property21 } = Laya;
   var Menu = class extends Laya.Script {
     constructor() {
       super();
@@ -11746,19 +11785,19 @@
   };
   __name(Menu, "Menu");
   __decorateClass([
-    property20(Laya.Button)
+    property21(Laya.Button)
   ], Menu.prototype, "challengeComputer", 2);
   __decorateClass([
-    property20(Laya.Button)
+    property21(Laya.Button)
   ], Menu.prototype, "challengeExtreme", 2);
   __decorateClass([
-    property20(Laya.Button)
+    property21(Laya.Button)
   ], Menu.prototype, "settings", 2);
   __decorateClass([
-    property20(Laya.Prefab)
+    property21(Laya.Prefab)
   ], Menu.prototype, "parallel", 2);
   Menu = __decorateClass([
-    regClass20("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
+    regClass21("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
 })();
 /*! Bundled license information:

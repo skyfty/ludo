@@ -237,9 +237,9 @@ export class Player extends Laya.Script {
         chesses.map((chess:Chess)=>{
             chess.stop();
             chess.revert(Laya.Handler.create(this, ()=>{
-                let idx = this.chippy.indexOf(chess.owner as Laya.Sprite);
+                let idx = chess.player.chippy.indexOf(chess.owner as Laya.Sprite);
                 if (idx != -1) {
-                    this.chippy.splice(idx, 1);
+                    chess.player.chippy.splice(idx, 1);
                 }
             }));
         });

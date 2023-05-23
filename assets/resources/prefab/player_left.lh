@@ -50,6 +50,13 @@
               "defaultStateName": "idle"
             }
           ]
+        },
+        {
+          "_$type": "39d67820-6b75-4090-969f-b2fef892effc",
+          "scriptPath": "../src/Trade.ts",
+          "disabledBk": {
+            "_$ref": "be351v56"
+          }
         }
       ],
       "_$child": [
@@ -129,6 +136,18 @@
           "height": 56,
           "visible": false,
           "skin": "res://fecb3b4e-f84d-4aec-87ea-015621cf1999",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "be351v56",
+          "_$type": "Image",
+          "name": "disabled",
+          "x": 89,
+          "y": -1,
+          "width": 107.27308647223049,
+          "height": 107.74565513510385,
+          "visible": false,
+          "skin": "res://77f49383-fd50-4979-a9a9-bbe268ee620a",
           "color": "#ffffff"
         }
       ]

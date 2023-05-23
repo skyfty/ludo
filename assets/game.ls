@@ -905,22 +905,62 @@
                 {
                   "_$override": "3ubclldw",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "nbm65fbg"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "e4x4xmeu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "68srqc97"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "nhfenhzp",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "kd87dtw1"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "k3onbzgu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "g45ccbxm"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -1177,22 +1217,62 @@
                 {
                   "_$override": "3ubclldw",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "0nw714c6"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "e4x4xmeu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "imyw0xa8"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "nhfenhzp",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "bgo0nkml"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "k3onbzgu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "u4bao8vv"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -1521,22 +1601,62 @@
                 {
                   "_$override": "3ubclldw",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "zwy19hn7"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "e4x4xmeu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "yh2f5j3d"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "nhfenhzp",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "9ttbp8k8"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "k3onbzgu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "rm08tcwf"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -1840,22 +1960,62 @@
                 {
                   "_$override": "3ubclldw",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "wgj8uq59"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "e4x4xmeu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "0jenco1b"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "nhfenhzp",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "6eqavlfy"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 {
                   "_$override": "k3onbzgu",
                   "width": 40,
-                  "height": 40
+                  "height": 40,
+                  "_$comp": [
+                    {
+                      "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+                      "chess": [
+                        {
+                          "_$ref": "9c1lv1a2"
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },

@@ -2,6 +2,7 @@ const { regClass, property } = Laya;
 import { Performer } from "./Performer";
 import * as Player from "./Player";
 import { Chess } from "./Chess";
+import { Trade } from "./Trade";
 
 @regClass()
 export class Computer extends Performer {
@@ -9,16 +10,20 @@ export class Computer extends Performer {
     constructor() {
         super();
     }
-
-    onStart(): void {
+    onAwake(): void {
+        super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
+    }
+    onStart(): void {
+        this.owner.event(Player.Event.StateChange);
     }
 
     onStateChange() {
-        if (this.state != Player.State.Running) {
-            return;
-        }
-        this.startRoll();
+        let trade = this.player.trade.getComponent(Trade);
+        if (this.state == Player.State.Running) {
+            this.startRoll();
+        } 
+        trade.disabled(this.state != Player.State.Running);
     }
 
     private startRoll() {
