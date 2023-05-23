@@ -1607,7 +1607,18 @@
             {
               "_$override": "5a788y2g",
               "x": -32,
-              "y": 26
+              "y": 26,
+              "_$comp": [
+                {
+                  "_$override": "26418778-2a8b-4ac8-aa46-9e423be83978",
+                  "diceDefault": {
+                    "_$ref": [
+                      "b7zhaso0",
+                      "o95ydlsr"
+                    ]
+                  }
+                }
+              ]
             },
             {
               "_$id": "256t4cwd",
@@ -1966,7 +1977,18 @@
             {
               "_$override": "5a788y2g",
               "y": -59,
-              "x": -25
+              "x": -25,
+              "_$comp": [
+                {
+                  "_$override": "26418778-2a8b-4ac8-aa46-9e423be83978",
+                  "diceDefault": {
+                    "_$ref": [
+                      "qs7wy01p",
+                      "o95ydlsr"
+                    ]
+                  }
+                }
+              ]
             },
             {
               "_$id": "lks891a9",

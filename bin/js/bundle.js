@@ -10607,20 +10607,6 @@
     }
     onStateChange(state) {
     }
-    setDiceNumber(idx) {
-      this.diceDefault.visible = true;
-      this.diceRoll.visible = false;
-      this.diceDefault.index = idx;
-    }
-    startRoll() {
-      this.diceDefault.visible = false;
-      this.diceRoll.visible = true;
-      this.diceRoll.play(0, -1);
-    }
-    stopRoll(complete) {
-      this.diceRoll.stop();
-      complete.run();
-    }
     hopChesses(chesses) {
       for (let i = 0; i < chesses.length; ++i) {
         chesses[i].getComponent(Chess).hop();
@@ -11004,8 +10990,42 @@
     regClass5("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
   ], Trade);
 
-  // src/Computer.ts
+  // src/Dice.ts
   var { regClass: regClass6, property: property6 } = Laya;
+  var Dice = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    setDiceNumber(idx) {
+      this.diceDefault.visible = true;
+      this.diceRoll.visible = false;
+      this.diceDefault.index = idx;
+    }
+    roll() {
+      this.diceDefault.visible = false;
+      this.diceRoll.visible = true;
+      this.diceRoll.play(0, -1);
+      this.owner.getComponent(Laya.Animator2D).play("roll");
+    }
+    stop(complete) {
+      this.diceRoll.stop();
+      this.owner.getComponent(Laya.Animator2D).play("idle");
+      complete.run();
+    }
+  };
+  __name(Dice, "Dice");
+  __decorateClass([
+    property6(Laya.Clip)
+  ], Dice.prototype, "diceRoll", 2);
+  __decorateClass([
+    property6(Laya.Clip)
+  ], Dice.prototype, "diceDefault", 2);
+  Dice = __decorateClass([
+    regClass6("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
+  ], Dice);
+
+  // src/Computer.ts
+  var { regClass: regClass7, property: property7 } = Laya;
   var Computer = class extends Performer {
     constructor() {
       super();
@@ -11026,16 +11046,16 @@
     }
     startRoll() {
       this.owner.event(Event2.RollStart, this.owner);
-      this.player.startRoll();
+      this.player.trade.getComponent(Dice).roll();
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
       this.currentDiceNumber = Math.floor(Math.random() * 6);
-      this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
+      this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
       this.owner.event(Event2.RollEnd, [this.currentDiceNumber]);
-      this.player.setDiceNumber(this.currentDiceNumber);
+      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
         this.owner.event(Event2.Choose, [this.owner]);
@@ -11064,29 +11084,17 @@
   };
   __name(Computer, "Computer");
   Computer = __decorateClass([
-    regClass6("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
+    regClass7("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
   ], Computer);
 
   // src/Dialog.ts
-  var { regClass: regClass7, property: property7 } = Laya;
+  var { regClass: regClass8, property: property8 } = Laya;
   var Dialog = class extends Laya.Dialog {
   };
   __name(Dialog, "Dialog");
   Dialog = __decorateClass([
-    regClass7("b162ad1a-cdc1-48a5-bc94-b89651a443fa", "../src/Dialog.ts")
+    regClass8("b162ad1a-cdc1-48a5-bc94-b89651a443fa", "../src/Dialog.ts")
   ], Dialog);
-
-  // src/Dice.ts
-  var { regClass: regClass8, property: property8 } = Laya;
-  var Dice = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-  };
-  __name(Dice, "Dice");
-  Dice = __decorateClass([
-    regClass8("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
-  ], Dice);
 
   // src/Door.ts
   var { regClass: regClass9, property: property9 } = Laya;
@@ -11136,12 +11144,12 @@
     processEvent(inEvent) {
       switch (inEvent.event) {
         case Event2.RollStart: {
-          this.player.startRoll();
+          this.player.trade.getComponent(Dice).roll();
           break;
         }
         case Event2.RollEnd: {
           this.currentDiceNumber = inEvent.num;
-          this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
+          this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
           break;
         }
         case Event2.Choose: {
@@ -11175,7 +11183,7 @@
       this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
     }
     onRollStop() {
-      this.player.setDiceNumber(this.currentDiceNumber);
+      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
         this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, () => {
@@ -11229,16 +11237,16 @@
       }
       this.isAdvanceing = true;
       this.owner.event(Event2.RollStart, this.owner);
-      this.player.startRoll();
+      this.player.trade.getComponent(Dice).roll();
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
       this.currentDiceNumber = Math.floor(Math.random() * 6);
-      this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
+      this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
       this.owner.event(Event2.RollEnd, [this.currentDiceNumber]);
-      this.player.setDiceNumber(this.currentDiceNumber);
+      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
         this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, () => {
@@ -11272,9 +11280,11 @@
           for (let i2 = 0; i2 < chesses.length; ++i2) {
             chesses[i2].offAllCaller(o);
           }
+          this.player.trade.getComponent(Trade).stop();
           complete.runWith(chesses[i]);
         });
       }
+      this.player.trade.getComponent(Trade).becareful();
       this.player.hopChesses(chesses);
     }
     onReckonChessComplete(chesses, complete) {

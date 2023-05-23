@@ -3,6 +3,7 @@ import { Performer } from "./Performer";
 import * as Player from "./Player";
 import { Chess } from "./Chess";
 import { Trade } from "./Trade";
+import { Dice } from "./Dice";
 
 @regClass()
 export class Computer extends Performer {
@@ -28,18 +29,19 @@ export class Computer extends Performer {
 
     private startRoll() {
         this.owner.event(Player.Event.RollStart, this.owner);
-        this.player.startRoll();
+        this.player.trade.getComponent(Dice).roll();
         Laya.timer.once(600, this, this.onRollTimeout);
     }
 
     private onRollTimeout() {
         this.currentDiceNumber = Math.floor(Math.random()* 6);
-        this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
+        this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
     }
 
     private onRollStop() {
         this.owner.event(Player.Event.RollEnd, [this.currentDiceNumber]);
-        this.player.setDiceNumber(this.currentDiceNumber);
+        this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
+
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         if (chesses.length > 0) {
             this.owner.event(Player.Event.Choose, [this.owner]);

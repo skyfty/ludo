@@ -4,6 +4,7 @@ import * as Player from "./Player";
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Chess } from "./Chess";
 import { Trade } from "./Trade";
+import { Dice } from "./Dice";
 
 @regClass()
 export class Extreme extends Performer {
@@ -26,12 +27,12 @@ export class Extreme extends Performer {
     public processEvent(inEvent:any) {
         switch (inEvent.event) {
             case Player.Event.RollStart: {
-                this.player.startRoll();
+                this.player.trade.getComponent(Dice).roll();
                 break;
             }
             case Player.Event.RollEnd: {
                 this.currentDiceNumber = inEvent.num;
-                this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
+                this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
                 break;
             }
             case Player.Event.Choose: {
@@ -69,7 +70,7 @@ export class Extreme extends Performer {
     }
 
     private onRollStop() {
-        this.player.setDiceNumber(this.currentDiceNumber);
+        this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         if (chesses.length > 0) {
             this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, ()=>{

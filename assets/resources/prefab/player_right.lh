@@ -28,6 +28,16 @@
               "states": [
                 {
                   "_$type": "AnimatorState2D",
+                  "name": "roll",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "8fb34d08-33a4-4b08-8519-93a27fe8058c",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                },
+                {
+                  "_$type": "AnimatorState2D",
                   "name": "idle",
                   "clipStart": 0,
                   "clip": {
@@ -57,6 +67,14 @@
           "disabledBk": {
             "_$ref": "yc6isfcb"
           }
+        },
+        {
+          "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
+          "scriptPath": "../src/Dice.ts",
+          "diceRoll": {
+            "_$ref": "22dm2a74"
+          },
+          "diceDefault": null
         }
       ],
       "_$child": [

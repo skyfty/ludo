@@ -3,6 +3,7 @@ import { Chess } from "./Chess";
 import { Performer } from "./Performer";
 import * as Player from "./Player";
 import { Trade } from "./Trade";
+import { Dice } from "./Dice";
 
 @regClass()
 export class Oneself extends Performer {
@@ -38,21 +39,21 @@ export class Oneself extends Performer {
         if (this.state != Player.State.Running || this.isAdvanceing) {
             return;
         }
-
         this.isAdvanceing = true;
         this.owner.event(Player.Event.RollStart, this.owner);
-        this.player.startRoll();
+        this.player.trade.getComponent(Dice).roll();
         Laya.timer.once(600, this, this.onRollTimeout);
     }
 
     private onRollTimeout() {
         this.currentDiceNumber = Math.floor(Math.random()* 6);
-        this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
+        this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
     }
 
     private onRollStop() {
         this.owner.event(Player.Event.RollEnd, [this.currentDiceNumber]);
-        this.player.setDiceNumber(this.currentDiceNumber);
+        this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
+
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         if (chesses.length > 0) {
             this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, ()=>{

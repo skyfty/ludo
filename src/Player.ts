@@ -1,6 +1,7 @@
 import { Chess } from "./Chess";
 import * as Route from "./Route";
 import { Config } from "./Config";
+import { Dice } from "./Dice";
 
 const { regClass, property } = Laya;
 
@@ -93,25 +94,6 @@ export class Player extends Laya.Script {
     onStateChange(state:State) {
 
     }
-
-    public setDiceNumber(idx:number) {
-        this.diceDefault.visible = true;
-        this.diceRoll.visible = false;
-        this.diceDefault.index = idx;
-    }
-
-
-    public startRoll() {
-        this.diceDefault.visible = false;
-        this.diceRoll.visible = true;
-        this.diceRoll.play(0, -1);
-    }
-
-    public stopRoll(complete: Laya.Handler) {
-        this.diceRoll.stop();
-        complete.run();
-    }
-
     
     public hopChesses(chesses:Laya.Sprite[]):void {
         for(let i = 0; i < chesses.length; ++i) {
