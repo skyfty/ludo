@@ -14,6 +14,44 @@
       "y": 1,
       "width": 197,
       "height": 107,
+      "_$comp": [
+        {
+          "_$type": "Animator2D",
+          "controller": {
+            "_$uuid": "4adbd5c8-ab84-4612-bc14-fc1878b74734",
+            "_$type": "AnimationController2D"
+          },
+          "controllerLayers": [
+            {
+              "_$type": "AnimatorControllerLayer2D",
+              "name": "Base Layer",
+              "states": [
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "idle",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "a19ba3a6-3567-49de-9d64-8fd5cf44c707",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                },
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "becareful",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "4fafa085-9ca1-4577-82a3-e01fc5d72676",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                }
+              ],
+              "defaultStateName": "idle"
+            }
+          ]
+        }
+      ],
       "_$child": [
         {
           "_$id": "5ft64053",
@@ -81,6 +119,20 @@
           "index": 0,
           "interval": 50,
           "skin": "res://a093d9bf-16ee-4e80-9a67-f9258a5730df"
+        },
+        {
+          "_$id": "hxgi98bl",
+          "_$type": "Image",
+          "name": "Image",
+          "x": -2,
+          "y": 82,
+          "width": 70,
+          "height": 56,
+          "rotation": 180,
+          "visible": false,
+          "skin": "res://fecb3b4e-f84d-4aec-87ea-015621cf1999",
+          "useSourceSize": true,
+          "color": "#ffffff"
         }
       ]
     }

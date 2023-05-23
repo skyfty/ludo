@@ -1,0 +1,60 @@
+{
+  "_$type": "Animator2D",
+  "enabled": true,
+  "controllerLayers": [
+    {
+      "name": "Base Layer",
+      "defaultStateName": "becareful",
+      "playOnWake": true,
+      "blendingMode": 0,
+      "states": [
+        {
+          "name": "becareful",
+          "clip": {
+            "_$uuid": "4fafa085-9ca1-4577-82a3-e01fc5d72676"
+          },
+          "loop": -1,
+          "speed": 1,
+          "clipEnd": 1,
+          "x": 424.58755512480684,
+          "y": 434.06848811552106,
+          "id": "0"
+        },
+        {
+          "x": 10,
+          "y": 100,
+          "id": "-1",
+          "name": "进入",
+          "speed": 1,
+          "clipEnd": 1,
+          "soloTransitions": [
+            {
+              "id": "1"
+            }
+          ]
+        },
+        {
+          "x": 2062,
+          "y": 100,
+          "id": "-2",
+          "name": "任何状态",
+          "speed": 1,
+          "clipEnd": 1
+        },
+        {
+          "x": 541.2037181522962,
+          "y": 277.4304842533289,
+          "id": "1",
+          "name": "idle",
+          "speed": 1,
+          "clipEnd": 1,
+          "clip": {
+            "_$uuid": "a19ba3a6-3567-49de-9d64-8fd5cf44c707"
+          }
+        }
+      ],
+      "defaultWeight": 1
+    }
+  ],
+  "layerW": 150
+}

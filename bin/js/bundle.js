@@ -11161,11 +11161,23 @@
       super();
       this.isAdvanceing = false;
     }
+    onAwake() {
+      super.onAwake();
+      this.owner.on(Event2.StateChange, this, this.onStateChange);
+    }
     /**
      * 第一次执行update之前执行，只会执行一次
      */
     onStart() {
       this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+    }
+    onStateChange(state) {
+      let ani = this.player.trade.getComponent(Laya.Animator2D);
+      if (this.state != 1 /* Running */) {
+        ani.play("idle");
+      } else {
+        ani.play("becareful");
+      }
     }
     onClickTrade() {
       if (this.state != 1 /* Running */ || this.isAdvanceing) {

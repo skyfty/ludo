@@ -10,6 +10,11 @@ export class Oneself extends Performer {
     constructor() {
         super();
     }
+
+    onAwake(): void {
+        super.onAwake();
+        this.owner.on(Player.Event.StateChange, this, this.onStateChange);
+    }
     /**
      * 第一次执行update之前执行，只会执行一次
      */
@@ -17,6 +22,14 @@ export class Oneself extends Performer {
         this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
     }
 
+    onStateChange(state:Player.State) {
+        let ani = this.player.trade.getComponent(Laya.Animator2D);
+        if (this.state != Player.State.Running) {
+            ani.play("idle");
+        } else {
+            ani.play("becareful");
+        }
+    }
 
     onClickTrade() {
         if (this.state != Player.State.Running || this.isAdvanceing) {
