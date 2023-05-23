@@ -30,7 +30,7 @@ export class Oneself extends Performer {
     }
 
     private onRollTimeout() {
-        this.currentDiceNumber = 5;//Math.floor(Math.random()* 6);
+        this.currentDiceNumber = Math.floor(Math.random()* 6);
         this.player.stopRoll(Laya.Handler.create(this,  this.onRollStop));
     }
 
@@ -39,17 +39,17 @@ export class Oneself extends Performer {
         this.player.setDiceNumber(this.currentDiceNumber);
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         if (chesses.length > 0) {
-            this.owner.event(Player.Event.Choose, [this.owner]);
             this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, ()=>{
                 this.onReckonChessComplete(chesses, Laya.Handler.create(this,  this.onChooseChessesComplete));
             }));
         } else {
             this.isAdvanceing = false;
-            this.owner.event(Player.Event.Achieve, null);
+            this.owner.event(Player.Event.Achieve);
         }
     }
 
     private onChooseChessesComplete(chess:Laya.Sprite) {
+        this.owner.event(Player.Event.Choose, [chess.name]);
         this.player.advance(chess, this.currentDiceNumber,Laya.Handler.create(this,  this.onAdvanceComplete));
     }
 
@@ -59,7 +59,7 @@ export class Oneself extends Performer {
         if (chess.hole == this.player.entry) {
             return;
         }
-        this.owner.event(Player.Event.Achieve, node);
+        this.owner.event(Player.Event.Achieve);
         if (this.player.isAllHome()) {
             this.owner.event(Player.Event.Victory);
         }

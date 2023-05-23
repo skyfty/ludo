@@ -1,0 +1,60 @@
+{
+  "_$ver": 1,
+  "_$id": "g1c8otr5",
+  "_$type": "Dialog",
+  "name": "View",
+  "width": 400,
+  "height": 400,
+  "alpha": 0.82,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "a5d9f7a0-da02-42b4-ae7d-627f69a899e4",
+      "scriptPath": "../src/Parallel.ts",
+      "closeBtn": {
+        "_$ref": "mfqn36k5"
+      },
+      "colorGroup": {
+        "_$ref": "bjox2ylv"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "mfqn36k5",
+      "_$type": "Button",
+      "name": "close",
+      "x": 56,
+      "y": 43,
+      "width": 120,
+      "height": 40,
+      "mouseEnabled": true,
+      "skin": "res://d4cfd6a8-0d0a-475b-ac93-d85eaa646936",
+      "label": "close",
+      "labelSize": 20
+    },
+    {
+      "_$id": "bjox2ylv",
+      "_$type": "RadioGroup",
+      "name": "RadioGroup",
+      "x": 85,
+      "y": 130,
+      "width": 200,
+      "height": 200,
+      "mouseEnabled": true,
+      "skin": "res://7db29ccb-50d2-461e-9b1c-8479ff20673f",
+      "stateNum": null,
+      "labels": "red,yellow",
+      "space": 0,
+      "selectedIndex": 0,
+      "labelFont": null,
+      "labelSize": 20,
+      "labelStroke": null,
+      "labelStrokeColor": null,
+      "labelAlign": null,
+      "strokeColors": null
+    }
+  ]
+}

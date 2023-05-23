@@ -21,7 +21,8 @@ export class Room extends Laya.Script {
     public yellowPlayer: Laya.Sprite;
 
     public numberOfPlayer:number = 0;
-    private players:Laya.Sprite[] = [];
+    
+    public players:Laya.Sprite[] = [];
 
     private playerOrder:number[] = []
     private currentIdx = 0;
@@ -55,27 +56,40 @@ export class Room extends Laya.Script {
 
     onStart(): void {
         let playerId = this.playerOrder[this.currentIdx];
-
-
         this.players[playerId].getComponent(Performer).setState(Player.State.Running);
     }
 
-    onVictory(player:Laya.Sprite) {
+    getPlayerIdByPlayer(p:Laya.Sprite) {
+ 
+    }
+
+    startGame(color:string):void {
+        let player = this.getPlayer(color);
+        let ids = Object.keys(this.players);;
+        for(let i = 0; i < ids.length; ++i) {
+            let id:number = Number.parseInt(ids[i]);
+            if (this.players[id] == player) {
+                this.currentIdx = this.playerOrder.indexOf(id);
+                break;
+            }
+        }
+    }
+
+    onVictory() {
         this.players.map((node:Laya.Sprite)=>{
             node.getComponent(Performer).setState(Player.State.Idle);
         });
     }
 
-    onAchieve(player:Laya.Sprite) {
-        let playerId = this.playerOrder[this.currentIdx];
-        let current =  this.players[playerId].getComponent(Performer);
+    onAchieve() {
+        let current =  this.players[this.playerOrder[this.currentIdx]].getComponent(Performer);
         current.setState(Player.State.Idle);
         if (this.currentIdx == this.playerOrder.length - 1) {
             this.currentIdx = 0;
         } else {
             this.currentIdx++;
         }
-        let next = this.players[this.currentIdx].getComponent(Performer);
+        let next = this.players[this.playerOrder[this.currentIdx]].getComponent(Performer);
         next.setState(Player.State.Running);
     }
 
@@ -111,7 +125,8 @@ export class Room extends Laya.Script {
             return;
         }
         this.players[profile.id] = player;
-
+        this.playerOrder.push(profile.id);
+        
         switch(type) {
             case Player.Type.Oneself: {
                 player.addComponentInstance(new Oneself());

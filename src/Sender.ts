@@ -19,24 +19,40 @@ export class Sender extends Laya.Script {
     }
 
     onAchieve() {
-           
+        let event = {
+            "event":Player.Event.Achieve
+        }; 
+        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
     }
     onVictory() {
-           
+        let event = {
+            "event":Player.Event.Victory
+        }; 
+        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+
     }
-    onChoose() {
-           
+    onChoose(name:string) {
+        let event = {
+            "event":Player.Event.Choose,
+            "name":name
+        }; 
+        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+
     }
 
-    onRollEnd(numOfDice:number) {
-        var numOfDice = new SFS2X.SFSUserVariable("num", numOfDice);
-        var event = new SFS2X.SFSUserVariable("event", Player.Event.RollEnd);
-        this.station.sfs.send(new SFS2X.SetUserVariablesRequest([event, numOfDice])); 
+    onRollEnd(num:number) {
+        let event = {
+            "event":Player.Event.RollEnd,
+            "num":num
+        }; 
+        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
     }
     
-    onRollStart() {
-        var event = new SFS2X.SFSUserVariable("event", Player.Event.RollStart);
-        this.station.sfs.send(new SFS2X.SetUserVariablesRequest([event]));    
+    onRollStart() {  
+        let event = {
+            "event":Player.Event.RollStart
+        }; 
+        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
     }
 
 }

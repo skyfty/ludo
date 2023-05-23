@@ -13,10 +13,6 @@
       "scriptPath": "../src/Lunch.ts"
     },
     {
-      "_$type": "15af251b-9e42-4196-9997-7062de78547c",
-      "scriptPath": "../src/SmartFox.ts"
-    },
-    {
       "_$type": "02f796be-4a4d-47b6-85e5-393116d386f4",
       "scriptPath": "../src/Menu.ts",
       "challengeComputer": {
@@ -24,11 +20,19 @@
       },
       "challengeExtreme": {
         "_$ref": "mqsu2s73"
+      },
+      "settings": {
+        "_$ref": "gxtjdxp2"
+      },
+      "parallel": {
+        "_$uuid": "2c2ebf8d-515e-48c3-a5b6-9608800d2ad3",
+        "_$type": "Prefab"
       }
     },
     {
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
-      "scriptPath": "../src/Station.ts"
+      "scriptPath": "../src/Station.ts",
+      "playerName": "sdfsdf"
     }
   ],
   "_$child": [
@@ -43,14 +47,7 @@
       "mouseEnabled": true,
       "skin": "res://d4cfd6a8-0d0a-475b-ac93-d85eaa646936",
       "label": "电脑对战",
-      "labelSize": 20,
-      "_$comp": [
-        {
-          "_$type": "e4d80768-b195-4b6e-a26c-281a6f29ca4e",
-          "scriptPath": "../src/ChallengeComputer.ts",
-          "text": ""
-        }
-      ]
+      "labelSize": 20
     },
     {
       "_$id": "mqsu2s73",
@@ -63,14 +60,7 @@
       "mouseEnabled": true,
       "skin": "res://d4cfd6a8-0d0a-475b-ac93-d85eaa646936",
       "label": "ONLINE MULTIPLAYER",
-      "labelSize": 20,
-      "_$comp": [
-        {
-          "_$type": "46f3b11f-c78b-4aee-a6d3-2cc225a2001d",
-          "scriptPath": "../src/ChallengeOnline.ts",
-          "text": ""
-        }
-      ]
+      "labelSize": 20
     },
     {
       "_$id": "gxtjdxp2",
