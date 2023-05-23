@@ -2,9 +2,6 @@ import { Computer } from "./Computer";
 import { Oneself } from "./Oneself";
 import { Extreme } from "./Extreme";
 import * as Player from "./Player";
-import { Intelligent } from "./Intelligent";
-import { Principal } from "./Principal";
-import { Online } from "./Online";
 import { Performer } from "./Performer";
 
 const { regClass, property } = Laya;
@@ -23,9 +20,11 @@ export class Room extends Laya.Script {
     @property(Laya.Sprite)
     public yellowPlayer: Laya.Sprite;
 
-    private numberOfPlayer:number = 0;
-    private currentIdx = 0;
+    public numberOfPlayer:number = 0;
     private players:Laya.Sprite[] = [];
+
+    private playerOrder:number[] = []
+    private currentIdx = 0;
 
     constructor() {
         super();
@@ -39,6 +38,7 @@ export class Room extends Laya.Script {
         this.greenPlayer.visible = false;
         this.bluePlayer.visible = false;
         this.yellowPlayer.visible = false;
+        this.initEventListener();
     }
 
     private initEventListener() {
@@ -51,28 +51,13 @@ export class Room extends Laya.Script {
         this.greenPlayer.on(Player.Event.Victory, this, this.onVictory);
         this.yellowPlayer.on(Player.Event.Victory, this, this.onVictory);
         this.bluePlayer.on(Player.Event.Victory, this, this.onVictory);
-
-        this.owner.on(Player.Event.EntryRoom, this, this.onEntryRoom);
-        this.owner.on(Player.Event.ExitRoom, this, this.onExitRoom);
-    }
-
-    onOpened(param:any) {
-        switch(param.type) {
-            case "computer": {
-                break;
-            }
-            case "extreme": {
-                break;
-            }
-        }
     }
 
     onStart(): void {
-        this.numberOfPlayer = 2;
-        this.initEventListener();
-        this.owner.addComponentInstance(new Principal());
-        this.owner.addComponentInstance(new Intelligent(1));
-        this.owner.addComponentInstance(new Online());
+        let playerId = this.playerOrder[this.currentIdx];
+
+
+        this.players[playerId].getComponent(Performer).setState(Player.State.Running);
     }
 
     onVictory(player:Laya.Sprite) {
@@ -82,9 +67,10 @@ export class Room extends Laya.Script {
     }
 
     onAchieve(player:Laya.Sprite) {
-        let current = this.players[this.currentIdx].getComponent(Performer);
+        let playerId = this.playerOrder[this.currentIdx];
+        let current =  this.players[playerId].getComponent(Performer);
         current.setState(Player.State.Idle);
-        if (this.currentIdx == this.players.length - 1) {
+        if (this.currentIdx == this.playerOrder.length - 1) {
             this.currentIdx = 0;
         } else {
             this.currentIdx++;
@@ -119,18 +105,19 @@ export class Room extends Laya.Script {
         return player;
     }
 
-    onEntryRoom(color:string, type:Player.Type, profile:Player.Profile) {
+    public addPlayer(color:string, type:Player.Type, profile:Player.Profile) {
         let player = this.getPlayer(color);
         if (player == null) {
             return;
         }
-        this.players.push(player);
+        this.players[profile.id] = player;
+
         switch(type) {
             case Player.Type.Oneself: {
                 player.addComponentInstance(new Oneself());
                 break;
             }
-            case Player.Type.Online: {
+            case Player.Type.Extreme: {
                 player.addComponentInstance(new Extreme());
                 break;
             }
@@ -139,16 +126,6 @@ export class Room extends Laya.Script {
                 break;
             }
         }
-        if (this.players.length == this.numberOfPlayer) {
-            let current = this.players[this.currentIdx].getComponent(Performer);
-            current.setState(Player.State.Running);
-        }
-    }
-
-    onExitRoom(player:Laya.Sprite) {
-        let idx = this.players.indexOf(player);
-        if (idx != -1) {
-            this.players.splice(idx, 1);
-        }
+        return player;
     }
 }

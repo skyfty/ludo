@@ -35,7 +35,7 @@ export class Oneself extends Performer {
     }
 
     private onRollStop() {
-        this.owner.event(Player.Event.RollEnd, [this.owner, this.currentDiceNumber]);
+        this.owner.event(Player.Event.RollEnd, [this.currentDiceNumber]);
         this.player.setDiceNumber(this.currentDiceNumber);
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         if (chesses.length > 0) {

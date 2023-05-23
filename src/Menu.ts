@@ -23,7 +23,7 @@ export class Menu extends Laya.Script {
         this.owner.on(Station.Event.Error, this, this.onExtremeError);
     }
     onChallengeComputer() {
-        Laya.Scene.open("game.ls", false, {  "type": "computer"  });
+        Laya.Scene.open("game.ls", false, {  "type": "computer", "number":2 });
     }
     onChallengeExtreme() {
         let st = this.owner.getComponent(Station.Station) as Station.Station;

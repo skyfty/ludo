@@ -18,7 +18,7 @@ export class Station extends Laya.Script {
     public sfs: SFS2X.SmartFox = null;
 
     @property(String)
-    public playerName: String = "sdfsdf";
+    public playerName: String ;
     public desks: Desk[] = [];
     public currentDesk:Desk = null;
 
@@ -46,11 +46,7 @@ export class Station extends Laya.Script {
         this.sfs.addEventListener(SFS2X.SFSEvent.USER_COUNT_CHANGE, this.onUserCountChange, this);
         this.sfs.addEventListener(SFS2X.SFSEvent.USER_ENTER_ROOM, this.onUserEnterRoom, this);
         this.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
-        this.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
-        this.sfs.addEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
-        this.sfs.addEventListener(SFS2X.SFSEvent.USER_VARIABLES_UPDATE, this.onUserVariablesUpdate, this);
     }
-
     
     join(desk:Desk) {
         this.currentDesk = desk;
@@ -58,6 +54,7 @@ export class Station extends Laya.Script {
     }
 
     onStart(): void {
+        this.playerName ="sdfsdf" + Math.random();
         this.sfs.connect();
     }
 
@@ -82,7 +79,6 @@ export class Station extends Laya.Script {
         this.owner.event(Event.Login);
     }
 
-
     private onLoginError(event: SFS2X.SFSEvent) {
         this.owner.event(Event.Exit);
     }
@@ -92,9 +88,11 @@ export class Station extends Laya.Script {
     }
 
     private onRoomJoin(event: SFS2X.SFSEvent) {
+        let users = this.sfs.lastJoinedRoom.getUserList();
+        console.log(users);
+
         if (this.sfs.lastJoinedRoom != null) {
-            let users = this.sfs.lastJoinedRoom.getUserList();
-            this.owner.event(Event.Join,[this.currentDesk, [users]]);
+            this.owner.event(Event.Join);
         }
     }
 
@@ -111,36 +109,4 @@ export class Station extends Laya.Script {
         this.owner.event(Event.Exit);
     }
 
-    private onPublicMessage(event: SFS2X.SFSEvent) {
-        console.log(event);
-        var userVar = new SFS2X.SFSUserVariable("nick", 23);
-
-        var isSent = this.sfs.send(new SFS2X.SetUserVariablesRequest([userVar]));
-        // var sender = (event.sender.isItMe ? "You" : event.sender.name);
-        // var nick = event.sender.getVariable("nick");
-        // var aka = (!event.sender.isItMe && nick != null ? " (aka '" + nick.value + "')" : "");
-        // writeToChatArea("<b>" + sender + aka + " said:</b><br/>" + event.message);
-    }
-
-    private onRoomVariablesUpdate(event: SFS2X.SFSEvent) {
-        console.log(event);
-
-        // Check if the 'topic' variable was set/updated
-        // if (event.changedVars.indexOf("topic") > -1)
-        // {
-        // 	var deleted = !event.room.containsVariable("topic");
-        // 	showRoomTopic(event.room, deleted);
-        // }
-    }
-
-    private onUserVariablesUpdate(event: SFS2X.SFSEvent) {
-        console.log(event);
-
-        // Check if the 'nick' variable was set/updated
-        // if (event.changedVars.indexOf("nick") > -1)
-        // {
-        // 	// For code simplicity we rebuild the full userlist instead of just editing the specific item
-        // 	populateUsersList();
-        // }
-    }
 }

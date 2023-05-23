@@ -1,23 +1,24 @@
 const { regClass, property } = Laya;
 import { Performer } from "./Performer";
-import { Player,Event,State } from "./Player";
+import * as Player from "./Player";
 
 @regClass()
 export class Extreme extends Performer {
-    //declare owner : Laya.Sprite3D;
-
     constructor() {
         super();
+        this.owner.on(Player.Event.StateChange, this, this.onStateChange);
     }
     onStart(): void {
-        this.owner.on(Event.StateChange, this, this.onStateChange);
     }
 
-    
     onStateChange() {
-        if (this.state == State.Running) {
-
-        }
+       
     }
 
+    public startRoll() {
+        if (this.state != Player.State.Running) {
+            return;
+        }
+        this.player.startRoll();
+    }
 }

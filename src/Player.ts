@@ -15,12 +15,13 @@ export class Event {
 }
 
 export interface Profile {
+    id:number,
     name:string;
     avatar:string;
 }
 
 export enum Type {
-    Online,
+    Extreme,
     Computer,
     Oneself
 }
@@ -69,7 +70,6 @@ export class Player extends Laya.Script {
 
     @property(Laya.Sprite)
     public crown: Laya.Sprite;
-
     
     @property(Laya.Sprite)
     public origin: Laya.Sprite;
