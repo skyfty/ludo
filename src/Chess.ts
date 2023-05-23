@@ -1,5 +1,6 @@
 import { Player } from "./Player";
 import * as Route from "./Route";
+import {Config} from "./Config"
 
 const { regClass, property} = Laya;
 
@@ -24,10 +25,6 @@ export class Chess extends Laya.Script {
     constructor() {
         super();
     }
-    onAwake(): void {
-        super.onAwake();
-    }
-
 
     public jump(dest:Laya.Sprite, complete: Laya.Handler) {
         let parent = dest.parent as Laya.Sprite;
@@ -65,12 +62,12 @@ export class Chess extends Laya.Script {
         } else {
             let currentHoleNumber:number = Number.parseInt(this.hole.name);
             if (roadway == this.player.personal){
-                if (currentHoleNumber >= this.player.numberPersonalHold - 1 || currentHoleNumber < 0) {
+                if (currentHoleNumber >= Config.NUMBER_PERSONAL_HOLD - 1 || currentHoleNumber < 0) {
                     director *= -1;
                 }
                 currentHoleNumber += director;
             } else if (currentHoleNumber < 0) {
-                currentHoleNumber = this.player.numberUniversalHold - 1;
+                currentHoleNumber = Config.NUMBER_UNIVERSAL_HOLD - 1;
             } else {
                 currentHoleNumber += director;
             }
@@ -105,13 +102,11 @@ export class Chess extends Laya.Script {
             return;
         }
         let roadway = this.owner.parent;
-        let currentHoleNumber:number = Number.parseInt(this.hole.name);
-        if (currentHoleNumber < 0) {
-            currentHoleNumber = this.player.numberUniversalHold - 1;
-        } else {
-            currentHoleNumber -= 1;
+        let nextHoleNumber:number = Number.parseInt(this.hole.name) - 1;
+        if (nextHoleNumber < 0) {
+            nextHoleNumber = Config.NUMBER_UNIVERSAL_HOLD - 1;
         }
-        let nextHole = roadway.getChildByName(currentHoleNumber.toString()) as Laya.Sprite;
+        let nextHole = roadway.getChildByName(nextHoleNumber.toString()) as Laya.Sprite;
         if (nextHole == null) {
             nextHole = roadway.getChildByName("0") as Laya.Sprite;
         }

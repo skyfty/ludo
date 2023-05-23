@@ -10563,6 +10563,13 @@
     regClass("f65b0a36-8072-43b6-ba82-0cc45e25162f", "../src/Route.ts")
   ], Route);
 
+  // src/Config.ts
+  var Config = class {
+  };
+  __name(Config, "Config");
+  Config.NUMBER_UNIVERSAL_HOLD = 52;
+  Config.NUMBER_PERSONAL_HOLD = 6;
+
   // src/Player.ts
   var { regClass: regClass2, property: property2 } = Laya;
   var Event2 = class {
@@ -10594,8 +10601,6 @@
       this.home = [];
     }
     onAwake() {
-      this.numberUniversalHold = this.universal.numChildren;
-      this.numberPersonalHold = this.personal.numChildren;
     }
     onStart() {
       this.owner.on(Event2.StateChange, this, this.onStateChange);
@@ -10644,10 +10649,10 @@
     }
     getUniversalNextNumber(currentNumber, step) {
       let num = currentNumber + step;
-      if (num > this.numberUniversalHold) {
-        num = num - this.numberUniversalHold + 1;
+      if (num > Config.NUMBER_UNIVERSAL_HOLD) {
+        num = num - Config.NUMBER_UNIVERSAL_HOLD + 1;
       } else if (num < 0) {
-        num = this.numberUniversalHold - num;
+        num = Config.NUMBER_UNIVERSAL_HOLD - num;
       }
       return num;
     }
@@ -10729,7 +10734,12 @@
     kick(route) {
       let chesses = this.getKickChesses(route);
       chesses.map((chess) => {
+        chess.stop();
         chess.revert(Laya.Handler.create(this, () => {
+          let idx = this.chippy.indexOf(chess.owner);
+          if (idx != -1) {
+            this.chippy.splice(idx, 1);
+          }
         }));
       });
     }
@@ -10814,9 +10824,6 @@
     constructor() {
       super();
     }
-    onAwake() {
-      super.onAwake();
-    }
     jump(dest, complete) {
       let parent = dest.parent;
       let ownerSprite = this.owner;
@@ -10850,12 +10857,12 @@
       } else {
         let currentHoleNumber = Number.parseInt(this.hole.name);
         if (roadway == this.player.personal) {
-          if (currentHoleNumber >= this.player.numberPersonalHold - 1 || currentHoleNumber < 0) {
+          if (currentHoleNumber >= Config.NUMBER_PERSONAL_HOLD - 1 || currentHoleNumber < 0) {
             director *= -1;
           }
           currentHoleNumber += director;
         } else if (currentHoleNumber < 0) {
-          currentHoleNumber = this.player.numberUniversalHold - 1;
+          currentHoleNumber = Config.NUMBER_UNIVERSAL_HOLD - 1;
         } else {
           currentHoleNumber += director;
         }
@@ -10888,13 +10895,11 @@
         return;
       }
       let roadway = this.owner.parent;
-      let currentHoleNumber = Number.parseInt(this.hole.name);
-      if (currentHoleNumber < 0) {
-        currentHoleNumber = this.player.numberUniversalHold - 1;
-      } else {
-        currentHoleNumber -= 1;
+      let nextHoleNumber = Number.parseInt(this.hole.name) - 1;
+      if (nextHoleNumber < 0) {
+        nextHoleNumber = Config.NUMBER_UNIVERSAL_HOLD - 1;
       }
-      let nextHole = roadway.getChildByName(currentHoleNumber.toString());
+      let nextHole = roadway.getChildByName(nextHoleNumber.toString());
       if (nextHole == null) {
         nextHole = roadway.getChildByName("0");
       }
@@ -11189,7 +11194,7 @@
       Laya.timer.once(600, this, this.onRollTimeout);
     }
     onRollTimeout() {
-      this.currentDiceNumber = Math.floor(Math.random() * 6);
+      this.currentDiceNumber = 5;
       this.player.stopRoll(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {

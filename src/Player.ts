@@ -1,5 +1,6 @@
 import { Chess } from "./Chess";
 import * as Route from "./Route";
+import { Config } from "./Config";
 
 const { regClass, property } = Laya;
 
@@ -60,7 +61,6 @@ export class Player extends Laya.Script {
 
     @property(Laya.Sprite)
     public universal:Laya.Sprite;
-    public numberUniversalHold:number;
 
     @property(Laya.Sprite)
     public trade:Laya.Sprite;
@@ -74,8 +74,6 @@ export class Player extends Laya.Script {
     @property(Laya.Sprite)
     public origin: Laya.Sprite;
 
-    public numberPersonalHold:number;
-
     @property(Laya.Prefab)
     public chessPrefab:Laya.Prefab;
 
@@ -87,8 +85,6 @@ export class Player extends Laya.Script {
         super();
     }
     onAwake(): void {
-        this.numberUniversalHold = this.universal.numChildren;
-        this.numberPersonalHold = this.personal.numChildren;
     }
     onStart(): void {
         this.owner.on(Event.StateChange, this, this.onStateChange);
@@ -148,10 +144,10 @@ export class Player extends Laya.Script {
 
     private getUniversalNextNumber(currentNumber:number, step:number):number {
         let num = currentNumber + step;
-        if (num > this.numberUniversalHold) {
-            num = num - this.numberUniversalHold + 1
+        if (num > Config.NUMBER_UNIVERSAL_HOLD) {
+            num = num - Config.NUMBER_UNIVERSAL_HOLD + 1
         } else if (num < 0) {
-            num = this.numberUniversalHold - num;
+            num = Config.NUMBER_UNIVERSAL_HOLD - num;
         }
         return num;
     }
@@ -239,7 +235,13 @@ export class Player extends Laya.Script {
     private kick(route:Route.Route) {
         let chesses = this.getKickChesses(route);
         chesses.map((chess:Chess)=>{
-            chess.revert(Laya.Handler.create(this, ()=>{}));
+            chess.stop();
+            chess.revert(Laya.Handler.create(this, ()=>{
+                let idx = this.chippy.indexOf(chess.owner as Laya.Sprite);
+                if (idx != -1) {
+                    this.chippy.splice(idx, 1);
+                }
+            }));
         });
     }
 
