@@ -7,6 +7,24 @@
   "top": 0,
   "bottom": 0,
   "name": "game",
+  "_$comp": [
+    {
+      "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b",
+      "scriptPath": "../src/Room.ts",
+      "redPlayer": {
+        "_$ref": "hqy9lgmf"
+      },
+      "greenPlayer": {
+        "_$ref": "hknjlm1h"
+      },
+      "bluePlayer": {
+        "_$ref": "b7zhaso0"
+      },
+      "yellowPlayer": {
+        "_$ref": "qs7wy01p"
+      }
+    }
+  ],
   "_$child": [
     {
       "_$id": "ikgjaepj",
@@ -28,695 +46,666 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "6l1afqeh",
+      "_$id": "7xaa4ym6",
       "_$type": "Sprite",
-      "name": "room",
-      "x": 259.9999999999999,
-      "y": 4.000000000000001,
-      "width": 111,
-      "height": 106,
-      "_$comp": [
-        {
-          "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b",
-          "scriptPath": "../src/Room.ts",
-          "redPlayer": {
-            "_$ref": "hqy9lgmf"
-          },
-          "greenPlayer": {
-            "_$ref": "hknjlm1h"
-          },
-          "bluePlayer": {
-            "_$ref": "b7zhaso0"
-          },
-          "yellowPlayer": {
-            "_$ref": "qs7wy01p"
-          }
-        }
-      ],
+      "name": "universal",
+      "x": 301.9999999999998,
+      "y": 551.9999999999999,
+      "width": 31.5,
+      "height": 31.5,
       "_$child": [
         {
-          "_$id": "7xaa4ym6",
-          "_$type": "Sprite",
-          "name": "universal",
-          "x": 41.99999999999994,
-          "y": 548,
-          "width": 31.5,
-          "height": 31.5,
+          "_$id": "ue2g43ow",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "0",
+          "active": true,
+          "x": -45,
+          "y": 251,
+          "visible": true,
+          "bgColor": "rgba(255, 0, 0, 1)",
+          "alpha": 0.51,
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
           "_$child": [
             {
-              "_$id": "ue2g43ow",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "0",
-              "active": true,
-              "x": -45,
-              "y": 251,
-              "visible": true,
-              "bgColor": "rgba(255, 0, 0, 1)",
-              "alpha": 0.51,
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "3hyr3qgk",
-                  "_$index": 0,
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 2,
-                  "y": 1,
-                  "width": 34,
-                  "height": 34,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "agumts0y",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "1",
-              "active": true,
-              "x": -45,
-              "y": 209,
-              "visible": true
-            },
-            {
-              "_$id": "qo4p0ufz",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "2",
-              "active": true,
-              "x": -45,
-              "y": 166,
-              "visible": true
-            },
-            {
-              "_$id": "fprjjpya",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "3",
-              "active": true,
-              "x": -45,
-              "y": 124,
-              "visible": true
-            },
-            {
-              "_$id": "us4zyq6w",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "4",
-              "active": true,
-              "x": -45,
-              "y": 82,
-              "visible": true
-            },
-            {
-              "_$id": "xbe4zaw7",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "5",
-              "active": true,
-              "x": -87,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "p2tawgio",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "6",
-              "active": true,
-              "x": -130,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "712s7zuy",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "7",
-              "active": true,
-              "x": -172,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "dfikr92o",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "8",
-              "active": true,
-              "x": -214,
-              "y": 39,
-              "visible": true,
-              "bgColor": null,
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "d0axgzl3",
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 2,
-                  "y": 2,
-                  "width": 34,
-                  "height": 34,
-                  "alpha": 0.28,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#69adca"
-                }
-              ]
-            },
-            {
-              "_$id": "chf2wu9b",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "9",
-              "active": true,
-              "x": -257,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "208bdk9g",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "10",
-              "active": true,
-              "x": -299,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "qjqrb3oy",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "11",
-              "active": true,
-              "x": -299,
-              "y": -3,
-              "visible": true
-            },
-            {
-              "_$id": "0dhkgcuk",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "12",
-              "active": true,
-              "x": -299,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "myx9g8dx",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "13",
-              "active": true,
-              "x": -256,
-              "y": -45,
-              "visible": true,
-              "bgColor": "rgba(0, 163, 0, 1)",
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "7zrwgcx0",
-                  "_$index": 0,
-                  "_$type": "Image",
-                  "name": "Image(1)",
-                  "x": 2.000000000000057,
-                  "y": 0.9999999999997726,
-                  "width": 34,
-                  "height": 34,
-                  "alpha": 0.4,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "s3ype9zt",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "14",
-              "active": true,
-              "x": -214,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "v9jzmnnv",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "15",
-              "active": true,
-              "x": -172,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "2mkaise8",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "16",
-              "active": true,
-              "x": -129,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "tev1005a",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "17",
-              "active": true,
-              "x": -87,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "9yaejm1b",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "18",
-              "active": true,
-              "x": -44,
-              "y": -87,
-              "visible": true
-            },
-            {
-              "_$id": "q599wst2",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "19",
-              "active": true,
-              "x": -44,
-              "y": -130,
-              "visible": true
-            },
-            {
-              "_$id": "ssiqlxsz",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "20",
-              "active": true,
-              "x": -44,
-              "y": -172,
-              "visible": true
-            },
-            {
-              "_$id": "7jgf4gqg",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "21",
-              "active": true,
-              "x": -45,
-              "y": -214,
-              "visible": true,
-              "bgColor": null,
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "ru1w2n31",
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 2.9999999999998863,
-                  "y": 3,
-                  "width": 33.5,
-                  "height": 33.5,
-                  "alpha": 0.33,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "pagtbgh0",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "22",
-              "active": true,
-              "x": -45,
-              "y": -256,
-              "visible": true
-            },
-            {
-              "_$id": "e5up88ie",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "23",
-              "active": true,
-              "x": -44,
-              "y": -298,
-              "visible": true
-            },
-            {
-              "_$id": "azwlhb6r",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "24",
-              "active": true,
-              "x": -2,
-              "y": -299,
-              "visible": true
-            },
-            {
-              "_$id": "6es96uai",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "25",
-              "active": true,
-              "x": 40,
-              "y": -299,
-              "visible": true
-            },
-            {
-              "_$id": "xugteoiy",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "26",
-              "active": true,
-              "x": 40,
-              "y": -257,
-              "visible": true,
-              "bgColor": "rgba(255, 196, 0, 1)",
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "y6gg9oek",
-                  "_$index": 0,
-                  "_$type": "Image",
-                  "name": "Image(1)",
-                  "x": 2.000000000000057,
-                  "y": 1.9999999999998863,
-                  "width": 34,
-                  "height": 34,
-                  "alpha": 0.4,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "yvao2qkp",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "27",
-              "active": true,
-              "x": 40,
-              "y": -214,
-              "visible": true
-            },
-            {
-              "_$id": "yrpguk4a",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "28",
-              "active": true,
-              "x": 40,
-              "y": -172,
-              "visible": true
-            },
-            {
-              "_$id": "0vv0zfud",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "29",
-              "active": true,
-              "x": 40,
-              "y": -129,
-              "visible": true
-            },
-            {
-              "_$id": "bv1ermw6",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "30",
-              "active": true,
-              "x": 40,
-              "y": -87,
-              "visible": true
-            },
-            {
-              "_$id": "38anoq0g",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "31",
-              "active": true,
-              "x": 82,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "cenir7yl",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "32",
-              "active": true,
-              "x": 125,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "kpp0rbgu",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "33",
-              "active": true,
-              "x": 167,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "tn1qjimp",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "34",
-              "active": true,
-              "x": 209,
-              "y": -45,
-              "visible": true,
-              "bgColor": null,
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "z56dk1ry",
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 3,
-                  "y": 3,
-                  "width": 34,
-                  "height": 33.5,
-                  "alpha": 0.33,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "jitbeyna",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "35",
-              "active": true,
-              "x": 252,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "3qcmdiza",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "36",
-              "active": true,
-              "x": 294,
-              "y": -45,
-              "visible": true
-            },
-            {
-              "_$id": "8dfxcpyq",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "37",
-              "active": true,
-              "x": 293,
-              "y": -3,
-              "visible": true
-            },
-            {
-              "_$id": "bwnimtrx",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "38",
-              "active": true,
-              "x": 294,
-              "y": 39,
-              "visible": true
-            },
-            {
-              "_$id": "7ha7izqj",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "39",
-              "active": true,
-              "x": 251,
-              "y": 39,
-              "visible": true,
-              "bgColor": "rgba(0, 140, 248, 1)",
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "qjy72wjs",
-                  "_$type": "Image",
-                  "name": "Image(2)",
-                  "x": 2,
-                  "y": 3,
-                  "width": 34,
-                  "height": 34,
-                  "alpha": 0.4,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "3xdcazmg",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "40",
-              "active": true,
-              "x": 209,
-              "y": 39,
-              "visible": true
-            },
-            {
-              "_$id": "r9jk4nf8",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "41",
-              "active": true,
-              "x": 166,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "g7eu52s2",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "42",
-              "active": true,
-              "x": 125,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "dvfp4bhv",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "43",
-              "active": true,
-              "x": 82,
-              "y": 40,
-              "visible": true
-            },
-            {
-              "_$id": "f9q0xpq3",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "44",
-              "active": true,
-              "x": 39,
-              "y": 82,
-              "visible": true
-            },
-            {
-              "_$id": "yzxeembh",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "45",
-              "active": true,
-              "x": 40,
-              "y": 125,
-              "visible": true
-            },
-            {
-              "_$id": "3jvfjhya",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "46",
-              "active": true,
-              "x": 40,
-              "y": 166,
-              "visible": true
-            },
-            {
-              "_$id": "nmog5je3",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "47",
-              "active": true,
-              "x": 39,
-              "y": 209,
-              "visible": true,
-              "bgColor": null,
-              "_$comp": [
-                {
-                  "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-                  "safe": 0
-                }
-              ],
-              "_$child": [
-                {
-                  "_$id": "fyaqvfzh",
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 2.999999999999943,
-                  "y": 2.999999999999943,
-                  "width": 33.5,
-                  "height": 33.5,
-                  "alpha": 0.33,
-                  "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "wbjifsd0",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "48",
-              "active": true,
-              "x": 40,
-              "y": 251,
-              "visible": true
-            },
-            {
-              "_$id": "6t8myb5k",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "49",
-              "active": true,
-              "x": 40,
-              "y": 293,
-              "visible": true
-            },
-            {
-              "_$id": "834vqins",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "50",
-              "active": true,
-              "x": -2,
-              "y": 293,
-              "visible": true,
-              "_$child": [
-                {
-                  "_$id": "jzutr65r",
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 9,
-                  "y": 1,
-                  "width": 16,
-                  "height": 28,
-                  "skin": "res://63f4363b-55f9-4905-a16e-0f27d42b24b4",
-                  "useSourceSize": true,
-                  "color": "#ffffff"
-                }
-              ]
-            },
-            {
-              "_$id": "35qi90er",
-              "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
-              "name": "51",
-              "active": true,
-              "x": -45,
-              "y": 293,
-              "visible": true
+              "_$id": "3hyr3qgk",
+              "_$index": 0,
+              "_$type": "Image",
+              "name": "Image",
+              "x": 2,
+              "y": 1,
+              "width": 34,
+              "height": 34,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#ffffff"
             }
           ]
+        },
+        {
+          "_$id": "agumts0y",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "1",
+          "active": true,
+          "x": -45,
+          "y": 209,
+          "visible": true
+        },
+        {
+          "_$id": "qo4p0ufz",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "2",
+          "active": true,
+          "x": -45,
+          "y": 166,
+          "visible": true
+        },
+        {
+          "_$id": "fprjjpya",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "3",
+          "active": true,
+          "x": -45,
+          "y": 124,
+          "visible": true
+        },
+        {
+          "_$id": "us4zyq6w",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "4",
+          "active": true,
+          "x": -45,
+          "y": 82,
+          "visible": true
+        },
+        {
+          "_$id": "xbe4zaw7",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "5",
+          "active": true,
+          "x": -87,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "p2tawgio",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "6",
+          "active": true,
+          "x": -130,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "712s7zuy",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "7",
+          "active": true,
+          "x": -172,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "dfikr92o",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "8",
+          "active": true,
+          "x": -214,
+          "y": 39,
+          "visible": true,
+          "bgColor": null,
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "d0axgzl3",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 2,
+              "y": 2,
+              "width": 34,
+              "height": 34,
+              "alpha": 0.28,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#69adca"
+            }
+          ]
+        },
+        {
+          "_$id": "chf2wu9b",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "9",
+          "active": true,
+          "x": -257,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "208bdk9g",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "10",
+          "active": true,
+          "x": -299,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "qjqrb3oy",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "11",
+          "active": true,
+          "x": -299,
+          "y": -3,
+          "visible": true
+        },
+        {
+          "_$id": "0dhkgcuk",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "12",
+          "active": true,
+          "x": -299,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "myx9g8dx",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "13",
+          "active": true,
+          "x": -256,
+          "y": -45,
+          "visible": true,
+          "bgColor": "rgba(0, 163, 0, 1)",
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "7zrwgcx0",
+              "_$index": 0,
+              "_$type": "Image",
+              "name": "Image(1)",
+              "x": 2.000000000000057,
+              "y": 0.9999999999997726,
+              "width": 34,
+              "height": 34,
+              "alpha": 0.4,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "s3ype9zt",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "14",
+          "active": true,
+          "x": -214,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "v9jzmnnv",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "15",
+          "active": true,
+          "x": -172,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "2mkaise8",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "16",
+          "active": true,
+          "x": -129,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "tev1005a",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "17",
+          "active": true,
+          "x": -87,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "9yaejm1b",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "18",
+          "active": true,
+          "x": -44,
+          "y": -87,
+          "visible": true
+        },
+        {
+          "_$id": "q599wst2",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "19",
+          "active": true,
+          "x": -44,
+          "y": -130,
+          "visible": true
+        },
+        {
+          "_$id": "ssiqlxsz",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "20",
+          "active": true,
+          "x": -44,
+          "y": -172,
+          "visible": true
+        },
+        {
+          "_$id": "7jgf4gqg",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "21",
+          "active": true,
+          "x": -45,
+          "y": -214,
+          "visible": true,
+          "bgColor": null,
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "ru1w2n31",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 2.9999999999998863,
+              "y": 3,
+              "width": 33.5,
+              "height": 33.5,
+              "alpha": 0.33,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "pagtbgh0",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "22",
+          "active": true,
+          "x": -45,
+          "y": -256,
+          "visible": true
+        },
+        {
+          "_$id": "e5up88ie",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "23",
+          "active": true,
+          "x": -44,
+          "y": -298,
+          "visible": true
+        },
+        {
+          "_$id": "azwlhb6r",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "24",
+          "active": true,
+          "x": -2,
+          "y": -299,
+          "visible": true
+        },
+        {
+          "_$id": "6es96uai",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "25",
+          "active": true,
+          "x": 40,
+          "y": -299,
+          "visible": true
+        },
+        {
+          "_$id": "xugteoiy",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "26",
+          "active": true,
+          "x": 40,
+          "y": -257,
+          "visible": true,
+          "bgColor": "rgba(255, 196, 0, 1)",
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "y6gg9oek",
+              "_$index": 0,
+              "_$type": "Image",
+              "name": "Image(1)",
+              "x": 2.000000000000057,
+              "y": 1.9999999999998863,
+              "width": 34,
+              "height": 34,
+              "alpha": 0.4,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "yvao2qkp",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "27",
+          "active": true,
+          "x": 40,
+          "y": -214,
+          "visible": true
+        },
+        {
+          "_$id": "yrpguk4a",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "28",
+          "active": true,
+          "x": 40,
+          "y": -172,
+          "visible": true
+        },
+        {
+          "_$id": "0vv0zfud",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "29",
+          "active": true,
+          "x": 40,
+          "y": -129,
+          "visible": true
+        },
+        {
+          "_$id": "bv1ermw6",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "30",
+          "active": true,
+          "x": 40,
+          "y": -87,
+          "visible": true
+        },
+        {
+          "_$id": "38anoq0g",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "31",
+          "active": true,
+          "x": 82,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "cenir7yl",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "32",
+          "active": true,
+          "x": 125,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "kpp0rbgu",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "33",
+          "active": true,
+          "x": 167,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "tn1qjimp",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "34",
+          "active": true,
+          "x": 209,
+          "y": -45,
+          "visible": true,
+          "bgColor": null,
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "z56dk1ry",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 3,
+              "y": 3,
+              "width": 34,
+              "height": 33.5,
+              "alpha": 0.33,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "jitbeyna",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "35",
+          "active": true,
+          "x": 252,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "3qcmdiza",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "36",
+          "active": true,
+          "x": 294,
+          "y": -45,
+          "visible": true
+        },
+        {
+          "_$id": "8dfxcpyq",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "37",
+          "active": true,
+          "x": 293,
+          "y": -3,
+          "visible": true
+        },
+        {
+          "_$id": "bwnimtrx",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "38",
+          "active": true,
+          "x": 294,
+          "y": 39,
+          "visible": true
+        },
+        {
+          "_$id": "7ha7izqj",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "39",
+          "active": true,
+          "x": 251,
+          "y": 39,
+          "visible": true,
+          "bgColor": "rgba(0, 140, 248, 1)",
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "qjy72wjs",
+              "_$type": "Image",
+              "name": "Image(2)",
+              "x": 2,
+              "y": 3,
+              "width": 34,
+              "height": 34,
+              "alpha": 0.4,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "3xdcazmg",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "40",
+          "active": true,
+          "x": 209,
+          "y": 39,
+          "visible": true
+        },
+        {
+          "_$id": "r9jk4nf8",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "41",
+          "active": true,
+          "x": 166,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "g7eu52s2",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "42",
+          "active": true,
+          "x": 125,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "dvfp4bhv",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "43",
+          "active": true,
+          "x": 82,
+          "y": 40,
+          "visible": true
+        },
+        {
+          "_$id": "f9q0xpq3",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "44",
+          "active": true,
+          "x": 39,
+          "y": 82,
+          "visible": true
+        },
+        {
+          "_$id": "yzxeembh",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "45",
+          "active": true,
+          "x": 40,
+          "y": 125,
+          "visible": true
+        },
+        {
+          "_$id": "3jvfjhya",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "46",
+          "active": true,
+          "x": 40,
+          "y": 166,
+          "visible": true
+        },
+        {
+          "_$id": "nmog5je3",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "47",
+          "active": true,
+          "x": 39,
+          "y": 209,
+          "visible": true,
+          "bgColor": null,
+          "_$comp": [
+            {
+              "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
+              "safe": 0
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "fyaqvfzh",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 2.999999999999943,
+              "y": 2.999999999999943,
+              "width": 33.5,
+              "height": 33.5,
+              "alpha": 0.33,
+              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "wbjifsd0",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "48",
+          "active": true,
+          "x": 40,
+          "y": 251,
+          "visible": true
+        },
+        {
+          "_$id": "6t8myb5k",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "49",
+          "active": true,
+          "x": 40,
+          "y": 293,
+          "visible": true
+        },
+        {
+          "_$id": "834vqins",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "50",
+          "active": true,
+          "x": -2,
+          "y": 293,
+          "visible": true,
+          "_$child": [
+            {
+              "_$id": "jzutr65r",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 9,
+              "y": 1,
+              "width": 16,
+              "height": 28,
+              "skin": "res://63f4363b-55f9-4905-a16e-0f27d42b24b4",
+              "useSourceSize": true,
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
+          "_$id": "35qi90er",
+          "_$prefab": "ff7b353d-40d6-4daa-8a58-dc4a1d567ccf",
+          "name": "51",
+          "active": true,
+          "x": -45,
+          "y": 293,
+          "visible": true
         }
       ]
     },
@@ -961,7 +950,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "h6q90dh9",
+                          "3ubclldw"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -986,7 +980,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "h6q90dh9",
+                          "e4x4xmeu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1011,7 +1010,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "h6q90dh9",
+                          "nhfenhzp"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1036,7 +1040,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "h6q90dh9",
+                          "k3onbzgu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hqy9lgmf",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1285,7 +1294,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "bj7phns4",
+                          "3ubclldw"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1310,7 +1324,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "bj7phns4",
+                          "e4x4xmeu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1335,7 +1354,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "bj7phns4",
+                          "nhfenhzp"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1360,7 +1384,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "bj7phns4",
+                          "k3onbzgu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "hknjlm1h",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1609,7 +1638,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "ves81bgi",
+                          "3ubclldw"
+                        ]
+                      },
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1628,7 +1662,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "ves81bgi",
+                          "e4x4xmeu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1647,7 +1686,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "ves81bgi",
+                          "nhfenhzp"
+                        ]
+                      },
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1666,7 +1710,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "ves81bgi",
+                          "k3onbzgu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "b7zhaso0",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1908,7 +1957,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "2r52rn68",
+                          "3ubclldw"
+                        ]
+                      },
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1933,7 +1987,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "2r52rn68",
+                          "e4x4xmeu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1958,7 +2017,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "2r52rn68",
+                          "nhfenhzp"
+                        ]
+                      },
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"
@@ -1983,7 +2047,12 @@
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
-                      "hole": null,
+                      "hole": {
+                        "_$ref": [
+                          "2r52rn68",
+                          "k3onbzgu"
+                        ]
+                      },
                       "player": {
                         "_$ref": "qs7wy01p",
                         "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664"

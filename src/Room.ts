@@ -56,6 +56,17 @@ export class Room extends Laya.Script {
         this.owner.on(Player.Event.ExitRoom, this, this.onExitRoom);
     }
 
+    onOpened(param:any) {
+        switch(param.type) {
+            case "computer": {
+                break;
+            }
+            case "extreme": {
+                break;
+            }
+        }
+    }
+
     onStart(): void {
         this.numberOfPlayer = 2;
         this.initEventListener();
