@@ -11280,11 +11280,9 @@
           for (let i2 = 0; i2 < chesses.length; ++i2) {
             chesses[i2].offAllCaller(o);
           }
-          this.player.trade.getComponent(Trade).stop();
           complete.runWith(chesses[i]);
         });
       }
-      this.player.trade.getComponent(Trade).becareful();
       this.player.hopChesses(chesses);
     }
     onReckonChessComplete(chesses, complete) {
@@ -11589,8 +11587,60 @@
     regClass16("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
   ], Game);
 
-  // src/Groove.ts
+  // src/GameToolbar.ts
   var { regClass: regClass17, property: property17 } = Laya;
+  var GameToolbar = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    /**
+     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
+     */
+    onAwake() {
+      this.backButton.on(Laya.Event.CLICK, this, () => {
+        let owner = this.owner;
+        owner.scene.close();
+      });
+    }
+    /**
+     * 组件被启用后执行，例如节点被添加到舞台后
+     */
+    //onEnable(): void {}
+    /**
+     * 组件被禁用时执行，例如从节点从舞台移除后
+     */
+    //onDisable(): void {}
+    /**
+     * 第一次执行update之前执行，只会执行一次
+     */
+    //onStart(): void {}
+    /**
+     * 手动调用节点销毁时执行
+     */
+    //onDestroy(): void {
+    /**
+     * 每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
+     */
+    //onUpdate(): void {}
+    /**
+     * 每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
+     */
+    //onLateUpdate(): void {}
+    /**
+     * 鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
+     */
+    //onMouseClick(): void {}
+  };
+  __name(GameToolbar, "GameToolbar");
+  __decorateClass([
+    property17(Laya.Sprite)
+  ], GameToolbar.prototype, "backButton", 2);
+  GameToolbar = __decorateClass([
+    regClass17("2eaec3fb-1805-4cbc-89c7-008aa7b68c01", "../src/GameToolbar.ts")
+  ], GameToolbar);
+
+  // src/Groove.ts
+  var { regClass: regClass18, property: property18 } = Laya;
   var Groove = class extends Laya.Script {
     constructor() {
       super();
@@ -11603,23 +11653,23 @@
   };
   __name(Groove, "Groove");
   Groove = __decorateClass([
-    regClass17("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
+    regClass18("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
   ], Groove);
 
   // src/Lunch.ts
-  var { regClass: regClass18, property: property18 } = Laya;
+  var { regClass: regClass19, property: property19 } = Laya;
   var Lunch = class extends Laya.Script {
     onStart() {
     }
   };
   __name(Lunch, "Lunch");
   Lunch = __decorateClass([
-    regClass18("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
+    regClass19("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
   ], Lunch);
 
   // src/Station.ts
   var SFS2X3 = __toESM(require_sfs2x_api());
-  var { regClass: regClass19, property: property19 } = Laya;
+  var { regClass: regClass20, property: property20 } = Laya;
   var Event3 = class {
   };
   __name(Event3, "Event");
@@ -11707,15 +11757,15 @@
   };
   __name(Station, "Station");
   __decorateClass([
-    property19(String)
+    property20(String)
   ], Station.prototype, "playerName", 2);
   Station = __decorateClass([
-    regClass19("7e713f81-07d8-440c-a6dd-6f4538227cee", "../src/Station.ts")
+    regClass20("7e713f81-07d8-440c-a6dd-6f4538227cee", "../src/Station.ts")
   ], Station);
 
   // src/Parallel.ts
   var SFS2X4 = __toESM(require_sfs2x_api());
-  var { regClass: regClass20, property: property20 } = Laya;
+  var { regClass: regClass21, property: property21 } = Laya;
   var Parallel = class extends Laya.Script {
     constructor() {
       super();
@@ -11743,17 +11793,17 @@
   };
   __name(Parallel, "Parallel");
   __decorateClass([
-    property20(Laya.Button)
+    property21(Laya.Button)
   ], Parallel.prototype, "closeBtn", 2);
   __decorateClass([
-    property20(Laya.RadioGroup)
+    property21(Laya.RadioGroup)
   ], Parallel.prototype, "colorGroup", 2);
   Parallel = __decorateClass([
-    regClass20("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
+    regClass21("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
   ], Parallel);
 
   // src/Menu.ts
-  var { regClass: regClass21, property: property21 } = Laya;
+  var { regClass: regClass22, property: property22 } = Laya;
   var Menu = class extends Laya.Script {
     constructor() {
       super();
@@ -11795,72 +11845,20 @@
   };
   __name(Menu, "Menu");
   __decorateClass([
-    property21(Laya.Button)
+    property22(Laya.Button)
   ], Menu.prototype, "challengeComputer", 2);
   __decorateClass([
-    property21(Laya.Button)
+    property22(Laya.Button)
   ], Menu.prototype, "challengeExtreme", 2);
   __decorateClass([
-    property21(Laya.Button)
+    property22(Laya.Button)
   ], Menu.prototype, "settings", 2);
   __decorateClass([
-    property21(Laya.Prefab)
+    property22(Laya.Prefab)
   ], Menu.prototype, "parallel", 2);
   Menu = __decorateClass([
-    regClass21("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
+    regClass22("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
-
-  // src/GameToolbar.ts
-  var { regClass: regClass22, property: property22 } = Laya;
-  var GameToolbar = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    /**
-     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-     */
-    onAwake() {
-      this.backButton.on(Laya.Event.CLICK, this, () => {
-        let owner = this.owner;
-        owner.scene.close();
-      });
-    }
-    /**
-     * 组件被启用后执行，例如节点被添加到舞台后
-     */
-    //onEnable(): void {}
-    /**
-     * 组件被禁用时执行，例如从节点从舞台移除后
-     */
-    //onDisable(): void {}
-    /**
-     * 第一次执行update之前执行，只会执行一次
-     */
-    //onStart(): void {}
-    /**
-     * 手动调用节点销毁时执行
-     */
-    //onDestroy(): void {
-    /**
-     * 每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onUpdate(): void {}
-    /**
-     * 每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onLateUpdate(): void {}
-    /**
-     * 鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
-     */
-    //onMouseClick(): void {}
-  };
-  __name(GameToolbar, "GameToolbar");
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], GameToolbar.prototype, "backButton", 2);
-  GameToolbar = __decorateClass([
-    regClass22("2eaec3fb-1805-4cbc-89c7-008aa7b68c01", "../src/GameToolbar.ts")
-  ], GameToolbar);
 })();
 /*! Bundled license information:
 
