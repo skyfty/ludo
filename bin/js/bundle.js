@@ -10569,6 +10569,7 @@
   __name(Config, "Config");
   Config.NUMBER_UNIVERSAL_HOLD = 52;
   Config.NUMBER_PERSONAL_HOLD = 6;
+  Config.Colors = ["red", "green", "yellow", "blue"];
 
   // src/Player.ts
   var { regClass: regClass2, property: property2 } = Laya;
@@ -11564,25 +11565,36 @@
     challengeComputer(param) {
       let room = this.getComponent(Room);
       room.numberOfPlayer = param && param.number ? param.number : 2;
-      room.addPlayer("red", 2 /* Oneself */, {
+      room.addPlayer(param.color, 2 /* Oneself */, {
         "id": 0,
-        "name": "sdfsdf",
+        "name": "Yourself",
         "avatar": ""
       });
+      let colors = JSON.parse(JSON.stringify(Config.Colors));
+      let idx = colors.indexOf(param.color);
       let num = Math.min(room.numberOfPlayer - 1, 3);
-      for (let i = 0; i < num; ++i) {
-        let id = i + 1;
-        room.addPlayer(Game.colors[i], 1 /* Computer */, {
-          "id": id,
-          "name": "sdfsdf",
+      if (num == 1) {
+        idx = idx % 2 == 0 ? idx == 0 ? 2 : 0 : idx == 1 ? 3 : 1;
+        room.addPlayer(colors[idx], 1 /* Computer */, {
+          "id": 1,
+          "name": "Guest",
           "avatar": ""
         });
+      } else {
+        colors.splice(idx, 1);
+        for (let i = 0; i < num; ++i) {
+          let id = i + 1;
+          room.addPlayer(colors[i], 1 /* Computer */, {
+            "id": id,
+            "name": "Guest",
+            "avatar": ""
+          });
+        }
       }
-      room.startGame("red");
+      room.startGame(param.color);
     }
   };
   __name(Game, "Game");
-  Game.colors = ["yellow", "green", "blue"];
   Game = __decorateClass([
     regClass16("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
   ], Game);
@@ -11764,31 +11776,27 @@
   ], Station);
 
   // src/Parallel.ts
-  var SFS2X4 = __toESM(require_sfs2x_api());
   var { regClass: regClass21, property: property21 } = Laya;
   var Parallel = class extends Laya.Script {
     constructor() {
       super();
-      this.station = null;
     }
     onAwake() {
-      this.closeBtn.on(Laya.Event.MOUSE_DOWN, this, () => {
+      this.closeBtn.on(Laya.Event.CLICK, this, () => {
         this.owner.event(Laya.Event.CLOSE);
-        this.station.sfs.removeEventListener(SFS2X4.SFSEvent.USER_VARIABLES_UPDATE, this.onUserVariablesUpdate);
-        this.owner.parent.removeSelf();
+      });
+      this.play2pBtn.on(Laya.Event.CLICK, this, () => {
+        this.play4pBtn.selected = false;
+        this.play2pBtn.selected = true;
+      });
+      this.play4pBtn.on(Laya.Event.CLICK, this, () => {
+        this.play2pBtn.selected = false;
+        this.play4pBtn.selected = true;
       });
       this.colorGroup.selectHandler = new Laya.Handler(this, this.onSelectColor);
     }
     onSelectColor(index) {
-      let color = this.colorGroup.selectedIndex == 0 ? "red" : "yellow";
-      let userVar = new SFS2X4.SFSUserVariable("color", color);
-      this.station.sfs.send(new SFS2X4.SetUserVariablesRequest([userVar]));
-    }
-    listen() {
-      this.station.sfs.addEventListener(SFS2X4.SFSEvent.USER_VARIABLES_UPDATE, this.onUserVariablesUpdate, this);
-    }
-    onUserVariablesUpdate(event) {
-      console.log(event);
+      console.log("lskjf");
     }
   };
   __name(Parallel, "Parallel");
@@ -11796,10 +11804,10 @@
     property21(Laya.Button)
   ], Parallel.prototype, "closeBtn", 2);
   __decorateClass([
-    property21(Laya.Button)
+    property21(Laya.CheckBox)
   ], Parallel.prototype, "play2pBtn", 2);
   __decorateClass([
-    property21(Laya.Button)
+    property21(Laya.CheckBox)
   ], Parallel.prototype, "play4pBtn", 2);
   __decorateClass([
     property21(Laya.Button)
@@ -11811,8 +11819,50 @@
     regClass21("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
   ], Parallel);
 
-  // src/Menu.ts
+  // src/ComputerParallel.ts
   var { regClass: regClass22, property: property22 } = Laya;
+  var ComputerParallel = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      let parallel = this.owner.getComponent(Parallel);
+      parallel.play.on(Laya.Event.CLICK, this, () => {
+        this.owner.event(Laya.Event.PLAYED, [Config.Colors[parallel.colorGroup.selectedIndex], parallel.play2pBtn.selected ? 2 : 4]);
+      });
+    }
+    onSelectColor(index) {
+    }
+  };
+  __name(ComputerParallel, "ComputerParallel");
+  ComputerParallel = __decorateClass([
+    regClass22("9f7ba979-284a-4c3f-9bd9-8653533441a3", "../src/ComputerParallel.ts")
+  ], ComputerParallel);
+
+  // src/OnlineParallel.ts
+  var { regClass: regClass23, property: property23 } = Laya;
+  var OnlineParallel = class extends Laya.Script {
+    constructor(station) {
+      super();
+      this.station = station;
+    }
+    onAwake() {
+      let parallel = this.owner.getComponent(Parallel);
+      parallel.play.on(Laya.Event.CLICK, this, () => {
+        this.owner.event(Laya.Event.PLAYED, [Config.Colors[parallel.colorGroup.selectedIndex], parallel.play2pBtn.selected ? 2 : 4]);
+        this.owner.parent.removeSelf();
+      });
+    }
+    onSelectColor(index) {
+    }
+  };
+  __name(OnlineParallel, "OnlineParallel");
+  OnlineParallel = __decorateClass([
+    regClass23("ed529f9a-99b9-4ca5-9c9f-f8dc68b088a5", "../src/OnlineParallel.ts")
+  ], OnlineParallel);
+
+  // src/Menu.ts
+  var { regClass: regClass24, property: property24 } = Laya;
   var Menu = class extends Laya.Script {
     constructor() {
       super();
@@ -11826,47 +11876,50 @@
       this.owner.on(Event3.Error, this, this.onExtremeError);
     }
     onChallengeComputer() {
-      Laya.Scene.open("game.ls", false, { "type": "computer", "number": 2 });
+      Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg) => {
+        dlg.addComponentInstance(new ComputerParallel());
+        dlg.on(Laya.Event.PLAYED, this, (color, num) => {
+          dlg.close();
+          Laya.Scene.open("game.ls", false, { "type": "computer", "color": color, "number": num });
+        });
+      }));
     }
     onChallengeExtreme() {
+      Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg) => {
+        let st2 = this.owner.getComponent(Station);
+        dlg.addComponentInstance(new OnlineParallel(st2));
+        dlg.on(Laya.Event.PLAYED, this, (color, num) => {
+          dlg.close();
+          Laya.Scene.open("game.ls", false, { "type": "extreme", "color": color, "number": num, "station": st2 });
+        });
+      }));
       let st = this.owner.getComponent(Station);
       st.join(st.desks[0]);
     }
     onSettings() {
     }
-    onParallelDialogShow(dlg) {
-      let st = this.owner.getComponent(Station);
-      let parallel = dlg.getComponent(Parallel);
-      parallel.station = st;
-      dlg.on(Laya.Event.CLOSE, this, () => {
-        Laya.Scene.open("game.ls", false, { "type": "extreme", "station": st });
-      });
-      parallel.listen();
-    }
     onJoinExtreme() {
-      Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, this.onParallelDialogShow));
     }
     onExitExtreme() {
     }
     onExtremeError() {
-      Laya.Scene.open("game.ls", false, { "text": "\u6CA1\u6709\u52FE\u9009\u9879\uFF0C\u8BF7\u5148\u52FE\u9009" });
     }
   };
   __name(Menu, "Menu");
   __decorateClass([
-    property22(Laya.Button)
+    property24(Laya.Button)
   ], Menu.prototype, "challengeComputer", 2);
   __decorateClass([
-    property22(Laya.Button)
+    property24(Laya.Button)
   ], Menu.prototype, "challengeExtreme", 2);
   __decorateClass([
-    property22(Laya.Button)
+    property24(Laya.Button)
   ], Menu.prototype, "settings", 2);
   __decorateClass([
-    property22(Laya.Prefab)
+    property24(Laya.Prefab)
   ], Menu.prototype, "parallel", 2);
   Menu = __decorateClass([
-    regClass22("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
+    regClass24("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
 })();
 /*! Bundled license information:

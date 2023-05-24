@@ -74,7 +74,9 @@
           "diceRoll": {
             "_$ref": "22dm2a74"
           },
-          "diceDefault": null
+          "diceDefault": {
+            "_$ref": "o95ydlsr"
+          }
         }
       ],
       "_$child": [

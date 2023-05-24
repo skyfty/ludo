@@ -28,11 +28,6 @@
         "_$uuid": "2c2ebf8d-515e-48c3-a5b6-9608800d2ad3",
         "_$type": "Prefab"
       }
-    },
-    {
-      "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
-      "scriptPath": "../src/Station.ts",
-      "playerName": "sdfsdf"
     }
   ],
   "_$child": [
@@ -40,16 +35,16 @@
       "_$id": "au6aouvz",
       "_$type": "Image",
       "name": "Image",
-      "x": 1,
-      "y": -8,
-      "width": 632.1856159674642,
-      "height": 1138.825420822629,
-      "left": 1,
-      "right": 2,
-      "top": -8,
-      "bottom": 5,
-      "centerX": 0,
-      "centerY": -7,
+      "x": -197,
+      "y": -361,
+      "width": 1157.0758126745013,
+      "height": 2084.3678122542756,
+      "left": -197,
+      "right": -325,
+      "top": -361,
+      "bottom": -587,
+      "centerX": 64,
+      "centerY": 113,
       "skin": "res://062a211d-d130-4021-9a56-215fbafda1f1",
       "color": "#ffffff"
     },

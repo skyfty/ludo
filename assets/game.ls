@@ -32,9 +32,11 @@
       "_$id": "ikgjaepj",
       "_$type": "Image",
       "name": "desk",
-      "width": 636,
-      "height": 1136,
-      "skin": "res://d061e0a6-9110-4ae3-9fdd-9b58b82fd336",
+      "x": -200.30600834541534,
+      "y": -357.2497165335727,
+      "width": 1069.8978475432014,
+      "height": 1908.183912763974,
+      "skin": "res://062a211d-d130-4021-9a56-215fbafda1f1",
       "color": "#ffffff"
     },
     {

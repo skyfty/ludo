@@ -1,8 +1,8 @@
 
 const { regClass, property } = Laya;
 import * as Station from "./Station";
-import { Parallel } from "./Parallel";
-import * as SFS2X from "../node_modules/sfs2x-api";
+import { ComputerParallel } from "./ComputerParallel";
+import { OnlineParallel } from "./OnlineParallel";
 
 @regClass()
 export class Menu extends Laya.Script {
@@ -32,35 +32,35 @@ export class Menu extends Laya.Script {
         this.owner.on(Station.Event.Error, this, this.onExtremeError);
     }
     onChallengeComputer() {
-        Laya.Scene.open("game.ls", false, {  "type": "computer", "number":2 });
+        Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+            dlg.addComponentInstance(new ComputerParallel());
+            dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
+                dlg.close();
+                Laya.Scene.open("game.ls", false, { "type": "computer", "color": color,"number":num });
+            });
+        }));
     }
     
     onChallengeExtreme() {
-        let st = this.owner.getComponent(Station.Station) as Station.Station;
-        st.join(st.desks[0]);
+        Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+            let st = this.owner.getComponent(Station.Station) as Station.Station;   
+            dlg.addComponentInstance(new OnlineParallel(st));
+            dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
+                dlg.close();
+                Laya.Scene.open("game.ls", false, { "type": "extreme", "color": color,"number":num, "station": st  });
+            });
+        }));
     }
 
     onSettings() {
        
     }
 
-    onParallelDialogShow(dlg:Laya.Dialog) {
-        let st = this.owner.getComponent(Station.Station) as Station.Station;   
-        let parallel = dlg.getComponent(Parallel);  
-        parallel.station = st;   
-        dlg.on(Laya.Event.CLOSE,this, ()=>{
-            Laya.Scene.open("game.ls", false, { "type": "extreme", "station": st });
-        });
-        parallel.listen();
-    }
-
     onJoinExtreme() {
-        Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, this.onParallelDialogShow));
     }
 
     onExitExtreme() {
     }
     onExtremeError() {
-        Laya.Scene.open("game.ls", false, { "text": "没有勾选项，请先勾选" });
     }
 }

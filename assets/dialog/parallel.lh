@@ -16,12 +16,14 @@
         "_$ref": "mfqn36k5"
       },
       "play2pBtn": {
-        "_$ref": "o3772ehu"
+        "_$ref": "7p1j40su"
       },
       "play4pBtn": {
-        "_$ref": "9o39h888"
+        "_$ref": "5ibbci1l"
       },
-      "play": null,
+      "play": {
+        "_$ref": "1mm8w0ix"
+      },
       "colorGroup": {
         "_$ref": "bjox2ylv"
       }
@@ -32,11 +34,11 @@
       "_$id": "ssp4sc1i",
       "_$type": "Image",
       "name": "Image(5)",
-      "x": 4,
-      "y": -1,
-      "width": 632.4000000000001,
-      "height": 1133.8000000000002,
-      "alpha": 0.81,
+      "x": -234.98755141856202,
+      "y": -429.46945888419606,
+      "width": 1185.0268193523304,
+      "height": 2124.578443677534,
+      "alpha": 0.95,
       "skin": "res://00000000-0000-0000-0001-000000000001",
       "color": "#000000"
     },
@@ -91,8 +93,8 @@
       "_$id": "101ihuwf",
       "_$type": "Image",
       "name": "Image(1)",
-      "x": 142,
-      "y": 330,
+      "x": 441,
+      "y": 335,
       "width": 62.79328076791223,
       "height": 65.16283853273912,
       "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
@@ -102,8 +104,8 @@
       "_$id": "yeswoxho",
       "_$type": "Image",
       "name": "Image(2)",
-      "x": 242,
-      "y": 331,
+      "x": 243,
+      "y": 335,
       "width": 62.79328076791223,
       "height": 65.16283853273912,
       "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
@@ -113,8 +115,8 @@
       "_$id": "vmmdo6cr",
       "_$type": "Image",
       "name": "Image(3)",
-      "x": 346,
-      "y": 331,
+      "x": 142,
+      "y": 335,
       "width": 59.35018854988001,
       "height": 61.589818306479266,
       "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
@@ -124,8 +126,8 @@
       "_$id": "4v9lzilg",
       "_$type": "Image",
       "name": "Image(4)",
-      "x": 443,
-      "y": 330,
+      "x": 344,
+      "y": 335,
       "width": 62.79328076791223,
       "height": 65.16283853273912,
       "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
@@ -146,24 +148,26 @@
       "labelSize": 20
     },
     {
-      "_$id": "o3772ehu",
-      "_$type": "Button",
-      "name": "btn2p",
-      "x": 179,
-      "y": 590,
+      "_$id": "7p1j40su",
+      "_$type": "CheckBox",
+      "name": "2p",
+      "x": 186,
+      "y": 593,
       "width": 124,
       "height": 124,
       "mouseEnabled": true,
       "stateNum": 2,
+      "selected": true,
       "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "labelAlign": "left"
     },
     {
-      "_$id": "9o39h888",
-      "_$type": "Button",
-      "name": "btn4p",
-      "x": 348,
+      "_$id": "5ibbci1l",
+      "_$type": "CheckBox",
+      "name": "4p",
+      "x": 368,
       "y": 590,
       "width": 124,
       "height": 124,
@@ -171,7 +175,8 @@
       "stateNum": 2,
       "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "labelAlign": "left"
     }
   ]
 }
