@@ -8,6 +8,15 @@ export class Parallel extends Laya.Script {
     @property(Laya.Button)
     public closeBtn: Laya.Button;
 
+    @property(Laya.Button)
+    public play2pBtn: Laya.Button;
+
+    @property(Laya.Button)
+    public play4pBtn: Laya.Button;
+    
+    @property(Laya.Button)
+    public play: Laya.Button;
+    
     @property(Laya.RadioGroup)
     public colorGroup: Laya.RadioGroup;
 

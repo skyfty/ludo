@@ -22,7 +22,7 @@
         "_$ref": "mqsu2s73"
       },
       "settings": {
-        "_$ref": "gxtjdxp2"
+        "_$ref": "foe94s5k"
       },
       "parallel": {
         "_$uuid": "2c2ebf8d-515e-48c3-a5b6-9608800d2ad3",
@@ -56,7 +56,7 @@
     {
       "_$id": "pklrsvsb",
       "_$type": "Button",
-      "name": "Button",
+      "name": "vscomputer",
       "x": 131.60016049303462,
       "y": 273.3722218655712,
       "width": 404.4465301405922,
@@ -70,7 +70,7 @@
     {
       "_$id": "mqsu2s73",
       "_$type": "Button",
-      "name": "Button(1)",
+      "name": "online",
       "x": 130,
       "y": 430.2963985363035,
       "width": 404.4465301405922,
@@ -79,20 +79,6 @@
       "stateNum": 2,
       "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
       "label": "",
-      "labelSize": 20
-    },
-    {
-      "_$id": "gxtjdxp2",
-      "_$type": "Button",
-      "name": "Button(2)",
-      "x": 111,
-      "y": 725,
-      "width": 120,
-      "height": 40,
-      "visible": false,
-      "mouseEnabled": true,
-      "skin": "res://d4cfd6a8-0d0a-475b-ac93-d85eaa646936",
-      "label": "Title",
       "labelSize": 20
     },
     {

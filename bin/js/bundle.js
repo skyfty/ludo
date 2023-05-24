@@ -11796,6 +11796,15 @@
     property21(Laya.Button)
   ], Parallel.prototype, "closeBtn", 2);
   __decorateClass([
+    property21(Laya.Button)
+  ], Parallel.prototype, "play2pBtn", 2);
+  __decorateClass([
+    property21(Laya.Button)
+  ], Parallel.prototype, "play4pBtn", 2);
+  __decorateClass([
+    property21(Laya.Button)
+  ], Parallel.prototype, "play", 2);
+  __decorateClass([
     property21(Laya.RadioGroup)
   ], Parallel.prototype, "colorGroup", 2);
   Parallel = __decorateClass([

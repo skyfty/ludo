@@ -3,9 +3,8 @@
   "_$id": "g1c8otr5",
   "_$type": "Dialog",
   "name": "View",
-  "width": 400,
-  "height": 400,
-  "alpha": 0.82,
+  "width": 635,
+  "height": 1136,
   "mouseEnabled": true,
   "autoDestroyAtClosed": true,
   "isModal": true,
@@ -16,6 +15,13 @@
       "closeBtn": {
         "_$ref": "mfqn36k5"
       },
+      "play2pBtn": {
+        "_$ref": "o3772ehu"
+      },
+      "play4pBtn": {
+        "_$ref": "9o39h888"
+      },
+      "play": null,
       "colorGroup": {
         "_$ref": "bjox2ylv"
       }
@@ -23,31 +29,56 @@
   ],
   "_$child": [
     {
+      "_$id": "ssp4sc1i",
+      "_$type": "Image",
+      "name": "Image(5)",
+      "x": 4,
+      "y": -1,
+      "width": 632.4000000000001,
+      "height": 1133.8000000000002,
+      "alpha": 0.81,
+      "skin": "res://00000000-0000-0000-0001-000000000001",
+      "color": "#000000"
+    },
+    {
+      "_$id": "rr5akuzs",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 40,
+      "y": 136,
+      "width": 570,
+      "height": 828,
+      "skin": "res://2b5df256-c379-4b8d-ba89-ef45391f5c8c",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
       "_$id": "mfqn36k5",
       "_$type": "Button",
       "name": "close",
-      "x": 56,
-      "y": 43,
-      "width": 120,
-      "height": 40,
+      "x": 293,
+      "y": 966,
+      "width": 63.5,
+      "height": 63.5,
       "mouseEnabled": true,
-      "skin": "res://d4cfd6a8-0d0a-475b-ac93-d85eaa646936",
-      "label": "close",
+      "stateNum": 1,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
       "labelSize": 20
     },
     {
       "_$id": "bjox2ylv",
       "_$type": "RadioGroup",
-      "name": "RadioGroup",
-      "x": 85,
-      "y": 130,
-      "width": 200,
-      "height": 200,
+      "name": "colorcheck",
+      "x": 140,
+      "y": 399,
+      "width": 364,
+      "height": 65,
       "mouseEnabled": true,
-      "skin": "res://7db29ccb-50d2-461e-9b1c-8479ff20673f",
-      "stateNum": null,
-      "labels": "red,yellow",
-      "space": 0,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "stateNum": 2,
+      "labels": " , ,,",
+      "space": 20,
       "selectedIndex": 0,
       "labelFont": null,
       "labelSize": 20,
@@ -55,6 +86,92 @@
       "labelStrokeColor": null,
       "labelAlign": null,
       "strokeColors": null
+    },
+    {
+      "_$id": "101ihuwf",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 142,
+      "y": 330,
+      "width": 62.79328076791223,
+      "height": 65.16283853273912,
+      "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "yeswoxho",
+      "_$type": "Image",
+      "name": "Image(2)",
+      "x": 242,
+      "y": 331,
+      "width": 62.79328076791223,
+      "height": 65.16283853273912,
+      "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "vmmdo6cr",
+      "_$type": "Image",
+      "name": "Image(3)",
+      "x": 346,
+      "y": 331,
+      "width": 59.35018854988001,
+      "height": 61.589818306479266,
+      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "4v9lzilg",
+      "_$type": "Image",
+      "name": "Image(4)",
+      "x": 443,
+      "y": 330,
+      "width": 62.79328076791223,
+      "height": 65.16283853273912,
+      "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "1mm8w0ix",
+      "_$type": "Button",
+      "name": "play",
+      "x": 142,
+      "y": 787,
+      "width": 378,
+      "height": 104,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
+      "label": "",
+      "labelSize": 20
+    },
+    {
+      "_$id": "o3772ehu",
+      "_$type": "Button",
+      "name": "btn2p",
+      "x": 179,
+      "y": 590,
+      "width": 124,
+      "height": 124,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
+      "label": "",
+      "labelSize": 20
+    },
+    {
+      "_$id": "9o39h888",
+      "_$type": "Button",
+      "name": "btn4p",
+      "x": 348,
+      "y": 590,
+      "width": 124,
+      "height": 124,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
+      "label": "",
+      "labelSize": 20
     }
   ]
 }
