@@ -10965,34 +10965,8 @@
     regClass4("a1b4fee2-5dd4-483e-bf42-a9f391634e69", "../src/Performer.ts")
   ], Performer);
 
-  // src/Trade.ts
-  var { regClass: regClass5, property: property5 } = Laya;
-  var Trade = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    stop() {
-      let ani = this.owner.getComponent(Laya.Animator2D);
-      ani.play("idle");
-    }
-    disabled(b) {
-      this.disabledBk.visible = b;
-    }
-    becareful() {
-      let ani = this.owner.getComponent(Laya.Animator2D);
-      ani.play("becareful");
-    }
-  };
-  __name(Trade, "Trade");
-  __decorateClass([
-    property5(Laya.Image)
-  ], Trade.prototype, "disabledBk", 2);
-  Trade = __decorateClass([
-    regClass5("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
-  ], Trade);
-
   // src/Dice.ts
-  var { regClass: regClass6, property: property6 } = Laya;
+  var { regClass: regClass5, property: property5 } = Laya;
   var Dice = class extends Laya.Script {
     constructor() {
       super();
@@ -11016,14 +10990,44 @@
   };
   __name(Dice, "Dice");
   __decorateClass([
-    property6(Laya.Clip)
+    property5(Laya.Clip)
   ], Dice.prototype, "diceRoll", 2);
   __decorateClass([
-    property6(Laya.Clip)
+    property5(Laya.Clip)
   ], Dice.prototype, "diceDefault", 2);
   Dice = __decorateClass([
-    regClass6("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
+    regClass5("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
   ], Dice);
+
+  // src/Trade.ts
+  var { regClass: regClass6, property: property6 } = Laya;
+  var Trade = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    stop() {
+      let ani = this.owner.getComponent(Laya.Animator2D);
+      ani.play("idle");
+      return this;
+    }
+    disabled(b) {
+      this.disabledBk.visible = b;
+    }
+    becareful() {
+      let ani = this.owner.getComponent(Laya.Animator2D);
+      ani.play("becareful");
+    }
+    roll() {
+      this.owner.getComponent(Dice).roll();
+    }
+  };
+  __name(Trade, "Trade");
+  __decorateClass([
+    property6(Laya.Image)
+  ], Trade.prototype, "disabledBk", 2);
+  Trade = __decorateClass([
+    regClass6("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
+  ], Trade);
 
   // src/Computer.ts
   var { regClass: regClass7, property: property7 } = Laya;
@@ -11047,8 +11051,9 @@
     }
     startRoll() {
       this.owner.event(Event2.RollStart, this.owner);
-      this.player.trade.getComponent(Dice).roll();
-      Laya.timer.once(600, this, this.onRollTimeout);
+      let trade = this.player.trade.getComponent(Trade);
+      trade.roll();
+      Laya.timer.once(900, this, this.onRollTimeout);
     }
     onRollTimeout() {
       this.currentDiceNumber = Math.floor(Math.random() * 6);
@@ -11238,8 +11243,12 @@
       }
       this.isAdvanceing = true;
       this.owner.event(Event2.RollStart, this.owner);
-      this.player.trade.getComponent(Dice).roll();
-      Laya.timer.once(600, this, this.onRollTimeout);
+      let trade = this.player.trade.getComponent(Trade);
+      trade.stop();
+      Laya.timer.once(100, this, () => {
+        trade.roll();
+        Laya.timer.once(900, this, this.onRollTimeout);
+      });
     }
     onRollTimeout() {
       this.currentDiceNumber = Math.floor(Math.random() * 6);
@@ -11533,7 +11542,7 @@
       let room = this.getComponent(Room);
       room.numberOfPlayer = param.number;
       this.addComponentInstance(new Online(param.station));
-      let users = param.station.sfs.lastJoinedRoom.getUserList();
+      let users = param.station.getUserList();
       for (let i = 0; i < users.length; ++i) {
         let color = param.station.getUserColor(users[i]);
         let type = users[i].isItMe ? 2 /* Oneself */ : 0 /* Extreme */;
@@ -11642,8 +11651,10 @@
   __name(Event3, "Event");
   Event3.Login = "LOGIN";
   Event3.Join = "ROOM_JOIN";
+  Event3.Disconnect = "DISCONNECT";
   Event3.Exit = "ROOM_EXIT";
   Event3.Error = "ROOM_ERROR";
+  Event3.LoginError = "LOGIN_ERROR";
   var Desk = class extends SFS2X3.SFSRoom {
   };
   __name(Desk, "Desk");
@@ -11652,8 +11663,6 @@
       super();
       this.sfs = null;
       this.debug = true;
-      this.desks = [];
-      this.currentDesk = null;
     }
     onAwake() {
       let config = {};
@@ -11671,33 +11680,38 @@
       this.sfs.addEventListener(SFS2X3.SFSEvent.LOGIN_ERROR, this.onLoginError, this);
       this.sfs.addEventListener(SFS2X3.SFSEvent.LOGIN, this.onLogin, this);
     }
-    join(desk) {
-      this.currentDesk = desk;
-      this.sfs.send(new SFS2X3.JoinRoomRequest(desk));
-    }
     onStart() {
       this.playerName += Math.random().toString();
       this.sfs.connect();
     }
+    onDestroy() {
+      this.sfs.send(new SFS2X3.LogoutRequest());
+      this.sfs.removeEventListener(SFS2X3.SFSEvent.CONNECTION, this.onConnection);
+      this.sfs.removeEventListener(SFS2X3.SFSEvent.CONNECTION_LOST, this.onConnectionLost);
+      this.sfs.removeEventListener(SFS2X3.SFSEvent.LOGIN_ERROR, this.onLoginError);
+      this.sfs.removeEventListener(SFS2X3.SFSEvent.LOGIN, this.onLogin);
+    }
     onConnection(event) {
       if (event.success) {
-        var isSent = this.sfs.send(new SFS2X3.LoginRequest(this.playerName));
-        if (!isSent) {
-          this.owner.event(Event3.Error);
-        }
+        this.sfs.send(new SFS2X3.LoginRequest(this.playerName));
       } else {
-        this.owner.event(Event3.Error);
+        this.owner.event(Event3.LoginError);
       }
     }
     onConnectionLost() {
-      this.owner.event(Event3.Exit);
+      Laya.timer.once(5e3, this, () => {
+        this.sfs.connect();
+      });
+      this.owner.event(Event3.LoginError);
     }
     onLogin() {
-      this.desks = this.sfs.roomManager.getRoomList();
       this.owner.event(Event3.Login);
     }
     onLoginError(event) {
-      this.owner.event(Event3.Exit);
+      Laya.timer.once(1e3 * 60, this, () => {
+        this.sfs.send(new SFS2X3.LoginRequest(this.playerName));
+      });
+      this.owner.event(Event3.LoginError);
     }
     getUserColor(user, roomVars = null) {
       if (roomVars == null) {
@@ -11737,6 +11751,9 @@
     }
     setRoomVariables(roomVars) {
       this.sfs.send(new SFS2X3.SetRoomVariablesRequest(roomVars));
+    }
+    getUserList() {
+      return this.sfs.lastJoinedRoom.getUserList();
     }
     mySelfId() {
       return this.sfs.mySelf.id;
@@ -11972,6 +11989,9 @@
       this.challengeComputer.on(Laya.Event.CLICK, this, this.onChallengeComputer);
       this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
+      this.parallel.on(Event3.LoginError, this, this.onLoginError);
+    }
+    onLoginError() {
     }
     onChallengeComputer() {
       this.openParallelDlg(Laya.Handler.create(this, (dlg) => {

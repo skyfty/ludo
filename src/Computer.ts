@@ -29,8 +29,9 @@ export class Computer extends Performer {
 
     private startRoll() {
         this.owner.event(Player.Event.RollStart, this.owner);
-        this.player.trade.getComponent(Dice).roll();
-        Laya.timer.once(600, this, this.onRollTimeout);
+        let trade = this.player.trade.getComponent(Trade);
+        trade.roll();
+        Laya.timer.once(900, this, this.onRollTimeout);
     }
 
     private onRollTimeout() {

@@ -1,4 +1,5 @@
 const { regClass, property } = Laya;
+import { Dice } from "./Dice";
 
 @regClass()
 export class Trade extends Laya.Script {
@@ -14,6 +15,7 @@ export class Trade extends Laya.Script {
     public stop() {
         let ani = this.owner.getComponent(Laya.Animator2D);
         ani.play("idle");
+        return this;
     }
 
     public disabled(b:boolean) {
@@ -23,5 +25,9 @@ export class Trade extends Laya.Script {
     public becareful() {
         let ani = this.owner.getComponent(Laya.Animator2D);
         ani.play("becareful");
+    }
+
+    public roll() {
+        this.owner.getComponent(Dice).roll();
     }
 }

@@ -41,8 +41,12 @@ export class Oneself extends Performer {
         }
         this.isAdvanceing = true;
         this.owner.event(Player.Event.RollStart, this.owner);
-        this.player.trade.getComponent(Dice).roll();
-        Laya.timer.once(600, this, this.onRollTimeout);
+        let trade = this.player.trade.getComponent(Trade);
+        trade.stop();
+        Laya.timer.once(100, this, ()=>{
+            trade.roll();
+            Laya.timer.once(900, this, this.onRollTimeout);
+        });
     }
 
     private onRollTimeout() {

@@ -28,6 +28,15 @@
         "_$uuid": "2c2ebf8d-515e-48c3-a5b6-9608800d2ad3",
         "_$type": "Prefab"
       }
+    },
+    {
+      "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
+      "scriptPath": "../src/Station.ts",
+      "playerName": "Feitianyu",
+      "host": "127.0.0.1",
+      "port": 8080,
+      "zone": "BasicExamples",
+      "debug": false
     }
   ],
   "_$child": [
