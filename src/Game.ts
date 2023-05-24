@@ -23,14 +23,13 @@ export class Game extends Laya.Scene {
 
     private challengeExtreme(param: any) {
         let room = this.getComponent(Room);
+        room.numberOfPlayer = param.number;
         this.addComponentInstance(new Online(param.station));
-
-        room.numberOfPlayer = 2;
-        let users = param.station.sfs.lastJoinedRoom.getUserList();
+        let users = param.station.getUserList();
         for (let i = 0; i < users.length; ++i) {
-            let color = users[i].getVariable("color");
+            let color = param.station.getUserColor(users[i]);
             let type = users[i].isItMe ? Player.Type.Oneself : Player.Type.Extreme;
-            let player = room.addPlayer(color.value, type, {
+            let player = room.addPlayer(color, type, {
                 "id": users[i].id,
                 "name": users[i].name,
                 "avatar": ""

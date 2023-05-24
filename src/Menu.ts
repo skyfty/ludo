@@ -26,13 +26,15 @@ export class Menu extends Laya.Script {
         this.challengeComputer.on(Laya.Event.CLICK, this, this.onChallengeComputer);
         this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
-
-        this.owner.on(Station.Event.Join, this, this.onJoinExtreme);
-        this.owner.on(Station.Event.Exit, this, this.onExitExtreme);
-        this.owner.on(Station.Event.Error, this, this.onExtremeError);
+        this.parallel.on(Station.Event.LoginError, this, this.onLoginError);
     }
+
+    onLoginError() {
+        
+    }
+
     onChallengeComputer() {
-        Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+        this.openParallelDlg(Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new ComputerParallel());
             dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
                 dlg.close();
@@ -42,25 +44,25 @@ export class Menu extends Laya.Script {
     }
     
     onChallengeExtreme() {
-        Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+        this.openParallelDlg( Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             let st = this.owner.getComponent(Station.Station) as Station.Station;   
             dlg.addComponentInstance(new OnlineParallel(st));
-            dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
+            dlg.on(Laya.Event.PLAYED,this, (num:number)=>{
                 dlg.close();
-                Laya.Scene.open("game.ls", false, { "type": "extreme", "color": color,"number":num, "station": st  });
+                Laya.Scene.open("game.ls", false, { "type": "extreme", "station": st,number: num });
+            });
+            dlg.on(Laya.Event.CLOSE,this, (num:number)=>{
+                dlg.close();
             });
         }));
+    }
+
+    openParallelDlg(complete: Laya.Handler) {
+        Laya.Scene.open("dialog/parallel.lh", false, null, complete);
     }
 
     onSettings() {
        
     }
 
-    onJoinExtreme() {
-    }
-
-    onExitExtreme() {
-    }
-    onExtremeError() {
-    }
 }

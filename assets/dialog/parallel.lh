@@ -24,9 +24,20 @@
       "play": {
         "_$ref": "1mm8w0ix"
       },
-      "colorGroup": {
-        "_$ref": "bjox2ylv"
-      }
+      "colorCheckBox": [
+        {
+          "_$ref": "ca2qmnut"
+        },
+        {
+          "_$ref": "2rf31ts7"
+        },
+        {
+          "_$ref": "82au31kz"
+        },
+        {
+          "_$ref": "bkpyh24y"
+        }
+      ]
     }
   ],
   "_$child": [
@@ -67,27 +78,6 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20
-    },
-    {
-      "_$id": "bjox2ylv",
-      "_$type": "RadioGroup",
-      "name": "colorcheck",
-      "x": 140,
-      "y": 399,
-      "width": 364,
-      "height": 65,
-      "mouseEnabled": true,
-      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
-      "stateNum": 2,
-      "labels": " , ,,",
-      "space": 20,
-      "selectedIndex": 0,
-      "labelFont": null,
-      "labelSize": 20,
-      "labelStroke": null,
-      "labelStrokeColor": null,
-      "labelAlign": null,
-      "strokeColors": null
     },
     {
       "_$id": "101ihuwf",
@@ -141,7 +131,8 @@
       "y": 787,
       "width": 378,
       "height": 104,
-      "mouseEnabled": true,
+      "disabled": true,
+      "gray": true,
       "stateNum": 2,
       "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
       "label": "",
@@ -174,6 +165,66 @@
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left"
+    },
+    {
+      "_$id": "ca2qmnut",
+      "_$type": "CheckBox",
+      "name": "red",
+      "x": 138,
+      "y": 411,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left"
+    },
+    {
+      "_$id": "2rf31ts7",
+      "_$type": "CheckBox",
+      "name": "green",
+      "x": 241,
+      "y": 411,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left"
+    },
+    {
+      "_$id": "82au31kz",
+      "_$type": "CheckBox",
+      "name": "yellow",
+      "x": 343,
+      "y": 411,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left"
+    },
+    {
+      "_$id": "bkpyh24y",
+      "_$type": "CheckBox",
+      "name": "blue",
+      "x": 445,
+      "y": 411,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
       "labelAlign": "left"

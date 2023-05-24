@@ -4,7 +4,9 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 import * as Station from "./Station";
 @regClass()
 export class Sender extends Laya.Script {
+    
     station:Station.Station = null;
+
     constructor(st:Station.Station) {
         super();
         this.station = st;

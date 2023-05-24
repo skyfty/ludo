@@ -11442,8 +11442,11 @@
     onAwake() {
       this.room = this.owner.getComponent(Room);
     }
+    onDestroy() {
+      this.station.levelRoom();
+      this.station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage);
+    }
     onPublicMessage(inEvent) {
-      console.log(inEvent);
       if (inEvent.sender.isItMe) {
         return;
       }
@@ -11453,23 +11456,6 @@
         player.getComponent(Extreme).processEvent(event);
       }
     }
-    onRoomVariablesUpdate(event) {
-      console.log(event);
-    }
-    // private onEventResponse(inEvent: SFS2X.SFSEvent) {
-    //     let player = this.room.players[inEvent.user.id];
-    //     if (player != null) {
-    //         player.getComponent(Extreme).processEvent(inEvent);
-    //     }
-    // }
-    // private onUserVariablesUpdate(inEvent: SFS2X.SFSEvent) {
-    //     if (inEvent.user.isItMe) {
-    //         return;
-    //     }
-    //     if (inEvent.changedVars.indexOf("event") > -1) {
-    //         this.onEventResponse(inEvent);
-    //     }
-    // }
   };
   __name(Online, "Online");
   Online = __decorateClass([
@@ -11545,13 +11531,13 @@
     }
     challengeExtreme(param) {
       let room = this.getComponent(Room);
+      room.numberOfPlayer = param.number;
       this.addComponentInstance(new Online(param.station));
-      room.numberOfPlayer = 2;
       let users = param.station.sfs.lastJoinedRoom.getUserList();
       for (let i = 0; i < users.length; ++i) {
-        let color = users[i].getVariable("color");
+        let color = param.station.getUserColor(users[i]);
         let type = users[i].isItMe ? 2 /* Oneself */ : 0 /* Extreme */;
-        let player = room.addPlayer(color.value, type, {
+        let player = room.addPlayer(color, type, {
           "id": users[i].id,
           "name": users[i].name,
           "avatar": ""
@@ -11605,43 +11591,12 @@
     constructor() {
       super();
     }
-    /**
-     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-     */
     onAwake() {
       this.backButton.on(Laya.Event.CLICK, this, () => {
         let owner = this.owner;
         owner.scene.close();
       });
     }
-    /**
-     * 组件被启用后执行，例如节点被添加到舞台后
-     */
-    //onEnable(): void {}
-    /**
-     * 组件被禁用时执行，例如从节点从舞台移除后
-     */
-    //onDisable(): void {}
-    /**
-     * 第一次执行update之前执行，只会执行一次
-     */
-    //onStart(): void {}
-    /**
-     * 手动调用节点销毁时执行
-     */
-    //onDestroy(): void {
-    /**
-     * 每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onUpdate(): void {}
-    /**
-     * 每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onLateUpdate(): void {}
-    /**
-     * 鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
-     */
-    //onMouseClick(): void {}
   };
   __name(GameToolbar, "GameToolbar");
   __decorateClass([
@@ -11696,13 +11651,16 @@
     constructor() {
       super();
       this.sfs = null;
+      this.debug = true;
       this.desks = [];
       this.currentDesk = null;
+    }
+    onAwake() {
       let config = {};
-      config.host = "127.0.0.1";
-      config.port = 8080;
-      config.zone = "BasicExamples";
-      config.debug = true;
+      config.host = this.host;
+      config.port = this.port;
+      config.zone = this.zone;
+      config.debug = this.debug;
       config.useSSL = false;
       this.sfs = new SFS2X3.SmartFox(config);
       this.sfs.logger.level = SFS2X3.LogLevel.DEBUG;
@@ -11712,18 +11670,13 @@
       this.sfs.addEventListener(SFS2X3.SFSEvent.CONNECTION_LOST, this.onConnectionLost, this);
       this.sfs.addEventListener(SFS2X3.SFSEvent.LOGIN_ERROR, this.onLoginError, this);
       this.sfs.addEventListener(SFS2X3.SFSEvent.LOGIN, this.onLogin, this);
-      this.sfs.addEventListener(SFS2X3.SFSEvent.ROOM_JOIN_ERROR, this.onRoomJoinError, this);
-      this.sfs.addEventListener(SFS2X3.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      this.sfs.addEventListener(SFS2X3.SFSEvent.USER_COUNT_CHANGE, this.onUserCountChange, this);
-      this.sfs.addEventListener(SFS2X3.SFSEvent.USER_ENTER_ROOM, this.onUserEnterRoom, this);
-      this.sfs.addEventListener(SFS2X3.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
     }
     join(desk) {
       this.currentDesk = desk;
       this.sfs.send(new SFS2X3.JoinRoomRequest(desk));
     }
     onStart() {
-      this.playerName = "sdfsdf" + Math.random();
+      this.playerName += Math.random().toString();
       this.sfs.connect();
     }
     onConnection(event) {
@@ -11746,31 +11699,65 @@
     onLoginError(event) {
       this.owner.event(Event3.Exit);
     }
-    onRoomJoinError(event) {
-      this.owner.event(Event3.Exit);
-    }
-    onRoomJoin(event) {
-      let users = this.sfs.lastJoinedRoom.getUserList();
-      console.log(users);
-      if (this.sfs.lastJoinedRoom != null) {
-        this.owner.event(Event3.Join);
+    getUserColor(user, roomVars = null) {
+      if (roomVars == null) {
+        roomVars = this.sfs.lastJoinedRoom.getVariables();
       }
+      for (let rvidx in roomVars) {
+        let rv = roomVars[rvidx];
+        if (rv.isNull) {
+          continue;
+        }
+        if (rv.value != -1 && rv.value == user.id) {
+          return rv.name;
+        }
+      }
+      return null;
     }
-    onUserCountChange(event) {
-      console.log(event);
+    getUserStateName(color, id) {
+      return color + id;
     }
-    onUserEnterRoom(event) {
-      console.log(event);
+    getOnlineUser(userId, users) {
+      for (let i in users) {
+        if (users[i].id == userId) {
+          return users[i];
+        }
+      }
+      return null;
     }
-    onUserExitRoom(event) {
-      console.log(event);
-      this.owner.event(Event3.Exit);
+    joinRoom(room = null) {
+      if (room == null) {
+        let rooms = this.sfs.roomManager.getRoomList();
+        room = rooms[0];
+      }
+      this.sfs.send(new SFS2X3.JoinRoomRequest(room));
+    }
+    levelRoom() {
+      this.sfs.send(new SFS2X3.LeaveRoomRequest(this.sfs.lastJoinedRoom));
+    }
+    setRoomVariables(roomVars) {
+      this.sfs.send(new SFS2X3.SetRoomVariablesRequest(roomVars));
+    }
+    mySelfId() {
+      return this.sfs.mySelf.id;
     }
   };
   __name(Station, "Station");
   __decorateClass([
     property20(String)
   ], Station.prototype, "playerName", 2);
+  __decorateClass([
+    property20(String)
+  ], Station.prototype, "host", 2);
+  __decorateClass([
+    property20(Number)
+  ], Station.prototype, "port", 2);
+  __decorateClass([
+    property20(String)
+  ], Station.prototype, "zone", 2);
+  __decorateClass([
+    property20(Boolean)
+  ], Station.prototype, "debug", 2);
   Station = __decorateClass([
     regClass20("7e713f81-07d8-440c-a6dd-6f4538227cee", "../src/Station.ts")
   ], Station);
@@ -11780,11 +11767,9 @@
   var Parallel = class extends Laya.Script {
     constructor() {
       super();
+      this.colorCheckBox = [];
     }
     onAwake() {
-      this.closeBtn.on(Laya.Event.CLICK, this, () => {
-        this.owner.event(Laya.Event.CLOSE);
-      });
       this.play2pBtn.on(Laya.Event.CLICK, this, () => {
         this.play4pBtn.selected = false;
         this.play2pBtn.selected = true;
@@ -11793,10 +11778,16 @@
         this.play2pBtn.selected = false;
         this.play4pBtn.selected = true;
       });
-      this.colorGroup.selectHandler = new Laya.Handler(this, this.onSelectColor);
-    }
-    onSelectColor(index) {
-      console.log("lskjf");
+      for (let idx in this.colorCheckBox) {
+        this.colorCheckBox[idx].on(Laya.Event.CLICK, this, (event) => {
+          for (let idx2 in this.colorCheckBox) {
+            if (this.colorCheckBox[idx2].disabled) {
+              continue;
+            }
+            this.colorCheckBox[idx2].selected = this.colorCheckBox[idx2] == event.target;
+          }
+        });
+      }
     }
   };
   __name(Parallel, "Parallel");
@@ -11813,8 +11804,8 @@
     property21(Laya.Button)
   ], Parallel.prototype, "play", 2);
   __decorateClass([
-    property21(Laya.RadioGroup)
-  ], Parallel.prototype, "colorGroup", 2);
+    property21([Laya.CheckBox])
+  ], Parallel.prototype, "colorCheckBox", 2);
   Parallel = __decorateClass([
     regClass21("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
   ], Parallel);
@@ -11824,14 +11815,23 @@
   var ComputerParallel = class extends Laya.Script {
     constructor() {
       super();
+      this.colorIdx = -1;
     }
     onAwake() {
       let parallel = this.owner.getComponent(Parallel);
       parallel.play.on(Laya.Event.CLICK, this, () => {
-        this.owner.event(Laya.Event.PLAYED, [Config.Colors[parallel.colorGroup.selectedIndex], parallel.play2pBtn.selected ? 2 : 4]);
+        this.owner.event(Laya.Event.PLAYED, [Config.Colors[this.colorIdx], parallel.play2pBtn.selected ? 2 : 4]);
       });
-    }
-    onSelectColor(index) {
+      for (let idx in parallel.colorCheckBox) {
+        parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
+          parallel.play.disabled = false;
+          this.colorIdx = Number.parseInt(idx);
+        });
+      }
+      parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
+        this.owner.event(Laya.Event.CLOSE);
+        this.owner.removeSelf();
+      });
     }
   };
   __name(ComputerParallel, "ComputerParallel");
@@ -11840,20 +11840,121 @@
   ], ComputerParallel);
 
   // src/OnlineParallel.ts
+  var SFS2X4 = __toESM(require_sfs2x_api());
   var { regClass: regClass23, property: property23 } = Laya;
   var OnlineParallel = class extends Laya.Script {
     constructor(station) {
       super();
+      this.colorIdx = -1;
+      this.numberOfPlayer = 2;
       this.station = station;
     }
     onAwake() {
       let parallel = this.owner.getComponent(Parallel);
-      parallel.play.on(Laya.Event.CLICK, this, () => {
-        this.owner.event(Laya.Event.PLAYED, [Config.Colors[parallel.colorGroup.selectedIndex], parallel.play2pBtn.selected ? 2 : 4]);
-        this.owner.parent.removeSelf();
+      parallel.play4pBtn.disabled = true;
+      parallel.play.on(Laya.Event.CLICK, this, this.onPlay);
+      parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
+        this.station.levelRoom();
+        this.owner.event(Laya.Event.CLOSE);
+        this.owner.removeSelf();
       });
+      for (let idx in parallel.colorCheckBox) {
+        parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
+          parallel.play.disabled = false;
+          let roomVars = [];
+          if (this.colorIdx != -1) {
+            roomVars.push(new SFS2X4.SFSRoomVariable(Config.Colors[this.colorIdx], -1));
+          }
+          this.colorIdx = Number.parseInt(idx);
+          roomVars.push(new SFS2X4.SFSRoomVariable(Config.Colors[this.colorIdx], this.station.sfs.mySelf.id));
+          this.station.setRoomVariables(roomVars);
+        });
+      }
     }
-    onSelectColor(index) {
+    onStart() {
+      this.addStationListener();
+      this.station.joinRoom();
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    addStationListener() {
+      this.station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
+      this.station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      this.station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_JOIN_ERROR, this.onRoomJoinError, this);
+    }
+    removeStationListener() {
+      this.station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
+      this.station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomJoin);
+      this.station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_JOIN_ERROR, this.onRoomJoinError);
+    }
+    onPlay() {
+      let parallel = this.owner.getComponent(Parallel);
+      parallel.play.disabled = true;
+      for (let idx in parallel.colorCheckBox) {
+        parallel.colorCheckBox[idx].disabled = true;
+      }
+      let stateName = this.station.getUserStateName(Config.Colors[this.colorIdx], this.station.mySelfId());
+      let roomVars = new SFS2X4.SFSRoomVariable(stateName, "ready");
+      this.station.setRoomVariables([roomVars]);
+    }
+    onRoomVariablesUpdate(event) {
+      let users = event.room.getUserList();
+      if (users.length == this.numberOfPlayer) {
+        let cnt = 0;
+        let roomVars = event.room.getVariables();
+        for (let i in users) {
+          let user = users[i];
+          let color = this.station.getUserColor(user, roomVars);
+          let stateName = this.station.getUserStateName(color, user.id);
+          if (event.room.containsVariable(stateName)) {
+            cnt++;
+          }
+        }
+        if (cnt == users.length) {
+          this.owner.event(Laya.Event.PLAYED, [this.numberOfPlayer]);
+        }
+      }
+      this.updateColorCheckBox(event.room);
+    }
+    updateColorCheckBox(room) {
+      let parallel = this.owner.getComponent(Parallel);
+      let mySelfId = this.station.mySelfId();
+      let onlineUser = {};
+      let roomVars = room.getVariables();
+      let users = room.getUserList();
+      for (let rvidx in roomVars) {
+        let rv = roomVars[rvidx];
+        if (rv.isNull) {
+          continue;
+        }
+        if (rv.value != -1) {
+          let user = this.station.getOnlineUser(rv.value, users);
+          if (user != null) {
+            onlineUser[rv.name] = {
+              "id": user.id,
+              "selected": true,
+              "disabled": user.id != mySelfId
+            };
+          }
+        }
+      }
+      for (let checkBoxIdx in parallel.colorCheckBox) {
+        let colorCheckBox = parallel.colorCheckBox[checkBoxIdx];
+        let colorName = Config.Colors[checkBoxIdx];
+        let userInfo = onlineUser[colorName];
+        if (userInfo) {
+          colorCheckBox.selected = userInfo.selected;
+          colorCheckBox.disabled = userInfo.disabled;
+        } else {
+          colorCheckBox.selected = colorCheckBox.disabled = false;
+        }
+      }
+    }
+    onRoomJoinError(event) {
+    }
+    onRoomJoin(event) {
+      this.updateColorCheckBox(event.room);
     }
   };
   __name(OnlineParallel, "OnlineParallel");
@@ -11871,12 +11972,9 @@
       this.challengeComputer.on(Laya.Event.CLICK, this, this.onChallengeComputer);
       this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
-      this.owner.on(Event3.Join, this, this.onJoinExtreme);
-      this.owner.on(Event3.Exit, this, this.onExitExtreme);
-      this.owner.on(Event3.Error, this, this.onExtremeError);
     }
     onChallengeComputer() {
-      Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg) => {
+      this.openParallelDlg(Laya.Handler.create(this, (dlg) => {
         dlg.addComponentInstance(new ComputerParallel());
         dlg.on(Laya.Event.PLAYED, this, (color, num) => {
           dlg.close();
@@ -11885,24 +11983,22 @@
       }));
     }
     onChallengeExtreme() {
-      Laya.Scene.open("dialog/parallel.lh", false, null, Laya.Handler.create(this, (dlg) => {
-        let st2 = this.owner.getComponent(Station);
-        dlg.addComponentInstance(new OnlineParallel(st2));
-        dlg.on(Laya.Event.PLAYED, this, (color, num) => {
+      this.openParallelDlg(Laya.Handler.create(this, (dlg) => {
+        let st = this.owner.getComponent(Station);
+        dlg.addComponentInstance(new OnlineParallel(st));
+        dlg.on(Laya.Event.PLAYED, this, (num) => {
           dlg.close();
-          Laya.Scene.open("game.ls", false, { "type": "extreme", "color": color, "number": num, "station": st2 });
+          Laya.Scene.open("game.ls", false, { "type": "extreme", "station": st, number: num });
+        });
+        dlg.on(Laya.Event.CLOSE, this, (num) => {
+          dlg.close();
         });
       }));
-      let st = this.owner.getComponent(Station);
-      st.join(st.desks[0]);
+    }
+    openParallelDlg(complete) {
+      Laya.Scene.open("dialog/parallel.lh", false, null, complete);
     }
     onSettings() {
-    }
-    onJoinExtreme() {
-    }
-    onExitExtreme() {
-    }
-    onExtremeError() {
     }
   };
   __name(Menu, "Menu");

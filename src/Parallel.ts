@@ -16,18 +16,14 @@ export class Parallel extends Laya.Script {
     @property(Laya.Button)
     public play: Laya.Button;
 
-    @property(Laya.RadioGroup)
-    public colorGroup: Laya.RadioGroup;
+    @property([Laya.CheckBox])
+    public colorCheckBox: Laya.CheckBox[] = [];
 
     constructor() {
         super();
     }
 
     onAwake(): void {
-        this.closeBtn.on(Laya.Event.CLICK, this, () => {
-            this.owner.event(Laya.Event.CLOSE);
-        });
-
         this.play2pBtn.on(Laya.Event.CLICK, this, () => {
             this.play4pBtn.selected = false;
             this.play2pBtn.selected = true;
@@ -36,14 +32,18 @@ export class Parallel extends Laya.Script {
         this.play4pBtn.on(Laya.Event.CLICK, this, () => {
             this.play2pBtn.selected = false;
             this.play4pBtn.selected = true;
-
         });
-        this.colorGroup.selectHandler = new Laya.Handler(this, this.onSelectColor);
-    }
 
-    onSelectColor(index: number): void {
-        console.log("lskjf");
+        for(let idx in this.colorCheckBox) {
+            this.colorCheckBox[idx].on(Laya.Event.CLICK, this, (event) => {
+                for(let idx2 in this.colorCheckBox) {
+                    if (this.colorCheckBox[idx2].disabled) {
+                        continue;
+                    }
+                    this.colorCheckBox[idx2].selected = (this.colorCheckBox[idx2] == event.target);
+                }
+            });
+        }
     }
-
 
 }
