@@ -252,7 +252,9 @@ export class Player extends Laya.Script {
             }));
         } else if (node.parent == this.groove) {
             chess.step(1, 1, Laya.Handler.create(this, () => {
-                this.chippy.push(node);
+                if (this.chippy.indexOf(node) == -1) {
+                    this.chippy.push(node);
+                }
                 this.onAdvanceComplete(node, complete);
             }));
         }

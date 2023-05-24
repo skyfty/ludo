@@ -29,16 +29,8 @@ export class Route extends Laya.Script {
 
     onAwake(): void {
         super.onAwake();
-        this.owner.on(Event.Enter, this, this.onChessEnter);
-        this.owner.on(Event.Exit, this, this.onChessExit);
-    }
-
-    public onChessEnter(node:Laya.Sprite) {
-        this.scaleChess();
-    }
-
-    public onChessExit(node:Laya.Sprite) {
-        this.scaleChess();
+        this.owner.on(Event.Enter, this, this.scaleChess);
+        this.owner.on(Event.Exit, this, this.scaleChess);
     }
 
     public puddleAni(color:string) {
@@ -50,8 +42,7 @@ export class Route extends Laya.Script {
         });
     }
 
-    public scaleChess() {
-        let hole = this.owner as Laya.Sprite;
+    public scaleChess(hole:Laya.Point) {
         if (this.chess.length == 1) {
             this.chess[0].scale(1, 1).pos(hole.x, hole.y);
         } else if (this.chess.length == 2) {

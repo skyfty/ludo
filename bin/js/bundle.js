@@ -10495,14 +10495,8 @@
     }
     onAwake() {
       super.onAwake();
-      this.owner.on(Event.Enter, this, this.onChessEnter);
-      this.owner.on(Event.Exit, this, this.onChessExit);
-    }
-    onChessEnter(node) {
-      this.scaleChess();
-    }
-    onChessExit(node) {
-      this.scaleChess();
+      this.owner.on(Event.Enter, this, this.scaleChess);
+      this.owner.on(Event.Exit, this, this.scaleChess);
     }
     puddleAni(color) {
       let idxs = { "red": [0, 5], "green": [6, 11], "yellow": [12, 17], "blue": [18, 23] }[color];
@@ -10512,8 +10506,7 @@
         this.puddle.visible = false;
       });
     }
-    scaleChess() {
-      let hole = this.owner;
+    scaleChess(hole) {
       if (this.chess.length == 1) {
         this.chess[0].scale(1, 1).pos(hole.x, hole.y);
       } else if (this.chess.length == 2) {
@@ -10755,7 +10748,9 @@
         }));
       } else if (node.parent == this.groove) {
         chess.step(1, 1, Laya.Handler.create(this, () => {
-          this.chippy.push(node);
+          if (this.chippy.indexOf(node) == -1) {
+            this.chippy.push(node);
+          }
           this.onAdvanceComplete(node, complete);
         }));
       }
@@ -10816,22 +10811,25 @@
       let parentSprite = this.owner.parent;
       let ownerSpriteWorldPoint = parentSprite.localToGlobal(new Laya.Point(ownerSprite.x, ownerSprite.y));
       Laya.stage.addChild(ownerSprite.pos(ownerSpriteWorldPoint.x, ownerSpriteWorldPoint.y));
+      return ownerSpriteWorldPoint;
     }
     jump(dest, complete) {
-      this.jumpToWorld();
+      let ownerSpriteWorldPoint = this.jumpToWorld();
       let parent = dest.parent;
       let destWorldPoint = parent.localToGlobal(new Laya.Point(dest.x, dest.y));
-      this.skipTo(dest, destWorldPoint, parent, complete);
+      this.hole.event(Event.Exit, [ownerSpriteWorldPoint]);
+      this.skipTo(dest, destWorldPoint, parent, Laya.Handler.create(this, () => {
+        this.hole.event(Event.Enter, [new Laya.Point(this.hole.x, this.hole.y)]);
+        complete.run();
+      }));
     }
     skipTo(dest, destWorldPoint, parent, complete) {
-      let parentLocalPoint = parent.globalToLocal(destWorldPoint, true);
       let ownerSprite = this.owner;
       Laya.Tween.to(ownerSprite, { y: destWorldPoint.y, x: destWorldPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
         this.pass(dest);
-        this.hole.event(Event.Exit, [ownerSprite]);
         this.hole = dest;
+        let parentLocalPoint = parent.globalToLocal(destWorldPoint, true);
         parent.addChild(ownerSprite.pos(parentLocalPoint.x, parentLocalPoint.y));
-        this.hole.event(Event.Enter), [ownerSprite];
         complete.run();
       }));
     }
@@ -10880,7 +10878,10 @@
       }
       let nextRoute = nextHole.getComponent(Route);
       if (nextRoute != null) {
-        nextRoute.chess.push(this.owner);
+        let node = this.owner;
+        if (nextRoute.chess.indexOf(node) == -1) {
+          nextRoute.chess.push(node);
+        }
         nextRoute.puddleAni(this.player.owner.name);
       }
     }
@@ -10904,19 +10905,24 @@
     }
     revert(complete) {
       this.backoff(this.player.entry, Laya.Handler.create(this, () => {
-        this.jumpToWorld();
+        let ownerSpriteWorldPoint = this.jumpToWorld();
         let destNode = this.player.origin.getChildByName(this.owner.name);
         let destWorldPoint = this.player.origin.localToGlobal(new Laya.Point(destNode.x, destNode.y));
-        this.skipTo(destNode, destWorldPoint, this.player.groove, complete);
+        this.hole.event(Event.Exit, [ownerSpriteWorldPoint]);
+        this.skipTo(destNode, destWorldPoint, this.player.groove, Laya.Handler.create(this, () => {
+          let parentLocalPoint = this.player.groove.globalToLocal(destWorldPoint, true);
+          this.hole.event(Event.Enter, [parentLocalPoint]);
+          complete.run();
+        }));
       }));
     }
     moveTo(nextHole, duration, complete) {
       let destPoint = new Laya.Point(nextHole.x, nextHole.y);
       Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, duration, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
         this.pass(nextHole);
-        this.hole.event(Event.Exit, [this.owner]);
+        this.hole.event(Event.Exit, [new Laya.Point(this.hole.x, this.hole.y)]);
         this.hole = nextHole;
-        this.hole.event(Event.Enter, [this.owner]);
+        this.hole.event(Event.Enter, [new Laya.Point(this.hole.x, this.hole.y)]);
         complete.run();
       }));
     }
@@ -11278,7 +11284,7 @@
       });
     }
     onRollTimeout() {
-      this.currentDiceNumber = Math.floor(Math.random() * 6);
+      this.currentDiceNumber = 5;
       this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
@@ -11396,15 +11402,6 @@
       });
     }
     onAchieve() {
-      let current = this.players[this.playerOrder[this.currentIdx]].getComponent(Performer);
-      current.setState(0 /* Idle */);
-      if (this.currentIdx == this.playerOrder.length - 1) {
-        this.currentIdx = 0;
-      } else {
-        this.currentIdx++;
-      }
-      let next = this.players[this.playerOrder[this.currentIdx]].getComponent(Performer);
-      next.setState(1 /* Running */);
     }
     getPlayer(color) {
       let player = null;
