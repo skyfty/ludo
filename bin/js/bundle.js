@@ -10668,7 +10668,7 @@
                 resultChesses.map((c) => {
                   c.kicked();
                 });
-                deduceResult.push({ chess: chesses[i], reason: "kick" });
+                deduceResult.push({ chess: chesses[i], reason: "kick", kicks: resultChesses });
               } else {
                 deduceLast.push({ chess: chesses[i], reason: "advance" });
               }
@@ -10811,18 +10811,26 @@
     constructor() {
       super();
     }
-    jump(dest, complete) {
-      let parent = dest.parent;
+    jumpToWorld() {
       let ownerSprite = this.owner;
       let parentSprite = this.owner.parent;
-      let originPoint = parentSprite.localToGlobal(new Laya.Point(ownerSprite.x, ownerSprite.y));
-      Laya.stage.addChild(ownerSprite.pos(originPoint.x, originPoint.y));
-      let destPoint = parent.localToGlobal(new Laya.Point(dest.x, dest.y));
-      Laya.Tween.to(ownerSprite, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
+      let ownerSpriteWorldPoint = parentSprite.localToGlobal(new Laya.Point(ownerSprite.x, ownerSprite.y));
+      Laya.stage.addChild(ownerSprite.pos(ownerSpriteWorldPoint.x, ownerSpriteWorldPoint.y));
+    }
+    jump(dest, complete) {
+      this.jumpToWorld();
+      let parent = dest.parent;
+      let destWorldPoint = parent.localToGlobal(new Laya.Point(dest.x, dest.y));
+      this.skipTo(dest, destWorldPoint, parent, complete);
+    }
+    skipTo(dest, destWorldPoint, parent, complete) {
+      let parentLocalPoint = parent.globalToLocal(destWorldPoint, true);
+      let ownerSprite = this.owner;
+      Laya.Tween.to(ownerSprite, { y: destWorldPoint.y, x: destWorldPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
         this.pass(dest);
         this.hole.event(Event.Exit, [ownerSprite]);
         this.hole = dest;
-        parent.addChild(ownerSprite.pos(dest.x, dest.y));
+        parent.addChild(ownerSprite.pos(parentLocalPoint.x, parentLocalPoint.y));
         this.hole.event(Event.Enter), [ownerSprite];
         complete.run();
       }));
@@ -10896,8 +10904,10 @@
     }
     revert(complete) {
       this.backoff(this.player.entry, Laya.Handler.create(this, () => {
-        let dest = this.player.origin.getChildByName(this.owner.name);
-        this.jump(dest, complete);
+        this.jumpToWorld();
+        let destNode = this.player.origin.getChildByName(this.owner.name);
+        let destWorldPoint = this.player.origin.localToGlobal(new Laya.Point(destNode.x, destNode.y));
+        this.skipTo(destNode, destWorldPoint, this.player.groove, complete);
       }));
     }
     moveTo(nextHole, duration, complete) {
@@ -10958,6 +10968,16 @@
     setState(state) {
       this.state = state;
       this.owner.event(Event2.StateChange, [state]);
+    }
+    stopChessDecuce(reasons, deduceResult) {
+      for (let idx in deduceResult) {
+        let dr = deduceResult[idx];
+        if (reasons.indexOf(dr.reason) != -1) {
+          dr.kicks.map((c) => {
+            c.stop();
+          });
+        }
+      }
     }
   };
   __name(Performer, "Performer");
@@ -11068,6 +11088,7 @@
         this.player.hopChesses(chesses);
         this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
           Laya.timer.once(500, this, () => {
+            this.stopChessDecuce(["kick"], deduceResult);
             this.player.stopChesses(chesses);
             this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
           });
@@ -11175,6 +11196,9 @@
     onChooseChesses(name) {
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       this.player.stopChesses(chesses);
+      this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+        this.stopChessDecuce(["kick"], deduceResult);
+      }));
       for (let i = 0; i < chesses.length; ++i) {
         if (name == chesses[i].name) {
           this.onChooseChessesComplete(chesses[i]);
@@ -11192,7 +11216,10 @@
       this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
-        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, () => {
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+          if (chesses.length == 1) {
+            this.stopChessDecuce(["kick"], deduceResult);
+          }
           this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
         }));
       }
@@ -11259,8 +11286,11 @@
       this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
       let chesses = this.player.reckonChess(this.currentDiceNumber);
       if (chesses.length > 0) {
-        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, () => {
-          this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+          this.onReckonChessComplete(chesses, Laya.Handler.create(this, (chess) => {
+            this.stopChessDecuce(["kick"], deduceResult);
+            this.onChooseChessesComplete(chess);
+          }));
         }));
       } else {
         this.isAdvanceing = false;
@@ -11275,6 +11305,7 @@
       this.isAdvanceing = false;
       let chess = node.getComponent(Chess);
       if (chess.hole == this.player.entry) {
+        this.player.trade.getComponent(Trade).becareful();
         return;
       }
       this.owner.event(Event2.Achieve);

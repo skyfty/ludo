@@ -60,8 +60,11 @@ export class Oneself extends Performer {
 
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         if (chesses.length > 0) {
-            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, ()=>{
-                this.onReckonChessComplete(chesses, Laya.Handler.create(this,  this.onChooseChessesComplete));
+            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult:any[])=>{
+                this.onReckonChessComplete(chesses, Laya.Handler.create(this,  (chess:Laya.Sprite)=>{
+                    this.stopChessDecuce(["kick"], deduceResult);
+                    this.onChooseChessesComplete(chess);
+                }));
             }));
         } else {
             this.isAdvanceing = false;
@@ -78,8 +81,12 @@ export class Oneself extends Performer {
         this.isAdvanceing = false;
         let chess = node.getComponent(Chess);
         if (chess.hole == this.player.entry) {
+            this.player.trade.getComponent(Trade).becareful();
             return;
         }
+
+
+
         this.owner.event(Player.Event.Achieve);
         if (this.player.isAllHome()) {
             this.owner.event(Player.Event.Victory);

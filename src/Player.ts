@@ -34,11 +34,6 @@ export enum State {
     Running = 1
 }
 
-export interface DeduceResult {
-    chess:Laya.Sprite;
-    reason:string;
-}
-
 @regClass()
 export class Player extends Laya.Script {
 
@@ -140,8 +135,8 @@ export class Player extends Laya.Script {
     }
 
     public deduce(diceNumber:number, chesses:Laya.Sprite[], complete: Laya.Handler) {
-        let deduceResult:DeduceResult[] = [];
-        let deduceLast:DeduceResult[] = [];
+        let deduceResult:any[] = [];
+        let deduceLast:any[] = [];
         for(let i = 0; i < chesses.length; ++i) {
             let chess = chesses[i].getComponent(Chess) as Chess;
             if (chesses[i].parent == this.groove && diceNumber == 5) {
@@ -157,8 +152,10 @@ export class Player extends Laya.Script {
                     if (nextHole != null) {
                         let resultChesses = this.getKickChesses(nextHole.getComponent(Route.Route));
                         if (resultChesses.length > 0) {
-                            resultChesses.map((c)=>{c.kicked();});
-                            deduceResult.push({chess:chesses[i], reason:"kick"});
+                            resultChesses.map((c)=>{
+                                c.kicked();
+                            });
+                            deduceResult.push({chess:chesses[i], reason:"kick", kicks:resultChesses});
                         } else {
                             deduceLast.push({chess:chesses[i], reason:"advance"});
                         }

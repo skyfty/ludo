@@ -22,4 +22,15 @@ export class Performer extends Laya.Script {
         this.state = state;
         this.owner.event(Player.Event.StateChange, [state]);
     }
+
+    protected stopChessDecuce(reasons:string[], deduceResult:any[]) {
+        for(let idx in deduceResult) {
+            let dr = deduceResult[idx];
+            if (reasons.indexOf(dr.reason) != -1) {
+                dr.kicks.map((c:any)=>{
+                    c.stop();
+                });
+            }
+        }
+    }
 }

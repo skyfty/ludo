@@ -1,12 +1,12 @@
 import { Player } from "./Player";
 import * as Route from "./Route";
-import {Config} from "./Config"
+import { Config } from "./Config"
 
-const { regClass, property} = Laya;
+const { regClass, property } = Laya;
 
 @regClass()
 export class Chess extends Laya.Script {
-    
+
     @property(Player)
     public player: Player;
 
@@ -18,7 +18,7 @@ export class Chess extends Laya.Script {
 
     @property(Laya.Image)
     public image: Laya.Image;
-    
+
     @property(Laya.Image)
     public shoe: Laya.Image;
 
@@ -26,25 +26,34 @@ export class Chess extends Laya.Script {
         super();
     }
 
-    public jump(dest:Laya.Sprite, complete: Laya.Handler) {
-        let parent = dest.parent as Laya.Sprite;
+    private jumpToWorld() {
         let ownerSprite = this.owner as Laya.Sprite;
         let parentSprite = this.owner.parent as Laya.Sprite;
+        let ownerSpriteWorldPoint = parentSprite.localToGlobal(new Laya.Point(ownerSprite.x, ownerSprite.y));
+        Laya.stage.addChild(ownerSprite.pos(ownerSpriteWorldPoint.x, ownerSpriteWorldPoint.y));
+    }
 
-        let originPoint = parentSprite.localToGlobal(new Laya.Point(ownerSprite.x,ownerSprite.y));
-        Laya.stage.addChild(ownerSprite.pos(originPoint.x, originPoint.y));
-        let destPoint = parent.localToGlobal(new Laya.Point(dest.x,dest.y));
-        Laya.Tween.to(ownerSprite, { y: destPoint.y, x: destPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
+    public jump(dest: Laya.Sprite, complete: Laya.Handler) {
+        this.jumpToWorld();
+        let parent = dest.parent as Laya.Sprite;
+        let destWorldPoint = parent.localToGlobal(new Laya.Point(dest.x, dest.y));
+        this.skipTo(dest, destWorldPoint, parent, complete);
+    }
+
+    public skipTo(dest: Laya.Sprite, destWorldPoint: Laya.Point, parent: Laya.Sprite, complete: Laya.Handler) {
+        let ownerSprite = this.owner as Laya.Sprite;
+        Laya.Tween.to(ownerSprite, { y: destWorldPoint.y, x: destWorldPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
             this.pass(dest);
-            this.hole.event(Route.Event.Exit,[ownerSprite]);
+            this.hole.event(Route.Event.Exit, [ownerSprite]);
             this.hole = dest;
-            parent.addChild(ownerSprite.pos(dest.x, dest.y));
-            this.hole.event(Route.Event.Enter),[ownerSprite];
+            let parentLocalPoint = parent.globalToLocal(destWorldPoint, true);
+            parent.addChild(ownerSprite.pos(parentLocalPoint.x, parentLocalPoint.y));
+            this.hole.event(Route.Event.Enter), [ownerSprite];
             complete.run();
         }));
     }
 
-    public step(step:number,director:number, complete: Laya.Handler) {
+    public step(step: number, director: number, complete: Laya.Handler) {
         let roadway = this.owner.parent;
         if (step == 0) {
             complete.run();
@@ -53,15 +62,15 @@ export class Chess extends Laya.Script {
 
         if (roadway == this.player.groove) {
             this.jump(this.player.entry, complete);
-        }  else if (this.hole == this.player.door) {
+        } else if (this.hole == this.player.door) {
             let personal = this.player.personal as Laya.Sprite;
             let firstHole = personal.getChildByName("0") as Laya.Sprite;
-            this.jump(firstHole, Laya.Handler.create(this, ()=>{
+            this.jump(firstHole, Laya.Handler.create(this, () => {
                 this.step(--step, director, complete);
             }));
         } else {
-            let currentHoleNumber:number = Number.parseInt(this.hole.name);
-            if (roadway == this.player.personal){
+            let currentHoleNumber: number = Number.parseInt(this.hole.name);
+            if (roadway == this.player.personal) {
                 if (currentHoleNumber >= Config.NUMBER_PERSONAL_HOLD - 1 || currentHoleNumber < 0) {
                     director *= -1;
                 }
@@ -75,13 +84,13 @@ export class Chess extends Laya.Script {
             if (nextHole == null) {
                 nextHole = roadway.getChildByName("0") as Laya.Sprite;
             }
-            this.moveTo(nextHole,200, Laya.Handler.create(this,  ()=>{
+            this.moveTo(nextHole, 200, Laya.Handler.create(this, () => {
                 this.step(--step, director, complete);
             }));
         }
     }
 
-    private pass(nextHole:Laya.Sprite) {
+    private pass(nextHole: Laya.Sprite) {
         let route = this.hole.getComponent(Route.Route);
         if (route != null) {
             let idx = route.chess.indexOf(this.owner as Laya.Sprite);
@@ -96,13 +105,13 @@ export class Chess extends Laya.Script {
         }
     }
 
-    public backoff(dest:Laya.Sprite, complete: Laya.Handler) {
+    public backoff(dest: Laya.Sprite, complete: Laya.Handler) {
         if (dest == this.hole) {
             complete.run();
             return;
         }
         let roadway = this.owner.parent;
-        let nextHoleNumber:number = Number.parseInt(this.hole.name) - 1;
+        let nextHoleNumber: number = Number.parseInt(this.hole.name) - 1;
         if (nextHoleNumber < 0) {
             nextHoleNumber = Config.NUMBER_UNIVERSAL_HOLD - 1;
         }
@@ -110,25 +119,27 @@ export class Chess extends Laya.Script {
         if (nextHole == null) {
             nextHole = roadway.getChildByName("0") as Laya.Sprite;
         }
-        this.moveTo(nextHole, 20, Laya.Handler.create(this,  ()=>{
+        this.moveTo(nextHole, 20, Laya.Handler.create(this, () => {
             this.backoff(dest, complete);
         }));
     }
 
     public revert(complete: Laya.Handler) {
-        this.backoff(this.player.entry, Laya.Handler.create(this, ()=>{
-            let dest = this.player.origin.getChildByName(this.owner.name) as Laya.Sprite;
-            this.jump(dest, complete);
+        this.backoff(this.player.entry, Laya.Handler.create(this, () => {
+            this.jumpToWorld();
+            let destNode = this.player.origin.getChildByName(this.owner.name) as Laya.Sprite;
+            let destWorldPoint = this.player.origin.localToGlobal(new Laya.Point(destNode.x, destNode.y));
+            this.skipTo(destNode, destWorldPoint, this.player.groove, complete);
         }));
     }
 
-    public moveTo(nextHole:Laya.Sprite, duration: number, complete: Laya.Handler) {
-        let destPoint = new Laya.Point(nextHole.x,nextHole.y);
+    public moveTo(nextHole: Laya.Sprite, duration: number, complete: Laya.Handler) {
+        let destPoint = new Laya.Point(nextHole.x, nextHole.y);
         Laya.Tween.to(this.owner, { y: destPoint.y, x: destPoint.x }, duration, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
             this.pass(nextHole);
-            this.hole.event(Route.Event.Exit,[this.owner]);
+            this.hole.event(Route.Event.Exit, [this.owner]);
             this.hole = nextHole;
-            this.hole.event(Route.Event.Enter,[this.owner]);
+            this.hole.event(Route.Event.Enter, [this.owner]);
             complete.run();
         }));
     }

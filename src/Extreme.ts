@@ -53,6 +53,9 @@ export class Extreme extends Performer {
     private onChooseChesses(name:string) {
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         this.player.stopChesses(chesses);
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult:any[])=>{
+            this.stopChessDecuce(["kick"], deduceResult);
+        }));
         for(let i = 0; i < chesses.length; ++i) {
             if(name ==  chesses[i].name) {
                 this.onChooseChessesComplete(chesses[i]);
@@ -73,7 +76,10 @@ export class Extreme extends Performer {
         this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         if (chesses.length > 0) {
-            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, ()=>{
+            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult:any[])=>{
+                if (chesses.length == 1) {
+                    this.stopChessDecuce(["kick"], deduceResult);
+                } 
                 this.onReckonChessComplete(chesses, Laya.Handler.create(this,  this.onChooseChessesComplete));
             }));
         }

@@ -47,8 +47,9 @@ export class Computer extends Performer {
         if (chesses.length > 0) {
             this.owner.event(Player.Event.Choose, [this.owner]);
             this.player.hopChesses(chesses);
-            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult:Player.DeduceResult[])=>{
+            this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult:any[])=>{
                 Laya.timer.once(500, this, ()=>{
+                    this.stopChessDecuce(["kick"], deduceResult);
                     this.player.stopChesses(chesses);
                     this.player.advance(deduceResult[0].chess, this.currentDiceNumber,Laya.Handler.create(this,  this.onAdvanceComplete));
                 });
