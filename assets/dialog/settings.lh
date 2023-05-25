@@ -1,0 +1,99 @@
+{
+  "_$ver": 1,
+  "_$id": "w6erjt2x",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 635,
+  "height": 1136,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "a0857e55-7637-4bff-adf2-8d5101717b23",
+      "scriptPath": "../src/Settings.ts",
+      "music": {
+        "_$ref": "bgzvk3we"
+      },
+      "sound": {
+        "_$ref": "bkjsg7oi"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "ygjy5m4n",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 19,
+      "y": 291,
+      "width": 600,
+      "height": 402,
+      "skin": "res://20dc4ed7-3cdc-453e-b055-73e6412b723d",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "ml9wfj41",
+      "_$type": "Button",
+      "name": "return",
+      "x": 289,
+      "y": 670,
+      "width": 64,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "bkjsg7oi",
+      "_$type": "CheckBox",
+      "name": "sound",
+      "x": 359,
+      "y": 439,
+      "width": 74,
+      "height": 74,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://0dfe8aa1-5809-4a32-8bc0-fc90e924e2f4",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "bgzvk3we",
+      "_$type": "CheckBox",
+      "name": "music",
+      "x": 178,
+      "y": 439,
+      "width": 74,
+      "height": 74,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://039a540e-3b49-4265-9c7b-8071f18afe6c",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    }
+  ]
+}

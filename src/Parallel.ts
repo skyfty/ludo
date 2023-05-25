@@ -27,24 +27,15 @@ export class Parallel extends Laya.Script {
         this.play2pBtn.on(Laya.Event.CLICK, this, () => {
             this.play4pBtn.selected = false;
             this.play2pBtn.selected = true;
-            SoundManager.playSound("sounds/click.mp3", 1);
 
         });
         this.play4pBtn.on(Laya.Event.CLICK, this, () => {
             this.play2pBtn.selected = false;
             this.play4pBtn.selected = true;
-            SoundManager.playSound("sounds/click.mp3", 1);
-        });
-        this.play.on(Laya.Event.CLICK, this, () => {
-            SoundManager.playSound("sounds/click.mp3", 1);
         });
 
-        this.closeBtn.on(Laya.Event.CLICK, this, () => {
-            SoundManager.playSound("sounds/click.mp3", 1);
-        });
         for(let idx in this.colorCheckBox) {
             this.colorCheckBox[idx].on(Laya.Event.CLICK, this, (event) => {
-                SoundManager.playSound("sounds/click.mp3", 1);
                 for(let idx2 in this.colorCheckBox) {
                     if (this.colorCheckBox[idx2].disabled) {
                         continue;

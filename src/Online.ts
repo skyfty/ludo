@@ -1,4 +1,4 @@
-const { regClass, property } = Laya;
+const { regClass, property,SoundManager } = Laya;
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Station } from "./Station";
 import { Room } from "./Room";

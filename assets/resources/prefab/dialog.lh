@@ -8,19 +8,6 @@
   "mouseEnabled": true,
   "_$child": [
     {
-      "_$id": "if03kzj9",
-      "_$type": "Image",
-      "name": "Image(1)",
-      "x": -570.5,
-      "y": -301.5,
-      "width": 2028,
-      "height": 2028,
-      "alpha": 0.8,
-      "mouseEnabled": true,
-      "skin": "res://00000000-0000-0000-0001-000000000001",
-      "color": "#ffffff"
-    },
-    {
       "_$id": "it3gkh9e",
       "_$type": "Image",
       "name": "Image",

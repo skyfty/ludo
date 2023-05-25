@@ -5,6 +5,9 @@
   "name": "dialog",
   "width": 635,
   "height": 1136,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
   "_$child": [
     {
       "_$id": "2q93949i",
@@ -13,7 +16,28 @@
       "active": true,
       "x": 0,
       "y": 0,
-      "visible": true
+      "visible": true,
+      "_$child": [
+        {
+          "_$override": "9i71029w",
+          "width": 89,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        },
+        {
+          "_$override": "gjhdic9x",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -37,7 +37,7 @@
       "host": "39.104.230.103",
       "port": 8080,
       "zone": "Ludo",
-      "debug": true
+      "debug": false
     }
   ],
   "_$child": [
@@ -70,7 +70,13 @@
       "stateNum": 2,
       "skin": "res://81906343-13e7-46b0-99ac-72f789289ed4",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "mqsu2s73",
@@ -84,7 +90,13 @@
       "stateNum": 2,
       "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "rzs1mya0",
@@ -113,6 +125,12 @@
           "x": -1.9999999999999716,
           "width": 121,
           "height": 121,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ],
           "_$child": [
             {
               "_$id": "r6sdsz57",
@@ -152,7 +170,7 @@
         {
           "_$id": "foe94s5k",
           "_$type": "Button",
-          "name": "Button",
+          "name": "settings",
           "x": 549,
           "width": 83,
           "height": 83,
@@ -160,7 +178,13 @@
           "stateNum": 2,
           "skin": "res://c35ba747-0789-4a01-a091-24514ed42549",
           "label": "",
-          "labelSize": 20
+          "labelSize": 20,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
         }
       ]
     }

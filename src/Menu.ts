@@ -30,7 +30,9 @@ export class Menu extends Laya.Script {
     }
 
     onStart(): void {
-        SoundManager.playMusic("sounds/menu.mp3", 1);
+        Laya.SoundManager.musicMuted =Laya.LocalStorage.getItem("music") != "on";
+        Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("sound") != "on";
+        SoundManager.playMusic("sounds/menu.mp3", 0);
     }
 
     onLoginError() {
@@ -38,7 +40,6 @@ export class Menu extends Laya.Script {
     }
 
     onChallengeComputer() {
-        SoundManager.playSound("sounds/click.mp3", 1);
         this.openParallelDlg(Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new ComputerParallel());
             dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
@@ -50,7 +51,6 @@ export class Menu extends Laya.Script {
     }
     
     onChallengeExtreme() {
-        SoundManager.playSound("sounds/click.mp3", 1);
         this.openParallelDlg( Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new OnlineParallel());
             dlg.on(Laya.Event.PLAYED,this, (num:number)=>{
@@ -58,9 +58,7 @@ export class Menu extends Laya.Script {
                 SoundManager.stopMusic();
                 Laya.Scene.open("game.ls", true, { "type": "extreme",number: num });
             });
-            dlg.on(Laya.Event.CLOSE,this, (num:number)=>{
-                dlg.close();
-            });
+            dlg.on(Laya.Event.CLOSE,dlg, dlg.close);
         }));
     }
 
@@ -69,7 +67,9 @@ export class Menu extends Laya.Script {
     }
 
     onSettings() {
-       
+        Laya.Scene.open("dialog/settings.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+            dlg.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
+        }));
     }
 
 }

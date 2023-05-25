@@ -11130,22 +11130,13 @@
       this.play2pBtn.on(Laya.Event.CLICK, this, () => {
         this.play4pBtn.selected = false;
         this.play2pBtn.selected = true;
-        SoundManager4.playSound("sounds/click.mp3", 1);
       });
       this.play4pBtn.on(Laya.Event.CLICK, this, () => {
         this.play2pBtn.selected = false;
         this.play4pBtn.selected = true;
-        SoundManager4.playSound("sounds/click.mp3", 1);
-      });
-      this.play.on(Laya.Event.CLICK, this, () => {
-        SoundManager4.playSound("sounds/click.mp3", 1);
-      });
-      this.closeBtn.on(Laya.Event.CLICK, this, () => {
-        SoundManager4.playSound("sounds/click.mp3", 1);
       });
       for (let idx in this.colorCheckBox) {
         this.colorCheckBox[idx].on(Laya.Event.CLICK, this, (event) => {
-          SoundManager4.playSound("sounds/click.mp3", 1);
           for (let idx2 in this.colorCheckBox) {
             if (this.colorCheckBox[idx2].disabled) {
               continue;
@@ -11716,7 +11707,7 @@
   ], Station);
 
   // src/Online.ts
-  var { regClass: regClass17, property: property17 } = Laya;
+  var { regClass: regClass17, property: property17, SoundManager: SoundManager5 } = Laya;
   var Online = class extends Laya.Script {
     constructor(param) {
       super();
@@ -11932,7 +11923,7 @@
   ], Game);
 
   // src/GameToolbar.ts
-  var { regClass: regClass21, property: property21 } = Laya;
+  var { regClass: regClass21, property: property21, SoundManager: SoundManager6 } = Laya;
   var GameToolbar = class extends Laya.Script {
     constructor() {
       super();
@@ -11942,9 +11933,7 @@
         let owner = this.owner;
         Laya.Scene.open("dialog/endgame.lh", false, null, Laya.Handler.create(this, (dlg) => {
           let view = dlg.getChildByName("view");
-          view.getChildByName("return").on(Laya.Event.CLICK, this, () => {
-            dlg.close();
-          });
+          view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
           view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
             dlg.close();
             Laya.Scene.open("menu.ls");
@@ -12112,7 +12101,7 @@
   ], OnlineParallel);
 
   // src/Menu.ts
-  var { regClass: regClass25, property: property25, SoundManager: SoundManager5 } = Laya;
+  var { regClass: regClass25, property: property25, SoundManager: SoundManager7 } = Laya;
   var Menu = class extends Laya.Script {
     constructor() {
       super();
@@ -12124,39 +12113,40 @@
       this.parallel.on(Event3.LoginError, this, this.onLoginError);
     }
     onStart() {
-      SoundManager5.playMusic("sounds/menu.mp3", 1);
+      Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("music") != "on";
+      Laya.SoundManager.soundMuted = Laya.LocalStorage.getItem("sound") != "on";
+      SoundManager7.playMusic("sounds/menu.mp3", 0);
     }
     onLoginError() {
     }
     onChallengeComputer() {
-      SoundManager5.playSound("sounds/click.mp3", 1);
       this.openParallelDlg(Laya.Handler.create(this, (dlg) => {
         dlg.addComponentInstance(new ComputerParallel());
         dlg.on(Laya.Event.PLAYED, this, (color, num) => {
           dlg.close();
-          SoundManager5.stopMusic();
+          SoundManager7.stopMusic();
           Laya.Scene.open("game.ls", true, { "type": "computer", "color": color, "number": num });
         });
       }));
     }
     onChallengeExtreme() {
-      SoundManager5.playSound("sounds/click.mp3", 1);
       this.openParallelDlg(Laya.Handler.create(this, (dlg) => {
         dlg.addComponentInstance(new OnlineParallel());
         dlg.on(Laya.Event.PLAYED, this, (num) => {
           dlg.close();
-          SoundManager5.stopMusic();
+          SoundManager7.stopMusic();
           Laya.Scene.open("game.ls", true, { "type": "extreme", number: num });
         });
-        dlg.on(Laya.Event.CLOSE, this, (num) => {
-          dlg.close();
-        });
+        dlg.on(Laya.Event.CLOSE, dlg, dlg.close);
       }));
     }
     openParallelDlg(complete) {
       Laya.Scene.open("dialog/parallel.lh", false, null, complete);
     }
     onSettings() {
+      Laya.Scene.open("dialog/settings.lh", false, null, Laya.Handler.create(this, (dlg) => {
+        dlg.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
+      }));
     }
   };
   __name(Menu, "Menu");
@@ -12175,6 +12165,83 @@
   Menu = __decorateClass([
     regClass25("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
+
+  // src/ClickSound.ts
+  var { regClass: regClass26, property: property26, SoundManager: SoundManager8 } = Laya;
+  var Script = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onMouseClick() {
+      SoundManager8.playSound("sounds/click.mp3", 1);
+    }
+  };
+  __name(Script, "Script");
+  Script = __decorateClass([
+    regClass26("f4a9ed67-7b7a-43be-945e-88ba9965a9d4", "../src/ClickSound.ts")
+  ], Script);
+
+  // src/Settings.ts
+  var { regClass: regClass27, property: property27 } = Laya;
+  var Settings = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    /**
+     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
+     */
+    onAwake() {
+      this.music.on(Laya.Event.CLICK, this, () => {
+        Laya.SoundManager.musicMuted = this.music.selected;
+        Laya.SoundManager.playMusic("sounds/menu.mp3", 0);
+        Laya.LocalStorage.setItem("music", this.music.selected ? "off" : "on");
+      });
+      this.sound.on(Laya.Event.CLICK, this, () => {
+        Laya.SoundManager.soundMuted = this.sound.selected;
+        Laya.LocalStorage.setItem("sound", this.sound.selected ? "off" : "on");
+      });
+      this.music.selected = Laya.LocalStorage.getItem("music") != "on";
+      this.sound.selected = Laya.LocalStorage.getItem("sound") != "on";
+    }
+    /**
+     * 组件被启用后执行，例如节点被添加到舞台后
+     */
+    //onEnable(): void {}
+    /**
+     * 组件被禁用时执行，例如从节点从舞台移除后
+     */
+    //onDisable(): void {}
+    /**
+     * 第一次执行update之前执行，只会执行一次
+     */
+    //onStart(): void {}
+    /**
+     * 手动调用节点销毁时执行
+     */
+    //onDestroy(): void {
+    /**
+     * 每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
+     */
+    //onUpdate(): void {}
+    /**
+     * 每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
+     */
+    //onLateUpdate(): void {}
+    /**
+     * 鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
+     */
+    //onMouseClick(): void {}
+  };
+  __name(Settings, "Settings");
+  __decorateClass([
+    property27(Laya.CheckBox)
+  ], Settings.prototype, "music", 2);
+  __decorateClass([
+    property27(Laya.CheckBox)
+  ], Settings.prototype, "sound", 2);
+  Settings = __decorateClass([
+    regClass27("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
+  ], Settings);
 })();
 /*! Bundled license information:
 

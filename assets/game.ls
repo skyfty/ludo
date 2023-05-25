@@ -2338,7 +2338,13 @@
           "stateNum": 2,
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
           "label": "",
-          "labelSize": 20
+          "labelSize": 20,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
         }
       ]
     }

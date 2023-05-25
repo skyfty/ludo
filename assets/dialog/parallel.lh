@@ -77,7 +77,13 @@
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "101ihuwf",
@@ -136,7 +142,13 @@
       "stateNum": 2,
       "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "7p1j40su",
@@ -152,7 +164,13 @@
       "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "5ibbci1l",
@@ -167,7 +185,13 @@
       "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "ca2qmnut",
@@ -182,7 +206,13 @@
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "2rf31ts7",
@@ -197,7 +227,13 @@
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "82au31kz",
@@ -212,7 +248,13 @@
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "bkpyh24y",
@@ -227,7 +269,13 @@
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     }
   ]
 }

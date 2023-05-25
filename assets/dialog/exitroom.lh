@@ -6,6 +6,8 @@
   "width": 635,
   "height": 1136,
   "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
   "_$child": [
     {
       "_$id": "wzycx36g",
@@ -23,7 +25,13 @@
         {
           "_$override": "gjhdic9x",
           "x": 185,
-          "y": 568
+          "y": 568,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
         },
         {
           "_$override": "othivvvm",
