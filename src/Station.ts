@@ -58,7 +58,7 @@ export class Station extends Laya.Script {
     
     onStart(): void {
         this.addSmartFoxListener();
-        
+
         if (!Station.sfs.isConnected) {
             Station.sfs.connect();
         }
@@ -108,7 +108,6 @@ export class Station extends Laya.Script {
             if (rv.isNull) {
                 continue;
             }
-
             if (rv.value != -1 && rv.value == user.id) {
                 return rv.name;
             }

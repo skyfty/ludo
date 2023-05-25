@@ -22,7 +22,6 @@ export class Oneself extends Performer {
      */
     onStart(): void {
         this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
-        this.owner.event(Player.Event.StateChange);
     }
 
     onStateChange(state:Player.State) {
@@ -50,7 +49,7 @@ export class Oneself extends Performer {
     }
 
     private onRollTimeout() {
-        this.currentDiceNumber = 5;//Math.floor(Math.random()* 6);
+        this.currentDiceNumber = Math.floor(Math.random()* 6);
         this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
     }
 
@@ -84,8 +83,6 @@ export class Oneself extends Performer {
             this.player.trade.getComponent(Trade).becareful();
             return;
         }
-
-
 
         this.owner.event(Player.Event.Achieve);
         if (this.player.isAllHome()) {

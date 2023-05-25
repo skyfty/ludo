@@ -16,7 +16,6 @@ export class Extreme extends Performer {
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
     }
     onStart(): void {
-        this.owner.event(Player.Event.StateChange);
     }
 
     onStateChange() {

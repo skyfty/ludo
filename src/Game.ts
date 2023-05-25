@@ -2,6 +2,7 @@ const { regClass, property } = Laya;
 
 import { Room } from "./Room";
 import { Online } from "./Online";
+import { Local } from "./Local";
 import * as Player from "./Player";
 import { Sender } from "./Sender";
 import { Config } from "./Config";
@@ -9,9 +10,14 @@ import  {Station} from "./Station";
 
 @regClass()
 export class Game extends Laya.Scene {
+    room: Room;
 
     constructor() {
         super();
+    }
+
+    onAwake(): void {
+        this.room = this.getComponent(Room);
     }
 
     onOpened(param: any) {
@@ -23,14 +29,12 @@ export class Game extends Laya.Scene {
     }
 
     private challengeExtreme(param: any) {
-        let room = this.getComponent(Room);
-        room.numberOfPlayer = param.number;
-        this.addComponentInstance(new Online());
+        this.room.numberOfPlayer = param.number;
         let users = Station.getUserList();
         for (let i = 0; i < users.length; ++i) {
             let color = Station.getUserColor(users[i]);
             let type = users[i].isItMe ? Player.Type.Oneself : Player.Type.Extreme;
-            let player = room.addPlayer(color, type, {
+            let player = this.room.addPlayer(color, type, {
                 "id": users[i].id,
                 "name": users[i].name,
                 "avatar": ""
@@ -39,41 +43,39 @@ export class Game extends Laya.Scene {
                 player.addComponentInstance(new Sender());
             }
         }
-        room.startGame("red");
+        this.addComponentInstance(new Online(param));
     }
 
     private challengeComputer(param: any) {
-        let room = this.getComponent(Room);
-        room.numberOfPlayer = param && param.number ? param.number : 2;
+        this.room.numberOfPlayer = param && param.number ? param.number : 2;
+        this.addComponentInstance(new Local(param));
 
-        room.addPlayer(param.color, Player.Type.Oneself, {
+        this.room.addPlayer(param.color, Player.Type.Oneself, {
             "id": 0,
-            "name": "Yourself",
+            "name": "Oneself",
             "avatar": ""
         });
         let colors = JSON.parse(JSON.stringify(Config.Colors))
         let idx = colors.indexOf(param.color);
 
-        let num = Math.min(room.numberOfPlayer - 1, 3);
+        let num = Math.min(this.room.numberOfPlayer - 1, 3);
         if (num == 1) {
             idx = ((idx % 2 == 0) ? (idx == 0 ? 2 : 0) : (idx == 1 ? 3 : 1));
-            room.addPlayer(colors[idx], Player.Type.Computer, {
-                "id": 1,
-                "name": "Guest",
-                "avatar": ""
-            });
+            this.addComputerPlayer(colors[idx], 1);
         } else {
             colors.splice(idx, 1);
             for (let i = 0; i < num; ++i) {
-                let id = i + 1;
-                room.addPlayer(colors[i], Player.Type.Computer, {
-                    "id": id,
-                    "name": "Guest",
-                    "avatar": ""
-                });
+                this.addComputerPlayer(colors[i], i + 1);
             }
         }
-        room.startGame(param.color);
+    }
+
+    private addComputerPlayer(color:string, id:number) {
+        this.room.addPlayer(color, Player.Type.Computer, {
+            "id": id,
+            "name": "Computer",
+            "avatar": ""
+        });
     }
 
 }

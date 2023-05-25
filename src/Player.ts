@@ -83,13 +83,8 @@ export class Player extends Laya.Script {
     onAwake(): void {
     }
     onStart(): void {
-        this.owner.on(Event.StateChange, this, this.onStateChange);
     }
 
-    onStateChange(state:State) {
-
-    }
-    
     public hopChesses(chesses:Laya.Sprite[]):void {
         for(let i = 0; i < chesses.length; ++i) {
             chesses[i].getComponent(Chess).hop();
