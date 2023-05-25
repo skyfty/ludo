@@ -75,6 +75,8 @@ export class Player extends Laya.Script {
 
     @property([Laya.Sprite])
     protected chippy: Laya.Sprite[] = [];
+
+    @property([Laya.Sprite])
     protected home: Laya.Sprite[] = [];
 
     constructor() {

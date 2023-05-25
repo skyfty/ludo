@@ -10794,6 +10794,9 @@
   __decorateClass([
     property2([Laya.Sprite])
   ], Player.prototype, "chippy", 2);
+  __decorateClass([
+    property2([Laya.Sprite])
+  ], Player.prototype, "home", 2);
   Player = __decorateClass([
     regClass2("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
   ], Player);
@@ -11358,7 +11361,7 @@
       });
     }
     onRollTimeout() {
-      this.currentDiceNumber = Math.floor(Math.random() * 6);
+      this.currentDiceNumber = 4;
       this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
@@ -11464,6 +11467,7 @@
       this.players.map((node) => {
         node.getComponent(Performer).setState(0 /* Idle */);
       });
+      Laya.SoundManager.playSound("sounds/win.mp3");
     }
     onAchieve() {
       let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
@@ -12018,49 +12022,25 @@
     }
     addStationListener() {
       Station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
-      Station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      Station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_JOIN_ERROR, this.onRoomJoinError, this);
+      Station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate, this);
     }
     removeStationListener() {
       Station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
-      Station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomJoin);
-      Station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_JOIN_ERROR, this.onRoomJoinError);
+      Station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate);
     }
     onPlay() {
-      let parallel = this.owner.getComponent(Parallel);
-      parallel.play.disabled = true;
-      for (let idx in parallel.colorCheckBox) {
-        parallel.colorCheckBox[idx].disabled = true;
-      }
+      this.removeStationListener();
       let stateName = Station.getUserStateName(Config.Colors[this.colorIdx], Station.mySelfId());
       let roomVars = new SFS2X4.SFSRoomVariable(stateName, "ready");
       Station.setRoomVariables([roomVars]);
+      this.owner.event(Laya.Event.PLAYED, [this.numberOfPlayer]);
     }
     onRoomVariablesUpdate(event) {
-      let users = event.room.getUserList();
-      if (users.length == this.numberOfPlayer) {
-        let cnt = 0;
-        let roomVars = event.room.getVariables();
-        for (let i in users) {
-          let user = users[i];
-          let color = Station.getUserColor(user, roomVars);
-          let stateName = Station.getUserStateName(color, user.id);
-          if (event.room.containsVariable(stateName)) {
-            cnt++;
-          }
-        }
-        if (cnt == users.length) {
-          this.owner.event(Laya.Event.PLAYED, [this.numberOfPlayer]);
-        }
-      }
-      this.updateColorCheckBox(event.room);
-    }
-    updateColorCheckBox(room) {
       let parallel = this.owner.getComponent(Parallel);
       let mySelfId = Station.mySelfId();
       let onlineUser = {};
-      let roomVars = room.getVariables();
-      let users = room.getUserList();
+      let roomVars = event.room.getVariables();
+      let users = event.room.getUserList();
       for (let rvidx in roomVars) {
         let rv = roomVars[rvidx];
         if (rv.isNull) {
@@ -12089,11 +12069,6 @@
         }
       }
     }
-    onRoomJoinError(event) {
-    }
-    onRoomJoin(event) {
-      this.updateColorCheckBox(event.room);
-    }
   };
   __name(OnlineParallel, "OnlineParallel");
   OnlineParallel = __decorateClass([
@@ -12110,14 +12085,11 @@
       this.challengeComputer.on(Laya.Event.CLICK, this, this.onChallengeComputer);
       this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
-      this.parallel.on(Event3.LoginError, this, this.onLoginError);
     }
     onStart() {
       Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("music") != "on";
       Laya.SoundManager.soundMuted = Laya.LocalStorage.getItem("sound") != "on";
       SoundManager7.playMusic("sounds/menu.mp3", 0);
-    }
-    onLoginError() {
     }
     onChallengeComputer() {
       this.openParallelDlg(Laya.Handler.create(this, (dlg) => {
@@ -12134,8 +12106,7 @@
         dlg.addComponentInstance(new OnlineParallel());
         dlg.on(Laya.Event.PLAYED, this, (num) => {
           dlg.close();
-          SoundManager7.stopMusic();
-          Laya.Scene.open("game.ls", true, { "type": "extreme", number: num });
+          Laya.Scene.open("partner.ls", true, { "number": num });
         });
         dlg.on(Laya.Event.CLOSE, dlg, dlg.close);
       }));
@@ -12242,6 +12213,67 @@
   Settings = __decorateClass([
     regClass27("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
+
+  // src/Partner.ts
+  var SFS2X5 = __toESM(require_sfs2x_api());
+  var { regClass: regClass28, property: property28, SoundManager: SoundManager9 } = Laya;
+  var Pariner = class extends Laya.Scene {
+    constructor() {
+      super(...arguments);
+      this.numberOfPlayer = 2;
+    }
+    onAwake() {
+      this.getChildByName("return").on(Laya.Event.CLICK, this, () => {
+        Laya.Scene.open("dialog/endgame.lh", false, null, Laya.Handler.create(this, (dlg) => {
+          let view = dlg.getChildByName("view");
+          view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
+            dlg.close();
+            Station.levelRoom();
+            Laya.Scene.open("menu.ls");
+          });
+          view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
+        }));
+      });
+      this.addStationListener();
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    onOpened(param) {
+      this.numberOfPlayer = param.number;
+    }
+    addStationListener() {
+      Station.sfs.addEventListener(SFS2X5.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
+      Station.sfs.addEventListener(SFS2X5.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate, this);
+    }
+    removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X5.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
+      Station.sfs.removeEventListener(SFS2X5.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate);
+    }
+    onRoomVariablesUpdate(event) {
+      let users = event.room.getUserList();
+      if (users.length == this.numberOfPlayer) {
+        let cnt = 0;
+        let roomVars = event.room.getVariables();
+        for (let i in users) {
+          let user = users[i];
+          let color = Station.getUserColor(user, roomVars);
+          let stateName = Station.getUserStateName(color, user.id);
+          if (event.room.containsVariable(stateName)) {
+            cnt++;
+          }
+        }
+        if (cnt == users.length) {
+          SoundManager9.stopMusic();
+          Laya.Scene.open("game.ls", true, { "type": "extreme", "number": this.numberOfPlayer });
+        }
+      }
+    }
+  };
+  __name(Pariner, "Pariner");
+  Pariner = __decorateClass([
+    regClass28("9f1fc9b7-ce57-4d73-9d43-44bf875415bb", "../src/Partner.ts")
+  ], Pariner);
 })();
 /*! Bundled license information:
 

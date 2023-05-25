@@ -51,53 +51,28 @@ export class OnlineParallel extends Laya.Script {
 
     addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.onRoomJoinError, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate, this);
     }
     removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.onRoomJoinError);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate);
     }
 
     onPlay() {
-        let parallel = this.owner.getComponent(Parallel);
-        parallel.play.disabled = true;
-        for (let idx in parallel.colorCheckBox) {
-            parallel.colorCheckBox[idx].disabled = true;
-        }
+        this.removeStationListener();
         let stateName = Station.getUserStateName(Config.Colors[this.colorIdx], Station.mySelfId());
         let roomVars = new SFS2X.SFSRoomVariable(stateName, "ready");
         Station.setRoomVariables([roomVars]);
+        this.owner.event(Laya.Event.PLAYED, [this.numberOfPlayer]);
     }
 
     onRoomVariablesUpdate(event: SFS2X.SFSEvent) {
-        let users = event.room.getUserList();
-        if (users.length == this.numberOfPlayer) {
-            let cnt = 0;
-            let roomVars = event.room.getVariables();
-            for (let i in users) {
-                let user = users[i];
-                let color = Station.getUserColor(user, roomVars);
-                let stateName = Station.getUserStateName(color, user.id);
-                if (event.room.containsVariable(stateName)) {
-                    cnt++;
-                }
-            }
-            if (cnt == users.length) {
-                this.owner.event(Laya.Event.PLAYED, [this.numberOfPlayer]);
-            }
-        }
-        this.updateColorCheckBox(event.room);
-    }
-    
-    updateColorCheckBox(room: SFS2X.SFSRoom) {
         let parallel = this.owner.getComponent(Parallel);
         let mySelfId = Station.mySelfId();
 
         let onlineUser: any = {};
-        let roomVars = room.getVariables();
-        let users = room.getUserList();
+        let roomVars = event.room.getVariables();
+        let users = event.room.getUserList();
         for (let rvidx in roomVars) {
             let rv = roomVars[rvidx];
             if (rv.isNull) {
@@ -115,7 +90,6 @@ export class OnlineParallel extends Laya.Script {
             }
         }
 
-
         for (let checkBoxIdx in parallel.colorCheckBox) {
             let colorCheckBox = parallel.colorCheckBox[checkBoxIdx];
             let colorName = Config.Colors[checkBoxIdx];
@@ -127,13 +101,5 @@ export class OnlineParallel extends Laya.Script {
                 colorCheckBox.selected = colorCheckBox.disabled = false;
             }
         }
-    }
-
-    onRoomJoinError(event: SFS2X.SFSEvent) {
-
-    }
-
-    onRoomJoin(event: SFS2X.SFSEvent) {
-        this.updateColorCheckBox(event.room);
     }
 }

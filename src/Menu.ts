@@ -26,17 +26,12 @@ export class Menu extends Laya.Script {
         this.challengeComputer.on(Laya.Event.CLICK, this, this.onChallengeComputer);
         this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
-        this.parallel.on(Station.Event.LoginError, this, this.onLoginError);
     }
 
     onStart(): void {
         Laya.SoundManager.musicMuted =Laya.LocalStorage.getItem("music") != "on";
         Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("sound") != "on";
         SoundManager.playMusic("sounds/menu.mp3", 0);
-    }
-
-    onLoginError() {
-        
     }
 
     onChallengeComputer() {
@@ -55,8 +50,7 @@ export class Menu extends Laya.Script {
             dlg.addComponentInstance(new OnlineParallel());
             dlg.on(Laya.Event.PLAYED,this, (num:number)=>{
                 dlg.close();
-                SoundManager.stopMusic();
-                Laya.Scene.open("game.ls", true, { "type": "extreme",number: num });
+                Laya.Scene.open("partner.ls", true, {"number": num });
             });
             dlg.on(Laya.Event.CLOSE,dlg, dlg.close);
         }));

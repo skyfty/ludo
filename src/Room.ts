@@ -43,6 +43,7 @@ export class Room extends Laya.Script {
     }
 
     onStart(): void {
+
     }
     private initEventListener() {
         this.redPlayer.on(Player.Event.Achieve, this, this.onPlayerAchieve);
@@ -69,6 +70,7 @@ export class Room extends Laya.Script {
         this.players.map((node: Laya.Sprite) => {
             node.getComponent(Performer).setState(Player.State.Idle);
         });
+        Laya.SoundManager.playSound("sounds/win.mp3");
     }
 
     onAchieve() {
