@@ -15,7 +15,7 @@ export class Online extends Laya.Script {
     constructor(param: any) {
         super();
         this.param = param;
-        this.addSmartFoxListener();
+        this.addStationListener();
     }
 
     onAwake(): void {
@@ -40,17 +40,17 @@ export class Online extends Laya.Script {
 
     onDestroy(): void {
         Station.levelRoom();
-        this.removeSmartFoxListener();
+        this.removeStationListener();
     }
 
-    private addSmartFoxListener() {
+    private addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
     }
 
-    private removeSmartFoxListener() {
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom);
+    private removeStationListener() {
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
     }
 
     private onUserExitRoom(inEvent: SFS2X.SFSEvent) {
@@ -61,7 +61,9 @@ export class Online extends Laya.Script {
                 Laya.Scene.open("menu.ls");
             });
         }));
-        this.removeSmartFoxListener();
+        this.room.setPlayersToIdle();
+        
+        this.removeStationListener();
     }
     
     private onPublicMessage(inEvent: SFS2X.SFSEvent) {

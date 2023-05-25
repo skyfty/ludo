@@ -22,7 +22,9 @@ export class Computer extends Performer {
         let trade = this.player.trade.getComponent(Trade);
         if (this.state == Player.State.Running) {
             this.startRoll();
-        } 
+        }  else {
+            trade.stop();
+        }
         trade.disabled(this.state != Player.State.Running);
     }
 

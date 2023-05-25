@@ -26,6 +26,7 @@ export class Game extends Laya.Scene {
         } else {
             this.challengeComputer(param);
         }
+        Laya.SoundManager.stopMusic();
     }
 
     private challengeExtreme(param: any) {

@@ -58,7 +58,6 @@ export class Pariner extends Laya.Scene {
                 }
             }
             if (cnt == users.length) {
-                SoundManager.stopMusic();
                 Laya.Scene.open("game.ls", true, { "type": "extreme","number": this.numberOfPlayer });
             }
         }

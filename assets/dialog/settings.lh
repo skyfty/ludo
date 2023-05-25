@@ -12,10 +12,10 @@
     {
       "_$type": "a0857e55-7637-4bff-adf2-8d5101717b23",
       "scriptPath": "../src/Settings.ts",
-      "music": {
+      "musicMuted": {
         "_$ref": "bgzvk3we"
       },
-      "sound": {
+      "soundMuted": {
         "_$ref": "bkjsg7oi"
       }
     }
@@ -56,7 +56,7 @@
     {
       "_$id": "bkjsg7oi",
       "_$type": "CheckBox",
-      "name": "sound",
+      "name": "soundMuted",
       "x": 359,
       "y": 439,
       "width": 74,
@@ -77,7 +77,7 @@
     {
       "_$id": "bgzvk3we",
       "_$type": "CheckBox",
-      "name": "music",
+      "name": "musicMuted",
       "x": 178,
       "y": 439,
       "width": 74,

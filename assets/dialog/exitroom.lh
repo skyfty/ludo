@@ -35,7 +35,11 @@
         },
         {
           "_$override": "othivvvm",
-          "text": "Another player\nlogout"
+          "text": "The player has left the room",
+          "fontSize": 45,
+          "bold": false,
+          "editable": false,
+          "scrollType": 2
         }
       ]
     }

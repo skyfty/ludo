@@ -36,6 +36,16 @@
               "scriptPath": "../src/ClickSound.ts"
             }
           ]
+        },
+        {
+          "_$override": "othivvvm",
+          "scrollType": 2,
+          "editable": false,
+          "multiline": true,
+          "valign": "middle",
+          "padding": "0,0,0,0",
+          "overflow": "hidden",
+          "stroke": 0
         }
       ]
     }

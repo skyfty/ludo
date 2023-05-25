@@ -29,8 +29,8 @@ export class Menu extends Laya.Script {
     }
 
     onStart(): void {
-        Laya.SoundManager.musicMuted =Laya.LocalStorage.getItem("music") != "on";
-        Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("sound") != "on";
+        Laya.SoundManager.musicMuted =Laya.LocalStorage.getItem("musicMuted") == "on";
+        Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("soundMuted") == "on";
         SoundManager.playMusic("sounds/menu.mp3", 0);
     }
 
@@ -39,7 +39,6 @@ export class Menu extends Laya.Script {
             dlg.addComponentInstance(new ComputerParallel());
             dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
                 dlg.close();
-                SoundManager.stopMusic();
                 Laya.Scene.open("game.ls", true, { "type": "computer", "color": color,"number":num });
             });
         }));

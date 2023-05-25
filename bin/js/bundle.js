@@ -11089,6 +11089,8 @@
       let trade = this.player.trade.getComponent(Trade);
       if (this.state == 1 /* Running */) {
         this.startRoll();
+      } else {
+        trade.stop();
       }
       trade.disabled(this.state != 1 /* Running */);
     }
@@ -11449,6 +11451,7 @@
       this.players = [];
       this.playerOrder = [];
       this.currentIdx = 0;
+      this.isVictory = false;
     }
     /**
      * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
@@ -11478,22 +11481,30 @@
     onPlayerAchieve() {
       this.owner.event(Event2.Achieve);
     }
-    onVictory() {
+    setPlayersToIdle() {
       this.players.map((node) => {
         node.getComponent(Performer).setState(0 /* Idle */);
       });
+    }
+    onVictory() {
+      this.isVictory = true;
+      this.setPlayersToIdle();
       Laya.SoundManager.playSound("sounds/win.mp3");
     }
     onAchieve() {
-      let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-      current.setState(0 /* Idle */);
-      if (this.currentIdx == this.playerOrder.length - 1) {
-        this.currentIdx = 0;
+      if (this.isVictory) {
+        this.setPlayersToIdle();
       } else {
-        this.currentIdx++;
+        let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+        current.setState(0 /* Idle */);
+        if (this.currentIdx == this.playerOrder.length - 1) {
+          this.currentIdx = 0;
+        } else {
+          this.currentIdx++;
+        }
+        let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+        next.setState(1 /* Running */);
       }
-      let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-      next.setState(1 /* Running */);
     }
     getPlayerOrderIndex(color, player) {
       let idx = 0;
@@ -11731,7 +11742,7 @@
     constructor(param) {
       super();
       this.param = param;
-      this.addSmartFoxListener();
+      this.addStationListener();
     }
     onAwake() {
       this.room = this.owner.getComponent(Room);
@@ -11752,15 +11763,15 @@
     }
     onDestroy() {
       Station.levelRoom();
-      this.removeSmartFoxListener();
+      this.removeStationListener();
     }
-    addSmartFoxListener() {
+    addStationListener() {
       Station.sfs.addEventListener(SFS2X2.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
       Station.sfs.addEventListener(SFS2X2.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
     }
-    removeSmartFoxListener() {
-      Station.sfs.removeEventListener(SFS2X2.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage);
-      Station.sfs.removeEventListener(SFS2X2.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom);
+    removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X2.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
     }
     onUserExitRoom(inEvent) {
       Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg) => {
@@ -11770,7 +11781,8 @@
           Laya.Scene.open("menu.ls");
         });
       }));
-      this.removeSmartFoxListener();
+      this.room.setPlayersToIdle();
+      this.removeStationListener();
     }
     onPublicMessage(inEvent) {
       let event = JSON.parse(inEvent.message);
@@ -11889,6 +11901,7 @@
       } else {
         this.challengeComputer(param);
       }
+      Laya.SoundManager.stopMusic();
     }
     challengeExtreme(param) {
       this.room.numberOfPlayer = param.number;
@@ -12102,8 +12115,8 @@
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
     }
     onStart() {
-      Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("music") != "on";
-      Laya.SoundManager.soundMuted = Laya.LocalStorage.getItem("sound") != "on";
+      Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("musicMuted") == "on";
+      Laya.SoundManager.soundMuted = Laya.LocalStorage.getItem("soundMuted") == "on";
       SoundManager8.playMusic("sounds/menu.mp3", 0);
     }
     onChallengeComputer() {
@@ -12111,7 +12124,6 @@
         dlg.addComponentInstance(new ComputerParallel());
         dlg.on(Laya.Event.PLAYED, this, (color, num) => {
           dlg.close();
-          SoundManager8.stopMusic();
           Laya.Scene.open("game.ls", true, { "type": "computer", "color": color, "number": num });
         });
       }));
@@ -12206,7 +12218,6 @@
           }
         }
         if (cnt == users.length) {
-          SoundManager9.stopMusic();
           Laya.Scene.open("game.ls", true, { "type": "extreme", "number": this.numberOfPlayer });
         }
       }
@@ -12227,54 +12238,26 @@
      * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
      */
     onAwake() {
-      this.music.on(Laya.Event.CLICK, this, () => {
-        Laya.SoundManager.musicMuted = this.music.selected;
+      this.musicMuted.on(Laya.Event.CLICK, this, () => {
+        Laya.SoundManager.musicMuted = this.musicMuted.selected;
         Laya.SoundManager.playMusic("sounds/menu.mp3", 0);
-        Laya.LocalStorage.setItem("music", this.music.selected ? "off" : "on");
+        Laya.LocalStorage.setItem("musicMuted", this.musicMuted.selected ? "on" : "off");
       });
-      this.sound.on(Laya.Event.CLICK, this, () => {
-        Laya.SoundManager.soundMuted = this.sound.selected;
-        Laya.LocalStorage.setItem("sound", this.sound.selected ? "off" : "on");
+      this.soundMuted.on(Laya.Event.CLICK, this, () => {
+        Laya.SoundManager.soundMuted = this.soundMuted.selected;
+        Laya.LocalStorage.setItem("soundMuted", this.soundMuted.selected ? "on" : "off");
       });
-      this.music.selected = Laya.LocalStorage.getItem("music") != "on";
-      this.sound.selected = Laya.LocalStorage.getItem("sound") != "on";
+      this.musicMuted.selected = Laya.LocalStorage.getItem("musicMuted") == "on";
+      this.soundMuted.selected = Laya.LocalStorage.getItem("soundMuted") == "on";
     }
-    /**
-     * 组件被启用后执行，例如节点被添加到舞台后
-     */
-    //onEnable(): void {}
-    /**
-     * 组件被禁用时执行，例如从节点从舞台移除后
-     */
-    //onDisable(): void {}
-    /**
-     * 第一次执行update之前执行，只会执行一次
-     */
-    //onStart(): void {}
-    /**
-     * 手动调用节点销毁时执行
-     */
-    //onDestroy(): void {
-    /**
-     * 每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onUpdate(): void {}
-    /**
-     * 每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onLateUpdate(): void {}
-    /**
-     * 鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
-     */
-    //onMouseClick(): void {}
   };
   __name(Settings, "Settings");
   __decorateClass([
     property28(Laya.CheckBox)
-  ], Settings.prototype, "music", 2);
+  ], Settings.prototype, "musicMuted", 2);
   __decorateClass([
     property28(Laya.CheckBox)
-  ], Settings.prototype, "sound", 2);
+  ], Settings.prototype, "soundMuted", 2);
   Settings = __decorateClass([
     regClass28("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);

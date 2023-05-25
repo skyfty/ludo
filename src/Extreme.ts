@@ -1,7 +1,6 @@
 const { regClass, property } = Laya;
 import { Performer } from "./Performer";
 import * as Player from "./Player";
-import * as SFS2X from "../node_modules/sfs2x-api";
 import { Chess } from "./Chess";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";

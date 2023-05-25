@@ -13,19 +13,20 @@ export class Room extends Laya.Script {
 
     @property(Laya.Sprite)
     public greenPlayer: Laya.Sprite;
-    
+
     @property(Laya.Sprite)
     public bluePlayer: Laya.Sprite;
 
     @property(Laya.Sprite)
     public yellowPlayer: Laya.Sprite;
 
-    public numberOfPlayer:number = 0;
-    
-    public players:Laya.Sprite[] = [];
+    public numberOfPlayer: number = 0;
 
-    public playerOrder:any[] = []
+    public players: Laya.Sprite[] = [];
+
+    public playerOrder: any[] = []
     public currentIdx = 0;
+    public isVictory = false;
 
     constructor() {
         super();
@@ -65,43 +66,51 @@ export class Room extends Laya.Script {
         this.owner.event(Player.Event.Achieve);
     }
 
-
-    onVictory() {
+    public setPlayersToIdle() {
         this.players.map((node: Laya.Sprite) => {
             node.getComponent(Performer).setState(Player.State.Idle);
         });
+    }
+
+    onVictory() {
+        this.isVictory = true;
+        this.setPlayersToIdle();
         Laya.SoundManager.playSound("sounds/win.mp3");
     }
 
     onAchieve() {
-        let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-        current.setState(Player.State.Idle);
-        if (this.currentIdx == this.playerOrder.length - 1) {
-            this.currentIdx = 0;
+        if (this.isVictory) {
+            this.setPlayersToIdle();
         } else {
-            this.currentIdx++;
+            let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+            current.setState(Player.State.Idle);
+            if (this.currentIdx == this.playerOrder.length - 1) {
+                this.currentIdx = 0;
+            } else {
+                this.currentIdx++;
+            }
+            let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+            next.setState(Player.State.Running);
         }
-        let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-        next.setState(Player.State.Running);
     }
 
-    private getPlayerOrderIndex(color:string, player:Laya.Sprite) {
+    private getPlayerOrderIndex(color: string, player: Laya.Sprite) {
         let idx = 0;
         let ids = Object.keys(this.players);;
-        for(let i = 0; i < ids.length; ++i) {
-            let id:number = Number.parseInt(ids[i]);
+        for (let i = 0; i < ids.length; ++i) {
+            let id: number = Number.parseInt(ids[i]);
             if (this.players[id] == player) {
-                idx = this.playerOrder.findIndex((order)=>{return order.color == color;});
+                idx = this.playerOrder.findIndex((order) => { return order.color == color; });
                 break;
             }
         }
         return idx;
     }
 
-    startGame(color:string):void {
+    startGame(color: string): void {
         let player = this.getPlayer(color);
         this.currentIdx = this.getPlayerOrderIndex(color, player);
-        for(let i = 0;i<this.playerOrder.length; ++i) {
+        for (let i = 0; i < this.playerOrder.length; ++i) {
             let performer = this.players[this.playerOrder[i].id].getComponent(Performer);
             if (i == this.currentIdx) {
                 performer.setState(Player.State.Running);
@@ -111,9 +120,9 @@ export class Room extends Laya.Script {
         }
     }
 
-    private getPlayer(color:string) {
+    private getPlayer(color: string) {
         let player = null;
-        switch(color) {
+        switch (color) {
             case "red": {
                 player = this.redPlayer;
                 break;
@@ -122,12 +131,12 @@ export class Room extends Laya.Script {
             case "blue": {
                 player = this.bluePlayer;
                 break;
-                
+
             }
             case "yellow": {
                 player = this.yellowPlayer;
                 break;
-                
+
             }
             case "green": {
                 player = this.greenPlayer;
@@ -137,15 +146,15 @@ export class Room extends Laya.Script {
         return player;
     }
 
-    public addPlayer(color:string, type:Player.Type, profile:Player.Profile) {
+    public addPlayer(color: string, type: Player.Type, profile: Player.Profile) {
         let player = this.getPlayer(color);
         if (player == null) {
             return;
         }
         this.players[profile.id] = player;
-        this.playerOrder.push({"id":profile.id, "color":color});
-        
-        switch(type) {
+        this.playerOrder.push({ "id": profile.id, "color": color });
+
+        switch (type) {
             case Player.Type.Oneself: {
                 player.addComponentInstance(new Oneself());
                 break;
