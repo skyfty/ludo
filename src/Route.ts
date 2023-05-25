@@ -46,17 +46,17 @@ export class Route extends Laya.Script {
         if (this.chess.length == 1) {
             this.chess[0].scale(1, 1).pos(hole.x, hole.y);
         } else if (this.chess.length == 2) {
-            this.chess[0].scale(0.7, 0.7).pos(hole.x, hole.y);
-            this.chess[1].scale(0.7, 0.7).pos(hole.x + 14, hole.y + 14);
+            this.chess[0].scale(0.7, 0.7).pos(hole.x - 3, hole.y - 3);
+            this.chess[1].scale(0.7, 0.7).pos(hole.x + 14, hole.y + 15);
         } else if (this.chess.length == 3) {
-            this.chess[0].scale(0.7, 0.7).pos(hole.x - 6, hole.y - 5);
-            this.chess[1].scale(0.7, 0.7).pos(hole.x + 15, hole.y - 5);
-            this.chess[2].scale(0.7, 0.7).pos(hole.x + 6, hole.y + 14);
+            this.chess[0].scale(0.6, 0.6).pos(hole.x - 4, hole.y - 3);
+            this.chess[1].scale(0.6, 0.6).pos(hole.x + 18, hole.y - 3);
+            this.chess[2].scale(0.6, 0.6).pos(hole.x + 7, hole.y + 17);
         }else if (this.chess.length == 4) {
-            this.chess[0].scale(0.7, 0.7).pos(hole.x - 6, hole.y - 5);
-            this.chess[1].scale(0.7, 0.7).pos(hole.x + 15, hole.y - 5);
-            this.chess[2].scale(0.7, 0.7).pos(hole.x - 6, hole.y + 14);
-            this.chess[3].scale(0.7, 0.7).pos(hole.x + 15, hole.y + 14);
+            this.chess[0].scale(0.6, 0.6).pos(hole.x - 4, hole.y - 3);
+            this.chess[1].scale(0.6, 0.6).pos(hole.x + 18, hole.y - 3);
+            this.chess[2].scale(0.6, 0.6).pos(hole.x - 4, hole.y + 17);
+            this.chess[3].scale(0.6, 0.6).pos(hole.x + 18, hole.y + 17);
         }
         else if (this.chess.length == 5) {
             this.chess[0].scale(0.6, 0.6).pos(hole.x - 6, hole.y - 6);
