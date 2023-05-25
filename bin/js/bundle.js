@@ -11376,7 +11376,7 @@
       });
     }
     onRollTimeout() {
-      this.currentDiceNumber = 4;
+      this.currentDiceNumber = Math.floor(Math.random() * 6);
       this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
     onRollStop() {
@@ -12172,13 +12172,17 @@
           view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
         }));
       });
-      this.addStationListener();
+      if (Station.sfs != null) {
+        this.addStationListener();
+      }
     }
     onDestroy() {
-      this.removeStationListener();
+      if (Station.sfs != null) {
+        this.removeStationListener();
+      }
     }
     onOpened(param) {
-      this.numberOfPlayer = param.number;
+      this.numberOfPlayer = param != null ? param.number : 2;
     }
     addStationListener() {
       Station.sfs.addEventListener(SFS2X5.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);

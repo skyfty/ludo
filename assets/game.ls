@@ -824,7 +824,8 @@
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
               },
-              "chippy": []
+              "chippy": [],
+              "home": []
             }
           ],
           "_$child": [
@@ -1014,8 +1015,8 @@
               "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
-              "x": 75.99999999999997,
-              "y": -176.00000000000006,
+              "x": 77,
+              "y": -174,
               "width": 80,
               "height": 80,
               "_$comp": [
@@ -1060,7 +1061,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "1",
                   "active": true,
-                  "x": 41.00000000000006,
+                  "x": 41,
                   "y": -1.1368683772161603e-13,
                   "visible": true,
                   "_$comp": [
@@ -1091,7 +1092,7 @@
                   "name": "2",
                   "active": true,
                   "x": 0,
-                  "y": 44,
+                  "y": 42,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1120,8 +1121,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 42.00000000000003,
-                  "y": 44.000000000000114,
+                  "x": 41,
+                  "y": 42,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1218,7 +1219,8 @@
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
               },
-              "chippy": []
+              "chippy": [],
+              "home": []
             }
           ],
           "_$child": [
@@ -1398,7 +1400,7 @@
               "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
-              "x": 76.99999999999994,
+              "x": 76,
               "y": 165.9999999999999,
               "width": 80,
               "height": 80,
@@ -1414,8 +1416,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "0",
                   "active": true,
-                  "x": -1,
-                  "y": 1.0000000000001705,
+                  "x": 0,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1444,8 +1446,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "1",
                   "active": true,
-                  "x": 40,
-                  "y": 2.0000000000001705,
+                  "x": 41,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1474,8 +1476,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": -1,
-                  "y": 42.00000000000017,
+                  "x": 0,
+                  "y": 42,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1504,7 +1506,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 40,
+                  "x": 41,
                   "y": 42.00000000000017,
                   "visible": true,
                   "_$comp": [
@@ -1602,7 +1604,8 @@
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
               },
-              "chippy": []
+              "chippy": [],
+              "home": []
             }
           ],
           "_$child": [
@@ -1793,8 +1796,8 @@
               "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
-              "x": -3.0000000000001137,
-              "y": -177.0000000000001,
+              "x": -4,
+              "y": -174,
               "width": 80,
               "height": 80,
               "_$comp": [
@@ -1810,7 +1813,7 @@
                   "name": "0",
                   "active": true,
                   "x": 0,
-                  "y": 3,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1834,7 +1837,7 @@
                   "name": "1",
                   "active": true,
                   "x": 41,
-                  "y": 4,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1857,8 +1860,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": -1,
-                  "y": 45,
+                  "x": 0,
+                  "y": 42,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1882,7 +1885,7 @@
                   "name": "3",
                   "active": true,
                   "x": 41,
-                  "y": 46,
+                  "y": 42,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1972,7 +1975,8 @@
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
               },
-              "chippy": []
+              "chippy": [],
+              "home": []
             }
           ],
           "_$child": [
@@ -2163,8 +2167,8 @@
               "_$index": 5,
               "_$type": "Sprite",
               "name": "groove",
-              "x": 1,
-              "y": 162,
+              "x": 2,
+              "y": 164,
               "width": 80,
               "height": 80,
               "_$comp": [
@@ -2180,7 +2184,7 @@
                   "name": "0",
                   "active": true,
                   "x": 0,
-                  "y": 2,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2209,8 +2213,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "1",
                   "active": true,
-                  "x": 42,
-                  "y": 2,
+                  "x": 41,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2240,7 +2244,7 @@
                   "name": "2",
                   "active": true,
                   "x": 0,
-                  "y": 45,
+                  "y": 42,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2269,8 +2273,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 42,
-                  "y": 45,
+                  "x": 41,
+                  "y": 42,
                   "visible": true,
                   "_$comp": [
                     {

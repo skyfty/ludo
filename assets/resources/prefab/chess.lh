@@ -83,8 +83,10 @@
           "_$id": "t8h17dpc",
           "_$type": "Image",
           "name": "image",
-          "width": 38,
-          "height": 38,
+          "x": -5.5,
+          "y": -5.5,
+          "width": 48,
+          "height": 48,
           "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
           "color": "#ffffff"
         },

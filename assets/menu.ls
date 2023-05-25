@@ -144,15 +144,20 @@
               "color": "#ffffff"
             },
             {
-              "_$id": "fwcmnrv8",
-              "_$type": "Image",
-              "name": "Image(2)",
-              "x": 23,
-              "y": 26,
-              "width": 71.5,
-              "height": 71.5,
-              "skin": "res://0b1164ee-90fe-423d-8f67-3c9db0bf4be5",
-              "color": "#ffffff"
+              "_$id": "pmqpnc19",
+              "_$type": "Clip",
+              "name": "Clip",
+              "x": 13,
+              "y": 15,
+              "width": 93,
+              "height": 93,
+              "clipWidth": 142,
+              "clipHeight": 142,
+              "clipX": 3,
+              "clipY": 3,
+              "index": 0,
+              "interval": 50,
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
             },
             {
               "_$id": "7orvzytu",

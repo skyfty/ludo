@@ -18,15 +18,19 @@ export class Pariner extends Laya.Scene {
                 view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
             }));
         });
-        this.addStationListener();
+        if (Station.sfs != null) {
+            this.addStationListener();
+        }
     }
 
     onDestroy(): void {
-        this.removeStationListener();
+        if (Station.sfs != null) {
+            this.removeStationListener();
+        }
     }
 
     onOpened(param: any) {
-        this.numberOfPlayer = param.number;
+        this.numberOfPlayer = param != null ?param.number:2;
     }
     
     addStationListener() {

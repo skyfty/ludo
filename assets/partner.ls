@@ -117,8 +117,8 @@
       "clipHeight": 142,
       "clipX": 3,
       "clipY": 3,
-      "index": 6,
-      "interval": 3,
+      "index": 5,
+      "interval": 200,
       "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
     },
     {

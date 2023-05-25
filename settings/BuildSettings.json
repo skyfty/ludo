@@ -4,5 +4,12 @@
   "includedScenes": [
     "res://9b931ecf-fde9-44dd-acf3-15f8dc807965",
     "res://3b168812-ba9d-4e3b-ba40-11e16a2445bc"
-  ]
+  ],
+  "alwaysIncluded": [
+    "res://f8",
+    "res://f7",
+    "res://f4",
+    "res://f6"
+  ],
+  "excludeFilesRule": []
 }

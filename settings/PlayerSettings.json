@@ -3,7 +3,8 @@
     "designWidth": 635,
     "designHeight": 1136,
     "scaleMode": "fixedwidth",
-    "screenMode": "vertical"
+    "screenMode": "vertical",
+    "backgroundColor": "rgba(0, 0, 0, 1)"
   },
   "3D": {
     "lightClusterCount": {
