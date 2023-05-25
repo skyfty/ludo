@@ -2,6 +2,7 @@
   "name": "ludo",
   "startupScene": "res://db77908c-035c-4db2-8c4c-8d35a0103267",
   "includedScenes": [
-    "res://9b931ecf-fde9-44dd-acf3-15f8dc807965"
+    "res://9b931ecf-fde9-44dd-acf3-15f8dc807965",
+    "res://3b168812-ba9d-4e3b-ba40-11e16a2445bc"
   ]
 }
