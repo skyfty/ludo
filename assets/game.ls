@@ -2316,26 +2316,29 @@
       "x": 18,
       "y": 24,
       "width": 598,
-      "height": 34,
+      "height": 64,
       "mouseEnabled": true,
       "_$comp": [
         {
           "_$type": "2eaec3fb-1805-4cbc-89c7-008aa7b68c01",
           "scriptPath": "../src/GameToolbar.ts",
           "backButton": {
-            "_$ref": "hlessq2o"
+            "_$ref": "fp6q39ed"
           }
         }
       ],
       "_$child": [
         {
-          "_$id": "hlessq2o",
-          "_$type": "Image",
+          "_$id": "fp6q39ed",
+          "_$type": "Button",
           "name": "back",
-          "width": 40,
-          "height": 40,
+          "width": 42.5,
+          "height": 42.5,
+          "mouseEnabled": true,
+          "stateNum": 2,
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
-          "color": "#ffffff"
+          "label": "",
+          "labelSize": 20
         }
       ]
     }

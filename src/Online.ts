@@ -15,8 +15,7 @@ export class Online extends Laya.Script {
     constructor(param: any) {
         super();
         this.param = param;
-        Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+        this.addSmartFoxListener();
     }
 
     onAwake(): void {
@@ -41,12 +40,28 @@ export class Online extends Laya.Script {
 
     onDestroy(): void {
         Station.levelRoom();
+        this.removeSmartFoxListener();
+    }
+
+    private addSmartFoxListener() {
+        Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+    }
+
+    private removeSmartFoxListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.onUserExitRoom, this.onUserExitRoom);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom);
     }
 
     private onUserExitRoom(inEvent: SFS2X.SFSEvent) {
-        Laya.Scene.open("menu.ls");
+        Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+            let view = dlg.getChildByName("view");
+            view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
+                dlg.close();
+                Laya.Scene.open("menu.ls");
+            });
+        }));
+        this.removeSmartFoxListener();
     }
     
     private onPublicMessage(inEvent: SFS2X.SFSEvent) {

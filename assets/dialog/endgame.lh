@@ -1,0 +1,19 @@
+{
+  "_$ver": 1,
+  "_$id": "k4g6nc8i",
+  "_$type": "Dialog",
+  "name": "dialog",
+  "width": 635,
+  "height": 1136,
+  "_$child": [
+    {
+      "_$id": "2q93949i",
+      "_$prefab": "fc45a8ff-86ed-4bfe-bdc0-b043f2441912",
+      "name": "view",
+      "active": true,
+      "x": 0,
+      "y": 0,
+      "visible": true
+    }
+  ]
+}

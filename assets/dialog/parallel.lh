@@ -71,10 +71,10 @@
       "name": "close",
       "x": 293,
       "y": 966,
-      "width": 63.5,
+      "width": 64,
       "height": 63.5,
       "mouseEnabled": true,
-      "stateNum": 1,
+      "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20

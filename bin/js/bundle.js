@@ -11721,8 +11721,7 @@
     constructor(param) {
       super();
       this.param = param;
-      Station.sfs.addEventListener(SFS2X2.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
-      Station.sfs.addEventListener(SFS2X2.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+      this.addSmartFoxListener();
     }
     onAwake() {
       this.room = this.owner.getComponent(Room);
@@ -11743,11 +11742,25 @@
     }
     onDestroy() {
       Station.levelRoom();
+      this.removeSmartFoxListener();
+    }
+    addSmartFoxListener() {
+      Station.sfs.addEventListener(SFS2X2.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+      Station.sfs.addEventListener(SFS2X2.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+    }
+    removeSmartFoxListener() {
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage);
-      Station.sfs.removeEventListener(SFS2X2.SFSEvent.onUserExitRoom, this.onUserExitRoom);
+      Station.sfs.removeEventListener(SFS2X2.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom);
     }
     onUserExitRoom(inEvent) {
-      console.log("lskjf");
+      Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg) => {
+        let view = dlg.getChildByName("view");
+        view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
+          dlg.close();
+          Laya.Scene.open("menu.ls");
+        });
+      }));
+      this.removeSmartFoxListener();
     }
     onPublicMessage(inEvent) {
       let event = JSON.parse(inEvent.message);
@@ -11927,7 +11940,16 @@
     onAwake() {
       this.backButton.on(Laya.Event.CLICK, this, () => {
         let owner = this.owner;
-        Laya.Scene.open("menu.ls");
+        Laya.Scene.open("dialog/endgame.lh", false, null, Laya.Handler.create(this, (dlg) => {
+          let view = dlg.getChildByName("view");
+          view.getChildByName("return").on(Laya.Event.CLICK, this, () => {
+            dlg.close();
+          });
+          view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
+            dlg.close();
+            Laya.Scene.open("menu.ls");
+          });
+        }));
       });
     }
   };

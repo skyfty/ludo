@@ -1,0 +1,35 @@
+{
+  "_$ver": 1,
+  "_$id": "lb8wglij",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 635,
+  "height": 1136,
+  "mouseEnabled": true,
+  "_$child": [
+    {
+      "_$id": "wzycx36g",
+      "_$prefab": "fc45a8ff-86ed-4bfe-bdc0-b043f2441912",
+      "name": "view",
+      "active": true,
+      "x": 0,
+      "y": 0,
+      "visible": true,
+      "_$child": [
+        {
+          "_$override": "9i71029w",
+          "visible": false
+        },
+        {
+          "_$override": "gjhdic9x",
+          "x": 185,
+          "y": 568
+        },
+        {
+          "_$override": "othivvvm",
+          "text": "Another player\nlogout"
+        }
+      ]
+    }
+  ]
+}
