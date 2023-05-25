@@ -1,4 +1,4 @@
-const { regClass, property } = Laya;
+const { regClass, property,SoundManager } = Laya;
 
 @regClass()
 export class Dice extends Laya.Script {
@@ -22,6 +22,7 @@ export class Dice extends Laya.Script {
         this.diceDefault.visible = false;
         this.diceRoll.visible = true;
         this.diceRoll.play(0, -1);
+        SoundManager.playSound("sounds/chess.mp3", 1);
         this.owner.getComponent(Laya.Animator2D).play("roll");
     }
 

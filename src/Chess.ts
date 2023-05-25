@@ -2,7 +2,7 @@ import { Player } from "./Player";
 import * as Route from "./Route";
 import { Config } from "./Config"
 
-const { regClass, property } = Laya;
+const { regClass, property,SoundManager } = Laya;
 
 @regClass()
 export class Chess extends Laya.Script {
@@ -62,6 +62,7 @@ export class Chess extends Laya.Script {
             complete.run();
             return;
         }
+        SoundManager.playSound("sounds/move.mp3", 1);
 
         if (roadway == this.player.groove) {
             this.jump(this.player.entry, complete);

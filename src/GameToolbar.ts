@@ -12,7 +12,9 @@ export class GameToolbar extends Laya.Script {
     onAwake(): void {
         this.backButton.on(Laya.Event.CLICK, this, ()=>{
             let owner = this.owner as Laya.Sprite;
-            owner.scene.close();
+            Laya.Scene.open("menu.ls");
+
+            // owner.scene.close();
         });
     }
 }

@@ -1,15 +1,12 @@
 const { regClass, property } = Laya;
 import * as Player from "./Player";
 import * as SFS2X from "../node_modules/sfs2x-api";
-import * as Station from "./Station";
+import  {Station} from "./Station";
 @regClass()
 export class Sender extends Laya.Script {
     
-    station:Station.Station = null;
-
-    constructor(st:Station.Station) {
+    constructor() {
         super();
-        this.station = st;
     }
 
     onAwake(): void {
@@ -24,13 +21,13 @@ export class Sender extends Laya.Script {
         let event = {
             "event":Player.Event.Achieve
         }; 
-        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
     }
     onVictory() {
         let event = {
             "event":Player.Event.Victory
         }; 
-        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
 
     }
     onChoose(name:string) {
@@ -38,7 +35,7 @@ export class Sender extends Laya.Script {
             "event":Player.Event.Choose,
             "name":name
         }; 
-        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
 
     }
 
@@ -47,14 +44,14 @@ export class Sender extends Laya.Script {
             "event":Player.Event.RollEnd,
             "num":num
         }; 
-        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
     }
     
     onRollStart() {  
         let event = {
             "event":Player.Event.RollStart
         }; 
-        this.station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
     }
 
 }

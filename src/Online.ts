@@ -1,18 +1,16 @@
 const { regClass, property } = Laya;
 import * as SFS2X from "../node_modules/sfs2x-api";
-import * as Station from "./Station";
+import {Station} from "./Station";
 import { Room } from "./Room";
 import { Extreme } from "./Extreme";
 
 @regClass()
 export class Online extends Laya.Script {
-    station: Station.Station = null;
     room: Room;
 
-    constructor(st: Station.Station) {
+    constructor() {
         super();
-        this.station = st;
-        this.station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
     }
 
     onAwake(): void {
@@ -20,8 +18,8 @@ export class Online extends Laya.Script {
     }
 
     onDestroy(): void {
-        this.station.levelRoom();
-        this.station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage);
+        Station.levelRoom();
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage);
 
     }
     private onPublicMessage(inEvent: SFS2X.SFSEvent) {

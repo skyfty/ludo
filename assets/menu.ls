@@ -7,6 +7,7 @@
   "top": 0,
   "bottom": 0,
   "name": "Menu",
+  "autoDestroyAtClosed": true,
   "_$comp": [
     {
       "_$type": "7bad1742-6eed-4d8d-81c0-501dc5bf03d6",
@@ -33,10 +34,10 @@
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
       "playerName": "Feitianyu",
-      "host": "127.0.0.1",
+      "host": "39.104.230.103",
       "port": 8080,
-      "zone": "BasicExamples",
-      "debug": false
+      "zone": "Ludo",
+      "debug": true
     }
   ],
   "_$child": [

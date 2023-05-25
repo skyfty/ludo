@@ -5,6 +5,7 @@ import { Online } from "./Online";
 import * as Player from "./Player";
 import { Sender } from "./Sender";
 import { Config } from "./Config";
+import  {Station} from "./Station";
 
 @regClass()
 export class Game extends Laya.Scene {
@@ -24,10 +25,10 @@ export class Game extends Laya.Scene {
     private challengeExtreme(param: any) {
         let room = this.getComponent(Room);
         room.numberOfPlayer = param.number;
-        this.addComponentInstance(new Online(param.station));
-        let users = param.station.getUserList();
+        this.addComponentInstance(new Online());
+        let users = Station.getUserList();
         for (let i = 0; i < users.length; ++i) {
-            let color = param.station.getUserColor(users[i]);
+            let color = Station.getUserColor(users[i]);
             let type = users[i].isItMe ? Player.Type.Oneself : Player.Type.Extreme;
             let player = room.addPlayer(color, type, {
                 "id": users[i].id,
@@ -35,7 +36,7 @@ export class Game extends Laya.Scene {
                 "avatar": ""
             });
             if (users[i].isItMe) {
-                player.addComponentInstance(new Sender(param.station));
+                player.addComponentInstance(new Sender());
             }
         }
         room.startGame("red");

@@ -3,7 +3,7 @@ import * as Route from "./Route";
 import { Config } from "./Config";
 import { Dice } from "./Dice";
 
-const { regClass, property } = Laya;
+const { regClass, property,SoundManager } = Laya;
 
 export class Event {
     static EntryRoom = "ENTRY_ROOM";
@@ -215,6 +215,7 @@ export class Player extends Laya.Script {
         let chesses = this.getKickChesses(route);
         chesses.map((chess:Chess)=>{
             chess.stop();
+            SoundManager.playSound("sounds/kick.mp3", 1);
             chess.revert(Laya.Handler.create(this, ()=>{
                 let idx = chess.player.chippy.indexOf(chess.owner as Laya.Sprite);
                 if (idx != -1) {

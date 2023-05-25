@@ -1,5 +1,5 @@
 
-const { regClass, property } = Laya;
+const { regClass, property,SoundManager } = Laya;
 import * as Station from "./Station";
 import { ComputerParallel } from "./ComputerParallel";
 import { OnlineParallel } from "./OnlineParallel";
@@ -29,27 +29,34 @@ export class Menu extends Laya.Script {
         this.parallel.on(Station.Event.LoginError, this, this.onLoginError);
     }
 
+    onStart(): void {
+        SoundManager.playMusic("sounds/menu.mp3", 1);
+    }
+
     onLoginError() {
         
     }
 
     onChallengeComputer() {
+        SoundManager.playSound("sounds/click.mp3", 1);
         this.openParallelDlg(Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new ComputerParallel());
             dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
                 dlg.close();
-                Laya.Scene.open("game.ls", false, { "type": "computer", "color": color,"number":num });
+                SoundManager.stopMusic();
+                Laya.Scene.open("game.ls", true, { "type": "computer", "color": color,"number":num });
             });
         }));
     }
     
     onChallengeExtreme() {
+        SoundManager.playSound("sounds/click.mp3", 1);
         this.openParallelDlg( Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
-            let st = this.owner.getComponent(Station.Station) as Station.Station;   
-            dlg.addComponentInstance(new OnlineParallel(st));
+            dlg.addComponentInstance(new OnlineParallel());
             dlg.on(Laya.Event.PLAYED,this, (num:number)=>{
                 dlg.close();
-                Laya.Scene.open("game.ls", false, { "type": "extreme", "station": st,number: num });
+                SoundManager.stopMusic();
+                Laya.Scene.open("game.ls", true, { "type": "extreme",number: num });
             });
             dlg.on(Laya.Event.CLOSE,this, (num:number)=>{
                 dlg.close();
