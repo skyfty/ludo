@@ -84,7 +84,7 @@
               "y": 1,
               "width": 34,
               "height": 34,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#ffffff"
             }
           ]
@@ -177,7 +177,7 @@
               "width": 34,
               "height": 34,
               "alpha": 0.28,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#69adca"
             }
           ]
@@ -258,7 +258,7 @@
               "width": 34,
               "height": 34,
               "alpha": 0.4,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#ffffff"
             }
           ]
@@ -351,7 +351,7 @@
               "width": 33.5,
               "height": 33.5,
               "alpha": 0.33,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#ffffff"
             }
           ]
@@ -432,7 +432,7 @@
               "width": 34,
               "height": 34,
               "alpha": 0.4,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#ffffff"
             }
           ]
@@ -525,7 +525,7 @@
               "width": 34,
               "height": 33.5,
               "alpha": 0.33,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#ffffff"
             }
           ]
@@ -605,7 +605,7 @@
               "width": 34,
               "height": 34,
               "alpha": 0.4,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#ffffff"
             }
           ]
@@ -698,7 +698,7 @@
               "width": 33.5,
               "height": 33.5,
               "alpha": 0.33,
-              "skin": "res://23f32e12-7cb5-4ac0-b28c-c209eb49b3f8",
+              "skin": "res://6bb29390-42ea-45b2-b60e-1a5cc35cc248",
               "color": "#ffffff"
             }
           ]
