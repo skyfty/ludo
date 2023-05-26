@@ -71,7 +71,7 @@
           "_$comp": [
             {
               "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-              "safe": 0
+              "safe": 1
             }
           ],
           "_$child": [
@@ -418,7 +418,7 @@
           "_$comp": [
             {
               "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
-              "safe": 0
+              "safe": 1
             }
           ],
           "_$child": [

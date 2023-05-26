@@ -10818,17 +10818,17 @@
       let ownerSpriteWorldPoint = this.jumpToWorld();
       let parent = dest.parent;
       let destWorldPoint = parent.localToGlobal(new Laya.Point(dest.x, dest.y));
-      this.hole.event(Event.Exit, [ownerSpriteWorldPoint]);
-      this.skipTo(dest, destWorldPoint, parent, Laya.Handler.create(this, () => {
+      this.skipTo(destWorldPoint, parent, Laya.Handler.create(this, () => {
+        this.pass(dest);
+        this.hole.event(Event.Exit, [ownerSpriteWorldPoint]);
+        this.hole = dest;
         this.hole.event(Event.Enter, [new Laya.Point(this.hole.x, this.hole.y)]);
         complete.run();
       }));
     }
-    skipTo(dest, destWorldPoint, parent, complete) {
+    skipTo(destWorldPoint, parent, complete) {
       let ownerSprite = this.owner;
-      Laya.Tween.to(ownerSprite, { y: destWorldPoint.y, x: destWorldPoint.x }, 200, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
-        this.pass(dest);
-        this.hole = dest;
+      Laya.Tween.to(ownerSprite, { y: destWorldPoint.y, x: destWorldPoint.x }, 300, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
         let parentLocalPoint = parent.globalToLocal(destWorldPoint, true);
         parent.addChild(ownerSprite.pos(parentLocalPoint.x, parentLocalPoint.y));
         complete.run();
@@ -10901,18 +10901,20 @@
       if (nextHole == null) {
         nextHole = roadway.getChildByName("0");
       }
-      this.moveTo(nextHole, 20, Laya.Handler.create(this, () => {
+      this.moveTo(nextHole, 50, Laya.Handler.create(this, () => {
         this.backoff(dest, complete);
       }));
     }
     revert(complete) {
       this.backoff(this.player.entry, Laya.Handler.create(this, () => {
-        let ownerSpriteWorldPoint = this.jumpToWorld();
+        this.jumpToWorld();
         let destNode = this.player.origin.getChildByName(this.owner.name);
         let destWorldPoint = this.player.origin.localToGlobal(new Laya.Point(destNode.x, destNode.y));
-        this.hole.event(Event.Exit, [ownerSpriteWorldPoint]);
-        this.skipTo(destNode, destWorldPoint, this.player.groove, Laya.Handler.create(this, () => {
+        this.skipTo(destWorldPoint, this.player.groove, Laya.Handler.create(this, () => {
           let parentLocalPoint = this.player.groove.globalToLocal(destWorldPoint, true);
+          this.pass(destNode);
+          this.hole.event(Event.Exit, [new Laya.Point(this.hole.x, this.hole.y)]);
+          this.hole = destNode;
           this.hole.event(Event.Enter, [parentLocalPoint]);
           complete.run();
         }));
@@ -10924,7 +10926,7 @@
         this.pass(nextHole);
         this.hole.event(Event.Exit, [new Laya.Point(this.hole.x, this.hole.y)]);
         this.hole = nextHole;
-        this.hole.event(Event.Enter, [new Laya.Point(this.hole.x, this.hole.y)]);
+        this.hole.event(Event.Enter, [new Laya.Point(nextHole.x, nextHole.y)]);
         complete.run();
       }));
     }
