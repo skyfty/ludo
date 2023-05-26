@@ -1,9 +1,10 @@
 {
   "resolution": {
-    "designWidth": 635,
-    "designHeight": 1136,
+    "designWidth": 750,
+    "designHeight": 1334,
     "scaleMode": "fixedwidth",
     "screenMode": "vertical",
+    "alignH": "center",
     "backgroundColor": "rgba(0, 0, 0, 1)"
   },
   "3D": {

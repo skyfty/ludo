@@ -48,27 +48,21 @@
       "labelSize": 20
     },
     {
-      "_$id": "othivvvm",
-      "_$type": "TextArea",
-      "name": "TextArea",
-      "x": 85.41523357656504,
-      "y": 380.0390815202835,
+      "_$id": "9r94nh4g",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 85,
+      "y": 380,
       "width": 459,
       "height": 150,
-      "mouseEnabled": true,
       "text": "End Current\nGame?",
       "fontSize": 50,
       "color": "rgba(226, 220, 220, 1)",
       "align": "center",
       "valign": "middle",
-      "overflow": "scroll",
+      "wordWrap": true,
       "leading": 0,
-      "padding": "6,6,6,6",
-      "type": "text",
-      "maxChars": 100000,
-      "restrict": "",
-      "prompt": "",
-      "promptColor": "#A9A9A9"
+      "padding": "0,0,0,0"
     }
   ]
 }

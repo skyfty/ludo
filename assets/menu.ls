@@ -42,28 +42,43 @@
   ],
   "_$child": [
     {
-      "_$id": "au6aouvz",
-      "_$type": "Image",
-      "name": "Image",
-      "x": -150,
-      "y": -349,
-      "width": 971.0687507861614,
-      "height": 1748.8937042275297,
-      "left": -150,
-      "right": -186,
-      "top": -349,
-      "bottom": -264,
-      "centerX": 18,
-      "centerY": -43,
-      "skin": "res://062a211d-d130-4021-9a56-215fbafda1f1",
-      "color": "#ffffff"
+      "_$id": "dmk4worr",
+      "_$type": "Sprite",
+      "name": "Sprite",
+      "width": 751,
+      "height": 1335,
+      "_gcmds": [
+        {
+          "_$type": "FillTextureCmd",
+          "texture": {
+            "_$uuid": "062a211d-d130-4021-9a56-215fbafda1f1",
+            "_$type": "Texture"
+          },
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "type": "repeat",
+          "offset": {
+            "_$type": "Point"
+          },
+          "color": 4294967295
+        }
+      ],
+      "_$comp": [
+        {
+          "_$type": "9f78dd27-7aab-4a69-87aa-70472fc0ec06",
+          "scriptPath": "../src/Background.ts"
+        }
+      ]
     },
     {
       "_$id": "pklrsvsb",
       "_$type": "Button",
       "name": "vscomputer",
-      "x": 115.3118764845606,
-      "y": 377.73516342582855,
+      "x": 161.3118764845606,
+      "y": 368.73516342582855,
       "width": 427.57945754497143,
       "height": 115.4464535371423,
       "mouseEnabled": true,
@@ -82,8 +97,8 @@
       "_$id": "mqsu2s73",
       "_$type": "Button",
       "name": "online",
-      "x": 115.3118764845606,
-      "y": 533.54081658856,
+      "x": 161,
+      "y": 524.54081658856,
       "width": 427.57945754497143,
       "height": 115.4464535371423,
       "mouseEnabled": true,
@@ -113,7 +128,7 @@
           "_$type": "Image",
           "name": "Image",
           "x": 14.99999999999995,
-          "width": 605,
+          "width": 710,
           "height": 60,
           "skin": "res://5e1e9ab3-d2f1-4cce-820e-7dd5cbfb670a",
           "color": "#ffffff"
@@ -122,7 +137,6 @@
           "_$id": "upjap8ug",
           "_$type": "Box",
           "name": "avatar",
-          "x": -1.9999999999999716,
           "width": 121,
           "height": 121,
           "_$comp": [
@@ -176,7 +190,7 @@
           "_$id": "foe94s5k",
           "_$type": "Button",
           "name": "settings",
-          "x": 549,
+          "x": 662,
           "width": 83,
           "height": 83,
           "mouseEnabled": true,
@@ -197,8 +211,8 @@
       "_$id": "lsq01jcr",
       "_$type": "Image",
       "name": "Image(1)",
-      "x": 197,
-      "y": 79,
+      "x": 238,
+      "y": 82,
       "width": 264.5,
       "height": 264.5,
       "skin": "res://9a029446-e9cb-4e8e-9909-e389aff3b283",

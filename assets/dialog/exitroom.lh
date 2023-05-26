@@ -3,8 +3,8 @@
   "_$id": "lb8wglij",
   "_$type": "Dialog",
   "name": "Dialog",
-  "width": 635,
-  "height": 1136,
+  "width": 750,
+  "height": 1334,
   "mouseEnabled": true,
   "autoDestroyAtClosed": true,
   "isModal": true,
@@ -17,15 +17,24 @@
       "x": 0,
       "y": 0,
       "visible": true,
+      "height": 1334,
+      "width": 750,
       "_$child": [
         {
+          "_$override": "it3gkh9e",
+          "x": 89,
+          "y": 224
+        },
+        {
           "_$override": "9i71029w",
-          "visible": false
+          "visible": false,
+          "x": 200,
+          "y": 480
         },
         {
           "_$override": "gjhdic9x",
-          "x": 185,
-          "y": 568,
+          "x": 261,
+          "y": 481,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -34,12 +43,10 @@
           ]
         },
         {
-          "_$override": "othivvvm",
+          "_$override": "9r94nh4g",
           "text": "The player has left the room",
-          "fontSize": 45,
-          "bold": false,
-          "editable": false,
-          "scrollType": 2
+          "x": 161,
+          "y": 293
         }
       ]
     }

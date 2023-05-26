@@ -3,8 +3,8 @@
   "_$id": "k4g6nc8i",
   "_$type": "Dialog",
   "name": "dialog",
-  "width": 635,
-  "height": 1136,
+  "width": 750,
+  "height": 1334,
   "mouseEnabled": true,
   "autoDestroyAtClosed": true,
   "isModal": true,
@@ -17,10 +17,19 @@
       "x": 0,
       "y": 0,
       "visible": true,
+      "height": 1334,
+      "width": 750,
       "_$child": [
+        {
+          "_$override": "it3gkh9e",
+          "x": 88,
+          "y": 229
+        },
         {
           "_$override": "9i71029w",
           "width": 89,
+          "x": 199,
+          "y": 485,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -30,6 +39,8 @@
         },
         {
           "_$override": "gjhdic9x",
+          "x": 324,
+          "y": 486,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -38,14 +49,9 @@
           ]
         },
         {
-          "_$override": "othivvvm",
-          "scrollType": 2,
-          "editable": false,
-          "multiline": true,
-          "valign": "middle",
-          "padding": "0,0,0,0",
-          "overflow": "hidden",
-          "stroke": 0
+          "_$override": "9r94nh4g",
+          "x": 160,
+          "y": 298
         }
       ]
     }

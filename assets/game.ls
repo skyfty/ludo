@@ -29,21 +29,43 @@
   ],
   "_$child": [
     {
-      "_$id": "ikgjaepj",
-      "_$type": "Image",
-      "name": "desk",
-      "x": -142.2565506770938,
-      "y": -259.947278436174,
-      "width": 908.5210469225974,
-      "height": 1633.6456652659188,
-      "skin": "res://062a211d-d130-4021-9a56-215fbafda1f1",
-      "color": "#ffffff"
+      "_$id": "oql1cen0",
+      "_$type": "Sprite",
+      "name": "background",
+      "width": 748,
+      "height": 1334,
+      "_gcmds": [
+        {
+          "_$type": "FillTextureCmd",
+          "texture": {
+            "_$uuid": "062a211d-d130-4021-9a56-215fbafda1f1",
+            "_$type": "Texture"
+          },
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "type": "repeat",
+          "offset": {
+            "_$type": "Point"
+          },
+          "color": 4294967295
+        }
+      ],
+      "_$comp": [
+        {
+          "_$type": "9f78dd27-7aab-4a69-87aa-70472fc0ec06",
+          "scriptPath": "../src/Background.ts"
+        }
+      ]
     },
     {
       "_$id": "m48vibdz",
       "_$type": "Image",
       "name": "board",
-      "y": 250,
+      "x": 58,
+      "y": 199,
       "width": 636.3045652367252,
       "height": 635.6232969655947,
       "skin": "res://fd1112d7-bf9f-4300-94e0-f9d4981cb094",
@@ -53,8 +75,8 @@
       "_$id": "7xaa4ym6",
       "_$type": "Sprite",
       "name": "universal",
-      "x": 301.9999999999998,
-      "y": 551.9999999999999,
+      "x": 360,
+      "y": 500,
       "width": 31.5,
       "height": 31.5,
       "_$child": [
@@ -759,8 +781,8 @@
       "_$id": "oh6c4lul",
       "_$type": "Sprite",
       "name": "players",
-      "x": 269,
-      "y": 521,
+      "x": 326,
+      "y": 469,
       "width": 100,
       "height": 100,
       "_$child": [
@@ -774,6 +796,8 @@
           "visible": true,
           "disabled": false,
           "bgColor": null,
+          "width": 197,
+          "height": 107,
           "_$comp": [
             {
               "_$type": "c5f16793-ae8c-43aa-80e7-cdc3ce175664",
@@ -832,7 +856,7 @@
             {
               "_$override": "sc3b00yx",
               "x": -10,
-              "y": 25
+              "y": 5
             },
             {
               "_$override": "dm1y2zws",
@@ -1034,6 +1058,8 @@
                   "x": 0,
                   "y": -1.1368683772161603e-13,
                   "visible": true,
+                  "width": 38,
+                  "height": 38,
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
@@ -1064,6 +1090,8 @@
                   "x": 41,
                   "y": -1.1368683772161603e-13,
                   "visible": true,
+                  "width": 38,
+                  "height": 38,
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
@@ -1094,6 +1122,8 @@
                   "x": 0,
                   "y": 42,
                   "visible": true,
+                  "width": 38,
+                  "height": 38,
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
@@ -1124,6 +1154,8 @@
                   "x": 41,
                   "y": 42,
                   "visible": true,
+                  "width": 38,
+                  "height": 38,
                   "_$comp": [
                     {
                       "_$override": "2be80ad6-1bcc-440d-a7c9-809c6c1eef91",
@@ -1227,7 +1259,7 @@
             {
               "_$override": "sc3b00yx",
               "x": -12,
-              "y": -55
+              "y": -40
             },
             {
               "_$id": "yi8aaacw",
@@ -1612,7 +1644,7 @@
             {
               "_$override": "5a788y2g",
               "x": -32,
-              "y": 26,
+              "y": 5,
               "_$comp": [
                 {
                   "_$override": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -1982,7 +2014,7 @@
           "_$child": [
             {
               "_$override": "5a788y2g",
-              "y": -59,
+              "y": -40,
               "x": -25,
               "_$comp": [
                 {
@@ -2317,10 +2349,10 @@
       "_$id": "a5gt28ns",
       "_$type": "Box",
       "name": "toolbar",
-      "x": 18,
-      "y": 24,
-      "width": 598,
-      "height": 64,
+      "x": 60,
+      "y": 16,
+      "width": 632,
+      "height": 43,
       "mouseEnabled": true,
       "_$comp": [
         {
