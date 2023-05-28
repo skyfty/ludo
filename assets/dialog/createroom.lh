@@ -1,0 +1,405 @@
+{
+  "_$ver": 1,
+  "_$id": "y2sxg6c5",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "b07b053c-5687-4e6f-8fd0-480569bd2009",
+      "scriptPath": "../src/CreateRoom.ts",
+      "viewStack": {
+        "_$ref": "snzgftiw"
+      },
+      "tab": {
+        "_$ref": "j8inyigm"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "j8inyigm",
+      "_$type": "Tab",
+      "name": "Tab",
+      "x": 98.00000000000001,
+      "y": 262,
+      "width": 567,
+      "height": 480,
+      "mouseEnabled": true,
+      "skin": "res://27500e65-93c0-47aa-8262-e23e43002041",
+      "stateNum": 2,
+      "labels": "Create,Join",
+      "space": 0,
+      "selectedIndex": 0,
+      "labelFont": null,
+      "labelSize": 30,
+      "labelBold": true,
+      "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+      "labelStroke": null,
+      "labelStrokeColor": null,
+      "labelAlign": null,
+      "labelPadding": "6,0,0,0",
+      "strokeColors": null
+    },
+    {
+      "_$id": "qof49bki",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 32,
+      "y": 311.5066266711534,
+      "width": 685.2627424412262,
+      "height": 575.4933733288465,
+      "mouseEnabled": true,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff",
+      "_$child": [
+        {
+          "_$id": "snzgftiw",
+          "_$type": "ViewStack",
+          "name": "ViewStack",
+          "x": 44,
+          "y": 36,
+          "width": 597,
+          "height": 497,
+          "mouseEnabled": true,
+          "selectedIndex": 0,
+          "_$child": [
+            {
+              "_$id": "bz0tja3s",
+              "_$type": "Box",
+              "name": "item0",
+              "x": -4,
+              "y": -3,
+              "width": 610,
+              "height": 497,
+              "mouseEnabled": true,
+              "_$child": [
+                {
+                  "_$id": "9ko3k7ht",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 148,
+                  "y": -3,
+                  "width": 312.39775624681215,
+                  "height": 35.499745028046796,
+                  "skin": "res://b841ade8-b52b-4027-997e-29db5f6fc910",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "3agryvs3",
+                  "_$type": "Image",
+                  "name": "Image(5)",
+                  "x": 95,
+                  "y": 40,
+                  "width": 419.99060381441683,
+                  "height": 154.92112798392387,
+                  "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "o8jq0l6p",
+                  "_$type": "Image",
+                  "name": "Image(1)",
+                  "x": 421,
+                  "y": 49,
+                  "width": 63,
+                  "height": 63,
+                  "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "h17gqv6u",
+                  "_$type": "Image",
+                  "name": "Image(2)",
+                  "x": 219,
+                  "y": 49,
+                  "width": 63,
+                  "height": 63,
+                  "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "g29fjlvz",
+                  "_$type": "Image",
+                  "name": "Image(3)",
+                  "x": 118,
+                  "y": 49.5,
+                  "width": 63,
+                  "height": 62.5,
+                  "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "dp3bfqau",
+                  "_$type": "Image",
+                  "name": "Image(4)",
+                  "x": 320,
+                  "y": 49,
+                  "width": 63,
+                  "height": 63,
+                  "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "gcrchysl",
+                  "_$type": "CheckBox",
+                  "name": "red",
+                  "x": 116,
+                  "y": 114,
+                  "width": 77,
+                  "height": 64,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+                  "label": "",
+                  "labelSize": 20,
+                  "labelAlign": "left",
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "9v1043da",
+                  "_$type": "CheckBox",
+                  "name": "green",
+                  "x": 219,
+                  "y": 114,
+                  "width": 77,
+                  "height": 64,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+                  "label": "",
+                  "labelSize": 20,
+                  "labelAlign": "left",
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "lgo3o09w",
+                  "_$type": "CheckBox",
+                  "name": "yellow",
+                  "x": 321,
+                  "y": 114,
+                  "width": 77,
+                  "height": 64,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+                  "label": "",
+                  "labelSize": 20,
+                  "labelAlign": "left",
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "as36casd",
+                  "_$type": "CheckBox",
+                  "name": "blue",
+                  "x": 423,
+                  "y": 114,
+                  "width": 77,
+                  "height": 64,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+                  "label": "",
+                  "labelSize": 20,
+                  "labelAlign": "left",
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "kxlkasml",
+                  "_$type": "Image",
+                  "name": "Image(6)",
+                  "x": 147,
+                  "y": 235,
+                  "width": 314.10300866904595,
+                  "height": 35.69352371239155,
+                  "skin": "res://ca3037ad-63f6-4dc1-ab05-13153f01d38f",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "8132rh4e",
+                  "_$type": "Image",
+                  "name": "Image(7)",
+                  "x": 95,
+                  "y": 278.35833952875595,
+                  "width": 419.99060381441683,
+                  "height": 124.64166047124479,
+                  "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "5cbwoi83",
+                  "_$type": "CheckBox",
+                  "name": "4p",
+                  "x": 332.00000000000006,
+                  "y": 288,
+                  "width": 124,
+                  "height": 124,
+                  "scaleX": 0.85,
+                  "scaleY": 0.85,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
+                  "label": "",
+                  "labelSize": 20,
+                  "labelAlign": "left",
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "f06w8t9y",
+                  "_$type": "CheckBox",
+                  "name": "2p",
+                  "x": 180,
+                  "y": 288,
+                  "width": 126,
+                  "height": 124,
+                  "scaleX": 0.85,
+                  "scaleY": 0.85,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "selected": true,
+                  "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
+                  "label": "",
+                  "labelSize": 20,
+                  "labelAlign": "left",
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "u0w1mk4b",
+                  "_$type": "Button",
+                  "name": "Button",
+                  "x": 204,
+                  "y": 435,
+                  "width": 201.79621345842313,
+                  "height": 63.451386705999134,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://776a4396-363f-4a78-a3e1-cf637ecf6db5",
+                  "label": "",
+                  "labelSize": 20
+                }
+              ]
+            },
+            {
+              "_$id": "qjtvjp0m",
+              "_$type": "Box",
+              "name": "item1",
+              "x": -2,
+              "y": -3,
+              "width": 606,
+              "height": 506,
+              "visible": false,
+              "mouseEnabled": true,
+              "_$child": [
+                {
+                  "_$id": "n21otiym",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 99,
+                  "y": 48,
+                  "width": 406.1642019377866,
+                  "height": 46.15502294747574,
+                  "skin": "res://6f976dac-6764-45a5-8c3c-f48e9703c871",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "elcxkrqm",
+                  "_$type": "TextInput",
+                  "name": "TextInput",
+                  "x": 77,
+                  "y": 143,
+                  "width": 450.5302889095997,
+                  "height": 86.14725069897491,
+                  "mouseEnabled": true,
+                  "text": "0000",
+                  "fontSize": 75,
+                  "color": "#FFFFFF",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "bgColor": "rgba(5, 5, 31, 1)",
+                  "borderColor": "rgba(103, 103, 103, 1)",
+                  "overflow": "scroll",
+                  "leading": 0,
+                  "padding": "6,6,1,6",
+                  "type": "text",
+                  "maxChars": 5,
+                  "restrict": "",
+                  "prompt": "",
+                  "promptColor": "#A9A9A9"
+                },
+                {
+                  "_$id": "mpoeg6v8",
+                  "_$type": "Button",
+                  "name": "Button",
+                  "x": 202,
+                  "y": 435,
+                  "width": 201.79621345842313,
+                  "height": 63.451386705999134,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://25350840-6fbc-4878-af05-fafda297e83f",
+                  "label": "",
+                  "labelSize": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$id": "v4u6heqb",
+      "_$type": "Button",
+      "name": "return",
+      "x": 351,
+      "y": 895,
+      "width": 55,
+      "height": 55,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    }
+  ]
+}

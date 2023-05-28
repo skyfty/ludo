@@ -1,0 +1,279 @@
+{
+  "_$ver": 1,
+  "_$id": "krocf9g2",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "_$comp": [
+    {
+      "_$type": "f32c4edf-6089-4ecb-bbcd-19da79e65ff7",
+      "scriptPath": "../src/Engagement.ts",
+      "closeBtn": {
+        "_$ref": "m8h9mes6"
+      },
+      "play": {
+        "_$ref": "au00dbtu"
+      },
+      "colorCheckBox": [
+        {
+          "_$ref": "ypt80gn7"
+        },
+        {
+          "_$ref": "wk6p2ql9"
+        },
+        {
+          "_$ref": "vlj0mx9w"
+        },
+        {
+          "_$ref": "8712rsk3"
+        }
+      ]
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "x8lewq3q",
+      "_$type": "Sprite",
+      "name": "Sprite",
+      "width": 754.548261924009,
+      "height": 1328.0489894907032,
+      "visible": false,
+      "alpha": 0.86,
+      "_gcmds": [
+        {
+          "_$type": "FillTextureCmd",
+          "texture": {
+            "_$uuid": "00000000-0000-0000-0001-000000000001",
+            "_$type": "Texture"
+          },
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "type": "repeat",
+          "offset": {
+            "_$type": "Point"
+          },
+          "color": -16777216
+        }
+      ]
+    },
+    {
+      "_$id": "m8h9mes6",
+      "_$type": "Button",
+      "name": "close",
+      "x": 343,
+      "y": 694,
+      "width": 64,
+      "height": 63.5,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "2pmf2dyu",
+      "_$type": "Image",
+      "name": "Image(6)",
+      "x": 95,
+      "y": 163.00000000000006,
+      "width": 560,
+      "height": 511,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "8puc5200",
+      "_$type": "Image",
+      "name": "Image(9)",
+      "x": 146,
+      "y": 272,
+      "width": 457.67000308908354,
+      "height": 188.58102156307632,
+      "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "cpa4o62i",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 495,
+      "y": 293,
+      "width": 63,
+      "height": 63,
+      "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "5e5gvtxe",
+      "_$type": "Image",
+      "name": "Image(7)",
+      "x": 127,
+      "y": 204,
+      "width": 496,
+      "height": 60,
+      "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "8tofz5tu",
+      "_$type": "Image",
+      "name": "Image(8)",
+      "x": 188,
+      "y": 212,
+      "width": 372.7098419173886,
+      "height": 42.35339112697596,
+      "skin": "res://b841ade8-b52b-4027-997e-29db5f6fc910",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "63d7ofzk",
+      "_$type": "Image",
+      "name": "Image(2)",
+      "x": 293,
+      "y": 293,
+      "width": 63,
+      "height": 63,
+      "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "tgt0nibk",
+      "_$type": "Image",
+      "name": "Image(3)",
+      "x": 192,
+      "y": 293.5,
+      "width": 63,
+      "height": 62.5,
+      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "qlso484b",
+      "_$type": "Image",
+      "name": "Image(4)",
+      "x": 394,
+      "y": 293,
+      "width": 63,
+      "height": 63,
+      "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "au00dbtu",
+      "_$type": "Button",
+      "name": "play",
+      "x": 186,
+      "y": 512,
+      "width": 378,
+      "height": 104,
+      "disabled": true,
+      "gray": true,
+      "stateNum": 2,
+      "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "ypt80gn7",
+      "_$type": "CheckBox",
+      "name": "red",
+      "x": 190,
+      "y": 369,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "wk6p2ql9",
+      "_$type": "CheckBox",
+      "name": "green",
+      "x": 293,
+      "y": 369,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "vlj0mx9w",
+      "_$type": "CheckBox",
+      "name": "yellow",
+      "x": 395,
+      "y": 369,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "8712rsk3",
+      "_$type": "CheckBox",
+      "name": "blue",
+      "x": 497,
+      "y": 369,
+      "width": 77,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    }
+  ]
+}

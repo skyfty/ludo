@@ -91,7 +91,9 @@ export class Station extends Laya.Script {
     }
 
     private static onLogin() {
+        	// Send two integers to the Zone extension and get their sum in return
     }
+
 
     private static onLoginError(event: SFS2X.SFSEvent) {
         Laya.timer.once(1000 * 60, Station.sfs, ()=>{
@@ -152,7 +154,6 @@ export class Station extends Laya.Script {
 
     public static mySelfId() {
         return Station.sfs.mySelf.id;
-
     }
 
 }

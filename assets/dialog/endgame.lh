@@ -21,21 +21,12 @@
       "width": 750,
       "_$child": [
         {
-          "_$override": "it3gkh9e",
-          "x": 88,
-          "y": 229
-        },
-        {
-          "_$override": "9i71029w",
-          "width": 89,
-          "x": 199,
-          "y": 485,
-          "_$comp": [
-            {
-              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-              "scriptPath": "../src/ClickSound.ts"
-            }
-          ]
+          "_$override": "5j42b6as",
+          "width": 526,
+          "useSourceSize": false,
+          "y": 263.0000000000001,
+          "x": 125.0000000000001,
+          "height": 349
         },
         {
           "_$override": "gjhdic9x",
@@ -50,8 +41,20 @@
         },
         {
           "_$override": "9r94nh4g",
-          "x": 160,
-          "y": 298
+          "x": 158,
+          "y": 318
+        },
+        {
+          "_$override": "9i71029w",
+          "width": 89,
+          "x": 199,
+          "y": 485,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
         }
       ]
     }

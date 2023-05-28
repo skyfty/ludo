@@ -1,10 +1,12 @@
 const { regClass, property,SoundManager } = Laya;
 import {Station} from "./Station";
 import * as SFS2X from "../node_modules/sfs2x-api";
+import { Config } from "./Config";
 
 @regClass()
 export class Pariner extends Laya.Scene {
     public numberOfPlayer:number = 2;
+    public color:string;
 
     onAwake(): void {
         this.getChildByName("return").on(Laya.Event.CLICK, this, ()=>{
@@ -18,28 +20,33 @@ export class Pariner extends Laya.Scene {
                 view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
             }));
         });
-        if (Station.sfs != null) {
-            this.addStationListener();
-        }
+        this.addStationListener();
     }
 
     onDestroy(): void {
-        if (Station.sfs != null) {
-            this.removeStationListener();
-        }
+        this.removeStationListener();
     }
 
     onOpened(param: any) {
-        this.numberOfPlayer = param != null ?param.number:2;
+        this.color = param.color;
+        let room:SFS2X.SFSRoom = Station.sfs.getRoomById(param.roomId);
+        Station.joinRoom(room);
     }
     
     addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
     }
     removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
+    }
+
+    private onRoomJoin(event: SFS2X.SFSEvent) {
+        this.numberOfPlayer = Station.sfs.lastJoinedRoom.getVariable("MaxUsers").value;
+        let stateName = Station.getUserStateName(this.color, Station.mySelfId());
+        let roomVars = new SFS2X.SFSRoomVariable(stateName, "ready");
+        Station.setRoomVariables([roomVars]);
     }
 
     onRoomVariablesUpdate(event: SFS2X.SFSEvent) {
@@ -53,8 +60,6 @@ export class Pariner extends Laya.Scene {
                 let stateName = Station.getUserStateName(color, user.id);
                 if (event.room.containsVariable(stateName)) {
                     cnt++;
-
-
                 }
             }
             if (cnt == users.length) {

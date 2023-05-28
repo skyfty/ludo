@@ -21,19 +21,13 @@
       "width": 750,
       "_$child": [
         {
-          "_$override": "it3gkh9e",
-          "x": 89,
-          "y": 224
-        },
-        {
-          "_$override": "9i71029w",
-          "visible": false,
-          "x": 200,
-          "y": 480
+          "_$override": "5j42b6as",
+          "x": 83,
+          "y": 246.0000000000001
         },
         {
           "_$override": "gjhdic9x",
-          "x": 261,
+          "x": 238,
           "y": 481,
           "_$comp": [
             {
@@ -45,8 +39,14 @@
         {
           "_$override": "9r94nh4g",
           "text": "The player has left the room",
-          "x": 161,
+          "x": 145,
           "y": 293
+        },
+        {
+          "_$override": "9i71029w",
+          "visible": false,
+          "x": 200,
+          "y": 480
         }
       ]
     }

@@ -22,6 +22,9 @@
       "challengeExtreme": {
         "_$ref": "mqsu2s73"
       },
+      "challengeFriend": {
+        "_$ref": "5wbt1gd9"
+      },
       "settings": {
         "_$ref": "foe94s5k"
       },
@@ -34,10 +37,14 @@
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
       "playerName": "Feitianyu",
-      "host": "39.104.230.103",
+      "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
       "debug": false
+    },
+    {
+      "_$type": "29c2dcf8-e04c-4052-8f49-3bc9f10e9645",
+      "scriptPath": "../src/Shelve.ts"
     }
   ],
   "_$child": [
@@ -97,13 +104,33 @@
       "_$id": "mqsu2s73",
       "_$type": "Button",
       "name": "online",
-      "x": 161,
-      "y": 524.54081658856,
+      "x": 161.3118764845606,
+      "y": 524,
       "width": 427.57945754497143,
       "height": 115.4464535371423,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "5wbt1gd9",
+      "_$type": "Button",
+      "name": "friends",
+      "x": 161.3118764845606,
+      "y": 679,
+      "width": 427.57945754497143,
+      "height": 115.4464535371423,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://687a6406-d29a-4b76-99b3-0d8343323c24",
       "label": "",
       "labelSize": 20,
       "_$comp": [
@@ -124,13 +151,21 @@
       "mouseEnabled": true,
       "_$child": [
         {
+          "_$id": "f50fmlg3",
+          "_$type": "Box",
+          "name": "Box",
+          "width": 731,
+          "height": 56,
+          "bgColor": "rgba(128, 86, 172, 1)"
+        },
+        {
           "_$id": "usjzxsk3",
           "_$type": "Image",
           "name": "Image",
           "x": 14.99999999999995,
-          "width": 710,
+          "width": 715,
           "height": 60,
-          "skin": "res://5e1e9ab3-d2f1-4cce-820e-7dd5cbfb670a",
+          "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
           "color": "#ffffff"
         },
         {

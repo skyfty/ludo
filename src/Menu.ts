@@ -1,6 +1,5 @@
 
 const { regClass, property,SoundManager } = Laya;
-import * as Station from "./Station";
 import { ComputerParallel } from "./ComputerParallel";
 import { OnlineParallel } from "./OnlineParallel";
 
@@ -11,6 +10,9 @@ export class Menu extends Laya.Script {
 
     @property(Laya.Button)
     public challengeExtreme: Laya.Button;
+
+    @property(Laya.Button)
+    public challengeFriend: Laya.Button;
 
     @property(Laya.Button)
     public settings: Laya.Button;
@@ -25,6 +27,7 @@ export class Menu extends Laya.Script {
     onAwake(): void {
         this.challengeComputer.on(Laya.Event.CLICK, this, this.onChallengeComputer);
         this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
+        this.challengeFriend.on(Laya.Event.CLICK, this, this.onChallengeFriend);
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
     }
 
@@ -33,7 +36,13 @@ export class Menu extends Laya.Script {
         Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("soundMuted") == "on";
         SoundManager.playMusic("sounds/menu.mp3", 0);
     }
+    onChallengeFriend() {
+        Laya.Scene.open("dialog/createroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+            dlg.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
+            
 
+        }));
+    }
     onChallengeComputer() {
         this.openParallelDlg(Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new ComputerParallel());
@@ -47,9 +56,10 @@ export class Menu extends Laya.Script {
     onChallengeExtreme() {
         this.openParallelDlg( Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new OnlineParallel());
-            dlg.on(Laya.Event.PLAYED,this, (num:number)=>{
+            dlg.on(Laya.Event.PLAYED,this, (color:string, roomId:number)=>{
                 dlg.close();
-                Laya.Scene.open("partner.ls", true, {"number": num });
+                dlg.removeSelf();
+                Laya.Scene.open("partner.ls", true,{"color":color,"roomId":roomId});
             });
             dlg.on(Laya.Event.CLOSE,dlg, dlg.close);
         }));

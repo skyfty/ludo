@@ -3,11 +3,12 @@
   "_$id": "g1c8otr5",
   "_$type": "Dialog",
   "name": "View",
-  "y": 159,
+  "y": 37,
   "width": 750,
   "height": 1334,
   "mouseEnabled": true,
   "autoDestroyAtClosed": true,
+  "top": 37,
   "isModal": true,
   "_$comp": [
     {
@@ -46,8 +47,6 @@
       "_$id": "9qkau2bu",
       "_$type": "Sprite",
       "name": "Sprite",
-      "x": 1,
-      "y": 7.000000000000057,
       "width": 754.548261924009,
       "height": 1328.0489894907032,
       "visible": false,
@@ -76,40 +75,53 @@
       "_$id": "rr5akuzs",
       "_$type": "Image",
       "name": "Image",
-      "x": 102,
-      "y": 70,
-      "width": 570,
-      "height": 828,
-      "skin": "res://2b5df256-c379-4b8d-ba89-ef45391f5c8c",
+      "x": 91,
+      "y": 135,
+      "width": 567,
+      "height": 791,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "y5k7741v",
+      "_$type": "Image",
+      "name": "Image(5)",
+      "x": 127,
+      "y": 186,
+      "width": 496,
+      "height": 60,
+      "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
       "useSourceSize": true,
       "color": "#ffffff"
     },
     {
-      "_$id": "mfqn36k5",
-      "_$type": "Button",
-      "name": "close",
-      "x": 355,
-      "y": 900,
-      "width": 64,
-      "height": 63.5,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
-      "label": "",
-      "labelSize": 20,
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
+      "_$id": "gdonbu8k",
+      "_$type": "Image",
+      "name": "Image(7)",
+      "x": 132,
+      "y": 252,
+      "width": 485,
+      "height": 206,
+      "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "m0up5dxi",
+      "_$type": "Image",
+      "name": "Image(6)",
+      "x": 217,
+      "y": 196,
+      "width": 315.40438551759235,
+      "height": 35.8414074451809,
+      "skin": "res://b841ade8-b52b-4027-997e-29db5f6fc910",
+      "color": "#ffffff"
     },
     {
       "_$id": "101ihuwf",
       "_$type": "Image",
       "name": "Image(1)",
-      "x": 505,
-      "y": 269,
+      "x": 488,
+      "y": 283,
       "width": 63,
       "height": 63,
       "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
@@ -119,8 +131,8 @@
       "_$id": "yeswoxho",
       "_$type": "Image",
       "name": "Image(2)",
-      "x": 303,
-      "y": 269,
+      "x": 286,
+      "y": 283,
       "width": 63,
       "height": 63,
       "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595",
@@ -130,8 +142,8 @@
       "_$id": "vmmdo6cr",
       "_$type": "Image",
       "name": "Image(3)",
-      "x": 202,
-      "y": 269.5,
+      "x": 185,
+      "y": 283.5,
       "width": 63,
       "height": 62.5,
       "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e",
@@ -141,83 +153,19 @@
       "_$id": "4v9lzilg",
       "_$type": "Image",
       "name": "Image(4)",
-      "x": 404,
-      "y": 269,
+      "x": 387,
+      "y": 283,
       "width": 63,
       "height": 63,
       "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4",
       "color": "#ffffff"
     },
     {
-      "_$id": "1mm8w0ix",
-      "_$type": "Button",
-      "name": "play",
-      "x": 204,
-      "y": 721,
-      "width": 378,
-      "height": 104,
-      "disabled": true,
-      "gray": true,
-      "stateNum": 2,
-      "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
-      "label": "",
-      "labelSize": 20,
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "7p1j40su",
-      "_$type": "CheckBox",
-      "name": "2p",
-      "x": 248,
-      "y": 527,
-      "width": 124,
-      "height": 124,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "selected": true,
-      "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "5ibbci1l",
-      "_$type": "CheckBox",
-      "name": "4p",
-      "x": 430,
-      "y": 524,
-      "width": 124,
-      "height": 124,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
       "_$id": "ca2qmnut",
       "_$type": "CheckBox",
       "name": "red",
-      "x": 200,
-      "y": 345,
+      "x": 183,
+      "y": 359,
       "width": 77,
       "height": 64,
       "mouseEnabled": true,
@@ -237,8 +185,8 @@
       "_$id": "2rf31ts7",
       "_$type": "CheckBox",
       "name": "green",
-      "x": 303,
-      "y": 345,
+      "x": 286,
+      "y": 359,
       "width": 77,
       "height": 64,
       "mouseEnabled": true,
@@ -258,8 +206,8 @@
       "_$id": "82au31kz",
       "_$type": "CheckBox",
       "name": "yellow",
-      "x": 405,
-      "y": 345,
+      "x": 388,
+      "y": 359,
       "width": 77,
       "height": 64,
       "mouseEnabled": true,
@@ -279,8 +227,8 @@
       "_$id": "bkpyh24y",
       "_$type": "CheckBox",
       "name": "blue",
-      "x": 507,
-      "y": 345,
+      "x": 490,
+      "y": 359,
       "width": 77,
       "height": 64,
       "mouseEnabled": true,
@@ -289,6 +237,134 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "bn07lcq8",
+      "_$type": "Image",
+      "name": "Image(8)",
+      "x": 127,
+      "y": 490,
+      "width": 496,
+      "height": 60,
+      "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "gh8qr121",
+      "_$type": "Box",
+      "name": "Box",
+      "x": 136,
+      "y": 559.0000000000001,
+      "width": 477,
+      "height": 156,
+      "bgColor": "rgba(78, 56, 102, 1)"
+    },
+    {
+      "_$id": "gg1tt4ma",
+      "_$type": "Image",
+      "name": "Image(10)",
+      "x": 132,
+      "y": 554,
+      "width": 485,
+      "height": 167,
+      "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "0gj82t1h",
+      "_$type": "Image",
+      "name": "Image(9)",
+      "x": 217,
+      "y": 499,
+      "width": 314.10300866904595,
+      "height": 35.69352371239155,
+      "skin": "res://ca3037ad-63f6-4dc1-ab05-13153f01d38f",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "5ibbci1l",
+      "_$type": "CheckBox",
+      "name": "4p",
+      "x": 409.00000000000006,
+      "y": 575,
+      "width": 124,
+      "height": 124,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "7p1j40su",
+      "_$type": "CheckBox",
+      "name": "2p",
+      "x": 227,
+      "y": 578.0000000000001,
+      "width": 124,
+      "height": 124,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "selected": true,
+      "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "mfqn36k5",
+      "_$type": "Button",
+      "name": "close",
+      "x": 343,
+      "y": 929,
+      "width": 64,
+      "height": 63.5,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "1mm8w0ix",
+      "_$type": "Button",
+      "name": "play",
+      "x": 186,
+      "y": 761,
+      "width": 378,
+      "height": 104,
+      "disabled": true,
+      "gray": true,
+      "stateNum": 2,
+      "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
+      "label": "",
+      "labelSize": 20,
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",

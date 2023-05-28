@@ -8,30 +8,15 @@
   "mouseEnabled": true,
   "_$child": [
     {
-      "_$id": "it3gkh9e",
+      "_$id": "5j42b6as",
       "_$type": "Image",
-      "name": "Image",
-      "x": 13,
-      "y": 311,
-      "width": 600,
-      "height": 402,
-      "skin": "res://eef9230a-487d-4c7d-94e1-d533b2a6a022",
-      "useSourceSize": true,
+      "name": "Image(1)",
+      "x": 20.0000000000001,
+      "y": 314.0000000000001,
+      "width": 583,
+      "height": 376,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
       "color": "#ffffff"
-    },
-    {
-      "_$id": "9i71029w",
-      "_$type": "Button",
-      "name": "return",
-      "x": 124,
-      "y": 567,
-      "width": 88.5,
-      "height": 89,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
-      "label": "",
-      "labelSize": 20
     },
     {
       "_$id": "gjhdic9x",
@@ -63,6 +48,20 @@
       "wordWrap": true,
       "leading": 0,
       "padding": "0,0,0,0"
+    },
+    {
+      "_$id": "9i71029w",
+      "_$type": "Button",
+      "name": "return",
+      "x": 124.00000000000006,
+      "y": 567.0000000000001,
+      "width": 88.5,
+      "height": 89,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20
     }
   ]
 }
