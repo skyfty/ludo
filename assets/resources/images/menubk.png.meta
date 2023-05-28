@@ -4,6 +4,13 @@
     "textureType": 2,
     "sRGB": true,
     "wrapMode": 1,
-    "generateMipmap": true
+    "generateMipmap": true,
+    "sizeGrid": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
   }
 }

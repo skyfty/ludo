@@ -49,11 +49,13 @@
   ],
   "_$child": [
     {
-      "_$id": "dmk4worr",
+      "_$id": "xjmkpbl5",
       "_$type": "Sprite",
       "name": "Sprite",
-      "width": 751,
-      "height": 1335,
+      "x": 2.0000000000001137,
+      "y": 4.000000000000028,
+      "width": 746,
+      "height": 1328,
       "_gcmds": [
         {
           "_$type": "FillTextureCmd",
