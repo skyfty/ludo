@@ -32,10 +32,9 @@
       "_$id": "oql1cen0",
       "_$type": "Sprite",
       "name": "background",
-      "x": 3,
-      "y": -3,
-      "width": 712,
+      "width": 750,
       "height": 1334,
+      "alpha": 0.98,
       "_gcmds": [
         {
           "_$type": "FillTextureCmd",
