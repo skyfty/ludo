@@ -10,13 +10,31 @@
   "isModal": true,
   "_$comp": [
     {
-      "_$type": "b07b053c-5687-4e6f-8fd0-480569bd2009",
-      "scriptPath": "../src/CreateRoom.ts",
+      "_$type": "d94b80bc-1711-4539-bf5e-7aee0a11f64c",
+      "scriptPath": "../src/TabView.ts",
+      "viewStack": {
+        "_$ref": "1529"
+      },
+      "tab": {
+        "_$ref": "1527"
+      }
+    },
+    {
+      "_$type": "3f8e6b8d-6d34-43c2-9966-c664ee046249",
+      "scriptPath": "../src/Chamber.ts",
       "viewStack": {
         "_$ref": "snzgftiw"
       },
       "tab": {
         "_$ref": "j8inyigm"
+      },
+      "createRoom": {
+        "_$ref": "bz0tja3s",
+        "_$type": "b07b053c-5687-4e6f-8fd0-480569bd2009"
+      },
+      "joinRoom": {
+        "_$ref": "qjtvjp0m",
+        "_$type": "fcd09c08-40bd-4f91-a2fd-b58386fb96b5"
       }
     }
   ],
@@ -77,6 +95,48 @@
               "width": 610,
               "height": 497,
               "mouseEnabled": true,
+              "_$comp": [
+                {
+                  "_$type": "a5d9f7a0-da02-42b4-ae7d-627f69a899e4",
+                  "scriptPath": "../src/Parallel.ts",
+                  "closeBtn": {
+                    "_$ref": "v4u6heqb"
+                  },
+                  "play2pBtn": {
+                    "_$ref": "f06w8t9y"
+                  },
+                  "play3pBtn": {
+                    "_$ref": "y3tbkufe"
+                  },
+                  "play4pBtn": {
+                    "_$ref": "5cbwoi83"
+                  },
+                  "play": {
+                    "_$ref": "u0w1mk4b"
+                  },
+                  "colorCheckBox": [
+                    {
+                      "_$ref": "gcrchysl"
+                    },
+                    {
+                      "_$ref": "9v1043da"
+                    },
+                    {
+                      "_$ref": "lgo3o09w"
+                    },
+                    {
+                      "_$ref": "as36casd"
+                    }
+                  ]
+                },
+                {
+                  "_$type": "b07b053c-5687-4e6f-8fd0-480569bd2009",
+                  "scriptPath": "../src/CreateRoom.ts",
+                  "dialog": {
+                    "_$ref": "y2sxg6c5"
+                  }
+                }
+              ],
               "_$child": [
                 {
                   "_$id": "9ko3k7ht",
@@ -254,7 +314,7 @@
                   "_$id": "5cbwoi83",
                   "_$type": "CheckBox",
                   "name": "4p",
-                  "x": 332.00000000000006,
+                  "x": 380,
                   "y": 288,
                   "width": 124,
                   "height": 124,
@@ -274,10 +334,27 @@
                   ]
                 },
                 {
+                  "_$id": "y3tbkufe",
+                  "_$type": "CheckBox",
+                  "name": "3p",
+                  "x": 255,
+                  "y": 290,
+                  "width": 124,
+                  "height": 122,
+                  "scaleX": 0.85,
+                  "scaleY": 0.85,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://bf147980-14ee-4e11-8d74-e2601ba5f59f",
+                  "label": "",
+                  "labelSize": 20,
+                  "labelAlign": "left"
+                },
+                {
                   "_$id": "f06w8t9y",
                   "_$type": "CheckBox",
                   "name": "2p",
-                  "x": 180,
+                  "x": 128,
                   "y": 288,
                   "width": 126,
                   "height": 124,
@@ -300,7 +377,7 @@
                 {
                   "_$id": "u0w1mk4b",
                   "_$type": "Button",
-                  "name": "Button",
+                  "name": "createroom",
                   "x": 204,
                   "y": 435,
                   "width": 201.79621345842313,
@@ -323,6 +400,24 @@
               "height": 506,
               "visible": false,
               "mouseEnabled": true,
+              "_$comp": [
+                {
+                  "_$type": "fcd09c08-40bd-4f91-a2fd-b58386fb96b5",
+                  "scriptPath": "../src/JoinRoom.ts",
+                  "dialog": {
+                    "_$ref": "y2sxg6c5"
+                  },
+                  "roomInput": {
+                    "_$ref": "elcxkrqm"
+                  },
+                  "closeBtn": {
+                    "_$ref": "v4u6heqb"
+                  },
+                  "play": {
+                    "_$ref": "mpoeg6v8"
+                  }
+                }
+              ],
               "_$child": [
                 {
                   "_$id": "n21otiym",
@@ -342,20 +437,20 @@
                   "x": 77,
                   "y": 143,
                   "width": 450.5302889095997,
-                  "height": 86.14725069897491,
+                  "height": 87.14725069897491,
                   "mouseEnabled": true,
                   "text": "",
-                  "fontSize": 75,
+                  "fontSize": 60,
                   "color": "#A9A9A9",
                   "bold": true,
                   "align": "center",
                   "valign": "middle",
                   "bgColor": "rgba(5, 5, 31, 1)",
                   "borderColor": "rgba(103, 103, 103, 1)",
-                  "overflow": "scroll",
-                  "leading": 0,
-                  "padding": "6,6,1,6",
-                  "type": "number",
+                  "overflow": "hidden",
+                  "leading": 6,
+                  "padding": "6,2,6,2",
+                  "type": "text",
                   "maxChars": 5,
                   "restrict": "",
                   "prompt": "",

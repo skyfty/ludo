@@ -1,64 +1,73 @@
 const { regClass, property } = Laya;
+import { Parallel } from "./Parallel";
+import { Config } from "./Config";
+import {Station} from "./Station";
+import * as SFS2X from "../node_modules/sfs2x-api";
 
 @regClass()
 export class CreateRoom extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
+    private colorIdx: number = -1;
 
-    @property(Laya.ViewStack)
-    public viewStack: Laya.ViewStack;
-
-    @property(Laya.Tab)
-    public tab: Laya.Tab;
+    @property(Laya.Dialog)
+    public dialog: Laya.Dialog;
 
     constructor() {
         super();
     }
 
-    /**
-     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-     */
     onAwake(): void {
-        this.tab.selectHandler = new Laya.Handler(this,this.onTabSelected);
+        let parallel = this.owner.getComponent(Parallel);
+        parallel.play.disabled = true;
+        parallel.play.on(Laya.Event.CLICK, this, this.onCreateRoom);
 
+        parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
+            this.dialog.close();
+        });
+
+        for (let idx in parallel.colorCheckBox) {
+            parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
+                parallel.play.disabled = false;
+                this.colorIdx = Number.parseInt(idx);
+            });
+        }
     }
 
-    private onTabSelected(index:number) {
-        this.viewStack.selectedIndex=index;
-
+    
+    onStart(): void {
+        this.addStationListener();
     }
 
-    /**
-     * 组件被启用后执行，例如节点被添加到舞台后
-     */
-    //onEnable(): void {}
+    onDestroy(): void {
+        this.removeStationListener();
+    }
 
-    /**
-     * 组件被禁用时执行，例如从节点从舞台移除后
-     */
-    //onDisable(): void {}
+    addStationListener() {
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse,  this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
 
-    /**
-     * 第一次执行update之前执行，只会执行一次
-     */
-    //onStart(): void {}
+    }
+    removeStationListener() {
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
+    }
 
-    /**
-     * 手动调用节点销毁时执行
-     */
-    //onDestroy(): void {
+    private onRoomJoin(event: SFS2X.SFSEvent) {
+        Laya.Dialog.closeAll();
+        Laya.Scene.open("partner.ls", true,{"color":Config.Colors[this.colorIdx]});
+    }
 
-    /**
-     * 每帧更新时执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onUpdate(): void {}
-
-    /**
-     * 每帧更新时执行，在update之后执行，尽量不要在这里写大循环逻辑或者使用getComponent方法
-     */
-    //onLateUpdate(): void {}
-
-    /**
-     * 鼠标点击后执行。与交互相关的还有onMouseDown等十多个函数，具体请参阅文档。
-     */
-    //onMouseClick(): void {}
+    private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
+        if (evtParams.cmd == "CreateRoom") {
+            let responseParams = evtParams.params;
+            let roomId = responseParams.get("RoomId");
+            Station.joinRoom(Station.sfs.getRoomById(roomId))
+        }
+    }
+    onCreateRoom() {
+        var params = new SFS2X.SFSObject();
+        params.putUtfString("Color", Config.Colors[this.colorIdx]);
+        let parallel = this.owner.getComponent(Parallel) as Parallel;
+        params.putInt("MaxUsers", parallel.numberOfPlayer);
+        Station.sfs.send(new SFS2X.ExtensionRequest("CreateRoom", params));
+    }
 }

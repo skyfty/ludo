@@ -20,6 +20,9 @@
       "play2pBtn": {
         "_$ref": "7p1j40su"
       },
+      "play3pBtn": {
+        "_$ref": "qh84t4ba"
+      },
       "play4pBtn": {
         "_$ref": "5ibbci1l"
       },
@@ -292,10 +295,10 @@
       "_$id": "5ibbci1l",
       "_$type": "CheckBox",
       "name": "4p",
-      "x": 409.00000000000006,
+      "x": 470,
       "y": 575,
       "width": 124,
-      "height": 124,
+      "height": 122,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
@@ -310,13 +313,28 @@
       ]
     },
     {
+      "_$id": "qh84t4ba",
+      "_$type": "CheckBox",
+      "name": "3p",
+      "x": 314,
+      "y": 575,
+      "width": 124,
+      "height": 122,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://bf147980-14ee-4e11-8d74-e2601ba5f59f",
+      "label": "",
+      "labelSize": 20,
+      "labelAlign": "left"
+    },
+    {
       "_$id": "7p1j40su",
       "_$type": "CheckBox",
       "name": "2p",
-      "x": 227,
-      "y": 578.0000000000001,
+      "x": 158,
+      "y": 575,
       "width": 124,
-      "height": 124,
+      "height": 122,
       "mouseEnabled": true,
       "stateNum": 2,
       "selected": true,

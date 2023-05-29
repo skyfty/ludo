@@ -37,12 +37,9 @@ export class Menu extends Laya.Script {
         SoundManager.playMusic("sounds/menu.mp3", 0);
     }
     onChallengeFriend() {
-        Laya.Scene.open("dialog/createroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
-            dlg.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
-            
-
-        }));
+        Laya.Scene.open("dialog/chamber.lh", false);
     }
+    
     onChallengeComputer() {
         this.openParallelDlg(Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new ComputerParallel());
@@ -59,7 +56,7 @@ export class Menu extends Laya.Script {
             dlg.on(Laya.Event.PLAYED,this, (color:string, roomId:number)=>{
                 dlg.close();
                 dlg.removeSelf();
-                Laya.Scene.open("partner.ls", true,{"color":color,"roomId":roomId});
+                Laya.Scene.open("partner.ls", true,{"color":color});
             });
             dlg.on(Laya.Event.CLOSE,dlg, dlg.close);
         }));

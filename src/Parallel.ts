@@ -11,6 +11,9 @@ export class Parallel extends Laya.Script {
     public play2pBtn: Laya.CheckBox;
 
     @property(Laya.CheckBox)
+    public play3pBtn: Laya.CheckBox;
+
+    @property(Laya.CheckBox)
     public play4pBtn: Laya.CheckBox;
 
     @property(Laya.Button)
@@ -18,6 +21,7 @@ export class Parallel extends Laya.Script {
 
     @property([Laya.CheckBox])
     public colorCheckBox: Laya.CheckBox[] = [];
+    public numberOfPlayer:number = 2;
 
     constructor() {
         super();
@@ -27,13 +31,23 @@ export class Parallel extends Laya.Script {
         this.play2pBtn.on(Laya.Event.CLICK, this, () => {
             this.play4pBtn.selected = false;
             this.play2pBtn.selected = true;
-
+            this.play3pBtn.selected = false;
+            this.numberOfPlayer = 2;
         });
         this.play4pBtn.on(Laya.Event.CLICK, this, () => {
             this.play2pBtn.selected = false;
             this.play4pBtn.selected = true;
+            this.play3pBtn.selected = false;
+            this.numberOfPlayer = 4;
         });
 
+        this.play3pBtn.on(Laya.Event.CLICK, this, () => {
+            this.play2pBtn.selected = false;
+            this.play4pBtn.selected = false;
+            this.play3pBtn.selected = true;
+            this.numberOfPlayer = 3;
+
+        });
         for(let idx in this.colorCheckBox) {
             this.colorCheckBox[idx].on(Laya.Event.CLICK, this, (event) => {
                 for(let idx2 in this.colorCheckBox) {

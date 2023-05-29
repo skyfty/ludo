@@ -42,38 +42,36 @@ export class Engagement extends Laya.Script {
         this.closeBtn.on(Laya.Event.CLICK, this, () => {
             this.owner.event(Laya.Event.CLOSE);
         });
+        this.play.on(Laya.Event.CLICK, this, () => {
+            let colorName = Config.Colors[this.colorIdx];
+            this.owner.event(Laya.Event.PLAYED, [colorName]);
+        });
     }
 
     onStart(): void {
         this.addStationListener();
-        Station.joinRoom();
+        this.onRoomUsersUpdate(Station.sfs.lastJoinedRoom);
     }
 
     onDestroy(): void {
         this.removeStationListener();
-        Station.levelRoom();
     }
 
     addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate, this);
 
     }
     removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomVariablesUpdate);
-    }
-    
-    onPlay() {
-        this.owner.event(Laya.Event.PLAYED, {"color":Config.Colors[this.colorIdx]});
     }
 
-    onRoomVariablesUpdate(event: SFS2X.SFSEvent) {
+
+    onRoomUsersUpdate(room: SFS2X.SFSRoom) {
         let mySelfId = Station.mySelfId();
 
         let onlineUser: any = {};
-        let roomVars = event.room.getVariables();
-        let users = event.room.getUserList();
+        let roomVars = room.getVariables();
+        let users = room.getUserList();
         for (let rvidx in roomVars) {
             let rv = roomVars[rvidx];
             if (rv.isNull) {
@@ -102,6 +100,10 @@ export class Engagement extends Laya.Script {
                 colorCheckBox.selected = colorCheckBox.disabled = false;
             }
         }
+    }
+
+    onRoomVariablesUpdate(event: SFS2X.SFSEvent) {
+        this.onRoomUsersUpdate(event.room);
     }
 
 }

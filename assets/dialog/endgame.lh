@@ -22,15 +22,15 @@
       "_$child": [
         {
           "_$override": "5j42b6as",
-          "width": 526,
+          "width": 560,
           "useSourceSize": false,
-          "y": 263.0000000000001,
-          "x": 125.0000000000001,
-          "height": 349
+          "y": 263,
+          "x": 95,
+          "height": 376
         },
         {
           "_$override": "gjhdic9x",
-          "x": 324,
+          "x": 314,
           "y": 486,
           "_$comp": [
             {
@@ -41,13 +41,15 @@
         },
         {
           "_$override": "9r94nh4g",
-          "x": 158,
-          "y": 318
+          "x": 135,
+          "y": 318,
+          "text": "End Current Game?",
+          "width": 481
         },
         {
           "_$override": "9i71029w",
           "width": 89,
-          "x": 199,
+          "x": 189,
           "y": 485,
           "_$comp": [
             {
