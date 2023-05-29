@@ -31,6 +31,8 @@ export class Game extends Laya.Scene {
 
     private challengeExtreme(param: any) {
         this.room.numberOfPlayer = param.number;
+        this.addComponentInstance(new Online(param));
+
         let users = Station.getUserList();
         for (let i = 0; i < users.length; ++i) {
             let color = Station.getUserColor(users[i]);
@@ -44,7 +46,6 @@ export class Game extends Laya.Scene {
                 player.addComponentInstance(new Sender());
             }
         }
-        this.addComponentInstance(new Online(param));
     }
 
     private challengeComputer(param: any) {

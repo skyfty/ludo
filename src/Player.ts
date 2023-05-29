@@ -2,6 +2,7 @@ import { Chess } from "./Chess";
 import * as Route from "./Route";
 import { Config } from "./Config";
 import { Dice } from "./Dice";
+import { Room } from "./Room";
 
 const { regClass, property,SoundManager } = Laya;
 
@@ -9,6 +10,8 @@ export class Event {
     static EntryRoom = "ENTRY_ROOM";
     static ExitRoom = "EXIT_ROOM";
     static StateChange = "STATE_CHANGE";
+    static Hurl = "HURL";
+    static Chuck = "CHUCK";
     static RollStart = "ROLL_START";
     static RollEnd = "ROLL_END";
     static Choose = "CHOOSE";
@@ -72,6 +75,9 @@ export class Player extends Laya.Script {
 
     @property(Laya.Prefab)
     public chessPrefab:Laya.Prefab;
+
+    @property(Room)
+    public room:Room;
 
     @property([Laya.Sprite])
     protected chippy: Laya.Sprite[] = [];

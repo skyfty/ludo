@@ -20,6 +20,7 @@ export class Online extends Laya.Script {
 
     onAwake(): void {
         this.room = this.owner.getComponent(Room);
+        this.owner.on(Player.Event.Hurl, this, this.onHurl);
     }
 
     private playerColorFind(colorName: string) {
@@ -38,6 +39,20 @@ export class Online extends Laya.Script {
         }
     }
 
+    onHurl(player:Laya.Sprite) {
+        var params = new SFS2X.SFSObject();
+        Station.sfs.send(new SFS2X.ExtensionRequest(Player.Event.Hurl, params));
+    }
+
+    onHurlResponse(evtParams: SFS2X.SFSEvent) {
+        let num = evtParams.params.get("Number");
+        let playerId = evtParams.params.get("UserId");
+        let player = this.room.players[playerId];
+        Laya.timer.once(900, this, ()=>{
+            player.event(Player.Event.Chuck, num);
+        });
+    }
+
     onDestroy(): void {
         Station.levelRoom();
         this.removeStationListener();
@@ -46,26 +61,37 @@ export class Online extends Laya.Script {
     private addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse,  this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom,this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
     }
 
     private removeStationListener() {
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
+    }
+
+    private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
+        if (evtParams.cmd == Player.Event.Hurl) {
+            this.onHurlResponse(evtParams);
+        }
     }
 
     private onUserExitRoom(inEvent: SFS2X.SFSEvent) {
         Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             let view = dlg.getChildByName("view");
             view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
-                dlg.close();
+                Laya.Dialog.closeAll();
                 Laya.Scene.open("menu.ls");
             });
         }));
         this.room.setPlayersToIdle();
-        
         this.removeStationListener();
     }
-    
+
     private onPublicMessage(inEvent: SFS2X.SFSEvent) {
         let event = JSON.parse(inEvent.message);
         switch (event.event) {

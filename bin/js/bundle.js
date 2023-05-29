@@ -10969,14 +10969,538 @@
     regClass8("f65b0a36-8072-43b6-ba82-0cc45e25162f", "../src/Route.ts")
   ], Route);
 
+  // src/Performer.ts
+  var { regClass: regClass9, property: property9 } = Laya;
+  var Performer = class extends Laya.Script {
+    constructor() {
+      super();
+      this.currentDiceNumber = 0;
+      this.state = 0 /* Idle */;
+    }
+    onAwake() {
+      let node = this.owner;
+      this.player = node.getComponent(Player);
+      node.visible = true;
+    }
+    setState(state) {
+      this.state = state;
+      this.owner.event(Event3.StateChange, [state]);
+    }
+    stopChessDecuce(reasons, deduceResult) {
+      for (let idx in deduceResult) {
+        let dr = deduceResult[idx];
+        if (reasons.indexOf(dr.reason) != -1) {
+          dr.kicks.map((c) => {
+            c.stop();
+          });
+        }
+      }
+    }
+  };
+  __name(Performer, "Performer");
+  Performer = __decorateClass([
+    regClass9("a1b4fee2-5dd4-483e-bf42-a9f391634e69", "../src/Performer.ts")
+  ], Performer);
+
+  // src/Dice.ts
+  var { regClass: regClass10, property: property10, SoundManager: SoundManager2 } = Laya;
+  var Dice = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    setDiceNumber(idx) {
+      this.diceDefault.visible = true;
+      this.diceRoll.visible = false;
+      this.diceDefault.index = idx;
+    }
+    roll() {
+      this.diceDefault.visible = false;
+      this.diceRoll.visible = true;
+      this.diceRoll.play(0, -1);
+      SoundManager2.playSound("sounds/chess.mp3", 1);
+      this.owner.getComponent(Laya.Animator2D).play("roll");
+    }
+    stop(complete) {
+      this.diceRoll.stop();
+      this.owner.getComponent(Laya.Animator2D).play("idle");
+      complete.run();
+    }
+  };
+  __name(Dice, "Dice");
+  __decorateClass([
+    property10(Laya.Clip)
+  ], Dice.prototype, "diceRoll", 2);
+  __decorateClass([
+    property10(Laya.Clip)
+  ], Dice.prototype, "diceDefault", 2);
+  Dice = __decorateClass([
+    regClass10("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
+  ], Dice);
+
+  // src/Trade.ts
+  var { regClass: regClass11, property: property11 } = Laya;
+  var Trade = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    stop() {
+      let ani = this.owner.getComponent(Laya.Animator2D);
+      ani.play("idle");
+      return this;
+    }
+    disabled(b) {
+      this.disabledBk.visible = b;
+    }
+    becareful() {
+      let ani = this.owner.getComponent(Laya.Animator2D);
+      ani.play("becareful");
+    }
+    roll() {
+      this.owner.getComponent(Dice).roll();
+    }
+  };
+  __name(Trade, "Trade");
+  __decorateClass([
+    property11(Laya.Image)
+  ], Trade.prototype, "disabledBk", 2);
+  Trade = __decorateClass([
+    regClass11("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
+  ], Trade);
+
+  // src/Computer.ts
+  var { regClass: regClass12, property: property12 } = Laya;
+  var Computer = class extends Performer {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      super.onAwake();
+      this.owner.on(Event3.StateChange, this, this.onStateChange);
+      this.owner.on(Event3.Chuck, this, this.onChuck);
+    }
+    onStart() {
+    }
+    onStateChange() {
+      let trade = this.player.trade.getComponent(Trade);
+      if (this.state == 1 /* Running */) {
+        this.startRoll();
+      } else {
+        trade.stop();
+      }
+      trade.disabled(this.state != 1 /* Running */);
+    }
+    startRoll() {
+      this.owner.event(Event3.RollStart, this.owner);
+      let trade = this.player.trade.getComponent(Trade);
+      trade.roll();
+      this.player.room.owner.event(Event3.Hurl, [this.owner]);
+    }
+    onChuck(num) {
+      this.currentDiceNumber = num;
+      this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
+    }
+    onRollStop() {
+      this.owner.event(Event3.RollEnd, [this.currentDiceNumber]);
+      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
+      let chesses = this.player.reckonChess(this.currentDiceNumber);
+      if (chesses.length > 0) {
+        this.owner.event(Event3.Choose, [this.owner]);
+        this.player.hopChesses(chesses);
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+          Laya.timer.once(500, this, () => {
+            this.stopChessDecuce(["kick"], deduceResult);
+            this.player.stopChesses(chesses);
+            this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
+          });
+        }));
+      } else {
+        this.owner.event(Event3.Achieve, null);
+      }
+    }
+    onAdvanceComplete(node) {
+      let chess = node.getComponent(Chess);
+      if (chess.hole == this.player.entry) {
+        this.startRoll();
+        return;
+      }
+      this.owner.event(Event3.Achieve, node);
+      if (this.player.isAllHome()) {
+        this.owner.event(Event3.Victory);
+      }
+    }
+  };
+  __name(Computer, "Computer");
+  Computer = __decorateClass([
+    regClass12("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
+  ], Computer);
+
+  // src/Oneself.ts
+  var { regClass: regClass13, property: property13 } = Laya;
+  var Oneself = class extends Performer {
+    constructor() {
+      super();
+      this.isAdvanceing = false;
+    }
+    onAwake() {
+      super.onAwake();
+      this.owner.on(Event3.StateChange, this, this.onStateChange);
+      this.owner.on(Event3.Chuck, this, this.onChuck);
+    }
+    /**
+     * 第一次执行update之前执行，只会执行一次
+     */
+    onStart() {
+      this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+    }
+    onStateChange(state) {
+      let trade = this.player.trade.getComponent(Trade);
+      if (this.state != 1 /* Running */) {
+        trade.stop();
+      } else {
+        trade.becareful();
+      }
+      trade.disabled(this.state != 1 /* Running */);
+    }
+    onChuck(num) {
+      this.currentDiceNumber = num;
+      this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
+    }
+    onClickTrade() {
+      if (this.state != 1 /* Running */ || this.isAdvanceing) {
+        return;
+      }
+      this.isAdvanceing = true;
+      this.owner.event(Event3.RollStart, this.owner);
+      let trade = this.player.trade.getComponent(Trade);
+      trade.stop();
+      Laya.timer.once(100, this, () => {
+        trade.roll();
+      });
+      this.player.room.owner.event(Event3.Hurl, [this.owner]);
+    }
+    onRollStop() {
+      this.owner.event(Event3.RollEnd, [this.currentDiceNumber]);
+      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
+      let chesses = this.player.reckonChess(this.currentDiceNumber);
+      if (chesses.length > 0) {
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+          this.onReckonChessComplete(chesses, Laya.Handler.create(this, (chess) => {
+            this.stopChessDecuce(["kick"], deduceResult);
+            this.onChooseChessesComplete(chess);
+          }));
+        }));
+      } else {
+        this.isAdvanceing = false;
+        this.owner.event(Event3.Achieve);
+      }
+    }
+    onChooseChessesComplete(chess) {
+      this.owner.event(Event3.Choose, [chess.name]);
+      this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
+    }
+    onAdvanceComplete(node) {
+      this.isAdvanceing = false;
+      let chess = node.getComponent(Chess);
+      if (chess.hole == this.player.entry) {
+        this.player.trade.getComponent(Trade).becareful();
+        return;
+      }
+      this.owner.event(Event3.Achieve);
+      if (this.player.isAllHome()) {
+        this.owner.event(Event3.Victory);
+      }
+    }
+    onReckonMultiChessComplete(chesses, complete) {
+      let o = "chooseChess";
+      for (let i = 0; i < chesses.length; ++i) {
+        chesses[i].on(Laya.Event.CLICK, o, () => {
+          this.player.stopChesses(chesses);
+          for (let i2 = 0; i2 < chesses.length; ++i2) {
+            chesses[i2].offAllCaller(o);
+          }
+          complete.runWith(chesses[i]);
+        });
+      }
+      this.player.hopChesses(chesses);
+    }
+    onReckonChessComplete(chesses, complete) {
+      if (chesses.length == 1) {
+        complete.runWith(chesses[0]);
+      } else {
+        this.onReckonMultiChessComplete(chesses, complete);
+      }
+    }
+    onDestroy() {
+      this.player.trade.offAllCaller(this);
+    }
+  };
+  __name(Oneself, "Oneself");
+  Oneself = __decorateClass([
+    regClass13("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
+  ], Oneself);
+
+  // src/Extreme.ts
+  var { regClass: regClass14, property: property14 } = Laya;
+  var Extreme = class extends Performer {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      super.onAwake();
+      this.owner.on(Event3.StateChange, this, this.onStateChange);
+    }
+    onStart() {
+    }
+    onStateChange() {
+      let trade = this.player.trade.getComponent(Trade);
+      trade.disabled(this.state != 1 /* Running */);
+    }
+    processEvent(inEvent) {
+      switch (inEvent.event) {
+        case Event3.RollStart: {
+          this.player.trade.getComponent(Dice).roll();
+          break;
+        }
+        case Event3.RollEnd: {
+          this.currentDiceNumber = inEvent.num;
+          this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
+          break;
+        }
+        case Event3.Choose: {
+          this.onChooseChesses(inEvent.name);
+          break;
+        }
+        case Event3.Achieve: {
+          this.owner.event(Event3.Achieve);
+          break;
+        }
+        case Event3.Victory: {
+          this.owner.event(Event3.Victory);
+          break;
+        }
+      }
+    }
+    onChooseChesses(name) {
+      let chesses = this.player.reckonChess(this.currentDiceNumber);
+      this.player.stopChesses(chesses);
+      this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+        this.stopChessDecuce(["kick"], deduceResult);
+      }));
+      for (let i = 0; i < chesses.length; ++i) {
+        if (name == chesses[i].name) {
+          this.onChooseChessesComplete(chesses[i]);
+          break;
+        }
+      }
+    }
+    onAdvanceComplete(node) {
+      let chess = node.getComponent(Chess);
+    }
+    onChooseChessesComplete(chess) {
+      this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
+    }
+    onRollStop() {
+      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
+      let chesses = this.player.reckonChess(this.currentDiceNumber);
+      if (chesses.length > 0) {
+        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+          if (chesses.length == 1) {
+            this.stopChessDecuce(["kick"], deduceResult);
+          }
+          this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
+        }));
+      }
+    }
+    onReckonChessComplete(chesses, complete) {
+      if (chesses.length == 1) {
+        complete.runWith(chesses[0]);
+      } else {
+        this.player.hopChesses(chesses);
+      }
+    }
+  };
+  __name(Extreme, "Extreme");
+  Extreme = __decorateClass([
+    regClass14("054e9a6b-c8fa-4318-af0a-6684a99b4f50", "../src/Extreme.ts")
+  ], Extreme);
+
+  // src/Room.ts
+  var { regClass: regClass15, property: property15 } = Laya;
+  var Room = class extends Laya.Script {
+    constructor() {
+      super();
+      this.numberOfPlayer = 0;
+      this.players = [];
+      this.playerOrder = [];
+      this.currentIdx = 0;
+      this.isVictory = false;
+    }
+    /**
+     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
+     */
+    onAwake() {
+      this.redPlayer.visible = false;
+      this.greenPlayer.visible = false;
+      this.bluePlayer.visible = false;
+      this.yellowPlayer.visible = false;
+      this.initEventListener();
+    }
+    onStart() {
+    }
+    initEventListener() {
+      this.redPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
+      this.greenPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
+      this.yellowPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
+      this.bluePlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
+      this.redPlayer.on(Event3.Victory, this, this.onPlayerVictory);
+      this.greenPlayer.on(Event3.Victory, this, this.onPlayerVictory);
+      this.yellowPlayer.on(Event3.Victory, this, this.onPlayerVictory);
+      this.bluePlayer.on(Event3.Victory, this, this.onPlayerVictory);
+    }
+    onPlayerVictory() {
+      this.owner.event(Event3.Victory);
+    }
+    onPlayerAchieve() {
+      this.owner.event(Event3.Achieve);
+    }
+    setPlayersToIdle() {
+      this.players.map((node) => {
+        node.getComponent(Performer).setState(0 /* Idle */);
+      });
+    }
+    onVictory() {
+      this.isVictory = true;
+      this.setPlayersToIdle();
+      Laya.SoundManager.playSound("sounds/win.mp3");
+    }
+    onAchieve() {
+      if (this.isVictory) {
+        this.setPlayersToIdle();
+      } else {
+        let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+        current.setState(0 /* Idle */);
+        if (this.currentIdx == this.playerOrder.length - 1) {
+          this.currentIdx = 0;
+        } else {
+          this.currentIdx++;
+        }
+        let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+        next.setState(1 /* Running */);
+      }
+    }
+    getPlayerOrderIndex(color, player) {
+      let idx = 0;
+      let ids = Object.keys(this.players);
+      ;
+      for (let i = 0; i < ids.length; ++i) {
+        let id = Number.parseInt(ids[i]);
+        if (this.players[id] == player) {
+          idx = this.playerOrder.findIndex((order) => {
+            return order.color == color;
+          });
+          break;
+        }
+      }
+      return idx;
+    }
+    getPlayerId(player) {
+      let resultId = 0;
+      let ids = Object.keys(this.players);
+      ;
+      for (let i = 0; i < ids.length; ++i) {
+        let id = Number.parseInt(ids[i]);
+        if (this.players[id] == player) {
+          resultId = id;
+          break;
+        }
+      }
+      return resultId;
+    }
+    startGame(color) {
+      let player = this.getPlayer(color);
+      this.currentIdx = this.getPlayerOrderIndex(color, player);
+      for (let i = 0; i < this.playerOrder.length; ++i) {
+        let performer = this.players[this.playerOrder[i].id].getComponent(Performer);
+        if (i == this.currentIdx) {
+          performer.setState(1 /* Running */);
+        } else {
+          performer.setState(0 /* Idle */);
+        }
+      }
+    }
+    getPlayer(color) {
+      let player = null;
+      switch (color) {
+        case "red": {
+          player = this.redPlayer;
+          break;
+        }
+        case "blue": {
+          player = this.bluePlayer;
+          break;
+        }
+        case "yellow": {
+          player = this.yellowPlayer;
+          break;
+        }
+        case "green": {
+          player = this.greenPlayer;
+          break;
+        }
+      }
+      return player;
+    }
+    addPlayer(color, type, profile) {
+      let player = this.getPlayer(color);
+      if (player == null) {
+        return;
+      }
+      this.players[profile.id] = player;
+      this.playerOrder.push({ "id": profile.id, "color": color });
+      switch (type) {
+        case 2 /* Oneself */: {
+          player.addComponentInstance(new Oneself());
+          break;
+        }
+        case 0 /* Extreme */: {
+          player.addComponentInstance(new Extreme());
+          break;
+        }
+        case 1 /* Computer */: {
+          player.addComponentInstance(new Computer());
+          break;
+        }
+      }
+      return player;
+    }
+  };
+  __name(Room, "Room");
+  __decorateClass([
+    property15(Laya.Sprite)
+  ], Room.prototype, "redPlayer", 2);
+  __decorateClass([
+    property15(Laya.Sprite)
+  ], Room.prototype, "greenPlayer", 2);
+  __decorateClass([
+    property15(Laya.Sprite)
+  ], Room.prototype, "bluePlayer", 2);
+  __decorateClass([
+    property15(Laya.Sprite)
+  ], Room.prototype, "yellowPlayer", 2);
+  Room = __decorateClass([
+    regClass15("fed491b4-6b8a-46f9-8167-977c47e8a79b", "../src/Room.ts")
+  ], Room);
+
   // src/Player.ts
-  var { regClass: regClass9, property: property9, SoundManager: SoundManager2 } = Laya;
+  var { regClass: regClass16, property: property16, SoundManager: SoundManager3 } = Laya;
   var Event3 = class {
   };
   __name(Event3, "Event");
   Event3.EntryRoom = "ENTRY_ROOM";
   Event3.ExitRoom = "EXIT_ROOM";
   Event3.StateChange = "STATE_CHANGE";
+  Event3.Hurl = "HURL";
+  Event3.Chuck = "CHUCK";
   Event3.RollStart = "ROLL_START";
   Event3.RollEnd = "ROLL_END";
   Event3.Choose = "CHOOSE";
@@ -11117,7 +11641,7 @@
       let chesses = this.getKickChesses(route);
       chesses.map((chess) => {
         chess.stop();
-        SoundManager2.playSound("sounds/kick.mp3", 1);
+        SoundManager3.playSound("sounds/kick.mp3", 1);
         chess.revert(Laya.Handler.create(this, () => {
           let idx = chess.player.chippy.indexOf(chess.owner);
           if (idx != -1) {
@@ -11161,53 +11685,56 @@
   };
   __name(Player, "Player");
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "entry", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "goal", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "door", 2);
   __decorateClass([
-    property9(Laya.Clip)
+    property16(Laya.Clip)
   ], Player.prototype, "diceRoll", 2);
   __decorateClass([
-    property9(Laya.Clip)
+    property16(Laya.Clip)
   ], Player.prototype, "diceDefault", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "groove", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "universal", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "trade", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "personal", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "crown", 2);
   __decorateClass([
-    property9(Laya.Sprite)
+    property16(Laya.Sprite)
   ], Player.prototype, "origin", 2);
   __decorateClass([
-    property9(Laya.Prefab)
+    property16(Laya.Prefab)
   ], Player.prototype, "chessPrefab", 2);
   __decorateClass([
-    property9([Laya.Sprite])
+    property16(Room)
+  ], Player.prototype, "room", 2);
+  __decorateClass([
+    property16([Laya.Sprite])
   ], Player.prototype, "chippy", 2);
   __decorateClass([
-    property9([Laya.Sprite])
+    property16([Laya.Sprite])
   ], Player.prototype, "home", 2);
   Player = __decorateClass([
-    regClass9("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
+    regClass16("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
   ], Player);
 
   // src/Chess.ts
-  var { regClass: regClass10, property: property10, SoundManager: SoundManager3 } = Laya;
+  var { regClass: regClass17, property: property17, SoundManager: SoundManager4 } = Laya;
   var Chess = class extends Laya.Script {
     constructor() {
       super();
@@ -11245,7 +11772,7 @@
         complete.run();
         return;
       }
-      SoundManager3.playSound("sounds/move.mp3", 1);
+      SoundManager4.playSound("sounds/move.mp3", 1);
       if (roadway == this.player.groove) {
         this.jump(this.player.entry, complete);
       } else if (this.hole == this.player.door) {
@@ -11349,205 +11876,41 @@
   };
   __name(Chess, "Chess");
   __decorateClass([
-    property10(Player)
+    property17(Player)
   ], Chess.prototype, "player", 2);
   __decorateClass([
-    property10(Laya.Sprite)
+    property17(Laya.Sprite)
   ], Chess.prototype, "hole", 2);
   __decorateClass([
-    property10(Laya.Sprite)
+    property17(Laya.Sprite)
   ], Chess.prototype, "chess", 2);
   __decorateClass([
-    property10(Laya.Image)
+    property17(Laya.Image)
   ], Chess.prototype, "image", 2);
   __decorateClass([
-    property10(Laya.Image)
+    property17(Laya.Image)
   ], Chess.prototype, "shoe", 2);
   Chess = __decorateClass([
-    regClass10("2be80ad6-1bcc-440d-a7c9-809c6c1eef91", "../src/Chess.ts")
+    regClass17("2be80ad6-1bcc-440d-a7c9-809c6c1eef91", "../src/Chess.ts")
   ], Chess);
 
   // src/ClickSound.ts
-  var { regClass: regClass11, property: property11, SoundManager: SoundManager4 } = Laya;
+  var { regClass: regClass18, property: property18, SoundManager: SoundManager5 } = Laya;
   var Script = class extends Laya.Script {
     constructor() {
       super();
     }
     onMouseClick() {
-      SoundManager4.playSound("sounds/click.mp3", 1);
+      SoundManager5.playSound("sounds/click.mp3", 1);
     }
   };
   __name(Script, "Script");
   Script = __decorateClass([
-    regClass11("f4a9ed67-7b7a-43be-945e-88ba9965a9d4", "../src/ClickSound.ts")
+    regClass18("f4a9ed67-7b7a-43be-945e-88ba9965a9d4", "../src/ClickSound.ts")
   ], Script);
 
-  // src/Performer.ts
-  var { regClass: regClass12, property: property12 } = Laya;
-  var Performer = class extends Laya.Script {
-    constructor() {
-      super();
-      this.currentDiceNumber = 0;
-      this.state = 0 /* Idle */;
-    }
-    onAwake() {
-      let node = this.owner;
-      this.player = node.getComponent(Player);
-      node.visible = true;
-    }
-    setState(state) {
-      this.state = state;
-      this.owner.event(Event3.StateChange, [state]);
-    }
-    stopChessDecuce(reasons, deduceResult) {
-      for (let idx in deduceResult) {
-        let dr = deduceResult[idx];
-        if (reasons.indexOf(dr.reason) != -1) {
-          dr.kicks.map((c) => {
-            c.stop();
-          });
-        }
-      }
-    }
-  };
-  __name(Performer, "Performer");
-  Performer = __decorateClass([
-    regClass12("a1b4fee2-5dd4-483e-bf42-a9f391634e69", "../src/Performer.ts")
-  ], Performer);
-
-  // src/Dice.ts
-  var { regClass: regClass13, property: property13, SoundManager: SoundManager5 } = Laya;
-  var Dice = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    setDiceNumber(idx) {
-      this.diceDefault.visible = true;
-      this.diceRoll.visible = false;
-      this.diceDefault.index = idx;
-    }
-    roll() {
-      this.diceDefault.visible = false;
-      this.diceRoll.visible = true;
-      this.diceRoll.play(0, -1);
-      SoundManager5.playSound("sounds/chess.mp3", 1);
-      this.owner.getComponent(Laya.Animator2D).play("roll");
-    }
-    stop(complete) {
-      this.diceRoll.stop();
-      this.owner.getComponent(Laya.Animator2D).play("idle");
-      complete.run();
-    }
-  };
-  __name(Dice, "Dice");
-  __decorateClass([
-    property13(Laya.Clip)
-  ], Dice.prototype, "diceRoll", 2);
-  __decorateClass([
-    property13(Laya.Clip)
-  ], Dice.prototype, "diceDefault", 2);
-  Dice = __decorateClass([
-    regClass13("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
-  ], Dice);
-
-  // src/Trade.ts
-  var { regClass: regClass14, property: property14 } = Laya;
-  var Trade = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    stop() {
-      let ani = this.owner.getComponent(Laya.Animator2D);
-      ani.play("idle");
-      return this;
-    }
-    disabled(b) {
-      this.disabledBk.visible = b;
-    }
-    becareful() {
-      let ani = this.owner.getComponent(Laya.Animator2D);
-      ani.play("becareful");
-    }
-    roll() {
-      this.owner.getComponent(Dice).roll();
-    }
-  };
-  __name(Trade, "Trade");
-  __decorateClass([
-    property14(Laya.Image)
-  ], Trade.prototype, "disabledBk", 2);
-  Trade = __decorateClass([
-    regClass14("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
-  ], Trade);
-
-  // src/Computer.ts
-  var { regClass: regClass15, property: property15 } = Laya;
-  var Computer = class extends Performer {
-    constructor() {
-      super();
-    }
-    onAwake() {
-      super.onAwake();
-      this.owner.on(Event3.StateChange, this, this.onStateChange);
-    }
-    onStart() {
-    }
-    onStateChange() {
-      let trade = this.player.trade.getComponent(Trade);
-      if (this.state == 1 /* Running */) {
-        this.startRoll();
-      } else {
-        trade.stop();
-      }
-      trade.disabled(this.state != 1 /* Running */);
-    }
-    startRoll() {
-      this.owner.event(Event3.RollStart, this.owner);
-      let trade = this.player.trade.getComponent(Trade);
-      trade.roll();
-      Laya.timer.once(900, this, this.onRollTimeout);
-    }
-    onRollTimeout() {
-      this.currentDiceNumber = Math.floor(Math.random() * 6);
-      this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
-    }
-    onRollStop() {
-      this.owner.event(Event3.RollEnd, [this.currentDiceNumber]);
-      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
-      let chesses = this.player.reckonChess(this.currentDiceNumber);
-      if (chesses.length > 0) {
-        this.owner.event(Event3.Choose, [this.owner]);
-        this.player.hopChesses(chesses);
-        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
-          Laya.timer.once(500, this, () => {
-            this.stopChessDecuce(["kick"], deduceResult);
-            this.player.stopChesses(chesses);
-            this.player.advance(deduceResult[0].chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
-          });
-        }));
-      } else {
-        this.owner.event(Event3.Achieve, null);
-      }
-    }
-    onAdvanceComplete(node) {
-      let chess = node.getComponent(Chess);
-      if (chess.hole == this.player.entry) {
-        this.startRoll();
-        return;
-      }
-      this.owner.event(Event3.Achieve, node);
-      if (this.player.isAllHome()) {
-        this.owner.event(Event3.Victory);
-      }
-    }
-  };
-  __name(Computer, "Computer");
-  Computer = __decorateClass([
-    regClass15("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
-  ], Computer);
-
   // src/ComputerParallel.ts
-  var { regClass: regClass16, property: property16 } = Laya;
+  var { regClass: regClass19, property: property19 } = Laya;
   var ComputerParallel = class extends Laya.Script {
     constructor() {
       super();
@@ -11572,11 +11935,11 @@
   };
   __name(ComputerParallel, "ComputerParallel");
   ComputerParallel = __decorateClass([
-    regClass16("9f7ba979-284a-4c3f-9bd9-8653533441a3", "../src/ComputerParallel.ts")
+    regClass19("9f7ba979-284a-4c3f-9bd9-8653533441a3", "../src/ComputerParallel.ts")
   ], ComputerParallel);
 
   // src/Door.ts
-  var { regClass: regClass17, property: property17 } = Laya;
+  var { regClass: regClass20, property: property20 } = Laya;
   var Door = class extends Laya.Script {
     constructor() {
       super();
@@ -11584,15 +11947,15 @@
   };
   __name(Door, "Door");
   __decorateClass([
-    property17(Laya.Sprite)
+    property20(Laya.Sprite)
   ], Door.prototype, "player", 2);
   Door = __decorateClass([
-    regClass17("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
+    regClass20("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
   ], Door);
 
   // src/SelectColor.ts
   var SFS2X4 = __toESM(require_sfs2x_api());
-  var { regClass: regClass18, property: property18 } = Laya;
+  var { regClass: regClass21, property: property21 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
       super();
@@ -11678,20 +12041,20 @@
   };
   __name(SelectColor, "SelectColor");
   __decorateClass([
-    property18(Laya.Button)
+    property21(Laya.Button)
   ], SelectColor.prototype, "closeBtn", 2);
   __decorateClass([
-    property18(Laya.Button)
+    property21(Laya.Button)
   ], SelectColor.prototype, "play", 2);
   __decorateClass([
-    property18([Laya.CheckBox])
+    property21([Laya.CheckBox])
   ], SelectColor.prototype, "colorCheckBox", 2);
   SelectColor = __decorateClass([
-    regClass18("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
+    regClass21("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
   ], SelectColor);
 
   // src/Entry.ts
-  var { regClass: regClass19, property: property19 } = Laya;
+  var { regClass: regClass22, property: property22 } = Laya;
   var Entry = class extends Laya.Script {
     //declare owner : Laya.Sprite3D;
     constructor() {
@@ -11700,351 +12063,8 @@
   };
   __name(Entry, "Entry");
   Entry = __decorateClass([
-    regClass19("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
+    regClass22("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
   ], Entry);
-
-  // src/Extreme.ts
-  var { regClass: regClass20, property: property20 } = Laya;
-  var Extreme = class extends Performer {
-    constructor() {
-      super();
-    }
-    onAwake() {
-      super.onAwake();
-      this.owner.on(Event3.StateChange, this, this.onStateChange);
-    }
-    onStart() {
-    }
-    onStateChange() {
-      let trade = this.player.trade.getComponent(Trade);
-      trade.disabled(this.state != 1 /* Running */);
-    }
-    processEvent(inEvent) {
-      switch (inEvent.event) {
-        case Event3.RollStart: {
-          this.player.trade.getComponent(Dice).roll();
-          break;
-        }
-        case Event3.RollEnd: {
-          this.currentDiceNumber = inEvent.num;
-          this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
-          break;
-        }
-        case Event3.Choose: {
-          this.onChooseChesses(inEvent.name);
-          break;
-        }
-        case Event3.Achieve: {
-          this.owner.event(Event3.Achieve);
-          break;
-        }
-        case Event3.Victory: {
-          this.owner.event(Event3.Victory);
-          break;
-        }
-      }
-    }
-    onChooseChesses(name) {
-      let chesses = this.player.reckonChess(this.currentDiceNumber);
-      this.player.stopChesses(chesses);
-      this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
-        this.stopChessDecuce(["kick"], deduceResult);
-      }));
-      for (let i = 0; i < chesses.length; ++i) {
-        if (name == chesses[i].name) {
-          this.onChooseChessesComplete(chesses[i]);
-          break;
-        }
-      }
-    }
-    onAdvanceComplete(node) {
-      let chess = node.getComponent(Chess);
-    }
-    onChooseChessesComplete(chess) {
-      this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
-    }
-    onRollStop() {
-      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
-      let chesses = this.player.reckonChess(this.currentDiceNumber);
-      if (chesses.length > 0) {
-        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
-          if (chesses.length == 1) {
-            this.stopChessDecuce(["kick"], deduceResult);
-          }
-          this.onReckonChessComplete(chesses, Laya.Handler.create(this, this.onChooseChessesComplete));
-        }));
-      }
-    }
-    onReckonChessComplete(chesses, complete) {
-      if (chesses.length == 1) {
-        complete.runWith(chesses[0]);
-      } else {
-        this.player.hopChesses(chesses);
-      }
-    }
-  };
-  __name(Extreme, "Extreme");
-  Extreme = __decorateClass([
-    regClass20("054e9a6b-c8fa-4318-af0a-6684a99b4f50", "../src/Extreme.ts")
-  ], Extreme);
-
-  // src/Oneself.ts
-  var { regClass: regClass21, property: property21 } = Laya;
-  var Oneself = class extends Performer {
-    constructor() {
-      super();
-      this.isAdvanceing = false;
-    }
-    onAwake() {
-      super.onAwake();
-      this.owner.on(Event3.StateChange, this, this.onStateChange);
-    }
-    /**
-     * 第一次执行update之前执行，只会执行一次
-     */
-    onStart() {
-      this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
-    }
-    onStateChange(state) {
-      let trade = this.player.trade.getComponent(Trade);
-      if (this.state != 1 /* Running */) {
-        trade.stop();
-      } else {
-        trade.becareful();
-      }
-      trade.disabled(this.state != 1 /* Running */);
-    }
-    onClickTrade() {
-      if (this.state != 1 /* Running */ || this.isAdvanceing) {
-        return;
-      }
-      this.isAdvanceing = true;
-      this.owner.event(Event3.RollStart, this.owner);
-      let trade = this.player.trade.getComponent(Trade);
-      trade.stop();
-      Laya.timer.once(100, this, () => {
-        trade.roll();
-        Laya.timer.once(900, this, this.onRollTimeout);
-      });
-    }
-    onRollTimeout() {
-      this.currentDiceNumber = Math.floor(Math.random() * 6);
-      this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
-    }
-    onRollStop() {
-      this.owner.event(Event3.RollEnd, [this.currentDiceNumber]);
-      this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
-      let chesses = this.player.reckonChess(this.currentDiceNumber);
-      if (chesses.length > 0) {
-        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
-          this.onReckonChessComplete(chesses, Laya.Handler.create(this, (chess) => {
-            this.stopChessDecuce(["kick"], deduceResult);
-            this.onChooseChessesComplete(chess);
-          }));
-        }));
-      } else {
-        this.isAdvanceing = false;
-        this.owner.event(Event3.Achieve);
-      }
-    }
-    onChooseChessesComplete(chess) {
-      this.owner.event(Event3.Choose, [chess.name]);
-      this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
-    }
-    onAdvanceComplete(node) {
-      this.isAdvanceing = false;
-      let chess = node.getComponent(Chess);
-      if (chess.hole == this.player.entry) {
-        this.player.trade.getComponent(Trade).becareful();
-        return;
-      }
-      this.owner.event(Event3.Achieve);
-      if (this.player.isAllHome()) {
-        this.owner.event(Event3.Victory);
-      }
-    }
-    onReckonMultiChessComplete(chesses, complete) {
-      let o = "chooseChess";
-      for (let i = 0; i < chesses.length; ++i) {
-        chesses[i].on(Laya.Event.CLICK, o, () => {
-          this.player.stopChesses(chesses);
-          for (let i2 = 0; i2 < chesses.length; ++i2) {
-            chesses[i2].offAllCaller(o);
-          }
-          complete.runWith(chesses[i]);
-        });
-      }
-      this.player.hopChesses(chesses);
-    }
-    onReckonChessComplete(chesses, complete) {
-      if (chesses.length == 1) {
-        complete.runWith(chesses[0]);
-      } else {
-        this.onReckonMultiChessComplete(chesses, complete);
-      }
-    }
-    onDestroy() {
-      this.player.trade.offAllCaller(this);
-    }
-  };
-  __name(Oneself, "Oneself");
-  Oneself = __decorateClass([
-    regClass21("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
-  ], Oneself);
-
-  // src/Room.ts
-  var { regClass: regClass22, property: property22 } = Laya;
-  var Room = class extends Laya.Script {
-    constructor() {
-      super();
-      this.numberOfPlayer = 0;
-      this.players = [];
-      this.playerOrder = [];
-      this.currentIdx = 0;
-      this.isVictory = false;
-    }
-    /**
-     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-     */
-    onAwake() {
-      this.redPlayer.visible = false;
-      this.greenPlayer.visible = false;
-      this.bluePlayer.visible = false;
-      this.yellowPlayer.visible = false;
-      this.initEventListener();
-    }
-    onStart() {
-    }
-    initEventListener() {
-      this.redPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.greenPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.yellowPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.bluePlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.redPlayer.on(Event3.Victory, this, this.onPlayerVictory);
-      this.greenPlayer.on(Event3.Victory, this, this.onPlayerVictory);
-      this.yellowPlayer.on(Event3.Victory, this, this.onPlayerVictory);
-      this.bluePlayer.on(Event3.Victory, this, this.onPlayerVictory);
-    }
-    onPlayerVictory() {
-      this.owner.event(Event3.Victory);
-    }
-    onPlayerAchieve() {
-      this.owner.event(Event3.Achieve);
-    }
-    setPlayersToIdle() {
-      this.players.map((node) => {
-        node.getComponent(Performer).setState(0 /* Idle */);
-      });
-    }
-    onVictory() {
-      this.isVictory = true;
-      this.setPlayersToIdle();
-      Laya.SoundManager.playSound("sounds/win.mp3");
-    }
-    onAchieve() {
-      if (this.isVictory) {
-        this.setPlayersToIdle();
-      } else {
-        let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-        current.setState(0 /* Idle */);
-        if (this.currentIdx == this.playerOrder.length - 1) {
-          this.currentIdx = 0;
-        } else {
-          this.currentIdx++;
-        }
-        let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-        next.setState(1 /* Running */);
-      }
-    }
-    getPlayerOrderIndex(color, player) {
-      let idx = 0;
-      let ids = Object.keys(this.players);
-      ;
-      for (let i = 0; i < ids.length; ++i) {
-        let id = Number.parseInt(ids[i]);
-        if (this.players[id] == player) {
-          idx = this.playerOrder.findIndex((order) => {
-            return order.color == color;
-          });
-          break;
-        }
-      }
-      return idx;
-    }
-    startGame(color) {
-      let player = this.getPlayer(color);
-      this.currentIdx = this.getPlayerOrderIndex(color, player);
-      for (let i = 0; i < this.playerOrder.length; ++i) {
-        let performer = this.players[this.playerOrder[i].id].getComponent(Performer);
-        if (i == this.currentIdx) {
-          performer.setState(1 /* Running */);
-        } else {
-          performer.setState(0 /* Idle */);
-        }
-      }
-    }
-    getPlayer(color) {
-      let player = null;
-      switch (color) {
-        case "red": {
-          player = this.redPlayer;
-          break;
-        }
-        case "blue": {
-          player = this.bluePlayer;
-          break;
-        }
-        case "yellow": {
-          player = this.yellowPlayer;
-          break;
-        }
-        case "green": {
-          player = this.greenPlayer;
-          break;
-        }
-      }
-      return player;
-    }
-    addPlayer(color, type, profile) {
-      let player = this.getPlayer(color);
-      if (player == null) {
-        return;
-      }
-      this.players[profile.id] = player;
-      this.playerOrder.push({ "id": profile.id, "color": color });
-      switch (type) {
-        case 2 /* Oneself */: {
-          player.addComponentInstance(new Oneself());
-          break;
-        }
-        case 0 /* Extreme */: {
-          player.addComponentInstance(new Extreme());
-          break;
-        }
-        case 1 /* Computer */: {
-          player.addComponentInstance(new Computer());
-          break;
-        }
-      }
-      return player;
-    }
-  };
-  __name(Room, "Room");
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "redPlayer", 2);
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "greenPlayer", 2);
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "bluePlayer", 2);
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "yellowPlayer", 2);
-  Room = __decorateClass([
-    regClass22("fed491b4-6b8a-46f9-8167-977c47e8a79b", "../src/Room.ts")
-  ], Room);
 
   // src/Online.ts
   var SFS2X5 = __toESM(require_sfs2x_api());
@@ -12057,6 +12077,7 @@
     }
     onAwake() {
       this.room = this.owner.getComponent(Room);
+      this.owner.on(Event3.Hurl, this, this.onHurl);
     }
     playerColorFind(colorName) {
       let playerIdx = this.room.playerOrder.findIndex((order) => {
@@ -12072,6 +12093,18 @@
         this.room.startGame(Config.Colors[idx]);
       }
     }
+    onHurl(player) {
+      var params = new SFS2X5.SFSObject();
+      Station.sfs.send(new SFS2X5.ExtensionRequest(Event3.Hurl, params));
+    }
+    onHurlResponse(evtParams) {
+      let num = evtParams.params.get("Number");
+      let playerId = evtParams.params.get("UserId");
+      let player = this.room.players[playerId];
+      Laya.timer.once(900, this, () => {
+        player.event(Event3.Chuck, num);
+      });
+    }
     onDestroy() {
       Station.levelRoom();
       this.removeStationListener();
@@ -12079,16 +12112,27 @@
     addStationListener() {
       Station.sfs.addEventListener(SFS2X5.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
       Station.sfs.addEventListener(SFS2X5.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+      Station.sfs.addEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X5.SFSEvent.LOGOUT, this.onUserExitRoom, this);
+      Station.sfs.addEventListener(SFS2X5.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
     }
     removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
       Station.sfs.removeEventListener(SFS2X5.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
       Station.sfs.removeEventListener(SFS2X5.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+      Station.sfs.removeEventListener(SFS2X5.SFSEvent.LOGOUT, this.onUserExitRoom, this);
+      Station.sfs.removeEventListener(SFS2X5.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
+    }
+    onExtensionResponse(evtParams) {
+      if (evtParams.cmd == Event3.Hurl) {
+        this.onHurlResponse(evtParams);
+      }
     }
     onUserExitRoom(inEvent) {
       Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg) => {
         let view = dlg.getChildByName("view");
         view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
-          dlg.close();
+          Laya.Dialog.closeAll();
           Laya.Scene.open("menu.ls");
         });
       }));
@@ -12133,11 +12177,16 @@
       this.room = this.owner.getComponent(Room);
       this.owner.on(Event3.Achieve, this.room, this.room.onAchieve);
       this.owner.on(Event3.Victory, this.room, this.room.onVictory);
+      this.owner.on(Event3.Hurl, this, this.onHurl);
+    }
+    onHurl(player) {
+      Laya.timer.once(900, this, () => {
+        let num = Math.floor(Math.random() * 6);
+        player.event(Event3.Chuck, num);
+      });
     }
     onStart() {
       this.room.startGame(this.param.color);
-    }
-    onDestroy() {
     }
   };
   __name(Local, "Local");
@@ -12216,6 +12265,7 @@
     }
     challengeExtreme(param) {
       this.room.numberOfPlayer = param.number;
+      this.addComponentInstance(new Online(param));
       let users = Station.getUserList();
       for (let i = 0; i < users.length; ++i) {
         let color = Station.getUserColor(users[i]);
@@ -12229,7 +12279,6 @@
           player.addComponentInstance(new Sender());
         }
       }
-      this.addComponentInstance(new Online(param));
     }
     challengeComputer(param) {
       this.room.numberOfPlayer = param && param.number ? param.number : 2;

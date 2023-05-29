@@ -2,6 +2,8 @@ const { regClass, property } = Laya;
 import { Parallel } from "./Parallel";
 import { Config } from "./Config";
 import {Station} from "./Station";
+import * as Player from "./Player";
+
 import * as SFS2X from "../node_modules/sfs2x-api";
 
 @regClass()

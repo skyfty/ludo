@@ -14,6 +14,7 @@ export class Extreme extends Performer {
         super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
     }
+
     onStart(): void {
     }
 

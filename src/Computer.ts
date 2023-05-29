@@ -14,6 +14,7 @@ export class Computer extends Performer {
     onAwake(): void {
         super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
+        this.owner.on(Player.Event.Chuck, this, this.onChuck);
     }
     onStart(): void {
     }
@@ -32,11 +33,11 @@ export class Computer extends Performer {
         this.owner.event(Player.Event.RollStart, this.owner);
         let trade = this.player.trade.getComponent(Trade);
         trade.roll();
-        Laya.timer.once(900, this, this.onRollTimeout);
+        this.player.room.owner.event(Player.Event.Hurl, [this.owner])
     }
 
-    private onRollTimeout() {
-        this.currentDiceNumber = Math.floor(Math.random()* 6);
+    onChuck(num:number) {
+        this.currentDiceNumber = num;
         this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
     }
 

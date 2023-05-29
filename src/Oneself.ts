@@ -16,6 +16,8 @@ export class Oneself extends Performer {
     onAwake(): void {
         super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
+        this.owner.on(Player.Event.Chuck, this, this.onChuck);
+
     }
     /**
      * 第一次执行update之前执行，只会执行一次
@@ -33,6 +35,11 @@ export class Oneself extends Performer {
         }
         trade.disabled(this.state != Player.State.Running);
     }
+    
+    onChuck(num:number) {
+        this.currentDiceNumber = num;
+        this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
+    }
 
     onClickTrade() {
         if (this.state != Player.State.Running || this.isAdvanceing) {
@@ -44,13 +51,8 @@ export class Oneself extends Performer {
         trade.stop();
         Laya.timer.once(100, this, ()=>{
             trade.roll();
-            Laya.timer.once(900, this, this.onRollTimeout);
         });
-    }
-
-    private onRollTimeout() {
-        this.currentDiceNumber = Math.floor(Math.random()* 6);
-        this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
+        this.player.room.owner.event(Player.Event.Hurl, [this.owner])
     }
 
     private onRollStop() {

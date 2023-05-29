@@ -32,7 +32,9 @@
       "_$id": "oql1cen0",
       "_$type": "Sprite",
       "name": "background",
-      "width": 748,
+      "x": 3,
+      "y": -3,
+      "width": 712,
       "height": 1334,
       "_gcmds": [
         {
@@ -791,8 +793,8 @@
           "_$prefab": "e0727edd-d6a4-4342-925e-21743d3e127e",
           "name": "red",
           "active": true,
-          "x": -257.99999999999994,
-          "y": 372.00000000000006,
+          "x": -256.99999999999994,
+          "y": 374.00000000000006,
           "visible": true,
           "disabled": false,
           "bgColor": null,
@@ -847,6 +849,10 @@
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
+              },
+              "room": {
+                "_$ref": "lx8mwule",
+                "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
               },
               "chippy": [],
               "home": []
@@ -1251,6 +1257,10 @@
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
               },
+              "room": {
+                "_$ref": "lx8mwule",
+                "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
+              },
               "chippy": [],
               "home": []
             }
@@ -1636,6 +1646,10 @@
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
               },
+              "room": {
+                "_$ref": "lx8mwule",
+                "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
+              },
               "chippy": [],
               "home": []
             }
@@ -2006,6 +2020,10 @@
               "chessPrefab": {
                 "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
                 "_$type": "Prefab"
+              },
+              "room": {
+                "_$ref": "lx8mwule",
+                "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
               },
               "chippy": [],
               "home": []

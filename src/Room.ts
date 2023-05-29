@@ -107,6 +107,19 @@ export class Room extends Laya.Script {
         return idx;
     }
 
+    public getPlayerId(player:Laya.Sprite) {
+        let resultId = 0;
+        let ids = Object.keys(this.players);;
+        for (let i = 0; i < ids.length; ++i) {
+            let id: number = Number.parseInt(ids[i]);
+            if (this.players[id] == player) {
+                resultId = id;
+                break;
+            }
+        }
+        return resultId;
+    }
+
     startGame(color: string): void {
         let player = this.getPlayer(color);
         this.currentIdx = this.getPlayerOrderIndex(color, player);
