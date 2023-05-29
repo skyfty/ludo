@@ -16,7 +16,6 @@ export class OnlineParallel extends Laya.Script {
 
     onAwake(): void {
         let parallel = this.owner.getComponent(Parallel);
-        parallel.play4pBtn.disabled = true;
         parallel.play.on(Laya.Event.CLICK, this, this.onPlay);
 
         parallel.closeBtn.on(Laya.Event.CLICK, this, () => {

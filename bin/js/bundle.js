@@ -12381,7 +12381,6 @@
     }
     onAwake() {
       let parallel = this.owner.getComponent(Parallel);
-      parallel.play4pBtn.disabled = true;
       parallel.play.on(Laya.Event.CLICK, this, this.onPlay);
       parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
         this.owner.event(Laya.Event.CLOSE);
@@ -12656,8 +12655,59 @@
   ], Settings);
 
   // src/Shelve.ts
+  var SFS2X10 = __toESM(require_sfs2x_api());
+
+  // src/Invite.ts
   var SFS2X9 = __toESM(require_sfs2x_api());
   var { regClass: regClass35, property: property35 } = Laya;
+  var Invite = class extends Laya.Script {
+    constructor(invite) {
+      super();
+      //declare owner : Laya.Sprite3D;
+      this.invite = null;
+      this.invite = invite;
+    }
+    onAwake() {
+      let view = this.owner.getChildByName("view");
+      view.getChildByName("return").on(Laya.Event.CLICK, this, () => {
+        Laya.Dialog.closeAll();
+        Station.sfs.send(new SFS2X9.InvitationReplyRequest(this.invite, SFS2X9.InvitationReply.REFUSE));
+      });
+      view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
+        Station.sfs.send(new SFS2X9.InvitationReplyRequest(this.invite, SFS2X9.InvitationReply.ACCEPT));
+      });
+      this.addStationListener();
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    addStationListener() {
+      Station.sfs.addEventListener(SFS2X9.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+    }
+    removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X9.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+    }
+    onRoomJoin(evtParams) {
+      Laya.Dialog.closeAll();
+      Laya.Scene.open("dialog/selectcolor.lh", false, null, Laya.Handler.create(this, (dlg) => {
+        dlg.on(Laya.Event.PLAYED, this, (color) => {
+          Laya.Dialog.closeAll();
+          Laya.Scene.open("partner.ls", true, { "color": color });
+        });
+        dlg.on(Laya.Event.CLOSE, this, () => {
+          Laya.Dialog.closeAll();
+          Station.levelRoom();
+        });
+      }));
+    }
+  };
+  __name(Invite, "Invite");
+  Invite = __decorateClass([
+    regClass35("ddd78c04-cc08-49b6-8797-563c8b0aaefc", "../src/Invite.ts")
+  ], Invite);
+
+  // src/Shelve.ts
+  var { regClass: regClass36, property: property36 } = Laya;
   var Shelve = class extends Laya.Script {
     constructor() {
       super();
@@ -12669,42 +12719,20 @@
       this.removeStationListener();
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X9.SFSEvent.INVITATION, this.onInvitationReceived, this);
+      Station.sfs.addEventListener(SFS2X10.SFSEvent.INVITATION, this.onInvitationReceived, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X9.SFSEvent.PUBLIC_MESSAGE, this.onInvitationReceived, this);
-    }
-    onAcceptInvitaion(evtParams) {
-      Laya.Scene.open("dialog/engagement.lh", false, null, Laya.Handler.create(this, (dlg) => {
-        dlg.on(Laya.Event.PLAYED, this, (color) => {
-          dlg.close();
-          dlg.removeSelf();
-          let roomId = evtParams.params.get("RoomId");
-          Laya.Scene.open("partner.ls", true, { "color": color, "roomId": roomId });
-        });
-        dlg.on(Laya.Event.CLOSE, this, () => {
-          dlg.close();
-        });
-      }));
+      Station.sfs.removeEventListener(SFS2X10.SFSEvent.INVITATION, this.onInvitationReceived, this);
     }
     onInvitationReceived(evtParams) {
       Laya.Scene.open("dialog/invite.lh", false, null, Laya.Handler.create(this, (dlg) => {
-        let view = dlg.getChildByName("view");
-        view.getChildByName("return").on(Laya.Event.CLICK, this, () => {
-          dlg.close();
-          Station.sfs.send(new SFS2X9.InvitationReplyRequest(evtParams.invitation, SFS2X9.InvitationReply.REFUSE));
-        });
-        view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
-          dlg.close();
-          Station.sfs.send(new SFS2X9.InvitationReplyRequest(evtParams.invitation, SFS2X9.InvitationReply.ACCEPT));
-          this.onAcceptInvitaion(evtParams);
-        });
+        dlg.addComponentInstance(new Invite(evtParams.invitation));
       }));
     }
   };
   __name(Shelve, "Shelve");
   Shelve = __decorateClass([
-    regClass35("29c2dcf8-e04c-4052-8f49-3bc9f10e9645", "../src/Shelve.ts")
+    regClass36("29c2dcf8-e04c-4052-8f49-3bc9f10e9645", "../src/Shelve.ts")
   ], Shelve);
 })();
 /*! Bundled license information:
