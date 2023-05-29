@@ -11637,8 +11637,7 @@
       }
       return resultChesses;
     }
-    kick(route) {
-      let chesses = this.getKickChesses(route);
+    kick(chesses) {
       chesses.map((chess) => {
         chess.stop();
         SoundManager3.playSound("sounds/kick.mp3", 1);
@@ -11661,11 +11660,19 @@
       if (this.isAllHome()) {
         this.crown.visible = true;
         this.crown.getComponent(Laya.Animator2D).play("elastic");
+        complete.runWith(node);
       } else {
         let route = chess.hole.getComponent(Route);
-        this.kick(route);
+        let chesses = this.getKickChesses(route);
+        if (chesses != null && chesses.length > 0) {
+          this.kick(chesses);
+          Laya.timer.once(2e3, this, () => {
+            complete.runWith(node);
+          });
+        } else {
+          complete.runWith(node);
+        }
       }
-      complete.runWith(node);
     }
     advance(node, diceNumber, complete) {
       let chess = node.getComponent(Chess);
@@ -12081,7 +12088,7 @@
     }
     onHurl(player) {
       Laya.timer.once(900, this, () => {
-        let num = Math.floor(Math.random() * 6);
+        let num = 5;
         player.event(Event3.Chuck, num);
       });
     }

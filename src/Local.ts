@@ -1,8 +1,6 @@
 const { regClass, property } = Laya;
-import * as SFS2X from "../node_modules/sfs2x-api";
 import { Room } from "./Room";
 import * as Player from "./Player";
-import { Performer } from "./Performer";
 
 @regClass()
 export class Local extends Laya.Script {
