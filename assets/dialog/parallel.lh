@@ -325,7 +325,13 @@
       "skin": "res://bf147980-14ee-4e11-8d74-e2601ba5f59f",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     },
     {
       "_$id": "7p1j40su",
