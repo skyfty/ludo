@@ -6,6 +6,8 @@
   "width": 750,
   "height": 1334,
   "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
   "_$child": [
     {
       "_$id": "8f7iuuei",
@@ -13,19 +15,24 @@
       "name": "view",
       "active": true,
       "x": 0,
-      "y": 0,
+      "y": 461,
       "visible": true,
-      "height": 1334,
+      "height": 411,
       "width": 750,
       "_$child": [
         {
           "_$override": "5j42b6as",
-          "x": 83
+          "x": 31,
+          "width": 695,
+          "useSourceSize": false,
+          "height": 376,
+          "y": 19.000000000000114
         },
         {
           "_$override": "gjhdic9x",
-          "x": 306,
-          "y": 545,
+          "x": 312,
+          "y": 245,
+          "visible": true,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -35,15 +42,16 @@
         },
         {
           "_$override": "9r94nh4g",
-          "x": 145,
-          "y": 354,
-          "text": "Do you accept the challenge?"
+          "x": 65,
+          "y": 65,
+          "text": "Can't join the room",
+          "width": 626
         },
         {
           "_$override": "9i71029w",
           "width": 89,
-          "x": 181,
-          "y": 544,
+          "x": 192,
+          "y": 245,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",

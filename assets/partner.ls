@@ -104,9 +104,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             },
             {
               "_$id": "sh5s9z69",
@@ -121,9 +127,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             },
             {
               "_$id": "63gu73ql",
@@ -159,9 +171,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             },
             {
               "_$id": "ddkd76e3",
@@ -176,9 +194,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             },
             {
               "_$id": "0hioib88",
@@ -193,9 +217,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             }
           ]
         },
@@ -220,9 +250,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             },
             {
               "_$id": "mzgidu6j",
@@ -237,9 +273,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             },
             {
               "_$id": "qxjah3hz",
@@ -254,9 +296,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             },
             {
               "_$id": "cj0tvztg",
@@ -271,9 +319,15 @@
               "clipHeight": 142,
               "clipX": 3,
               "clipY": 3,
-              "index": 6,
+              "index": 4,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
+              "_$comp": [
+                {
+                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
+                  "scriptPath": "../src/PlayerProfile.ts"
+                }
+              ]
             }
           ]
         }

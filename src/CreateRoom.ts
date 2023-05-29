@@ -48,7 +48,7 @@ export class CreateRoom extends Laya.Script {
     }
     removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
     }
 
     private onRoomJoin(event: SFS2X.SFSEvent) {
@@ -58,11 +58,11 @@ export class CreateRoom extends Laya.Script {
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
         if (evtParams.cmd == "CreateRoom") {
-            let responseParams = evtParams.params;
-            let roomId = responseParams.get("RoomId");
+            let roomId = evtParams.params.get("RoomId");
             Station.joinRoom(Station.sfs.getRoomById(roomId))
         }
     }
+
     onCreateRoom() {
         var params = new SFS2X.SFSObject();
         params.putUtfString("Color", Config.Colors[this.colorIdx]);

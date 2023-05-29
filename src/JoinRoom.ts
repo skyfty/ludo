@@ -29,11 +29,21 @@ export class JoinRoom extends Laya.Script {
         this.play.on(Laya.Event.CLICK, this, ()=>{
             let roomId =  this.roomInput.text;
             let room = Station.sfs.getRoomById(Number.parseInt(roomId));
-            Station.joinRoom(room)
+            if (room != null) {
+                Station.joinRoom(room)
+            } else {
+                this.joinRoomError();
+            }
         });
         this.closeBtn.on(Laya.Event.CLICK, this, () => {
             this.owner.event(Laya.Event.CLOSE);
         });
+    }
+
+    joinRoomError() {
+        Laya.Scene.open("dialog/roomjoinerror.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+            dlg.getChildByName("view").getChildByName("return").on(Laya.Event.CLICK, dlg,dlg.close);
+        }));
     }
     
     onDestroy(): void {
@@ -42,14 +52,16 @@ export class JoinRoom extends Laya.Script {
 
     addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
 
     }
     removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
     }
 
     private onRoomJoin(event: SFS2X.SFSEvent) {
-        Laya.Scene.open("dialog/engagement.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+        Laya.Scene.open("dialog/selectcolor.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.on(Laya.Event.PLAYED, this, (color:string)=>{
                 Dialog.closeAll();
                 Laya.Scene.open("partner.ls", true,{"color":color});

@@ -1,6 +1,7 @@
 {
   "_$ver": 1,
-  "_$id": "lb8wglij",
+  "_$id": "k6dp8f57",
+  "_$runtime": "res://b162ad1a-cdc1-48a5-bc94-b89651a443fa",
   "_$type": "Dialog",
   "name": "Dialog",
   "width": 750,
@@ -10,25 +11,29 @@
   "isModal": true,
   "_$child": [
     {
-      "_$id": "wzycx36g",
+      "_$id": "8f7iuuei",
       "_$prefab": "fc45a8ff-86ed-4bfe-bdc0-b043f2441912",
       "name": "view",
       "active": true,
-      "x": 0,
-      "y": 459,
+      "x": -1,
+      "y": 449,
       "visible": true,
-      "height": 415,
-      "width": 750,
+      "height": 435,
+      "width": 751,
       "_$child": [
         {
           "_$override": "5j42b6as",
-          "x": 81,
-          "y": 26.000000000000114
+          "x": 25,
+          "width": 695,
+          "useSourceSize": false,
+          "height": 376,
+          "y": 23.000000000000114
         },
         {
           "_$override": "gjhdic9x",
-          "x": 236,
-          "y": 261,
+          "x": 306,
+          "y": 251,
+          "visible": false,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -38,15 +43,22 @@
         },
         {
           "_$override": "9r94nh4g",
-          "text": "The player has left the room",
-          "x": 143,
-          "y": 73
+          "x": 59,
+          "y": 69,
+          "text": "Can't join the room",
+          "width": 626
         },
         {
           "_$override": "9i71029w",
-          "visible": false,
-          "x": 198,
-          "y": 260
+          "width": 89,
+          "x": 330,
+          "y": 261,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
         }
       ]
     }

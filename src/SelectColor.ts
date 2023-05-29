@@ -4,7 +4,7 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 import { Config } from "./Config";
 
 @regClass()
-export class Engagement extends Laya.Script {
+export class SelectColor extends Laya.Script {
     @property(Laya.Button)
     public closeBtn: Laya.Button;
 
@@ -22,19 +22,20 @@ export class Engagement extends Laya.Script {
     onAwake(): void {
         for(let idx in this.colorCheckBox) {
             this.colorCheckBox[idx].on(Laya.Event.CLICK, this, (event) => {
+                this.play.disabled = false;
+
                 for(let idx2 in this.colorCheckBox) {
                     if (this.colorCheckBox[idx2].disabled) {
                         continue;
                     }
                     this.colorCheckBox[idx2].selected = (this.colorCheckBox[idx2] == event.target);
                 }
-                this.play.disabled = false;
-                this.colorIdx = Number.parseInt(idx);
 
                 let roomVars = [];
                 if (this.colorIdx != -1) {
                     roomVars.push(new SFS2X.SFSRoomVariable(Config.Colors[this.colorIdx], -1));
                 }
+                this.colorIdx = Number.parseInt(idx);
                 roomVars.push(new SFS2X.SFSRoomVariable(Config.Colors[this.colorIdx], Station.sfs.mySelf.id));
                 Station.setRoomVariables(roomVars);
             });

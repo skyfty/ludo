@@ -11,7 +11,7 @@
   "_$comp": [
     {
       "_$type": "f32c4edf-6089-4ecb-bbcd-19da79e65ff7",
-      "scriptPath": "../src/Engagement.ts",
+      "scriptPath": "../src/SelectColor.ts",
       "closeBtn": {
         "_$ref": "m8h9mes6"
       },

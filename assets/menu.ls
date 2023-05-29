@@ -40,7 +40,7 @@
       "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
-      "debug": false
+      "debug": true
     },
     {
       "_$type": "29c2dcf8-e04c-4052-8f49-3bc9f10e9645",

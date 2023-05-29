@@ -15,23 +15,23 @@
       "name": "view",
       "active": true,
       "x": 0,
-      "y": 0,
+      "y": 486,
       "visible": true,
-      "height": 1334,
+      "height": 361,
       "width": 750,
       "_$child": [
         {
           "_$override": "5j42b6as",
           "width": 560,
           "useSourceSize": false,
-          "y": 263,
-          "x": 95,
+          "y": -1,
+          "x": 102,
           "height": 376
         },
         {
           "_$override": "gjhdic9x",
-          "x": 314,
-          "y": 486,
+          "x": 321,
+          "y": 222,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -41,16 +41,16 @@
         },
         {
           "_$override": "9r94nh4g",
-          "x": 135,
-          "y": 318,
+          "x": 142,
+          "y": 54,
           "text": "End Current Game?",
           "width": 481
         },
         {
           "_$override": "9i71029w",
           "width": 89,
-          "x": 189,
-          "y": 485,
+          "x": 196,
+          "y": 221,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",

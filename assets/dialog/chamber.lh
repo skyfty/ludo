@@ -10,16 +10,6 @@
   "isModal": true,
   "_$comp": [
     {
-      "_$type": "d94b80bc-1711-4539-bf5e-7aee0a11f64c",
-      "scriptPath": "../src/TabView.ts",
-      "viewStack": {
-        "_$ref": "1529"
-      },
-      "tab": {
-        "_$ref": "1527"
-      }
-    },
-    {
       "_$type": "3f8e6b8d-6d34-43c2-9966-c664ee046249",
       "scriptPath": "../src/Chamber.ts",
       "viewStack": {
@@ -43,10 +33,10 @@
       "_$id": "j8inyigm",
       "_$type": "Tab",
       "name": "Tab",
-      "x": 98.00000000000001,
-      "y": 262,
+      "x": 91,
+      "y": 330,
       "width": 567,
-      "height": 480,
+      "height": 58,
       "mouseEnabled": true,
       "skin": "res://27500e65-93c0-47aa-8262-e23e43002041",
       "stateNum": 2,
@@ -68,7 +58,7 @@
       "_$type": "Image",
       "name": "Image",
       "x": 32,
-      "y": 311.5066266711534,
+      "y": 379,
       "width": 685.2627424412262,
       "height": 575.4933733288465,
       "mouseEnabled": true,
@@ -480,8 +470,8 @@
       "_$id": "v4u6heqb",
       "_$type": "Button",
       "name": "return",
-      "x": 351,
-      "y": 895,
+      "x": 347,
+      "y": 960,
       "width": 55,
       "height": 55,
       "mouseEnabled": true,

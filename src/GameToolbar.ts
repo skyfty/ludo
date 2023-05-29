@@ -1,3 +1,5 @@
+import { Dialog } from "./Dialog";
+
 const { regClass, property,SoundManager } = Laya;
 
 @regClass()
@@ -16,7 +18,7 @@ export class GameToolbar extends Laya.Script {
                 let view = dlg.getChildByName("view");
                 view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
                 view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
-                    dlg.close();
+                    Dialog.closeAll();
                     Laya.Scene.open("menu.ls");
                 });
 

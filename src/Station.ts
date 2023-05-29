@@ -69,6 +69,7 @@ export class Station extends Laya.Script {
         Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, Station.onConnectionLost, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, Station.onLogout, Station.sfs);
     }
 
     onDestroy(): void {
@@ -76,6 +77,7 @@ export class Station extends Laya.Script {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.CONNECTION_LOST, Station.onConnectionLost, Station.sfs);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGOUT, Station.onLogout, Station.sfs);
     }
 
     private static onConnection(event: SFS2X.SFSEvent) {
@@ -85,18 +87,22 @@ export class Station extends Laya.Script {
     }
 
     private static onConnectionLost() {
-        Laya.timer.once(5000, Station.sfs, ()=>{
+        Laya.timer.once(5000, this, ()=>{
             Station.sfs.connect();
         });
     }
 
+    private static onLogout() {
+        
+    }
+
+
     private static onLogin() {
-        	// Send two integers to the Zone extension and get their sum in return
     }
 
 
     private static onLoginError(event: SFS2X.SFSEvent) {
-        Laya.timer.once(1000 * 60, Station.sfs, ()=>{
+        Laya.timer.once(1000 * 60, this, ()=>{
             Station.sfs.send(new SFS2X.LoginRequest( Station.loginName));
         });
     }
