@@ -54,6 +54,16 @@
           "color": 4294967295
         }
       ],
+      "_filters": [
+        {
+          "_$type": "ColorFilter",
+          "_color": "rgba(59, 57, 57, 1)",
+          "_brightness": null,
+          "_contrast": null,
+          "_saturation": null,
+          "_hue": null
+        }
+      ],
       "_$comp": [
         {
           "_$type": "9f78dd27-7aab-4a69-87aa-70472fc0ec06",

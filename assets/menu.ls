@@ -37,14 +37,10 @@
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
       "playerName": "Feitianyu",
-      "host": "127.0.0.1",
+      "host": "39.104.230.103",
       "port": 8080,
       "zone": "Ludo",
-      "debug": true
-    },
-    {
-      "_$type": "29c2dcf8-e04c-4052-8f49-3bc9f10e9645",
-      "scriptPath": "../src/Shelve.ts"
+      "debug": false
     }
   ],
   "_$child": [
@@ -52,10 +48,9 @@
       "_$id": "xjmkpbl5",
       "_$type": "Sprite",
       "name": "Sprite",
-      "x": 2.0000000000001137,
-      "y": 4.000000000000028,
-      "width": 746,
-      "height": 1328,
+      "x": -1.8653590928348905e-13,
+      "width": 750,
+      "height": 1334,
       "_gcmds": [
         {
           "_$type": "FillTextureCmd",

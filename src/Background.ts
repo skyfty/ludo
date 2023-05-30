@@ -11,14 +11,14 @@ export class Background extends Laya.Script {
      * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
      */
     onAwake(): void {
-        let ownerSprite = this.owner as Laya.Sprite;
-        ownerSprite.x = 0; 
-        ownerSprite.y = 0;
-        ownerSprite.width = Laya.Browser.width;
-        ownerSprite.height = Laya.Browser.height;
+     
     }
 
     onUpdate(): void {
-  
+        let ownerSprite = this.owner as Laya.Sprite;
+        ownerSprite.x = 0; 
+        ownerSprite.y = 0;
+        ownerSprite.width = Laya.stage.width;
+        ownerSprite.height = Laya.stage.height;
     }
 }
