@@ -82,7 +82,7 @@ export class Station extends Laya.Script {
 
     private static onConnection(event: SFS2X.SFSEvent) {
         if (event.success) {
-            Station.sfs.send(new SFS2X.LoginRequest( Station.loginName));
+            Station.sfs.send(new SFS2X.LoginRequest());
         }
     }
 
@@ -96,14 +96,13 @@ export class Station extends Laya.Script {
         
     }
 
-
     private static onLogin() {
     }
 
 
     private static onLoginError(event: SFS2X.SFSEvent) {
         Laya.timer.once(1000 * 60, this, ()=>{
-            Station.sfs.send(new SFS2X.LoginRequest( Station.loginName));
+            Station.sfs.send(new SFS2X.LoginRequest());
         });
     }
 

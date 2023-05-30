@@ -43,22 +43,12 @@ export class Menu extends Laya.Script {
     onChallengeComputer() {
         this.openParallelDlg(Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new ComputerParallel());
-            dlg.on(Laya.Event.PLAYED,this, (color:string, num:number)=>{
-                dlg.close();
-                Laya.Scene.open("game.ls", true, { "type": "computer", "color": color,"number":num });
-            });
         }));
     }
     
     onChallengeExtreme() {
         this.openParallelDlg( Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.addComponentInstance(new OnlineParallel());
-            dlg.on(Laya.Event.PLAYED,this, (color:string, roomId:number)=>{
-                dlg.close();
-                dlg.removeSelf();
-                Laya.Scene.open("partner.ls", true,{"color":color});
-            });
-            dlg.on(Laya.Event.CLOSE,dlg, dlg.close);
         }));
     }
 

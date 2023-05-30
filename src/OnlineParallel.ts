@@ -1,75 +1,35 @@
 const { regClass, property } = Laya;
-import { Config } from "./Config";
-import { Parallel } from "./Parallel";
-import {Station} from "./Station";
+import { GameRoom } from "./GameRoom";
+import { Parallel } from "./Parallel"
 import * as SFS2X from "../node_modules/sfs2x-api";
+import { Station } from "./Station";
+import { Config } from "./Config";
 
 @regClass()
-export class OnlineParallel extends Laya.Script {
-
-    private colorIdx: number = -1;
-    public numberOfPlayer:number = 2;
-
+export class OnlineParallel extends GameRoom {
     constructor() {
         super();
     }
 
     onAwake(): void {
+        super.onAwake();
         let parallel = this.owner.getComponent(Parallel);
         parallel.play.on(Laya.Event.CLICK, this, this.onPlay);
-
-        parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
-            this.owner.event(Laya.Event.CLOSE);
-            this.owner.removeSelf();
-        });
-
-        for (let idx in parallel.colorCheckBox) {
-            parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
-                parallel.play.disabled = false;
-                this.colorIdx = Number.parseInt(idx);
-            });
-        }
-    }
-
-    onStart(): void {
-        this.addStationListener();
-    }
-
-    onDestroy(): void {
-        this.removeStationListener();
-    }
-
-    addStationListener() {
-        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse,  this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-
-    }
-    removeStationListener() {
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
-    }
-
-    private onRoomJoin(event: SFS2X.SFSEvent) {
-        this.owner.event(Laya.Event.PLAYED, [Config.Colors[this.colorIdx]]);
-    }
-
-    private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
-        if (evtParams.cmd == "CreateRoom") {
-            let responseParams = evtParams.params;
-            Station.sfs.send(new SFS2X.ExtensionRequest("Challenge", responseParams));
-        } else  if (evtParams.cmd == "Challenge") {
-            let responseParams = evtParams.params;
-            let roomId = responseParams.get("RoomId");
-            let room = Station.sfs.getRoomById(roomId);
-            Station.joinRoom(room);
-        }
     }
 
     onPlay() {
-        var params = new SFS2X.SFSObject();
-        params.putUtfString("Color", Config.Colors[this.colorIdx]);
-        params.putInt("MaxUsers", 2);
-        Station.sfs.send(new SFS2X.ExtensionRequest("CreateRoom", params));
-    }
+        let parallel = this.owner.getComponent(Parallel) as Parallel;
+        
+        var roomVars = this.getRoomInitVariable(false);
+        var settings = this.getRoomSettings(parallel.numberOfPlayer);
+        settings.variables = roomVars;
 
+        var exp = new SFS2X.MatchExpression(SFS2X.RoomProperties.IS_GAME, SFS2X.BoolMatch.EQUALS, true)
+        .and(SFS2X.RoomProperties.HAS_FREE_PLAYER_SLOTS, SFS2X.BoolMatch.EQUALS, true)
+        .and(SFS2X.RoomProperties.MAX_USERS, SFS2X.NumberMatch.EQUALS, parallel.numberOfPlayer)
+        .and("private", SFS2X.BoolMatch.EQUALS, false)
+        .and(Config.Colors[this.colorIdx], SFS2X.NumberMatch.EQUALS, -1);
+
+        Station.sfs.send(new SFS2X.QuickJoinOrCreateRoomRequest(exp, ["default"], settings, Station.sfs.lastJoinedRoom));
+    }
 }

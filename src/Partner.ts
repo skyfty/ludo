@@ -48,7 +48,7 @@ export class Pariner extends Laya.Scene {
         this.color = param.color;
 
         this.roomId.text = Station.sfs.lastJoinedRoom.id;
-        this.numberOfPlayer = Station.sfs.lastJoinedRoom.getVariable("MaxUsers").value;
+        this.numberOfPlayer = Station.sfs.lastJoinedRoom.maxUsers;
 
         let itemName = this.numberOfPlayer - 2;
         this.viewStack.selectedIndex = itemName;
@@ -97,7 +97,9 @@ export class Pariner extends Laya.Scene {
 
     onRoomUpdate() {
         this.stopAllClip(true);
-
+        if (Station.sfs.lastJoinedRoom == null) {
+            return;
+        }
         let users = Station.sfs.lastJoinedRoom.getUserList();
         let cnt = 0;
         let roomVars = Station.sfs.lastJoinedRoom.getVariables();

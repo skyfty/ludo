@@ -4,7 +4,6 @@ import { Station } from "./Station";
 
 @regClass()
 export class Invite extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
 
     private invite:SFS2X.SFSInvitation = null;
 
