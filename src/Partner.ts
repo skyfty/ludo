@@ -112,6 +112,7 @@ export class Pariner extends Laya.Scene {
                 if (pp != null) {
                     cnt++;
                     pp.autoPlay = false;
+                    pp.index = users[i].getVariable("avatar").value;
                 }
             }
         }

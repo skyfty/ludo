@@ -1,5 +1,6 @@
 const { regClass, property } = Laya;
 import * as SFS2X from "../node_modules/sfs2x-api";
+import { Profile } from "./Profile";
 
 export class Event {
     static Login = "LOGIN";
@@ -69,7 +70,7 @@ export class Station extends Laya.Script {
         Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, Station.onConnectionLost, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, Station.onLogout, Station.sfs);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse,  this);
     }
 
     onDestroy(): void {
@@ -77,7 +78,7 @@ export class Station extends Laya.Script {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.CONNECTION_LOST, Station.onConnectionLost, Station.sfs);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGOUT, Station.onLogout, Station.sfs);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
 
     private static onConnection(event: SFS2X.SFSEvent) {
@@ -92,13 +93,28 @@ export class Station extends Laya.Script {
         });
     }
 
-    private static onLogout() {
-        
+    private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
+        if (evtParams.cmd == "SyncProfile") {
+            Profile.setSyncParam(evtParams.params);
+            Station.updatePlayerInfo();
+        }
     }
 
-    private static onLogin() {
+    public static sync() {
+        let params = Profile.getSyncParam();
+        Station.sfs.send(new SFS2X.ExtensionRequest( "SyncProfile", params));
+    }
+    private static onLogin(event: SFS2X.SFSEvent) {
+        Station.sync();
+        Station.updatePlayerInfo();
     }
 
+    public static updatePlayerInfo() {
+        let userVars:SFS2X.SFSUserVariable[] = [];
+        userVars.push(new SFS2X.SFSUserVariable("avatar", Profile.getAvatar()));
+        userVars.push(new SFS2X.SFSUserVariable("nickname", Profile.getNickname()));
+        Station.sfs.send(new SFS2X.SetUserVariablesRequest(userVars));
+    }
 
     private static onLoginError(event: SFS2X.SFSEvent) {
         Laya.timer.once(1000 * 60, this, ()=>{
@@ -120,11 +136,6 @@ export class Station extends Laya.Script {
             }
         }
         return null;
-    }
-
-
-    public static getUserStateName(color:string, id:number) {
-        return color + id;
     }
 
     public static getOnlineUser(userId: number, users: SFS2X.SFSUser[]) {
@@ -153,6 +164,9 @@ export class Station extends Laya.Script {
 
     }
 
+    public static getUserStateName(color:string, id:number) {
+        return color + id;
+    }
     public static getUserList() {
         return Station.sfs.lastJoinedRoom.getUserList();
     }

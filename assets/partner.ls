@@ -120,50 +120,30 @@
           "visible": false,
           "_$child": [
             {
-              "_$id": "pwbl4dzw",
-              "_$type": "Clip",
+              "_$id": "1xercp42",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "0",
+              "active": true,
               "x": 153,
               "y": 74,
+              "visible": true,
               "width": 143,
               "height": 143,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             },
             {
-              "_$id": "sh5s9z69",
-              "_$type": "Clip",
+              "_$id": "oofp7t3x",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "1",
+              "active": true,
               "x": 440,
               "y": 72,
+              "visible": true,
               "width": 143,
-              "height": 142.5,
-              "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
+              "height": 143,
               "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "autoPlay": true
             },
             {
               "_$id": "63gu73ql",
@@ -187,73 +167,43 @@
           "height": 334.5,
           "_$child": [
             {
-              "_$id": "bkjr52fs",
-              "_$type": "Clip",
+              "_$id": "0z4z1o9k",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "0",
-              "x": 153,
-              "y": 80.25,
-              "width": 133.5,
-              "height": 133.5,
+              "active": true,
+              "x": 152.9999999999999,
+              "y": 80.00000000000006,
+              "visible": true,
+              "width": 134,
+              "height": 134,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             },
             {
-              "_$id": "ddkd76e3",
-              "_$type": "Clip",
+              "_$id": "0iwy9hvg",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "1",
+              "active": true,
               "x": 308,
-              "y": 80.25,
-              "width": 133.5,
-              "height": 133.5,
+              "y": 80,
+              "visible": true,
+              "width": 134,
+              "height": 134,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             },
             {
-              "_$id": "0hioib88",
-              "_$type": "Clip",
+              "_$id": "nge0y1ok",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "2",
+              "active": true,
               "x": 463,
-              "y": 80.25,
-              "width": 133.5,
-              "height": 133.5,
+              "y": 80,
+              "visible": true,
+              "width": 134,
+              "height": 134,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             }
           ]
         },
@@ -266,96 +216,56 @@
           "visible": false,
           "_$child": [
             {
-              "_$id": "kd4nd07o",
-              "_$type": "Clip",
+              "_$id": "tgkmuq5u",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "0",
-              "x": 126.99999999999997,
-              "y": 89.25,
-              "width": 115.5,
-              "height": 115.5,
+              "active": true,
+              "x": 127,
+              "y": 89,
+              "visible": true,
+              "width": 116,
+              "height": 116,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             },
             {
-              "_$id": "mzgidu6j",
-              "_$type": "Clip",
+              "_$id": "57zu0fob",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "1",
+              "active": true,
               "x": 499,
-              "y": 89.25,
-              "width": 115.5,
-              "height": 115.5,
+              "y": 89,
+              "visible": true,
+              "width": 116,
+              "height": 116,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             },
             {
-              "_$id": "qxjah3hz",
-              "_$type": "Clip",
+              "_$id": "sjf1nkyn",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "2",
+              "active": true,
               "x": 375,
-              "y": 89.25,
-              "width": 115.5,
-              "height": 115.5,
+              "y": 89,
+              "visible": true,
+              "width": 116,
+              "height": 116,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             },
             {
-              "_$id": "cj0tvztg",
-              "_$type": "Clip",
+              "_$id": "sbga52ec",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "3",
+              "active": true,
               "x": 251,
-              "y": 89.25,
-              "width": 115.5,
-              "height": 115.5,
+              "y": 89,
+              "visible": true,
+              "width": 116,
+              "height": 116,
               "autoPlay": true,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 4,
-              "interval": 200,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f",
-              "_$comp": [
-                {
-                  "_$type": "4b5b8de8-d817-409d-aeeb-51e8cd7705a7",
-                  "scriptPath": "../src/PlayerProfile.ts"
-                }
-              ]
+              "interval": 200
             }
           ]
         }

@@ -11,116 +11,193 @@
   "isModal": true,
   "_$comp": [
     {
-      "_$type": "3f8e6b8d-6d34-43c2-9966-c664ee046249",
-      "scriptPath": "../src/Chamber.ts",
-      "viewStack": null,
-      "tab": null,
-      "createRoom": null,
-      "joinRoom": null
+      "_$type": "52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3",
+      "scriptPath": "../src/ProfileDialog.ts",
+      "name": {
+        "_$ref": "ejgj5wu5"
+      },
+      "avatarList": {
+        "_$ref": "sb50k42b"
+      },
+      "returnBtn": {
+        "_$ref": "knr58tpv"
+      },
+      "avatarNumber": 15
     }
   ],
   "_$child": [
     {
-      "_$id": "qof49bki",
-      "_$type": "Image",
-      "name": "Image",
-      "x": 86,
-      "y": 265,
-      "width": 580.2627424412262,
-      "height": 715.4933733288465,
-      "mouseEnabled": true,
-      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "i3ngc7oz",
-      "_$type": "Image",
-      "name": "Image(1)",
-      "x": 121,
-      "y": 295,
-      "width": 121,
-      "height": 131,
-      "mouseEnabled": true,
-      "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
-      "useSourceSize": true,
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "ejgj5wu5",
-      "_$type": "TextInput",
-      "name": "TextInput",
-      "x": 260.5406564349961,
-      "y": 348.4992949216053,
-      "width": 364,
-      "height": 69,
-      "mouseEnabled": true,
-      "text": "TextInput",
-      "fontSize": 20,
-      "color": "#FFFFFF",
-      "valign": "middle",
-      "overflow": "scroll",
-      "leading": 0,
-      "padding": "2,6,2,6",
-      "skin": "res://87262606-4dfe-490e-8644-7fd6496c2be7",
-      "type": "text",
-      "maxChars": 100000,
-      "restrict": "",
-      "prompt": "",
-      "promptColor": "#A9A9A9"
-    },
-    {
-      "_$id": "3w0hngvw",
-      "_$type": "Box",
-      "name": "Box",
-      "x": 130,
-      "y": 452,
-      "width": 496,
-      "height": 382,
-      "bgColor": "rgba(227, 136, 136, 1)"
-    },
-    {
-      "_$id": "0bqqzxd3",
+      "_$id": "ju86p0kv",
       "_$type": "Sprite",
-      "name": "Sprite",
-      "x": 124.99999999999997,
-      "y": 444.00000000000006,
-      "width": 505,
-      "height": 398,
-      "texture": {
-        "_$uuid": "8411c299-45f9-4865-aa35-709aca144e86",
-        "_$type": "Texture"
-      }
-    },
-    {
-      "_$id": "o4qxhuk2",
-      "_$type": "List",
-      "name": "List",
-      "x": 159.5406564349965,
-      "y": 470.317215109053,
-      "width": 439,
-      "height": 348,
-      "itemTemplate": {
-        "_$ref": "6fr2ir0j",
-        "_$tmpl": "itemRender"
-      },
-      "repeatX": 4,
-      "repeatY": 3,
-      "spaceX": 10,
-      "spaceY": 10,
+      "name": "Sprite(1)",
+      "x": 325,
+      "y": 617,
+      "width": 100,
+      "height": 100,
+      "mouseEnabled": true,
       "_$child": [
         {
-          "_$id": "6fr2ir0j",
-          "_$type": "Clip",
-          "name": "Clip",
+          "_$id": "qof49bki",
+          "_$type": "Image",
+          "name": "Image",
+          "x": -231.99999999999983,
+          "y": -313,
+          "width": 580.2627424412262,
+          "height": 715.4933733288465,
+          "mouseEnabled": true,
+          "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "0pnqhngc",
+          "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+          "name": "avatarclip",
+          "active": true,
+          "x": -187,
+          "y": -267,
+          "visible": true,
           "width": 100,
           "height": 100,
-          "clipWidth": 0,
-          "clipHeight": 0,
-          "clipX": 3,
-          "clipY": 3,
-          "index": 0,
-          "interval": 50,
-          "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+          "_$comp": [
+            {
+              "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
+              "scriptPath": "../src/MyselfAvatar.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "i3ngc7oz",
+          "_$type": "Image",
+          "name": "Image(1)",
+          "x": -196.9999999999999,
+          "y": -283,
+          "width": 121,
+          "height": 131,
+          "mouseEnabled": true,
+          "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+          "useSourceSize": true,
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "ejgj5wu5",
+          "_$type": "TextInput",
+          "name": "TextInput",
+          "x": -65.4593435650037,
+          "y": -267.5007050783947,
+          "width": 364,
+          "height": 56,
+          "mouseEnabled": true,
+          "text": "",
+          "fontSize": 38,
+          "color": "#A9A9A9",
+          "valign": "middle",
+          "bgColor": "rgba(5, 5, 31, 1)",
+          "borderColor": "rgba(103, 103, 103, 1)",
+          "overflow": "hidden",
+          "leading": 0,
+          "padding": "2,6,2,6",
+          "skin": "res://87262606-4dfe-490e-8644-7fd6496c2be7",
+          "type": "text",
+          "maxChars": 100000,
+          "restrict": "",
+          "prompt": "",
+          "promptColor": "#A9A9A9"
+        },
+        {
+          "_$id": "3w0hngvw",
+          "_$type": "Box",
+          "name": "Box",
+          "x": -187.99999999999972,
+          "y": -126.00000000000011,
+          "width": 496,
+          "height": 382,
+          "bgColor": "rgba(78, 56, 102, 1)"
+        },
+        {
+          "_$id": "0bqqzxd3",
+          "_$type": "Sprite",
+          "name": "Sprite",
+          "x": -192.99999999999994,
+          "y": -134,
+          "width": 505,
+          "height": 398,
+          "texture": {
+            "_$uuid": "8411c299-45f9-4865-aa35-709aca144e86",
+            "_$type": "Texture"
+          }
+        },
+        {
+          "_$id": "knr58tpv",
+          "_$type": "Button",
+          "name": "return",
+          "x": 25.00000000000017,
+          "y": 288.9999999999998,
+          "width": 61.5,
+          "height": 61.5,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+          "label": "",
+          "labelSize": 20,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "oq9gzesv",
+          "_$type": "Image",
+          "name": "Image(2)",
+          "x": -144.62845196263328,
+          "y": -112.96686813531808,
+          "width": 414.05559651077095,
+          "height": 38.04492464111219,
+          "skin": "res://40a11471-15ee-4f99-91c3-45ae2832a417",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "sb50k42b",
+          "_$type": "List",
+          "name": "List",
+          "x": -144.99999999999986,
+          "y": -62,
+          "width": 413,
+          "height": 315,
+          "mouseEnabled": true,
+          "itemTemplate": {
+            "_$ref": "3ms190lj",
+            "_$tmpl": "itemRender"
+          },
+          "repeatX": 3,
+          "repeatY": 3,
+          "spaceX": 15,
+          "spaceY": 5,
+          "scrollType": 2,
+          "selectEnable": true,
+          "_$child": [
+            {
+              "_$id": "3ms190lj",
+              "_$type": "Box",
+              "name": "Box",
+              "width": 120,
+              "height": 120,
+              "_$child": [
+                {
+                  "_$id": "112aelym",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatarclip",
+                  "active": true,
+                  "x": 0,
+                  "y": 0,
+                  "visible": true,
+                  "width": 120,
+                  "height": 120
+                }
+              ]
+            }
+          ]
         }
       ]
     }

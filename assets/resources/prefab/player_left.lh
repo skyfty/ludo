@@ -66,6 +66,9 @@
           "scriptPath": "../src/Trade.ts",
           "disabledBk": {
             "_$ref": "be351v56"
+          },
+          "avatar": {
+            "_$ref": "g584oyts"
           }
         },
         {
@@ -94,15 +97,15 @@
           }
         },
         {
-          "_$id": "cfxctmx8",
-          "_$type": "Image",
-          "name": "avatar",
-          "x": 16.000000000000007,
-          "y": 27.000000000000007,
+          "_$id": "g584oyts",
+          "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+          "name": "avatarclip",
+          "active": true,
+          "x": 16,
+          "y": 27,
+          "visible": true,
           "width": 53,
-          "height": 52.5,
-          "skin": "res://0b1164ee-90fe-423d-8f67-3c9db0bf4be5",
-          "color": "#ffffff"
+          "height": 53
         },
         {
           "_$id": "nm9rv55z",

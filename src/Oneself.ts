@@ -4,6 +4,7 @@ import { Performer } from "./Performer";
 import * as Player from "./Player";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
+import { MyselfAvatar } from "./MyselfAvatar";
 
 @regClass()
 export class Oneself extends Performer {
@@ -17,7 +18,6 @@ export class Oneself extends Performer {
         super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
         this.owner.on(Player.Event.Chuck, this, this.onChuck);
-
     }
     /**
      * 第一次执行update之前执行，只会执行一次

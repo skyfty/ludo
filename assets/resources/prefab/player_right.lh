@@ -66,7 +66,8 @@
           "scriptPath": "../src/Trade.ts",
           "disabledBk": {
             "_$ref": "yc6isfcb"
-          }
+          },
+          "avatar": null
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -94,15 +95,15 @@
           }
         },
         {
-          "_$id": "cfxctmx8",
-          "_$type": "Image",
-          "name": "avatar",
-          "x": 126.99999999999997,
-          "y": 26.000000000000004,
+          "_$id": "taf855d7",
+          "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+          "name": "avatarclip",
+          "active": true,
+          "x": 127,
+          "y": 26,
+          "visible": true,
           "width": 53,
-          "height": 53,
-          "skin": "res://0b1164ee-90fe-423d-8f67-3c9db0bf4be5",
-          "color": "#ffffff"
+          "height": 53
         },
         {
           "_$id": "4nqhjgzi",

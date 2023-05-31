@@ -1670,6 +1670,15 @@
               "y": 5,
               "_$comp": [
                 {
+                  "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
+                  "avatar": {
+                    "_$ref": [
+                      "b7zhaso0",
+                      "taf855d7"
+                    ]
+                  }
+                },
+                {
                   "_$override": "26418778-2a8b-4ac8-aa46-9e423be83978",
                   "diceDefault": {
                     "_$ref": [
@@ -2044,6 +2053,15 @@
               "y": -40,
               "x": -25,
               "_$comp": [
+                {
+                  "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
+                  "avatar": {
+                    "_$ref": [
+                      "qs7wy01p",
+                      "taf855d7"
+                    ]
+                  }
+                },
                 {
                   "_$override": "26418778-2a8b-4ac8-aa46-9e423be83978",
                   "diceDefault": {

@@ -3,6 +3,7 @@ import * as Route from "./Route";
 import { Config } from "./Config";
 import { Dice } from "./Dice";
 import { Room } from "./Room";
+import { Trade } from "./Trade";
 
 const { regClass, property, SoundManager } = Laya;
 
@@ -21,8 +22,8 @@ export class Event {
 
 export interface Profile {
     id: number,
-    name: string;
-    avatar: string;
+    nickname: string;
+    avatar: number;
 }
 
 export enum Type {
@@ -268,5 +269,9 @@ export class Player extends Laya.Script {
                 this.onAdvanceComplete(node, complete);
             }));
         }
+    }
+
+    public setProfile(profile:Profile) {
+        this.trade.getComponent(Trade).avatar.index = profile.avatar;
     }
 }

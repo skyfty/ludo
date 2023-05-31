@@ -181,6 +181,7 @@ export class Room extends Laya.Script {
                 break;
             }
         }
+        player.getComponent(Player.Player).setProfile(profile);
         return player;
     }
 }

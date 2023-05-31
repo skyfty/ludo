@@ -3,10 +3,12 @@ import { Dice } from "./Dice";
 
 @regClass()
 export class Trade extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
 
     @property(Laya.Image)
     public disabledBk: Laya.Image;
+
+    @property(Laya.Clip)
+    public avatar: Laya.Clip;
 
     constructor() {
         super();

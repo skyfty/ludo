@@ -1,0 +1,16 @@
+{
+  "_$ver": 1,
+  "_$id": "dg2a9rrd",
+  "_$type": "Clip",
+  "name": "Clip",
+  "width": 142,
+  "height": 142,
+  "mouseEnabled": true,
+  "clipWidth": 0,
+  "clipHeight": 0,
+  "clipX": 3,
+  "clipY": 5,
+  "index": 0,
+  "interval": 50,
+  "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+}

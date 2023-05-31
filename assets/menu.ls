@@ -31,6 +31,9 @@
       "parallel": {
         "_$uuid": "2c2ebf8d-515e-48c3-a5b6-9608800d2ad3",
         "_$type": "Prefab"
+      },
+      "avatar": {
+        "_$ref": "upjap8ug"
       }
     },
     {
@@ -40,7 +43,7 @@
       "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
-      "debug": true
+      "debug": false
     }
   ],
   "_$child": [
@@ -143,7 +146,7 @@
       "name": "title",
       "x": 3,
       "y": 2,
-      "width": 629,
+      "width": 745,
       "height": 120,
       "mouseEnabled": true,
       "_$child": [
@@ -190,20 +193,21 @@
               "color": "#ffffff"
             },
             {
-              "_$id": "pmqpnc19",
-              "_$type": "Clip",
-              "name": "Clip",
+              "_$id": "qyjdg8vb",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+              "name": "avatarclip",
+              "active": true,
               "x": 13,
               "y": 15,
+              "visible": true,
               "width": 93,
               "height": 93,
-              "clipWidth": 142,
-              "clipHeight": 142,
-              "clipX": 3,
-              "clipY": 3,
-              "index": 0,
-              "interval": 50,
-              "skin": "res://18e8873a-666d-4d22-a2d0-0ed15061217f"
+              "_$comp": [
+                {
+                  "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
+                  "scriptPath": "../src/MyselfAvatar.ts"
+                }
+              ]
             },
             {
               "_$id": "7orvzytu",
@@ -236,6 +240,63 @@
               "scriptPath": "../src/ClickSound.ts"
             }
           ]
+        },
+        {
+          "_$id": "pizo50xh",
+          "_$type": "Image",
+          "name": "Image(1)",
+          "x": 403.2734634485812,
+          "y": 8.9454971056211,
+          "width": 234.2907917628815,
+          "height": 43.14306139879168,
+          "skin": "res://b1efaebe-e898-4c1c-b6e8-116178343fe5",
+          "color": "#ffffff",
+          "_$child": [
+            {
+              "_$id": "l1m23pig",
+              "_$type": "Label",
+              "name": "gold",
+              "x": 50,
+              "y": 5,
+              "width": 165.3109959274343,
+              "height": 32.413920770085156,
+              "text": "9999999999",
+              "fontSize": 28,
+              "color": "#FFFFFF",
+              "valign": "bottom",
+              "leading": 0,
+              "padding": "0,0,0,0"
+            }
+          ]
+        },
+        {
+          "_$id": "hcfkoj97",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 140,
+          "y": 16,
+          "width": 59,
+          "height": 26,
+          "text": "LV.",
+          "fontSize": 34,
+          "color": "rgba(243, 202, 13, 1)",
+          "bold": true,
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "9ufohixi",
+          "_$type": "Label",
+          "name": "lv",
+          "x": 200,
+          "y": 16,
+          "width": 120,
+          "height": 26,
+          "text": "3\n",
+          "fontSize": 34,
+          "color": "#FFFFFF",
+          "leading": 0,
+          "padding": "0,0,0,0"
         }
       ]
     },

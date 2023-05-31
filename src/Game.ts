@@ -7,6 +7,7 @@ import * as Player from "./Player";
 import { Sender } from "./Sender";
 import { Config } from "./Config";
 import  {Station} from "./Station";
+import { Profile } from "./Profile";
 
 @regClass()
 export class Game extends Laya.Scene {
@@ -37,10 +38,12 @@ export class Game extends Laya.Scene {
         for (let i = 0; i < users.length; ++i) {
             let color = Station.getUserColor(users[i]);
             let type = users[i].isItMe ? Player.Type.Oneself : Player.Type.Extreme;
+            let nickname = users[i].getVariable("nickname");
+            let avatar = users[i].getVariable("avatar");
             let player = this.room.addPlayer(color, type, {
                 "id": users[i].id,
-                "name": users[i].name,
-                "avatar": ""
+                "nickname": nickname.value,
+                "avatar": avatar.value
             });
             if (users[i].isItMe) {
                 player.addComponentInstance(new Sender());
@@ -54,8 +57,8 @@ export class Game extends Laya.Scene {
 
         this.room.addPlayer(param.color, Player.Type.Oneself, {
             "id": 0,
-            "name": "Oneself",
-            "avatar": ""
+            "nickname": Profile.getNickname(),
+            "avatar": Profile.getAvatar()
         });
         let colors = JSON.parse(JSON.stringify(Config.Colors))
         let idx = colors.indexOf(param.color);
@@ -75,8 +78,8 @@ export class Game extends Laya.Scene {
     private addComputerPlayer(color:string, id:number) {
         this.room.addPlayer(color, Player.Type.Computer, {
             "id": id,
-            "name": "Computer",
-            "avatar": ""
+            "nickname": "Computer",
+            "avatar": 0
         });
     }
 

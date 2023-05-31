@@ -20,6 +20,9 @@ export class Menu extends Laya.Script {
     @property(Laya.Prefab)
     public parallel:Laya.Prefab;
 
+    @property(Laya.Box)
+    public avatar: Laya.Box;
+
     constructor() {
         super();
     }
@@ -29,6 +32,7 @@ export class Menu extends Laya.Script {
         this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
         this.challengeFriend.on(Laya.Event.CLICK, this, this.onChallengeFriend);
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
+        this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick)
     }
 
     onStart(): void {
@@ -36,6 +40,10 @@ export class Menu extends Laya.Script {
         Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("soundMuted") == "on";
         SoundManager.playMusic("sounds/menu.mp3", 0);
     }
+    onAvatarClick() {
+        Laya.Scene.open("dialog/profile.lh", false);
+    }
+    
     onChallengeFriend() {
         Laya.Scene.open("dialog/chamber.lh", false);
     }
