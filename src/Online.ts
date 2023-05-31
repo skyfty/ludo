@@ -21,6 +21,8 @@ export class Online extends Laya.Script {
     onAwake(): void {
         this.room = this.owner.getComponent(Room);
         this.owner.on(Player.Event.Hurl, this, this.onHurl);
+        this.owner.on(Player.Event.Achieve, this.room, this.room.onAchieve);
+        this.owner.on(Player.Event.Victory, this.room, this.room.onVictory);
     }
 
     private playerColorFind(colorName: string) {
@@ -59,19 +61,21 @@ export class Online extends Laya.Script {
     }
 
     private addStationListener() {
-        Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse,  this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom,this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
+
     }
 
     private removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
+
     }
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
@@ -92,9 +96,10 @@ export class Online extends Laya.Script {
         this.removeStationListener();
     }
 
-    private onPublicMessage(inEvent: SFS2X.SFSEvent) {
-        let event = JSON.parse(inEvent.message);
-        switch (event.event) {
+    
+    private onObjectMessage(evtParams: SFS2X.SFSEvent) {
+        var dataObj:SFS2X.SFSObject  = evtParams.message;
+        switch (dataObj.get("event")) {
             case Player.Event.Achieve: {
                 this.room.onAchieve();
                 break;
@@ -104,11 +109,9 @@ export class Online extends Laya.Script {
                 break;
             }
             default: {
-                if (!inEvent.sender.isItMe) {
-                    let player = this.room.players[inEvent.sender.id];
-                    if (player != null) {
-                        player.getComponent(Extreme).processEvent(event);
-                    }
+                let player = this.room.players[evtParams.sender.id];
+                if (player != null) {
+                    player.getComponent(Extreme).processEvent(dataObj);
                 }
             }
         }

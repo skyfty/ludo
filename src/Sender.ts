@@ -18,40 +18,36 @@ export class Sender extends Laya.Script {
     }
 
     onAchieve() {
-        let event = {
-            "event":Player.Event.Achieve
-        }; 
-        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        var dataObj = new SFS2X.SFSObject();
+        dataObj.putUtfString("event", Player.Event.Achieve);
+        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
     }
     onVictory() {
-        let event = {
-            "event":Player.Event.Victory
-        }; 
-        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        var dataObj = new SFS2X.SFSObject();
+        dataObj.putUtfString("event", Player.Event.Victory);
+        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
 
     }
     onChoose(name:string) {
-        let event = {
-            "event":Player.Event.Choose,
-            "name":name
-        }; 
-        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        var dataObj = new SFS2X.SFSObject();
+        dataObj.putUtfString("event", Player.Event.Choose);
+        dataObj.putUtfString("name", name);
+        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
 
     }
 
     onRollEnd(num:number) {
-        let event = {
-            "event":Player.Event.RollEnd,
-            "num":num
-        }; 
-        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        var dataObj = new SFS2X.SFSObject();
+        dataObj.putUtfString("event", Player.Event.RollEnd);
+        dataObj.putInt("num", num);
+        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
+
     }
     
     onRollStart() {  
-        let event = {
-            "event":Player.Event.RollStart
-        }; 
-        Station.sfs.send(new SFS2X.PublicMessageRequest(JSON.stringify(event)));
+        var dataObj = new SFS2X.SFSObject();
+        dataObj.putUtfString("event", Player.Event.RollStart);
+        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
     }
 
 }

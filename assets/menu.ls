@@ -37,10 +37,10 @@
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
       "playerName": "Feitianyu",
-      "host": "39.104.230.103",
+      "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
-      "debug": false
+      "debug": true
     }
   ],
   "_$child": [

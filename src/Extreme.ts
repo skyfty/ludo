@@ -4,6 +4,7 @@ import * as Player from "./Player";
 import { Chess } from "./Chess";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
+import * as SFS2X from "../node_modules/sfs2x-api";
 
 @regClass()
 export class Extreme extends Performer {
@@ -23,19 +24,19 @@ export class Extreme extends Performer {
         trade.disabled(this.state != Player.State.Running);
     }
 
-    public processEvent(inEvent:any) {
-        switch (inEvent.event) {
+    public processEvent(dataObj:SFS2X.SFSObject) {
+        switch (dataObj.get("event")) {
             case Player.Event.RollStart: {
                 this.player.trade.getComponent(Dice).roll();
                 break;
             }
             case Player.Event.RollEnd: {
-                this.currentDiceNumber = inEvent.num;
+                this.currentDiceNumber = dataObj.get("num");
                 this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
                 break;
             }
             case Player.Event.Choose: {
-                this.onChooseChesses(inEvent.name);
+                this.onChooseChesses(dataObj.get("name"));
                 break;
             }
             case Player.Event.Achieve: {

@@ -57,7 +57,7 @@
       "_filters": [
         {
           "_$type": "ColorFilter",
-          "_color": "rgba(59, 57, 57, 1)",
+          "_color": "rgba(194, 201, 241, 1)",
           "_brightness": null,
           "_contrast": null,
           "_saturation": null,
