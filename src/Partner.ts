@@ -1,9 +1,9 @@
 const { regClass, property,SoundManager } = Laya;
 import {Station} from "./Station";
 import * as SFS2X from "../node_modules/sfs2x-api";
-import { Config } from "./Config";
 import { Dialog } from "./Dialog";
-import { PlayerProfile } from "./PlayerProfile";
+import * as Player from "./Player";
+import { Profile } from "./Profile";
 
 @regClass()
 export class Pariner extends Laya.Scene {
@@ -37,7 +37,6 @@ export class Pariner extends Laya.Scene {
 
         this.viewStack = this.getChildByName("ViewStack") as Laya.ViewStack;
         this.roomId = this.getChildByName("RoomTitle").getChildByName("RoomId") as Laya.TextInput;
-
     }
 
     onDestroy(): void {
@@ -46,7 +45,6 @@ export class Pariner extends Laya.Scene {
 
     onOpened(param: any) {
         this.color = param.color;
-
         this.roomId.text = Station.sfs.lastJoinedRoom.id;
         this.numberOfPlayer = Station.sfs.lastJoinedRoom.maxUsers;
 
@@ -67,8 +65,8 @@ export class Pariner extends Laya.Scene {
         Station.sfs.addEventListener(SFS2X.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, this.onLogout,this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onLogout, this);
-
     }
+
     removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
@@ -76,6 +74,7 @@ export class Pariner extends Laya.Scene {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGOUT, this.onLogout, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onLogout, this);
     }
+
 
     private stopAllClip(b:boolean) {
         for(let i = 0; i < this.item.numChildren; ++i) {

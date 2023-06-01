@@ -26,8 +26,8 @@
       "play4pBtn": {
         "_$ref": "5ibbci1l"
       },
-      "play": {
-        "_$ref": "1mm8w0ix"
+      "viewStack": {
+        "_$ref": "c9zne9cs"
       },
       "colorCheckBox": [
         {
@@ -81,7 +81,7 @@
       "x": 91,
       "y": 135,
       "width": 567,
-      "height": 791,
+      "height": 838,
       "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
       "color": "#ffffff"
     },
@@ -260,27 +260,6 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "gh8qr121",
-      "_$type": "Box",
-      "name": "Box",
-      "x": 136,
-      "y": 559.0000000000001,
-      "width": 477,
-      "height": 156,
-      "bgColor": "rgba(78, 56, 102, 1)"
-    },
-    {
-      "_$id": "gg1tt4ma",
-      "_$type": "Image",
-      "name": "Image(10)",
-      "x": 132,
-      "y": 554,
-      "width": 485,
-      "height": 167,
-      "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
-      "color": "#ffffff"
-    },
-    {
       "_$id": "0gj82t1h",
       "_$type": "Image",
       "name": "Image(9)",
@@ -289,6 +268,18 @@
       "width": 314.10300866904595,
       "height": 35.69352371239155,
       "skin": "res://ca3037ad-63f6-4dc1-ab05-13153f01d38f",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "q9wzoj1l",
+      "_$type": "Image",
+      "name": "Image(10)",
+      "x": 125.99999999999997,
+      "y": 562,
+      "width": 500,
+      "height": 146,
+      "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+      "useSourceSize": true,
       "color": "#ffffff"
     },
     {
@@ -359,8 +350,8 @@
       "_$id": "mfqn36k5",
       "_$type": "Button",
       "name": "close",
-      "x": 343,
-      "y": 929,
+      "x": 342,
+      "y": 977,
       "width": 64,
       "height": 63.5,
       "mouseEnabled": true,
@@ -376,23 +367,180 @@
       ]
     },
     {
-      "_$id": "1mm8w0ix",
-      "_$type": "Button",
-      "name": "play",
-      "x": 186,
-      "y": 761,
-      "width": 378,
-      "height": 104,
-      "disabled": true,
-      "gray": true,
-      "stateNum": 2,
-      "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
-      "label": "",
-      "labelSize": 20,
-      "_$comp": [
+      "_$id": "o0ahsbev",
+      "_$type": "Box",
+      "name": "Box",
+      "x": 137,
+      "y": 722,
+      "width": 480,
+      "height": 196,
+      "mouseEnabled": true,
+      "_$child": [
         {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
+          "_$id": "c9zne9cs",
+          "_$type": "ViewStack",
+          "name": "ViewStack",
+          "width": 480,
+          "height": 196,
+          "mouseEnabled": true,
+          "selectedIndex": null,
+          "_$child": [
+            {
+              "_$id": "1mm8w0ix",
+              "_$type": "Button",
+              "name": "item0",
+              "x": 51.000000000000085,
+              "y": 56.999999999999886,
+              "width": 378,
+              "height": 104,
+              "disabled": true,
+              "gray": true,
+              "stateNum": 2,
+              "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
+              "label": "",
+              "labelSize": 20,
+              "_$comp": [
+                {
+                  "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                  "scriptPath": "../src/ClickSound.ts"
+                }
+              ]
+            },
+            {
+              "_$id": "zzz84qte",
+              "_$type": "Sprite",
+              "name": "item1",
+              "width": 480,
+              "height": 196,
+              "texture": {
+                "_$uuid": "2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+                "_$type": "Texture"
+              },
+              "mouseEnabled": true,
+              "_$child": [
+                {
+                  "_$id": "ofxnxy9k",
+                  "_$type": "Button",
+                  "name": "reduce",
+                  "x": 22,
+                  "y": 71,
+                  "width": 50,
+                  "height": 50,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://e5f6ffc0-8618-43e0-9c42-8a4483b210c1",
+                  "label": "",
+                  "labelSize": 20
+                },
+                {
+                  "_$id": "myvcilps",
+                  "_$type": "Button",
+                  "name": "plus",
+                  "x": 408,
+                  "y": 71,
+                  "width": 50,
+                  "height": 50,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
+                  "label": "",
+                  "labelSize": 20
+                },
+                {
+                  "_$id": "jwlr5yro",
+                  "_$type": "Sprite",
+                  "name": "play",
+                  "x": 97,
+                  "y": 16,
+                  "width": 301,
+                  "height": 153,
+                  "_$child": [
+                    {
+                      "_$id": "do453mwt",
+                      "_$type": "Sprite",
+                      "name": "Sprite",
+                      "x": -4.9999999999998295,
+                      "width": 301,
+                      "height": 151,
+                      "texture": {
+                        "_$uuid": "238ef9cb-8a20-414b-8d5e-986c5acccb2d",
+                        "_$type": "Texture"
+                      }
+                    },
+                    {
+                      "_$id": "3awa2k31",
+                      "_$type": "Image",
+                      "name": "Image",
+                      "x": 28,
+                      "y": 14,
+                      "width": 68.15417753089218,
+                      "height": 33.79072667498015,
+                      "skin": "res://abd14d42-a487-4b98-b355-fdeb3f1a4ade",
+                      "color": "#ffffff"
+                    },
+                    {
+                      "_$id": "13ubct1g",
+                      "_$type": "Label",
+                      "name": "earn",
+                      "x": 35,
+                      "y": 58,
+                      "width": 142,
+                      "height": 32,
+                      "text": "1111111111",
+                      "fontSize": 24,
+                      "color": "#FFFFFF",
+                      "align": "center",
+                      "valign": "middle",
+                      "bgColor": "rgba(40, 73, 82, 1)",
+                      "borderColor": "rgba(255, 255, 255, 1)",
+                      "leading": 0,
+                      "padding": "0,0,0,0"
+                    },
+                    {
+                      "_$id": "jkfmb4re",
+                      "_$type": "Image",
+                      "name": "Image(1)",
+                      "x": -1.0000000000000284,
+                      "y": 50,
+                      "width": 48.09081081081082,
+                      "height": 45.90486486486488,
+                      "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
+                      "color": "#ffffff"
+                    },
+                    {
+                      "_$id": "ozuwse83",
+                      "_$type": "Label",
+                      "name": "pay",
+                      "x": 11.000000000000114,
+                      "y": 99,
+                      "width": 166,
+                      "height": 32,
+                      "text": "1111111111111",
+                      "fontSize": 24,
+                      "color": "#FFFFFF",
+                      "align": "center",
+                      "valign": "middle",
+                      "bgColor": "rgba(40, 73, 82, 1)",
+                      "borderColor": "rgba(255, 255, 255, 1)",
+                      "leading": 0,
+                      "padding": "0,0,0,0"
+                    },
+                    {
+                      "_$id": "uq5bgylh",
+                      "_$type": "Image",
+                      "name": "Image(2)",
+                      "x": 180.99999999999994,
+                      "y": 46.000000000000114,
+                      "width": 109.3573370100453,
+                      "height": 43.5951546188694,
+                      "skin": "res://16c2edd8-601f-457d-a614-236163a7df14",
+                      "color": "#ffffff"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

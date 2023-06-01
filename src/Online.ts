@@ -4,8 +4,8 @@ import { Station } from "./Station";
 import { Room } from "./Room";
 import { Extreme } from "./Extreme";
 import * as Player from "./Player";
-import { Performer } from "./Performer";
 import { Config } from "./Config";
+import { Profile } from "./Profile";
 
 @regClass()
 export class Online extends Laya.Script {
@@ -43,16 +43,7 @@ export class Online extends Laya.Script {
 
     onHurl(player:Laya.Sprite) {
         var params = new SFS2X.SFSObject();
-        Station.sfs.send(new SFS2X.ExtensionRequest(Player.Event.Hurl, params));
-    }
-
-    onHurlResponse(evtParams: SFS2X.SFSEvent) {
-        let num = evtParams.params.get("Number");
-        let playerId = evtParams.params.get("UserId");
-        let player = this.room.players[playerId];
-        Laya.timer.once(900, this, ()=>{
-            player.event(Player.Event.Chuck, num);
-        });
+        Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
     }
 
     onDestroy(): void {
@@ -62,25 +53,38 @@ export class Online extends Laya.Script {
 
     private addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse,  this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom,this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
 
     }
 
     private removeStationListener() {
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
-
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
 
+  
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
-        if (evtParams.cmd == Player.Event.Hurl) {
-            this.onHurlResponse(evtParams);
+        if ("Hurl" == evtParams.cmd) {
+            let num = evtParams.params.get("number");
+            let playerid = evtParams.params.get("playerid");
+            Laya.timer.once(900, this, ()=>{
+                this.room.players[playerid].event(Player.Event.Chuck, num);
+            });
+        }
+    }
+
+    private onModeratorMessage(evtParam: SFS2X.SFSEvents) {
+        if (evtParam.message =="Winner") {
+           var earn = evtParam.data.get("earn");
+           Profile.setGold(evtParam.data.get("amount"));
         }
     }
 

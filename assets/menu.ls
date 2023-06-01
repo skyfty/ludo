@@ -43,7 +43,7 @@
       "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
-      "debug": false
+      "debug": true
     }
   ],
   "_$child": [
@@ -265,7 +265,13 @@
               "color": "#FFFFFF",
               "valign": "bottom",
               "leading": 0,
-              "padding": "0,0,0,0"
+              "padding": "0,0,0,0",
+              "_$comp": [
+                {
+                  "_$type": "12b679ee-f2ac-4f30-9b77-97dedf5b62a2",
+                  "scriptPath": "../src/MyselfGold.ts"
+                }
+              ]
             }
           ]
         },
@@ -296,7 +302,13 @@
           "fontSize": 34,
           "color": "#FFFFFF",
           "leading": 0,
-          "padding": "0,0,0,0"
+          "padding": "0,0,0,0",
+          "_$comp": [
+            {
+              "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
+              "scriptPath": "../src/MyselfLv.ts"
+            }
+          ]
         }
       ]
     },

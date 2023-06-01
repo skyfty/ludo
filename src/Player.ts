@@ -11,13 +11,14 @@ export class Event {
     static EntryRoom = "ENTRY_ROOM";
     static ExitRoom = "EXIT_ROOM";
     static StateChange = "STATE_CHANGE";
-    static Hurl = "HURL";
+    static Hurl = "Hurl";
     static Chuck = "CHUCK";
     static RollStart = "ROLL_START";
     static RollEnd = "ROLL_END";
     static Choose = "CHOOSE";
     static Achieve = "ACHIEVE";
     static Victory = "VICTORY";
+    
 }
 
 export interface Profile {
@@ -89,11 +90,6 @@ export class Player extends Laya.Script {
     constructor() {
         super();
     }
-    onAwake(): void {
-    }
-    onStart(): void {
-    }
-
     public hopChesses(chesses: Laya.Sprite[]): void {
         for (let i = 0; i < chesses.length; ++i) {
             chesses[i].getComponent(Chess).hop();

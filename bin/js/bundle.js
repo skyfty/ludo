@@ -10570,22 +10570,14 @@
     property3(Laya.CheckBox)
   ], Parallel.prototype, "play4pBtn", 2);
   __decorateClass([
-    property3(Laya.Button)
-  ], Parallel.prototype, "play", 2);
+    property3(Laya.ViewStack)
+  ], Parallel.prototype, "viewStack", 2);
   __decorateClass([
     property3([Laya.CheckBox])
   ], Parallel.prototype, "colorCheckBox", 2);
   Parallel = __decorateClass([
     regClass3("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
   ], Parallel);
-
-  // src/Config.ts
-  var Config = class {
-  };
-  __name(Config, "Config");
-  Config.NUMBER_UNIVERSAL_HOLD = 52;
-  Config.NUMBER_PERSONAL_HOLD = 6;
-  Config.Colors = ["red", "green", "yellow", "blue"];
 
   // src/Station.ts
   var SFS2X2 = __toESM(require_sfs2x_api());
@@ -10596,7 +10588,7 @@
   var Profile = class {
     static getSyncParam() {
       let params = new SFS2X.SFSObject();
-      let userId = Laya.LocalStorage.getItem("userId");
+      let userId = Laya.LocalStorage.getItem("userid");
       if (userId != null) {
         params.putInt("id", Number.parseInt(userId));
       }
@@ -10618,7 +10610,7 @@
     static setSyncParam(params) {
       let userId = params.get("id");
       if (userId != null) {
-        Laya.LocalStorage.setItem("userId", userId);
+        Laya.LocalStorage.setItem("userid", userId);
       }
       let nickname = params.get("nickname");
       if (nickname != null) {
@@ -10654,6 +10646,10 @@
       Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
       Station.sync();
     }
+    static getUserId() {
+      let userId = Laya.LocalStorage.getItem("userid");
+      return userId == null ? 1 : Number.parseInt(userId);
+    }
     static getNickname() {
       let nickname = Laya.LocalStorage.getItem("nickname");
       return nickname;
@@ -10666,9 +10662,15 @@
       let gold = Laya.LocalStorage.getItem("gold");
       return gold == null ? 0 : Number.parseInt(gold);
     }
+    static setGold(gold) {
+      Laya.LocalStorage.setItem("gold", gold.toString());
+    }
     static getRank() {
       let rank = Laya.LocalStorage.getItem("rank");
       return rank == null ? 0 : Number.parseInt(rank);
+    }
+    static setRank(v) {
+      Laya.LocalStorage.setItem("rank", v.toString());
     }
   };
   __name(Profile, "Profile");
@@ -10708,7 +10710,8 @@
     }
     onStart() {
       this.addSmartFoxListener();
-      if (!Station.sfs.isConnected) {
+      if (Station.sfs.isConnected) {
+      } else {
         Station.sfs.connect();
       }
     }
@@ -10737,9 +10740,8 @@
       });
     }
     onExtensionResponse(evtParams) {
-      if (evtParams.cmd == "SyncProfile") {
+      if ("SyncProfile" == evtParams.cmd) {
         Profile.setSyncParam(evtParams.params);
-        Station.updatePlayerInfo();
       }
     }
     static sync() {
@@ -10748,13 +10750,6 @@
     }
     static onLogin(event) {
       Station.sync();
-      Station.updatePlayerInfo();
-    }
-    static updatePlayerInfo() {
-      let userVars = [];
-      userVars.push(new SFS2X2.SFSUserVariable("avatar", Profile.getAvatar()));
-      userVars.push(new SFS2X2.SFSUserVariable("nickname", Profile.getNickname()));
-      Station.sfs.send(new SFS2X2.SetUserVariablesRequest(userVars));
     }
     static onLoginError(event) {
       Laya.timer.once(1e3 * 60, this, () => {
@@ -10800,6 +10795,9 @@
     static getUserStateName(color, id) {
       return color + id;
     }
+    static getUserJettonName() {
+      return "jetton" + Station.mySelfId();
+    }
     static getUserList() {
       return Station.sfs.lastJoinedRoom.getUserList();
     }
@@ -10839,30 +10837,19 @@
     }
     onAwake() {
       let parallel = this.owner.getComponent(Parallel);
-      parallel.play.disabled = true;
       parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
         Laya.Dialog.closeAll();
       });
-      for (let idx in parallel.colorCheckBox) {
-        parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
-          parallel.play.disabled = false;
-          this.colorIdx = Number.parseInt(idx);
-        });
-      }
-    }
-    onStart() {
       this.addStationListener();
     }
     onDestroy() {
       this.removeStationListener();
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X3.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
       Station.sfs.addEventListener(SFS2X3.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
       Station.sfs.addEventListener(SFS2X3.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X3.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
       Station.sfs.removeEventListener(SFS2X3.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
       Station.sfs.removeEventListener(SFS2X3.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
     }
@@ -10871,10 +10858,6 @@
     }
     onRoomCreationError(evtParams) {
       console.log("Room creation failed: " + evtParams.errorMessage);
-    }
-    onRoomJoin(event) {
-      Laya.Dialog.closeAll();
-      Laya.Scene.open("partner.ls", true, { "color": Config.Colors[this.colorIdx] });
     }
     getRoomInitVariable(isPrivate) {
       var roomVars = [];
@@ -10902,6 +10885,14 @@
     regClass6("c114a9b7-68f6-410d-8c68-99a47e927622", "../src/GameRoom.ts")
   ], GameRoom);
 
+  // src/Config.ts
+  var Config = class {
+  };
+  __name(Config, "Config");
+  Config.NUMBER_UNIVERSAL_HOLD = 52;
+  Config.NUMBER_PERSONAL_HOLD = 6;
+  Config.Colors = ["red", "green", "yellow", "blue"];
+
   // src/CreateRoom.ts
   var SFS2X4 = __toESM(require_sfs2x_api());
   var { regClass: regClass7, property: property7 } = Laya;
@@ -10912,7 +10903,21 @@
     onAwake() {
       super.onAwake();
       let parallel = this.owner.getComponent(Parallel);
-      parallel.play.on(Laya.Event.CLICK, this, this.onCreateRoom);
+      parallel.viewStack.selectedIndex = 0;
+      let play = parallel.viewStack.getChildByName("item0");
+      play.on(Laya.Event.CLICK, this, this.onCreateRoom);
+    }
+    addStationListener() {
+      super.addStationListener();
+      Station.sfs.addEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+    }
+    removeStationListener() {
+      super.removeStationListener();
+      Station.sfs.removeEventListener(SFS2X4.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+    }
+    onRoomJoin(event) {
+      Laya.Dialog.closeAll();
+      Laya.Scene.open("partner.ls", true, { "color": Config.Colors[this.colorIdx] });
     }
     onCreateRoom() {
       let parallel = this.owner.getComponent(Parallel);
@@ -11658,7 +11663,7 @@
   Event3.EntryRoom = "ENTRY_ROOM";
   Event3.ExitRoom = "EXIT_ROOM";
   Event3.StateChange = "STATE_CHANGE";
-  Event3.Hurl = "HURL";
+  Event3.Hurl = "Hurl";
   Event3.Chuck = "CHUCK";
   Event3.RollStart = "ROLL_START";
   Event3.RollEnd = "ROLL_END";
@@ -11681,10 +11686,6 @@
       super();
       this.chippy = [];
       this.home = [];
-    }
-    onAwake() {
-    }
-    onStart() {
     }
     hopChesses(chesses) {
       for (let i = 0; i < chesses.length; ++i) {
@@ -12087,16 +12088,19 @@
     }
     onAwake() {
       let parallel = this.owner.getComponent(Parallel);
-      parallel.play.on(Laya.Event.CLICK, this, () => {
-        Laya.Dialog.closeAll();
-        Laya.Scene.open("game.ls", true, { "type": "computer", "color": Config.Colors[this.colorIdx], "number": parallel.numberOfPlayer });
-      });
+      parallel.viewStack.selectedIndex = 0;
+      let play = parallel.viewStack.getChildByName("item0");
+      play.disabled = true;
       for (let idx in parallel.colorCheckBox) {
         parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
-          parallel.play.disabled = false;
+          play.disabled = false;
           this.colorIdx = Number.parseInt(idx);
         });
       }
+      play.on(Laya.Event.CLICK, this, () => {
+        Laya.Dialog.closeAll();
+        Laya.Scene.open("game.ls", true, { "type": "computer", "color": Config.Colors[this.colorIdx], "number": parallel.numberOfPlayer });
+      });
       parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
         Laya.Dialog.closeAll();
       });
@@ -12166,15 +12170,7 @@
     }
     onHurl(player) {
       var params = new SFS2X6.SFSObject();
-      Station.sfs.send(new SFS2X6.ExtensionRequest(Event3.Hurl, params));
-    }
-    onHurlResponse(evtParams) {
-      let num = evtParams.params.get("Number");
-      let playerId = evtParams.params.get("UserId");
-      let player = this.room.players[playerId];
-      Laya.timer.once(900, this, () => {
-        player.event(Event3.Chuck, num);
-      });
+      Station.sfs.send(new SFS2X6.ExtensionRequest("Hurl", params));
     }
     onDestroy() {
       Station.levelRoom();
@@ -12182,21 +12178,33 @@
     }
     addStationListener() {
       Station.sfs.addEventListener(SFS2X6.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
-      Station.sfs.addEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
       Station.sfs.addEventListener(SFS2X6.SFSEvent.LOGOUT, this.onUserExitRoom, this);
       Station.sfs.addEventListener(SFS2X6.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
       Station.sfs.addEventListener(SFS2X6.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
+      Station.sfs.addEventListener(SFS2X6.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
+      Station.sfs.addEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.LOGOUT, this.onUserExitRoom, this);
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
+      Station.sfs.removeEventListener(SFS2X6.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
+      Station.sfs.removeEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     onExtensionResponse(evtParams) {
-      if (evtParams.cmd == Event3.Hurl) {
-        this.onHurlResponse(evtParams);
+      if ("Hurl" == evtParams.cmd) {
+        let num = evtParams.params.get("number");
+        let playerid = evtParams.params.get("playerid");
+        Laya.timer.once(900, this, () => {
+          this.room.players[playerid].event(Event3.Chuck, num);
+        });
+      }
+    }
+    onModeratorMessage(evtParam) {
+      if (evtParam.message == "Winner") {
+        var earn = evtParam.data.get("earn");
+        Profile.setGold(evtParam.data.get("amount"));
       }
     }
     onUserExitRoom(inEvent) {
@@ -12278,20 +12286,23 @@
       this.owner.on(Event3.Victory, this, this.onVictory);
     }
     onAchieve() {
-      var dataObj = new SFS2X7.SFSObject();
-      dataObj.putUtfString("event", Event3.Achieve);
-      Station.sfs.send(new SFS2X7.ObjectMessageRequest(dataObj));
+      var params = new SFS2X7.SFSObject();
+      params.putUtfString("event", Event3.Achieve);
+      this.sendEventRequest(params);
     }
     onVictory() {
-      var dataObj = new SFS2X7.SFSObject();
-      dataObj.putUtfString("event", Event3.Victory);
-      Station.sfs.send(new SFS2X7.ObjectMessageRequest(dataObj));
+      var params = new SFS2X7.SFSObject();
+      params.putUtfString("event", Event3.Victory);
+      this.sendEventRequest(params);
     }
     onChoose(name) {
-      var dataObj = new SFS2X7.SFSObject();
-      dataObj.putUtfString("event", Event3.Choose);
-      dataObj.putUtfString("name", name);
-      Station.sfs.send(new SFS2X7.ObjectMessageRequest(dataObj));
+      var params = new SFS2X7.SFSObject();
+      params.putUtfString("event", Event3.Choose);
+      params.putUtfString("name", name);
+      this.sendEventRequest(params);
+    }
+    sendEventRequest(params) {
+      Station.sfs.send(new SFS2X7.ExtensionRequest("EventRequest", params));
     }
     onRollEnd(num) {
       var dataObj = new SFS2X7.SFSObject();
@@ -12606,19 +12617,79 @@
   var OnlineParallel = class extends GameRoom {
     constructor() {
       super();
+      this.jettons = null;
+      this.idx = 0;
+      this.earnLabel = null;
+      this.payLabel = null;
     }
     onAwake() {
       super.onAwake();
       let parallel = this.owner.getComponent(Parallel);
-      parallel.play.on(Laya.Event.CLICK, this, this.onPlay);
+      parallel.viewStack.selectedIndex = 1;
+      let item = parallel.viewStack.getChildByName("item1");
+      let play = item.getChildByName("play");
+      play.on(Laya.Event.CLICK, this, this.onPlay);
+      this.earnLabel = play.getChildByName("earn");
+      this.payLabel = play.getChildByName("pay");
+      for (let idx in parallel.colorCheckBox) {
+        parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
+          play.disabled = false;
+          this.colorIdx = Number.parseInt(idx);
+        });
+      }
+      item.getChildByName("reduce").on(Laya.Event.CLICK, this, () => {
+        if (this.idx > 0) {
+          this.idx--;
+        }
+        this.refreshEarnPayLabel();
+      });
+      item.getChildByName("plus").on(Laya.Event.CLICK, this, () => {
+        if (this.idx < this.jettons.size() - 1) {
+          this.idx++;
+        }
+        this.refreshEarnPayLabel();
+      });
+      Station.sfs.send(new SFS2X9.ExtensionRequest("GetJettonRequest"));
+    }
+    refreshEarnPayLabel() {
+      let item = this.jettons.getSFSObject(this.idx);
+      this.earnLabel.text = item.getDouble("earn");
+      this.payLabel.text = item.getDouble("pay");
+    }
+    onRoomJoin(event) {
+      Laya.Dialog.closeAll();
+      let roomVars = [];
+      let varname = Station.getUserJettonName();
+      roomVars.push(new SFS2X9.SFSRoomVariable(varname, this.jettons.getSFSObject(this.idx)));
+      Station.sfs.send(new SFS2X9.SetRoomVariablesRequest(roomVars));
+      Laya.Scene.open("partner.ls", true, { "color": Config.Colors[this.colorIdx] });
     }
     onPlay() {
       let parallel = this.owner.getComponent(Parallel);
-      var roomVars = this.getRoomInitVariable(false);
+      if (this.colorIdx == -1) {
+        return;
+      }
+      let roomVars = this.getRoomInitVariable(false);
       var settings = this.getRoomSettings(parallel.numberOfPlayer);
       settings.variables = roomVars;
       var exp = new SFS2X9.MatchExpression(SFS2X9.RoomProperties.IS_GAME, SFS2X9.BoolMatch.EQUALS, true).and(SFS2X9.RoomProperties.HAS_FREE_PLAYER_SLOTS, SFS2X9.BoolMatch.EQUALS, true).and(SFS2X9.RoomProperties.MAX_USERS, SFS2X9.NumberMatch.EQUALS, parallel.numberOfPlayer).and("private", SFS2X9.BoolMatch.EQUALS, false).and(Config.Colors[this.colorIdx], SFS2X9.NumberMatch.EQUALS, -1);
       Station.sfs.send(new SFS2X9.QuickJoinOrCreateRoomRequest(exp, ["default"], settings, Station.sfs.lastJoinedRoom));
+    }
+    onExtensionResponse(evtParams) {
+      if ("GetJettonRequest" == evtParams.cmd) {
+        this.jettons = evtParams.params.getSFSArray("list");
+        this.refreshEarnPayLabel();
+      }
+    }
+    addStationListener() {
+      super.addStationListener();
+      Station.sfs.addEventListener(SFS2X9.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.addEventListener(SFS2X9.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+    }
+    removeStationListener() {
+      super.removeStationListener();
+      Station.sfs.removeEventListener(SFS2X9.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.removeEventListener(SFS2X9.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
   };
   __name(OnlineParallel, "OnlineParallel");
@@ -12692,9 +12763,58 @@
     regClass35("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
 
+  // src/MyselfAvatar.ts
+  var { regClass: regClass36, property: property36 } = Laya;
+  var MyselfAvatar = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onLateUpdate() {
+      let clip = this.owner;
+      clip.index = Profile.getAvatar();
+    }
+  };
+  __name(MyselfAvatar, "MyselfAvatar");
+  MyselfAvatar = __decorateClass([
+    regClass36("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
+  ], MyselfAvatar);
+
+  // src/MyselfGold.ts
+  var { regClass: regClass37, property: property37 } = Laya;
+  var MyselfGold = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onLateUpdate() {
+      let label = this.owner;
+      label.text = Profile.getGold().toString();
+    }
+  };
+  __name(MyselfGold, "MyselfGold");
+  MyselfGold = __decorateClass([
+    regClass37("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
+  ], MyselfGold);
+
+  // src/MyselfLv.ts
+  var { regClass: regClass38, property: property38 } = Laya;
+  var MyselfLv = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onLateUpdate() {
+      let label = this.owner;
+      let rank = Profile.getRank();
+      label.text = Math.floor(rank / 100).toString();
+    }
+  };
+  __name(MyselfLv, "MyselfLv");
+  MyselfLv = __decorateClass([
+    regClass38("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
+  ], MyselfLv);
+
   // src/Partner.ts
   var SFS2X10 = __toESM(require_sfs2x_api());
-  var { regClass: regClass36, property: property36, SoundManager: SoundManager9 } = Laya;
+  var { regClass: regClass39, property: property39, SoundManager: SoundManager9 } = Laya;
   var Pariner = class extends Laya.Scene {
     constructor() {
       super(...arguments);
@@ -12789,20 +12909,20 @@
   };
   __name(Pariner, "Pariner");
   __decorateClass([
-    property36(Laya.Box)
+    property39(Laya.Box)
   ], Pariner.prototype, "item", 2);
   __decorateClass([
-    property36(Laya.ViewStack)
+    property39(Laya.ViewStack)
   ], Pariner.prototype, "viewStack", 2);
   __decorateClass([
-    property36(Laya.TextInput)
+    property39(Laya.TextInput)
   ], Pariner.prototype, "roomId", 2);
   Pariner = __decorateClass([
-    regClass36("9f1fc9b7-ce57-4d73-9d43-44bf875415bb", "../src/Partner.ts")
+    regClass39("9f1fc9b7-ce57-4d73-9d43-44bf875415bb", "../src/Partner.ts")
   ], Pariner);
 
   // src/PlayerProfile.ts
-  var { regClass: regClass37, property: property37 } = Laya;
+  var { regClass: regClass40, property: property40 } = Laya;
   var PlayerProfile = class extends Laya.Script {
     constructor() {
       super();
@@ -12811,11 +12931,11 @@
   };
   __name(PlayerProfile, "PlayerProfile");
   PlayerProfile = __decorateClass([
-    regClass37("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
+    regClass40("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
   ], PlayerProfile);
 
   // src/ProfileDialog.ts
-  var { regClass: regClass38, property: property38 } = Laya;
+  var { regClass: regClass41, property: property41 } = Laya;
   var ProfileDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -12850,24 +12970,24 @@
   };
   __name(ProfileDialog, "ProfileDialog");
   __decorateClass([
-    property38(Laya.TextInput)
+    property41(Laya.TextInput)
   ], ProfileDialog.prototype, "name", 2);
   __decorateClass([
-    property38(Laya.List)
+    property41(Laya.List)
   ], ProfileDialog.prototype, "avatarList", 2);
   __decorateClass([
-    property38(Laya.Button)
+    property41(Laya.Button)
   ], ProfileDialog.prototype, "returnBtn", 2);
   __decorateClass([
-    property38(Number)
+    property41(Number)
   ], ProfileDialog.prototype, "avatarNumber", 2);
   ProfileDialog = __decorateClass([
-    regClass38("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
+    regClass41("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
   ], ProfileDialog);
 
   // src/SelectColor.ts
   var SFS2X11 = __toESM(require_sfs2x_api());
-  var { regClass: regClass39, property: property39 } = Laya;
+  var { regClass: regClass42, property: property42 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
       super();
@@ -12953,20 +13073,20 @@
   };
   __name(SelectColor, "SelectColor");
   __decorateClass([
-    property39(Laya.Button)
+    property42(Laya.Button)
   ], SelectColor.prototype, "closeBtn", 2);
   __decorateClass([
-    property39(Laya.Button)
+    property42(Laya.Button)
   ], SelectColor.prototype, "play", 2);
   __decorateClass([
-    property39([Laya.CheckBox])
+    property42([Laya.CheckBox])
   ], SelectColor.prototype, "colorCheckBox", 2);
   SelectColor = __decorateClass([
-    regClass39("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
+    regClass42("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
   ], SelectColor);
 
   // src/Settings.ts
-  var { regClass: regClass40, property: property40 } = Laya;
+  var { regClass: regClass43, property: property43 } = Laya;
   var Settings = class extends Laya.Script {
     constructor() {
       super();
@@ -12990,62 +13110,14 @@
   };
   __name(Settings, "Settings");
   __decorateClass([
-    property40(Laya.CheckBox)
+    property43(Laya.CheckBox)
   ], Settings.prototype, "musicMuted", 2);
   __decorateClass([
-    property40(Laya.CheckBox)
+    property43(Laya.CheckBox)
   ], Settings.prototype, "soundMuted", 2);
   Settings = __decorateClass([
-    regClass40("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
+    regClass43("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
-
-  // src/MyselfAvatar.ts
-  var { regClass: regClass41, property: property41 } = Laya;
-  var MyselfAvatar = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    onLateUpdate() {
-      let clip = this.owner;
-      clip.index = Profile.getAvatar();
-    }
-  };
-  __name(MyselfAvatar, "MyselfAvatar");
-  MyselfAvatar = __decorateClass([
-    regClass41("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
-  ], MyselfAvatar);
-
-  // src/MyselfRank.ts
-  var { regClass: regClass42, property: property42 } = Laya;
-  var MyselfRank = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    onLateUpdate() {
-      let label = this.owner;
-      label.text = Profile.getRank().toString();
-    }
-  };
-  __name(MyselfRank, "MyselfRank");
-  MyselfRank = __decorateClass([
-    regClass42("b42ac9c9-bd4a-40b0-87ef-2e42fdc44aeb", "../src/MyselfRank.ts")
-  ], MyselfRank);
-
-  // src/MyselfGold.ts
-  var { regClass: regClass43, property: property43 } = Laya;
-  var MyselfGold = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    onLateUpdate() {
-      let label = this.owner;
-      label.text = Profile.getGold().toString();
-    }
-  };
-  __name(MyselfGold, "MyselfGold");
-  MyselfGold = __decorateClass([
-    regClass43("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
-  ], MyselfGold);
 })();
 /*! Bundled license information:
 

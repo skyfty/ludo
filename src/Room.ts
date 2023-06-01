@@ -3,6 +3,7 @@ import { Oneself } from "./Oneself";
 import { Extreme } from "./Extreme";
 import * as Player from "./Player";
 import { Performer } from "./Performer";
+import { Rank } from "./Rank";
 
 const { regClass, property } = Laya;
 

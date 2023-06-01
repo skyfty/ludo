@@ -2,7 +2,7 @@ const { regClass, property } = Laya;
 import { Profile } from "./Profile";
 
 @regClass()
-export class MyselfRank extends Laya.Script {
+export class MyselfLv extends Laya.Script {
 
     constructor() {
         super();
@@ -10,7 +10,8 @@ export class MyselfRank extends Laya.Script {
 
     onLateUpdate(): void {
         let label = this.owner as Laya.Label;
-        label.text =  Profile.getRank().toString();
+        let rank = Profile.getRank();
+        label.text = Math.floor(rank / 100).toString();
     }
 
 }

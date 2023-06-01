@@ -2,13 +2,15 @@ const { regClass, property } = Laya;
 import * as Player from "./Player";
 import * as SFS2X from "../node_modules/sfs2x-api";
 import  {Station} from "./Station";
+import { Rank } from "./Rank";
+import { Gold } from "./Gold";
+import { Profile } from "./Profile";
+
 @regClass()
 export class Sender extends Laya.Script {
-    
     constructor() {
         super();
     }
-
     onAwake(): void {
         this.owner.on(Player.Event.RollStart, this, this.onRollStart);
         this.owner.on(Player.Event.RollEnd, this, this.onRollEnd)
@@ -18,22 +20,24 @@ export class Sender extends Laya.Script {
     }
 
     onAchieve() {
-        var dataObj = new SFS2X.SFSObject();
-        dataObj.putUtfString("event", Player.Event.Achieve);
-        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
+        var params = new SFS2X.SFSObject();
+        params.putUtfString("event", Player.Event.Achieve);
+        this.sendEventRequest(params);
     }
     onVictory() {
-        var dataObj = new SFS2X.SFSObject();
-        dataObj.putUtfString("event", Player.Event.Victory);
-        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
-
+        var params = new SFS2X.SFSObject();
+        params.putUtfString("event", Player.Event.Victory);
+        this.sendEventRequest(params);
     }
     onChoose(name:string) {
-        var dataObj = new SFS2X.SFSObject();
-        dataObj.putUtfString("event", Player.Event.Choose);
-        dataObj.putUtfString("name", name);
-        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
+        var params = new SFS2X.SFSObject();
+        params.putUtfString("event", Player.Event.Choose);
+        params.putUtfString("name", name);
+        this.sendEventRequest(params);
+    }
 
+    private sendEventRequest(params: SFS2X.SFSObject) {
+        Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", params));
     }
 
     onRollEnd(num:number) {
@@ -41,7 +45,6 @@ export class Sender extends Laya.Script {
         dataObj.putUtfString("event", Player.Event.RollEnd);
         dataObj.putInt("num", num);
         Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
-
     }
     
     onRollStart() {  

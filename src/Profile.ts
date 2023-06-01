@@ -4,10 +4,10 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 
 export class Profile {
     
-
     public static getSyncParam() {
         let params = new SFS2X.SFSObject();
-        let userId = Laya.LocalStorage.getItem("userId");
+
+        let userId = Laya.LocalStorage.getItem("userid");
         if (userId != null) {
             params.putInt("id", Number.parseInt(userId));
         }
@@ -33,9 +33,8 @@ export class Profile {
     public static setSyncParam(params:SFS2X.SFSObject) {
         let userId = params.get("id");
         if (userId != null) {
-            Laya.LocalStorage.setItem("userId", userId);
+            Laya.LocalStorage.setItem("userid", userId);
         }
-
         let nickname = params.get("nickname");
         if (nickname != null) {
             Laya.LocalStorage.setItem("nickname", nickname);
@@ -58,7 +57,7 @@ export class Profile {
         }
     }
 
-    private static getCurrentUpdateTime() {
+    public static getCurrentUpdateTime() {
         return (Date.now() / 1000).toString();
     }
 
@@ -74,6 +73,11 @@ export class Profile {
         Station.sync();
     }
 
+    public static getUserId() {
+        let userId = Laya.LocalStorage.getItem("userid");
+        return userId == null?1:Number.parseInt(userId);
+    }
+
     public static getNickname() {
         let nickname = Laya.LocalStorage.getItem("nickname");
         return nickname;
@@ -84,14 +88,21 @@ export class Profile {
         return avatar == null?1:Number.parseInt(avatar);
     }
 
-    
     public static getGold() {
         let gold = Laya.LocalStorage.getItem("gold");
         return gold == null?0:Number.parseInt(gold);
+    }
+
+    public static setGold(gold:number) {
+        Laya.LocalStorage.setItem("gold",gold.toString());
     }
     
     public static getRank() {
         let rank = Laya.LocalStorage.getItem("rank");
         return rank == null?0:Number.parseInt(rank);
+    }
+
+    public static setRank(v:number) {
+        Laya.LocalStorage.setItem("rank",v.toString());
     }
 }

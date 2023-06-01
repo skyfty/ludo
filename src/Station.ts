@@ -1,6 +1,7 @@
 const { regClass, property } = Laya;
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Profile } from "./Profile";
+import { Rank } from "./Rank";
 
 export class Event {
     static Login = "LOGIN";
@@ -14,9 +15,9 @@ export class Event {
 @regClass()
 export class Station extends Laya.Script {
 
-    public static config:any = [];
+    public static config: any = [];
     public static sfs: SFS2X.SmartFox = null;
-    public static loginName:String;
+    public static loginName: String;
 
     @property(String)
     public playerName: String;
@@ -47,20 +48,22 @@ export class Station extends Laya.Script {
         this.initSmartFox(this.playerName);
     }
 
-    private initSmartFox(playerName:String) {
+    private initSmartFox(playerName: String) {
         if (Station.sfs == null) {
             Station.sfs = new SFS2X.SmartFox(Station.config);
             Station.sfs.logger.level = SFS2X.LogLevel.DEBUG;
             Station.sfs.logger.enableConsoleOutput = true;
             Station.sfs.logger.enableEventDispatching = true;
         }
-        Station.loginName = playerName +  Math.random().toString();
+        Station.loginName = playerName + Math.random().toString();
     }
-    
+
     onStart(): void {
         this.addSmartFoxListener();
 
-        if (!Station.sfs.isConnected) {
+        if (Station.sfs.isConnected) {
+            
+        } else {
             Station.sfs.connect();
         }
     }
@@ -70,7 +73,8 @@ export class Station extends Laya.Script {
         Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, Station.onConnectionLost, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse,  this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+
     }
 
     onDestroy(): void {
@@ -88,41 +92,33 @@ export class Station extends Laya.Script {
     }
 
     private static onConnectionLost() {
-        Laya.timer.once(5000, this, ()=>{
+        Laya.timer.once(5000, this, () => {
             Station.sfs.connect();
         });
     }
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
-        if (evtParams.cmd == "SyncProfile") {
+        if ("SyncProfile" == evtParams.cmd) {
             Profile.setSyncParam(evtParams.params);
-            Station.updatePlayerInfo();
         }
     }
 
     public static sync() {
         let params = Profile.getSyncParam();
-        Station.sfs.send(new SFS2X.ExtensionRequest( "SyncProfile", params));
-    }
-    private static onLogin(event: SFS2X.SFSEvent) {
-        Station.sync();
-        Station.updatePlayerInfo();
+        Station.sfs.send(new SFS2X.ExtensionRequest("SyncProfile", params));
     }
 
-    public static updatePlayerInfo() {
-        let userVars:SFS2X.SFSUserVariable[] = [];
-        userVars.push(new SFS2X.SFSUserVariable("avatar", Profile.getAvatar()));
-        userVars.push(new SFS2X.SFSUserVariable("nickname", Profile.getNickname()));
-        Station.sfs.send(new SFS2X.SetUserVariablesRequest(userVars));
+    private static onLogin(event: SFS2X.SFSEvent) {
+        Station.sync();
     }
 
     private static onLoginError(event: SFS2X.SFSEvent) {
-        Laya.timer.once(1000 * 60, this, ()=>{
+        Laya.timer.once(1000 * 60, this, () => {
             Station.sfs.send(new SFS2X.LoginRequest());
         });
     }
 
-    public static getUserColor(user:SFS2X.SFSUser, roomVars:SFS2X.SFSRoomVariable[] = null) {
+    public static getUserColor(user: SFS2X.SFSUser, roomVars: SFS2X.SFSRoomVariable[] = null) {
         if (roomVars == null) {
             roomVars = Station.sfs.lastJoinedRoom.getVariables();
         }
@@ -147,7 +143,7 @@ export class Station extends Laya.Script {
         return null;
     }
 
-    public static joinRoom(room:SFS2X.SFSRoom = null) {
+    public static joinRoom(room: SFS2X.SFSRoom = null) {
         if (room == null) {
             let rooms = Station.sfs.roomManager.getRoomList();
             room = rooms[0];
@@ -159,14 +155,19 @@ export class Station extends Laya.Script {
         Station.sfs.send(new SFS2X.LeaveRoomRequest(Station.sfs.lastJoinedRoom));
     }
 
-    public static setRoomVariables(roomVars:SFS2X.SFSRoomVariable[]) {
+    public static setRoomVariables(roomVars: SFS2X.SFSRoomVariable[]) {
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
 
     }
 
-    public static getUserStateName(color:string, id:number) {
+    public static getUserStateName(color: string, id: number) {
         return color + id;
     }
+
+    public static getUserJettonName() {
+        return "jetton" + Station.mySelfId();
+    }
+
     public static getUserList() {
         return Station.sfs.lastJoinedRoom.getUserList();
     }

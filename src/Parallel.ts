@@ -16,8 +16,9 @@ export class Parallel extends Laya.Script {
     @property(Laya.CheckBox)
     public play4pBtn: Laya.CheckBox;
 
-    @property(Laya.Button)
-    public play: Laya.Button;
+
+    @property(Laya.ViewStack)
+    public viewStack: Laya.ViewStack;
 
     @property([Laya.CheckBox])
     public colorCheckBox: Laya.CheckBox[] = [];
@@ -48,6 +49,7 @@ export class Parallel extends Laya.Script {
             this.numberOfPlayer = 3;
 
         });
+
         for(let idx in this.colorCheckBox) {
             this.colorCheckBox[idx].on(Laya.Event.CLICK, this, (event) => {
                 for(let idx2 in this.colorCheckBox) {

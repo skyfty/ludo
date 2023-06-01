@@ -13,16 +13,22 @@ export class ComputerParallel extends Laya.Script {
 
     onAwake(): void {
         let parallel = this.owner.getComponent(Parallel);
-        parallel.play.on(Laya.Event.CLICK, this, () => {
-            Laya.Dialog.closeAll();
-            Laya.Scene.open("game.ls", true, { "type": "computer", "color": Config.Colors[this.colorIdx],"number":parallel.numberOfPlayer });
-        });
+        parallel.viewStack.selectedIndex = 0;
+
+        let play = parallel.viewStack.getChildByName("item0") as Laya.Button;
+        play.disabled = true;
+
         for (let idx in parallel.colorCheckBox) {
             parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
-                parallel.play.disabled = false;
+                play.disabled = false;
                 this.colorIdx = Number.parseInt(idx);
             });
         }
+        play.on(Laya.Event.CLICK, this,  () => {
+            Laya.Dialog.closeAll();
+            Laya.Scene.open("game.ls", true, { "type": "computer", "color": Config.Colors[this.colorIdx],"number":parallel.numberOfPlayer });
+        });
+
         parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
             Laya.Dialog.closeAll();
         });

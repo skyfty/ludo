@@ -1,6 +1,5 @@
 const { regClass, property } = Laya;
 import { Parallel } from "./Parallel";
-import { Config } from "./Config";
 import {Station} from "./Station";
 import * as SFS2X from "../node_modules/sfs2x-api";
 
@@ -14,36 +13,24 @@ export class GameRoom extends Laya.Script {
 
     onAwake(): void {
         let parallel = this.owner.getComponent(Parallel);
-        parallel.play.disabled = true;
 
         parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
             Laya.Dialog.closeAll();
         });
+        this.addStationListener();
 
-        for (let idx in parallel.colorCheckBox) {
-            parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
-                parallel.play.disabled = false;
-                this.colorIdx = Number.parseInt(idx);
-            });
-        }
     }
     
-    onStart(): void {
-        this.addStationListener();
-    }
-
     onDestroy(): void {
         this.removeStationListener();
     }
 
-    addStationListener() {
-        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+    protected addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
 
     }
-    removeStationListener() {
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+    protected removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
     }
@@ -58,10 +45,6 @@ export class GameRoom extends Laya.Script {
         console.log("Room creation failed: " + evtParams.errorMessage);
     }
 
-    private onRoomJoin(event: SFS2X.SFSEvent) {
-        Laya.Dialog.closeAll();
-        Laya.Scene.open("partner.ls", true,{"color":Config.Colors[this.colorIdx]});
-    }
 
     protected getRoomInitVariable(isPrivate:boolean) {
         var roomVars = [];

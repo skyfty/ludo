@@ -5,6 +5,7 @@ import * as Player from "./Player";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
 import { MyselfAvatar } from "./MyselfAvatar";
+import { Rank } from "./Rank";
 
 @regClass()
 export class Oneself extends Performer {
@@ -85,9 +86,8 @@ export class Oneself extends Performer {
             this.player.trade.getComponent(Trade).becareful();
             return;
         }
-
         this.owner.event(Player.Event.Achieve);
-        if (this.player.isAllHome()) {
+        if (this.player.isAllHome()) {            
             this.owner.event(Player.Event.Victory);
         }
     }
