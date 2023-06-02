@@ -1,4 +1,5 @@
 import { Dialog } from "./Dialog";
+import { Station } from "./Station";
 
 const { regClass, property,SoundManager } = Laya;
 
@@ -13,15 +14,14 @@ export class GameToolbar extends Laya.Script {
 
     onAwake(): void {
         this.backButton.on(Laya.Event.CLICK, this, ()=>{
-            let owner = this.owner as Laya.Sprite;
             Laya.Scene.open("dialog/endgame.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
                 let view = dlg.getChildByName("view");
                 view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
                 view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
+                    Station.levelRoom();
                     Dialog.closeAll();
                     Laya.Scene.open("menu.ls");
                 });
-
             }));
         });
     }

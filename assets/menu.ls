@@ -28,10 +28,6 @@
       "settings": {
         "_$ref": "foe94s5k"
       },
-      "parallel": {
-        "_$uuid": "2c2ebf8d-515e-48c3-a5b6-9608800d2ad3",
-        "_$type": "Prefab"
-      },
       "avatar": {
         "_$ref": "upjap8ug"
       }
@@ -257,9 +253,9 @@
               "_$type": "Image",
               "name": "Image",
               "x": -10,
-              "y": -2.000000000000016,
-              "width": 50.588108108108116,
-              "height": 48.28864864864866,
+              "y": -1.5987211554602254e-14,
+              "width": 50.899408284023664,
+              "height": 43.958579881656796,
               "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
               "color": "#ffffff"
             },

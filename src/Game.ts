@@ -21,6 +21,7 @@ export class Game extends Laya.Scene {
         this.room = this.getComponent(Room);
     }
 
+
     onOpened(param: any) {
         if (param && param.type == "extreme") {
             this.challengeExtreme(param);

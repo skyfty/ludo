@@ -1,0 +1,16 @@
+{
+  "_$ver": 1,
+  "_$id": "u6z85paw",
+  "_$type": "Clip",
+  "name": "Clip",
+  "width": 66,
+  "height": 57,
+  "mouseEnabled": true,
+  "clipWidth": 0,
+  "clipHeight": 0,
+  "clipX": 1,
+  "clipY": 1,
+  "index": 0,
+  "interval": 50,
+  "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854"
+}

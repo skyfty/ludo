@@ -1,0 +1,104 @@
+{
+  "_$ver": 1,
+  "_$id": "x99tyo1jhx",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 750,
+  "height": 1334,
+  "alpha": 0.88,
+  "mouseEnabled": true,
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "bgColor": "rgba(0, 0, 0, 1)",
+  "_$comp": [
+    {
+      "_$type": "526b0624-b995-44ec-b03d-bc9c997a6a43",
+      "scriptPath": "../src/Loser.ts",
+      "goldcoin": {
+        "_$uuid": "89a50e27-7b1e-4b6b-9a47-7cba536895b5",
+        "_$type": "Prefab"
+      },
+      "collectPoint": {
+        "_$ref": "wswrofcs"
+      },
+      "return": {
+        "_$ref": "qp6r13qc"
+      },
+      "earnNumber": {
+        "_$ref": "40twbvfy"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "6f3o8jqg",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 125,
+      "y": 423,
+      "width": 500,
+      "height": 488,
+      "skin": "res://00e9bb35-986d-481e-8c3c-76c22ed457ec",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "wswrofcs",
+      "_$type": "Sprite",
+      "name": "Sprite",
+      "x": 337,
+      "y": 495,
+      "width": 100,
+      "height": 100
+    },
+    {
+      "_$id": "qp6r13qc",
+      "_$type": "Button",
+      "name": "return",
+      "x": 26,
+      "y": 138,
+      "width": 55,
+      "height": 55,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "bcgvhy0l",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 268,
+      "y": 135,
+      "width": 66,
+      "height": 57,
+      "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "40twbvfy",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 339,
+      "y": 143,
+      "width": 321,
+      "height": 46,
+      "text": "",
+      "fontSize": 55,
+      "color": "#FFFFFF",
+      "valign": "middle",
+      "leading": 0,
+      "padding": "0,0,0,0"
+    }
+  ]
+}

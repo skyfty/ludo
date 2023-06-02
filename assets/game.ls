@@ -24,6 +24,14 @@
       },
       "yellowPlayer": {
         "_$ref": "qs7wy01p"
+      },
+      "reward": {
+        "_$uuid": "06164ce8-be3e-4019-b8ae-69a252482140",
+        "_$type": "Prefab"
+      },
+      "loser": {
+        "_$uuid": "2191a9de-75c1-4ec6-9a1a-a3ebf2dbee7f",
+        "_$type": "Prefab"
       }
     }
   ],
@@ -855,10 +863,6 @@
               "origin": {
                 "_$ref": "h6q90dh9"
               },
-              "chessPrefab": {
-                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
-                "_$type": "Prefab"
-              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -1262,10 +1266,6 @@
               "origin": {
                 "_$ref": "bj7phns4"
               },
-              "chessPrefab": {
-                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
-                "_$type": "Prefab"
-              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -1651,10 +1651,6 @@
               "origin": {
                 "_$ref": "ves81bgi"
               },
-              "chessPrefab": {
-                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
-                "_$type": "Prefab"
-              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -2034,10 +2030,6 @@
               },
               "origin": {
                 "_$ref": "2r52rn68"
-              },
-              "chessPrefab": {
-                "_$uuid": "7fccce01-c779-4446-adce-948a5c3a712d",
-                "_$type": "Prefab"
               },
               "room": {
                 "_$ref": "lx8mwule",

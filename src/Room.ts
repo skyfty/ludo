@@ -3,7 +3,8 @@ import { Oneself } from "./Oneself";
 import { Extreme } from "./Extreme";
 import * as Player from "./Player";
 import { Performer } from "./Performer";
-import { Rank } from "./Rank";
+import { Reward } from "./Reward";
+import { Loser } from "./Loser";
 
 const { regClass, property } = Laya;
 
@@ -20,6 +21,13 @@ export class Room extends Laya.Script {
 
     @property(Laya.Sprite)
     public yellowPlayer: Laya.Sprite;
+
+    @property(Laya.Prefab)
+    public reward: Laya.Prefab;
+
+
+    @property(Laya.Prefab)
+    public loser: Laya.Prefab;
 
     public numberOfPlayer: number = 0;
 
@@ -44,9 +52,6 @@ export class Room extends Laya.Script {
         this.initEventListener();
     }
 
-    onStart(): void {
-
-    }
     private initEventListener() {
         this.redPlayer.on(Player.Event.Achieve, this, this.onPlayerAchieve);
         this.greenPlayer.on(Player.Event.Achieve, this, this.onPlayerAchieve);
@@ -57,6 +62,10 @@ export class Room extends Laya.Script {
         this.greenPlayer.on(Player.Event.Victory, this, this.onPlayerVictory);
         this.yellowPlayer.on(Player.Event.Victory, this, this.onPlayerVictory);
         this.bluePlayer.on(Player.Event.Victory, this, this.onPlayerVictory);
+    }
+
+    onStart(): void {
+
     }
 
     onPlayerVictory() {

@@ -17,9 +17,6 @@ export class Menu extends Laya.Script {
     @property(Laya.Button)
     public settings: Laya.Button;
 
-    @property(Laya.Prefab)
-    public parallel:Laya.Prefab;
-
     @property(Laya.Box)
     public avatar: Laya.Box;
 
@@ -39,6 +36,8 @@ export class Menu extends Laya.Script {
         Laya.SoundManager.musicMuted =Laya.LocalStorage.getItem("musicMuted") == "on";
         Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("soundMuted") == "on";
         SoundManager.playMusic("sounds/menu.mp3", 0);
+
+        
     }
     onAvatarClick() {
         Laya.Scene.open("dialog/profile.lh", false);

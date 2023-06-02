@@ -6,6 +6,8 @@ import { Extreme } from "./Extreme";
 import * as Player from "./Player";
 import { Config } from "./Config";
 import { Profile } from "./Profile";
+import { Reward } from "./Reward";
+import { Loser } from "./Loser";
 
 @regClass()
 export class Online extends Laya.Script {
@@ -42,10 +44,8 @@ export class Online extends Laya.Script {
     }
 
     onHurl(player:Laya.Sprite) {
-        player.event(Player.Event.Chuck, 5);
-
-        // var params = new SFS2X.SFSObject();
-        // Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
+        var params = new SFS2X.SFSObject();
+        Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
     }
 
     onDestroy(): void {
@@ -83,29 +83,55 @@ export class Online extends Laya.Script {
         }
     }
 
+    private onWinner(evtParam: SFS2X.SFSEvents) {
+        Profile.setGold(evtParam.data.get("amount"));
+        let reward = this.room.reward.create() as Laya.Sprite;
+        reward.getComponent(Reward).setEarn( evtParam.data.get("earn"));
+        reward.on(Laya.Event.CLOSE, this, ()=>{
+             this.quitRoomGame();
+        });
+        this.owner.addChild(reward);
+    }
+
+    private onLoser(evtParam: SFS2X.SFSEvents) {
+        Profile.setGold(evtParam.data.get("amount"));
+
+        let loser = this.room.loser.create() as Laya.Sprite;
+        loser.getComponent(Loser).setEarn( evtParam.data.get("pay"));
+        loser.on(Laya.Event.CLOSE, this, ()=>{
+             this.quitRoomGame();
+        });
+        this.owner.addChild(loser);
+    }
+
     private onModeratorMessage(evtParam: SFS2X.SFSEvents) {
         if (evtParam.message =="Winner") {
-           var earn = evtParam.data.get("earn");
-           Profile.setGold(evtParam.data.get("amount"));
+            this.onWinner(evtParam);
         }else if (evtParam.message =="Loser") {
-            var pay = evtParam.data.get("pay");
-            Profile.setGold(evtParam.data.get("amount"));
+            this.onLoser(evtParam);
          }
     }
 
     private onUserExitRoom(inEvent: SFS2X.SFSEvent) {
-        Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
-            let view = dlg.getChildByName("view");
-            view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
-                Laya.Dialog.closeAll();
-                Laya.Scene.open("menu.ls");
-            });
-        }));
+ 
+        if (!this.room.isVictory) {
+            Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+                let view = dlg.getChildByName("view");
+                view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
+                    this.quitRoomGame();
+                });
+            }));
+        }
         this.room.setPlayersToIdle();
         this.removeStationListener();
     }
 
-    
+    private quitRoomGame() {
+        Station.levelRoom();
+        Laya.Dialog.closeAll();
+        Laya.Scene.open("menu.ls");
+    }
+
     private onObjectMessage(evtParams: SFS2X.SFSEvent) {
         var dataObj:SFS2X.SFSObject  = evtParams.message;
         switch (dataObj.get("event")) {
