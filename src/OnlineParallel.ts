@@ -96,14 +96,14 @@ export class OnlineParallel extends GameRoom {
             this.refreshEarnPayLabel();
         }
     }
-    protected addStationListener() {
+    public addStationListener() {
         super.addStationListener();
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
 
     }
 
-    protected removeStationListener() {
+    public removeStationListener() {
         super.removeStationListener();
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);

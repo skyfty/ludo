@@ -113,7 +113,6 @@ export class Online extends Laya.Script {
     }
 
     private onUserExitRoom(inEvent: SFS2X.SFSEvent) {
- 
         if (!this.room.isVictory) {
             Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
                 let view = dlg.getChildByName("view");
