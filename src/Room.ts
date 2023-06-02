@@ -80,19 +80,15 @@ export class Room extends Laya.Script {
     }
 
     onAchieve() {
-        if (this.isVictory) {
-            this.setPlayersToIdle();
+        let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+        current.setState(Player.State.Idle);
+        if (this.currentIdx == this.playerOrder.length - 1) {
+            this.currentIdx = 0;
         } else {
-            let current = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-            current.setState(Player.State.Idle);
-            if (this.currentIdx == this.playerOrder.length - 1) {
-                this.currentIdx = 0;
-            } else {
-                this.currentIdx++;
-            }
-            let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
-            next.setState(Player.State.Running);
+            this.currentIdx++;
         }
+        let next = this.players[this.playerOrder[this.currentIdx].id].getComponent(Performer);
+        next.setState(Player.State.Running);
     }
 
     private getPlayerOrderIndex(color: string, player: Laya.Sprite) {

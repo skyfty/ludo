@@ -12,13 +12,7 @@ export class GameRoom extends Laya.Script {
     }
 
     onAwake(): void {
-        let parallel = this.owner.getComponent(Parallel);
-
-        parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
-            Laya.Dialog.closeAll();
-        });
         this.addStationListener();
-
     }
     
     onDestroy(): void {

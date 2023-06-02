@@ -18,7 +18,7 @@ export class OnlineParallel extends GameRoom {
 
     onAwake(): void {
         super.onAwake();
-
+   
         let parallel = this.owner.getComponent(Parallel);
         parallel.viewStack.selectedIndex = 1;
 
@@ -48,6 +48,9 @@ export class OnlineParallel extends GameRoom {
                 this.idx++;
             }
             this.refreshEarnPayLabel();
+        });
+        parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
+            Laya.Dialog.closeAll();
         });
 
         Station.sfs.send(new SFS2X.ExtensionRequest("GetJettonRequest"));

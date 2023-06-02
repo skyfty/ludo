@@ -4,21 +4,37 @@ import { Parallel } from "./Parallel";
 import { Config } from "./Config";
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Station } from "./Station";
+import { SelectPlayer } from "./SelectPlayer";
 
 @regClass()
 export class CreateRoom extends GameRoom {
 
+    @property(Laya.Button)
+    public play: Laya.Button;
+    
+    @property(Laya.Button)
+    public closeBtn: Laya.Button;
     constructor() {
         super();
     }
 
     onAwake(): void {
         super.onAwake();
-        let parallel = this.owner.getComponent(Parallel);
-        parallel.viewStack.selectedIndex = 0;
+        this.play.disabled = true;
+        this.closeBtn.on(Laya.Event.CLICK, this, () => {
+            Laya.Dialog.closeAll();
+        });
+        let selectPlayer = this.owner.getComponent(SelectPlayer) as SelectPlayer;
 
-        let play = parallel.viewStack.getChildByName("item0") as Laya.Button;
-        play.on(Laya.Event.CLICK, this, this.onCreateRoom);
+        for (let idx in selectPlayer.colorCheckBox) {
+            selectPlayer.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
+                this.play.disabled = false;
+                this.colorIdx = Number.parseInt(idx);
+            });
+        }
+
+
+        this.play.on(Laya.Event.CLICK, this, this.onCreateRoom);
     }
 
     protected addStationListener() {
@@ -37,9 +53,9 @@ export class CreateRoom extends GameRoom {
     }
     
     onCreateRoom() {
-        let parallel = this.owner.getComponent(Parallel) as Parallel;
+        let selectPlayer = this.owner.getComponent(SelectPlayer) as SelectPlayer;
         var roomVars = this.getRoomInitVariable(true);
-        var settings = this.getRoomSettings(parallel.numberOfPlayer);
+        var settings = this.getRoomSettings(selectPlayer.numberOfPlayer);
         settings.variables = roomVars;
         Station.sfs.send(new SFS2X.CreateSFSGameRequest(settings));
     }

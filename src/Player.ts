@@ -177,7 +177,8 @@ export class Player extends Laya.Script {
     }
 
     public isAllHome() {
-        return this.home.length == 4;
+        return true;
+        // return this.home.length == 4;
     }
 
     private getChesses(route: Route.Route, player: Player) {

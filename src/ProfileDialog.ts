@@ -42,7 +42,10 @@ export class ProfileDialog extends Laya.Script {
             data.push(m);
         }
         this.avatarList.array = data;
-        this.returnBtn.on(Laya.Event.CLICK, this, ()=>{Dialog.closeAll();});
+        this.returnBtn.on(Laya.Event.CLICK, this, ()=>{
+            let dlg = this.owner as Laya.Dialog;
+            dlg.close();
+        });
 
         this.name.on(Laya.Event.BLUR, this, this.onNameInputBlur);
     }

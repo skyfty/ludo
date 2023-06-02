@@ -88,8 +88,18 @@
               "mouseEnabled": true,
               "_$comp": [
                 {
-                  "_$type": "a5d9f7a0-da02-42b4-ae7d-627f69a899e4",
-                  "scriptPath": "../src/Parallel.ts",
+                  "_$type": "b07b053c-5687-4e6f-8fd0-480569bd2009",
+                  "scriptPath": "../src/CreateRoom.ts",
+                  "play": {
+                    "_$ref": "u0w1mk4b"
+                  },
+                  "closeBtn": {
+                    "_$ref": "v4u6heqb"
+                  }
+                },
+                {
+                  "_$type": "e0c9c380-fd8c-4d4f-84f3-db01bd657110",
+                  "scriptPath": "../src/SelectPlayer.ts",
                   "closeBtn": {
                     "_$ref": "v4u6heqb"
                   },
@@ -101,9 +111,6 @@
                   },
                   "play4pBtn": {
                     "_$ref": "5cbwoi83"
-                  },
-                  "play": {
-                    "_$ref": "u0w1mk4b"
                   },
                   "colorCheckBox": [
                     {
@@ -119,10 +126,6 @@
                       "_$ref": "as36casd"
                     }
                   ]
-                },
-                {
-                  "_$type": "b07b053c-5687-4e6f-8fd0-480569bd2009",
-                  "scriptPath": "../src/CreateRoom.ts"
                 }
               ],
               "_$child": [

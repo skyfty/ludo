@@ -42,8 +42,10 @@ export class Online extends Laya.Script {
     }
 
     onHurl(player:Laya.Sprite) {
-        var params = new SFS2X.SFSObject();
-        Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
+        player.event(Player.Event.Chuck, 5);
+
+        // var params = new SFS2X.SFSObject();
+        // Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
     }
 
     onDestroy(): void {
@@ -85,7 +87,10 @@ export class Online extends Laya.Script {
         if (evtParam.message =="Winner") {
            var earn = evtParam.data.get("earn");
            Profile.setGold(evtParam.data.get("amount"));
-        }
+        }else if (evtParam.message =="Loser") {
+            var pay = evtParam.data.get("pay");
+            Profile.setGold(evtParam.data.get("amount"));
+         }
     }
 
     private onUserExitRoom(inEvent: SFS2X.SFSEvent) {

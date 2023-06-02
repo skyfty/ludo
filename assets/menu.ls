@@ -43,7 +43,7 @@
       "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
-      "debug": true
+      "debug": false
     }
   ],
   "_$child": [
@@ -245,13 +245,24 @@
           "_$id": "pizo50xh",
           "_$type": "Image",
           "name": "Image(1)",
-          "x": 403.2734634485812,
+          "x": 409.2734634485812,
           "y": 8.9454971056211,
-          "width": 234.2907917628815,
-          "height": 43.14306139879168,
-          "skin": "res://b1efaebe-e898-4c1c-b6e8-116178343fe5",
+          "width": 237.68106970409812,
+          "height": 43.733316825554034,
+          "skin": "res://60a21851-71fd-44f0-a297-b362629a30f8",
           "color": "#ffffff",
           "_$child": [
+            {
+              "_$id": "yp0qtw8z",
+              "_$type": "Image",
+              "name": "Image",
+              "x": -10,
+              "y": -2.000000000000016,
+              "width": 50.588108108108116,
+              "height": 48.28864864864866,
+              "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
+              "color": "#ffffff"
+            },
             {
               "_$id": "l1m23pig",
               "_$type": "Label",

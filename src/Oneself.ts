@@ -4,8 +4,6 @@ import { Performer } from "./Performer";
 import * as Player from "./Player";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
-import { MyselfAvatar } from "./MyselfAvatar";
-import { Rank } from "./Rank";
 
 @regClass()
 export class Oneself extends Performer {
@@ -52,8 +50,8 @@ export class Oneself extends Performer {
         trade.stop();
         Laya.timer.once(100, this, ()=>{
             trade.roll();
+            this.player.room.owner.event(Player.Event.Hurl, [this.owner])
         });
-        this.player.room.owner.event(Player.Event.Hurl, [this.owner])
     }
 
     private onRollStop() {
@@ -82,13 +80,14 @@ export class Oneself extends Performer {
     private onAdvanceComplete(node:Laya.Sprite) {
         this.isAdvanceing = false;
         let chess = node.getComponent(Chess);
-        if (chess.hole == this.player.entry) {
-            this.player.trade.getComponent(Trade).becareful();
-            return;
-        }
-        this.owner.event(Player.Event.Achieve);
         if (this.player.isAllHome()) {            
             this.owner.event(Player.Event.Victory);
+        } else {
+            if (chess.hole == this.player.entry) {
+                this.player.trade.getComponent(Trade).becareful();
+            } else {
+                this.owner.event(Player.Event.Achieve);
+            }
         }
     }
 
