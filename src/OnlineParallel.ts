@@ -68,7 +68,7 @@ export class OnlineParallel extends GameRoom {
         let varname = Station.getUserJettonName();
         roomVars.push(new SFS2X.SFSRoomVariable(varname, this.jettons.getSFSObject(this.idx)));
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
-        Laya.Scene.open("partner.ls", true,{"color":Config.Colors[this.colorIdx]});
+        Laya.Scene.open("militant.ls", true,{"color":Config.Colors[this.colorIdx]});
     }
 
     onPlay() {

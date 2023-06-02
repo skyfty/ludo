@@ -33,23 +33,22 @@ export class CreateRoom extends GameRoom {
             });
         }
 
-
         this.play.on(Laya.Event.CLICK, this, this.onCreateRoom);
     }
 
-    protected addStationListener() {
+    public addStationListener() {
         super.addStationListener();
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
 
     }
-    protected removeStationListener() {
+    public removeStationListener() {
         super.removeStationListener();
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
     }
 
     private onRoomJoin(event: SFS2X.SFSEvent) {
         Laya.Dialog.closeAll();
-        Laya.Scene.open("partner.ls", true,{"color":Config.Colors[this.colorIdx]});
+        Laya.Scene.open("invite.ls", true,{"color":Config.Colors[this.colorIdx]});
     }
     
     onCreateRoom() {

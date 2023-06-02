@@ -19,12 +19,12 @@ export class GameRoom extends Laya.Script {
         this.removeStationListener();
     }
 
-    protected addStationListener() {
+    public addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
 
     }
-    protected removeStationListener() {
+    public removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
     }

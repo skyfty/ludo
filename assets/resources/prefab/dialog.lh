@@ -28,9 +28,13 @@
       "height": 86.62779088928183,
       "mouseEnabled": true,
       "stateNum": 2,
-      "skin": "res://404e5506-c4b4-4cdb-9112-794ed9c5d5e5",
-      "label": "",
-      "labelSize": 20
+      "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
+      "sizeGrid": "12,14,15,13,0",
+      "label": "OKAY",
+      "labelFont": "Impact",
+      "labelSize": 52,
+      "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+      "labelStroke": 2
     },
     {
       "_$id": "9r94nh4g",

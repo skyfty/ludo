@@ -2,8 +2,8 @@
 
 
 /**
- * partner.ls
+ * invite.ls
  */
-export class PartnerBase extends Laya.Scene {
+export class InviteBase extends Laya.Scene {
 }
 

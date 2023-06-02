@@ -153,7 +153,8 @@
           "_$id": "f50fmlg3",
           "_$type": "Box",
           "name": "Box",
-          "width": 731,
+          "x": 17,
+          "width": 714,
           "height": 56,
           "bgColor": "rgba(128, 86, 172, 1)"
         },
@@ -171,6 +172,7 @@
           "_$id": "upjap8ug",
           "_$type": "Box",
           "name": "avatar",
+          "x": -1,
           "width": 121,
           "height": 121,
           "_$comp": [
@@ -185,9 +187,9 @@
               "_$type": "Image",
               "name": "Image(1)",
               "x": 7,
-              "y": 5,
-              "width": 109,
-              "height": 106.5,
+              "y": 8,
+              "width": 106,
+              "height": 103.5,
               "skin": "res://00000000-0000-0000-0001-000000000000",
               "color": "#ffffff"
             },
@@ -303,7 +305,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 4,
+              "index": 6,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -321,7 +323,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 5,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

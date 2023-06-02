@@ -50,12 +50,12 @@ export class JoinRoom extends Laya.Script {
         this.removeStationListener();
     }
 
-    addStationListener() {
+    public addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
 
     }
-    removeStationListener() {
+    public removeStationListener() {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
     }
@@ -64,7 +64,7 @@ export class JoinRoom extends Laya.Script {
         Laya.Scene.open("dialog/selectcolor.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
             dlg.on(Laya.Event.PLAYED, this, (color:string)=>{
                 Dialog.closeAll();
-                Laya.Scene.open("partner.ls", true,{"color":color});
+                Laya.Scene.open("militant.ls", true,{"color":color});
             });
             dlg.on(Laya.Event.CLOSE, this, ()=>{
                 Station.levelRoom();

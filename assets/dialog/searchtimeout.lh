@@ -1,8 +1,8 @@
 {
   "_$ver": 1,
-  "_$id": "k6dp8f57",
+  "_$id": "k4g6nc8i",
   "_$type": "Dialog",
-  "name": "Dialog",
+  "name": "dialog",
   "width": 750,
   "height": 1334,
   "mouseEnabled": true,
@@ -10,29 +10,29 @@
   "isModal": true,
   "_$child": [
     {
-      "_$id": "8f7iuuei",
+      "_$id": "2q93949i",
       "_$prefab": "fc45a8ff-86ed-4bfe-bdc0-b043f2441912",
       "name": "view",
       "active": true,
       "x": 0,
       "y": 331,
       "visible": true,
-      "height": 411,
+      "height": 361,
       "width": 750,
       "_$child": [
         {
           "_$override": "5j42b6as",
-          "x": 31,
-          "width": 695,
+          "width": 560,
           "useSourceSize": false,
-          "height": 376,
-          "y": 19.000000000000114
+          "y": -1,
+          "x": 102,
+          "height": 376
         },
         {
           "_$override": "gjhdic9x",
-          "x": 312,
-          "y": 245,
-          "visible": true,
+          "x": 321,
+          "y": 222,
+          "visible": false,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -42,16 +42,16 @@
         },
         {
           "_$override": "9r94nh4g",
-          "x": 65,
-          "y": 65,
-          "text": "Want to accept the challenge?",
-          "width": 626
+          "x": 142,
+          "y": 54,
+          "text": "Searching Timeout.",
+          "width": 481
         },
         {
           "_$override": "9i71029w",
           "width": 89,
-          "x": 192,
-          "y": 245,
+          "x": 330,
+          "y": 223,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",

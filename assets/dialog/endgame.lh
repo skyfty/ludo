@@ -32,6 +32,7 @@
           "_$override": "gjhdic9x",
           "x": 321,
           "y": 222,
+          "visible": true,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -49,8 +50,8 @@
         {
           "_$override": "9i71029w",
           "width": 89,
-          "x": 196,
-          "y": 221,
+          "x": 201,
+          "y": 219,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
