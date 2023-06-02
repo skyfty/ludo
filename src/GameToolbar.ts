@@ -1,7 +1,6 @@
 import { Dialog } from "./Dialog";
-import { Station } from "./Station";
 
-const { regClass, property,SoundManager } = Laya;
+const { regClass, property } = Laya;
 
 @regClass()
 export class GameToolbar extends Laya.Script {
@@ -18,7 +17,6 @@ export class GameToolbar extends Laya.Script {
                 let view = dlg.getChildByName("view");
                 view.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
                 view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
-                    Station.levelRoom();
                     Dialog.closeAll();
                     Laya.Scene.open("menu.ls");
                 });

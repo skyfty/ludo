@@ -1,0 +1,264 @@
+{
+  "_$ver": 1,
+  "_$id": "w6erjt2x",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "08e8d095-2f7a-40cc-8794-831ffb1c22e8",
+      "scriptPath": "../src/Buycoin.ts",
+      "list": {
+        "_$ref": "gx74qtzf"
+      },
+      "return": {
+        "_$ref": "ml9wfj41"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "br7f39jo",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 28,
+      "y": 145,
+      "width": 693,
+      "height": 810,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "ml9wfj41",
+      "_$type": "Button",
+      "name": "return",
+      "x": 343,
+      "y": 958,
+      "width": 64,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "gx74qtzf",
+      "_$type": "List",
+      "name": "List",
+      "x": 67,
+      "y": 172,
+      "width": 621,
+      "height": 727,
+      "mouseEnabled": true,
+      "itemTemplate": {
+        "_$ref": "p1bsr8i7",
+        "_$tmpl": "itemRender"
+      },
+      "repeatX": 1,
+      "repeatY": 7,
+      "spaceY": 4,
+      "scrollType": 2,
+      "selectEnable": true,
+      "_$child": [
+        {
+          "_$id": "p1bsr8i7",
+          "_$type": "Box",
+          "name": "Box",
+          "width": 618,
+          "height": 100,
+          "mouseEnabled": true,
+          "_$comp": [
+            {
+              "_$type": "2bc20bce-e76f-4a7b-8384-a3478d38053b",
+              "scriptPath": "../src/BuyItem.ts",
+              "coin": {
+                "_$ref": "y9f30ry6"
+              },
+              "price": {
+                "_$ref": "60qhmck3"
+              },
+              "buyBtn": {
+                "_$ref": "izf1eqyl"
+              }
+            },
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "vj2vgf72",
+              "_$type": "Image",
+              "name": "Image",
+              "width": 618,
+              "height": 100,
+              "skin": "res://60815850-2a86-4053-8509-e1e77d973722",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "lqfy5h4b",
+              "_$type": "Image",
+              "name": "Image(1)",
+              "x": 17,
+              "y": 10,
+              "width": 92.10163255920902,
+              "height": 79.20740400091975,
+              "skin": "res://18d32ce1-42f7-46cd-a1b6-c0c2743a55cb",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "y9f30ry6",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 121,
+              "y": 25,
+              "width": 210,
+              "height": 39,
+              "text": "10,000",
+              "font": "Tahoma",
+              "fontSize": 42,
+              "color": "rgba(254, 212, 3, 1)",
+              "bold": true,
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "stroke": 3,
+              "strokeColor": "rgba(74, 74, 75, 1)"
+            },
+            {
+              "_$id": "izf1eqyl",
+              "_$type": "Button",
+              "name": "Button",
+              "x": 412,
+              "y": 13,
+              "width": 192,
+              "height": 74,
+              "mouseEnabled": true,
+              "stateNum": 2,
+              "skin": "res://561bd258-f58e-4616-ab1f-e0698916f2f2",
+              "label": "",
+              "labelSize": 20,
+              "_$child": [
+                {
+                  "_$id": "4sqkppht",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 12,
+                  "y": 11,
+                  "width": 167,
+                  "height": 21,
+                  "text": "BUY FOR",
+                  "fontSize": 25,
+                  "color": "#FFFFFF",
+                  "align": "center",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3,
+                  "strokeColor": "rgba(74, 74, 75, 1)"
+                },
+                {
+                  "_$id": "60qhmck3",
+                  "_$type": "Label",
+                  "name": "Label(1)",
+                  "x": 10,
+                  "y": 37,
+                  "width": 174,
+                  "height": 28,
+                  "text": "0.98",
+                  "fontSize": 30,
+                  "color": "#FFFFFF",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "bottom",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 1
+                }
+              ]
+            },
+            {
+              "_$id": "l1p77dr5",
+              "_$type": "Clip",
+              "name": "Clip",
+              "x": 22.86262458740999,
+              "y": 31,
+              "width": 38.13737541259,
+              "height": 24.75485523352614,
+              "anchorY": -0.16666666666666666,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 5,
+              "interval": 226,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            },
+            {
+              "_$id": "ld0anleb",
+              "_$type": "Clip",
+              "name": "Clip(1)",
+              "x": 67,
+              "y": 29,
+              "width": 38.5,
+              "height": 38.5,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 5,
+              "interval": 226,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            },
+            {
+              "_$id": "xb5jsf7v",
+              "_$type": "Clip",
+              "name": "Clip(2)",
+              "x": 25,
+              "y": 9,
+              "width": 30,
+              "height": 30,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 1,
+              "interval": 213,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            },
+            {
+              "_$id": "dhjr8xrj",
+              "_$type": "Clip",
+              "name": "Clip(3)",
+              "x": 52,
+              "y": 45,
+              "width": 36.5,
+              "height": 36.5,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 5,
+              "interval": 198,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

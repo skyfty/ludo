@@ -26,9 +26,6 @@
       "play4pBtn": {
         "_$ref": "5ibbci1l"
       },
-      "viewStack": {
-        "_$ref": "c9zne9cs"
-      },
       "colorCheckBox": [
         {
           "_$ref": "ca2qmnut"
@@ -42,7 +39,10 @@
         {
           "_$ref": "bkpyh24y"
         }
-      ]
+      ],
+      "viewStack": {
+        "_$ref": "c9zne9cs"
+      }
     }
   ],
   "_$child": [
@@ -393,6 +393,7 @@
               "y": 56.999999999999886,
               "width": 378,
               "height": 104,
+              "visible": false,
               "disabled": true,
               "gray": true,
               "stateNum": 2,
@@ -412,6 +413,7 @@
               "name": "item1",
               "width": 480,
               "height": 196,
+              "visible": false,
               "texture": {
                 "_$uuid": "2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
                 "_$type": "Texture"
@@ -430,7 +432,13 @@
                   "stateNum": 2,
                   "skin": "res://e5f6ffc0-8618-43e0-9c42-8a4483b210c1",
                   "label": "",
-                  "labelSize": 20
+                  "labelSize": 20,
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
                 },
                 {
                   "_$id": "myvcilps",
@@ -444,7 +452,13 @@
                   "stateNum": 2,
                   "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
                   "label": "",
-                  "labelSize": 20
+                  "labelSize": 20,
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ]
                 },
                 {
                   "_$id": "jwlr5yro",
@@ -454,6 +468,12 @@
                   "y": 16,
                   "width": 301,
                   "height": 153,
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    }
+                  ],
                   "_$child": [
                     {
                       "_$id": "do453mwt",

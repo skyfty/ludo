@@ -20,6 +20,9 @@ export class Menu extends Laya.Script {
     @property(Laya.Box)
     public avatar: Laya.Box;
 
+    @property(Laya.Sprite)
+    public goldcoin: Laya.Sprite;
+
     constructor() {
         super();
     }
@@ -29,7 +32,10 @@ export class Menu extends Laya.Script {
         this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
         this.challengeFriend.on(Laya.Event.CLICK, this, this.onChallengeFriend);
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
-        this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick)
+        this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
+        this.goldcoin.on(Laya.Event.CLICK, this, ()=>{
+            Laya.Scene.open("dialog/buycoin.lh", false);
+        });
     }
 
     onStart(): void {

@@ -65,7 +65,6 @@ export class Room extends Laya.Script {
     }
 
     onStart(): void {
-
     }
 
     onPlayerVictory() {

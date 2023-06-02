@@ -183,6 +183,12 @@
               "name": "Box",
               "width": 120,
               "height": 120,
+              "_$comp": [
+                {
+                  "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                  "scriptPath": "../src/ClickSound.ts"
+                }
+              ],
               "_$child": [
                 {
                   "_$id": "112aelym",

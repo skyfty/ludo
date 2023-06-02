@@ -30,6 +30,9 @@
       },
       "avatar": {
         "_$ref": "upjap8ug"
+      },
+      "goldcoin": {
+        "_$ref": "pizo50xh"
       }
     },
     {
@@ -240,13 +243,19 @@
         {
           "_$id": "pizo50xh",
           "_$type": "Image",
-          "name": "Image(1)",
+          "name": "goldcoin",
           "x": 409.2734634485812,
           "y": 8.9454971056211,
           "width": 237.68106970409812,
           "height": 43.733316825554034,
           "skin": "res://60a21851-71fd-44f0-a297-b362629a30f8",
           "color": "#ffffff",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ],
           "_$child": [
             {
               "_$id": "yp0qtw8z",
@@ -279,6 +288,42 @@
                   "scriptPath": "../src/MyselfGold.ts"
                 }
               ]
+            },
+            {
+              "_$id": "pqkkxy1v",
+              "_$type": "Clip",
+              "name": "Clip",
+              "x": 4.862624587409989,
+              "y": -7,
+              "width": 38.13737541259,
+              "height": 24.75485523352614,
+              "anchorY": -0.16666666666666666,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 4,
+              "interval": 226,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            },
+            {
+              "_$id": "1q3xbgcs",
+              "_$type": "Clip",
+              "name": "Clip(1)",
+              "x": -18.13737541259001,
+              "y": 10,
+              "width": 47.91075781155648,
+              "height": 30.108639620724137,
+              "anchorY": -0.16666666666666666,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 2,
+              "interval": 199,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
           ]
         },
