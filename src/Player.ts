@@ -230,6 +230,7 @@ export class Player extends Laya.Script {
         if (chess.hole == this.goal) {
             let idx = this.chippy.indexOf(node);
             if (idx != -1) {
+                SoundManager.playSound("sounds/home.mp3", 1);
                 this.home.push(this.chippy.splice(idx, 1)[0]);
             }
         }

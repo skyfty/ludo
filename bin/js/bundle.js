@@ -11006,9 +11006,17 @@
       Laya.Dialog.closeAll();
       Laya.Scene.open("invite.ls", true, { "color": Config.Colors[this.colorIdx] });
     }
+    getRoomCode() {
+      const today = /* @__PURE__ */ new Date();
+      const hh = String(today.getHours()).padStart(2, "0");
+      const mm = String(today.getMinutes()).padStart(2, "0");
+      const ss = String(today.getSeconds()).padStart(2, "0");
+      return hh + mm + ss;
+    }
     onCreateRoom() {
       let selectPlayer = this.owner.getComponent(SelectPlayer);
       var roomVars = this.getRoomInitVariable(true);
+      roomVars.push(new SFS2X5.SFSRoomVariable("RoomCode", this.getRoomCode()));
       var settings = this.getRoomSettings(selectPlayer.numberOfPlayer);
       settings.variables = roomVars;
       Station.sfs.send(new SFS2X5.CreateSFSGameRequest(settings));
@@ -11046,12 +11054,8 @@
     onAwake() {
       this.play.on(Laya.Event.CLICK, this, () => {
         let roomId = this.roomInput.text;
-        let room = Station.sfs.getRoomById(Number.parseInt(roomId));
-        if (room != null) {
-          Station.joinRoom(room);
-        } else {
-          this.joinRoomError();
-        }
+        var exp = new SFS2X6.MatchExpression("RoomCode", SFS2X6.StringMatch.EQUALS, roomId);
+        Station.sfs.send(new SFS2X6.FindRoomsRequest(exp, null, 1));
       });
       this.closeBtn.on(Laya.Event.CLICK, this, () => {
         this.owner.event(Laya.Event.CLOSE);
@@ -11066,12 +11070,22 @@
       this.removeStationListener();
     }
     addStationListener() {
+      Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
       Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
       Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_JOIN, this.onRoomJoin);
+      Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
+      Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
+    }
+    onRoomFindResult(event) {
+      if (event.rooms != null && event.rooms.length == 1) {
+        Station.joinRoom(event.rooms[0]);
+      } else {
+        this.joinRoomError();
+      }
+      console.log("Rooms found: " + event.rooms);
     }
     onRoomJoin(event) {
       Laya.Scene.open("dialog/selectcolor.lh", false, null, Laya.Handler.create(this, (dlg) => {
@@ -11942,6 +11956,7 @@
       if (chess.hole == this.goal) {
         let idx = this.chippy.indexOf(node);
         if (idx != -1) {
+          SoundManager3.playSound("sounds/home.mp3", 1);
           this.home.push(this.chippy.splice(idx, 1)[0]);
         }
       }
@@ -12801,6 +12816,7 @@
       this.addStationListener();
       this.viewStack = this.getChildByName("ViewStack");
       this.clock = this.getChildByName("clockbk").getChildByName("clock");
+      this.roomCode = this.getChildByName("RoomTitle").getChildByName("RoomCode");
     }
     onDestroy() {
       this.removeStationListener();
@@ -12808,6 +12824,7 @@
     onOpened(param) {
       this.color = param.color;
       this.numberOfPlayer = Station.sfs.lastJoinedRoom.maxUsers;
+      this.roomCode.text = Station.sfs.lastJoinedRoom.getVariable("RoomCode").value;
       let itemName = this.numberOfPlayer - 2;
       this.viewStack.selectedIndex = itemName;
       this.item = this.viewStack.getChildByName("item" + itemName);
@@ -12899,6 +12916,9 @@
   __decorateClass([
     property38(Laya.Label)
   ], Invite.prototype, "clock", 2);
+  __decorateClass([
+    property38(Laya.Label)
+  ], Invite.prototype, "roomCode", 2);
   Invite = __decorateClass([
     regClass38("ddd78c04-cc08-49b6-8797-563c8b0aaefc", "../src/Invite.ts")
   ], Invite);
@@ -12985,6 +13005,15 @@
           "resources/images/win.png",
           "resources/images/winner.png",
           "resources/images/yellow_arrow.png",
+          "resources/images/jinguang.png",
+          "resources/images/sandglass.png",
+          "resources/images/airplane.png",
+          "resources/images/messagetip1.png",
+          "resources/images/messagetip2.png",
+          "resources/images/messagetip3.png",
+          "resources/images/messagetip4.png",
+          "resources/images/messagetip5.png",
+          "resources/images/messagetip6.png",
           { url: "game.ls", type: Laya.Loader.HIERARCHY },
           { url: "menu.ls", type: Laya.Loader.HIERARCHY },
           { url: "invite.ls", type: Laya.Loader.HIERARCHY },
@@ -13005,7 +13034,9 @@
           { url: "sounds/menu.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/move.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/win.mp3", type: Laya.Loader.BUFFER },
-          { url: "sounds/jinbi.mp3", type: Laya.Loader.BUFFER }
+          { url: "sounds/jinbi.mp3", type: Laya.Loader.BUFFER },
+          { url: "sounds/home.mp3", type: Laya.Loader.BUFFER },
+          { url: "sounds/message.mp3", type: Laya.Loader.BUFFER }
         ];
         Laya.loader.load(resArr, null, Laya.Handler.create(this, this.onLoading, null, false)).then(() => {
           this.progress.value = 0.98;

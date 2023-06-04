@@ -50,10 +50,19 @@ export class CreateRoom extends GameRoom {
         Laya.Dialog.closeAll();
         Laya.Scene.open("invite.ls", true,{"color":Config.Colors[this.colorIdx]});
     }
+
+    private getRoomCode() {
+        const  today = new Date();
+        const  hh =  String(today.getHours()).padStart(2, '0');       //获取当前小时数(0-23)
+        const  mm = String(today.getMinutes()).padStart(2, '0');     //获取当前分钟数(0-59)
+        const  ss = String(today.getSeconds()).padStart(2, '0');     //获取当前秒数(0-59)
+        return hh+mm+ss;
+    }
     
     onCreateRoom() {
         let selectPlayer = this.owner.getComponent(SelectPlayer) as SelectPlayer;
         var roomVars = this.getRoomInitVariable(true);
+        roomVars.push(new SFS2X.SFSRoomVariable("RoomCode", this.getRoomCode()));
         var settings = this.getRoomSettings(selectPlayer.numberOfPlayer);
         settings.variables = roomVars;
         Station.sfs.send(new SFS2X.CreateSFSGameRequest(settings));

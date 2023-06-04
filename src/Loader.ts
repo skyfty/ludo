@@ -86,6 +86,15 @@ export class Loader extends Laya.Script {
                 "resources/images/win.png",
                 "resources/images/winner.png",
                 "resources/images/yellow_arrow.png",
+                "resources/images/jinguang.png",
+                "resources/images/sandglass.png",
+                "resources/images/airplane.png",
+                "resources/images/messagetip1.png",
+                "resources/images/messagetip2.png",
+                "resources/images/messagetip3.png",
+                "resources/images/messagetip4.png",
+                "resources/images/messagetip5.png",
+                "resources/images/messagetip6.png",
 
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
@@ -111,6 +120,8 @@ export class Loader extends Laya.Script {
                 { url: "sounds/move.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/win.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/jinbi.mp3", type: Laya.Loader.BUFFER },
+                { url: "sounds/home.mp3", type: Laya.Loader.BUFFER },
+                { url: "sounds/message.mp3", type: Laya.Loader.BUFFER },
 
             ];
 

@@ -28,12 +28,8 @@ export class JoinRoom extends Laya.Script {
     onAwake(): void {
         this.play.on(Laya.Event.CLICK, this, ()=>{
             let roomId =  this.roomInput.text;
-            let room = Station.sfs.getRoomById(Number.parseInt(roomId));
-            if (room != null) {
-                Station.joinRoom(room)
-            } else {
-                this.joinRoomError();
-            }
+            var exp = new SFS2X.MatchExpression("RoomCode", SFS2X.StringMatch.EQUALS, roomId);
+            Station.sfs.send(new SFS2X.FindRoomsRequest(exp, null, 1));
         });
         this.closeBtn.on(Laya.Event.CLICK, this, () => {
             this.owner.event(Laya.Event.CLOSE);
@@ -51,13 +47,25 @@ export class JoinRoom extends Laya.Script {
     }
 
     public addStationListener() {
+        Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_FIND_RESULT,  this.onRoomFindResult, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
 
     }
     public removeStationListener() {
-        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
+    }
+
+    onRoomFindResult(event: SFS2X.SFSEvent) {
+        if ( event.rooms != null &&  event.rooms.length == 1) {
+            Station.joinRoom( event.rooms[0])
+        } else {
+            this.joinRoomError();
+        }
+
+        console.log("Rooms found: " + event.rooms);
     }
 
     private onRoomJoin(event: SFS2X.SFSEvent) {

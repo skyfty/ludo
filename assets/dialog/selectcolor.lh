@@ -16,7 +16,7 @@
         "_$ref": "m8h9mes6"
       },
       "play": {
-        "_$ref": "au00dbtu"
+        "_$ref": "24ov6pdb"
       },
       "colorCheckBox": [
         {
@@ -173,27 +173,6 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "au00dbtu",
-      "_$type": "Button",
-      "name": "play",
-      "x": 189,
-      "y": 610,
-      "width": 378,
-      "height": 104,
-      "disabled": true,
-      "gray": true,
-      "stateNum": 2,
-      "skin": "res://4bfff3da-7b12-45dd-b3c5-ebb6fca11f6a",
-      "label": "",
-      "labelSize": 20,
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
       "_$id": "ypt80gn7",
       "_$type": "CheckBox",
       "name": "red",
@@ -270,6 +249,31 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "24ov6pdb",
+      "_$type": "Button",
+      "name": "Button",
+      "x": 217,
+      "y": 609,
+      "width": 324.905875038856,
+      "height": 102.03655579732676,
+      "disabled": true,
+      "gray": true,
+      "stateNum": 2,
+      "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
+      "sizeGrid": "15,13,18,13,0",
+      "label": "PLAY",
+      "labelFont": "impact",
+      "labelSize": 66,
+      "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+      "labelStroke": 1,
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",

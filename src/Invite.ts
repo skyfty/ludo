@@ -17,6 +17,10 @@ export class Invite extends Laya.Scene {
     @property(Laya.Label)
     public clock: Laya.Label;
 
+    
+    @property(Laya.Label)
+    public roomCode: Laya.Label;
+
     onAwake(): void {
         this.getChildByName("return").on(Laya.Event.CLICK, this, () => {
             Laya.Scene.open("dialog/endgame.lh", false, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
@@ -28,6 +32,7 @@ export class Invite extends Laya.Scene {
         this.addStationListener();
         this.viewStack = this.getChildByName("ViewStack") as Laya.ViewStack;
         this.clock = this.getChildByName("clockbk").getChildByName("clock") as Laya.Label;
+        this.roomCode = this.getChildByName("RoomTitle").getChildByName("RoomCode") as Laya.Label;
     }
 
     onDestroy(): void {
@@ -37,6 +42,7 @@ export class Invite extends Laya.Scene {
     onOpened(param: any) {
         this.color = param.color;
         this.numberOfPlayer = Station.sfs.lastJoinedRoom.maxUsers;
+        this.roomCode.text = Station.sfs.lastJoinedRoom.getVariable("RoomCode").value;
 
         let itemName = this.numberOfPlayer - 2;
         this.viewStack.selectedIndex = itemName;
