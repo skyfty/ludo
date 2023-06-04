@@ -166,7 +166,7 @@ export class Room extends Laya.Script {
         return player;
     }
 
-    public addPlayer(color: string, type: Player.Type, profile: Player.Profile) {
+    public addPlayer(color: string, type: Player.Type, profile:any) {
         let player = this.getPlayer(color);
         if (player == null) {
             return;
@@ -180,7 +180,7 @@ export class Room extends Laya.Script {
                 break;
             }
             case Player.Type.Extreme: {
-                player.addComponentInstance(new Extreme());
+                player.addComponentInstance(new Extreme(profile.userid));
                 break;
             }
             case Player.Type.Computer: {

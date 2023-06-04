@@ -8,8 +8,11 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 
 @regClass()
 export class Extreme extends Performer {
-    constructor() {
+    private userid:number;
+
+    constructor(userid:number) {
         super();
+        this.userid = userid;
     }
     onAwake(): void {
         super.onAwake();
@@ -17,6 +20,14 @@ export class Extreme extends Performer {
     }
 
     onStart(): void {
+        this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+    }
+
+    onClickTrade() {
+        let param:any = {
+            "userid":this.userid
+        };
+        Laya.Scene.open("dialog/statistics.lh", true,param);
     }
 
     onStateChange() {

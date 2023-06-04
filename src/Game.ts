@@ -42,8 +42,11 @@ export class Game extends Laya.Scene {
             let type = users[i].isItMe ? Player.Type.Oneself : Player.Type.Extreme;
             let nickname = users[i].getVariable("nickname");
             let avatar = users[i].getVariable("avatar");
+            let userid = users[i].getVariable("userid");
+
             let player = this.room.addPlayer(color, type, {
                 "id": users[i].id,
+                "userid":userid.value,
                 "nickname": nickname.value,
                 "avatar": avatar.value
             });

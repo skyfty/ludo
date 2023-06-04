@@ -11503,14 +11503,22 @@
   // src/Extreme.ts
   var { regClass: regClass19, property: property19 } = Laya;
   var Extreme = class extends Performer {
-    constructor() {
+    constructor(userid) {
       super();
+      this.userid = userid;
     }
     onAwake() {
       super.onAwake();
       this.owner.on(Event3.StateChange, this, this.onStateChange);
     }
     onStart() {
+      this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+    }
+    onClickTrade() {
+      let param = {
+        "userid": this.userid
+      };
+      Laya.Scene.open("dialog/statistics.lh", true, param);
     }
     onStateChange() {
       let trade = this.player.trade.getComponent(Trade);
@@ -11720,7 +11728,7 @@
           break;
         }
         case 0 /* Extreme */: {
-          player.addComponentInstance(new Extreme());
+          player.addComponentInstance(new Extreme(profile.userid));
           break;
         }
         case 1 /* Computer */: {
@@ -12714,8 +12722,10 @@
         let type = users[i].isItMe ? 2 /* Oneself */ : 0 /* Extreme */;
         let nickname = users[i].getVariable("nickname");
         let avatar = users[i].getVariable("avatar");
+        let userid = users[i].getVariable("userid");
         let player = this.room.addPlayer(color, type, {
           "id": users[i].id,
+          "userid": userid.value,
           "nickname": nickname.value,
           "avatar": avatar.value
         });
