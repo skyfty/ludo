@@ -804,9 +804,9 @@
       "_$type": "Box",
       "name": "toolbar",
       "x": 60,
-      "y": 16,
-      "width": 632,
-      "height": 43,
+      "y": 987,
+      "width": 630,
+      "height": 48,
       "mouseEnabled": true,
       "_$comp": [
         {
@@ -819,11 +819,88 @@
       ],
       "_$child": [
         {
+          "_$id": "a6plfuks",
+          "_$type": "Sprite",
+          "name": "chitchat",
+          "x": 122,
+          "width": 508,
+          "height": 48,
+          "mouseEnabled": true,
+          "_$comp": [
+            {
+              "_$type": "cd5a3964-355e-49cf-9ce1-1882775bf810",
+              "scriptPath": "../src/Chitchat.ts",
+              "message": {
+                "_$ref": "643m7j12"
+              },
+              "send": {
+                "_$ref": "itm32i04"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "643m7j12",
+              "_$type": "TextInput",
+              "name": "TextInput",
+              "width": 395,
+              "height": 48,
+              "mouseEnabled": true,
+              "text": "",
+              "fontSize": 20,
+              "color": "#A9A9A9",
+              "valign": "middle",
+              "bgColor": "rgba(245, 245, 245, 1)",
+              "borderColor": "rgba(11, 232, 255, 1)",
+              "overflow": "scroll",
+              "leading": 0,
+              "padding": "2,6,2,6",
+              "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
+              "type": "text",
+              "maxChars": 500,
+              "restrict": "",
+              "prompt": "ENTER TEXT...",
+              "promptColor": "#A9A9A9"
+            },
+            {
+              "_$id": "itm32i04",
+              "_$type": "Button",
+              "name": "Button",
+              "x": 401,
+              "width": 99.768067938229,
+              "height": 48,
+              "mouseEnabled": true,
+              "stateNum": 2,
+              "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
+              "label": "",
+              "labelSize": 20,
+              "labelColors": "#ffffff,#32cc6b,#ff0000,#c0c0c0",
+              "_$comp": [
+                {
+                  "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                  "scriptPath": "../src/ClickSound.ts"
+                }
+              ]
+            },
+            {
+              "_$id": "r1gwal24",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 427,
+              "y": 10,
+              "width": 42.861050328227556,
+              "height": 29.145514223194752,
+              "skin": "res://572a347c-248d-4a5a-a81e-d5e19853adb3",
+              "color": "#ffffff"
+            }
+          ]
+        },
+        {
           "_$id": "fp6q39ed",
           "_$type": "Button",
           "name": "back",
-          "width": 42.5,
-          "height": 42.5,
+          "width": 48,
+          "height": 48,
           "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
@@ -2561,87 +2638,6 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "_$id": "a6plfuks",
-      "_$type": "Sprite",
-      "name": "chitchat",
-      "x": 211,
-      "y": 1008,
-      "width": 481,
-      "height": 48,
-      "visible": false,
-      "mouseEnabled": true,
-      "_$comp": [
-        {
-          "_$type": "cd5a3964-355e-49cf-9ce1-1882775bf810",
-          "scriptPath": "../src/Chitchat.ts",
-          "message": {
-            "_$ref": "643m7j12"
-          },
-          "send": {
-            "_$ref": "itm32i04"
-          }
-        }
-      ],
-      "_$child": [
-        {
-          "_$id": "643m7j12",
-          "_$type": "TextInput",
-          "name": "TextInput",
-          "y": -5,
-          "width": 395,
-          "height": 54,
-          "mouseEnabled": true,
-          "text": "",
-          "fontSize": 20,
-          "color": "#A9A9A9",
-          "valign": "middle",
-          "bgColor": "rgba(245, 245, 245, 1)",
-          "borderColor": "rgba(0, 85, 255, 1)",
-          "overflow": "scroll",
-          "leading": 0,
-          "padding": "2,6,2,6",
-          "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
-          "type": "text",
-          "maxChars": 100000,
-          "restrict": "",
-          "prompt": "Enter a message",
-          "promptColor": "#A9A9A9"
-        },
-        {
-          "_$id": "itm32i04",
-          "_$type": "Button",
-          "name": "Button",
-          "x": 399,
-          "y": -5,
-          "width": 80.19999999999996,
-          "height": 54,
-          "mouseEnabled": true,
-          "stateNum": 2,
-          "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
-          "label": "",
-          "labelSize": 20,
-          "labelColors": "#ffffff,#32cc6b,#ff0000,#c0c0c0",
-          "_$comp": [
-            {
-              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-              "scriptPath": "../src/ClickSound.ts"
-            }
-          ]
-        },
-        {
-          "_$id": "r1gwal24",
-          "_$type": "Image",
-          "name": "Image",
-          "x": 416.0000000000001,
-          "y": 10,
-          "width": 42.861050328227556,
-          "height": 29.145514223194752,
-          "skin": "res://572a347c-248d-4a5a-a81e-d5e19853adb3",
-          "color": "#ffffff"
         }
       ]
     }
