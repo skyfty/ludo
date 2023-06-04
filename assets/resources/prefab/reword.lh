@@ -34,13 +34,43 @@
       "_$id": "vv5he8vi",
       "_$type": "Image",
       "name": "Image(2)",
-      "x": 5.499999999999972,
-      "y": 297.5,
+      "x": 390,
+      "y": 697,
       "width": 748.5,
       "height": 748.5,
+      "anchorX": 0.5143620574482298,
+      "anchorY": 0.533066132264529,
       "alpha": 0.59,
       "skin": "res://5bba9e01-01de-4050-a7f3-972c5459b7b7",
-      "color": "#ffffff"
+      "color": "#ffffff",
+      "_$comp": [
+        {
+          "_$type": "Animator2D",
+          "controller": {
+            "_$uuid": "a2140c19-6c3d-4205-a44f-865c8a8ad83a",
+            "_$type": "AnimationController2D"
+          },
+          "controllerLayers": [
+            {
+              "_$type": "AnimatorControllerLayer2D",
+              "name": "Base Layer",
+              "states": [
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "coruscate",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "95f459ae-d981-44a1-b056-2a209a91638f",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                }
+              ],
+              "defaultStateName": "coruscate"
+            }
+          ]
+        }
+      ]
     },
     {
       "_$id": "6f3o8jqg",
@@ -124,7 +154,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 5,
+      "index": 1,
       "interval": 241,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -142,7 +172,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 1,
+      "index": 0,
       "interval": 226,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -160,7 +190,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 2,
+      "index": 0,
       "interval": 204,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -178,7 +208,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 2,
+      "index": 3,
       "interval": 198,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -196,7 +226,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 1,
+      "index": 0,
       "interval": 226,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -214,7 +244,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 5,
+      "index": 0,
       "interval": 204,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     }
