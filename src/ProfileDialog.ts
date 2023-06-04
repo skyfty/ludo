@@ -15,11 +15,16 @@ export class ProfileDialog extends Laya.Script {
     @property(Laya.List)
     public avatarList: Laya.List;
 
-    @property(Laya.Button)
-    public returnBtn: Laya.Button;
-
     @property(Number)
     public avatarNumber: number;
+
+    
+    @property(Laya.Label)
+    public level: Laya.Label;
+
+    @property(Laya.ProgressBar)
+    public levelProcess: Laya.ProgressBar;
+ 
 
     private playerName:string;
 
@@ -41,12 +46,10 @@ export class ProfileDialog extends Laya.Script {
             data.push(m);
         }
         this.avatarList.array = data;
-        this.returnBtn.on(Laya.Event.CLICK, this, ()=>{
-            let dlg = this.owner as Laya.Dialog;
-            dlg.close();
-        });
-
         this.name.on(Laya.Event.BLUR, this, this.onNameInputBlur);
+
+        let processValue = Profile.getRank() % 100;
+        this.levelProcess.value = processValue / 100;
     }
 
     private onNameInputBlur() {

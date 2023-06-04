@@ -16,7 +16,6 @@ export class Loader extends Laya.Script {
             ]
         ).then(() => {
             let resArr: Array<any> = [
-
                 "resources/images/2p.png",
                 "resources/images/3p.png",
                 "resources/images/4p.png",
@@ -56,7 +55,6 @@ export class Loader extends Laya.Script {
                 "resources/images/pawns_02.png",
                 "resources/images/pawns_03.png",
                 "resources/images/pawns_04.png",
-                "resources/images/play.png",
                 "resources/images/play2.png",
                 "resources/images/playwithfriends.png",
                 "resources/images/plusbtn.png",
@@ -67,7 +65,6 @@ export class Loader extends Laya.Script {
                 "resources/images/reduce.png",
                 "resources/images/red_arrow.png",
                 "resources/images/return.png",
-                "resources/images/robot.png",
                 "resources/images/sack.png",
                 "resources/images/selectplayers.png",
                 "resources/images/selectprofilepicture.png",
@@ -77,7 +74,6 @@ export class Loader extends Laya.Script {
                 "resources/images/sound_checkbox.png",
                 "resources/images/star.png",
                 "resources/images/tab.png",
-                "resources/images/tip3.png",
                 "resources/images/titlecoin.png",
                 "resources/images/twinkle_star.png",
                 "resources/images/userav.png",
@@ -95,7 +91,8 @@ export class Loader extends Laya.Script {
                 "resources/images/messagetip4.png",
                 "resources/images/messagetip5.png",
                 "resources/images/messagetip6.png",
-
+                "resources/images/profile.png",
+                "resources/images/statistics.png",
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },
@@ -122,11 +119,10 @@ export class Loader extends Laya.Script {
                 { url: "sounds/jinbi.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/home.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/message.mp3", type: Laya.Loader.BUFFER },
-
             ];
 
             Laya.loader.load(resArr, null, Laya.Handler.create(this, this.onLoading, null, false)).then(() => {
-                this.progress.value = 0.98;
+                this.progress.value =1;
                 Laya.Scene.open("menu.ls");
             });
             Laya.loader.on(Laya.Event.ERROR, this, this.onError);

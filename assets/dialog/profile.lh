@@ -19,10 +19,13 @@
       "avatarList": {
         "_$ref": "sb50k42b"
       },
-      "returnBtn": {
-        "_$ref": "knr58tpv"
+      "avatarNumber": 15,
+      "level": {
+        "_$ref": "jb0pcfyx"
       },
-      "avatarNumber": 15
+      "levelProcess": {
+        "_$ref": "tvc7cvxq"
+      }
     }
   ],
   "_$child": [
@@ -109,7 +112,7 @@
           "padding": "2,6,2,6",
           "skin": "res://87262606-4dfe-490e-8644-7fd6496c2be7",
           "type": "text",
-          "maxChars": 100000,
+          "maxChars": 10,
           "restrict": "",
           "prompt": "",
           "promptColor": "#A9A9A9"
@@ -154,6 +157,13 @@
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+              "scriptPath": "../src/ClickReturn.ts",
+              "dialog": {
+                "_$ref": "y2sxg6c5"
+              }
             }
           ]
         },
@@ -261,7 +271,7 @@
           "height": 24,
           "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
           "sizeGrid": "2,2,2,2,0",
-          "value": 0.5
+          "value": 0
         },
         {
           "_$id": "bdlx6smm",

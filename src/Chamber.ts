@@ -5,7 +5,6 @@ import {JoinRoom} from "./JoinRoom";
 
 @regClass()
 export class Chamber extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
 
     @property(Laya.ViewStack)
     public viewStack: Laya.ViewStack;

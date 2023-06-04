@@ -1,24 +1,43 @@
 const { regClass, property } = Laya;
 import { Profile } from "./Profile";
 
-@regClass()
-export class StatisticsDialog extends Laya.Script {
- 
-    @property(Laya.Button)
-    public returnBtn: Laya.Button;
+import * as SFS2X from "../node_modules/sfs2x-api";
+import { Station } from "./Station";
+import { StatisticsInfo } from "./StatisticsInfo";
 
+@regClass()
+export class StatisticsDialog extends Laya.Dialog {
+ 
     constructor() {
         super();
     }
 
-    /**
-     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
-     */
     onAwake(): void {
-        this.returnBtn.on(Laya.Event.CLICK, this, ()=>{
-            let dlg = this.owner as Laya.Dialog;
-            dlg.close();
-        });
+        this.addStationListener();
+    }
+    
+    onDestroy(): void {
+        this.removeStationListener();
+    }
+
+    onOpened(param: any) {
+       var params = new SFS2X.SFSObject();
+       params.putInt("id",  param.userid);
+       Station.sfs.send(new SFS2X.ExtensionRequest("GetProfileRequest", params));
+    }
+
+    private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
+        if ("GetProfileRequest" == evtParams.cmd) {
+            this.getComponent(StatisticsInfo).setProfile(evtParams.params);
+        }
+    }
+    public addStationListener() {
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+
+    }
+
+    public removeStationListener() {
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
 
 }

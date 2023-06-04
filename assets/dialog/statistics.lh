@@ -1,6 +1,7 @@
 {
   "_$ver": 1,
   "_$id": "g45ebp6e",
+  "_$runtime": "res://070994d0-aca8-4fc9-883f-d37c60138ea6",
   "_$type": "Dialog",
   "name": "Dialog",
   "width": 750,
@@ -10,10 +11,46 @@
   "isModal": true,
   "_$comp": [
     {
-      "_$type": "070994d0-aca8-4fc9-883f-d37c60138ea6",
-      "scriptPath": "../src/StatisticsDialog.ts",
-      "returnBtn": {
-        "_$ref": "4oq1xgu8"
+      "_$type": "0e8653a1-8f66-4a79-846c-ca9815eff74a",
+      "scriptPath": "../src/StatisticsInfo.ts",
+      "name": {
+        "_$ref": "avm01q92"
+      },
+      "level": {
+        "_$ref": "5o6rc4w5"
+      },
+      "avatar": {
+        "_$ref": "6gki6n54"
+      },
+      "levelProcess": {
+        "_$ref": "q90kvatj"
+      },
+      "winsOfVsComputer": {
+        "_$ref": "prljwga2"
+      },
+      "lostOfVsComputer": {
+        "_$ref": "9p4r59zv"
+      },
+      "rateOfVsComputer": {
+        "_$ref": "7c9teizh"
+      },
+      "winsOfOnline": {
+        "_$ref": "wi5j8r5o"
+      },
+      "lostOfOnline": {
+        "_$ref": "mo1ak1ud"
+      },
+      "rateOfOnline": {
+        "_$ref": "qa9qi4kl"
+      },
+      "winsOfVsFriend": {
+        "_$ref": "s93al5rd"
+      },
+      "lostOfVsFriend": {
+        "_$ref": "ice2o8d5"
+      },
+      "rateOfVsFriend": {
+        "_$ref": "6t8g6odv"
       }
     }
   ],
@@ -46,6 +83,13 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+          "scriptPath": "../src/ClickReturn.ts",
+          "dialog": {
+            "_$ref": "g45ebp6e"
+          }
         }
       ]
     },
@@ -67,13 +111,7 @@
           "y": -1.0000000000000568,
           "visible": true,
           "width": 100,
-          "height": 100,
-          "_$comp": [
-            {
-              "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
-              "scriptPath": "../src/MyselfAvatar.ts"
-            }
-          ]
+          "height": 100
         },
         {
           "_$id": "e1ae3dyz",
@@ -98,19 +136,13 @@
       "y": 206,
       "width": 478,
       "height": 56,
-      "text": "Label",
+      "text": "",
       "fontSize": 38,
       "color": "#FFFFFF",
       "valign": "middle",
       "bgColor": "rgba(0, 0, 0, 1)",
       "leading": 0,
-      "padding": "2,6,2,6",
-      "_$comp": [
-        {
-          "_$type": "d8466b2f-776b-44d3-9475-f88cc34fe63d",
-          "scriptPath": "../src/MyselfName.ts"
-        }
-      ]
+      "padding": "2,6,2,6"
     },
     {
       "_$id": "q76e84v6",
@@ -146,17 +178,11 @@
       "y": 278,
       "width": 75,
       "height": 26,
-      "text": "3\n",
+      "text": "0",
       "fontSize": 34,
       "color": "#FFFFFF",
       "leading": 0,
-      "padding": "0,0,0,0",
-      "_$comp": [
-        {
-          "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
-          "scriptPath": "../src/MyselfLv.ts"
-        }
-      ]
+      "padding": "0,0,0,0"
     },
     {
       "_$id": "q90kvatj",
@@ -168,7 +194,50 @@
       "height": 24,
       "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
       "sizeGrid": "2,2,2,2,0",
-      "value": 0.5
+      "value": 0
+    },
+    {
+      "_$id": "8z63wk9t",
+      "_$type": "Sprite",
+      "name": "Sprite(5)",
+      "x": 144.9999999999999,
+      "y": 113.00000000000001,
+      "width": 460,
+      "height": 70,
+      "_$child": [
+        {
+          "_$id": "zqbzaeju",
+          "_$type": "Box",
+          "name": "Box",
+          "x": 2.0000000000000284,
+          "y": 7.999999999999957,
+          "width": 453,
+          "height": 54,
+          "bgColor": "rgba(120, 78, 164, 1)"
+        },
+        {
+          "_$id": "d3a3fl2m",
+          "_$type": "Image",
+          "name": "Image(3)",
+          "x": -1,
+          "y": 3.0000000000000284,
+          "width": 460,
+          "height": 66,
+          "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "rq37cr5n",
+          "_$type": "Image",
+          "name": "Image(4)",
+          "x": 120,
+          "y": 13,
+          "width": 218.8142062988572,
+          "height": 43.90920527736254,
+          "skin": "res://183543d2-d564-4f68-9e00-3efad50e5189",
+          "color": "#ffffff"
+        }
+      ]
     },
     {
       "_$id": "uc9m12ru",
@@ -439,7 +508,7 @@
       "_$type": "Sprite",
       "name": "Sprite(4)",
       "x": 91,
-      "y": 568,
+      "y": 574,
       "width": 274,
       "height": 170,
       "_gcmds": [
@@ -461,7 +530,7 @@
           "_$type": "Label",
           "name": "Label",
           "x": 60,
-          "y": 14,
+          "y": 10,
           "width": 154,
           "height": 28,
           "text": "VS.Friends",
@@ -563,49 +632,6 @@
           "valign": "middle",
           "leading": 0,
           "padding": "0,0,0,0"
-        }
-      ]
-    },
-    {
-      "_$id": "8z63wk9t",
-      "_$type": "Sprite",
-      "name": "Sprite(5)",
-      "x": 145,
-      "y": 113,
-      "width": 460,
-      "height": 70,
-      "_$child": [
-        {
-          "_$id": "zqbzaeju",
-          "_$type": "Box",
-          "name": "Box",
-          "x": 2.0000000000000284,
-          "y": 7.999999999999957,
-          "width": 453,
-          "height": 54,
-          "bgColor": "rgba(120, 78, 164, 1)"
-        },
-        {
-          "_$id": "d3a3fl2m",
-          "_$type": "Image",
-          "name": "Image(3)",
-          "x": -1,
-          "y": 3.0000000000000284,
-          "width": 460,
-          "height": 66,
-          "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
-          "color": "#ffffff"
-        },
-        {
-          "_$id": "rq37cr5n",
-          "_$type": "Image",
-          "name": "Image(4)",
-          "x": 120,
-          "y": 13,
-          "width": 218.8142062988572,
-          "height": 43.90920527736254,
-          "skin": "res://183543d2-d564-4f68-9e00-3efad50e5189",
-          "color": "#ffffff"
         }
       ]
     }

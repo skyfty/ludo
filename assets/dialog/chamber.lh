@@ -100,9 +100,6 @@
                 {
                   "_$type": "e0c9c380-fd8c-4d4f-84f3-db01bd657110",
                   "scriptPath": "../src/SelectPlayer.ts",
-                  "closeBtn": {
-                    "_$ref": "v4u6heqb"
-                  },
                   "play2pBtn": {
                     "_$ref": "f06w8t9y"
                   },
@@ -498,10 +495,10 @@
       "_$id": "v4u6heqb",
       "_$type": "Button",
       "name": "return",
-      "x": 348,
-      "y": 846,
-      "width": 55,
-      "height": 55,
+      "x": 343,
+      "y": 841,
+      "width": 69,
+      "height": 69,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
@@ -511,6 +508,13 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+          "scriptPath": "../src/ClickReturn.ts",
+          "dialog": {
+            "_$ref": "y2sxg6c5"
+          }
         }
       ]
     }

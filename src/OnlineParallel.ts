@@ -49,10 +49,6 @@ export class OnlineParallel extends GameRoom {
             }
             this.refreshEarnPayLabel();
         });
-        parallel.closeBtn.on(Laya.Event.CLICK, this, () => {
-            Laya.Dialog.closeAll();
-        });
-
         Station.sfs.send(new SFS2X.ExtensionRequest("GetJettonRequest"));
     }
 

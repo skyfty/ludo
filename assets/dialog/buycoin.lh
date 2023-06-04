@@ -14,9 +14,6 @@
       "scriptPath": "../src/Buycoin.ts",
       "list": {
         "_$ref": "gx74qtzf"
-      },
-      "return": {
-        "_$ref": "ml9wfj41"
       }
     }
   ],
@@ -49,6 +46,13 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+          "scriptPath": "../src/ClickReturn.ts",
+          "dialog": {
+            "_$ref": "w6erjt2x"
+          }
         }
       ]
     },
@@ -201,7 +205,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 5,
+              "index": 3,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -218,7 +222,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 5,
+              "index": 3,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -235,7 +239,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 1,
+              "index": 0,
               "interval": 213,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -252,7 +256,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 5,
+              "index": 0,
               "interval": 198,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

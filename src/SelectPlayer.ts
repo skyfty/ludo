@@ -4,9 +4,6 @@ import { Config } from "./Config";
 @regClass()
 export class SelectPlayer extends Laya.Script {
 
-    @property(Laya.Button)
-    public closeBtn: Laya.Button;
-
     @property(Laya.CheckBox)
     public play2pBtn: Laya.CheckBox;
 

@@ -11,11 +11,9 @@ export class JoinRoom extends Laya.Script {
     @property(Laya.Dialog)
     public dialog: Laya.Dialog;
 
-
     @property(Laya.TextInput)
     public roomInput: Laya.TextInput;
 
-    
     @property(Laya.Button)
     public closeBtn: Laya.Button;
     @property(Laya.Button)

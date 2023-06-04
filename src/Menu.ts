@@ -2,6 +2,7 @@
 const { regClass, property,SoundManager } = Laya;
 import { ComputerParallel } from "./ComputerParallel";
 import { OnlineParallel } from "./OnlineParallel";
+import { Profile } from "./Profile";
 
 @regClass()
 export class Menu extends Laya.Script {
@@ -37,10 +38,13 @@ export class Menu extends Laya.Script {
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
         this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
         this.goldcoin.on(Laya.Event.CLICK, this, ()=>{
-            Laya.Scene.open("dialog/buycoin.lh", false);
+            Laya.Scene.open("dialog/buycoin.lh", true);
         });
         this.level.on(Laya.Event.CLICK, this, ()=>{
-            Laya.Scene.open("dialog/statistics.lh", false);
+            let param:any = {
+                "userid":Profile.getUserId()
+            };
+            Laya.Scene.open("dialog/statistics.lh", true,param);
         });
     }
 
@@ -48,15 +52,14 @@ export class Menu extends Laya.Script {
         Laya.SoundManager.musicMuted =Laya.LocalStorage.getItem("musicMuted") == "on";
         Laya.SoundManager.soundMuted =Laya.LocalStorage.getItem("soundMuted") == "on";
         SoundManager.playMusic("sounds/menu.mp3", 0);
-
-        
     }
+    
     onAvatarClick() {
-        Laya.Scene.open("dialog/profile.lh", false);
+        Laya.Scene.open("dialog/profile.lh", true);
     }
     
     onChallengeFriend() {
-        Laya.Scene.open("dialog/chamber.lh", false);
+        Laya.Scene.open("dialog/chamber.lh", true);
     }
     
     onChallengeComputer() {
@@ -76,9 +79,7 @@ export class Menu extends Laya.Script {
     }
 
     onSettings() {
-        Laya.Scene.open("dialog/settings.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
-            dlg.getChildByName("return").on(Laya.Event.CLICK, dlg, dlg.close);
-        }));
+        Laya.Scene.open("dialog/settings.lh", false, null);
     }
 
 }

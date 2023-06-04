@@ -9,9 +9,6 @@ export class Buycoin extends Laya.Script {
     @property(Laya.List)
     public list: Laya.List;
 
-    @property(Laya.Button)
-    public return: Laya.Button;
-
     private coins: SFS2X.SFSArray = null;
 
     constructor() {
@@ -22,10 +19,6 @@ export class Buycoin extends Laya.Script {
     onAwake(): void {
         this.addStationListener();
         this.list.renderHandler = new Laya.Handler(this, this.updateItem);
-        this.return.on(Laya.Event.CLICK, this, ()=>{
-            let dlg = this.owner as Laya.Dialog;
-            dlg.close();
-        });
         this.list.selectHandler = new Laya.Handler(this, this.onSelectItem);
     }
 
