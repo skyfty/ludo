@@ -43,47 +43,58 @@
           "x": -231.99999999999983,
           "y": -313,
           "width": 580.2627424412262,
-          "height": 715.4933733288465,
+          "height": 669.4933733288465,
           "mouseEnabled": true,
           "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
           "color": "#ffffff"
         },
         {
-          "_$id": "0pnqhngc",
-          "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
-          "name": "avatarclip",
-          "active": true,
-          "x": -187,
-          "y": -267,
-          "visible": true,
+          "_$id": "df2fp7o3",
+          "_$type": "Sprite",
+          "name": "Sprite(1)",
+          "x": -189,
+          "y": -245,
           "width": 100,
           "height": 100,
-          "_$comp": [
+          "_$child": [
             {
-              "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
-              "scriptPath": "../src/MyselfAvatar.ts"
+              "_$id": "0pnqhngc",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+              "name": "avatarclip",
+              "active": true,
+              "x": 2.000000000000057,
+              "y": -1.0000000000000568,
+              "visible": true,
+              "width": 100,
+              "height": 100,
+              "_$comp": [
+                {
+                  "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
+                  "scriptPath": "../src/MyselfAvatar.ts"
+                }
+              ]
+            },
+            {
+              "_$id": "i3ngc7oz",
+              "_$type": "Image",
+              "name": "Image(1)",
+              "x": -7.999999999999886,
+              "y": -17.000000000000057,
+              "width": 121,
+              "height": 131,
+              "mouseEnabled": true,
+              "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+              "useSourceSize": true,
+              "color": "#ffffff"
             }
           ]
-        },
-        {
-          "_$id": "i3ngc7oz",
-          "_$type": "Image",
-          "name": "Image(1)",
-          "x": -196.9999999999999,
-          "y": -283,
-          "width": 121,
-          "height": 131,
-          "mouseEnabled": true,
-          "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
-          "useSourceSize": true,
-          "color": "#ffffff"
         },
         {
           "_$id": "ejgj5wu5",
           "_$type": "TextInput",
           "name": "TextInput",
           "x": -65.4593435650037,
-          "y": -267.5007050783947,
+          "y": -246.50070507839467,
           "width": 364,
           "height": 56,
           "mouseEnabled": true,
@@ -108,7 +119,7 @@
           "_$type": "Box",
           "name": "Box",
           "x": -187.99999999999972,
-          "y": -126.00000000000011,
+          "y": -105.00000000000011,
           "width": 496,
           "height": 382,
           "bgColor": "rgba(78, 56, 102, 1)"
@@ -118,7 +129,7 @@
           "_$type": "Sprite",
           "name": "Sprite",
           "x": -192.99999999999994,
-          "y": -134,
+          "y": -113,
           "width": 505,
           "height": 398,
           "texture": {
@@ -130,8 +141,8 @@
           "_$id": "knr58tpv",
           "_$type": "Button",
           "name": "return",
-          "x": 25.00000000000017,
-          "y": 288.9999999999998,
+          "x": 20.00000000000017,
+          "y": 359.9999999999998,
           "width": 61.5,
           "height": 61.5,
           "mouseEnabled": true,
@@ -151,7 +162,7 @@
           "_$type": "Image",
           "name": "Image(2)",
           "x": -144.62845196263328,
-          "y": -112.96686813531808,
+          "y": -91.96686813531808,
           "width": 414.05559651077095,
           "height": 38.04492464111219,
           "skin": "res://40a11471-15ee-4f99-91c3-45ae2832a417",
@@ -162,7 +173,7 @@
           "_$type": "List",
           "name": "List",
           "x": -144.99999999999986,
-          "y": -62,
+          "y": -41,
           "width": 413,
           "height": 315,
           "mouseEnabled": true,
@@ -202,6 +213,95 @@
                   "height": 120
                 }
               ]
+            }
+          ]
+        },
+        {
+          "_$id": "bifuy2nj",
+          "_$type": "Label",
+          "name": "Label",
+          "x": -60,
+          "y": -174,
+          "width": 59,
+          "height": 26,
+          "text": "LV.",
+          "fontSize": 34,
+          "color": "rgba(243, 202, 13, 1)",
+          "bold": true,
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "jb0pcfyx",
+          "_$type": "Label",
+          "name": "lv",
+          "x": 2,
+          "y": -174,
+          "width": 54,
+          "height": 26,
+          "text": "3\n",
+          "fontSize": 34,
+          "color": "#FFFFFF",
+          "leading": 0,
+          "padding": "0,0,0,0",
+          "_$comp": [
+            {
+              "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
+              "scriptPath": "../src/MyselfLv.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "tvc7cvxq",
+          "_$type": "ProgressBar",
+          "name": "ProgressBar",
+          "x": 52,
+          "y": -175,
+          "width": 246,
+          "height": 30,
+          "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
+          "value": 0.5
+        },
+        {
+          "_$id": "bdlx6smm",
+          "_$type": "Sprite",
+          "name": "Sprite(2)",
+          "x": -143,
+          "y": -348,
+          "width": 409,
+          "height": 70,
+          "_$child": [
+            {
+              "_$id": "fjmnc9sz",
+              "_$type": "Box",
+              "name": "Box",
+              "x": 2.0000000000000284,
+              "y": 7.999999999999957,
+              "width": 403,
+              "height": 54,
+              "bgColor": "rgba(120, 78, 164, 1)"
+            },
+            {
+              "_$id": "paz25vax",
+              "_$type": "Image",
+              "name": "Image(3)",
+              "x": -1,
+              "y": 3.0000000000000284,
+              "width": 410,
+              "height": 66,
+              "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "1fs8sdml",
+              "_$type": "Image",
+              "name": "Image(4)",
+              "x": 116,
+              "y": 18,
+              "width": 193.23872861582166,
+              "height": 38.7770023978236,
+              "skin": "res://e4a96311-ccbc-4576-aa82-7862235210cb",
+              "color": "#ffffff"
             }
           ]
         }

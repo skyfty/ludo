@@ -1,0 +1,612 @@
+{
+  "_$ver": 1,
+  "_$id": "g45ebp6e",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "070994d0-aca8-4fc9-883f-d37c60138ea6",
+      "scriptPath": "../src/StatisticsDialog.ts",
+      "returnBtn": {
+        "_$ref": "4oq1xgu8"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "gndkm3ea",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 28,
+      "y": 145,
+      "width": 693,
+      "height": 678,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "4oq1xgu8",
+      "_$type": "Button",
+      "name": "return",
+      "x": 343,
+      "y": 841,
+      "width": 64,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "whd1ua5z",
+      "_$type": "Sprite",
+      "name": "Sprite(1)",
+      "x": 71,
+      "y": 210,
+      "width": 100,
+      "height": 100,
+      "_$child": [
+        {
+          "_$id": "6gki6n54",
+          "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+          "name": "avatarclip",
+          "active": true,
+          "x": 2.000000000000057,
+          "y": -1.0000000000000568,
+          "visible": true,
+          "width": 100,
+          "height": 100,
+          "_$comp": [
+            {
+              "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
+              "scriptPath": "../src/MyselfAvatar.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "e1ae3dyz",
+          "_$type": "Image",
+          "name": "Image(1)",
+          "x": -7.999999999999886,
+          "y": -17.000000000000057,
+          "width": 121,
+          "height": 131,
+          "mouseEnabled": true,
+          "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+          "useSourceSize": true,
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "_$id": "avm01q92",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 195,
+      "y": 206,
+      "width": 478,
+      "height": 56,
+      "text": "Label",
+      "fontSize": 38,
+      "color": "#FFFFFF",
+      "valign": "middle",
+      "bgColor": "rgba(0, 0, 0, 1)",
+      "leading": 0,
+      "padding": "2,6,2,6",
+      "_$comp": [
+        {
+          "_$type": "d8466b2f-776b-44d3-9475-f88cc34fe63d",
+          "scriptPath": "../src/MyselfName.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "q76e84v6",
+      "_$type": "Image",
+      "name": "Image(2)",
+      "x": 68,
+      "y": 342,
+      "width": 613,
+      "height": 430,
+      "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "4shyx7hb",
+      "_$type": "Label",
+      "name": "Label(1)",
+      "x": 195,
+      "y": 278,
+      "width": 59,
+      "height": 26,
+      "text": "LV.",
+      "fontSize": 34,
+      "color": "rgba(243, 202, 13, 1)",
+      "bold": true,
+      "leading": 0,
+      "padding": "0,0,0,0"
+    },
+    {
+      "_$id": "5o6rc4w5",
+      "_$type": "Label",
+      "name": "lv",
+      "x": 257,
+      "y": 278,
+      "width": 75,
+      "height": 26,
+      "text": "3\n",
+      "fontSize": 34,
+      "color": "#FFFFFF",
+      "leading": 0,
+      "padding": "0,0,0,0",
+      "_$comp": [
+        {
+          "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
+          "scriptPath": "../src/MyselfLv.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "q90kvatj",
+      "_$type": "ProgressBar",
+      "name": "ProgressBar",
+      "x": 336,
+      "y": 275,
+      "width": 335,
+      "height": 30,
+      "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
+      "value": 0.5
+    },
+    {
+      "_$id": "uc9m12ru",
+      "_$type": "Sprite",
+      "name": "Sprite(2)",
+      "x": 90,
+      "y": 373,
+      "width": 274,
+      "height": 170,
+      "_gcmds": [
+        {
+          "_$type": "DrawRectCmd",
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "lineWidth": 1,
+          "lineColor": "rgba(255, 255, 255, 1)",
+          "fillColor": "rgba(0, 0, 0, 1)"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "ocjfvtve",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 60,
+          "y": 14,
+          "width": 154,
+          "height": 28,
+          "text": "VS. Computer",
+          "fontSize": 23,
+          "color": "rgba(255, 251, 3, 1)",
+          "align": "center",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "ybn69o5v",
+          "_$type": "Label",
+          "name": "Label(1)",
+          "x": 17,
+          "y": 48,
+          "width": 120,
+          "height": 28,
+          "text": "Wins\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "pt2f4m7s",
+          "_$type": "Label",
+          "name": "Label(2)",
+          "x": 17,
+          "y": 84,
+          "width": 120,
+          "height": 28,
+          "text": "Losts\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "2xyr7lrp",
+          "_$type": "Label",
+          "name": "Label(3)",
+          "x": 17,
+          "y": 116,
+          "width": 120,
+          "height": 28,
+          "text": "Rate",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "prljwga2",
+          "_$type": "Label",
+          "name": "Label(4)",
+          "x": 139,
+          "y": 48,
+          "width": 117,
+          "height": 28,
+          "text": "3\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "9p4r59zv",
+          "_$type": "Label",
+          "name": "Label(5)",
+          "x": 139,
+          "y": 84,
+          "width": 117,
+          "height": 28,
+          "text": "0\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "7c9teizh",
+          "_$type": "Label",
+          "name": "Label(6)",
+          "x": 137,
+          "y": 116,
+          "width": 117,
+          "height": 28,
+          "text": "3\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "_$id": "9ykhcgqq",
+      "_$type": "Sprite",
+      "name": "Sprite(3)",
+      "x": 383,
+      "y": 373,
+      "width": 274,
+      "height": 170,
+      "_gcmds": [
+        {
+          "_$type": "DrawRectCmd",
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "lineWidth": 1,
+          "lineColor": "rgba(255, 255, 255, 1)",
+          "fillColor": "rgba(0, 0, 0, 1)"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "h4g9d5pr",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 60,
+          "y": 14,
+          "width": 154,
+          "height": 28,
+          "text": "Onlie",
+          "fontSize": 23,
+          "color": "rgba(255, 251, 3, 1)",
+          "align": "center",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "eahx0ylg",
+          "_$type": "Label",
+          "name": "Label(1)",
+          "x": 17,
+          "y": 48,
+          "width": 120,
+          "height": 28,
+          "text": "Wins\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "0ovrg7jo",
+          "_$type": "Label",
+          "name": "Label(2)",
+          "x": 17,
+          "y": 84,
+          "width": 120,
+          "height": 28,
+          "text": "Losts\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "3rs0t9ul",
+          "_$type": "Label",
+          "name": "Label(3)",
+          "x": 17,
+          "y": 116,
+          "width": 120,
+          "height": 28,
+          "text": "Rate",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "wi5j8r5o",
+          "_$type": "Label",
+          "name": "Label(4)",
+          "x": 139,
+          "y": 48,
+          "width": 117,
+          "height": 28,
+          "text": "3\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "mo1ak1ud",
+          "_$type": "Label",
+          "name": "Label(5)",
+          "x": 139,
+          "y": 84,
+          "width": 117,
+          "height": 28,
+          "text": "0\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "qa9qi4kl",
+          "_$type": "Label",
+          "name": "Label(6)",
+          "x": 137,
+          "y": 116,
+          "width": 117,
+          "height": 28,
+          "text": "3\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "_$id": "6mtuqu0g",
+      "_$type": "Sprite",
+      "name": "Sprite(4)",
+      "x": 91,
+      "y": 568,
+      "width": 274,
+      "height": 170,
+      "_gcmds": [
+        {
+          "_$type": "DrawRectCmd",
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "lineWidth": 1,
+          "lineColor": "rgba(255, 255, 255, 1)",
+          "fillColor": "rgba(0, 0, 0, 1)"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "dz9max7c",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 60,
+          "y": 14,
+          "width": 154,
+          "height": 28,
+          "text": "VS.Friends",
+          "fontSize": 23,
+          "color": "rgba(255, 251, 3, 1)",
+          "align": "center",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "gs1i2nvq",
+          "_$type": "Label",
+          "name": "Label(1)",
+          "x": 17,
+          "y": 48,
+          "width": 120,
+          "height": 28,
+          "text": "Wins\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "noit0nvp",
+          "_$type": "Label",
+          "name": "Label(2)",
+          "x": 17,
+          "y": 84,
+          "width": 120,
+          "height": 28,
+          "text": "Losts\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "a6zqbviy",
+          "_$type": "Label",
+          "name": "Label(3)",
+          "x": 17,
+          "y": 116,
+          "width": 120,
+          "height": 28,
+          "text": "Rate",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "s93al5rd",
+          "_$type": "Label",
+          "name": "Label(4)",
+          "x": 139,
+          "y": 48,
+          "width": 117,
+          "height": 28,
+          "text": "3\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "ice2o8d5",
+          "_$type": "Label",
+          "name": "Label(5)",
+          "x": 139,
+          "y": 84,
+          "width": 117,
+          "height": 28,
+          "text": "0\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "6t8g6odv",
+          "_$type": "Label",
+          "name": "Label(6)",
+          "x": 137,
+          "y": 116,
+          "width": 117,
+          "height": 28,
+          "text": "3\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "_$id": "8z63wk9t",
+      "_$type": "Sprite",
+      "name": "Sprite(5)",
+      "x": 145,
+      "y": 113,
+      "width": 460,
+      "height": 70,
+      "_$child": [
+        {
+          "_$id": "zqbzaeju",
+          "_$type": "Box",
+          "name": "Box",
+          "x": 2.0000000000000284,
+          "y": 7.999999999999957,
+          "width": 453,
+          "height": 54,
+          "bgColor": "rgba(120, 78, 164, 1)"
+        },
+        {
+          "_$id": "d3a3fl2m",
+          "_$type": "Image",
+          "name": "Image(3)",
+          "x": -1,
+          "y": 3.0000000000000284,
+          "width": 460,
+          "height": 66,
+          "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "rq37cr5n",
+          "_$type": "Image",
+          "name": "Image(4)",
+          "x": 120,
+          "y": 13,
+          "width": 218.8142062988572,
+          "height": 43.90920527736254,
+          "skin": "res://183543d2-d564-4f68-9e00-3efad50e5189",
+          "color": "#ffffff"
+        }
+      ]
+    }
+  ]
+}

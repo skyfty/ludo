@@ -13185,6 +13185,9 @@
       this.goldcoin.on(Laya.Event.CLICK, this, () => {
         Laya.Scene.open("dialog/buycoin.lh", false);
       });
+      this.level.on(Laya.Event.CLICK, this, () => {
+        Laya.Scene.open("dialog/statistics.lh", false);
+      });
     }
     onStart() {
       Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("musicMuted") == "on";
@@ -13235,6 +13238,9 @@
   __decorateClass([
     property42(Laya.Sprite)
   ], Menu.prototype, "goldcoin", 2);
+  __decorateClass([
+    property42(Laya.Sprite)
+  ], Menu.prototype, "level", 2);
   Menu = __decorateClass([
     regClass42("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
@@ -13607,6 +13613,46 @@
   Settings = __decorateClass([
     regClass50("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
+
+  // src/StatisticsDialog.ts
+  var { regClass: regClass51, property: property51 } = Laya;
+  var StatisticsDialog = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    /**
+     * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
+     */
+    onAwake() {
+      this.returnBtn.on(Laya.Event.CLICK, this, () => {
+        let dlg = this.owner;
+        dlg.close();
+      });
+    }
+  };
+  __name(StatisticsDialog, "StatisticsDialog");
+  __decorateClass([
+    property51(Laya.Button)
+  ], StatisticsDialog.prototype, "returnBtn", 2);
+  StatisticsDialog = __decorateClass([
+    regClass51("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
+  ], StatisticsDialog);
+
+  // src/MyselfName.ts
+  var { regClass: regClass52, property: property52 } = Laya;
+  var MyselfName = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onLateUpdate() {
+      let label = this.owner;
+      label.text = Profile.getNickname();
+    }
+  };
+  __name(MyselfName, "MyselfName");
+  MyselfName = __decorateClass([
+    regClass52("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
+  ], MyselfName);
 })();
 /*! Bundled license information:
 

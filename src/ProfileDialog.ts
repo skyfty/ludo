@@ -18,7 +18,6 @@ export class ProfileDialog extends Laya.Script {
     @property(Laya.Button)
     public returnBtn: Laya.Button;
 
-    
     @property(Number)
     public avatarNumber: number;
 

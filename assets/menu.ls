@@ -33,6 +33,9 @@
       },
       "goldcoin": {
         "_$ref": "pizo50xh"
+      },
+      "level": {
+        "_$ref": "6j8qzh0l"
       }
     },
     {
@@ -305,7 +308,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 6,
+              "index": 5,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -323,44 +326,55 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 5,
+              "index": 4,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
           ]
         },
         {
-          "_$id": "hcfkoj97",
-          "_$type": "Label",
-          "name": "Label",
-          "x": 140,
-          "y": 16,
-          "width": 59,
-          "height": 26,
-          "text": "LV.",
-          "fontSize": 34,
-          "color": "rgba(243, 202, 13, 1)",
-          "bold": true,
-          "leading": 0,
-          "padding": "0,0,0,0"
-        },
-        {
-          "_$id": "9ufohixi",
-          "_$type": "Label",
-          "name": "lv",
-          "x": 200,
-          "y": 16,
-          "width": 120,
-          "height": 26,
-          "text": "3\n",
-          "fontSize": 34,
-          "color": "#FFFFFF",
-          "leading": 0,
-          "padding": "0,0,0,0",
-          "_$comp": [
+          "_$id": "6j8qzh0l",
+          "_$type": "Sprite",
+          "name": "Sprite",
+          "x": 135,
+          "y": 6,
+          "width": 207,
+          "height": 46,
+          "_$child": [
             {
-              "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
-              "scriptPath": "../src/MyselfLv.ts"
+              "_$id": "hcfkoj97",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 5.000000000000085,
+              "y": 9.999999999999979,
+              "width": 59,
+              "height": 26,
+              "text": "LV.",
+              "fontSize": 34,
+              "color": "rgba(243, 202, 13, 1)",
+              "bold": true,
+              "leading": 0,
+              "padding": "0,0,0,0"
+            },
+            {
+              "_$id": "9ufohixi",
+              "_$type": "Label",
+              "name": "lv",
+              "x": 65,
+              "y": 9.999999999999979,
+              "width": 120,
+              "height": 26,
+              "text": "3\n",
+              "fontSize": 34,
+              "color": "#FFFFFF",
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "_$comp": [
+                {
+                  "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
+                  "scriptPath": "../src/MyselfLv.ts"
+                }
+              ]
             }
           ]
         }
