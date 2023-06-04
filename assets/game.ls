@@ -854,7 +854,7 @@
               "borderColor": "rgba(11, 232, 255, 1)",
               "overflow": "scroll",
               "leading": 0,
-              "padding": "2,6,2,6",
+              "padding": "4,6,2,15",
               "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
               "type": "text",
               "maxChars": 500,

@@ -31,6 +31,18 @@
   ],
   "_$child": [
     {
+      "_$id": "vv5he8vi",
+      "_$type": "Image",
+      "name": "Image(2)",
+      "x": 5.499999999999972,
+      "y": 297.5,
+      "width": 748.5,
+      "height": 748.5,
+      "alpha": 0.59,
+      "skin": "res://5bba9e01-01de-4050-a7f3-972c5459b7b7",
+      "color": "#ffffff"
+    },
+    {
       "_$id": "6f3o8jqg",
       "_$type": "Image",
       "name": "Image",
@@ -90,11 +102,13 @@
       "y": 148,
       "width": 321,
       "height": 46,
-      "text": "",
+      "text": "500",
       "fontSize": 55,
-      "color": "#FFFFFF",
+      "color": "rgba(253, 210, 0, 1)",
+      "bold": true,
       "leading": 0,
-      "padding": "0,0,0,0"
+      "padding": "0,0,0,0",
+      "stroke": 14.145
     },
     {
       "_$id": "19zvwmie",
@@ -110,7 +124,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 4,
+      "index": 5,
       "interval": 241,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -128,7 +142,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 0,
+      "index": 1,
       "interval": 226,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -146,7 +160,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 5,
+      "index": 2,
       "interval": 204,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -164,7 +178,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 6,
+      "index": 2,
       "interval": 198,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -182,8 +196,26 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 0,
+      "index": 1,
       "interval": 226,
+      "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+    },
+    {
+      "_$id": "xs8xq5o8",
+      "_$type": "Clip",
+      "name": "Clip(5)",
+      "x": 243.86262458740998,
+      "y": 116,
+      "width": 63.15038107246508,
+      "height": 58.127068015162635,
+      "anchorY": -0.16666666666666666,
+      "autoPlay": true,
+      "clipWidth": 30,
+      "clipHeight": 30,
+      "clipX": 7,
+      "clipY": 1,
+      "index": 5,
+      "interval": 204,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     }
   ]
