@@ -13415,8 +13415,24 @@
     regClass46("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
   ], MyselfLv);
 
-  // src/PlayerProfile.ts
+  // src/MyselfName.ts
   var { regClass: regClass47, property: property47 } = Laya;
+  var MyselfName = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onLateUpdate() {
+      let label = this.owner;
+      label.text = Profile.getNickname();
+    }
+  };
+  __name(MyselfName, "MyselfName");
+  MyselfName = __decorateClass([
+    regClass47("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
+  ], MyselfName);
+
+  // src/PlayerProfile.ts
+  var { regClass: regClass48, property: property48 } = Laya;
   var PlayerProfile = class extends Laya.Script {
     constructor() {
       super();
@@ -13425,11 +13441,11 @@
   };
   __name(PlayerProfile, "PlayerProfile");
   PlayerProfile = __decorateClass([
-    regClass47("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
+    regClass48("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
   ], PlayerProfile);
 
   // src/ProfileDialog.ts
-  var { regClass: regClass48, property: property48 } = Laya;
+  var { regClass: regClass49, property: property49 } = Laya;
   var ProfileDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -13465,24 +13481,24 @@
   };
   __name(ProfileDialog, "ProfileDialog");
   __decorateClass([
-    property48(Laya.TextInput)
+    property49(Laya.TextInput)
   ], ProfileDialog.prototype, "name", 2);
   __decorateClass([
-    property48(Laya.List)
+    property49(Laya.List)
   ], ProfileDialog.prototype, "avatarList", 2);
   __decorateClass([
-    property48(Laya.Button)
+    property49(Laya.Button)
   ], ProfileDialog.prototype, "returnBtn", 2);
   __decorateClass([
-    property48(Number)
+    property49(Number)
   ], ProfileDialog.prototype, "avatarNumber", 2);
   ProfileDialog = __decorateClass([
-    regClass48("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
+    regClass49("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
   ], ProfileDialog);
 
   // src/SelectColor.ts
   var SFS2X13 = __toESM(require_sfs2x_api());
-  var { regClass: regClass49, property: property49 } = Laya;
+  var { regClass: regClass50, property: property50 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
       super();
@@ -13568,20 +13584,20 @@
   };
   __name(SelectColor, "SelectColor");
   __decorateClass([
-    property49(Laya.Button)
+    property50(Laya.Button)
   ], SelectColor.prototype, "closeBtn", 2);
   __decorateClass([
-    property49(Laya.Button)
+    property50(Laya.Button)
   ], SelectColor.prototype, "play", 2);
   __decorateClass([
-    property49([Laya.CheckBox])
+    property50([Laya.CheckBox])
   ], SelectColor.prototype, "colorCheckBox", 2);
   SelectColor = __decorateClass([
-    regClass49("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
+    regClass50("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
   ], SelectColor);
 
   // src/Settings.ts
-  var { regClass: regClass50, property: property50 } = Laya;
+  var { regClass: regClass51, property: property51 } = Laya;
   var Settings = class extends Laya.Script {
     constructor() {
       super();
@@ -13605,17 +13621,17 @@
   };
   __name(Settings, "Settings");
   __decorateClass([
-    property50(Laya.CheckBox)
+    property51(Laya.CheckBox)
   ], Settings.prototype, "musicMuted", 2);
   __decorateClass([
-    property50(Laya.CheckBox)
+    property51(Laya.CheckBox)
   ], Settings.prototype, "soundMuted", 2);
   Settings = __decorateClass([
-    regClass50("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
+    regClass51("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
 
   // src/StatisticsDialog.ts
-  var { regClass: regClass51, property: property51 } = Laya;
+  var { regClass: regClass52, property: property52 } = Laya;
   var StatisticsDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -13632,27 +13648,11 @@
   };
   __name(StatisticsDialog, "StatisticsDialog");
   __decorateClass([
-    property51(Laya.Button)
+    property52(Laya.Button)
   ], StatisticsDialog.prototype, "returnBtn", 2);
   StatisticsDialog = __decorateClass([
-    regClass51("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
+    regClass52("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
-
-  // src/MyselfName.ts
-  var { regClass: regClass52, property: property52 } = Laya;
-  var MyselfName = class extends Laya.Script {
-    constructor() {
-      super();
-    }
-    onLateUpdate() {
-      let label = this.owner;
-      label.text = Profile.getNickname();
-    }
-  };
-  __name(MyselfName, "MyselfName");
-  MyselfName = __decorateClass([
-    regClass52("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
-  ], MyselfName);
 })();
 /*! Bundled license information:
 

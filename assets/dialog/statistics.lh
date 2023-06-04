@@ -162,11 +162,12 @@
       "_$id": "q90kvatj",
       "_$type": "ProgressBar",
       "name": "ProgressBar",
-      "x": 336,
-      "y": 275,
+      "x": 338,
+      "y": 280,
       "width": 335,
-      "height": 30,
+      "height": 24,
       "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
+      "sizeGrid": "2,2,2,2,0",
       "value": 0.5
     },
     {

@@ -71,7 +71,7 @@
       "width": 605,
       "height": 34,
       "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
-      "sizeGrid": "10,10,18,8,0",
+      "sizeGrid": "9,10,7,11,0",
       "value": 0
     }
   ]
