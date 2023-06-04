@@ -8,6 +8,7 @@ import { Config } from "./Config";
 import { Profile } from "./Profile";
 import { Reward } from "./Reward";
 import { Loser } from "./Loser";
+import { MessageBubble } from "./MessageBubble";
 
 @regClass()
 export class Online extends Laya.Script {
@@ -60,6 +61,7 @@ export class Online extends Laya.Script {
         Station.sfs.addEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
 
     }
 
@@ -70,8 +72,16 @@ export class Online extends Laya.Script {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
     }
 
+
+    onPublicMessage(evtParams: SFS2X.SFSEvent) {
+        let player = this.room.players[evtParams.sender.id];
+        if (player != null) {
+            player.getComponent(Player.Player).messageBubble.show(evtParams.message);
+        }
+    }
   
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
         if ("Hurl" == evtParams.cmd) {

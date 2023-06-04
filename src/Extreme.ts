@@ -49,7 +49,6 @@ export class Extreme extends Performer {
             }
         }
     }
-
     private onChooseChesses(name:string) {
         let chesses = this.player.reckonChess(this.currentDiceNumber);
         this.player.stopChesses(chesses);

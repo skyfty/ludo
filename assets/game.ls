@@ -29,6 +29,9 @@
         "_$uuid": "06164ce8-be3e-4019-b8ae-69a252482140",
         "_$type": "Prefab"
       },
+      "chitchat": {
+        "_$ref": "a6plfuks"
+      },
       "loser": {
         "_$uuid": "2191a9de-75c1-4ec6-9a1a-a3ebf2dbee7f",
         "_$type": "Prefab"
@@ -797,11 +800,50 @@
       ]
     },
     {
+      "_$id": "a5gt28ns",
+      "_$type": "Box",
+      "name": "toolbar",
+      "x": 60,
+      "y": 16,
+      "width": 632,
+      "height": 43,
+      "mouseEnabled": true,
+      "_$comp": [
+        {
+          "_$type": "2eaec3fb-1805-4cbc-89c7-008aa7b68c01",
+          "scriptPath": "../src/GameToolbar.ts",
+          "backButton": {
+            "_$ref": "fp6q39ed"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "fp6q39ed",
+          "_$type": "Button",
+          "name": "back",
+          "width": 42.5,
+          "height": 42.5,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+          "label": "",
+          "labelSize": 20,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "_$id": "oh6c4lul",
       "_$type": "Sprite",
       "name": "players",
-      "x": 326,
-      "y": 469,
+      "x": 326.0000000000001,
+      "y": 468.99999999999994,
       "width": 100,
       "height": 100,
       "_$child": [
@@ -867,11 +909,27 @@
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
               },
+              "messageBubble": {
+                "_$ref": "ptean5qg",
+                "_$type": "9a515693-ac84-4241-ae56-70cbe2347324"
+              },
               "chippy": [],
               "home": []
             }
           ],
           "_$child": [
+            {
+              "_$id": "b7ycl5iq",
+              "_$index": 0,
+              "_$type": "Image",
+              "name": "border",
+              "x": 33.00000000000006,
+              "y": -218.49190698129985,
+              "width": 169.3225045505375,
+              "height": 168.63975251605942,
+              "skin": "res://469bf55c-cb52-45fe-be14-23a04e35ef7f",
+              "color": "#ffffff"
+            },
             {
               "_$override": "sc3b00yx",
               "x": -10,
@@ -887,9 +945,31 @@
               "x": 91.5
             },
             {
+              "_$id": "ptean5qg",
+              "_$prefab": "e48a8486-1223-4a7f-a01c-41acc787d7ed",
+              "_$index": 2,
+              "name": "message",
+              "active": true,
+              "x": -16,
+              "y": -27,
+              "visible": false,
+              "_$child": [
+                {
+                  "_$override": "bpdtqtcb",
+                  "y": -4,
+                  "height": 40,
+                  "useSourceSize": false
+                },
+                {
+                  "_$override": "iz248g3j",
+                  "y": 6
+                }
+              ]
+            },
+            {
               "_$id": "60gakblm",
               "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 1,
+              "_$index": 3,
               "name": "originbk",
               "active": true,
               "x": -9,
@@ -898,20 +978,8 @@
               "bgColor": "rgba(0, 0, 0, 1)"
             },
             {
-              "_$id": "b7ycl5iq",
-              "_$index": 2,
-              "_$type": "Image",
-              "name": "border",
-              "x": 33.00000000000006,
-              "y": -218.49190698130013,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://469bf55c-cb52-45fe-be14-23a04e35ef7f",
-              "color": "#ffffff"
-            },
-            {
               "_$id": "jnr4fv9u",
-              "_$index": 3,
+              "_$index": 4,
               "_$type": "Sprite",
               "name": "path",
               "x": 257.9999999999999,
@@ -984,7 +1052,7 @@
             {
               "_$id": "h6q90dh9",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 4,
+              "_$index": 5,
               "name": "origin",
               "active": true,
               "x": 32,
@@ -1055,7 +1123,7 @@
             },
             {
               "_$id": "37thijbt",
-              "_$index": 5,
+              "_$index": 6,
               "_$type": "Sprite",
               "name": "groove",
               "x": 77,
@@ -1270,6 +1338,10 @@
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
               },
+              "messageBubble": {
+                "_$ref": "8jrz6tko",
+                "_$type": "9a515693-ac84-4241-ae56-70cbe2347324"
+              },
               "chippy": [],
               "home": []
             }
@@ -1281,26 +1353,26 @@
               "y": -40
             },
             {
+              "_$id": "7c2mfmh6",
+              "_$index": 1,
+              "_$type": "Image",
+              "name": "border",
+              "x": 31.000000000000057,
+              "y": 122.50809301869984,
+              "width": 169.3225045505375,
+              "height": 168.63975251605942,
+              "skin": "res://39981a89-301b-4944-9b1c-ba25a52c1628",
+              "color": "#ffffff"
+            },
+            {
               "_$id": "yi8aaacw",
               "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 1,
+              "_$index": 2,
               "name": "originbk",
               "active": true,
               "x": -12,
               "y": 81,
               "visible": false
-            },
-            {
-              "_$id": "7c2mfmh6",
-              "_$index": 2,
-              "_$type": "Image",
-              "name": "border",
-              "x": 31.000000000000057,
-              "y": 122.50809301869975,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://39981a89-301b-4944-9b1c-ba25a52c1628",
-              "color": "#ffffff"
             },
             {
               "_$id": "bj7phns4",
@@ -1587,11 +1659,54 @@
             {
               "_$id": "f26bc4fu",
               "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "_$index": 6,
               "name": "crown",
               "active": true,
               "x": -12.000000000000057,
               "y": 78.99999999999994,
               "visible": false
+            },
+            {
+              "_$id": "8jrz6tko",
+              "_$prefab": "3afe6414-4d87-479e-a251-ee931b2bfb6f",
+              "name": "message",
+              "active": true,
+              "x": -5,
+              "y": 35,
+              "visible": false,
+              "_$comp": [
+                {
+                  "_$override": "9a515693-ac84-4241-ae56-70cbe2347324",
+                  "message": {
+                    "_$ref": [
+                      "8jrz6tko",
+                      "iz248g3j"
+                    ]
+                  }
+                }
+              ],
+              "_$child": [
+                {
+                  "_$override": "bpdtqtcb",
+                  "skin": "res://061b9221-cb35-486c-95a3-bb34472ff29f",
+                  "y": 26,
+                  "sizeGrid": "5,13,15,12,0",
+                  "height": 42,
+                  "useSourceSize": false
+                },
+                {
+                  "_$override": "sstyarjo",
+                  "skin": "res://bd9cf093-f1b6-4758-9b2c-74d6d6c32a88",
+                  "x": 0.9999999999999982,
+                  "y": 0
+                },
+                {
+                  "_$override": "iz248g3j",
+                  "y": 30,
+                  "x": 12,
+                  "width": 271
+                }
+              ]
             }
           ]
         },
@@ -1655,11 +1770,27 @@
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
               },
+              "messageBubble": {
+                "_$ref": "9gd4kjms",
+                "_$type": "9a515693-ac84-4241-ae56-70cbe2347324"
+              },
               "chippy": [],
               "home": []
             }
           ],
           "_$child": [
+            {
+              "_$id": "vkqmkb6p",
+              "_$index": 0,
+              "_$type": "Image",
+              "name": "border",
+              "x": -47.99999999999994,
+              "y": -217.99999999999994,
+              "width": 169.3225045505375,
+              "height": 168.63975251605942,
+              "skin": "res://c9b9295c-4965-44d8-a24a-a7b3f90e0d29",
+              "color": "#ffffff"
+            },
             {
               "_$override": "5a788y2g",
               "x": -32,
@@ -1688,24 +1819,12 @@
             {
               "_$id": "256t4cwd",
               "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 1,
+              "_$index": 2,
               "name": "originbk",
               "active": true,
               "x": -91,
               "y": -261,
               "visible": false
-            },
-            {
-              "_$id": "vkqmkb6p",
-              "_$index": 2,
-              "_$type": "Image",
-              "name": "border",
-              "x": -48,
-              "y": -218,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://c9b9295c-4965-44d8-a24a-a7b3f90e0d29",
-              "color": "#ffffff"
             },
             {
               "_$id": "ves81bgi",
@@ -1968,11 +2087,37 @@
             {
               "_$id": "36vb08z2",
               "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "_$index": 6,
               "name": "crown",
               "active": true,
               "x": -91.00000000000006,
               "y": -261.00000000000006,
               "visible": false
+            },
+            {
+              "_$id": "9gd4kjms",
+              "_$prefab": "e48a8486-1223-4a7f-a01c-41acc787d7ed",
+              "name": "message",
+              "active": true,
+              "x": -130,
+              "y": -27.999999999999943,
+              "visible": false,
+              "_$child": [
+                {
+                  "_$override": "bpdtqtcb",
+                  "y": -3,
+                  "height": 39,
+                  "useSourceSize": false
+                },
+                {
+                  "_$override": "sstyarjo",
+                  "skin": "res://1a5b52e4-00fe-4dea-bd98-5c0306aa1148"
+                },
+                {
+                  "_$override": "iz248g3j",
+                  "y": 6
+                }
+              ]
             }
           ]
         },
@@ -2035,6 +2180,10 @@
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
               },
+              "messageBubble": {
+                "_$ref": "8idgin6m",
+                "_$type": "9a515693-ac84-4241-ae56-70cbe2347324"
+              },
               "chippy": [],
               "home": []
             }
@@ -2066,26 +2215,26 @@
               ]
             },
             {
+              "_$id": "dw3zrzzu",
+              "_$index": 1,
+              "_$type": "Image",
+              "name": "border",
+              "x": -43.00000000000017,
+              "y": 120.50809301870001,
+              "width": 169.3225045505375,
+              "height": 168.63975251605942,
+              "skin": "res://ecbfa6ea-62df-4992-99d7-3978a859c6b7",
+              "color": "#ffffff"
+            },
+            {
               "_$id": "lks891a9",
               "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 1,
+              "_$index": 2,
               "name": "originbk",
               "active": true,
               "x": -85,
               "y": 77,
               "visible": false
-            },
-            {
-              "_$id": "dw3zrzzu",
-              "_$index": 2,
-              "_$type": "Image",
-              "name": "border",
-              "x": -43.00000000000017,
-              "y": 120.50809301870004,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://ecbfa6ea-62df-4992-99d7-3978a859c6b7",
-              "color": "#ffffff"
             },
             {
               "_$id": "2r52rn68",
@@ -2372,52 +2521,127 @@
             {
               "_$id": "4tlcx9lc",
               "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "_$index": 6,
               "name": "crown",
               "active": true,
               "x": -85.00000000000006,
               "y": 77.99999999999994,
               "visible": false
+            },
+            {
+              "_$id": "8idgin6m",
+              "_$prefab": "3afe6414-4d87-479e-a251-ee931b2bfb6f",
+              "name": "message",
+              "active": true,
+              "x": -113,
+              "y": 27.000000000000057,
+              "visible": false,
+              "_$child": [
+                {
+                  "_$override": "bpdtqtcb",
+                  "skin": "res://061b9221-cb35-486c-95a3-bb34472ff29f",
+                  "y": 31,
+                  "x": -2,
+                  "sizeGrid": "8,14,14,12,0",
+                  "height": 44,
+                  "useSourceSize": false
+                },
+                {
+                  "_$override": "sstyarjo",
+                  "skin": "res://b91fca67-8c97-44df-afab-dc884f7ef01f",
+                  "y": 5,
+                  "x": -1.0000000000000018
+                },
+                {
+                  "_$override": "iz248g3j",
+                  "y": 35,
+                  "x": 12,
+                  "width": 268
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "_$id": "a5gt28ns",
-      "_$type": "Box",
-      "name": "toolbar",
-      "x": 60,
-      "y": 16,
-      "width": 632,
-      "height": 43,
+      "_$id": "a6plfuks",
+      "_$type": "Sprite",
+      "name": "chitchat",
+      "x": 211,
+      "y": 1008,
+      "width": 481,
+      "height": 48,
+      "visible": false,
       "mouseEnabled": true,
       "_$comp": [
         {
-          "_$type": "2eaec3fb-1805-4cbc-89c7-008aa7b68c01",
-          "scriptPath": "../src/GameToolbar.ts",
-          "backButton": {
-            "_$ref": "fp6q39ed"
+          "_$type": "cd5a3964-355e-49cf-9ce1-1882775bf810",
+          "scriptPath": "../src/Chitchat.ts",
+          "message": {
+            "_$ref": "643m7j12"
+          },
+          "send": {
+            "_$ref": "itm32i04"
           }
         }
       ],
       "_$child": [
         {
-          "_$id": "fp6q39ed",
+          "_$id": "643m7j12",
+          "_$type": "TextInput",
+          "name": "TextInput",
+          "y": -5,
+          "width": 395,
+          "height": 54,
+          "mouseEnabled": true,
+          "text": "",
+          "fontSize": 20,
+          "color": "#A9A9A9",
+          "valign": "middle",
+          "bgColor": "rgba(245, 245, 245, 1)",
+          "borderColor": "rgba(0, 85, 255, 1)",
+          "overflow": "scroll",
+          "leading": 0,
+          "padding": "2,6,2,6",
+          "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
+          "type": "text",
+          "maxChars": 100000,
+          "restrict": "",
+          "prompt": "Enter a message",
+          "promptColor": "#A9A9A9"
+        },
+        {
+          "_$id": "itm32i04",
           "_$type": "Button",
-          "name": "back",
-          "width": 42.5,
-          "height": 42.5,
+          "name": "Button",
+          "x": 399,
+          "y": -5,
+          "width": 80.19999999999996,
+          "height": 54,
           "mouseEnabled": true,
           "stateNum": 2,
-          "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+          "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
           "label": "",
           "labelSize": 20,
+          "labelColors": "#ffffff,#32cc6b,#ff0000,#c0c0c0",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
             }
           ]
+        },
+        {
+          "_$id": "r1gwal24",
+          "_$type": "Image",
+          "name": "Image",
+          "x": 416.0000000000001,
+          "y": 10,
+          "width": 42.861050328227556,
+          "height": 29.145514223194752,
+          "skin": "res://572a347c-248d-4a5a-a81e-d5e19853adb3",
+          "color": "#ffffff"
         }
       ]
     }

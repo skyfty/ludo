@@ -4,6 +4,7 @@ import { Config } from "./Config";
 import { Dice } from "./Dice";
 import { Room } from "./Room";
 import { Trade } from "./Trade";
+import { MessageBubble } from "./MessageBubble";
 
 const { regClass, property, SoundManager } = Laya;
 
@@ -77,6 +78,9 @@ export class Player extends Laya.Script {
 
     @property(Room)
     public room: Room;
+
+    @property(MessageBubble)
+    public messageBubble: MessageBubble;
 
     @property([Laya.Sprite])
     protected chippy: Laya.Sprite[] = [];

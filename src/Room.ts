@@ -4,7 +4,7 @@ import { Extreme } from "./Extreme";
 import * as Player from "./Player";
 import { Performer } from "./Performer";
 import { Reward } from "./Reward";
-import { Loser } from "./Loser";
+import { Chitchat } from "./Chitchat";
 
 const { regClass, property } = Laya;
 
@@ -25,6 +25,8 @@ export class Room extends Laya.Script {
     @property(Laya.Prefab)
     public reward: Laya.Prefab;
 
+    @property(Laya.Sprite)
+    public chitchat:  Laya.Sprite;;
 
     @property(Laya.Prefab)
     public loser: Laya.Prefab;

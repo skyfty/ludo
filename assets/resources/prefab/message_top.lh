@@ -1,0 +1,57 @@
+{
+  "_$ver": 1,
+  "_$id": "vpjhu289di",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 296,
+  "height": 64,
+  "_$comp": [
+    {
+      "_$type": "9a515693-ac84-4241-ae56-70cbe2347324",
+      "scriptPath": "../src/MessageBubble.ts",
+      "message": null
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "bpdtqtcb",
+      "_$type": "Image",
+      "name": "Image",
+      "y": -1,
+      "width": 296,
+      "height": 38,
+      "skin": "res://0465ec86-685c-4bdd-b63d-e479a8cfb0ce",
+      "sizeGrid": "13,14,4,12,0",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "sstyarjo",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 0.9999999999999982,
+      "y": 37,
+      "width": 294,
+      "height": 27,
+      "skin": "res://ae1abf5b-365f-421c-b3e5-51447d77b0b6",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "iz248g3j",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 12,
+      "y": 8,
+      "width": 272,
+      "height": 28,
+      "text": "Labelsdafsfadsfadsfdsfdsfdsfdsafdsfdsfadfsafdsfdfdsfadsafdsadsfadsfdsafdsfdsafsafdsdsfadafdsafdsafdsafdsfafdsfadsafdsafdsfadsf",
+      "fontSize": 31,
+      "color": "rgba(0, 0, 0, 1)",
+      "valign": "middle",
+      "overflow": "scroll",
+      "wordWrap": true,
+      "leading": 0,
+      "padding": "0,0,0,0"
+    }
+  ]
+}

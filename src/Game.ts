@@ -32,6 +32,7 @@ export class Game extends Laya.Scene {
     }
 
     private challengeExtreme(param: any) {
+        this.room.chitchat.visible = true;
         this.room.numberOfPlayer = param.number;
         this.addComponentInstance(new Online(param));
 
