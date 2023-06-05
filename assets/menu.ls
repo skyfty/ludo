@@ -42,7 +42,7 @@
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
       "playerName": "Feitianyu",
-      "host": "127.0.0.1",
+      "host": "39.104.230.103",
       "port": 8080,
       "zone": "Ludo",
       "debug": false
@@ -308,7 +308,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 5,
+              "index": 2,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -326,7 +326,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 4,
+              "index": 0,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

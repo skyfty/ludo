@@ -96,7 +96,6 @@ export class Loader extends Laya.Script {
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },
-                { url: "invite.ls", type: Laya.Loader.HIERARCHY },
                 { url: "militant.ls", type: Laya.Loader.HIERARCHY },
 
                 { url: "dialog/chamber.lh", type: Laya.Loader.HIERARCHY },

@@ -1,34 +1,16 @@
 function init() {
 	addRequestHandler("Hurl", onHurl);
 	addRequestHandler("SyncProfile", onSyncProfileRequest);
-	addRequestHandler("Rank", onRank);
-	addRequestHandler("Gold", onGold);
 	addRequestHandler("EventRequest", onEventRequest);
 	addRequestHandler("GetJettonRequest", onGetJettonRequest);
 	addRequestHandler("GetCoinRequest", onGetCoinRequest);
+	addRequestHandler("GetProfileRequest", onGetProfileRequest);
+	addRequestHandler("GeneralizeRequest", onGeneralizeRequest);
 
 }
 
 function destroy() {
 	trace("Simple JS Example destroyed");
-}
-
-function getRankScore(user, reason) {
-	var userId = user.getInt("id");
-	var nowtime = Date.now() / 1000;
-	var data = [
-		userId,
-		0,
-		nowtime,
-		reason
-	];
-	switch (reason) {
-		case "win": {
-			data[1] = 10;
-			break;
-		}
-	}
-	return data;
 }
 
 function countRank(userId) {
@@ -45,54 +27,62 @@ function countRank(userId) {
 	return rank;
 }
 
-function onRank(inParams, sender) {
+function getContestData(userId,type) {
+	var db = getParentZone().getDBManager();
+	var sumRankResult = db.executeQuery("SELECT COUNT(id) as WinsCount, SUM(rate) AS RateSum, SUM(duration) AS DurationSum FROM contest WHERE userid=? AND type=?", [userId,type]);
+	var RateSum = sumRankResult.getSFSObject(0).getDouble("RateSum");
+	var DurationSum = sumRankResult.getSFSObject(0).getDouble("DurationSum");
+	var WinsCount = sumRankResult.getSFSObject(0).getLong("WinsCount");
+	return [WinsCount,RateSum,DurationSum,userId];
+}
+
+function onGeneralizeRequest(inParams, sender) {
 	var db = getParentZone().getDBManager();
 	var params = new SFSObject();
 	var userId = inParams.getInt("id");
 	var user = getUser(userId);
 	if (user != null) {
-		var reason = inParams.getUtfString("reason");
-		var scoreData = getRankScore(user, reason);
-		if (scoreData != null) {
-			db.executeInsert("INSERT INTO rank(userid,amount,createtime,reason) VALUES(?,?,?,?)", scoreData);
-			var rank = countRank(userId);
-			params.putInt("rank", rank);
-		}
+		var nowtime = Date.now() / 1000;
+		var rate = 10;
+		params.putInt("rate", rate);
+
+		var rankData = [
+			userId,
+			rate,
+			nowtime,
+			"victory"
+		];
+		db.executeInsert("INSERT INTO rank(userid,amount,createtime,reason) VALUES(?,?,?,?)", rankData);
+		var rank = countRank(userId);
+
+		var type = inParams.getUtfString("type");
+		var duration = inParams.getInt("duration");
+		var contestData = [
+			userId,
+			nowtime,
+			type,
+			duration,
+			rate
+		];
+		db.executeInsert("INSERT INTO contest(userid,createtime,type,duration,rate) VALUES(?,?,?,?,?)", contestData);
+
+		switch(type) {
+            case "extreme": {
+				db.executeUpdate("UPDATE users SET online_wins=?,online_rate=?,online_timer=? WHERE id=?", getContestData(userId,type));
+                break;
+            }
+            case "friend": {
+				db.executeUpdate("UPDATE users SET vsfriend_wins=?,vsfriend_rate=?,vsfriend_timer=? WHERE id=?", getContestData(userId,type));
+                break;
+            }
+            default: {
+				db.executeUpdate("UPDATE users SET vscomputer_wins=?,vscomputer_rate=?,vscomputer_timer=? WHERE id=?", getContestData(userId,type));
+				break;
+            }
+        }
+		params.putInt("rank", rank);
 	}
-	send("Rank", params, [sender]);
-}
-
-
-
-function getGoldScore(user, reason) {
-	var userId = user.getInt("id");
-	var nowtime = Date.now() / 1000;
-	var data = [
-		userId,
-		0,
-		nowtime,
-		reason
-	];
-	return data;
-}
-
-
-
-function onGold(inParams, sender) {
-	var db = getParentZone().getDBManager();
-	var params = new SFSObject();
-	var userId = inParams.getInt("id");
-	var user = getUser(userId);
-	if (user != null) {
-		var reason = inParams.getUtfString("reason");
-		var scoreData = getRankScore(user, reason);
-		if (scoreData != null) {
-			db.executeInsert("INSERT INTO rank(userid,amount,createtime,reason) VALUES(?,?,?,?)", scoreData);
-			var rank = countRank(userId);
-			params.putInt("rank", rank);
-		}
-	}
-	send("Rank", params, [sender]);
+	send("GeneralizeRequest", params, [sender]);
 }
 
 function onGetJettonRequest(inParams, sender) {
@@ -101,6 +91,12 @@ function onGetJettonRequest(inParams, sender) {
 	var params = new SFSObject();
 	params.putSFSArray("list", result);
 	send("GetJettonRequest", params, [sender]);
+}
+
+function onGetProfileRequest(inParams, sender) {
+	var userId = inParams.getInt("id");
+	var user = getUser(userId);
+	send("GetProfileRequest", user, [sender]);
 }
 
 function countGold(userId) {
@@ -264,7 +260,7 @@ function onSyncProfileRequest(inParams, sender) {
 		userId = db.executeInsert("INSERT INTO users(nickname,avatar,updatetime) VALUES(?,?,?)", data);
 		var scoreData = [
 			userId,
-			50,
+			20,
 			syncTime,
 			"newuser"
 		];
@@ -290,6 +286,8 @@ function onSyncProfileRequest(inParams, sender) {
 					userId
 				];
 				db.executeUpdate("UPDATE users SET nickname=?,avatar=?,updatetime=? WHERE id=?", data);
+				inParams.putInt("rank", user.getInt("rank"));
+				inParams.putInt("gold", user.getInt("gold"));
 			}
 			if ((nowTime - updateTime) > (24 * 60 * 60)) {
 				var scoreData = [
