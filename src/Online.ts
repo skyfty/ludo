@@ -8,7 +8,7 @@ import { Config } from "./Config";
 import { Profile } from "./Profile";
 import { Reward } from "./Reward";
 import { Loser } from "./Loser";
-import { MessageBubble } from "./MessageBubble";
+import { Trade } from "./Trade";
 
 @regClass()
 export class Online extends Laya.Script {
@@ -26,6 +26,21 @@ export class Online extends Laya.Script {
         this.owner.on(Player.Event.Hurl, this, this.onHurl);
         this.owner.on(Player.Event.Achieve, this.room, this.room.onAchieve);
         this.owner.on(Player.Event.Victory, this.room, this.room.onVictory);
+        this.owner.on(Player.Event.CountdownStop, this, this.onCountdownStop);
+        this.owner.on(Player.Event.Countdown, this, this.onCountdown);
+    }
+
+    
+    onCountdown(trade:Trade, reason:string) {
+        if (reason == Player.Event.Chuck) {
+            trade.startCountdown(Config.TIMEOUT_CHUNK, reason);
+
+        }else if (reason == Player.Event.Choose) {
+            trade.startCountdown(Config.TIMEOUT_CHOOSE_CHESS, reason);
+        }
+    }
+    onCountdownStop(trade:Trade) {
+        trade.stopCountdown();
     }
 
     private playerColorFind(colorName: string) {

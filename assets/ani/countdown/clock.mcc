@@ -1,0 +1,49 @@
+{
+  "_$type": "Animator2D",
+  "enabled": true,
+  "controllerLayers": [
+    {
+      "name": "Base Layer",
+      "defaultStateName": "tremble",
+      "playOnWake": true,
+      "blendingMode": 0,
+      "states": [
+        {
+          "name": "tremble",
+          "clip": {
+            "_$uuid": "e597137c-fefb-4cbe-871f-9daf675eae31"
+          },
+          "loop": -1,
+          "speed": 1,
+          "clipEnd": 1,
+          "x": 253.7043514483633,
+          "y": 215.26656865802093,
+          "id": "0"
+        },
+        {
+          "x": 10,
+          "y": 100,
+          "id": "-1",
+          "name": "进入",
+          "speed": 1,
+          "clipEnd": 1,
+          "soloTransitions": [
+            {
+              "id": "0"
+            }
+          ]
+        },
+        {
+          "x": 550,
+          "y": 100,
+          "id": "-2",
+          "name": "任何状态",
+          "speed": 1,
+          "clipEnd": 1
+        }
+      ],
+      "defaultWeight": 1
+    }
+  ],
+  "layerW": 150
+}

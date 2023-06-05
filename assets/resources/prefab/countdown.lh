@@ -1,0 +1,79 @@
+{
+  "_$ver": 1,
+  "_$id": "vx6ien4o",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 97,
+  "height": 55,
+  "mouseEnabled": true,
+  "_$comp": [
+    {
+      "_$type": "718677dc-4a6a-48ca-bd05-440b7f6bb0fb",
+      "scriptPath": "../src/Countdown.ts",
+      "count": {
+        "_$ref": "cn2npk7a"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "bnlysqmg",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 49,
+      "y": 31,
+      "width": 97,
+      "height": 55,
+      "anchorX": 0.5051546391752577,
+      "anchorY": 0.5636363636363636,
+      "alpha": 0.8999999761581421,
+      "skin": "res://dae78020-f41b-49f5-9bb0-51d635bedf7a",
+      "color": "#ffffff",
+      "_$comp": [
+        {
+          "_$type": "Animator2D",
+          "controller": {
+            "_$uuid": "7b29c672-353e-4bec-80d6-84a6384a50bf",
+            "_$type": "AnimationController2D"
+          },
+          "controllerLayers": [
+            {
+              "_$type": "AnimatorControllerLayer2D",
+              "name": "Base Layer",
+              "states": [
+                {
+                  "_$type": "AnimatorState2D",
+                  "name": "tremble",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "e597137c-fefb-4cbe-871f-9daf675eae31",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                }
+              ],
+              "defaultStateName": "tremble"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$id": "cn2npk7a",
+      "_$type": "Label",
+      "name": "clock",
+      "x": 20.0000000000001,
+      "y": 13.000000000000014,
+      "width": 58,
+      "height": 38,
+      "text": "20",
+      "fontSize": 21,
+      "color": "rgba(68, 4, 4, 1)",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "leading": 0,
+      "padding": "0,0,0,0"
+    }
+  ]
+}

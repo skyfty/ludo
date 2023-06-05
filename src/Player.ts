@@ -12,6 +12,8 @@ export class Event {
     static EntryRoom = "ENTRY_ROOM";
     static ExitRoom = "EXIT_ROOM";
     static StateChange = "STATE_CHANGE";
+    static Countdown = "COUNTDOWN";
+    static CountdownStop = "COUNTDOWN_STOP";
     static Hurl = "Hurl";
     static Chuck = "CHUCK";
     static RollStart = "ROLL_START";

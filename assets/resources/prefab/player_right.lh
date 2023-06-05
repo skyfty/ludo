@@ -67,7 +67,13 @@
           "disabledBk": {
             "_$ref": "yc6isfcb"
           },
-          "avatar": null
+          "avatar": {
+            "_$ref": "taf855d7"
+          },
+          "countdown": {
+            "_$ref": "n7gt0l5f",
+            "_$type": "718677dc-4a6a-48ca-bd05-440b7f6bb0fb"
+          }
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -173,6 +179,17 @@
           "visible": false,
           "skin": "res://77f49383-fd50-4979-a9a9-bbe268ee620a",
           "color": "#ffffff"
+        },
+        {
+          "_$id": "n7gt0l5f",
+          "_$prefab": "340e16ca-46bb-47b0-9aff-ae39997d000e",
+          "name": "countdown",
+          "active": true,
+          "x": 63,
+          "y": -37,
+          "visible": false,
+          "width": 97,
+          "height": 55
         }
       ]
     }

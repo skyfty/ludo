@@ -69,7 +69,8 @@
           },
           "avatar": {
             "_$ref": "g584oyts"
-          }
+          },
+          "countdown": null
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -172,6 +173,17 @@
           "visible": false,
           "skin": "res://77f49383-fd50-4979-a9a9-bbe268ee620a",
           "color": "#ffffff"
+        },
+        {
+          "_$id": "gr4bj7wo",
+          "_$prefab": "340e16ca-46bb-47b0-9aff-ae39997d000e",
+          "name": "countdown",
+          "active": true,
+          "x": 38,
+          "y": -36,
+          "visible": false,
+          "width": 97,
+          "height": 55
         }
       ]
     }

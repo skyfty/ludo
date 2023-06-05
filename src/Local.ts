@@ -1,6 +1,8 @@
 const { regClass, property } = Laya;
 import { Room } from "./Room";
 import * as Player from "./Player";
+import { Trade } from "./Trade";
+import { Config } from "./Config";
 
 @regClass()
 export class Local extends Laya.Script {

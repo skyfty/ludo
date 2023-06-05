@@ -10902,6 +10902,8 @@
   __name(Config, "Config");
   Config.NUMBER_UNIVERSAL_HOLD = 52;
   Config.NUMBER_PERSONAL_HOLD = 6;
+  Config.TIMEOUT_CHOOSE_CHESS = 5;
+  Config.TIMEOUT_CHUNK = 5;
   Config.Colors = ["red", "green", "yellow", "blue"];
 
   // src/CreateRoom.ts
@@ -11294,11 +11296,48 @@
     regClass15("26418778-2a8b-4ac8-aa46-9e423be83978", "../src/Dice.ts")
   ], Dice);
 
-  // src/Trade.ts
+  // src/Countdown.ts
   var { regClass: regClass16, property: property16 } = Laya;
+  var Countdown = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    show(cc, reason) {
+      let owneSpirte = this.owner;
+      Laya.timer.loop(1e3, this, () => {
+        let timeout = Number.parseInt(this.count.text) - 1;
+        if (timeout <= 0) {
+          Laya.timer.clearAll(this);
+          owneSpirte.event(Laya.Event.STOPPED, [reason]);
+        } else {
+          this.count.text = timeout.toString();
+        }
+      });
+      owneSpirte.visible = true;
+      this.count.text = cc.toString();
+    }
+    hide() {
+      Laya.timer.clearAll(this);
+      let owneSpirte = this.owner;
+      owneSpirte.visible = false;
+    }
+  };
+  __name(Countdown, "Countdown");
+  __decorateClass([
+    property16(Laya.Label)
+  ], Countdown.prototype, "count", 2);
+  Countdown = __decorateClass([
+    regClass16("718677dc-4a6a-48ca-bd05-440b7f6bb0fb", "../src/Countdown.ts")
+  ], Countdown);
+
+  // src/Trade.ts
+  var { regClass: regClass17, property: property17 } = Laya;
   var Trade = class extends Laya.Script {
     constructor() {
       super();
+    }
+    onAwake() {
+      this.countdown.on(Laya.Event.STOPPED, this, this.onCountdownStop);
     }
     stop() {
       let ani = this.owner.getComponent(Laya.Animator2D);
@@ -11315,20 +11354,34 @@
     roll() {
       this.owner.getComponent(Dice).roll();
     }
+    onCountdownStop(reason) {
+      this.stopCountdown();
+      this.owner.event(Event3.CountdownStop, [reason]);
+    }
+    startCountdown(cc, reason) {
+      this.countdown.getComponent(Countdown).show(cc, reason);
+      this.owner.event(Laya.Event.STOPPED);
+    }
+    stopCountdown() {
+      this.countdown.getComponent(Countdown).hide();
+    }
   };
   __name(Trade, "Trade");
   __decorateClass([
-    property16(Laya.Image)
+    property17(Laya.Image)
   ], Trade.prototype, "disabledBk", 2);
   __decorateClass([
-    property16(Laya.Clip)
+    property17(Laya.Clip)
   ], Trade.prototype, "avatar", 2);
+  __decorateClass([
+    property17(Laya.Sprite)
+  ], Trade.prototype, "countdown", 2);
   Trade = __decorateClass([
-    regClass16("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
+    regClass17("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
   ], Trade);
 
   // src/Computer.ts
-  var { regClass: regClass17, property: property17 } = Laya;
+  var { regClass: regClass18, property: property18 } = Laya;
   var Computer = class extends Performer {
     constructor() {
       super();
@@ -11391,11 +11444,11 @@
   };
   __name(Computer, "Computer");
   Computer = __decorateClass([
-    regClass17("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
+    regClass18("34445544-5dc4-4031-a198-be7466abfb1c", "../src/Computer.ts")
   ], Computer);
 
   // src/Oneself.ts
-  var { regClass: regClass18, property: property18 } = Laya;
+  var { regClass: regClass19, property: property19 } = Laya;
   var Oneself = class extends Performer {
     constructor() {
       super();
@@ -11408,12 +11461,24 @@
     }
     onStart() {
       this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+      this.player.trade.on(Event3.CountdownStop, this, this.onCountdownStop);
+    }
+    onCountdownStop(reason) {
+      if (reason == Event3.Chuck) {
+        this.player.trade.event(Laya.Event.CLICK);
+      } else {
+        this.infer(this.currentDiceNumber, Laya.Handler.create(this, (chesses, complete) => {
+          this.player.stopChesses(chesses);
+          complete.runWith(chesses[0]);
+        }));
+      }
     }
     onStateChange(state) {
       let trade = this.player.trade.getComponent(Trade);
       if (this.state != 1 /* Running */) {
         trade.stop();
       } else {
+        this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
         trade.becareful();
       }
       trade.disabled(this.state != 1 /* Running */);
@@ -11423,18 +11488,34 @@
       this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
     onClickTrade() {
-      this.owner.event(Event3.Victory);
+      if (this.state != 1 /* Running */ || this.isAdvanceing) {
+        return;
+      }
+      this.isAdvanceing = true;
+      this.owner.event(Event3.RollStart, this.owner);
+      let trade = this.player.trade.getComponent(Trade);
+      trade.stop();
+      this.player.room.owner.event(Event3.CountdownStop, [trade]);
+      Laya.timer.once(100, this, () => {
+        trade.roll();
+        this.player.room.owner.event(Event3.Hurl, [this.owner]);
+      });
     }
     onRollStop() {
       this.owner.event(Event3.RollEnd, [this.currentDiceNumber]);
       this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
-      let chesses = this.player.reckonChess(this.currentDiceNumber);
+      this.infer(this.currentDiceNumber, Laya.Handler.create(this, (chesses, complete) => {
+        this.onReckonChessComplete(chesses, complete);
+      }));
+    }
+    infer(diceNumber, complete) {
+      let chesses = this.player.reckonChess(diceNumber);
       if (chesses.length > 0) {
-        this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
-          this.onReckonChessComplete(chesses, Laya.Handler.create(this, (chess) => {
+        this.player.deduce(diceNumber, chesses, Laya.Handler.create(this, (deduceResult) => {
+          complete.runWith([chesses, Laya.Handler.create(this, (chess) => {
             this.stopChessDecuce(["kick"], deduceResult);
             this.onChooseChessesComplete(chess);
-          }));
+          })]);
         }));
       } else {
         this.isAdvanceing = false;
@@ -11452,24 +11533,29 @@
         this.owner.event(Event3.Victory);
       } else {
         if (chess.hole == this.player.entry) {
-          this.player.trade.getComponent(Trade).becareful();
+          let trade = this.player.trade.getComponent(Trade);
+          trade.becareful();
+          this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
         } else {
           this.owner.event(Event3.Achieve);
         }
       }
     }
     onReckonMultiChessComplete(chesses, complete) {
-      let o = "chooseChess";
+      let trade = this.player.trade.getComponent(Trade);
+      let chooseChess = Event3.Choose;
       for (let i = 0; i < chesses.length; ++i) {
-        chesses[i].on(Laya.Event.CLICK, o, () => {
+        chesses[i].on(Laya.Event.CLICK, chooseChess, () => {
           this.player.stopChesses(chesses);
+          trade.stopCountdown();
           for (let i2 = 0; i2 < chesses.length; ++i2) {
-            chesses[i2].offAllCaller(o);
+            chesses[i2].offAllCaller(chooseChess);
           }
           complete.runWith(chesses[i]);
         });
       }
       this.player.hopChesses(chesses);
+      this.player.room.owner.event(Event3.Countdown, [trade, chooseChess]);
     }
     onReckonChessComplete(chesses, complete) {
       if (chesses.length == 1) {
@@ -11484,11 +11570,11 @@
   };
   __name(Oneself, "Oneself");
   Oneself = __decorateClass([
-    regClass18("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
+    regClass19("8803a688-3028-462c-83c9-bb52e00eb643", "../src/Oneself.ts")
   ], Oneself);
 
   // src/Extreme.ts
-  var { regClass: regClass19, property: property19 } = Laya;
+  var { regClass: regClass20, property: property20 } = Laya;
   var Extreme = class extends Performer {
     constructor(userid) {
       super();
@@ -11577,11 +11663,11 @@
   };
   __name(Extreme, "Extreme");
   Extreme = __decorateClass([
-    regClass19("054e9a6b-c8fa-4318-af0a-6684a99b4f50", "../src/Extreme.ts")
+    regClass20("054e9a6b-c8fa-4318-af0a-6684a99b4f50", "../src/Extreme.ts")
   ], Extreme);
 
   // src/Room.ts
-  var { regClass: regClass20, property: property20 } = Laya;
+  var { regClass: regClass21, property: property21 } = Laya;
   var Room = class extends Laya.Script {
     constructor() {
       super();
@@ -11729,32 +11815,32 @@
   };
   __name(Room, "Room");
   __decorateClass([
-    property20(Laya.Sprite)
+    property21(Laya.Sprite)
   ], Room.prototype, "redPlayer", 2);
   __decorateClass([
-    property20(Laya.Sprite)
+    property21(Laya.Sprite)
   ], Room.prototype, "greenPlayer", 2);
   __decorateClass([
-    property20(Laya.Sprite)
+    property21(Laya.Sprite)
   ], Room.prototype, "bluePlayer", 2);
   __decorateClass([
-    property20(Laya.Sprite)
+    property21(Laya.Sprite)
   ], Room.prototype, "yellowPlayer", 2);
   __decorateClass([
-    property20(Laya.Prefab)
+    property21(Laya.Prefab)
   ], Room.prototype, "reward", 2);
   __decorateClass([
-    property20(Laya.Sprite)
+    property21(Laya.Sprite)
   ], Room.prototype, "chitchat", 2);
   __decorateClass([
-    property20(Laya.Prefab)
+    property21(Laya.Prefab)
   ], Room.prototype, "loser", 2);
   Room = __decorateClass([
-    regClass20("fed491b4-6b8a-46f9-8167-977c47e8a79b", "../src/Room.ts")
+    regClass21("fed491b4-6b8a-46f9-8167-977c47e8a79b", "../src/Room.ts")
   ], Room);
 
   // src/MessageBubble.ts
-  var { regClass: regClass21, property: property21 } = Laya;
+  var { regClass: regClass22, property: property22 } = Laya;
   var MessageBubble = class extends Laya.Script {
     constructor() {
       super();
@@ -11776,20 +11862,22 @@
   };
   __name(MessageBubble, "MessageBubble");
   __decorateClass([
-    property21(Laya.Label)
+    property22(Laya.Label)
   ], MessageBubble.prototype, "message", 2);
   MessageBubble = __decorateClass([
-    regClass21("9a515693-ac84-4241-ae56-70cbe2347324", "../src/MessageBubble.ts")
+    regClass22("9a515693-ac84-4241-ae56-70cbe2347324", "../src/MessageBubble.ts")
   ], MessageBubble);
 
   // src/Player.ts
-  var { regClass: regClass22, property: property22, SoundManager: SoundManager3 } = Laya;
+  var { regClass: regClass23, property: property23, SoundManager: SoundManager3 } = Laya;
   var Event3 = class {
   };
   __name(Event3, "Event");
   Event3.EntryRoom = "ENTRY_ROOM";
   Event3.ExitRoom = "EXIT_ROOM";
   Event3.StateChange = "STATE_CHANGE";
+  Event3.Countdown = "COUNTDOWN";
+  Event3.CountdownStop = "COUNTDOWN_STOP";
   Event3.Hurl = "Hurl";
   Event3.Chuck = "CHUCK";
   Event3.RollStart = "ROLL_START";
@@ -11983,56 +12071,56 @@
   };
   __name(Player, "Player");
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "entry", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "goal", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "door", 2);
   __decorateClass([
-    property22(Laya.Clip)
+    property23(Laya.Clip)
   ], Player.prototype, "diceRoll", 2);
   __decorateClass([
-    property22(Laya.Clip)
+    property23(Laya.Clip)
   ], Player.prototype, "diceDefault", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "groove", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "universal", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "trade", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "personal", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "crown", 2);
   __decorateClass([
-    property22(Laya.Sprite)
+    property23(Laya.Sprite)
   ], Player.prototype, "origin", 2);
   __decorateClass([
-    property22(Room)
+    property23(Room)
   ], Player.prototype, "room", 2);
   __decorateClass([
-    property22(MessageBubble)
+    property23(MessageBubble)
   ], Player.prototype, "messageBubble", 2);
   __decorateClass([
-    property22([Laya.Sprite])
+    property23([Laya.Sprite])
   ], Player.prototype, "chippy", 2);
   __decorateClass([
-    property22([Laya.Sprite])
+    property23([Laya.Sprite])
   ], Player.prototype, "home", 2);
   Player = __decorateClass([
-    regClass22("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
+    regClass23("c5f16793-ae8c-43aa-80e7-cdc3ce175664", "../src/Player.ts")
   ], Player);
 
   // src/Chess.ts
-  var { regClass: regClass23, property: property23, SoundManager: SoundManager4 } = Laya;
+  var { regClass: regClass24, property: property24, SoundManager: SoundManager4 } = Laya;
   var Chess = class extends Laya.Script {
     constructor() {
       super();
@@ -12174,27 +12262,27 @@
   };
   __name(Chess, "Chess");
   __decorateClass([
-    property23(Player)
+    property24(Player)
   ], Chess.prototype, "player", 2);
   __decorateClass([
-    property23(Laya.Sprite)
+    property24(Laya.Sprite)
   ], Chess.prototype, "hole", 2);
   __decorateClass([
-    property23(Laya.Sprite)
+    property24(Laya.Sprite)
   ], Chess.prototype, "chess", 2);
   __decorateClass([
-    property23(Laya.Image)
+    property24(Laya.Image)
   ], Chess.prototype, "image", 2);
   __decorateClass([
-    property23(Laya.Image)
+    property24(Laya.Image)
   ], Chess.prototype, "shoe", 2);
   Chess = __decorateClass([
-    regClass23("2be80ad6-1bcc-440d-a7c9-809c6c1eef91", "../src/Chess.ts")
+    regClass24("2be80ad6-1bcc-440d-a7c9-809c6c1eef91", "../src/Chess.ts")
   ], Chess);
 
   // src/Chitchat.ts
   var SFS2X7 = __toESM(require_sfs2x_api());
-  var { regClass: regClass24, property: property24 } = Laya;
+  var { regClass: regClass25, property: property25 } = Laya;
   var Chitchat = class extends Laya.Script {
     constructor() {
       super();
@@ -12222,17 +12310,17 @@
   };
   __name(Chitchat, "Chitchat");
   __decorateClass([
-    property24(Laya.TextInput)
+    property25(Laya.TextInput)
   ], Chitchat.prototype, "message", 2);
   __decorateClass([
-    property24(Laya.Button)
+    property25(Laya.Button)
   ], Chitchat.prototype, "send", 2);
   Chitchat = __decorateClass([
-    regClass24("cd5a3964-355e-49cf-9ce1-1882775bf810", "../src/Chitchat.ts")
+    regClass25("cd5a3964-355e-49cf-9ce1-1882775bf810", "../src/Chitchat.ts")
   ], Chitchat);
 
   // src/ClickReturn.ts
-  var { regClass: regClass25, property: property25, SoundManager: SoundManager5 } = Laya;
+  var { regClass: regClass26, property: property26, SoundManager: SoundManager5 } = Laya;
   var ClickReturn = class extends Laya.Script {
     constructor() {
       super();
@@ -12243,14 +12331,14 @@
   };
   __name(ClickReturn, "ClickReturn");
   __decorateClass([
-    property25(Laya.Dialog)
+    property26(Laya.Dialog)
   ], ClickReturn.prototype, "dialog", 2);
   ClickReturn = __decorateClass([
-    regClass25("d6fdce77-760c-4d42-805b-5fb705be6f02", "../src/ClickReturn.ts")
+    regClass26("d6fdce77-760c-4d42-805b-5fb705be6f02", "../src/ClickReturn.ts")
   ], ClickReturn);
 
   // src/ClickSound.ts
-  var { regClass: regClass26, property: property26, SoundManager: SoundManager6 } = Laya;
+  var { regClass: regClass27, property: property27, SoundManager: SoundManager6 } = Laya;
   var Script = class extends Laya.Script {
     constructor() {
       super();
@@ -12261,11 +12349,11 @@
   };
   __name(Script, "Script");
   Script = __decorateClass([
-    regClass26("f4a9ed67-7b7a-43be-945e-88ba9965a9d4", "../src/ClickSound.ts")
+    regClass27("f4a9ed67-7b7a-43be-945e-88ba9965a9d4", "../src/ClickSound.ts")
   ], Script);
 
   // src/Parallel.ts
-  var { regClass: regClass27, property: property27, SoundManager: SoundManager7 } = Laya;
+  var { regClass: regClass28, property: property28, SoundManager: SoundManager7 } = Laya;
   var Parallel = class extends SelectPlayer {
     constructor() {
       super();
@@ -12276,14 +12364,14 @@
   };
   __name(Parallel, "Parallel");
   __decorateClass([
-    property27(Laya.ViewStack)
+    property28(Laya.ViewStack)
   ], Parallel.prototype, "viewStack", 2);
   Parallel = __decorateClass([
-    regClass27("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
+    regClass28("a5d9f7a0-da02-42b4-ae7d-627f69a899e4", "../src/Parallel.ts")
   ], Parallel);
 
   // src/ComputerParallel.ts
-  var { regClass: regClass28, property: property28 } = Laya;
+  var { regClass: regClass29, property: property29 } = Laya;
   var ComputerParallel = class extends Laya.Script {
     constructor() {
       super();
@@ -12308,11 +12396,11 @@
   };
   __name(ComputerParallel, "ComputerParallel");
   ComputerParallel = __decorateClass([
-    regClass28("9f7ba979-284a-4c3f-9bd9-8653533441a3", "../src/ComputerParallel.ts")
+    regClass29("9f7ba979-284a-4c3f-9bd9-8653533441a3", "../src/ComputerParallel.ts")
   ], ComputerParallel);
 
   // src/Door.ts
-  var { regClass: regClass29, property: property29 } = Laya;
+  var { regClass: regClass30, property: property30 } = Laya;
   var Door = class extends Laya.Script {
     constructor() {
       super();
@@ -12320,14 +12408,14 @@
   };
   __name(Door, "Door");
   __decorateClass([
-    property29(Laya.Sprite)
+    property30(Laya.Sprite)
   ], Door.prototype, "player", 2);
   Door = __decorateClass([
-    regClass29("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
+    regClass30("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
   ], Door);
 
   // src/Entry.ts
-  var { regClass: regClass30, property: property30 } = Laya;
+  var { regClass: regClass31, property: property31 } = Laya;
   var Entry = class extends Laya.Script {
     //declare owner : Laya.Sprite3D;
     constructor() {
@@ -12336,14 +12424,14 @@
   };
   __name(Entry, "Entry");
   Entry = __decorateClass([
-    regClass30("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
+    regClass31("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
   ], Entry);
 
   // src/Online.ts
   var SFS2X8 = __toESM(require_sfs2x_api());
 
   // src/Reward.ts
-  var { regClass: regClass31, property: property31 } = Laya;
+  var { regClass: regClass32, property: property32 } = Laya;
   var Reward = class extends Laya.Script {
     constructor() {
       super();
@@ -12392,23 +12480,23 @@
   };
   __name(Reward, "Reward");
   __decorateClass([
-    property31(Laya.Prefab)
+    property32(Laya.Prefab)
   ], Reward.prototype, "goldcoin", 2);
   __decorateClass([
-    property31(Laya.Sprite)
+    property32(Laya.Sprite)
   ], Reward.prototype, "collectPoint", 2);
   __decorateClass([
-    property31(Laya.Button)
+    property32(Laya.Button)
   ], Reward.prototype, "return", 2);
   __decorateClass([
-    property31(Laya.Label)
+    property32(Laya.Label)
   ], Reward.prototype, "earnNumber", 2);
   Reward = __decorateClass([
-    regClass31("77d4c2e1-62b9-4db4-adb3-ab523bbbc5f9", "../src/Reward.ts")
+    regClass32("77d4c2e1-62b9-4db4-adb3-ab523bbbc5f9", "../src/Reward.ts")
   ], Reward);
 
   // src/Loser.ts
-  var { regClass: regClass32, property: property32 } = Laya;
+  var { regClass: regClass33, property: property33 } = Laya;
   var Loser = class extends Laya.Script {
     constructor() {
       super();
@@ -12453,23 +12541,23 @@
   };
   __name(Loser, "Loser");
   __decorateClass([
-    property32(Laya.Prefab)
+    property33(Laya.Prefab)
   ], Loser.prototype, "goldcoin", 2);
   __decorateClass([
-    property32(Laya.Sprite)
+    property33(Laya.Sprite)
   ], Loser.prototype, "collectPoint", 2);
   __decorateClass([
-    property32(Laya.Button)
+    property33(Laya.Button)
   ], Loser.prototype, "return", 2);
   __decorateClass([
-    property32(Laya.Label)
+    property33(Laya.Label)
   ], Loser.prototype, "earnNumber", 2);
   Loser = __decorateClass([
-    regClass32("526b0624-b995-44ec-b03d-bc9c997a6a43", "../src/Loser.ts")
+    regClass33("526b0624-b995-44ec-b03d-bc9c997a6a43", "../src/Loser.ts")
   ], Loser);
 
   // src/Online.ts
-  var { regClass: regClass33, property: property33, SoundManager: SoundManager8 } = Laya;
+  var { regClass: regClass34, property: property34, SoundManager: SoundManager8 } = Laya;
   var Online = class extends Laya.Script {
     constructor(param) {
       super();
@@ -12481,6 +12569,18 @@
       this.owner.on(Event3.Hurl, this, this.onHurl);
       this.owner.on(Event3.Achieve, this.room, this.room.onAchieve);
       this.owner.on(Event3.Victory, this.room, this.room.onVictory);
+      this.owner.on(Event3.CountdownStop, this, this.onCountdownStop);
+      this.owner.on(Event3.Countdown, this, this.onCountdown);
+    }
+    onCountdown(trade, reason) {
+      if (reason == Event3.Chuck) {
+        trade.startCountdown(Config.TIMEOUT_CHUNK, reason);
+      } else if (reason == Event3.Choose) {
+        trade.startCountdown(Config.TIMEOUT_CHOOSE_CHESS, reason);
+      }
+    }
+    onCountdownStop(trade) {
+      trade.stopCountdown();
     }
     playerColorFind(colorName) {
       let playerIdx = this.room.playerOrder.findIndex((order) => {
@@ -12601,11 +12701,11 @@
   };
   __name(Online, "Online");
   Online = __decorateClass([
-    regClass33("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
+    regClass34("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
   ], Online);
 
   // src/Local.ts
-  var { regClass: regClass34, property: property34 } = Laya;
+  var { regClass: regClass35, property: property35 } = Laya;
   var Local = class extends Laya.Script {
     constructor(param) {
       super();
@@ -12629,12 +12729,12 @@
   };
   __name(Local, "Local");
   Local = __decorateClass([
-    regClass34("ed19b477-e87e-4df5-8fdf-ff8ce928ab06", "../src/Local.ts")
+    regClass35("ed19b477-e87e-4df5-8fdf-ff8ce928ab06", "../src/Local.ts")
   ], Local);
 
   // src/Sender.ts
   var SFS2X9 = __toESM(require_sfs2x_api());
-  var { regClass: regClass35, property: property35 } = Laya;
+  var { regClass: regClass36, property: property36 } = Laya;
   var Sender = class extends Laya.Script {
     constructor() {
       super();
@@ -12679,12 +12779,12 @@
   };
   __name(Sender, "Sender");
   Sender = __decorateClass([
-    regClass35("6390de23-70be-4e01-af2f-17838191304f", "../src/Sender.ts")
+    regClass36("6390de23-70be-4e01-af2f-17838191304f", "../src/Sender.ts")
   ], Sender);
 
   // src/Generalize.ts
   var SFS2X10 = __toESM(require_sfs2x_api());
-  var { regClass: regClass36, property: property36 } = Laya;
+  var { regClass: regClass37, property: property37 } = Laya;
   var Generalize = class extends Laya.Script {
     constructor(type) {
       super();
@@ -12705,11 +12805,11 @@
   };
   __name(Generalize, "Generalize");
   Generalize = __decorateClass([
-    regClass36("c50e534c-2a58-49eb-9e7c-c6270d971f53", "../src/Generalize.ts")
+    regClass37("c50e534c-2a58-49eb-9e7c-c6270d971f53", "../src/Generalize.ts")
   ], Generalize);
 
   // src/Game.ts
-  var { regClass: regClass37, property: property37 } = Laya;
+  var { regClass: regClass38, property: property38 } = Laya;
   var Game = class extends Laya.Scene {
     constructor() {
       super();
@@ -12787,11 +12887,11 @@
   };
   __name(Game, "Game");
   Game = __decorateClass([
-    regClass37("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
+    regClass38("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
   ], Game);
 
   // src/GameToolbar.ts
-  var { regClass: regClass38, property: property38 } = Laya;
+  var { regClass: regClass39, property: property39 } = Laya;
   var GameToolbar = class extends Laya.Script {
     constructor() {
       super();
@@ -12810,14 +12910,14 @@
   };
   __name(GameToolbar, "GameToolbar");
   __decorateClass([
-    property38(Laya.Sprite)
+    property39(Laya.Sprite)
   ], GameToolbar.prototype, "backButton", 2);
   GameToolbar = __decorateClass([
-    regClass38("2eaec3fb-1805-4cbc-89c7-008aa7b68c01", "../src/GameToolbar.ts")
+    regClass39("2eaec3fb-1805-4cbc-89c7-008aa7b68c01", "../src/GameToolbar.ts")
   ], GameToolbar);
 
   // src/Groove.ts
-  var { regClass: regClass39, property: property39 } = Laya;
+  var { regClass: regClass40, property: property40 } = Laya;
   var Groove = class extends Laya.Script {
     constructor() {
       super();
@@ -12830,12 +12930,12 @@
   };
   __name(Groove, "Groove");
   Groove = __decorateClass([
-    regClass39("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
+    regClass40("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
   ], Groove);
 
   // src/Invite.ts
   var SFS2X11 = __toESM(require_sfs2x_api());
-  var { regClass: regClass40, property: property40, SoundManager: SoundManager9 } = Laya;
+  var { regClass: regClass41, property: property41, SoundManager: SoundManager9 } = Laya;
   var Invite = class extends Laya.Scene {
     constructor() {
       super(...arguments);
@@ -12943,23 +13043,23 @@
   };
   __name(Invite, "Invite");
   __decorateClass([
-    property40(Laya.Box)
+    property41(Laya.Box)
   ], Invite.prototype, "item", 2);
   __decorateClass([
-    property40(Laya.ViewStack)
+    property41(Laya.ViewStack)
   ], Invite.prototype, "viewStack", 2);
   __decorateClass([
-    property40(Laya.Label)
+    property41(Laya.Label)
   ], Invite.prototype, "clock", 2);
   __decorateClass([
-    property40(Laya.Label)
+    property41(Laya.Label)
   ], Invite.prototype, "roomCode", 2);
   Invite = __decorateClass([
-    regClass40("ddd78c04-cc08-49b6-8797-563c8b0aaefc", "../src/Invite.ts")
+    regClass41("ddd78c04-cc08-49b6-8797-563c8b0aaefc", "../src/Invite.ts")
   ], Invite);
 
   // src/Loader.ts
-  var { regClass: regClass41, property: property41 } = Laya;
+  var { regClass: regClass42, property: property42 } = Laya;
   var Loader = class extends Laya.Script {
     onAwake() {
       Laya.loader.load(
@@ -13098,26 +13198,26 @@
   };
   __name(Loader, "Loader");
   __decorateClass([
-    property41(Laya.ProgressBar)
+    property42(Laya.ProgressBar)
   ], Loader.prototype, "progress", 2);
   Loader = __decorateClass([
-    regClass41("6ba36595-2b25-4c8e-94ec-93bc12bea352", "../src/Loader.ts")
+    regClass42("6ba36595-2b25-4c8e-94ec-93bc12bea352", "../src/Loader.ts")
   ], Loader);
 
   // src/Lunch.ts
-  var { regClass: regClass42, property: property42 } = Laya;
+  var { regClass: regClass43, property: property43 } = Laya;
   var Lunch = class extends Laya.Script {
     onStart() {
     }
   };
   __name(Lunch, "Lunch");
   Lunch = __decorateClass([
-    regClass42("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
+    regClass43("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
   ], Lunch);
 
   // src/OnlineParallel.ts
   var SFS2X12 = __toESM(require_sfs2x_api());
-  var { regClass: regClass43, property: property43 } = Laya;
+  var { regClass: regClass44, property: property44 } = Laya;
   var OnlineParallel = class extends GameRoom {
     constructor() {
       super();
@@ -13198,11 +13298,11 @@
   };
   __name(OnlineParallel, "OnlineParallel");
   OnlineParallel = __decorateClass([
-    regClass43("ed529f9a-99b9-4ca5-9c9f-f8dc68b088a5", "../src/OnlineParallel.ts")
+    regClass44("ed529f9a-99b9-4ca5-9c9f-f8dc68b088a5", "../src/OnlineParallel.ts")
   ], OnlineParallel);
 
   // src/Menu.ts
-  var { regClass: regClass44, property: property44, SoundManager: SoundManager10 } = Laya;
+  var { regClass: regClass45, property: property45, SoundManager: SoundManager10 } = Laya;
   var Menu = class extends Laya.Script {
     constructor() {
       super();
@@ -13253,33 +13353,33 @@
   };
   __name(Menu, "Menu");
   __decorateClass([
-    property44(Laya.Button)
+    property45(Laya.Button)
   ], Menu.prototype, "challengeComputer", 2);
   __decorateClass([
-    property44(Laya.Button)
+    property45(Laya.Button)
   ], Menu.prototype, "challengeExtreme", 2);
   __decorateClass([
-    property44(Laya.Button)
+    property45(Laya.Button)
   ], Menu.prototype, "challengeFriend", 2);
   __decorateClass([
-    property44(Laya.Button)
+    property45(Laya.Button)
   ], Menu.prototype, "settings", 2);
   __decorateClass([
-    property44(Laya.Box)
+    property45(Laya.Box)
   ], Menu.prototype, "avatar", 2);
   __decorateClass([
-    property44(Laya.Sprite)
+    property45(Laya.Sprite)
   ], Menu.prototype, "goldcoin", 2);
   __decorateClass([
-    property44(Laya.Sprite)
+    property45(Laya.Sprite)
   ], Menu.prototype, "level", 2);
   Menu = __decorateClass([
-    regClass44("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
+    regClass45("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
 
   // src/Militant.ts
   var SFS2X13 = __toESM(require_sfs2x_api());
-  var { regClass: regClass45, property: property45, SoundManager: SoundManager11 } = Laya;
+  var { regClass: regClass46, property: property46, SoundManager: SoundManager11 } = Laya;
   var Militant = class extends Laya.Scene {
     constructor() {
       super(...arguments);
@@ -13385,20 +13485,20 @@
   };
   __name(Militant, "Militant");
   __decorateClass([
-    property45(Laya.Box)
+    property46(Laya.Box)
   ], Militant.prototype, "item", 2);
   __decorateClass([
-    property45(Laya.ViewStack)
+    property46(Laya.ViewStack)
   ], Militant.prototype, "viewStack", 2);
   __decorateClass([
-    property45(Laya.Label)
+    property46(Laya.Label)
   ], Militant.prototype, "clock", 2);
   Militant = __decorateClass([
-    regClass45("ad36c844-687a-4547-a0c9-d64724488c9e", "../src/Militant.ts")
+    regClass46("ad36c844-687a-4547-a0c9-d64724488c9e", "../src/Militant.ts")
   ], Militant);
 
   // src/MyselfAvatar.ts
-  var { regClass: regClass46, property: property46 } = Laya;
+  var { regClass: regClass47, property: property47 } = Laya;
   var MyselfAvatar = class extends Laya.Script {
     constructor() {
       super();
@@ -13410,11 +13510,11 @@
   };
   __name(MyselfAvatar, "MyselfAvatar");
   MyselfAvatar = __decorateClass([
-    regClass46("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
+    regClass47("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
   ], MyselfAvatar);
 
   // src/MyselfGold.ts
-  var { regClass: regClass47, property: property47 } = Laya;
+  var { regClass: regClass48, property: property48 } = Laya;
   var MyselfGold = class extends Laya.Script {
     constructor() {
       super();
@@ -13426,11 +13526,11 @@
   };
   __name(MyselfGold, "MyselfGold");
   MyselfGold = __decorateClass([
-    regClass47("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
+    regClass48("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
   ], MyselfGold);
 
   // src/MyselfLv.ts
-  var { regClass: regClass48, property: property48 } = Laya;
+  var { regClass: regClass49, property: property49 } = Laya;
   var MyselfLv = class extends Laya.Script {
     constructor() {
       super();
@@ -13443,11 +13543,11 @@
   };
   __name(MyselfLv, "MyselfLv");
   MyselfLv = __decorateClass([
-    regClass48("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
+    regClass49("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
   ], MyselfLv);
 
   // src/MyselfName.ts
-  var { regClass: regClass49, property: property49 } = Laya;
+  var { regClass: regClass50, property: property50 } = Laya;
   var MyselfName = class extends Laya.Script {
     constructor() {
       super();
@@ -13459,11 +13559,11 @@
   };
   __name(MyselfName, "MyselfName");
   MyselfName = __decorateClass([
-    regClass49("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
+    regClass50("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
   ], MyselfName);
 
   // src/PlayerProfile.ts
-  var { regClass: regClass50, property: property50 } = Laya;
+  var { regClass: regClass51, property: property51 } = Laya;
   var PlayerProfile = class extends Laya.Script {
     constructor() {
       super();
@@ -13472,11 +13572,11 @@
   };
   __name(PlayerProfile, "PlayerProfile");
   PlayerProfile = __decorateClass([
-    regClass50("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
+    regClass51("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
   ], PlayerProfile);
 
   // src/ProfileDialog.ts
-  var { regClass: regClass51, property: property51 } = Laya;
+  var { regClass: regClass52, property: property52 } = Laya;
   var ProfileDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -13510,27 +13610,27 @@
   };
   __name(ProfileDialog, "ProfileDialog");
   __decorateClass([
-    property51(Laya.TextInput)
+    property52(Laya.TextInput)
   ], ProfileDialog.prototype, "name", 2);
   __decorateClass([
-    property51(Laya.List)
+    property52(Laya.List)
   ], ProfileDialog.prototype, "avatarList", 2);
   __decorateClass([
-    property51(Number)
+    property52(Number)
   ], ProfileDialog.prototype, "avatarNumber", 2);
   __decorateClass([
-    property51(Laya.Label)
+    property52(Laya.Label)
   ], ProfileDialog.prototype, "level", 2);
   __decorateClass([
-    property51(Laya.ProgressBar)
+    property52(Laya.ProgressBar)
   ], ProfileDialog.prototype, "levelProcess", 2);
   ProfileDialog = __decorateClass([
-    regClass51("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
+    regClass52("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
   ], ProfileDialog);
 
   // src/SelectColor.ts
   var SFS2X14 = __toESM(require_sfs2x_api());
-  var { regClass: regClass52, property: property52 } = Laya;
+  var { regClass: regClass53, property: property53 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
       super();
@@ -13616,20 +13716,20 @@
   };
   __name(SelectColor, "SelectColor");
   __decorateClass([
-    property52(Laya.Button)
+    property53(Laya.Button)
   ], SelectColor.prototype, "closeBtn", 2);
   __decorateClass([
-    property52(Laya.Button)
+    property53(Laya.Button)
   ], SelectColor.prototype, "play", 2);
   __decorateClass([
-    property52([Laya.CheckBox])
+    property53([Laya.CheckBox])
   ], SelectColor.prototype, "colorCheckBox", 2);
   SelectColor = __decorateClass([
-    regClass52("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
+    regClass53("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
   ], SelectColor);
 
   // src/Settings.ts
-  var { regClass: regClass53, property: property53 } = Laya;
+  var { regClass: regClass54, property: property54 } = Laya;
   var Settings = class extends Laya.Script {
     constructor() {
       super();
@@ -13653,20 +13753,20 @@
   };
   __name(Settings, "Settings");
   __decorateClass([
-    property53(Laya.CheckBox)
+    property54(Laya.CheckBox)
   ], Settings.prototype, "musicMuted", 2);
   __decorateClass([
-    property53(Laya.CheckBox)
+    property54(Laya.CheckBox)
   ], Settings.prototype, "soundMuted", 2);
   Settings = __decorateClass([
-    regClass53("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
+    regClass54("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
 
   // src/StatisticsDialog.ts
   var SFS2X15 = __toESM(require_sfs2x_api());
 
   // src/StatisticsInfo.ts
-  var { regClass: regClass54, property: property54 } = Laya;
+  var { regClass: regClass55, property: property55 } = Laya;
   var StatisticsInfo = class extends Laya.Script {
     constructor() {
       super();
@@ -13691,50 +13791,50 @@
   };
   __name(StatisticsInfo, "StatisticsInfo");
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "name", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "level", 2);
   __decorateClass([
-    property54(Laya.ProgressBar)
+    property55(Laya.ProgressBar)
   ], StatisticsInfo.prototype, "levelProcess", 2);
   __decorateClass([
-    property54(Laya.Clip)
+    property55(Laya.Clip)
   ], StatisticsInfo.prototype, "avatar", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "winsOfVsComputer", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "timerOfVsComputer", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "rateOfVsComputer", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "winsOfOnline", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "timerOfOnline", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "rateOfOnline", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "winsOfVsFriend", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "timerOfVsFriend", 2);
   __decorateClass([
-    property54(Laya.Label)
+    property55(Laya.Label)
   ], StatisticsInfo.prototype, "rateOfVsFriend", 2);
   StatisticsInfo = __decorateClass([
-    regClass54("0e8653a1-8f66-4a79-846c-ca9815eff74a", "../src/StatisticsInfo.ts")
+    regClass55("0e8653a1-8f66-4a79-846c-ca9815eff74a", "../src/StatisticsInfo.ts")
   ], StatisticsInfo);
 
   // src/StatisticsDialog.ts
-  var { regClass: regClass55, property: property55 } = Laya;
+  var { regClass: regClass56, property: property56 } = Laya;
   var StatisticsDialog = class extends Laya.Dialog {
     constructor() {
       super();
@@ -13764,7 +13864,7 @@
   };
   __name(StatisticsDialog, "StatisticsDialog");
   StatisticsDialog = __decorateClass([
-    regClass55("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
+    regClass56("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
 })();
 /*! Bundled license information:

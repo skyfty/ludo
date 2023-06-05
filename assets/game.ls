@@ -996,21 +996,20 @@
           ],
           "_$child": [
             {
-              "_$id": "b7ycl5iq",
-              "_$index": 0,
-              "_$type": "Image",
-              "name": "border",
-              "x": 33.00000000000006,
-              "y": -218.49190698129985,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://469bf55c-cb52-45fe-be14-23a04e35ef7f",
-              "color": "#ffffff"
-            },
-            {
               "_$override": "sc3b00yx",
               "x": -10,
-              "y": 5
+              "y": 5,
+              "_$comp": [
+                {
+                  "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
+                  "countdown": {
+                    "_$ref": [
+                      "hqy9lgmf",
+                      "gr4bj7wo"
+                    ]
+                  }
+                }
+              ]
             },
             {
               "_$override": "dm1y2zws",
@@ -1020,6 +1019,18 @@
             {
               "_$override": "dn8vhuyq",
               "x": 91.5
+            },
+            {
+              "_$id": "b7ycl5iq",
+              "_$index": 1,
+              "_$type": "Image",
+              "name": "border",
+              "x": 33.00000000000006,
+              "y": -218.49190698129985,
+              "width": 169.3225045505375,
+              "height": 168.63975251605942,
+              "skin": "res://469bf55c-cb52-45fe-be14-23a04e35ef7f",
+              "color": "#ffffff"
             },
             {
               "_$id": "ptean5qg",
@@ -1427,7 +1438,18 @@
             {
               "_$override": "sc3b00yx",
               "x": -12,
-              "y": -40
+              "y": -40,
+              "_$comp": [
+                {
+                  "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
+                  "countdown": {
+                    "_$ref": [
+                      "hknjlm1h",
+                      "gr4bj7wo"
+                    ]
+                  }
+                }
+              ]
             },
             {
               "_$id": "7c2mfmh6",
@@ -1857,18 +1879,6 @@
           ],
           "_$child": [
             {
-              "_$id": "vkqmkb6p",
-              "_$index": 0,
-              "_$type": "Image",
-              "name": "border",
-              "x": -47.99999999999994,
-              "y": -217.99999999999994,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://c9b9295c-4965-44d8-a24a-a7b3f90e0d29",
-              "color": "#ffffff"
-            },
-            {
               "_$override": "5a788y2g",
               "x": -32,
               "y": 5,
@@ -1879,6 +1889,12 @@
                     "_$ref": [
                       "b7zhaso0",
                       "taf855d7"
+                    ]
+                  },
+                  "countdown": {
+                    "_$ref": [
+                      "b7zhaso0",
+                      "n7gt0l5f"
                     ]
                   }
                 },
@@ -1892,6 +1908,18 @@
                   }
                 }
               ]
+            },
+            {
+              "_$id": "vkqmkb6p",
+              "_$index": 1,
+              "_$type": "Image",
+              "name": "border",
+              "x": -47.99999999999994,
+              "y": -217.99999999999994,
+              "width": 169.3225045505375,
+              "height": 168.63975251605942,
+              "skin": "res://c9b9295c-4965-44d8-a24a-a7b3f90e0d29",
+              "color": "#ffffff"
             },
             {
               "_$id": "256t4cwd",
@@ -2277,6 +2305,12 @@
                     "_$ref": [
                       "qs7wy01p",
                       "taf855d7"
+                    ]
+                  },
+                  "countdown": {
+                    "_$ref": [
+                      "qs7wy01p",
+                      "n7gt0l5f"
                     ]
                   }
                 },
