@@ -27,7 +27,7 @@ export class StatisticsInfo extends Laya.Script {
 
   
     @property(Laya.Label)
-    public lostOfVsComputer: Laya.Label;
+    public timerOfVsComputer: Laya.Label;
 
 
     @property(Laya.Label)
@@ -40,7 +40,7 @@ export class StatisticsInfo extends Laya.Script {
 
   
     @property(Laya.Label)
-    public lostOfOnline: Laya.Label;
+    public timerOfOnline: Laya.Label;
 
 
     @property(Laya.Label)
@@ -53,7 +53,7 @@ export class StatisticsInfo extends Laya.Script {
 
   
     @property(Laya.Label)
-    public lostOfVsFriend: Laya.Label;
+    public timerOfVsFriend: Laya.Label;
 
 
     @property(Laya.Label)
@@ -70,6 +70,18 @@ export class StatisticsInfo extends Laya.Script {
         this.level.text = Math.floor(rank / 100).toString();
         let processValue = rank % 100;
         this.levelProcess.value = processValue / 100;
+
+        this.winsOfVsComputer.text =  profile.getInt("vscomputer_wins");
+        this.timerOfVsComputer.text =  profile.getInt("vscomputer_timer");
+        this.rateOfVsComputer.text =  profile.getInt("vscomputer_rate");
+
+        this.winsOfOnline.text =  profile.getInt("online_wins");
+        this.timerOfOnline.text =  profile.getInt("online_timer");
+        this.rateOfOnline.text =  profile.getInt("online_rate");
+        
+        this.winsOfVsFriend.text =  profile.getInt("vsfriend_wins");
+        this.timerOfVsFriend.text =  profile.getInt("vsfriend_timer");
+        this.rateOfVsFriend.text =  profile.getInt("vsfriend_rate");
     }
 
 }

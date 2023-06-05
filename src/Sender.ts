@@ -2,9 +2,6 @@ const { regClass, property } = Laya;
 import * as Player from "./Player";
 import * as SFS2X from "../node_modules/sfs2x-api";
 import  {Station} from "./Station";
-import { Rank } from "./Rank";
-import { Gold } from "./Gold";
-import { Profile } from "./Profile";
 
 @regClass()
 export class Sender extends Laya.Script {

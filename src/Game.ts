@@ -8,6 +8,7 @@ import { Sender } from "./Sender";
 import { Config } from "./Config";
 import  {Station} from "./Station";
 import { Profile } from "./Profile";
+import { Generalize } from "./Generalize";
 
 @regClass()
 export class Game extends Laya.Scene {
@@ -23,11 +24,20 @@ export class Game extends Laya.Scene {
 
 
     onOpened(param: any) {
-        if (param && param.type == "extreme") {
-            this.challengeExtreme(param);
-        } else {
-            this.challengeComputer(param);
+        switch( param.type) {
+            case "extreme": {
+                this.challengeExtreme(param);
+                break;
+            }
+             case "friend": {
+                this.challengeExtreme(param);
+                break;
+            }
+            default: {
+                this.challengeComputer(param);
+            }
         }
+        this.addComponentInstance(new Generalize(param.type));
         Laya.SoundManager.stopMusic();
     }
 

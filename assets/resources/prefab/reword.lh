@@ -36,8 +36,8 @@
       "name": "Image(2)",
       "x": 390,
       "y": 697,
-      "width": 748.5,
-      "height": 748.5,
+      "width": 1389.3290428409248,
+      "height": 1174.73623847659,
       "anchorX": 0.5143620574482298,
       "anchorY": 0.533066132264529,
       "alpha": 0.59,
@@ -154,7 +154,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 1,
+      "index": 2,
       "interval": 241,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -172,7 +172,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 0,
+      "index": 4,
       "interval": 226,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -190,7 +190,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 0,
+      "index": 5,
       "interval": 204,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -208,7 +208,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 3,
+      "index": 2,
       "interval": 198,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -226,7 +226,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 0,
+      "index": 4,
       "interval": 226,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     },
@@ -244,7 +244,7 @@
       "clipHeight": 30,
       "clipX": 7,
       "clipY": 1,
-      "index": 0,
+      "index": 5,
       "interval": 204,
       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
     }

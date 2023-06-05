@@ -19,17 +19,17 @@
       "level": {
         "_$ref": "5o6rc4w5"
       },
-      "avatar": {
-        "_$ref": "6gki6n54"
-      },
       "levelProcess": {
         "_$ref": "q90kvatj"
+      },
+      "avatar": {
+        "_$ref": "6gki6n54"
       },
       "winsOfVsComputer": {
         "_$ref": "prljwga2"
       },
-      "lostOfVsComputer": {
-        "_$ref": "9p4r59zv"
+      "timerOfVsComputer": {
+        "_$ref": "rnxmiwco"
       },
       "rateOfVsComputer": {
         "_$ref": "7c9teizh"
@@ -37,8 +37,8 @@
       "winsOfOnline": {
         "_$ref": "wi5j8r5o"
       },
-      "lostOfOnline": {
-        "_$ref": "mo1ak1ud"
+      "timerOfOnline": {
+        "_$ref": "7ttb0qwt"
       },
       "rateOfOnline": {
         "_$ref": "qa9qi4kl"
@@ -46,8 +46,8 @@
       "winsOfVsFriend": {
         "_$ref": "s93al5rd"
       },
-      "lostOfVsFriend": {
-        "_$ref": "ice2o8d5"
+      "timerOfVsFriend": {
+        "_$ref": "pkt8s2vt"
       },
       "rateOfVsFriend": {
         "_$ref": "6t8g6odv"
@@ -246,7 +246,7 @@
       "x": 90,
       "y": 373,
       "width": 274,
-      "height": 170,
+      "height": 179,
       "_gcmds": [
         {
           "_$type": "DrawRectCmd",
@@ -269,7 +269,7 @@
           "y": 14,
           "width": 154,
           "height": 28,
-          "text": "VS. Computer",
+          "text": "VS.Computer",
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
@@ -292,26 +292,11 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "pt2f4m7s",
-          "_$type": "Label",
-          "name": "Label(2)",
-          "x": 17,
-          "y": 84,
-          "width": 120,
-          "height": 28,
-          "text": "Losts\n",
-          "fontSize": 20,
-          "color": "#FFFFFF",
-          "valign": "middle",
-          "leading": 0,
-          "padding": "0,0,0,0"
-        },
-        {
           "_$id": "2xyr7lrp",
           "_$type": "Label",
           "name": "Label(3)",
           "x": 17,
-          "y": 116,
+          "y": 90,
           "width": 120,
           "height": 28,
           "text": "Rate",
@@ -338,14 +323,14 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "9p4r59zv",
+          "_$id": "7c9teizh",
           "_$type": "Label",
-          "name": "Label(5)",
+          "name": "Label(6)",
           "x": 139,
-          "y": 84,
+          "y": 91,
           "width": 117,
           "height": 28,
-          "text": "0\n",
+          "text": "3\n",
           "fontSize": 20,
           "color": "#FFFFFF",
           "align": "right",
@@ -354,11 +339,26 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "7c9teizh",
+          "_$id": "bdprp3e1",
           "_$type": "Label",
-          "name": "Label(6)",
-          "x": 137,
-          "y": 116,
+          "name": "Label(7)",
+          "x": 17,
+          "y": 132,
+          "width": 120,
+          "height": 28,
+          "text": "Timer",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "rnxmiwco",
+          "_$type": "Label",
+          "name": "Label(8)",
+          "x": 139,
+          "y": 134,
           "width": 117,
           "height": 28,
           "text": "3\n",
@@ -378,7 +378,7 @@
       "x": 383,
       "y": 373,
       "width": 274,
-      "height": 170,
+      "height": 179,
       "_gcmds": [
         {
           "_$type": "DrawRectCmd",
@@ -401,7 +401,7 @@
           "y": 14,
           "width": 154,
           "height": 28,
-          "text": "Onlie",
+          "text": "Online",
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
@@ -424,26 +424,11 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "0ovrg7jo",
-          "_$type": "Label",
-          "name": "Label(2)",
-          "x": 17,
-          "y": 84,
-          "width": 120,
-          "height": 28,
-          "text": "Losts\n",
-          "fontSize": 20,
-          "color": "#FFFFFF",
-          "valign": "middle",
-          "leading": 0,
-          "padding": "0,0,0,0"
-        },
-        {
           "_$id": "3rs0t9ul",
           "_$type": "Label",
           "name": "Label(3)",
           "x": 17,
-          "y": 116,
+          "y": 91,
           "width": 120,
           "height": 28,
           "text": "Rate",
@@ -457,7 +442,7 @@
           "_$id": "wi5j8r5o",
           "_$type": "Label",
           "name": "Label(4)",
-          "x": 139,
+          "x": 140,
           "y": 48,
           "width": 117,
           "height": 28,
@@ -470,14 +455,14 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "mo1ak1ud",
+          "_$id": "qa9qi4kl",
           "_$type": "Label",
-          "name": "Label(5)",
-          "x": 139,
-          "y": 84,
+          "name": "Label(6)",
+          "x": 140,
+          "y": 94,
           "width": 117,
           "height": 28,
-          "text": "0\n",
+          "text": "3\n",
           "fontSize": 20,
           "color": "#FFFFFF",
           "align": "right",
@@ -486,11 +471,26 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "qa9qi4kl",
+          "_$id": "7lwugbwr",
           "_$type": "Label",
-          "name": "Label(6)",
-          "x": 137,
-          "y": 116,
+          "name": "Label(7)",
+          "x": 17,
+          "y": 134,
+          "width": 120,
+          "height": 28,
+          "text": "Timer",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "7ttb0qwt",
+          "_$type": "Label",
+          "name": "Label(8)",
+          "x": 140,
+          "y": 140,
           "width": 117,
           "height": 28,
           "text": "3\n",
@@ -508,9 +508,9 @@
       "_$type": "Sprite",
       "name": "Sprite(4)",
       "x": 91,
-      "y": 574,
+      "y": 567,
       "width": 274,
-      "height": 170,
+      "height": 177,
       "_gcmds": [
         {
           "_$type": "DrawRectCmd",
@@ -544,8 +544,8 @@
           "_$id": "gs1i2nvq",
           "_$type": "Label",
           "name": "Label(1)",
-          "x": 17,
-          "y": 48,
+          "x": 15,
+          "y": 41,
           "width": 120,
           "height": 28,
           "text": "Wins\n",
@@ -556,26 +556,11 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "noit0nvp",
-          "_$type": "Label",
-          "name": "Label(2)",
-          "x": 17,
-          "y": 84,
-          "width": 120,
-          "height": 28,
-          "text": "Losts\n",
-          "fontSize": 20,
-          "color": "#FFFFFF",
-          "valign": "middle",
-          "leading": 0,
-          "padding": "0,0,0,0"
-        },
-        {
           "_$id": "a6zqbviy",
           "_$type": "Label",
           "name": "Label(3)",
-          "x": 17,
-          "y": 116,
+          "x": 15,
+          "y": 87,
           "width": 120,
           "height": 28,
           "text": "Rate",
@@ -589,8 +574,8 @@
           "_$id": "s93al5rd",
           "_$type": "Label",
           "name": "Label(4)",
-          "x": 139,
-          "y": 48,
+          "x": 136,
+          "y": 41,
           "width": 117,
           "height": 28,
           "text": "3\n",
@@ -602,14 +587,14 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "ice2o8d5",
+          "_$id": "6t8g6odv",
           "_$type": "Label",
-          "name": "Label(5)",
-          "x": 139,
-          "y": 84,
+          "name": "Label(6)",
+          "x": 136,
+          "y": 90,
           "width": 117,
           "height": 28,
-          "text": "0\n",
+          "text": "3\n",
           "fontSize": 20,
           "color": "#FFFFFF",
           "align": "right",
@@ -618,11 +603,26 @@
           "padding": "0,0,0,0"
         },
         {
-          "_$id": "6t8g6odv",
+          "_$id": "49uf4ay6",
           "_$type": "Label",
-          "name": "Label(6)",
-          "x": 137,
-          "y": 116,
+          "name": "Label(7)",
+          "x": 15,
+          "y": 133,
+          "width": 120,
+          "height": 28,
+          "text": "Timer",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "pkt8s2vt",
+          "_$type": "Label",
+          "name": "Label(8)",
+          "x": 136,
+          "y": 139,
           "width": 117,
           "height": 28,
           "text": "3\n",

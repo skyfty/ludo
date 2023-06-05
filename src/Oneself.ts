@@ -18,9 +18,7 @@ export class Oneself extends Performer {
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
         this.owner.on(Player.Event.Chuck, this, this.onChuck);
     }
-    /**
-     * 第一次执行update之前执行，只会执行一次
-     */
+    
     onStart(): void {
         this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
     }
