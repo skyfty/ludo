@@ -4,7 +4,8 @@ import { Extreme } from "./Extreme";
 import * as Player from "./Player";
 import { Performer } from "./Performer";
 import { Reward } from "./Reward";
-import { Chitchat } from "./Chitchat";
+import { Attire } from "./Attire";
+import { Config } from "./Config";
 
 const { regClass, property } = Laya;
 
@@ -22,6 +23,12 @@ export class Room extends Laya.Script {
     @property(Laya.Sprite)
     public yellowPlayer: Laya.Sprite;
 
+    
+    @property([Laya.Sprite])
+    public seatOfPlayer: Laya.Sprite[];
+
+    private colorOfPlayer:string[] = JSON.parse(JSON.stringify(Config.Colors));
+
     @property(Laya.Prefab)
     public reward: Laya.Prefab;
 
@@ -32,7 +39,6 @@ export class Room extends Laya.Script {
     public loser: Laya.Prefab;
 
     public numberOfPlayer: number = 0;
-
     public players: Laya.Sprite[] = [];
 
     public playerOrder: any[] = []
@@ -47,10 +53,6 @@ export class Room extends Laya.Script {
      * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
      */
     onAwake(): void {
-        this.redPlayer.visible = false;
-        this.greenPlayer.visible = false;
-        this.bluePlayer.visible = false;
-        this.yellowPlayer.visible = false;
         this.initEventListener();
     }
 
@@ -140,30 +142,46 @@ export class Room extends Laya.Script {
         }
     }
 
-    private getPlayer(color: string) {
-        let player = null;
-        switch (color) {
-            case "red": {
-                player = this.redPlayer;
-                break;
+    public sortSeat(numberOfPlayer:number, colorOfSelf: string) {
+        this.numberOfPlayer = numberOfPlayer;
+        let idx = this.colorOfPlayer.indexOf(colorOfSelf);
+        let right = this.colorOfPlayer.splice(0, idx);
+        this.colorOfPlayer = this.colorOfPlayer.concat(right);
 
-            }
-            case "blue": {
-                player = this.bluePlayer;
-                break;
-
-            }
-            case "yellow": {
-                player = this.yellowPlayer;
-                break;
-
-            }
-            case "green": {
-                player = this.greenPlayer;
-                break;
-            }
+        for(let i = 0; i < this.seatOfPlayer.length; ++i) {
+            let colorOfSeat = this.colorOfPlayer[i];
+            this.seatOfPlayer[i].getComponent(Player.Player).setAttire(colorOfSeat);
         }
+    }
+
+    private getPlayer(color: string) {
+        let idx = this.colorOfPlayer.indexOf(color);
+        let player =  this.seatOfPlayer[idx];
         return player;
+
+        // let player = null;
+        // switch (color) {
+        //     case "red": {
+        //         player = this.redPlayer;
+        //         break;
+
+        //     }
+        //     case "blue": {
+        //         player = this.bluePlayer;
+        //         break;
+
+        //     }
+        //     case "yellow": {
+        //         player = this.yellowPlayer;
+        //         break;
+
+        //     }
+        //     case "green": {
+        //         player = this.greenPlayer;
+        //         break;
+        //     }
+        // }
+        // return player;
     }
 
     public addPlayer(color: string, type: Player.Type, profile:any) {
@@ -171,6 +189,8 @@ export class Room extends Laya.Script {
         if (player == null) {
             return;
         }
+        player.getComponent(Player.Player).setProfile(profile);
+
         this.players[profile.id] = player;
         this.playerOrder.push({ "id": profile.id, "color": color });
 
@@ -188,7 +208,6 @@ export class Room extends Laya.Script {
                 break;
             }
         }
-        player.getComponent(Player.Player).setProfile(profile);
         return player;
     }
 }

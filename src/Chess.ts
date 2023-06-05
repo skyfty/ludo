@@ -108,7 +108,7 @@ export class Chess extends Laya.Script {
             if (nextRoute.chess.indexOf(node) == -1) {
                 nextRoute.chess.push(node);
             }
-            nextRoute.puddleAni(this.player.owner.name);
+            nextRoute.puddleAni(this.player.color);
         }
     }
 

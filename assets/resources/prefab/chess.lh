@@ -82,12 +82,12 @@
         {
           "_$id": "t8h17dpc",
           "_$type": "Image",
-          "name": "image",
+          "name": "chess",
           "x": -5.5,
           "y": -5.5,
           "width": 48,
           "height": 48,
-          "skin": "res://11b35b2a-7a47-473d-b916-e3c690052c40",
+          "skin": "res://0f9d0783-24c3-4e4d-a0cf-f61a6793c5fa",
           "color": "#ffffff"
         },
         {

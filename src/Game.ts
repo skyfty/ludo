@@ -43,7 +43,7 @@ export class Game extends Laya.Scene {
 
     private challengeExtreme(param: any) {
         this.room.chitchat.visible = true;
-        this.room.numberOfPlayer = param.number;
+        this.room.sortSeat( param.number, param.color);
         this.addComponentInstance(new Online(param));
 
         let users = Station.getUserList();
@@ -67,7 +67,7 @@ export class Game extends Laya.Scene {
     }
 
     private challengeComputer(param: any) {
-        this.room.numberOfPlayer = param && param.number ? param.number : 2;
+        this.room.sortSeat(param && param.number ? param.number : 2, param.color);
         this.addComponentInstance(new Local(param));
 
         this.room.addPlayer(param.color, Player.Type.Oneself, {

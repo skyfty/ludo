@@ -5,4 +5,5 @@ export class Config {
     static TIMEOUT_CHUNK = 5;
 
     static Colors= ["red", "green","yellow","blue"];
+    static ColorValue:any= {"red":"#ff0000", "green":"#00a300","yellow":"#ffc400","blue":"#008cf8"};
 }

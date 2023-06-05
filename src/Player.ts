@@ -78,6 +78,11 @@ export class Player extends Laya.Script {
     @property(Laya.Sprite)
     public origin: Laya.Sprite;
 
+    public color:string = "";
+
+    @property(Laya.Image)
+    public border: Laya.Image;
+
     @property(Room)
     public room: Room;
 
@@ -271,7 +276,26 @@ export class Player extends Laya.Script {
         }
     }
 
-    public setProfile(profile:Profile) {
+    
+    public setAttire(color:string) {
+        this.color = color;
+        this.border.skin =  "resources/images/origin_"+color+".png";
+
+        for(let i = 0; i < this.groove.numChildren;++i) {
+            let chess = this.groove.getChildAt(i) as Laya.Sprite;
+            chess.getComponent(Chess).image.skin =   "resources/images/pawns_"+color+".png";
+        }
+        for(let i = 0; i < this.personal.numChildren;++i) {
+            let route = this.personal.getChildAt(i) as Laya.Box;
+            route.bgColor = Config.ColorValue[color];
+        }
+
+        let entry =  this.entry  as Laya.Box;
+        entry.bgColor = Config.ColorValue[color];
+    }
+
+    public setProfile( profile:Profile) {
         this.trade.getComponent(Trade).avatar.index = profile.avatar;
     }
+
 }

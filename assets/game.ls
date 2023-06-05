@@ -25,6 +25,20 @@
       "yellowPlayer": {
         "_$ref": "qs7wy01p"
       },
+      "seatOfPlayer": [
+        {
+          "_$ref": "hqy9lgmf"
+        },
+        {
+          "_$ref": "hknjlm1h"
+        },
+        {
+          "_$ref": "qs7wy01p"
+        },
+        {
+          "_$ref": "b7zhaso0"
+        }
+      ],
       "reward": {
         "_$uuid": "06164ce8-be3e-4019-b8ae-69a252482140",
         "_$type": "Prefab"
@@ -86,10 +100,12 @@
       "_$id": "m48vibdz",
       "_$type": "Image",
       "name": "board",
-      "x": 58,
-      "y": 199,
+      "x": 376.1522826183626,
+      "y": 517,
       "width": 636.3045652367252,
       "height": 635.6232969655947,
+      "anchorX": 0.5,
+      "anchorY": 0.5002963256981011,
       "skin": "res://fd1112d7-bf9f-4300-94e0-f9d4981cb094",
       "color": "#ffffff"
     },
@@ -251,21 +267,7 @@
           "active": true,
           "x": -299,
           "y": -3,
-          "visible": true,
-          "_$child": [
-            {
-              "_$id": "qlgm84dy",
-              "_$type": "Image",
-              "name": "Image",
-              "x": 7,
-              "y": 10,
-              "width": 28,
-              "height": 16,
-              "skin": "res://ff425710-3b43-48b1-bc29-25c6c371a0bd",
-              "useSourceSize": true,
-              "color": "#ffffff"
-            }
-          ]
+          "visible": true
         },
         {
           "_$id": "0dhkgcuk",
@@ -425,21 +427,7 @@
           "active": true,
           "x": -2,
           "y": -299,
-          "visible": true,
-          "_$child": [
-            {
-              "_$id": "u8yhtogm",
-              "_$type": "Image",
-              "name": "Image",
-              "x": 10,
-              "y": 6,
-              "width": 16,
-              "height": 28,
-              "skin": "res://667d58c7-87c5-440d-ac59-b7a4cf41368e",
-              "useSourceSize": true,
-              "color": "#ffffff"
-            }
-          ]
+          "visible": true
         },
         {
           "_$id": "6es96uai",
@@ -599,21 +587,7 @@
           "active": true,
           "x": 293,
           "y": -3,
-          "visible": true,
-          "_$child": [
-            {
-              "_$id": "48kwqhlk",
-              "_$type": "Image",
-              "name": "Image",
-              "x": 3,
-              "y": 11,
-              "width": 28,
-              "height": 16,
-              "skin": "res://1f919408-a275-4dad-8bcd-3111b7cd3dd9",
-              "useSourceSize": true,
-              "color": "#ffffff"
-            }
-          ]
+          "visible": true
         },
         {
           "_$id": "bwnimtrx",
@@ -772,21 +746,7 @@
           "active": true,
           "x": -2,
           "y": 293,
-          "visible": true,
-          "_$child": [
-            {
-              "_$id": "jzutr65r",
-              "_$type": "Image",
-              "name": "Image",
-              "x": 9,
-              "y": 1,
-              "width": 16,
-              "height": 28,
-              "skin": "res://63f4363b-55f9-4905-a16e-0f27d42b24b4",
-              "useSourceSize": true,
-              "color": "#ffffff"
-            }
-          ]
+          "visible": true
         },
         {
           "_$id": "35qi90er",
@@ -981,6 +941,9 @@
               },
               "origin": {
                 "_$ref": "h6q90dh9"
+              },
+              "border": {
+                "_$ref": "b7ycl5iq"
               },
               "room": {
                 "_$ref": "lx8mwule",
@@ -1253,7 +1216,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                      "skin": "res://46f0b17f-7211-4b0f-a9ea-b82657131698"
                     }
                   ]
                 },
@@ -1285,7 +1248,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                      "skin": "res://46f0b17f-7211-4b0f-a9ea-b82657131698"
                     }
                   ]
                 },
@@ -1317,7 +1280,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                      "skin": "res://46f0b17f-7211-4b0f-a9ea-b82657131698"
                     }
                   ]
                 },
@@ -1349,7 +1312,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://cc9b06ff-c6b6-402d-862a-00efd407e43e"
+                      "skin": "res://46f0b17f-7211-4b0f-a9ea-b82657131698"
                     }
                   ]
                 }
@@ -1421,6 +1384,9 @@
               },
               "origin": {
                 "_$ref": "bj7phns4"
+              },
+              "border": {
+                "_$ref": "7c2mfmh6"
               },
               "room": {
                 "_$ref": "lx8mwule",
@@ -1659,7 +1625,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595"
+                      "skin": "res://7970266b-c210-4d51-9147-48cb3624d562"
                     }
                   ]
                 },
@@ -1689,7 +1655,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595"
+                      "skin": "res://7970266b-c210-4d51-9147-48cb3624d562"
                     }
                   ]
                 },
@@ -1719,7 +1685,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595"
+                      "skin": "res://7970266b-c210-4d51-9147-48cb3624d562"
                     }
                   ]
                 },
@@ -1749,7 +1715,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dea6246f-d4fd-47ad-9ef3-2bd177b80595"
+                      "skin": "res://7970266b-c210-4d51-9147-48cb3624d562"
                     }
                   ]
                 }
@@ -1864,6 +1830,9 @@
               },
               "origin": {
                 "_$ref": "ves81bgi"
+              },
+              "border": {
+                "_$ref": "vkqmkb6p"
               },
               "room": {
                 "_$ref": "lx8mwule",
@@ -2281,6 +2250,9 @@
               "origin": {
                 "_$ref": "2r52rn68"
               },
+              "border": {
+                "_$ref": "dw3zrzzu"
+              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -2533,7 +2505,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4"
+                      "skin": "res://e774b588-f420-46a4-b5b8-9811e660ab78"
                     }
                   ]
                 },
@@ -2563,7 +2535,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4"
+                      "skin": "res://e774b588-f420-46a4-b5b8-9811e660ab78"
                     }
                   ]
                 },
@@ -2593,7 +2565,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4"
+                      "skin": "res://e774b588-f420-46a4-b5b8-9811e660ab78"
                     }
                   ]
                 },
@@ -2623,7 +2595,7 @@
                   "_$child": [
                     {
                       "_$override": "t8h17dpc",
-                      "skin": "res://dedec4c5-b830-42bf-abe4-0b0981aab7b4"
+                      "skin": "res://e774b588-f420-46a4-b5b8-9811e660ab78"
                     }
                   ]
                 }

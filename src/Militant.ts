@@ -128,7 +128,7 @@ export class Militant extends Laya.Scene {
         }
 
         if (users.length == this.numberOfPlayer && cnt == users.length) {
-            Laya.Scene.open("game.ls", true, { "type": "extreme", "number": this.numberOfPlayer });
+            Laya.Scene.open("game.ls", true, { "type": "extreme","color":this.color, "number": this.numberOfPlayer });
         }
     }
 }
