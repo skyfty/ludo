@@ -1,0 +1,395 @@
+{
+  "_$ver": 1,
+  "_$id": "g45ebp6e",
+  "_$runtime": "res://2ee2c77f-6acf-4aca-91bf-a4d25191b396",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "08082ca7-5bcc-4cb2-bf6b-a985c3867b2c",
+      "scriptPath": "../src/CombatInfo.ts",
+      "viewStack": {
+        "_$ref": "4k3bibqr"
+      },
+      "win": {
+        "_$ref": "do85o20h",
+        "_$type": "d6e7946d-f74c-4c19-a786-a1c41e2fc69c"
+      },
+      "lost": {
+        "_$ref": "4jno95qo",
+        "_$type": "ef0ea736-2056-4d64-ad33-c3478be9e405"
+      },
+      "returnbtn": {
+        "_$ref": "4oq1xgu8"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "4oq1xgu8",
+      "_$type": "Button",
+      "name": "return",
+      "x": 347,
+      "y": 673,
+      "width": 64,
+      "height": 64,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "4jk9k6zd",
+      "_$type": "Image",
+      "name": "Image(3)",
+      "x": 33,
+      "y": 122,
+      "width": 685.2627424412262,
+      "height": 522.4933733288465,
+      "mouseEnabled": true,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff",
+      "_$child": [
+        {
+          "_$id": "4k3bibqr",
+          "_$type": "ViewStack",
+          "name": "ViewStack",
+          "x": 44,
+          "y": 31,
+          "width": 597,
+          "height": 388,
+          "mouseEnabled": true,
+          "selectedIndex": 0,
+          "_$child": [
+            {
+              "_$id": "do85o20h",
+              "_$type": "Box",
+              "name": "item0",
+              "x": -4,
+              "y": -3,
+              "width": 610,
+              "height": 459,
+              "visible": false,
+              "mouseEnabled": true,
+              "_$comp": [
+                {
+                  "_$type": "d6e7946d-f74c-4c19-a786-a1c41e2fc69c",
+                  "scriptPath": "../src/CombatWin.ts",
+                  "win": {
+                    "_$ref": "8e4u8mma"
+                  },
+                  "lost": {
+                    "_$ref": "ue8icugn"
+                  },
+                  "gold": {
+                    "_$ref": "9zonyg3z"
+                  }
+                }
+              ],
+              "_$child": [
+                {
+                  "_$id": "q76e84v6",
+                  "_$type": "Image",
+                  "name": "Image(2)",
+                  "x": 1,
+                  "y": 112,
+                  "width": 613,
+                  "height": 311,
+                  "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "xtexdaan",
+                  "_$type": "Image",
+                  "name": "Image(3)",
+                  "x": 34,
+                  "y": 203,
+                  "width": 254,
+                  "height": 187,
+                  "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "mmlwfkpt",
+                  "_$type": "Image",
+                  "name": "Image(4)",
+                  "x": 326,
+                  "y": 203,
+                  "width": 256,
+                  "height": 187,
+                  "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "907sfvcp",
+                  "_$type": "Image",
+                  "name": "Image(5)",
+                  "x": 25,
+                  "y": 20,
+                  "width": 554.9272316876153,
+                  "height": 54.73772013245185,
+                  "skin": "res://1d1a94d9-0d1d-4b3d-b987-11ee5a2702cf",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "9zonyg3z",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 252,
+                  "y": 142,
+                  "width": 132,
+                  "height": 33,
+                  "text": "0",
+                  "fontSize": 35,
+                  "color": "#FFFFFF",
+                  "bold": true,
+                  "align": "center",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "bw1ls82k",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 114,
+                  "y": 149,
+                  "width": 120,
+                  "height": 28,
+                  "text": "YOU WIN",
+                  "fontSize": 28,
+                  "color": "rgba(163, 149, 174, 1)",
+                  "bold": true,
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "ove52n90",
+                  "_$prefab": "b5864f4e-6185-45a5-9af5-335f1fb6b0be",
+                  "name": "goldcoin",
+                  "active": true,
+                  "x": 379,
+                  "y": 145,
+                  "visible": true,
+                  "width": 35.4603550295858,
+                  "height": 30.624852071005918
+                },
+                {
+                  "_$id": "n5blnpzu",
+                  "_$type": "Label",
+                  "name": "Label(1)",
+                  "x": 102,
+                  "y": 228,
+                  "width": 120,
+                  "height": 28,
+                  "text": "Win",
+                  "fontSize": 35,
+                  "color": "rgba(255, 255, 0, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "h2r87in0",
+                  "_$type": "Label",
+                  "name": "Label(2)",
+                  "x": 397,
+                  "y": 228,
+                  "width": 120,
+                  "height": 28,
+                  "text": "Lose",
+                  "fontSize": 35,
+                  "color": "rgba(255, 255, 0, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "8e4u8mma",
+                  "_$type": "Label",
+                  "name": "Label(3)",
+                  "x": 94,
+                  "y": 290,
+                  "width": 135,
+                  "height": 46,
+                  "text": "0",
+                  "fontSize": 45,
+                  "color": "#FFFFFF",
+                  "bold": true,
+                  "align": "center",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "ue8icugn",
+                  "_$type": "Label",
+                  "name": "Label(4)",
+                  "x": 387,
+                  "y": 290,
+                  "width": 135,
+                  "height": 46,
+                  "text": "0",
+                  "fontSize": 45,
+                  "color": "#FFFFFF",
+                  "bold": true,
+                  "align": "center",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                }
+              ]
+            },
+            {
+              "_$id": "4jno95qo",
+              "_$type": "Box",
+              "name": "item1",
+              "x": -2,
+              "y": -3,
+              "width": 606,
+              "height": 506,
+              "mouseEnabled": true,
+              "_$comp": [
+                {
+                  "_$type": "ef0ea736-2056-4d64-ad33-c3478be9e405",
+                  "scriptPath": "../src/CombatLost.ts",
+                  "win": {
+                    "_$ref": "6lprfplk"
+                  },
+                  "lost": {
+                    "_$ref": "spmlbwxw"
+                  }
+                }
+              ],
+              "_$child": [
+                {
+                  "_$id": "65uy7vrh",
+                  "_$type": "Image",
+                  "name": "Image(2)",
+                  "x": 3,
+                  "y": 115,
+                  "width": 613,
+                  "height": 311,
+                  "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "247awch3",
+                  "_$type": "Image",
+                  "name": "Image(3)",
+                  "x": 36,
+                  "y": 174,
+                  "width": 254,
+                  "height": 187,
+                  "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "x0ndnwhx",
+                  "_$type": "Image",
+                  "name": "Image(4)",
+                  "x": 328,
+                  "y": 174,
+                  "width": 256,
+                  "height": 187,
+                  "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "o3bley97",
+                  "_$type": "Image",
+                  "name": "Image(5)",
+                  "x": 57,
+                  "y": 23,
+                  "width": 484.12294189763645,
+                  "height": 55.753623520515156,
+                  "skin": "res://28a98520-4131-4ebe-8d2f-5f65f709a376",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "y1qorpm6",
+                  "_$type": "Label",
+                  "name": "Label(1)",
+                  "x": 104,
+                  "y": 198,
+                  "width": 120,
+                  "height": 28,
+                  "text": "Win",
+                  "fontSize": 35,
+                  "color": "rgba(255, 255, 0, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "d4a9at4s",
+                  "_$type": "Label",
+                  "name": "Label(2)",
+                  "x": 399,
+                  "y": 197,
+                  "width": 120,
+                  "height": 28,
+                  "text": "Lose",
+                  "fontSize": 35,
+                  "color": "rgba(255, 255, 0, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "6lprfplk",
+                  "_$type": "Label",
+                  "name": "Label(3)",
+                  "x": 96,
+                  "y": 261,
+                  "width": 135,
+                  "height": 46,
+                  "text": "0",
+                  "fontSize": 45,
+                  "color": "#FFFFFF",
+                  "bold": true,
+                  "align": "center",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "spmlbwxw",
+                  "_$type": "Label",
+                  "name": "Label(4)",
+                  "x": 389,
+                  "y": 261,
+                  "width": 135,
+                  "height": 46,
+                  "text": "0",
+                  "fontSize": 45,
+                  "color": "#FFFFFF",
+                  "bold": true,
+                  "align": "center",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
