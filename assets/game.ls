@@ -13,17 +13,8 @@
     {
       "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b",
       "scriptPath": "../src/Room.ts",
-      "redPlayer": {
-        "_$ref": "hqy9lgmf"
-      },
-      "greenPlayer": {
-        "_$ref": "hknjlm1h"
-      },
-      "bluePlayer": {
-        "_$ref": "b7zhaso0"
-      },
-      "yellowPlayer": {
-        "_$ref": "qs7wy01p"
+      "board": {
+        "_$ref": "m48vibdz"
       },
       "seatOfPlayer": [
         {
@@ -126,7 +117,7 @@
           "x": -45,
           "y": 251,
           "visible": true,
-          "bgColor": "rgba(255, 0, 0, 1)",
+          "bgColor": null,
           "alpha": 0.51,
           "_$comp": [
             {
@@ -286,7 +277,7 @@
           "x": -256,
           "y": -45,
           "visible": true,
-          "bgColor": "rgba(0, 163, 0, 1)",
+          "bgColor": null,
           "_$comp": [
             {
               "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
@@ -446,7 +437,7 @@
           "x": 40,
           "y": -257,
           "visible": true,
-          "bgColor": "rgba(255, 196, 0, 1)",
+          "bgColor": null,
           "_$comp": [
             {
               "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
@@ -606,7 +597,7 @@
           "x": 251,
           "y": 39,
           "visible": true,
-          "bgColor": "rgba(0, 140, 248, 1)",
+          "bgColor": null,
           "_$comp": [
             {
               "_$override": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
@@ -817,7 +808,7 @@
               "padding": "4,6,2,15",
               "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
               "type": "text",
-              "maxChars": 500,
+              "maxChars": 100,
               "restrict": "",
               "prompt": "ENTER TEXT...",
               "promptColor": "#A9A9A9"
@@ -942,9 +933,6 @@
               "origin": {
                 "_$ref": "h6q90dh9"
               },
-              "border": {
-                "_$ref": "b7ycl5iq"
-              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -984,21 +972,9 @@
               "x": 91.5
             },
             {
-              "_$id": "b7ycl5iq",
-              "_$index": 1,
-              "_$type": "Image",
-              "name": "border",
-              "x": 33.00000000000006,
-              "y": -218.49190698129985,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://469bf55c-cb52-45fe-be14-23a04e35ef7f",
-              "color": "#ffffff"
-            },
-            {
               "_$id": "ptean5qg",
               "_$prefab": "e48a8486-1223-4a7f-a01c-41acc787d7ed",
-              "_$index": 2,
+              "_$index": 1,
               "name": "message",
               "active": true,
               "x": -16,
@@ -1018,19 +994,8 @@
               ]
             },
             {
-              "_$id": "60gakblm",
-              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 3,
-              "name": "originbk",
-              "active": true,
-              "x": -9,
-              "y": -261.00000000000006,
-              "visible": false,
-              "bgColor": "rgba(0, 0, 0, 1)"
-            },
-            {
               "_$id": "jnr4fv9u",
-              "_$index": 4,
+              "_$index": 2,
               "_$type": "Sprite",
               "name": "path",
               "x": 257.9999999999999,
@@ -1103,7 +1068,7 @@
             {
               "_$id": "h6q90dh9",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 5,
+              "_$index": 3,
               "name": "origin",
               "active": true,
               "x": 32,
@@ -1174,7 +1139,7 @@
             },
             {
               "_$id": "37thijbt",
-              "_$index": 6,
+              "_$index": 4,
               "_$type": "Sprite",
               "name": "groove",
               "x": 77,
@@ -1325,7 +1290,8 @@
               "active": true,
               "x": -10.000000000000057,
               "y": -260.00000000000006,
-              "visible": false
+              "visible": false,
+              "bgColor": null
             }
           ]
         },
@@ -1385,9 +1351,6 @@
               "origin": {
                 "_$ref": "bj7phns4"
               },
-              "border": {
-                "_$ref": "7c2mfmh6"
-              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -1418,31 +1381,9 @@
               ]
             },
             {
-              "_$id": "7c2mfmh6",
-              "_$index": 1,
-              "_$type": "Image",
-              "name": "border",
-              "x": 31.000000000000057,
-              "y": 122.50809301869984,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://39981a89-301b-4944-9b1c-ba25a52c1628",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "yi8aaacw",
-              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 2,
-              "name": "originbk",
-              "active": true,
-              "x": -12,
-              "y": 81,
-              "visible": false
-            },
-            {
               "_$id": "bj7phns4",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 3,
+              "_$index": 1,
               "name": "origin",
               "active": true,
               "x": 32,
@@ -1513,7 +1454,7 @@
             },
             {
               "_$id": "ugpgd2q4",
-              "_$index": 4,
+              "_$index": 2,
               "_$type": "Sprite",
               "name": "path",
               "x": 255.99999999999994,
@@ -1585,7 +1526,7 @@
             },
             {
               "_$id": "x1uq1m5z",
-              "_$index": 5,
+              "_$index": 3,
               "_$type": "Sprite",
               "name": "groove",
               "x": 76,
@@ -1724,7 +1665,7 @@
             {
               "_$id": "f26bc4fu",
               "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
-              "_$index": 6,
+              "_$index": 4,
               "name": "crown",
               "active": true,
               "x": -12.000000000000057,
@@ -1831,9 +1772,6 @@
               "origin": {
                 "_$ref": "ves81bgi"
               },
-              "border": {
-                "_$ref": "vkqmkb6p"
-              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -1879,31 +1817,9 @@
               ]
             },
             {
-              "_$id": "vkqmkb6p",
-              "_$index": 1,
-              "_$type": "Image",
-              "name": "border",
-              "x": -47.99999999999994,
-              "y": -217.99999999999994,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://c9b9295c-4965-44d8-a24a-a7b3f90e0d29",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "256t4cwd",
-              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 2,
-              "name": "originbk",
-              "active": true,
-              "x": -91,
-              "y": -261,
-              "visible": false
-            },
-            {
               "_$id": "ves81bgi",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 3,
+              "_$index": 1,
               "name": "origin",
               "active": true,
               "x": -48,
@@ -1974,7 +1890,7 @@
             },
             {
               "_$id": "o61g60ol",
-              "_$index": 4,
+              "_$index": 2,
               "_$type": "Sprite",
               "name": "path",
               "x": -204.00000000000006,
@@ -2046,7 +1962,7 @@
             },
             {
               "_$id": "etgip090",
-              "_$index": 5,
+              "_$index": 3,
               "_$type": "Sprite",
               "name": "groove",
               "x": -4,
@@ -2161,7 +2077,7 @@
             {
               "_$id": "36vb08z2",
               "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
-              "_$index": 6,
+              "_$index": 4,
               "name": "crown",
               "active": true,
               "x": -91.00000000000006,
@@ -2250,9 +2166,6 @@
               "origin": {
                 "_$ref": "2r52rn68"
               },
-              "border": {
-                "_$ref": "dw3zrzzu"
-              },
               "room": {
                 "_$ref": "lx8mwule",
                 "_$type": "fed491b4-6b8a-46f9-8167-977c47e8a79b"
@@ -2298,31 +2211,9 @@
               ]
             },
             {
-              "_$id": "dw3zrzzu",
-              "_$index": 1,
-              "_$type": "Image",
-              "name": "border",
-              "x": -43.00000000000017,
-              "y": 120.50809301870001,
-              "width": 169.3225045505375,
-              "height": 168.63975251605942,
-              "skin": "res://ecbfa6ea-62df-4992-99d7-3978a859c6b7",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "lks891a9",
-              "_$prefab": "1dcec1e9-e936-4faa-80fa-30cf37e275b7",
-              "_$index": 2,
-              "name": "originbk",
-              "active": true,
-              "x": -85,
-              "y": 77,
-              "visible": false
-            },
-            {
               "_$id": "2r52rn68",
               "_$prefab": "a3995181-d890-4e9b-87c7-75ac4fb63d36",
-              "_$index": 3,
+              "_$index": 1,
               "name": "origin",
               "active": true,
               "x": -43,
@@ -2393,7 +2284,7 @@
             },
             {
               "_$id": "a7afqfrw",
-              "_$index": 4,
+              "_$index": 2,
               "_$type": "Sprite",
               "name": "path",
               "x": -198.00000000000006,
@@ -2465,7 +2356,7 @@
             },
             {
               "_$id": "g2g1c6jq",
-              "_$index": 5,
+              "_$index": 3,
               "_$type": "Sprite",
               "name": "groove",
               "x": 2,
@@ -2604,7 +2495,7 @@
             {
               "_$id": "4tlcx9lc",
               "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
-              "_$index": 6,
+              "_$index": 4,
               "name": "crown",
               "active": true,
               "x": -85.00000000000006,

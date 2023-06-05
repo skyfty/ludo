@@ -122,7 +122,11 @@ export class Militant extends Laya.Scene {
                 if (pp != null) {
                     cnt++;
                     pp.autoPlay = false;
-                    pp.index = users[i].getVariable("avatar").value;
+                    let avatar =  users[i].getVariable("avatar");
+                    if (avatar != null) {
+                        pp.index =avatar.value;
+
+                    }
                 }
             }
         }

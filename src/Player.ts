@@ -45,6 +45,8 @@ export enum State {
 @regClass()
 export class Player extends Laya.Script {
 
+    public color:string = "";
+
     @property(Laya.Sprite)
     public entry: Laya.Sprite;
 
@@ -77,11 +79,6 @@ export class Player extends Laya.Script {
 
     @property(Laya.Sprite)
     public origin: Laya.Sprite;
-
-    public color:string = "";
-
-    @property(Laya.Image)
-    public border: Laya.Image;
 
     @property(Room)
     public room: Room;
@@ -279,7 +276,6 @@ export class Player extends Laya.Script {
     
     public setAttire(color:string) {
         this.color = color;
-        this.border.skin =  "resources/images/origin_"+color+".png";
 
         for(let i = 0; i < this.groove.numChildren;++i) {
             let chess = this.groove.getChildAt(i) as Laya.Sprite;
@@ -290,8 +286,8 @@ export class Player extends Laya.Script {
             route.bgColor = Config.ColorValue[color];
         }
 
-        let entry =  this.entry  as Laya.Box;
-        entry.bgColor = Config.ColorValue[color];
+        // let entry =  this.entry  as Laya.Box;
+        // entry.bgColor = Config.ColorValue[color];
     }
 
     public setProfile( profile:Profile) {

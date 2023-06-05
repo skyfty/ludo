@@ -28,6 +28,7 @@ export class Online extends Laya.Script {
         this.owner.on(Player.Event.Victory, this.room, this.room.onVictory);
         this.owner.on(Player.Event.CountdownStop, this, this.onCountdownStop);
         this.owner.on(Player.Event.Countdown, this, this.onCountdown);
+        this.room.chitchat.visible = true;
     }
 
     

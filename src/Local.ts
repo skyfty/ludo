@@ -19,6 +19,7 @@ export class Local extends Laya.Script {
         this.owner.on(Player.Event.Achieve, this.room, this.room.onAchieve);
         this.owner.on(Player.Event.Victory, this.room, this.room.onVictory);
         this.owner.on(Player.Event.Hurl, this, this.onHurl);
+        this.room.chitchat.visible = false;
     }
 
     onHurl(player:Laya.Sprite) {

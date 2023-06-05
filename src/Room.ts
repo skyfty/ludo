@@ -11,19 +11,9 @@ const { regClass, property } = Laya;
 
 @regClass()
 export class Room extends Laya.Script {
-    @property(Laya.Sprite)
-    public redPlayer: Laya.Sprite;
+    @property(Laya.Image)
+    public board: Laya.Image;
 
-    @property(Laya.Sprite)
-    public greenPlayer: Laya.Sprite;
-
-    @property(Laya.Sprite)
-    public bluePlayer: Laya.Sprite;
-
-    @property(Laya.Sprite)
-    public yellowPlayer: Laya.Sprite;
-
-    
     @property([Laya.Sprite])
     public seatOfPlayer: Laya.Sprite[];
 
@@ -57,15 +47,11 @@ export class Room extends Laya.Script {
     }
 
     private initEventListener() {
-        this.redPlayer.on(Player.Event.Achieve, this, this.onPlayerAchieve);
-        this.greenPlayer.on(Player.Event.Achieve, this, this.onPlayerAchieve);
-        this.yellowPlayer.on(Player.Event.Achieve, this, this.onPlayerAchieve);
-        this.bluePlayer.on(Player.Event.Achieve, this, this.onPlayerAchieve);
-
-        this.redPlayer.on(Player.Event.Victory, this, this.onPlayerVictory);
-        this.greenPlayer.on(Player.Event.Victory, this, this.onPlayerVictory);
-        this.yellowPlayer.on(Player.Event.Victory, this, this.onPlayerVictory);
-        this.bluePlayer.on(Player.Event.Victory, this, this.onPlayerVictory);
+        for(let idx in this.seatOfPlayer) {
+            this.seatOfPlayer[idx].visible = false;
+            this.seatOfPlayer[idx].on(Player.Event.Achieve, this, this.onPlayerAchieve);
+            this.seatOfPlayer[idx].on(Player.Event.Victory, this, this.onPlayerVictory);
+        }
     }
 
     onStart(): void {
@@ -152,36 +138,14 @@ export class Room extends Laya.Script {
             let colorOfSeat = this.colorOfPlayer[i];
             this.seatOfPlayer[i].getComponent(Player.Player).setAttire(colorOfSeat);
         }
+
+        this.board.rotation = -90 * idx;
     }
 
     private getPlayer(color: string) {
         let idx = this.colorOfPlayer.indexOf(color);
         let player =  this.seatOfPlayer[idx];
         return player;
-
-        // let player = null;
-        // switch (color) {
-        //     case "red": {
-        //         player = this.redPlayer;
-        //         break;
-
-        //     }
-        //     case "blue": {
-        //         player = this.bluePlayer;
-        //         break;
-
-        //     }
-        //     case "yellow": {
-        //         player = this.yellowPlayer;
-        //         break;
-
-        //     }
-        //     case "green": {
-        //         player = this.greenPlayer;
-        //         break;
-        //     }
-        // }
-        // return player;
     }
 
     public addPlayer(color: string, type: Player.Type, profile:any) {
@@ -189,6 +153,7 @@ export class Room extends Laya.Script {
         if (player == null) {
             return;
         }
+        player.visible = true;
         player.getComponent(Player.Player).setProfile(profile);
 
         this.players[profile.id] = player;

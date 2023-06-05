@@ -10916,8 +10916,8 @@
   __name(Config, "Config");
   Config.NUMBER_UNIVERSAL_HOLD = 52;
   Config.NUMBER_PERSONAL_HOLD = 6;
-  Config.TIMEOUT_CHOOSE_CHESS = 5;
-  Config.TIMEOUT_CHUNK = 5;
+  Config.TIMEOUT_CHOOSE_CHESS = 30;
+  Config.TIMEOUT_CHUNK = 30;
   Config.Colors = ["red", "green", "yellow", "blue"];
   Config.ColorValue = { "red": "#ff0000", "green": "#00a300", "yellow": "#ffc400", "blue": "#008cf8" };
 
@@ -11700,14 +11700,11 @@
       this.initEventListener();
     }
     initEventListener() {
-      this.redPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.greenPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.yellowPlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.bluePlayer.on(Event3.Achieve, this, this.onPlayerAchieve);
-      this.redPlayer.on(Event3.Victory, this, this.onPlayerVictory);
-      this.greenPlayer.on(Event3.Victory, this, this.onPlayerVictory);
-      this.yellowPlayer.on(Event3.Victory, this, this.onPlayerVictory);
-      this.bluePlayer.on(Event3.Victory, this, this.onPlayerVictory);
+      for (let idx in this.seatOfPlayer) {
+        this.seatOfPlayer[idx].visible = false;
+        this.seatOfPlayer[idx].on(Event3.Achieve, this, this.onPlayerAchieve);
+        this.seatOfPlayer[idx].on(Event3.Victory, this, this.onPlayerVictory);
+      }
     }
     onStart() {
     }
@@ -11787,6 +11784,7 @@
         let colorOfSeat = this.colorOfPlayer[i];
         this.seatOfPlayer[i].getComponent(Player).setAttire(colorOfSeat);
       }
+      this.board.rotation = -90 * idx;
     }
     getPlayer(color) {
       let idx = this.colorOfPlayer.indexOf(color);
@@ -11798,6 +11796,7 @@
       if (player == null) {
         return;
       }
+      player.visible = true;
       player.getComponent(Player).setProfile(profile);
       this.players[profile.id] = player;
       this.playerOrder.push({ "id": profile.id, "color": color });
@@ -11820,17 +11819,8 @@
   };
   __name(Room, "Room");
   __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "redPlayer", 2);
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "greenPlayer", 2);
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "bluePlayer", 2);
-  __decorateClass([
-    property22(Laya.Sprite)
-  ], Room.prototype, "yellowPlayer", 2);
+    property22(Laya.Image)
+  ], Room.prototype, "board", 2);
   __decorateClass([
     property22([Laya.Sprite])
   ], Room.prototype, "seatOfPlayer", 2);
@@ -12076,7 +12066,6 @@
     }
     setAttire(color) {
       this.color = color;
-      this.border.skin = "resources/images/origin_" + color + ".png";
       for (let i = 0; i < this.groove.numChildren; ++i) {
         let chess = this.groove.getChildAt(i);
         chess.getComponent(Chess).image.skin = "resources/images/pawns_" + color + ".png";
@@ -12085,8 +12074,6 @@
         let route = this.personal.getChildAt(i);
         route.bgColor = Config.ColorValue[color];
       }
-      let entry = this.entry;
-      entry.bgColor = Config.ColorValue[color];
     }
     setProfile(profile) {
       this.trade.getComponent(Trade).avatar.index = profile.avatar;
@@ -12126,9 +12113,6 @@
   __decorateClass([
     property24(Laya.Sprite)
   ], Player.prototype, "origin", 2);
-  __decorateClass([
-    property24(Laya.Image)
-  ], Player.prototype, "border", 2);
   __decorateClass([
     property24(Room)
   ], Player.prototype, "room", 2);
@@ -12597,6 +12581,7 @@
       this.owner.on(Event3.Victory, this.room, this.room.onVictory);
       this.owner.on(Event3.CountdownStop, this, this.onCountdownStop);
       this.owner.on(Event3.Countdown, this, this.onCountdown);
+      this.room.chitchat.visible = true;
     }
     onCountdown(trade, reason) {
       if (reason == Event3.Chuck) {
@@ -12742,6 +12727,7 @@
       this.owner.on(Event3.Achieve, this.room, this.room.onAchieve);
       this.owner.on(Event3.Victory, this.room, this.room.onVictory);
       this.owner.on(Event3.Hurl, this, this.onHurl);
+      this.room.chitchat.visible = false;
     }
     onHurl(player) {
       Laya.timer.once(900, this, () => {
@@ -13120,7 +13106,6 @@
           "resources/images/green_arrow.png",
           "resources/images/logo.png",
           "resources/images/Ludo_board.png",
-          "resources/images/manager_disabled.png",
           "resources/images/manger.png",
           "resources/images/menubk.png",
           "resources/images/menu_avatar.png",
@@ -13128,10 +13113,6 @@
           "resources/images/menu_title_bk.png",
           "resources/images/music_checkbox.png",
           "resources/images/onlinemultiplayer.png",
-          "resources/images/origin_blue.png",
-          "resources/images/origin_green.png",
-          "resources/images/origin_red.png",
-          "resources/images/origin_yellow.png",
           "resources/images/pawns_red.png",
           "resources/images/pawns_yellow.png",
           "resources/images/pawns_blue.png",
@@ -13499,7 +13480,10 @@
           if (pp != null) {
             cnt++;
             pp.autoPlay = false;
-            pp.index = users[i].getVariable("avatar").value;
+            let avatar = users[i].getVariable("avatar");
+            if (avatar != null) {
+              pp.index = avatar.value;
+            }
           }
         }
       }
