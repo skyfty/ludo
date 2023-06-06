@@ -23,7 +23,6 @@ export class CombatInfo extends Laya.Script {
     @property(Laya.Button)
     public returnbtn: Laya.Button;
 
-
     constructor() {
         super();
     }
@@ -40,7 +39,6 @@ export class CombatInfo extends Laya.Script {
         this.removeStationListener();
     }
 
-
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
         if ("CombatRequest" == evtParams.cmd) {
             if (this.viewStack.selectedIndex == 0) {
@@ -56,7 +54,6 @@ export class CombatInfo extends Laya.Script {
 
     public addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
-
     }
 
     public removeStationListener() {

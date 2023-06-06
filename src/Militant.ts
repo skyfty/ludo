@@ -33,8 +33,6 @@ export class Militant extends Laya.Scene {
         this.removeStationListener();
     }
 
-
-
     onOpened(param: any) {
         this.color = param.color;
         this.numberOfPlayer = Station.sfs.lastJoinedRoom.maxUsers;

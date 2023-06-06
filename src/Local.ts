@@ -7,7 +7,7 @@ import { Oneself } from "./Oneself";
 @regClass()
 export class Local extends Laya.Script {
     room: Room;
-    param:any;
+    param: any;
 
     constructor(param: any) {
         super();
@@ -17,14 +17,14 @@ export class Local extends Laya.Script {
     onAwake(): void {
         this.room = this.owner.getComponent(Room);
         this.owner.on(Player.Event.Achieve, this.room, this.room.onAchieve);
-        this.owner.on(Player.Event.Victory,  this, this.onVictory);
+        this.owner.on(Player.Event.Victory, this, this.onVictory);
         this.owner.on(Player.Event.Hurl, this, this.onHurl);
         this.room.chitchat.visible = false;
     }
 
-    onHurl(player:Laya.Sprite) {
-        Laya.timer.once(900, this, ()=>{
-            let num = Math.floor(Math.random()* 6);
+    onHurl(player: Laya.Sprite) {
+        Laya.timer.once(900, this, () => {
+            let num = Math.floor(Math.random() * 6);
             player.event(Player.Event.Chuck, num);
         });
     }
@@ -33,9 +33,9 @@ export class Local extends Laya.Script {
         this.room.startGame(this.param.color);
     }
 
-    onVictory(player:Laya.Sprite) {
+    onVictory(player: Laya.Sprite) {
         this.room.onVictory();
         let isSelf = player.getComponent(Oneself) != null;
-        Laya.Scene.open("dialog/combat.lh", true,1);
+        Laya.Scene.open("dialog/combat.lh", true, isSelf ? 0 : 1);
     }
 }

@@ -39,16 +39,18 @@ export class CreateRoom extends GameRoom {
     public addStationListener() {
         super.addStationListener();
         Station.sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     public removeStationListener() {
         super.removeStationListener();
         Station.sfs.removeEventListener(SFS2X.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
 
     private onRoomJoin(event: SFS2X.SFSEvent) {
-        Laya.Dialog.closeAll();
-        Laya.Scene.open("invite.ls", true,{"color":Config.Colors[this.colorIdx]});
+        var params = new SFS2X.SFSObject();
+        params.putUtfString("scope", "createroom");
+        Station.sfs.send(new SFS2X.ExtensionRequest("GetJettonRequest", params));
     }
 
     private getRoomCode() {
@@ -66,5 +68,17 @@ export class CreateRoom extends GameRoom {
         var settings = this.getRoomSettings(selectPlayer.numberOfPlayer);
         settings.variables = roomVars;
         Station.sfs.send(new SFS2X.CreateSFSGameRequest(settings));
+    }
+
+    private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
+        if ("GetJettonRequest" == evtParams.cmd) {
+            let jettons = evtParams.params.getSFSArray("list");
+            let item = jettons.getSFSObject(0);
+            let varname = Station.getUserJettonName();
+            Station.sfs.send(new SFS2X.SetRoomVariablesRequest([new SFS2X.SFSRoomVariable(varname, item)]));
+
+            Laya.Dialog.closeAll();
+            Laya.Scene.open("invite.ls", true,{"color":Config.Colors[this.colorIdx]});
+        }
     }
 }

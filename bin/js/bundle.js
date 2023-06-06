@@ -11004,14 +11004,17 @@
     addStationListener() {
       super.addStationListener();
       Station.sfs.addEventListener(SFS2X5.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.addEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
       super.removeStationListener();
       Station.sfs.removeEventListener(SFS2X5.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.removeEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     onRoomJoin(event) {
-      Laya.Dialog.closeAll();
-      Laya.Scene.open("invite.ls", true, { "color": Config.Colors[this.colorIdx] });
+      var params = new SFS2X5.SFSObject();
+      params.putUtfString("scope", "createroom");
+      Station.sfs.send(new SFS2X5.ExtensionRequest("GetJettonRequest", params));
     }
     getRoomCode() {
       const today = /* @__PURE__ */ new Date();
@@ -11027,6 +11030,16 @@
       var settings = this.getRoomSettings(selectPlayer.numberOfPlayer);
       settings.variables = roomVars;
       Station.sfs.send(new SFS2X5.CreateSFSGameRequest(settings));
+    }
+    onExtensionResponse(evtParams) {
+      if ("GetJettonRequest" == evtParams.cmd) {
+        let jettons = evtParams.params.getSFSArray("list");
+        let item = jettons.getSFSObject(0);
+        let varname = Station.getUserJettonName();
+        Station.sfs.send(new SFS2X5.SetRoomVariablesRequest([new SFS2X5.SFSRoomVariable(varname, item)]));
+        Laya.Dialog.closeAll();
+        Laya.Scene.open("invite.ls", true, { "color": Config.Colors[this.colorIdx] });
+      }
     }
   };
   __name(CreateRoom, "CreateRoom");
@@ -11080,11 +11093,13 @@
       Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
       Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
       Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
+      Station.sfs.addEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
       Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
+      Station.sfs.removeEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     onRoomFindResult(event) {
       if (event.rooms != null && event.rooms.length == 1) {
@@ -11092,20 +11107,30 @@
       } else {
         this.joinRoomError();
       }
-      console.log("Rooms found: " + event.rooms);
     }
     onRoomJoin(event) {
-      Laya.Scene.open("dialog/selectcolor.lh", false, null, Laya.Handler.create(this, (dlg) => {
-        dlg.on(Laya.Event.PLAYED, this, (color) => {
-          Dialog.closeAll();
-          Laya.Scene.open("militant.ls", true, { "color": color });
-        });
-        dlg.on(Laya.Event.CLOSE, this, () => {
-          Station.levelRoom();
-          Dialog.closeAll();
-        });
-      }));
+      var params = new SFS2X6.SFSObject();
+      params.putUtfString("scope", "joinroom");
+      Station.sfs.send(new SFS2X6.ExtensionRequest("GetJettonRequest", params));
       this.dialog.close();
+    }
+    onExtensionResponse(evtParams) {
+      if ("GetJettonRequest" == evtParams.cmd) {
+        let jettons = evtParams.params.getSFSArray("list");
+        let item = jettons.getSFSObject(0);
+        let varname = Station.getUserJettonName();
+        Station.sfs.send(new SFS2X6.SetRoomVariablesRequest([new SFS2X6.SFSRoomVariable(varname, item)]));
+        Laya.Scene.open("dialog/selectcolor.lh", false, null, Laya.Handler.create(this, (dlg) => {
+          dlg.on(Laya.Event.PLAYED, this, (color) => {
+            Dialog.closeAll();
+            Laya.Scene.open("militant.ls", true, { "color": color });
+          });
+          dlg.on(Laya.Event.CLOSE, this, () => {
+            Station.levelRoom();
+            Dialog.closeAll();
+          });
+        }));
+      }
     }
   };
   __name(JoinRoom, "JoinRoom");
@@ -12804,7 +12829,6 @@
     }
     onHurl(player) {
       player.event(Event3.Chuck, 5);
-      var params = new SFS2X9.SFSObject();
     }
     onDestroy() {
       Station.levelRoom();
@@ -12939,7 +12963,7 @@
     onVictory(player) {
       this.room.onVictory();
       let isSelf = player.getComponent(Oneself) != null;
-      Laya.Scene.open("dialog/combat.lh", true, 1);
+      Laya.Scene.open("dialog/combat.lh", true, isSelf ? 0 : 1);
     }
   };
   __name(Local, "Local");
@@ -13466,7 +13490,9 @@
         }
         this.refreshEarnPayLabel();
       });
-      Station.sfs.send(new SFS2X13.ExtensionRequest("GetJettonRequest"));
+      var params = new SFS2X13.SFSObject();
+      params.putUtfString("scope", "extreme");
+      Station.sfs.send(new SFS2X13.ExtensionRequest("GetJettonRequest", params));
     }
     refreshEarnPayLabel() {
       let item = this.jettons.getSFSObject(this.idx);

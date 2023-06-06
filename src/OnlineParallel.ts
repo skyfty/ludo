@@ -49,7 +49,9 @@ export class OnlineParallel extends GameRoom {
             }
             this.refreshEarnPayLabel();
         });
-        Station.sfs.send(new SFS2X.ExtensionRequest("GetJettonRequest"));
+        var params = new SFS2X.SFSObject();
+        params.putUtfString("scope", "extreme");
+        Station.sfs.send(new SFS2X.ExtensionRequest("GetJettonRequest", params));
     }
 
     private refreshEarnPayLabel() {

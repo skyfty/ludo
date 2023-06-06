@@ -51,6 +51,7 @@ export class Invite extends Laya.Scene {
         let roomVars: SFS2X.SFSRoomVariable = [];
         roomVars.push(new SFS2X.SFSRoomVariable(stateName, "ready"));
         roomVars.push(new SFS2X.SFSRoomVariable(this.color, Station.mySelfId()));
+
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
 
         Laya.timer.loop(1000, this, () => {
