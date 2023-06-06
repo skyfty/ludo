@@ -133,7 +133,7 @@ export class Invite extends Laya.Scene {
         }
 
         if (users.length == this.numberOfPlayer && cnt == users.length) {
-            Laya.Scene.open("game.ls", true, { "type": "friend", "number": this.numberOfPlayer });
+            Laya.Scene.open("game.ls", true, { "type": "friend", "number": this.numberOfPlayer,"color": this.color });
         }
     }
 }
