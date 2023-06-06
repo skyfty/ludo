@@ -10688,16 +10688,15 @@
       Station.config.zone = this.zone;
       Station.config.debug = this.debug;
       Station.config.useSSL = false;
-      this.initSmartFox(this.playerName);
+      this.initSmartFox();
     }
-    initSmartFox(playerName) {
+    initSmartFox() {
       if (Station.sfs == null) {
         Station.sfs = new SFS2X2.SmartFox(Station.config);
         Station.sfs.logger.level = SFS2X2.LogLevel.DEBUG;
         Station.sfs.logger.enableConsoleOutput = true;
         Station.sfs.logger.enableEventDispatching = true;
       }
-      Station.loginName = playerName + Math.random().toString();
     }
     onStart() {
       this.addSmartFoxListener();
@@ -10799,9 +10798,6 @@
   __name(Station, "Station");
   Station.config = [];
   Station.sfs = null;
-  __decorateClass([
-    property6(String)
-  ], Station.prototype, "playerName", 2);
   __decorateClass([
     property6(String)
   ], Station.prototype, "host", 2);
@@ -12154,7 +12150,6 @@
       complete.runWith([deduceResult.concat(deduceLast)]);
     }
     isAllHome() {
-      return true;
       return this.home.length == 4;
     }
     getChesses(route, player) {
@@ -12975,7 +12970,8 @@
       }
     }
     onHurl(player) {
-      player.event(Event3.Chuck, 5);
+      var params = new SFS2X10.SFSObject();
+      Station.sfs.send(new SFS2X10.ExtensionReq1uest("Hurl", params));
     }
     onDestroy() {
       Station.levelRoom();

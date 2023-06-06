@@ -27,7 +27,6 @@ export class Menu extends Laya.Script {
 
     @property(Laya.Sprite)
     public ranklist: Laya.Sprite;
-
     
     @property(Laya.Sprite)
     public checkin: Laya.Sprite;

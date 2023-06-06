@@ -15,7 +15,6 @@ export class Buycoin extends Laya.Script {
         super();
     }
 
-
     onAwake(): void {
         this.addStationListener();
         this.list.renderHandler = new Laya.Handler(this, this.updateItem);
@@ -32,15 +31,15 @@ export class Buycoin extends Laya.Script {
 
     private onSelectItem(idx:number) {
         let item = this.list.getItem(idx);
-        console.log("lsdkf");
     }
 
     private updateItem(cell: any, index: number): void {
-        let data:SFS2X.SFSObject = this.coins.getSFSObject(index);
-        let item = cell.getComponent(BuyItem) as BuyItem;
-        item.coin.text =data.getInt("amount").toLocaleString('en-US');
-        item.price.text =data.getDouble("price");
-
+        if ( this.coins != null) {
+            let data:SFS2X.SFSObject = this.coins.getSFSObject(index);
+            let item = cell.getComponent(BuyItem) as BuyItem;
+            item.coin.text =data.getInt("amount").toLocaleString('en-US');
+            item.price.text =data.getDouble("price");
+        }
     }
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {

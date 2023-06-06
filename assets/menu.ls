@@ -47,11 +47,10 @@
     {
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
-      "playerName": "Feitianyu",
-      "host": "127.0.0.1",
+      "host": "39.104.230.103",
       "port": 8080,
       "zone": "Ludo",
-      "debug": true
+      "debug": false
     }
   ],
   "_$child": [
@@ -314,7 +313,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 0,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -332,7 +331,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 6,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
@@ -411,11 +410,6 @@
       "label": "",
       "labelSize": 20,
       "_$comp": [
-        {
-          "_$type": "d3b40897-9190-49b2-8cb3-e2afa5b2e122",
-          "scriptPath": "../src/ShowDialog.ts",
-          "text": ""
-        },
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"

@@ -17,10 +17,6 @@ export class Station extends Laya.Script {
 
     public static config: any = [];
     public static sfs: SFS2X.SmartFox = null;
-    public static loginName: String;
-
-    @property(String)
-    public playerName: String;
 
     @property(String)
     public host: String;
@@ -44,18 +40,16 @@ export class Station extends Laya.Script {
         Station.config.zone = this.zone;
         Station.config.debug = this.debug;
         Station.config.useSSL = false;
-
-        this.initSmartFox(this.playerName);
+        this.initSmartFox();
     }
 
-    private initSmartFox(playerName: String) {
+    private initSmartFox() {
         if (Station.sfs == null) {
             Station.sfs = new SFS2X.SmartFox(Station.config);
             Station.sfs.logger.level = SFS2X.LogLevel.DEBUG;
             Station.sfs.logger.enableConsoleOutput = true;
             Station.sfs.logger.enableEventDispatching = true;
         }
-        Station.loginName = playerName + Math.random().toString();
     }
 
     onStart(): void {
