@@ -7,7 +7,6 @@ const { regClass, property } = Laya;
 
 @regClass()
 export class ProfileDialog extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
 
     @property(Laya.TextInput)
     public name: Laya.TextInput;

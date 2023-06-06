@@ -69,7 +69,7 @@ export class Computer extends Performer {
         }
         this.owner.event(Player.Event.Achieve, node);
         if (this.player.isAllHome()) {
-            this.owner.event(Player.Event.Victory);
+            this.owner.event(Player.Event.Victory,[this.owner]);
         }
     }
 }

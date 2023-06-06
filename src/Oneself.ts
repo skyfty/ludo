@@ -101,7 +101,7 @@ export class Oneself extends Performer {
         this.isAdvanceing = false;
         let chess = node.getComponent(Chess);
         if (this.player.isAllHome()) {
-            this.owner.event(Player.Event.Victory);
+            this.owner.event(Player.Event.Victory, [this.owner]);
         } else {
             if (chess.hole == this.player.entry) {
                 let trade = this.player.trade.getComponent(Trade);

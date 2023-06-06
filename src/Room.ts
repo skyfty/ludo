@@ -3,9 +3,8 @@ import { Oneself } from "./Oneself";
 import { Extreme } from "./Extreme";
 import * as Player from "./Player";
 import { Performer } from "./Performer";
-import { Reward } from "./Reward";
-import { Attire } from "./Attire";
 import { Config } from "./Config";
+import { Reward } from "./Reward";
 
 const { regClass, property } = Laya;
 
@@ -16,8 +15,6 @@ export class Room extends Laya.Script {
 
     @property([Laya.Sprite])
     public seatOfPlayer: Laya.Sprite[];
-
-    private colorOfPlayer:string[] = JSON.parse(JSON.stringify(Config.Colors));
 
     @property(Laya.Prefab)
     public reward: Laya.Prefab;
@@ -30,6 +27,7 @@ export class Room extends Laya.Script {
 
     public numberOfPlayer: number = 0;
     public players: Laya.Sprite[] = [];
+    private colorOfPlayer:string[] = JSON.parse(JSON.stringify(Config.Colors));
 
     public playerOrder: any[] = []
     public currentIdx = 0;
@@ -55,10 +53,11 @@ export class Room extends Laya.Script {
     }
 
     onStart(): void {
+
     }
 
-    onPlayerVictory() {
-        this.owner.event(Player.Event.Victory);
+    onPlayerVictory(player:Laya.Sprite) {
+        this.owner.event(Player.Event.Victory,[player]);
     }
 
     onPlayerAchieve() {

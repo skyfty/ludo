@@ -37,7 +37,6 @@ export class Game extends Laya.Scene {
                 this.challengeComputer(param);
             }
         }
-        this.addComponentInstance(new Generalize(param.type));
         Laya.SoundManager.stopMusic();
     }
 
@@ -45,6 +44,7 @@ export class Game extends Laya.Scene {
         this.room.chitchat.visible = true;
         this.room.sortSeat( param.number, param.color);
         this.addComponentInstance(new Online(param));
+        this.addComponentInstance(new Generalize(param.type));
 
         let users = Station.getUserList();
         for (let i = 0; i < users.length; ++i) {

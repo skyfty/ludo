@@ -4,6 +4,6 @@
 /**
  * dialog/combat.lh
  */
-export class StatisticsDialogBase extends Laya.Dialog {
+export class CombatDialogBase extends Laya.Dialog {
 }
 

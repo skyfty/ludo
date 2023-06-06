@@ -5,7 +5,7 @@
   "name": "Box",
   "width": 750,
   "height": 1334,
-  "alpha": 0.88,
+  "alpha": 0.84,
   "mouseEnabled": true,
   "left": 0,
   "right": 0,
@@ -16,92 +16,23 @@
     {
       "_$type": "526b0624-b995-44ec-b03d-bc9c997a6a43",
       "scriptPath": "../src/Loser.ts",
-      "goldcoin": {
-        "_$uuid": "89a50e27-7b1e-4b6b-9a47-7cba536895b5",
-        "_$type": "Prefab"
-      },
-      "collectPoint": {
-        "_$ref": "wswrofcs"
-      },
       "return": {
         "_$ref": "qp6r13qc"
       },
-      "earnNumber": {
-        "_$ref": "40twbvfy"
+      "viewStack": {
+        "_$ref": "cj51d2cw"
       }
     }
   ],
   "_$child": [
     {
-      "_$id": "vdacwiwr",
-      "_$type": "Image",
-      "name": "Image(2)",
-      "x": 389.99999999999994,
-      "y": 696.9999999999999,
-      "width": 1389.3290428409248,
-      "height": 1174.73623847659,
-      "anchorX": 0.5143620574482298,
-      "anchorY": 0.533066132264529,
-      "alpha": 0.7024592836874501,
-      "skin": "res://5bba9e01-01de-4050-a7f3-972c5459b7b7",
-      "color": "#ffffff",
-      "_$comp": [
-        {
-          "_$type": "Animator2D",
-          "controller": {
-            "_$uuid": "a2140c19-6c3d-4205-a44f-865c8a8ad83a",
-            "_$type": "AnimationController2D"
-          },
-          "controllerLayers": [
-            {
-              "_$type": "AnimatorControllerLayer2D",
-              "name": "Base Layer",
-              "states": [
-                {
-                  "_$type": "AnimatorState2D",
-                  "name": "coruscate",
-                  "clipStart": 0,
-                  "clip": {
-                    "_$uuid": "95f459ae-d981-44a1-b056-2a209a91638f",
-                    "_$type": "AnimationClip2D"
-                  },
-                  "soloTransitions": []
-                }
-              ],
-              "defaultStateName": "coruscate"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "_$id": "6f3o8jqg",
-      "_$type": "Image",
-      "name": "Image",
-      "x": 84.50785014258084,
-      "y": 383.47966173915876,
-      "width": 590.0922678553871,
-      "height": 575.9300534268582,
-      "skin": "res://00e9bb35-986d-481e-8c3c-76c22ed457ec",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "wswrofcs",
-      "_$type": "Sprite",
-      "name": "Sprite",
-      "x": 337,
-      "y": 495,
-      "width": 100,
-      "height": 100
-    },
-    {
       "_$id": "qp6r13qc",
       "_$type": "Button",
       "name": "return",
-      "x": 26,
-      "y": 138,
-      "width": 55,
-      "height": 55,
+      "x": 333.00000000000006,
+      "y": 996,
+      "width": 71.5,
+      "height": 71.5,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
@@ -115,103 +46,602 @@
       ]
     },
     {
-      "_$id": "bcgvhy0l",
+      "_$id": "iztve2nk",
       "_$type": "Image",
-      "name": "Image(1)",
-      "x": 268,
-      "y": 135,
-      "width": 66,
-      "height": 57,
-      "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
-      "useSourceSize": true,
+      "name": "Image",
+      "x": 11,
+      "y": 256,
+      "width": 722,
+      "height": 745,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
       "color": "#ffffff"
     },
     {
-      "_$id": "40twbvfy",
-      "_$type": "Label",
-      "name": "Label",
-      "x": 339,
-      "y": 143,
-      "width": 321,
-      "height": 46,
-      "text": "",
-      "fontSize": 55,
-      "color": "#FFFFFF",
-      "valign": "middle",
-      "leading": 0,
-      "padding": "0,0,0,0"
+      "_$id": "3aqc1cpb",
+      "_$type": "Image",
+      "name": "Image(2)",
+      "x": 85.00324899972925,
+      "y": 304.6005234499565,
+      "width": 558.8279534310038,
+      "height": 90.03339249721736,
+      "skin": "res://28a98520-4131-4ebe-8d2f-5f65f709a376",
+      "color": "#ffffff"
     },
     {
-      "_$id": "p6kfxryx",
-      "_$type": "Clip",
-      "name": "Clip(2)",
-      "x": 527.86262458741,
-      "y": 724,
-      "width": 63.15038107246508,
-      "height": 58.127068015162635,
-      "anchorY": -0.16666666666666666,
-      "autoPlay": true,
-      "clipWidth": 30,
-      "clipHeight": 30,
-      "clipX": 7,
-      "clipY": 1,
-      "index": 1,
-      "interval": 204,
-      "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+      "_$id": "vcvjd3cx",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 49,
+      "y": 414,
+      "width": 648,
+      "height": 535,
+      "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+      "color": "#ffffff"
     },
     {
-      "_$id": "3z2iqpfb",
-      "_$type": "Clip",
-      "name": "Clip(3)",
-      "x": 142.836946486168,
-      "y": 642,
-      "width": 156.93708798524435,
-      "height": 151.63825171585523,
-      "anchorY": -0.16666666666666666,
-      "autoPlay": true,
-      "clipWidth": 30,
-      "clipHeight": 30,
-      "clipX": 7,
-      "clipY": 1,
-      "index": 3,
-      "interval": 226,
-      "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
-    },
-    {
-      "_$id": "u9zcy59i",
-      "_$type": "Clip",
-      "name": "Clip(4)",
-      "x": 406.86262458741,
-      "y": 524,
-      "width": 63.15038107246508,
-      "height": 58.127068015162635,
-      "anchorY": -0.16666666666666666,
-      "autoPlay": true,
-      "clipWidth": 30,
-      "clipHeight": 30,
-      "clipX": 7,
-      "clipY": 1,
-      "index": 1,
-      "interval": 198,
-      "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
-    },
-    {
-      "_$id": "rfd7q01c",
-      "_$type": "Clip",
-      "name": "Clip(5)",
-      "x": 243.86262458740998,
-      "y": 116,
-      "width": 63.15038107246508,
-      "height": 58.127068015162635,
-      "anchorY": -0.16666666666666666,
-      "autoPlay": true,
-      "clipWidth": 30,
-      "clipHeight": 30,
-      "clipX": 7,
-      "clipY": 1,
-      "index": 1,
-      "interval": 204,
-      "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+      "_$id": "cj51d2cw",
+      "_$type": "ViewStack",
+      "name": "ViewStack",
+      "x": 11,
+      "y": 566,
+      "width": 744,
+      "height": 377,
+      "selectedIndex": 1,
+      "_$child": [
+        {
+          "_$id": "6hnhqnvd",
+          "_$type": "Box",
+          "name": "item0",
+          "y": -47,
+          "width": 743.5,
+          "height": 333.5,
+          "visible": false,
+          "_$child": [
+            {
+              "_$id": "ajag1ch5",
+              "_$type": "Sprite",
+              "name": "0",
+              "x": 121,
+              "y": 68,
+              "width": 241.66474592758746,
+              "height": 253.41257266303748,
+              "_$child": [
+                {
+                  "_$id": "ovke4myw",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 20,
+                  "y": 25,
+                  "visible": true,
+                  "width": 193,
+                  "height": 193,
+                  "autoPlay": false,
+                  "interval": 200
+                },
+                {
+                  "_$id": "3irwznu1",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": -3,
+                  "y": -10,
+                  "width": 239.31762153323675,
+                  "height": 259.0959373624301,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "wsa9f4g4",
+                  "_$type": "Image",
+                  "name": "Image(1)",
+                  "x": -49,
+                  "y": -61,
+                  "width": 284.6962632841961,
+                  "height": 65.59821734658897,
+                  "skin": "res://af1e265a-3f5d-4b2c-9ff7-2bd4cf0f030a",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "k2hfszwc",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -27,
+                  "y": 224,
+                  "width": 291.5692307692308,
+                  "height": 36.44615384615385,
+                  "text": "Label",
+                  "fontSize": 34,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            },
+            {
+              "_$id": "rnuasyfm",
+              "_$type": "Sprite",
+              "name": "1",
+              "x": 460,
+              "y": 91,
+              "width": 173,
+              "height": 183,
+              "_$child": [
+                {
+                  "_$id": "wqxrli9k",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 13,
+                  "y": 27,
+                  "visible": true,
+                  "width": 136,
+                  "height": 136,
+                  "interval": 200,
+                  "autoPlay": false
+                },
+                {
+                  "_$id": "mjmi9dk5",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "width": 166.44824224891516,
+                  "height": 180.2042953273379,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "w5yepgie",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -35,
+                  "y": 166,
+                  "width": 240,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 30,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_$id": "sibvyk6i",
+          "_$type": "Box",
+          "name": "item1",
+          "width": 743.5,
+          "height": 334.5,
+          "_$child": [
+            {
+              "_$id": "vgrscu5j",
+              "_$type": "Sprite",
+              "name": "0",
+              "x": 258,
+              "y": -81,
+              "width": 205.01731369642698,
+              "height": 214.98363240720295,
+              "_$child": [
+                {
+                  "_$id": "85w8m1qb",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 17,
+                  "y": 33,
+                  "visible": true,
+                  "width": 167.5,
+                  "height": 167.5,
+                  "autoPlay": false,
+                  "interval": 200
+                },
+                {
+                  "_$id": "xc7vobf3",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "width": 209.17225331740133,
+                  "height": 226.45921640148424,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "suxf7yfv",
+                  "_$type": "Image",
+                  "name": "Image(1)",
+                  "x": -36,
+                  "y": -42,
+                  "width": 238.39849563411246,
+                  "height": 54.93052894795217,
+                  "skin": "res://af1e265a-3f5d-4b2c-9ff7-2bd4cf0f030a",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "5eyfjgo5",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -15,
+                  "y": 201,
+                  "width": 240,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 34,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            },
+            {
+              "_$id": "5lonhmwn",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 111,
+              "y": 159,
+              "width": 491,
+              "height": 211,
+              "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "xz4gw46n",
+              "_$type": "Sprite",
+              "name": "1",
+              "x": 171,
+              "y": 180,
+              "width": 151.12889126470031,
+              "height": 163.6519401295516,
+              "_$child": [
+                {
+                  "_$id": "9r37u0ql",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 23,
+                  "y": 21,
+                  "visible": true,
+                  "width": 125.12889126470031,
+                  "height": 123.6519401295516,
+                  "interval": 200,
+                  "autoPlay": false
+                },
+                {
+                  "_$id": "qgp8s9xu",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 10,
+                  "y": 1,
+                  "width": 148.57713351361548,
+                  "height": 160.8562354568895,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "9ahhyswp",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -37,
+                  "y": 147,
+                  "width": 240,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 30,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            },
+            {
+              "_$id": "83s3cw80",
+              "_$type": "Sprite",
+              "name": "2",
+              "x": 391,
+              "y": 185.4782039663171,
+              "width": 148.5850074111451,
+              "height": 157.17373616323448,
+              "_$child": [
+                {
+                  "_$id": "l116yd4j",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 11,
+                  "y": 17,
+                  "visible": true,
+                  "width": 118.58500741114511,
+                  "height": 117.17373616323441,
+                  "interval": 200,
+                  "autoPlay": false
+                },
+                {
+                  "_$id": "uxdq611l",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "y": -3,
+                  "width": 142.03324966006028,
+                  "height": 154.37803149057237,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "uxbcgvsk",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -42,
+                  "y": 135,
+                  "width": 240,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 30,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_$id": "sr88v31v",
+          "_$type": "Box",
+          "name": "item2",
+          "width": 743.5,
+          "height": 334.5,
+          "visible": false,
+          "_$child": [
+            {
+              "_$id": "zwbao521",
+              "_$type": "Sprite",
+              "name": "0",
+              "x": 258,
+              "y": -81.00000000000011,
+              "width": 205.01731369642698,
+              "height": 214.98363240720295,
+              "_$child": [
+                {
+                  "_$id": "6v8q01rx",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 22,
+                  "y": 33,
+                  "visible": true,
+                  "width": 167.5,
+                  "height": 167.5,
+                  "autoPlay": false,
+                  "interval": 200
+                },
+                {
+                  "_$id": "ixg39v1y",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "width": 209.17225331740133,
+                  "height": 226.45921640148424,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "t1h6u4ws",
+                  "_$type": "Image",
+                  "name": "Image(1)",
+                  "x": -36,
+                  "y": -42,
+                  "width": 238.39849563411246,
+                  "height": 54.93052894795217,
+                  "skin": "res://af1e265a-3f5d-4b2c-9ff7-2bd4cf0f030a",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "huige5lp",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -15,
+                  "y": 203,
+                  "width": 240,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 34,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            },
+            {
+              "_$id": "utns5cqq",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 85,
+              "y": 164,
+              "width": 578,
+              "height": 204,
+              "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "pur83781",
+              "_$type": "Sprite",
+              "name": "1",
+              "x": 112,
+              "y": 179.9999999999999,
+              "width": 151.12889126470031,
+              "height": 163.6519401295516,
+              "_$child": [
+                {
+                  "_$id": "88g0d6q4",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 23,
+                  "y": 21,
+                  "visible": true,
+                  "width": 125.12889126470031,
+                  "height": 123.6519401295516,
+                  "interval": 200,
+                  "autoPlay": false
+                },
+                {
+                  "_$id": "hh1ecgxl",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 10,
+                  "y": 1,
+                  "width": 148.57713351361548,
+                  "height": 160.8562354568895,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "cl75qd8g",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": 8,
+                  "y": 145,
+                  "width": 157,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 30,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            },
+            {
+              "_$id": "l2x5fi7o",
+              "_$type": "Sprite",
+              "name": "2",
+              "x": 478,
+              "y": 185.4782039663171,
+              "width": 148.5850074111451,
+              "height": 157.17373616323448,
+              "_$child": [
+                {
+                  "_$id": "8y128prb",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 11,
+                  "y": 17,
+                  "visible": true,
+                  "width": 118.58500741114511,
+                  "height": 117.17373616323441,
+                  "interval": 200,
+                  "autoPlay": false
+                },
+                {
+                  "_$id": "fxqcpak1",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "y": -3,
+                  "width": 142.03324966006028,
+                  "height": 154.37803149057237,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "y16cn8tj",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -7,
+                  "y": 137,
+                  "width": 157,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 30,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            },
+            {
+              "_$id": "cjik8rb0",
+              "_$type": "Sprite",
+              "name": "3",
+              "x": 301,
+              "y": 185.4782039663171,
+              "width": 148.5850074111451,
+              "height": 157.17373616323448,
+              "_$child": [
+                {
+                  "_$id": "b90q8gs4",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatar",
+                  "active": true,
+                  "x": 11,
+                  "y": 17,
+                  "visible": true,
+                  "width": 118.58500741114511,
+                  "height": 117.17373616323441,
+                  "interval": 200,
+                  "autoPlay": false
+                },
+                {
+                  "_$id": "2uf3sjaj",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "y": -3,
+                  "width": 142.03324966006028,
+                  "height": 154.37803149057237,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                },
+                {
+                  "_$id": "y06d3bja",
+                  "_$type": "Label",
+                  "name": "name",
+                  "x": -7,
+                  "y": 137,
+                  "width": 157,
+                  "height": 30,
+                  "text": "Label",
+                  "fontSize": 30,
+                  "color": "rgba(201, 255, 217, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0",
+                  "stroke": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -2,7 +2,7 @@ const { regClass, property } = Laya;
 import { Room } from "./Room";
 import * as Player from "./Player";
 import { Trade } from "./Trade";
-import { Config } from "./Config";
+import { Oneself } from "./Oneself";
 
 @regClass()
 export class Local extends Laya.Script {
@@ -17,7 +17,7 @@ export class Local extends Laya.Script {
     onAwake(): void {
         this.room = this.owner.getComponent(Room);
         this.owner.on(Player.Event.Achieve, this.room, this.room.onAchieve);
-        this.owner.on(Player.Event.Victory, this.room, this.room.onVictory);
+        this.owner.on(Player.Event.Victory,  this, this.onVictory);
         this.owner.on(Player.Event.Hurl, this, this.onHurl);
         this.room.chitchat.visible = false;
     }
@@ -31,5 +31,11 @@ export class Local extends Laya.Script {
 
     onStart(): void {
         this.room.startGame(this.param.color);
+    }
+
+    onVictory(player:Laya.Sprite) {
+        this.room.onVictory();
+        let isSelf = player.getComponent(Oneself) != null;
+        Laya.Scene.open("dialog/combat.lh", true,1);
     }
 }

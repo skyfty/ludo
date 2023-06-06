@@ -11,8 +11,8 @@ export class Generalize extends Laya.Script {
         this.type = type;
     }
 
-    private type = "";
-    private startTime = Date.now();
+    protected type = "";
+    protected startTime = Date.now();
     
     onAwake(): void {
         this.owner.on(Player.Event.Victory, this, this.onVictory)

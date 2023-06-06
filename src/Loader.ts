@@ -39,7 +39,6 @@ export class Loader extends Laya.Script {
                 "resources/images/green_arrow.png",
                 "resources/images/logo.png",
                 "resources/images/Ludo_board.png",
-                "resources/images/manager_disabled.png",
                 "resources/images/manger.png",
                 "resources/images/menubk.png",
                 "resources/images/menu_avatar.png",
@@ -89,6 +88,10 @@ export class Loader extends Laya.Script {
                 "resources/images/messagetip6.png",
                 "resources/images/profile.png",
                 "resources/images/statistics.png",
+                "resources/images/bk2.png",
+                "resources/images/loser.png",
+                "resources/images/wellplayed.png",
+                "resources/images/youarethewinner.png",
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },

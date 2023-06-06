@@ -35,7 +35,6 @@ export class Online extends Laya.Script {
     onCountdown(trade:Trade, reason:string) {
         if (reason == Player.Event.Chuck) {
             trade.startCountdown(Config.TIMEOUT_CHUNK, reason);
-
         }else if (reason == Player.Event.Choose) {
             trade.startCountdown(Config.TIMEOUT_CHOOSE_CHESS, reason);
         }
@@ -61,8 +60,11 @@ export class Online extends Laya.Script {
     }
 
     onHurl(player:Laya.Sprite) {
+        player.event(Player.Event.Chuck, 5);
+
+
         var params = new SFS2X.SFSObject();
-        Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
+        // Station.sfs.send(new SFS2X.ExtensionReq1uest("Hurl", params));
     }
 
     onDestroy(): void {
@@ -112,7 +114,9 @@ export class Online extends Laya.Script {
     private onWinner(evtParam: SFS2X.SFSEvents) {
         Profile.setGold(evtParam.data.get("amount"));
         let reward = this.room.reward.create() as Laya.Sprite;
-        reward.getComponent(Reward).setEarn( evtParam.data.get("earn"));
+        let earn = evtParam.data.get("earn");
+        let winPlayerId = evtParam.data.get("winner");
+        reward.getComponent(Reward).setEarn(winPlayerId, earn,this.room.numberOfPlayer, this.room.players);
         reward.on(Laya.Event.CLOSE, this, ()=>{
              this.quitRoomGame();
         });
@@ -120,10 +124,10 @@ export class Online extends Laya.Script {
     }
 
     private onLoser(evtParam: SFS2X.SFSEvents) {
+        let winPlayerId = evtParam.data.get("winner");
         Profile.setGold(evtParam.data.get("amount"));
-
         let loser = this.room.loser.create() as Laya.Sprite;
-        loser.getComponent(Loser).setEarn( evtParam.data.get("pay"));
+        loser.getComponent(Loser).setEarn(winPlayerId,this.room.numberOfPlayer, this.room.players);
         loser.on(Laya.Event.CLOSE, this, ()=>{
              this.quitRoomGame();
         });
