@@ -95,6 +95,9 @@ export class Loader extends Laya.Script {
                 "resources/images/leaderboard.png",
                 "resources/images/ranking.png",
                 "resources/images/ranklist.png",
+                "resources/images/checkin.png",
+                "resources/images/dailycheckin.png",
+                "resources/images/duihao.png",
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },
@@ -110,6 +113,7 @@ export class Loader extends Laya.Script {
                 { url: "dialog/buycoin.lh", type: Laya.Loader.HIERARCHY },
                 { url: "dialog/goldcoin.lh", type: Laya.Loader.HIERARCHY },
                 { url: "dialog/profile.lh", type: Laya.Loader.HIERARCHY },
+                { url: "dialog/checkin.lh", type: Laya.Loader.HIERARCHY },
 
                 { url: "sounds/chess.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/click.mp3", type: Laya.Loader.BUFFER },
@@ -123,7 +127,7 @@ export class Loader extends Laya.Script {
             ];
 
             Laya.loader.load(resArr, null, Laya.Handler.create(this, this.onLoading, null, false)).then(() => {
-                this.progress.value =1;
+                this.progress.value = 1;
                 Laya.Scene.open("menu.ls");
             });
             Laya.loader.on(Laya.Event.ERROR, this, this.onError);

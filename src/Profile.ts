@@ -22,6 +22,11 @@ export class Profile {
             params.putInt("avatar", Number.parseInt(avatar));
         }
 
+        let checkinday = Laya.LocalStorage.getItem("checkinday");
+        if (checkinday != null) {
+            params.putInt("checkinday", Number.parseInt(checkinday));
+        }
+
         let updatetime = Laya.LocalStorage.getItem("updatetime");
         if (updatetime == null) {
             updatetime = Profile.getCurrentUpdateTime();
@@ -46,6 +51,10 @@ export class Profile {
         let rank = params.get("rank");
         if (rank != null) {
             Laya.LocalStorage.setItem("rank", rank);
+        }
+        let checkinday = params.get("checkinday");
+        if (checkinday != null) {
+            Laya.LocalStorage.setItem("checkinday", checkinday);
         }
         let gold = params.get("gold");
         if (gold != null) {
@@ -93,6 +102,14 @@ export class Profile {
         return gold == null?0:Number.parseInt(gold);
     }
 
+    public static getCheckinDay() {
+        let checkinday = Laya.LocalStorage.getItem("checkinday");
+        return checkinday == null?0:Number.parseInt(checkinday);
+    }
+
+    public static setCheckinDay(v:number) {
+        Laya.LocalStorage.setItem("checkinday",v.toString());
+    }
     public static setGold(gold:number) {
         Laya.LocalStorage.setItem("gold",gold.toString());
     }

@@ -1,5 +1,6 @@
 
 const { regClass, property,SoundManager } = Laya;
+import { CheckinDialog } from "./CheckinDialog";
 import { ComputerParallel } from "./ComputerParallel";
 import { OnlineParallel } from "./OnlineParallel";
 import { Profile } from "./Profile";
@@ -27,6 +28,10 @@ export class Menu extends Laya.Script {
     @property(Laya.Sprite)
     public ranklist: Laya.Sprite;
 
+    
+    @property(Laya.Sprite)
+    public checkin: Laya.Sprite;
+
     @property(Laya.Sprite)
     public level: Laya.Sprite;
     constructor() {
@@ -45,6 +50,14 @@ export class Menu extends Laya.Script {
         this.ranklist.on(Laya.Event.CLICK, this, ()=>{
             Laya.Scene.open("dialog/ranklist.lh", true);
         });
+
+        
+        this.checkin.on(Laya.Event.CLICK, this, ()=>{
+            Laya.Scene.open("dialog/checkin.lh", true, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+                dlg.getComponent(CheckinDialog).checkinListRequest(this.goldcoin);
+            }));
+        });
+
         this.level.on(Laya.Event.CLICK, this, ()=>{
             let param:any = {
                 "userid":Profile.getUserId()

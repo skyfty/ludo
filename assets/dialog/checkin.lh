@@ -1,0 +1,304 @@
+{
+  "_$ver": 1,
+  "_$id": "krocf9g2",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "f3c30d9d-ae31-4fb1-9758-99dba1958ed5",
+      "scriptPath": "../src/CheckinDialog.ts",
+      "list": {
+        "_$ref": "tad4wevn"
+      },
+      "goldcoin": {
+        "_$uuid": "b5864f4e-6185-45a5-9af5-335f1fb6b0be",
+        "_$type": "Prefab"
+      },
+      "collectPoint": null
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "m8h9mes6",
+      "_$type": "Button",
+      "name": "close",
+      "x": 338,
+      "y": 805,
+      "width": 64,
+      "height": 63.5,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "2pmf2dyu",
+      "_$type": "Image",
+      "name": "Image(6)",
+      "x": 18,
+      "y": 201.64305949008505,
+      "width": 712.171957594696,
+      "height": 592.5200490639877,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "5e5gvtxe",
+      "_$type": "Image",
+      "name": "Image(7)",
+      "x": 55,
+      "y": 222,
+      "width": 639,
+      "height": 60,
+      "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "8tofz5tu",
+      "_$type": "Image",
+      "name": "Image(8)",
+      "x": 188,
+      "y": 227,
+      "width": 372.7098419173886,
+      "height": 42.35339112697596,
+      "skin": "res://39a89e01-0ff2-4ea3-b7ed-d7347a50c39a",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "pbtvo4am",
+      "_$type": "Image",
+      "name": "Image(9)",
+      "x": 56,
+      "y": 292,
+      "width": 638,
+      "height": 456,
+      "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "tad4wevn",
+      "_$type": "List",
+      "name": "List",
+      "x": 66,
+      "y": 305,
+      "width": 617,
+      "height": 432,
+      "mouseEnabled": true,
+      "itemTemplate": {
+        "_$ref": "pal6youk",
+        "_$tmpl": "itemRender"
+      },
+      "repeatX": 3,
+      "repeatY": 2,
+      "spaceX": 6,
+      "spaceY": 19,
+      "_$child": [
+        {
+          "_$id": "pal6youk",
+          "_$type": "Box",
+          "name": "Box",
+          "width": 202,
+          "height": 202,
+          "mouseEnabled": true,
+          "_filters": [],
+          "_$comp": [
+            {
+              "_$type": "28223f0a-5e06-42ae-aaa6-e3c8c1a10b42",
+              "scriptPath": "../src/CheckinItem.ts",
+              "gold": {
+                "_$ref": "7e8yb6b9"
+              },
+              "day": {
+                "_$ref": "0pzuf5wq"
+              },
+              "mark": {
+                "_$ref": "5nrsubee"
+              },
+              "checkinBtn": {
+                "_$ref": "rc8qudja"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "rc8qudja",
+              "_$type": "Button",
+              "name": "Button",
+              "width": 202,
+              "height": 202,
+              "mouseEnabled": true,
+              "_filters": [],
+              "stateNum": 1,
+              "skin": "res://238ef9cb-8a20-414b-8d5e-986c5acccb2d",
+              "label": "",
+              "labelSize": 20,
+              "labelColors": "#32556b,#32cc6b,#ff0000,#40406e"
+            },
+            {
+              "_$id": "saaeddnm",
+              "_$type": "Image",
+              "name": "Image(1)",
+              "x": 29.950563347896068,
+              "y": 34.05748447919062,
+              "width": 148.6893538744539,
+              "height": 127.87284433203033,
+              "skin": "res://18d32ce1-42f7-46cd-a1b6-c0c2743a55cb",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "7e8yb6b9",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 36,
+              "y": 154,
+              "width": 125,
+              "height": 35,
+              "text": "300",
+              "fontSize": 44,
+              "color": "#FFFFFF",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "stroke": 1
+            },
+            {
+              "_$id": "0pzuf5wq",
+              "_$type": "Label",
+              "name": "Label(1)",
+              "x": 19,
+              "y": 11,
+              "width": 158.449947312961,
+              "height": 25.071654373024238,
+              "text": "Day 1",
+              "fontSize": 27,
+              "color": "rgba(123, 123, 234, 1)",
+              "bold": true,
+              "align": "center",
+              "leading": 0,
+              "padding": "0,0,0,0"
+            },
+            {
+              "_$id": "5nrsubee",
+              "_$type": "Sprite",
+              "name": "mark",
+              "width": 202,
+              "height": 202,
+              "visible": false,
+              "_$child": [
+                {
+                  "_$id": "tshfeav4",
+                  "_$type": "Image",
+                  "name": "Image(3)",
+                  "x": -1.0000000000000284,
+                  "y": -1.0000000000001137,
+                  "width": 203.5,
+                  "height": 203.5,
+                  "alpha": 0.83,
+                  "skin": "res://238ef9cb-8a20-414b-8d5e-986c5acccb2d",
+                  "color": "#212122"
+                },
+                {
+                  "_$id": "vivh0l23",
+                  "_$type": "Image",
+                  "name": "Image(2)",
+                  "x": 20,
+                  "y": 17,
+                  "width": 158.5,
+                  "height": 158.5,
+                  "skin": "res://d3211823-0f7f-4976-808c-38dbe31f6c6f",
+                  "color": "#ffffff"
+                }
+              ]
+            },
+            {
+              "_$id": "swtco2jz",
+              "_$type": "Clip",
+              "name": "Clip",
+              "x": 47.86262458740999,
+              "y": 44,
+              "width": 38.13737541259,
+              "height": 24.75485523352614,
+              "anchorY": -0.16666666666666666,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 4,
+              "interval": 226,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            },
+            {
+              "_$id": "69xd7wb1",
+              "_$type": "Clip",
+              "name": "Clip(1)",
+              "x": 114.86262458740998,
+              "y": 81,
+              "width": 52.931802341977324,
+              "height": 32.83153900540065,
+              "anchorY": -0.16666666666666666,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 5,
+              "interval": 177,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            },
+            {
+              "_$id": "ee6ap05i",
+              "_$type": "Clip",
+              "name": "Clip(2)",
+              "x": 48.86262458740999,
+              "y": 81,
+              "width": 38.13737541259,
+              "height": 24.75485523352614,
+              "anchorY": -0.16666666666666666,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 1,
+              "interval": 116,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            },
+            {
+              "_$id": "i1isdclp",
+              "_$type": "Clip",
+              "name": "Clip(3)",
+              "x": 88.86262458740998,
+              "y": 43,
+              "width": 61.64753564615405,
+              "height": 37.5352415820057,
+              "anchorY": -0.16666666666666666,
+              "autoPlay": true,
+              "clipWidth": 30,
+              "clipHeight": 30,
+              "clipX": 7,
+              "clipY": 1,
+              "index": 4,
+              "interval": 217,
+              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

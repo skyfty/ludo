@@ -182,7 +182,6 @@ export class Player extends Laya.Script {
     }
 
     public isAllHome() {
-        return true;
         return this.home.length == 4;
     }
 

@@ -5,10 +5,10 @@
     "sRGB": true,
     "generateMipmap": true,
     "sizeGrid": [
-      33,
-      27,
-      33,
-      34,
+      39,
+      37,
+      38,
+      46,
       0
     ]
   }
