@@ -34,6 +34,9 @@
       "goldcoin": {
         "_$ref": "pizo50xh"
       },
+      "ranklist": {
+        "_$ref": "ki4a9dg1"
+      },
       "level": {
         "_$ref": "6j8qzh0l"
       }
@@ -308,7 +311,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 5,
+              "index": 4,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -326,7 +329,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 1,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
@@ -390,6 +393,31 @@
       "height": 264.5,
       "skin": "res://9a029446-e9cb-4e8e-9909-e389aff3b283",
       "color": "#ffffff"
+    },
+    {
+      "_$id": "ki4a9dg1",
+      "_$type": "Button",
+      "name": "ranklist",
+      "x": 16,
+      "y": 179,
+      "width": 74.33795712484232,
+      "height": 92.1790668348045,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://b86621ff-1319-4a8d-8963-40698e57ad65",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "d3b40897-9190-49b2-8cb3-e2afa5b2e122",
+          "scriptPath": "../src/ShowDialog.ts",
+          "text": ""
+        },
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
     }
   ]
 }

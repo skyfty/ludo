@@ -13386,6 +13386,9 @@
           "resources/images/loser.png",
           "resources/images/wellplayed.png",
           "resources/images/youarethewinner.png",
+          "resources/images/leaderboard.png",
+          "resources/images/ranking.png",
+          "resources/images/ranklist.png",
           { url: "game.ls", type: Laya.Loader.HIERARCHY },
           { url: "menu.ls", type: Laya.Loader.HIERARCHY },
           { url: "militant.ls", type: Laya.Loader.HIERARCHY },
@@ -13555,6 +13558,9 @@
       this.goldcoin.on(Laya.Event.CLICK, this, () => {
         Laya.Scene.open("dialog/buycoin.lh", true);
       });
+      this.ranklist.on(Laya.Event.CLICK, this, () => {
+        Laya.Scene.open("dialog/ranklist.lh", true);
+      });
       this.level.on(Laya.Event.CLICK, this, () => {
         let param = {
           "userid": Profile.getUserId()
@@ -13609,6 +13615,9 @@
   __decorateClass([
     property51(Laya.Sprite)
   ], Menu.prototype, "goldcoin", 2);
+  __decorateClass([
+    property51(Laya.Sprite)
+  ], Menu.prototype, "ranklist", 2);
   __decorateClass([
     property51(Laya.Sprite)
   ], Menu.prototype, "level", 2);
@@ -14108,6 +14117,84 @@
   StatisticsDialog = __decorateClass([
     regClass62("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
+
+  // src/RanklistDialog.ts
+  var SFS2X17 = __toESM(require_sfs2x_api());
+
+  // src/RanklistItem.ts
+  var { regClass: regClass63, property: property63 } = Laya;
+  var RanklistItem = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+  };
+  __name(RanklistItem, "RanklistItem");
+  __decorateClass([
+    property63(Laya.Label)
+  ], RanklistItem.prototype, "rank", 2);
+  __decorateClass([
+    property63(Laya.Label)
+  ], RanklistItem.prototype, "nickname", 2);
+  __decorateClass([
+    property63(Laya.Clip)
+  ], RanklistItem.prototype, "avatar", 2);
+  __decorateClass([
+    property63(Laya.Clip)
+  ], RanklistItem.prototype, "icon", 2);
+  RanklistItem = __decorateClass([
+    regClass63("11031840-a06f-486c-800f-1a0b954f0d89", "../src/RanklistItem.ts")
+  ], RanklistItem);
+
+  // src/RanklistDialog.ts
+  var { regClass: regClass64, property: property64 } = Laya;
+  var RanklistDialog = class extends Laya.Script {
+    constructor() {
+      super();
+      this.ranks = null;
+    }
+    onAwake() {
+      this.addStationListener();
+      this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+    }
+    onStart() {
+      Station.sfs.send(new SFS2X17.ExtensionRequest("RanklistRequest"));
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    updateItem(cell, index) {
+      let data = this.ranks.getSFSObject(index);
+      let item = cell.getComponent(RanklistItem);
+      let avatar = data.getInt("avatar");
+      item.avatar.index = avatar;
+      item.nickname.text = data.getUtfString("nickname");
+      item.rank.text = data.getInt("rank");
+      item.icon.index = Math.min(index, 3);
+    }
+    onExtensionResponse(evtParams) {
+      if ("RanklistRequest" == evtParams.cmd) {
+        this.ranks = evtParams.params.getSFSArray("list");
+        var data = [];
+        for (var m = 0; m < this.ranks.size(); m++) {
+          data.push(this.ranks.getSFSObject(m));
+        }
+        this.list.array = data;
+      }
+    }
+    addStationListener() {
+      Station.sfs.addEventListener(SFS2X17.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+    }
+    removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X17.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+    }
+  };
+  __name(RanklistDialog, "RanklistDialog");
+  __decorateClass([
+    property64(Laya.List)
+  ], RanklistDialog.prototype, "list", 2);
+  RanklistDialog = __decorateClass([
+    regClass64("f3623e2b-f742-4477-ab8f-37a8cdb21c85", "../src/RanklistDialog.ts")
+  ], RanklistDialog);
 })();
 /*! Bundled license information:
 

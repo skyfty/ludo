@@ -24,6 +24,8 @@ export class Menu extends Laya.Script {
     @property(Laya.Sprite)
     public goldcoin: Laya.Sprite;
 
+    @property(Laya.Sprite)
+    public ranklist: Laya.Sprite;
 
     @property(Laya.Sprite)
     public level: Laya.Sprite;
@@ -39,6 +41,9 @@ export class Menu extends Laya.Script {
         this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
         this.goldcoin.on(Laya.Event.CLICK, this, ()=>{
             Laya.Scene.open("dialog/buycoin.lh", true);
+        });
+        this.ranklist.on(Laya.Event.CLICK, this, ()=>{
+            Laya.Scene.open("dialog/ranklist.lh", true);
         });
         this.level.on(Laya.Event.CLICK, this, ()=>{
             let param:any = {

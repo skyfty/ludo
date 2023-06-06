@@ -92,6 +92,9 @@ export class Loader extends Laya.Script {
                 "resources/images/loser.png",
                 "resources/images/wellplayed.png",
                 "resources/images/youarethewinner.png",
+                "resources/images/leaderboard.png",
+                "resources/images/ranking.png",
+                "resources/images/ranklist.png",
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },
