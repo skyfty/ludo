@@ -30,8 +30,8 @@
         },
         {
           "_$override": "gjhdic9x",
-          "x": 321,
-          "y": 222,
+          "x": 317,
+          "y": 242,
           "visible": true,
           "_$comp": [
             {
@@ -41,17 +41,31 @@
           ]
         },
         {
+          "_$id": "c0qboo48",
+          "_$index": 2,
+          "_$type": "Image",
+          "name": "Image(2)",
+          "x": 141,
+          "y": 47,
+          "width": 482,
+          "height": 176,
+          "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+          "color": "#ffffff"
+        },
+        {
           "_$override": "9r94nh4g",
-          "x": 142,
-          "y": 54,
+          "x": 160,
+          "y": 61,
           "text": "End Current Game?",
-          "width": 481
+          "width": 448,
+          "height": 136
         },
         {
           "_$override": "9i71029w",
-          "width": 89,
+          "width": 85,
           "x": 201,
-          "y": 219,
+          "y": 243,
+          "height": 85,
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",

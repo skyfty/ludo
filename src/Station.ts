@@ -112,7 +112,7 @@ export class Station extends Laya.Script {
     }
 
     private static onLoginError(event: SFS2X.SFSEvent) {
-        Laya.timer.once(1000 * 60, this, () => {
+        Laya.timer.once(5000, this, () => {
             Station.sfs.send(new SFS2X.LoginRequest());
         });
     }

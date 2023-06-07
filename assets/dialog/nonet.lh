@@ -37,22 +37,25 @@
           ]
         },
         {
-          "_$id": "459693pn",
+          "_$id": "awu40o7z",
           "_$index": 2,
           "_$type": "Image",
           "name": "Image(2)",
-          "x": 119.00000000000003,
-          "y": 64.99999999999994,
-          "width": 508,
-          "height": 181,
+          "x": 122,
+          "y": 75,
+          "width": 503,
+          "height": 174,
           "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
           "color": "#ffffff"
         },
         {
           "_$override": "9r94nh4g",
-          "text": "The player has left the room",
-          "x": 143,
-          "y": 73
+          "text": "No internet connection!",
+          "x": 135,
+          "y": 98,
+          "fontSize": 42,
+          "width": 474,
+          "height": 125
         },
         {
           "_$override": "9i71029w",

@@ -757,7 +757,7 @@
       "x": 60,
       "y": 1007,
       "width": 630,
-      "height": 48,
+      "height": 53,
       "mouseEnabled": true,
       "_$comp": [
         {
@@ -775,7 +775,7 @@
           "name": "chitchat",
           "x": 122,
           "width": 508,
-          "height": 48,
+          "height": 53,
           "mouseEnabled": true,
           "_$comp": [
             {
@@ -794,12 +794,14 @@
               "_$id": "643m7j12",
               "_$type": "TextInput",
               "name": "TextInput",
+              "x": 34,
+              "y": 1,
               "width": 395,
-              "height": 48,
+              "height": 53,
               "mouseEnabled": true,
               "text": "",
-              "fontSize": 20,
-              "color": "#A9A9A9",
+              "fontSize": 29,
+              "color": "rgba(36, 35, 35, 1)",
               "valign": "middle",
               "bgColor": "rgba(245, 245, 245, 1)",
               "borderColor": "rgba(11, 232, 255, 1)",
@@ -817,32 +819,35 @@
               "_$id": "itm32i04",
               "_$type": "Button",
               "name": "Button",
-              "x": 401,
-              "width": 99.768067938229,
-              "height": 48,
+              "x": 433.22544726635806,
+              "y": 1,
+              "width": 72.6485674965595,
+              "height": 53.47741774052296,
               "mouseEnabled": true,
               "stateNum": 2,
               "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
               "label": "",
               "labelSize": 20,
-              "labelColors": "#ffffff,#32cc6b,#ff0000,#c0c0c0",
+              "labelColors": "#ffffff,#32cc6b,#ff0000",
               "_$comp": [
                 {
                   "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
                   "scriptPath": "../src/ClickSound.ts"
                 }
+              ],
+              "_$child": [
+                {
+                  "_$id": "r1gwal24",
+                  "_$type": "Image",
+                  "name": "Image",
+                  "x": 11.999999999999886,
+                  "y": 12.000000000000114,
+                  "width": 50.90262582056892,
+                  "height": 34.61378555798687,
+                  "skin": "res://572a347c-248d-4a5a-a81e-d5e19853adb3",
+                  "color": "#ffffff"
+                }
               ]
-            },
-            {
-              "_$id": "r1gwal24",
-              "_$type": "Image",
-              "name": "Image",
-              "x": 427,
-              "y": 10,
-              "width": 42.861050328227556,
-              "height": 29.145514223194752,
-              "skin": "res://572a347c-248d-4a5a-a81e-d5e19853adb3",
-              "color": "#ffffff"
             }
           ]
         },
@@ -850,8 +855,10 @@
           "_$id": "fp6q39ed",
           "_$type": "Button",
           "name": "back",
-          "width": 48,
-          "height": 48,
+          "x": 5,
+          "y": 1,
+          "width": 53,
+          "height": 53,
           "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
@@ -1061,7 +1068,8 @@
                   "x": 29,
                   "y": 72,
                   "visible": true,
-                  "bgColor": "rgba(243, 15, 0, 1)"
+                  "bgColor": "rgba(243, 15, 0, 1)",
+                  "alpha": 0
                 }
               ]
             },
@@ -1520,7 +1528,8 @@
                   "x": -11,
                   "y": 30,
                   "visible": true,
-                  "bgColor": "rgba(0, 163, 0, 1)"
+                  "bgColor": "rgba(0, 163, 0, 1)",
+                  "alpha": 0
                 }
               ]
             },
@@ -1956,7 +1965,8 @@
                   "x": 72,
                   "y": 30,
                   "visible": true,
-                  "bgColor": "rgba(0, 140, 248, 1)"
+                  "bgColor": "rgba(0, 140, 248, 1)",
+                  "alpha": 0
                 }
               ]
             },
@@ -2350,7 +2360,8 @@
                   "x": 30,
                   "y": -11,
                   "visible": true,
-                  "bgColor": "rgba(255, 196, 0, 1)"
+                  "bgColor": "rgba(255, 196, 0, 1)",
+                  "alpha": 0
                 }
               ]
             },

@@ -44,11 +44,23 @@
           ]
         },
         {
+          "_$id": "9fj5wij8",
+          "_$index": 2,
+          "_$type": "Image",
+          "name": "Image(2)",
+          "x": 121,
+          "y": 60,
+          "width": 505,
+          "height": 180,
+          "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+          "color": "#ffffff"
+        },
+        {
           "_$override": "9r94nh4g",
           "text": "You don't have enough gold!",
-          "x": 116,
+          "x": 133,
           "y": 73,
-          "width": 518,
+          "width": 481,
           "fontSize": 45
         },
         {

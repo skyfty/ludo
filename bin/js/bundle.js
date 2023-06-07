@@ -10747,7 +10747,7 @@
       Station.sync();
     }
     static onLoginError(event) {
-      Laya.timer.once(1e3 * 60, this, () => {
+      Laya.timer.once(5e3, this, () => {
         Station.sfs.send(new SFS2X2.LoginRequest());
       });
     }
@@ -11703,7 +11703,6 @@
       if (this.state != 1 /* Running */) {
         trade.stop();
       } else {
-        this.onClickTrade();
         this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
         trade.becareful();
       }
@@ -11759,7 +11758,6 @@
         this.owner.event(Event3.Victory, [this.owner]);
       } else {
         if (chess.hole == this.player.entry) {
-          this.onClickTrade();
           let trade = this.player.trade.getComponent(Trade);
           trade.becareful();
           this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
@@ -11785,7 +11783,11 @@
       this.player.room.owner.event(Event3.Countdown, [trade, chooseChess]);
     }
     onReckonChessComplete(chesses, complete) {
-      complete.runWith(chesses[0]);
+      if (chesses.length == 1) {
+        complete.runWith(chesses[0]);
+      } else {
+        this.onReckonMultiChessComplete(chesses, complete);
+      }
     }
     onDestroy() {
       this.player.trade.offAllCaller(this);
@@ -13749,17 +13751,29 @@
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
       this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
       this.goldcoin.on(Laya.Event.CLICK, this, () => {
-        Laya.Scene.open("dialog/buycoin.lh", true, null, Laya.Handler.create(this, (dlg) => {
-          dlg.getComponent(Buycoin).setCollectPoint(this.goldcoin);
-        }));
+        if (Station.sfs.mySelf == null) {
+          Laya.Scene.open("dialog/nonet.lh");
+        } else {
+          Laya.Scene.open("dialog/buycoin.lh", true, null, Laya.Handler.create(this, (dlg) => {
+            dlg.getComponent(Buycoin).setCollectPoint(this.goldcoin);
+          }));
+        }
       });
       this.ranklist.on(Laya.Event.CLICK, this, () => {
-        Laya.Scene.open("dialog/ranklist.lh", true);
+        if (Station.sfs.mySelf == null) {
+          Laya.Scene.open("dialog/nonet.lh");
+        } else {
+          Laya.Scene.open("dialog/ranklist.lh", true);
+        }
       });
       this.checkin.on(Laya.Event.CLICK, this, () => {
-        Laya.Scene.open("dialog/checkin.lh", true, null, Laya.Handler.create(this, (dlg) => {
-          dlg.getComponent(CheckinDialog).checkinListRequest(this.goldcoin);
-        }));
+        if (Station.sfs.mySelf == null) {
+          Laya.Scene.open("dialog/nonet.lh");
+        } else {
+          Laya.Scene.open("dialog/checkin.lh", true, null, Laya.Handler.create(this, (dlg) => {
+            dlg.getComponent(CheckinDialog).checkinListRequest(this.goldcoin);
+          }));
+        }
       });
       this.level.on(Laya.Event.CLICK, this, () => {
         let param = {
@@ -13777,7 +13791,11 @@
       Laya.Scene.open("dialog/profile.lh", true);
     }
     onChallengeFriend() {
-      Laya.Scene.open("dialog/chamber.lh", true);
+      if (Station.sfs.mySelf == null) {
+        Laya.Scene.open("dialog/nonet.lh");
+      } else {
+        Laya.Scene.open("dialog/chamber.lh", true);
+      }
     }
     onChallengeComputer() {
       this.openParallelDlg(Laya.Handler.create(this, (dlg) => {
@@ -13790,7 +13808,11 @@
       }));
     }
     openParallelDlg(complete) {
-      Laya.Scene.open("dialog/parallel.lh", false, null, complete);
+      if (Station.sfs.mySelf == null) {
+        Laya.Scene.open("dialog/nonet.lh");
+      } else {
+        Laya.Scene.open("dialog/parallel.lh", false, null, complete);
+      }
     }
     onSettings() {
       Laya.Scene.open("dialog/settings.lh", false, null);
