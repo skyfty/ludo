@@ -21,6 +21,8 @@
     "laya.tiledmap": true
   },
   "splash": {
+    "enabled": false,
+    "image": "assets/resources/images/4p.png",
     "fit": "center"
   }
 }
