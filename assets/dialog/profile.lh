@@ -34,7 +34,7 @@
       "_$type": "Sprite",
       "name": "Sprite(1)",
       "x": 325,
-      "y": 617,
+      "y": 521,
       "width": 100,
       "height": 100,
       "mouseEnabled": true,

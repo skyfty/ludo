@@ -10824,7 +10824,6 @@
     onAwake() {
       this.addStationListener();
       this.list.renderHandler = new Laya.Handler(this, this.updateItem);
-      this.list.selectHandler = new Laya.Handler(this, this.onSelectItem);
     }
     onDestroy() {
       this.removeStationListener();
@@ -10832,15 +10831,45 @@
     onStart() {
       Station.sfs.send(new SFS2X3.ExtensionRequest("GetCoinRequest"));
     }
-    onSelectItem(idx) {
-      let item = this.list.getItem(idx);
-      console.log("lsdkf");
+    setCollectPoint(point) {
+      this.collectPoint = point;
     }
     updateItem(cell, index) {
-      let data = this.coins.getSFSObject(index);
-      let item = cell.getComponent(BuyItem);
-      item.coin.text = data.getInt("amount").toLocaleString("en-US");
-      item.price.text = data.getDouble("price");
+      if (this.coins != null) {
+        let data = this.coins.getSFSObject(index);
+        let item = cell.getComponent(BuyItem);
+        item.coin.text = data.getInt("amount").toLocaleString("en-US");
+        item.price.text = data.getDouble("price");
+        item.buyBtn.on(Laya.Event.CLICK, this, () => {
+          var params = new SFS2X3.SFSObject();
+          params.putInt("id", Profile.getUserId());
+          params.putInt("amount", data.getInt("amount"));
+          params.putInt("selectindex", index);
+          Station.sfs.send(new SFS2X3.ExtensionRequest("BuyGoldRequest", params));
+        });
+      }
+    }
+    startGoldCoin(selectindex) {
+      let dialog = this.owner;
+      let cell = this.list.getCell(selectindex);
+      let coinAmount = cell.getComponent(BuyItem).coin;
+      let destPointParent = this.collectPoint.parent;
+      let destPos = dialog.globalToLocal(destPointParent.localToGlobal(new Laya.Point(this.collectPoint.x, this.collectPoint.y)));
+      let amount = 5;
+      for (let i = 0; i < amount; ++i) {
+        let xpos = coinAmount.x + Math.random() * coinAmount.width;
+        let ypos = coinAmount.y + Math.random() * coinAmount.height;
+        let coinPos = dialog.globalToLocal(cell.localToGlobal(new Laya.Point(xpos, ypos)));
+        let coin = this.goldcoin.create();
+        coin.y = coinPos.y;
+        coin.x = coinPos.x;
+        dialog.addChild(coin);
+        let duration = Math.random() * 200 + 600;
+        Laya.Tween.to(coin, { y: destPos.y, x: destPos.x }, duration, Laya.Ease.linearOut, Laya.Handler.create(this, () => {
+          coin.removeSelf();
+        }));
+      }
+      Laya.SoundManager.playSound("sounds/jinbi.mp3", 1);
     }
     onExtensionResponse(evtParams) {
       if ("GetCoinRequest" == evtParams.cmd) {
@@ -10850,6 +10879,12 @@
           data.push(this.coins.getSFSObject(m));
         }
         this.list.array = data;
+      } else if ("BuyGoldRequest" == evtParams.cmd) {
+        let gold = evtParams.params.get("gold");
+        if (gold != null) {
+          Profile.setGold(gold);
+        }
+        this.startGoldCoin(evtParams.params.getInt("selectindex"));
       }
     }
     addStationListener() {
@@ -10863,6 +10898,12 @@
   __decorateClass([
     property7(Laya.List)
   ], Buycoin.prototype, "list", 2);
+  __decorateClass([
+    property7(Laya.Prefab)
+  ], Buycoin.prototype, "goldcoin", 2);
+  __decorateClass([
+    property7(Laya.Sprite)
+  ], Buycoin.prototype, "collectPoint", 2);
   Buycoin = __decorateClass([
     regClass7("08e8d095-2f7a-40cc-8794-831ffb1c22e8", "../src/Buycoin.ts")
   ], Buycoin);
@@ -11528,7 +11569,6 @@
       return this;
     }
     disabled(b) {
-      this.disabledBk.visible = b;
     }
     becareful() {
       let ani = this.owner.getComponent(Laya.Animator2D);
@@ -11550,9 +11590,6 @@
     }
   };
   __name(Trade, "Trade");
-  __decorateClass([
-    property20(Laya.Image)
-  ], Trade.prototype, "disabledBk", 2);
   __decorateClass([
     property20(Laya.Clip)
   ], Trade.prototype, "avatar", 2);
@@ -12971,7 +13008,7 @@
     }
     onHurl(player) {
       var params = new SFS2X10.SFSObject();
-      Station.sfs.send(new SFS2X10.ExtensionReq1uest("Hurl", params));
+      Station.sfs.send(new SFS2X10.ExtensionRequest("Hurl", params));
     }
     onDestroy() {
       Station.levelRoom();
@@ -13662,6 +13699,12 @@
       if (this.colorIdx == -1) {
         return;
       }
+      let jetton = this.jettons.getSFSObject(this.idx);
+      let pay = jetton.getDouble("pay");
+      if (Profile.getGold() < pay) {
+        Laya.Scene.open("dialog/nogold.lh", false);
+        return;
+      }
       let roomVars = this.getRoomInitVariable(false);
       var settings = this.getRoomSettings(parallel.numberOfPlayer);
       settings.variables = roomVars;
@@ -13703,7 +13746,9 @@
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
       this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
       this.goldcoin.on(Laya.Event.CLICK, this, () => {
-        Laya.Scene.open("dialog/buycoin.lh", true);
+        Laya.Scene.open("dialog/buycoin.lh", true, null, Laya.Handler.create(this, (dlg) => {
+          dlg.getComponent(Buycoin).setCollectPoint(this.goldcoin);
+        }));
       });
       this.ranklist.on(Laya.Event.CLICK, this, () => {
         Laya.Scene.open("dialog/ranklist.lh", true);

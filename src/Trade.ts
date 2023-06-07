@@ -6,9 +6,6 @@ import * as Player from "./Player";
 @regClass()
 export class Trade extends Laya.Script {
 
-    @property(Laya.Image)
-    public disabledBk: Laya.Image;
-
     @property(Laya.Clip)
     public avatar: Laya.Clip;
 
@@ -30,7 +27,6 @@ export class Trade extends Laya.Script {
     }
 
     public disabled(b:boolean) {
-        this.disabledBk.visible = b;
 
     }
     public becareful() {

@@ -4,6 +4,7 @@ import { Parallel } from "./Parallel"
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Station } from "./Station";
 import { Config } from "./Config";
+import { Profile } from "./Profile";
 
 @regClass()
 export class OnlineParallel extends GameRoom {
@@ -72,6 +73,12 @@ export class OnlineParallel extends GameRoom {
     onPlay() {
         let parallel = this.owner.getComponent(Parallel) as Parallel;
         if (this.colorIdx == -1) {
+            return;
+        }
+        let jetton = this.jettons.getSFSObject(this.idx);
+        let pay =  jetton.getDouble("pay");
+        if (Profile.getGold() < pay) {
+            Laya.Scene.open("dialog/nogold.lh", false);
             return;
         }
 

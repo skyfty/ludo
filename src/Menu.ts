@@ -4,6 +4,7 @@ import { CheckinDialog } from "./CheckinDialog";
 import { ComputerParallel } from "./ComputerParallel";
 import { OnlineParallel } from "./OnlineParallel";
 import { Profile } from "./Profile";
+import { Buycoin } from "./Buycoin";
 
 @regClass()
 export class Menu extends Laya.Script {
@@ -44,7 +45,9 @@ export class Menu extends Laya.Script {
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
         this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
         this.goldcoin.on(Laya.Event.CLICK, this, ()=>{
-            Laya.Scene.open("dialog/buycoin.lh", true);
+            Laya.Scene.open("dialog/buycoin.lh", true, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+                dlg.getComponent(Buycoin).setCollectPoint(this.goldcoin);
+            }));
         });
         this.ranklist.on(Laya.Event.CLICK, this, ()=>{
             Laya.Scene.open("dialog/ranklist.lh", true);

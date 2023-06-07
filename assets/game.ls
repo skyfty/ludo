@@ -755,7 +755,7 @@
       "_$type": "Box",
       "name": "toolbar",
       "x": 60,
-      "y": 987,
+      "y": 1007,
       "width": 630,
       "height": 48,
       "mouseEnabled": true,
@@ -949,7 +949,7 @@
             {
               "_$override": "sc3b00yx",
               "x": -10,
-              "y": 5,
+              "y": 10,
               "_$comp": [
                 {
                   "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
@@ -964,12 +964,12 @@
             },
             {
               "_$override": "dm1y2zws",
-              "y": 0,
-              "x": 92
+              "y": -6,
+              "x": 97
             },
             {
               "_$override": "dn8vhuyq",
-              "x": 91.5
+              "x": 97
             },
             {
               "_$id": "ptean5qg",
@@ -1367,7 +1367,7 @@
             {
               "_$override": "sc3b00yx",
               "x": -12,
-              "y": -40,
+              "y": -60,
               "_$comp": [
                 {
                   "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
@@ -1787,8 +1787,8 @@
           "_$child": [
             {
               "_$override": "5a788y2g",
-              "x": -32,
-              "y": 5,
+              "x": -51,
+              "y": 10,
               "_$comp": [
                 {
                   "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
@@ -2181,8 +2181,8 @@
           "_$child": [
             {
               "_$override": "5a788y2g",
-              "y": -40,
-              "x": -25,
+              "y": -60,
+              "x": -48,
               "_$comp": [
                 {
                   "_$override": "39d67820-6b75-4090-969f-b2fef892effc",

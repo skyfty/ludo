@@ -3,8 +3,8 @@
   "_$id": "r6l4909k7b",
   "_$type": "Box",
   "name": "Box",
-  "width": 197,
-  "height": 107,
+  "width": 220,
+  "height": 120,
   "_$child": [
     {
       "_$id": "5a788y2g",
@@ -12,8 +12,8 @@
       "name": "trade",
       "x": 2,
       "y": 1,
-      "width": 197,
-      "height": 107,
+      "width": 220,
+      "height": 120,
       "_$comp": [
         {
           "_$type": "Animator2D",
@@ -70,10 +70,7 @@
           "avatar": {
             "_$ref": "taf855d7"
           },
-          "countdown": {
-            "_$ref": "n7gt0l5f",
-            "_$type": "718677dc-4a6a-48ca-bd05-440b7f6bb0fb"
-          }
+          "countdown": null
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -91,10 +88,10 @@
           "_$id": "5ft64053",
           "_$type": "Sprite",
           "name": "Sprite",
-          "x": 112.99999999999994,
-          "y": 12.999999999999995,
-          "width": 76.5,
-          "height": 76.5,
+          "x": 131.5,
+          "y": 20.499999999999993,
+          "width": 82,
+          "height": 82,
           "texture": {
             "_$uuid": "00000000-0000-0000-0001-000000000000",
             "_$type": "Texture"
@@ -105,20 +102,20 @@
           "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
           "name": "avatarclip",
           "active": true,
-          "x": 127,
+          "x": 140,
           "y": 26,
           "visible": true,
-          "width": 53,
-          "height": 53
+          "width": 66.5,
+          "height": 66.5
         },
         {
           "_$id": "4nqhjgzi",
           "_$type": "Image",
           "name": "bk",
-          "x": 195.99999999999986,
-          "y": 105.99999999999997,
-          "width": 197,
-          "height": 107,
+          "width": 220,
+          "height": 120,
+          "anchorX": 1,
+          "anchorY": 1.000000099141123,
           "rotation": 180,
           "skin": "res://b4af01fd-fdbf-4c71-920b-d1dc5c659975",
           "color": "#ffffff"
@@ -127,9 +124,10 @@
           "_$id": "22dm2a74",
           "_$type": "Clip",
           "name": "roll",
-          "y": 1,
-          "width": 105,
-          "height": 105,
+          "x": -5,
+          "y": -5,
+          "width": 129,
+          "height": 129,
           "visible": false,
           "clipWidth": 158,
           "clipHeight": 158,
@@ -143,9 +141,10 @@
           "_$id": "o95ydlsr",
           "_$type": "Clip",
           "name": "default",
-          "y": 1,
-          "width": 105,
-          "height": 105,
+          "x": -5,
+          "y": -5,
+          "width": 129,
+          "height": 129,
           "clipWidth": 158,
           "clipHeight": 158,
           "clipX": 2,
@@ -169,18 +168,6 @@
           "color": "#ffffff"
         },
         {
-          "_$id": "yc6isfcb",
-          "_$type": "Image",
-          "name": "disabled",
-          "x": -1.4955995865253637,
-          "y": -1.5021881309593965,
-          "width": 107.73360833904923,
-          "height": 108.20820573261335,
-          "visible": false,
-          "skin": "res://77f49383-fd50-4979-a9a9-bbe268ee620a",
-          "color": "#ffffff"
-        },
-        {
           "_$id": "n7gt0l5f",
           "_$prefab": "340e16ca-46bb-47b0-9aff-ae39997d000e",
           "name": "countdown",
@@ -188,7 +175,7 @@
           "x": 63,
           "y": -37,
           "visible": false,
-          "width": 97,
+          "width": 99,
           "height": 55
         }
       ]

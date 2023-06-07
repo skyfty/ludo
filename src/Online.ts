@@ -61,7 +61,7 @@ export class Online extends Laya.Script {
 
     onHurl(player:Laya.Sprite) {
         var params = new SFS2X.SFSObject();
-        Station.sfs.send(new SFS2X.ExtensionReq1uest("Hurl", params));
+        Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
     }
 
     onDestroy(): void {
