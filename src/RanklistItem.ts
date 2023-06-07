@@ -4,6 +4,9 @@ const { regClass, property } = Laya;
 export class RanklistItem extends Laya.Script {
 
     @property( Laya.Label)
+    public wins: Laya.Label;
+
+    @property( Laya.Label)
     public rank: Laya.Label;
 
     @property( Laya.Label)

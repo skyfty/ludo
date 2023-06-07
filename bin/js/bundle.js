@@ -10701,6 +10701,11 @@
     onStart() {
       this.addSmartFoxListener();
       if (Station.sfs.isConnected) {
+        if (Station.sfs.mySelf == null) {
+          Station.sfs.send(new SFS2X2.LoginRequest());
+        } else {
+          Station.sync();
+        }
       } else {
         Station.sfs.connect();
       }
@@ -11698,6 +11703,7 @@
       if (this.state != 1 /* Running */) {
         trade.stop();
       } else {
+        this.onClickTrade();
         this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
         trade.becareful();
       }
@@ -11753,6 +11759,7 @@
         this.owner.event(Event3.Victory, [this.owner]);
       } else {
         if (chess.hole == this.player.entry) {
+          this.onClickTrade();
           let trade = this.player.trade.getComponent(Trade);
           trade.becareful();
           this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
@@ -11778,11 +11785,7 @@
       this.player.room.owner.event(Event3.Countdown, [trade, chooseChess]);
     }
     onReckonChessComplete(chesses, complete) {
-      if (chesses.length == 1) {
-        complete.runWith(chesses[0]);
-      } else {
-        this.onReckonMultiChessComplete(chesses, complete);
-      }
+      complete.runWith(chesses[0]);
     }
     onDestroy() {
       this.player.trade.offAllCaller(this);
@@ -14092,6 +14095,9 @@
   __name(RanklistItem, "RanklistItem");
   __decorateClass([
     property61(Laya.Label)
+  ], RanklistItem.prototype, "wins", 2);
+  __decorateClass([
+    property61(Laya.Label)
   ], RanklistItem.prototype, "rank", 2);
   __decorateClass([
     property61(Laya.Label)
@@ -14129,7 +14135,8 @@
       let avatar = data.getInt("avatar");
       item.avatar.index = avatar;
       item.nickname.text = data.getUtfString("nickname");
-      item.rank.text = data.getInt("rank");
+      item.rank.text = Math.floor(data.getInt("rank") / 100).toString();
+      item.wins.text = data.getInt("wins").toString();
       item.icon.index = Math.min(index, 3);
     }
     onExtensionResponse(evtParams) {

@@ -64,9 +64,6 @@
         {
           "_$type": "39d67820-6b75-4090-969f-b2fef892effc",
           "scriptPath": "../src/Trade.ts",
-          "disabledBk": {
-            "_$ref": "yc6isfcb"
-          },
           "avatar": {
             "_$ref": "taf855d7"
           },
@@ -124,11 +121,9 @@
           "_$id": "22dm2a74",
           "_$type": "Clip",
           "name": "roll",
-          "x": -5,
-          "y": -5,
-          "width": 129,
-          "height": 129,
-          "visible": false,
+          "y": 1,
+          "width": 118.5,
+          "height": 118.5,
           "clipWidth": 158,
           "clipHeight": 158,
           "clipX": 6,

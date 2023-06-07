@@ -564,6 +564,42 @@
                       "height": 43.5951546188694,
                       "skin": "res://16c2edd8-601f-457d-a614-236163a7df14",
                       "color": "#ffffff"
+                    },
+                    {
+                      "_$id": "sry5oaub",
+                      "_$type": "Clip",
+                      "name": "Clip",
+                      "x": -6.137375412590011,
+                      "y": 54,
+                      "width": 38.13737541259,
+                      "height": 24.75485523352614,
+                      "anchorY": -0.16666666666666666,
+                      "autoPlay": true,
+                      "clipWidth": 30,
+                      "clipHeight": 30,
+                      "clipX": 7,
+                      "clipY": 1,
+                      "index": 4,
+                      "interval": 226,
+                      "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+                    },
+                    {
+                      "_$id": "ayw8ft4p",
+                      "_$type": "Clip",
+                      "name": "Clip(1)",
+                      "x": 0.8626245874099894,
+                      "y": 37,
+                      "width": 47.91462101155327,
+                      "height": 30.118005082646032,
+                      "anchorY": -0.16666666666666666,
+                      "autoPlay": true,
+                      "clipWidth": 30,
+                      "clipHeight": 30,
+                      "clipX": 7,
+                      "clipY": 1,
+                      "index": 3,
+                      "interval": 140,
+                      "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     }
                   ]
                 }

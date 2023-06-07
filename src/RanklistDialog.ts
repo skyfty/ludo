@@ -32,7 +32,8 @@ export class RanklistDialog extends Laya.Script {
         let avatar =  data.getInt("avatar");
         item.avatar.index =avatar;
         item.nickname.text = data.getUtfString("nickname");
-        item.rank.text = data.getInt("rank");
+        item.rank.text =Math.floor( data.getInt("rank") / 100).toString();
+        item.wins.text =data.getInt("wins").toString();
         item.icon.index = Math.min(index,3);
     }
 

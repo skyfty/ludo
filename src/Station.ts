@@ -52,11 +52,16 @@ export class Station extends Laya.Script {
         }
     }
 
+
     onStart(): void {
         this.addSmartFoxListener();
 
         if (Station.sfs.isConnected) {
-            
+            if (Station.sfs.mySelf == null) {
+                Station.sfs.send(new SFS2X.LoginRequest());
+            } else {
+                Station.sync();
+            }
         } else {
             Station.sfs.connect();
         }

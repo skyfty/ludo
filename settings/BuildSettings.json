@@ -13,5 +13,8 @@
     "res://f4",
     "res://f6"
   ],
-  "excludeFilesRule": []
+  "excludeFilesRule": [],
+  "android": {
+    "screenOrientation": "portrait"
+  }
 }
