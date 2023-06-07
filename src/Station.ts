@@ -175,4 +175,7 @@ export class Station extends Laya.Script {
         return Station.sfs.mySelf.id;
     }
 
+    public static isUnconnected() {
+        return !Station.sfs.isConnected || Station.sfs.mySelf == null;
+    }
 }

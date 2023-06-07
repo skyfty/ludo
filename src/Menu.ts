@@ -46,7 +46,7 @@ export class Menu extends Laya.Script {
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
         this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
         this.goldcoin.on(Laya.Event.CLICK, this, () => {
-            if (Station.sfs.mySelf == null) {
+            if (Station.isUnconnected()) {
                 Laya.Scene.open("dialog/nonet.lh");
             } else {
                 Laya.Scene.open("dialog/buycoin.lh", true, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
@@ -55,7 +55,7 @@ export class Menu extends Laya.Script {
             }
         });
         this.ranklist.on(Laya.Event.CLICK, this, () => {
-            if (Station.sfs.mySelf == null) {
+            if (Station.isUnconnected()) {
                 Laya.Scene.open("dialog/nonet.lh");
             } else {
                 Laya.Scene.open("dialog/ranklist.lh", true);
@@ -64,7 +64,7 @@ export class Menu extends Laya.Script {
 
 
         this.checkin.on(Laya.Event.CLICK, this, () => {
-            if (Station.sfs.mySelf == null) {
+            if (Station.isUnconnected()) {
                 Laya.Scene.open("dialog/nonet.lh");
             } else {
                 Laya.Scene.open("dialog/checkin.lh", true, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
@@ -92,7 +92,7 @@ export class Menu extends Laya.Script {
     }
 
     onChallengeFriend() {
-        if (Station.sfs.mySelf == null) {
+        if (Station.isUnconnected()) {
             Laya.Scene.open("dialog/nonet.lh");
         } else {
             Laya.Scene.open("dialog/chamber.lh", true);
@@ -112,7 +112,7 @@ export class Menu extends Laya.Script {
     }
 
     openParallelDlg(complete: Laya.Handler) {
-        if (Station.sfs.mySelf == null) {
+        if (Station.isUnconnected()) {
             Laya.Scene.open("dialog/nonet.lh");
         } else {
             Laya.Scene.open("dialog/parallel.lh", false, null, complete);

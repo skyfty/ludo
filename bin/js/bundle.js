@@ -10799,6 +10799,9 @@
     static mySelfId() {
       return Station.sfs.mySelf.id;
     }
+    static isUnconnected() {
+      return !Station.sfs.isConnected || Station.sfs.mySelf == null;
+    }
   };
   __name(Station, "Station");
   Station.config = [];
@@ -13751,7 +13754,7 @@
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
       this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
       this.goldcoin.on(Laya.Event.CLICK, this, () => {
-        if (Station.sfs.mySelf == null) {
+        if (Station.isUnconnected()) {
           Laya.Scene.open("dialog/nonet.lh");
         } else {
           Laya.Scene.open("dialog/buycoin.lh", true, null, Laya.Handler.create(this, (dlg) => {
@@ -13760,14 +13763,14 @@
         }
       });
       this.ranklist.on(Laya.Event.CLICK, this, () => {
-        if (Station.sfs.mySelf == null) {
+        if (Station.isUnconnected()) {
           Laya.Scene.open("dialog/nonet.lh");
         } else {
           Laya.Scene.open("dialog/ranklist.lh", true);
         }
       });
       this.checkin.on(Laya.Event.CLICK, this, () => {
-        if (Station.sfs.mySelf == null) {
+        if (Station.isUnconnected()) {
           Laya.Scene.open("dialog/nonet.lh");
         } else {
           Laya.Scene.open("dialog/checkin.lh", true, null, Laya.Handler.create(this, (dlg) => {
@@ -13791,7 +13794,7 @@
       Laya.Scene.open("dialog/profile.lh", true);
     }
     onChallengeFriend() {
-      if (Station.sfs.mySelf == null) {
+      if (Station.isUnconnected()) {
         Laya.Scene.open("dialog/nonet.lh");
       } else {
         Laya.Scene.open("dialog/chamber.lh", true);
@@ -13808,7 +13811,7 @@
       }));
     }
     openParallelDlg(complete) {
-      if (Station.sfs.mySelf == null) {
+      if (Station.isUnconnected()) {
         Laya.Scene.open("dialog/nonet.lh");
       } else {
         Laya.Scene.open("dialog/parallel.lh", false, null, complete);
