@@ -67,10 +67,10 @@
       "_$id": "m8h9mes6",
       "_$type": "Button",
       "name": "close",
-      "x": 345,
-      "y": 793,
-      "width": 64,
-      "height": 63.5,
+      "x": 336.46482945283424,
+      "y": 784.5315104727341,
+      "width": 72.53517054716575,
+      "height": 71.96848952726602,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
@@ -272,7 +272,7 @@
       "label": "PLAY",
       "labelFont": "impact",
       "labelSize": 66,
-      "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+      "labelColors": "#ffffff,#ffffff,#ffffff",
       "labelStroke": 1,
       "_$comp": [
         {

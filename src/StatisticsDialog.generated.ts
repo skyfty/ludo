@@ -2,7 +2,7 @@
 
 
 /**
- * dialog/combat.lh
+ * dialog/statistics.lh
  */
 export class StatisticsDialogBase extends Laya.Dialog {
 }

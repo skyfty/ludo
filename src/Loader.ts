@@ -102,6 +102,7 @@ export class Loader extends Laya.Script {
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },
                 { url: "militant.ls", type: Laya.Loader.HIERARCHY },
+                { url: "invite.ls", type: Laya.Loader.HIERARCHY },
 
                 { url: "dialog/chamber.lh", type: Laya.Loader.HIERARCHY },
                 { url: "dialog/endgame.lh", type: Laya.Loader.HIERARCHY },
@@ -114,6 +115,9 @@ export class Loader extends Laya.Script {
                 { url: "dialog/goldcoin.lh", type: Laya.Loader.HIERARCHY },
                 { url: "dialog/profile.lh", type: Laya.Loader.HIERARCHY },
                 { url: "dialog/checkin.lh", type: Laya.Loader.HIERARCHY },
+                { url: "dialog/ranklist.lh", type: Laya.Loader.HIERARCHY },
+                { url: "dialog/statistics.lh", type: Laya.Loader.HIERARCHY },
+                { url: "dialog/nonet.lh", type: Laya.Loader.HIERARCHY },
 
                 { url: "sounds/chess.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/click.mp3", type: Laya.Loader.BUFFER },

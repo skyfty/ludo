@@ -67,7 +67,9 @@
           "avatar": {
             "_$ref": "g584oyts"
           },
-          "countdown": null
+          "countdown": {
+            "_$ref": "gr4bj7wo"
+          }
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",

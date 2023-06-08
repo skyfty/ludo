@@ -383,7 +383,7 @@
                   "label": "CREATE ROOM",
                   "labelFont": "Impact",
                   "labelSize": 32,
-                  "labelColors": "#ffffff,#fcfffd,#cecece,#c0c0c0",
+                  "labelColors": "#ffffff,#fcfffd,#ffffff",
                   "labelStroke": 1,
                   "labelStrokeColor": "rgba(4, 3, 4, 1)",
                   "_$comp": [
@@ -476,7 +476,7 @@
                   "label": "JOIN ROOM",
                   "labelFont": "Impact",
                   "labelSize": 32,
-                  "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+                  "labelColors": "#ffffff,#ffffff,#ffffff",
                   "labelStroke": 1,
                   "_$comp": [
                     {

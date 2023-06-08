@@ -42,6 +42,19 @@
           ]
         },
         {
+          "_$id": "kbz0zn91",
+          "_$index": 2,
+          "_$type": "Image",
+          "name": "Image(2)",
+          "x": 62,
+          "y": 73,
+          "width": 625,
+          "height": 169.05681818181816,
+          "anchorY": -0.011494252873563218,
+          "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+          "color": "#ffffff"
+        },
+        {
           "_$override": "9r94nh4g",
           "x": 59,
           "y": 69,

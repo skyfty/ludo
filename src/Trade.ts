@@ -17,6 +17,9 @@ export class Trade extends Laya.Script {
     }
 
     onAwake(): void {
+    }
+
+    onStart(): void {
         this.countdown.on(Laya.Event.STOPPED, this, this.onCountdownStop)
     }
 

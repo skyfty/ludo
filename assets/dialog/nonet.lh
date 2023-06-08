@@ -33,6 +33,13 @@
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+              "scriptPath": "../src/ClickReturn.ts",
+              "dialog": {
+                "_$ref": "lb8wglij"
+              }
             }
           ]
         },
