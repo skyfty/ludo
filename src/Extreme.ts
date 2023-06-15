@@ -4,6 +4,7 @@ import * as Player from "./Player";
 import { Chess } from "./Chess";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
+import { Route } from "./Route";
 import * as SFS2X from "../node_modules/sfs2x-api";
 
 @regClass()
@@ -58,6 +59,10 @@ export class Extreme extends Performer {
                 this.owner.event(Player.Event.Victory);
                 break;
             }
+            case Player.Event.Rocket: {
+                this.onRocket(dataObj.get("name"), dataObj.get("num"));
+                break;
+            }
         }
     }
     private onChooseChesses(name:string) {
@@ -74,8 +79,17 @@ export class Extreme extends Performer {
         }
     }
 
+    private onRocket(name:string, step:number) {
+        let chess = this.player.getChessInChippy(name);
+        this.player.advance(chess, step,Laya.Handler.create(this,  this.onAdvanceComplete));
+    }
+
     private onAdvanceComplete(node:Laya.Sprite) {
         let chess = node.getComponent(Chess);
+        let route = chess.hole.getComponent(Route);
+        if (route.magic != null) {
+            route.setMagic(null);
+        }
     }
 
     private onChooseChessesComplete(chess:Laya.Sprite) {

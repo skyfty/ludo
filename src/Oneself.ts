@@ -17,7 +17,7 @@ export class Oneself extends Performer {
     onAwake(): void {
         super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
-        this.owner.on(Player.Event.Chuck, this, this.onChuck);
+        this.owner.on(Player.Event.Hurl, this, this.onHurl);
     }
 
     onStart(): void {
@@ -27,7 +27,7 @@ export class Oneself extends Performer {
     }
 
     onCountdownStop(reason: string) {
-        if (reason == Player.Event.Chuck) {
+        if (reason == Player.Event.Hurl) {
             this.player.trade.event(Laya.Event.CLICK);
         } else {
             this.infer(this.currentDiceNumber, Laya.Handler.create(this, (chesses: any[], complete: Laya.Handler) => {
@@ -42,13 +42,13 @@ export class Oneself extends Performer {
         if (this.state != Player.State.Running) {
             trade.stop();
         } else {
-            this.player.room.owner.event(Player.Event.Countdown, [trade, Player.Event.Chuck])
+            this.player.room.owner.event(Player.Event.Countdown, [trade, Player.Event.Hurl])
             trade.becareful();
         }
         trade.disabled(this.state != Player.State.Running);
     }
 
-    onChuck(num: number) {
+    onHurl(num: number) {
         this.currentDiceNumber = num;
         this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
@@ -97,12 +97,6 @@ export class Oneself extends Performer {
         this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
     }
 
-    private rocketChess(node: Laya.Sprite) {
-        this.isAdvanceing = true
-        let chess = node.getComponent(Chess);
-        
-    }
-
     private onAdvanceComplete(node: Laya.Sprite) {
         this.isAdvanceing = false;
         let chess = node.getComponent(Chess);
@@ -111,20 +105,15 @@ export class Oneself extends Performer {
         } else {
             let route = chess.hole.getComponent(Route);
             let trade = this.player.trade.getComponent(Trade);
-            let isPlusMagic = route.magic.name == "plus";
+            let isPlusMagic = route.magic != null && route.magic.name == "plus";
             if (isPlusMagic) {
                 route.setMagic(null);
             }
             if (chess.hole == this.player.entry || isPlusMagic) {
                 trade.becareful();
-                this.player.room.owner.event(Player.Event.Countdown, [trade,Player.Event.Chuck])
+                this.player.room.owner.event(Player.Event.Countdown, [trade,Player.Event.Hurl])
             } else {
-                if (route.magic.name == "rocket") {
-                    route.setMagic(null);
-                    this.rocketChess(node);
-                } else {
-                    this.owner.event(Player.Event.Achieve);
-                }
+                this.owner.event(Player.Event.Achieve);
             }
         }
     }

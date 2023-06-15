@@ -10,17 +10,17 @@ export class Config {
     static MagicMap= [
         {
             "makeup":{
-                10:{
+                6:{
                     name:"rocket",
-                    clip:1
+                    clip:2
                 },
-                30:{
+                10:{
                     name:"defender",
                     clip:0
                 },
-                35:{
+                0:{
                     name:"plus",
-                    clip:2
+                    clip:1
                  },
             }
         },

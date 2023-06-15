@@ -10983,17 +10983,17 @@
   Config.MagicMap = [
     {
       "makeup": {
-        10: {
+        6: {
           name: "rocket",
-          clip: 1
+          clip: 2
         },
-        30: {
+        10: {
           name: "defender",
           clip: 0
         },
-        35: {
+        0: {
           name: "plus",
-          clip: 2
+          clip: 1
         }
       }
     },
@@ -11442,8 +11442,10 @@
     }
     setMagic(magic) {
       this.magic = magic;
-      this.magicClip.visible = true;
-      this.magicClip.index = magic.clip;
+      this.magicClip.visible = magic != null;
+      if (magic != null) {
+        this.magicClip.index = magic.clip;
+      }
     }
     puddleAni(color) {
       let idxs = { "red": [0, 5], "green": [6, 11], "yellow": [12, 17], "blue": [18, 23] }[color];
@@ -11669,7 +11671,7 @@
     onAwake() {
       super.onAwake();
       this.owner.on(Event3.StateChange, this, this.onStateChange);
-      this.owner.on(Event3.Chuck, this, this.onChuck);
+      this.owner.on(Event3.Hurl, this, this.onHurl);
     }
     onStart() {
     }
@@ -11688,7 +11690,7 @@
       trade.roll();
       this.player.room.owner.event(Event3.Hurl, [this.owner]);
     }
-    onChuck(num) {
+    onHurl(num) {
       this.currentDiceNumber = num;
       this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
@@ -11713,13 +11715,17 @@
     onAdvanceComplete(node) {
       let chess = node.getComponent(Chess);
       let route = chess.hole.getComponent(Route);
-      if (chess.hole == this.player.entry || route.magic.name == "plus") {
+      let isPlus = route.magic != null && route.magic.name == "plus";
+      if (chess.hole == this.player.entry || isPlus) {
+        if (isPlus) {
+          route.setMagic(null);
+        }
         this.startRoll();
-        return;
-      }
-      this.owner.event(Event3.Achieve, node);
-      if (this.player.isAllHome()) {
-        this.owner.event(Event3.Victory, [this.owner]);
+      } else {
+        this.owner.event(Event3.Achieve, node);
+        if (this.player.isAllHome()) {
+          this.owner.event(Event3.Victory, [this.owner]);
+        }
       }
     }
   };
@@ -11738,14 +11744,14 @@
     onAwake() {
       super.onAwake();
       this.owner.on(Event3.StateChange, this, this.onStateChange);
-      this.owner.on(Event3.Chuck, this, this.onChuck);
+      this.owner.on(Event3.Hurl, this, this.onHurl);
     }
     onStart() {
       this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
       this.player.trade.on(Event3.CountdownStop, this, this.onCountdownStop);
     }
     onCountdownStop(reason) {
-      if (reason == Event3.Chuck) {
+      if (reason == Event3.Hurl) {
         this.player.trade.event(Laya.Event.CLICK);
       } else {
         this.infer(this.currentDiceNumber, Laya.Handler.create(this, (chesses, complete) => {
@@ -11759,12 +11765,12 @@
       if (this.state != 1 /* Running */) {
         trade.stop();
       } else {
-        this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
+        this.player.room.owner.event(Event3.Countdown, [trade, Event3.Hurl]);
         trade.becareful();
       }
       trade.disabled(this.state != 1 /* Running */);
     }
-    onChuck(num) {
+    onHurl(num) {
       this.currentDiceNumber = num;
       this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
@@ -11815,14 +11821,15 @@
       } else {
         let route = chess.hole.getComponent(Route);
         let trade = this.player.trade.getComponent(Trade);
-        if (chess.hole == this.player.entry || route.magic.name == "plus") {
+        let isPlusMagic = route.magic != null && route.magic.name == "plus";
+        if (isPlusMagic) {
+          route.setMagic(null);
+        }
+        if (chess.hole == this.player.entry || isPlusMagic) {
           trade.becareful();
-          this.player.room.owner.event(Event3.Countdown, [trade, Event3.Chuck]);
+          this.player.room.owner.event(Event3.Countdown, [trade, Event3.Hurl]);
         } else {
-          if (route.magic.name == "rocket") {
-          } else {
-            this.owner.event(Event3.Achieve);
-          }
+          this.owner.event(Event3.Achieve);
         }
       }
     }
@@ -11905,6 +11912,10 @@
           this.owner.event(Event3.Victory);
           break;
         }
+        case Event3.Rocket: {
+          this.onRocket(dataObj.get("name"), dataObj.get("num"));
+          break;
+        }
       }
     }
     onChooseChesses(name) {
@@ -11920,8 +11931,16 @@
         }
       }
     }
+    onRocket(name, step) {
+      let chess = this.player.getChessInChippy(name);
+      this.player.advance(chess, step, Laya.Handler.create(this, this.onAdvanceComplete));
+    }
     onAdvanceComplete(node) {
       let chess = node.getComponent(Chess);
+      let route = chess.hole.getComponent(Route);
+      if (route.magic != null) {
+        route.setMagic(null);
+      }
     }
     onChooseChessesComplete(chess) {
       this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
@@ -12150,12 +12169,12 @@
   Event3.Countdown = "COUNTDOWN";
   Event3.CountdownStop = "COUNTDOWN_STOP";
   Event3.Hurl = "Hurl";
-  Event3.Chuck = "CHUCK";
   Event3.RollStart = "ROLL_START";
   Event3.RollEnd = "ROLL_END";
   Event3.Choose = "CHOOSE";
   Event3.Achieve = "ACHIEVE";
   Event3.Victory = "VICTORY";
+  Event3.Rocket = "Rocket";
   var Type = /* @__PURE__ */ ((Type2) => {
     Type2[Type2["Extreme"] = 0] = "Extreme";
     Type2[Type2["Computer"] = 1] = "Computer";
@@ -12267,6 +12286,14 @@
       }
       return chesses;
     }
+    getChessInChippy(name) {
+      for (let i = 0; i < this.chippy.length; ++i) {
+        if (this.chippy[i].name == name) {
+          return this.chippy[i];
+        }
+      }
+      return null;
+    }
     getKickChesses(route) {
       let resultChesses = [];
       if (route.safe == 1 /* yes */) {
@@ -12274,7 +12301,7 @@
       }
       for (let i = 0; i < route.chess.length; ++i) {
         let chess = route.chess[i].getComponent(Chess);
-        if (chess.player == this) {
+        if (chess.player == this || chess.isDefinder()) {
           continue;
         }
         let chesses = this.getChesses(route, chess.player);
@@ -12295,6 +12322,11 @@
           }
         }));
       });
+    }
+    rocket(node, complete) {
+      let num = 3;
+      this.advance(node, num, complete);
+      this.owner.event(Event3.Rocket, [node.name, num]);
     }
     onAdvanceComplete(node, complete) {
       let chess = node.getComponent(Chess);
@@ -12318,8 +12350,18 @@
             complete.runWith(node);
           });
         } else {
-          if (route.magic != null && route.magic.name == "defender") {
-            chess.setDefender(true);
+          if (route.magic != null) {
+            switch (route.magic.name) {
+              case "rocket": {
+                route.setMagic(null);
+                return this.rocket(node, complete);
+              }
+              case "defender": {
+                route.setMagic(null);
+                chess.setDefender(true);
+                break;
+              }
+            }
           }
           complete.runWith(node);
         }
@@ -12553,6 +12595,9 @@
     }
     setDefender(b) {
       this.defender.visible = b;
+    }
+    isDefinder() {
+      return this.defender.visible;
     }
   };
   __name(Chess, "Chess");
@@ -13073,7 +13118,7 @@
       this.room.chitchat.visible = true;
     }
     onCountdown(trade, reason) {
-      if (reason == Event3.Chuck) {
+      if (reason == Event3.Hurl) {
         trade.startCountdown(Config.TIMEOUT_CHUNK, reason);
       } else if (reason == Event3.Choose) {
         trade.startCountdown(Config.TIMEOUT_CHOOSE_CHESS, reason);
@@ -13098,7 +13143,7 @@
     }
     onHurl(player) {
       var params = new SFS2X10.SFSObject();
-      Station.sfs.send(new SFS2X10.ExtensionRequest("Hurl", params));
+      Station.sfs.send(new SFS2X10.ExtensionRequest(Event3.Hurl, params));
     }
     onDestroy() {
       Station.levelRoom();
@@ -13129,11 +13174,11 @@
       }
     }
     onExtensionResponse(evtParams) {
-      if ("Hurl" == evtParams.cmd) {
+      if (Event3.Hurl == evtParams.cmd) {
         let num = evtParams.params.get("number");
         let playerid = evtParams.params.get("playerid");
         Laya.timer.once(900, this, () => {
-          this.room.players[playerid].event(Event3.Chuck, num);
+          this.room.players[playerid].event(Event3.Hurl, num);
         });
       }
     }
@@ -13223,8 +13268,8 @@
     }
     onHurl(player) {
       Laya.timer.once(900, this, () => {
-        let num = Math.floor(Math.random() * 6);
-        player.event(Event3.Chuck, num);
+        let num = 5;
+        player.event(Event3.Hurl, num);
       });
     }
     onStart() {
@@ -13254,6 +13299,7 @@
       this.owner.on(Event3.Choose, this, this.onChoose);
       this.owner.on(Event3.Achieve, this, this.onAchieve);
       this.owner.on(Event3.Victory, this, this.onVictory);
+      this.owner.on(Event3.Rocket, this, this.onRocket);
     }
     onAchieve() {
       var params = new SFS2X11.SFSObject();
@@ -13273,6 +13319,13 @@
     }
     sendEventRequest(params) {
       Station.sfs.send(new SFS2X11.ExtensionRequest("EventRequest", params));
+    }
+    onRocket(name, num) {
+      var dataObj = new SFS2X11.SFSObject();
+      dataObj.putUtfString("event", Event3.Rocket);
+      dataObj.putInt("num", num);
+      dataObj.putUtfString("name", name);
+      Station.sfs.send(new SFS2X11.ObjectMessageRequest(dataObj));
     }
     onRollEnd(num) {
       var dataObj = new SFS2X11.SFSObject();

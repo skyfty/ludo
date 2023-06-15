@@ -15,13 +15,13 @@ export class Event {
     static Countdown = "COUNTDOWN";
     static CountdownStop = "COUNTDOWN_STOP";
     static Hurl = "Hurl";
-    static Chuck = "CHUCK";
     static RollStart = "ROLL_START";
     static RollEnd = "ROLL_END";
     static Choose = "CHOOSE";
     static Achieve = "ACHIEVE";
     static Victory = "VICTORY";
-    
+    static Rocket = "Rocket";
+
 }
 
 export interface Profile {
@@ -201,6 +201,15 @@ export class Player extends Laya.Script {
         return chesses;
     }
 
+    public getChessInChippy(name:string) {
+        for (let i = 0; i < this.chippy.length; ++i) {
+            if (this.chippy[i].name == name) {
+                return this.chippy[i];
+            }
+        }
+        return null;
+    }
+
     public getKickChesses(route: Route.Route) {
         let resultChesses: Chess[] = [];
         if (route.safe == Route.Safe.yes) {
@@ -234,6 +243,12 @@ export class Player extends Laya.Script {
         });
     }
 
+    private rocket(node: Laya.Sprite, complete: Laya.Handler) {
+        let num = 3;//Math.floor(Math.random() * 6);
+        this.advance(node, num, complete);
+        this.owner.event(Event.Rocket, [node.name, num]);
+    }
+
     private onAdvanceComplete(node: Laya.Sprite, complete: Laya.Handler) {
         let chess = node.getComponent(Chess) as Chess;
         if (chess.hole == this.goal) {
@@ -257,9 +272,18 @@ export class Player extends Laya.Script {
                     complete.runWith(node);
                 });
             } else {
-                if (route.magic != null && route.magic.name == "defender") {
-                    chess.setDefender(true);
-                    route.setMagic(null);
+                if (route.magic != null) {
+                    switch(route.magic.name) {
+                        case "rocket": {
+                            route.setMagic(null);
+                            return this.rocket(node, complete);
+                        }
+                        case "defender": {
+                            route.setMagic(null);
+                            chess.setDefender(true);
+                            break;
+                        }
+                    }
                 }
                 complete.runWith(node);
             }

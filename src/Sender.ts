@@ -14,6 +14,8 @@ export class Sender extends Laya.Script {
         this.owner.on(Player.Event.Choose, this, this.onChoose)
         this.owner.on(Player.Event.Achieve, this, this.onAchieve)
         this.owner.on(Player.Event.Victory, this, this.onVictory)
+        this.owner.on(Player.Event.Rocket, this, this.onRocket)
+
     }
 
     onAchieve() {
@@ -35,6 +37,14 @@ export class Sender extends Laya.Script {
 
     private sendEventRequest(params: SFS2X.SFSObject) {
         Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", params));
+    }
+
+    onRocket(name:string,num:number) {
+        var dataObj = new SFS2X.SFSObject();
+        dataObj.putUtfString("event", Player.Event.Rocket);
+        dataObj.putInt("num", num);
+        dataObj.putUtfString("name", name);
+        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
     }
 
     onRollEnd(num:number) {

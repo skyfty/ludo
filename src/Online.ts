@@ -33,7 +33,7 @@ export class Online extends Laya.Script {
 
     
     onCountdown(trade:Trade, reason:string) {
-        if (reason == Player.Event.Chuck) {
+        if (reason == Player.Event.Hurl) {
             trade.startCountdown(Config.TIMEOUT_CHUNK, reason);
         }else if (reason == Player.Event.Choose) {
             trade.startCountdown(Config.TIMEOUT_CHOOSE_CHESS, reason);
@@ -61,7 +61,7 @@ export class Online extends Laya.Script {
 
     onHurl(player:Laya.Sprite) {
         var params = new SFS2X.SFSObject();
-        Station.sfs.send(new SFS2X.ExtensionRequest("Hurl", params));
+        Station.sfs.send(new SFS2X.ExtensionRequest(Player.Event.Hurl, params));
     }
 
     onDestroy(): void {
@@ -99,11 +99,11 @@ export class Online extends Laya.Script {
     }
   
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
-        if ("Hurl" == evtParams.cmd) {
+        if (Player.Event.Hurl == evtParams.cmd) {
             let num = evtParams.params.get("number");
             let playerid = evtParams.params.get("playerid");
             Laya.timer.once(900, this, ()=>{
-                this.room.players[playerid].event(Player.Event.Chuck, num);
+                this.room.players[playerid].event(Player.Event.Hurl, num);
             });
         }
     }

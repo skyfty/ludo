@@ -15,7 +15,7 @@ export class Computer extends Performer {
     onAwake(): void {
         super.onAwake();
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
-        this.owner.on(Player.Event.Chuck, this, this.onChuck);
+        this.owner.on(Player.Event.Hurl, this, this.onHurl);
     }
     onStart(): void {
     }
@@ -37,7 +37,7 @@ export class Computer extends Performer {
         this.player.room.owner.event(Player.Event.Hurl, [this.owner])
     }
 
-    onChuck(num:number) {
+    onHurl(num:number) {
         this.currentDiceNumber = num;
         this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this,  this.onRollStop));
     }
@@ -65,14 +65,18 @@ export class Computer extends Performer {
     private onAdvanceComplete(node:Laya.Sprite) {
         let chess = node.getComponent(Chess);
         let route = chess.hole.getComponent(Route);
+        let isPlus = route.magic != null&& route.magic.name == "plus";
 
-        if (chess.hole == this.player.entry  || route.magic.name == "plus") {
+        if (chess.hole == this.player.entry  || isPlus) {
+            if (isPlus) {
+                route.setMagic(null);
+            }
             this.startRoll();
-            return;
-        }
-        this.owner.event(Player.Event.Achieve, node);
-        if (this.player.isAllHome()) {
-            this.owner.event(Player.Event.Victory,[this.owner]);
+        } else {
+            this.owner.event(Player.Event.Achieve, node);
+            if (this.player.isAllHome()) {
+                this.owner.event(Player.Event.Victory,[this.owner]);
+            }
         }
     }
 }
