@@ -10,8 +10,6 @@
       "_$id": "5a788y2g",
       "_$type": "Sprite",
       "name": "trade",
-      "x": 2,
-      "y": 1,
       "width": 220,
       "height": 120,
       "_$comp": [
@@ -67,7 +65,12 @@
           "avatar": {
             "_$ref": "taf855d7"
           },
-          "countdown": null
+          "countdown": {
+            "_$ref": "n7gt0l5f"
+          },
+          "blackmark": {
+            "_$ref": "92hcm53i"
+          }
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -167,11 +170,30 @@
           "_$prefab": "340e16ca-46bb-47b0-9aff-ae39997d000e",
           "name": "countdown",
           "active": true,
-          "x": 63,
-          "y": -37,
+          "x": 66,
+          "y": -28,
           "visible": false,
           "width": 99,
-          "height": 55
+          "height": 55,
+          "_$child": [
+            {
+              "_$override": "cn2npk7a",
+              "y": 13.000000000000014
+            }
+          ]
+        },
+        {
+          "_$id": "92hcm53i",
+          "_$type": "Image",
+          "name": "Image(1)",
+          "x": -1.4934066252548002,
+          "y": -0.4999855090664942,
+          "width": 121.74889144358681,
+          "height": 121.25439316800784,
+          "visible": false,
+          "alpha": 0.76,
+          "skin": "res://1c9341a1-46ca-4fbe-a769-9e36bca85724",
+          "color": "#ffffff"
         }
       ]
     }

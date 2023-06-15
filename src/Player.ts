@@ -86,6 +86,11 @@ export class Player extends Laya.Script {
     @property(MessageBubble)
     public messageBubble: MessageBubble;
 
+    
+    @property(Laya.Label)
+    public nickname: Laya.Label;
+
+
     @property([Laya.Sprite])
     protected chippy: Laya.Sprite[] = [];
 
@@ -204,7 +209,7 @@ export class Player extends Laya.Script {
 
         for (let i = 0; i < route.chess.length; ++i) {
             let chess = route.chess[i].getComponent(Chess) as Chess;
-            if (chess.player == this) {
+            if (chess.player == this || chess.isDefinder()) {
                 continue;
             }
 
@@ -252,6 +257,10 @@ export class Player extends Laya.Script {
                     complete.runWith(node);
                 });
             } else {
+                if (route.magic != null && route.magic.name == "defender") {
+                    chess.setDefender(true);
+                    route.setMagic(null);
+                }
                 complete.runWith(node);
             }
         }
@@ -259,6 +268,8 @@ export class Player extends Laya.Script {
 
     public advance(node: Laya.Sprite, diceNumber: number, complete: Laya.Handler) {
         let chess = node.getComponent(Chess) as Chess;
+        chess.setDefender(false);
+
         if (this.chippy.indexOf(node) != -1) {
             chess.step(diceNumber + 1, 1, Laya.Handler.create(this, () => {
                 this.onAdvanceComplete(node, complete);
@@ -290,6 +301,7 @@ export class Player extends Laya.Script {
 
     public setProfile( profile:Profile) {
         this.profile = profile;
+        this.nickname.text = profile.nickname;
         this.trade.getComponent(Trade).avatar.index = this.profile.avatar;
     }
 

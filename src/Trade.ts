@@ -9,8 +9,13 @@ export class Trade extends Laya.Script {
     @property(Laya.Clip)
     public avatar: Laya.Clip;
 
+    
     @property(Laya.Sprite)
     public countdown: Laya.Sprite;
+
+    
+    @property(Laya.Sprite)
+    public blackmark: Laya.Sprite;
 
     constructor() {
         super();
@@ -30,7 +35,7 @@ export class Trade extends Laya.Script {
     }
 
     public disabled(b:boolean) {
-
+        this.blackmark.visible = b;
     }
     public becareful() {
         let ani = this.owner.getComponent(Laya.Animator2D);

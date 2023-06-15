@@ -26,7 +26,15 @@ export class ComputerParallel extends Laya.Script {
         }
         play.on(Laya.Event.CLICK, this,  () => {
             Laya.Dialog.closeAll();
-            Laya.Scene.open("game.ls", true, { "type": "computer", "color": Config.Colors[this.colorIdx],"number":parallel.numberOfPlayer });
+            let param:any =  { 
+                "type": "computer",
+                "color": Config.Colors[this.colorIdx],
+                "number":parallel.numberOfPlayer
+            };
+            if (parallel.magic.selected) {
+                param.magic = 0;
+            }
+            Laya.Scene.open("game.ls", true ,param);
         });
     }
 }

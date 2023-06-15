@@ -19,6 +19,9 @@
       },
       "shoe": {
         "_$ref": "rd9ghrr6"
+      },
+      "defender": {
+        "_$ref": "9x2tcgjj"
       }
     }
   ],
@@ -79,6 +82,18 @@
         }
       ],
       "_$child": [
+        {
+          "_$id": "9x2tcgjj",
+          "_$type": "Image",
+          "name": "defender",
+          "x": -8,
+          "y": -12,
+          "width": 54,
+          "height": 54,
+          "visible": false,
+          "skin": "res://ef3383ed-47e9-48f1-8b29-9ec27c0e248b",
+          "color": "#ffffff"
+        },
         {
           "_$id": "t8h17dpc",
           "_$type": "Image",

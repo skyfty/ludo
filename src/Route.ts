@@ -16,11 +16,16 @@ export class Route extends Laya.Script {
     @property(Laya.Clip)
     public puddle:Laya.Clip;
 
+    @property(Laya.Clip)
+    public magicClip:Laya.Clip;
+
     @property( { type : Safe } )
     safe : Safe = Safe.no;
 
     @property([Laya.Sprite])
     public chess:Laya.Sprite[] = [];
+
+    public magic:any = null;
 
     constructor() {
         super();
@@ -31,6 +36,14 @@ export class Route extends Laya.Script {
         super.onAwake();
         this.owner.on(Event.Enter, this, this.scaleChess);
         this.owner.on(Event.Exit, this, this.scaleChess);
+    }
+
+    public setMagic(magic:any) {
+        this.magic = magic;
+        this.magicClip.visible = magic != null;
+        if (magic != null) {
+            this.magicClip.index = magic.clip;
+        }
     }
 
     public puddleAni(color:string) {

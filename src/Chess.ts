@@ -22,6 +22,9 @@ export class Chess extends Laya.Script {
     @property(Laya.Image)
     public shoe: Laya.Image;
 
+    @property(Laya.Image)
+    public defender: Laya.Image;
+
     constructor() {
         super();
     }
@@ -170,5 +173,13 @@ export class Chess extends Laya.Script {
     public kicked() {
         this.shoe.visible = true;
         this.chess.getComponent(Laya.Animator2D).play("kick");
+    }
+
+    public setDefender(b:boolean) {
+        this.defender.visible = b;
+    }
+
+    public isDefinder() {
+        return this.defender.visible;
     }
 }

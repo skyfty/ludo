@@ -4,6 +4,7 @@ import * as Player from "./Player";
 import { Chess } from "./Chess";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
+import { Route } from "./Route";
 
 @regClass()
 export class Computer extends Performer {
@@ -63,7 +64,9 @@ export class Computer extends Performer {
 
     private onAdvanceComplete(node:Laya.Sprite) {
         let chess = node.getComponent(Chess);
-        if (chess.hole == this.player.entry) {
+        let route = chess.hole.getComponent(Route);
+
+        if (chess.hole == this.player.entry  || route.magic.name == "plus") {
             this.startRoll();
             return;
         }

@@ -16,6 +16,10 @@ export class Room extends Laya.Script {
     @property([Laya.Sprite])
     public seatOfPlayer: Laya.Sprite[];
 
+    
+    @property(Laya.Sprite)
+    public universal: Laya.Sprite;
+
     @property(Laya.Prefab)
     public reward: Laya.Prefab;
 

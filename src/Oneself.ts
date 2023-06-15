@@ -4,7 +4,7 @@ import { Performer } from "./Performer";
 import * as Player from "./Player";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
-import { Config } from "./Config";
+import { Route } from "./Route";
 
 @regClass()
 export class Oneself extends Performer {
@@ -97,18 +97,34 @@ export class Oneself extends Performer {
         this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
     }
 
+    private rocketChess(node: Laya.Sprite) {
+        this.isAdvanceing = true
+        let chess = node.getComponent(Chess);
+        
+    }
+
     private onAdvanceComplete(node: Laya.Sprite) {
         this.isAdvanceing = false;
         let chess = node.getComponent(Chess);
         if (this.player.isAllHome()) {
             this.owner.event(Player.Event.Victory, [this.owner]);
         } else {
-            if (chess.hole == this.player.entry) {
-                let trade = this.player.trade.getComponent(Trade);
+            let route = chess.hole.getComponent(Route);
+            let trade = this.player.trade.getComponent(Trade);
+            let isPlusMagic = route.magic.name == "plus";
+            if (isPlusMagic) {
+                route.setMagic(null);
+            }
+            if (chess.hole == this.player.entry || isPlusMagic) {
                 trade.becareful();
                 this.player.room.owner.event(Player.Event.Countdown, [trade,Player.Event.Chuck])
             } else {
-                this.owner.event(Player.Event.Achieve);
+                if (route.magic.name == "rocket") {
+                    route.setMagic(null);
+                    this.rocketChess(node);
+                } else {
+                    this.owner.event(Player.Event.Achieve);
+                }
             }
         }
     }

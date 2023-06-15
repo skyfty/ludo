@@ -3,8 +3,8 @@
   "_$id": "de462mf847",
   "_$type": "Box",
   "name": "route",
-  "width": 38,
-  "height": 38,
+  "width": 39,
+  "height": 39,
   "bgColor": "rgba(255, 255, 255, 1)",
   "_$comp": [
     {
@@ -13,17 +13,37 @@
       "puddle": {
         "_$ref": "jpxjv1gb"
       },
+      "magicClip": {
+        "_$ref": "ucao5iot"
+      },
       "safe": 0,
       "chess": []
     }
   ],
   "_$child": [
     {
+      "_$id": "ucao5iot",
+      "_$type": "Clip",
+      "name": "Clip",
+      "x": 3.000000000000015,
+      "y": 2.9999999999999973,
+      "width": 33.5,
+      "height": 33.5,
+      "visible": false,
+      "clipWidth": 0,
+      "clipHeight": 0,
+      "clipX": 3,
+      "clipY": 1,
+      "index": 2,
+      "interval": 50,
+      "skin": "res://c9ee5a98-df50-43ce-b60a-935ea2021855"
+    },
+    {
       "_$id": "jpxjv1gb",
       "_$type": "Clip",
       "name": "puddle",
-      "width": 38,
-      "height": 38,
+      "width": 39,
+      "height": 39,
       "visible": false,
       "clipWidth": 38,
       "clipHeight": 38,
