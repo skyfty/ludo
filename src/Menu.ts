@@ -6,6 +6,7 @@ import { OnlineParallel } from "./OnlineParallel";
 import { Profile } from "./Profile";
 import { Buycoin } from "./Buycoin";
 import { Station } from "./Station";
+import { Config } from "./Config";
 
 @regClass()
 export class Menu extends Laya.Script {
@@ -79,7 +80,65 @@ export class Menu extends Laya.Script {
             };
             Laya.Scene.open("dialog/statistics.lh", true, param);
         });
+
     }
+
+    // ggg4() {
+
+
+    //     let MagicMap:any[] = [];
+    //     for(let i = 0; i < 30; ++i) {
+    //         let makeup:any = {};
+
+    //             let ranext:number[] = [];
+    //             for(let j = 0; j < 3; j++) {
+    //                 let num  = this.ggg222(ranext);
+    //                 makeup[num] = {
+    //                     name: "rocket",
+    //                     clip: 2
+    
+    //                 };
+    //             }
+    //             for(let j = 0; j < 3; j++) {
+    //                 let num  = this.ggg222(ranext);
+    //                 makeup[num] = {
+    //                     name: "defender",
+    //                     clip: 0
+    
+    //                 };
+    //             }
+    //             for(let j = 0; j < 3; j++) {
+    //                 let num  = this.ggg222(ranext);
+    //                 makeup[num] = {
+    //                     name: "plus",
+    //                     clip: 1
+    
+    //                 };
+    //             }
+
+    //             MagicMap.push({"makeup":makeup});
+
+                
+    //     }
+
+    //     console.log(JSON.stringify(MagicMap));
+    // }
+
+    // ggg222( ranext:number[]) {
+    //     let num  = 0;
+    //     while(true) {
+
+    //         num =Math.floor(Math.random() * Config.NUMBER_UNIVERSAL_HOLD);
+    //         if (num == 0 || num == 8 ||num == 13 ||num == 21 ||num == 26 ||num == 34 || num == 39 || num == 47 || ranext.indexOf(num) != -1 ) {
+    //             continue;
+    //         }
+    //         else {
+    //             ranext.push(num);
+    //             break;
+    //         }
+    //     }
+    //     return num;
+    // }
 
     onStart(): void {
         Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("musicMuted") == "on";

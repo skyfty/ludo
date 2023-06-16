@@ -60,11 +60,6 @@ export class Online extends Laya.Script {
     }
 
     onHurl(player:Laya.Sprite) {
-        let num = 5;//Math.floor(Math.random() * 6);
-;
-        player.event(Player.Event.Hurl, num);
-
-        return;
         var params = new SFS2X.SFSObject();
         Station.sfs.send(new SFS2X.ExtensionRequest(Player.Event.Hurl, params));
     }

@@ -10980,40 +10980,7 @@
   Config.TIMEOUT_CHUNK = 30;
   Config.Colors = ["red", "green", "yellow", "blue"];
   Config.ColorValue = { "red": "#ff0000", "green": "#00a300", "yellow": "#ffc400", "blue": "#008cf8" };
-  Config.MagicMap = [
-    {
-      "makeup": {
-        48: {
-          name: "rocket",
-          clip: 2
-        },
-        12: {
-          name: "rocket",
-          clip: 2
-        },
-        6: {
-          name: "defender",
-          clip: 0
-        },
-        0: {
-          name: "plus",
-          clip: 1
-        },
-        19: {
-          name: "plus",
-          clip: 1
-        },
-        25: {
-          name: "rocket",
-          clip: 2
-        },
-        31: {
-          name: "defender",
-          clip: 0
-        }
-      }
-    }
-  ];
+  Config.MagicMap = [{ "makeup": { "6": { "name": "plus", "clip": 1 }, "11": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "15": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "23": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "defender", "clip": 0 } } }, { "makeup": { "14": { "name": "defender", "clip": 0 }, "15": { "name": "defender", "clip": 0 }, "18": { "name": "defender", "clip": 0 }, "25": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "33": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "3": { "name": "plus", "clip": 1 }, "11": { "name": "defender", "clip": 0 }, "22": { "name": "rocket", "clip": 2 }, "28": { "name": "rocket", "clip": 2 }, "31": { "name": "rocket", "clip": 2 }, "33": { "name": "defender", "clip": 0 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 }, "51": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "12": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "23": { "name": "plus", "clip": 1 }, "33": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "46": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "12": { "name": "rocket", "clip": 2 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 } } }, { "makeup": { "12": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "19": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "27": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "40": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "43": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "7": { "name": "rocket", "clip": 2 }, "11": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "17": { "name": "plus", "clip": 1 }, "18": { "name": "defender", "clip": 0 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "11": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "28": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "2": { "name": "rocket", "clip": 2 }, "7": { "name": "defender", "clip": 0 }, "11": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "29": { "name": "plus", "clip": 1 }, "38": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "defender", "clip": 0 }, "6": { "name": "plus", "clip": 1 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "plus", "clip": 1 }, "44": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "defender", "clip": 0 }, "5": { "name": "plus", "clip": 1 }, "7": { "name": "defender", "clip": 0 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "25": { "name": "plus", "clip": 1 }, "42": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "18": { "name": "plus", "clip": 1 }, "24": { "name": "rocket", "clip": 2 }, "31": { "name": "defender", "clip": 0 }, "33": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "44": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "25": { "name": "rocket", "clip": 2 }, "27": { "name": "rocket", "clip": 2 }, "35": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "50": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "10": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "rocket", "clip": 2 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "plus", "clip": 1 }, "9": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "25": { "name": "defender", "clip": 0 }, "32": { "name": "plus", "clip": 1 }, "36": { "name": "rocket", "clip": 2 }, "37": { "name": "defender", "clip": 0 }, "42": { "name": "rocket", "clip": 2 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "12": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "35": { "name": "rocket", "clip": 2 }, "41": { "name": "rocket", "clip": 2 }, "43": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 }, "49": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "defender", "clip": 0 }, "19": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "44": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "50": { "name": "defender", "clip": 0 } } }, { "makeup": { "4": { "name": "defender", "clip": 0 }, "12": { "name": "plus", "clip": 1 }, "17": { "name": "plus", "clip": 1 }, "19": { "name": "rocket", "clip": 2 }, "28": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "plus", "clip": 1 }, "37": { "name": "defender", "clip": 0 }, "41": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 } } }, { "makeup": { "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "10": { "name": "defender", "clip": 0 }, "15": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "18": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "6": { "name": "rocket", "clip": 2 }, "14": { "name": "plus", "clip": 1 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "14": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "plus", "clip": 1 }, "30": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "42": { "name": "plus", "clip": 1 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "7": { "name": "rocket", "clip": 2 }, "9": { "name": "plus", "clip": 1 }, "30": { "name": "plus", "clip": 1 }, "31": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "50": { "name": "rocket", "clip": 2 } } }, { "makeup": { "7": { "name": "plus", "clip": 1 }, "15": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "24": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "42": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "10": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "defender", "clip": 0 }, "28": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "plus", "clip": 1 }, "37": { "name": "rocket", "clip": 2 }, "40": { "name": "plus", "clip": 1 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "5": { "name": "rocket", "clip": 2 }, "17": { "name": "defender", "clip": 0 }, "20": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "30": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "46": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "3": { "name": "rocket", "clip": 2 }, "4": { "name": "plus", "clip": 1 }, "16": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "25": { "name": "defender", "clip": 0 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 }, "48": { "name": "defender", "clip": 0 }, "51": { "name": "rocket", "clip": 2 } } }, { "makeup": { "3": { "name": "defender", "clip": 0 }, "10": { "name": "rocket", "clip": 2 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "defender", "clip": 0 }, "32": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "42": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "plus", "clip": 1 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "35": { "name": "rocket", "clip": 2 }, "38": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "45": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "51": { "name": "plus", "clip": 1 } } }];
 
   // src/CreateRoom.ts
   var SFS2X5 = __toESM(require_sfs2x_api());
@@ -11822,7 +11789,7 @@
       this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
     }
     rocket(node) {
-      let num = 6;
+      let num = Math.floor(Math.random() * 6) + 1;
       this.owner.event(Event3.Rocket, [node.name, num]);
       this.player.rocket(node, num, Laya.Handler.create(this, this.onAdvanceComplete));
     }
@@ -11845,6 +11812,7 @@
               isPlusMagic = true;
               route.setMagic(null);
               this.player.plusAni(chess.hole);
+              Laya.SoundManager.playSound("sounds/plus.mp3", 1);
               break;
             }
           }
@@ -13221,10 +13189,6 @@
       }
     }
     onHurl(player) {
-      let num = 5;
-      ;
-      player.event(Event3.Hurl, num);
-      return;
       var params = new SFS2X10.SFSObject();
       Station.sfs.send(new SFS2X10.ExtensionRequest(Event3.Hurl, params));
     }
@@ -13804,6 +13768,12 @@
           "resources/images/checkin.png",
           "resources/images/dailycheckin.png",
           "resources/images/duihao.png",
+          "resources/images/plus.png",
+          "resources/images/plusbtn.png",
+          "resources/images/blackmark.png",
+          "resources/images/defender.png",
+          "resources/images/magic.png",
+          "resources/images/magicprops.png",
           { url: "game.ls", type: Laya.Loader.HIERARCHY },
           { url: "menu.ls", type: Laya.Loader.HIERARCHY },
           { url: "militant.ls", type: Laya.Loader.HIERARCHY },
@@ -13825,9 +13795,7 @@
           { url: "sounds/chess.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/click.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/kick.mp3", type: Laya.Loader.BUFFER },
-          { url: "sounds/menu.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/move.mp3", type: Laya.Loader.BUFFER },
-          { url: "sounds/win.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/jinbi.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/home.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/message.mp3", type: Laya.Loader.BUFFER }
@@ -14019,6 +13987,50 @@
         Laya.Scene.open("dialog/statistics.lh", true, param);
       });
     }
+    // ggg4() {
+    //     let MagicMap:any[] = [];
+    //     for(let i = 0; i < 30; ++i) {
+    //         let makeup:any = {};
+    //             let ranext:number[] = [];
+    //             for(let j = 0; j < 3; j++) {
+    //                 let num  = this.ggg222(ranext);
+    //                 makeup[num] = {
+    //                     name: "rocket",
+    //                     clip: 2
+    //                 };
+    //             }
+    //             for(let j = 0; j < 3; j++) {
+    //                 let num  = this.ggg222(ranext);
+    //                 makeup[num] = {
+    //                     name: "defender",
+    //                     clip: 0
+    //                 };
+    //             }
+    //             for(let j = 0; j < 3; j++) {
+    //                 let num  = this.ggg222(ranext);
+    //                 makeup[num] = {
+    //                     name: "plus",
+    //                     clip: 1
+    //                 };
+    //             }
+    //             MagicMap.push({"makeup":makeup});
+    //     }
+    //     console.log(JSON.stringify(MagicMap));
+    // }
+    // ggg222( ranext:number[]) {
+    //     let num  = 0;
+    //     while(true) {
+    //         num =Math.floor(Math.random() * Config.NUMBER_UNIVERSAL_HOLD);
+    //         if (num == 0 || num == 8 ||num == 13 ||num == 21 ||num == 26 ||num == 34 || num == 39 || num == 47 || ranext.indexOf(num) != -1 ) {
+    //             continue;
+    //         }
+    //         else {
+    //             ranext.push(num);
+    //             break;
+    //         }
+    //     }
+    //     return num;
+    // }
     onStart() {
       Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("musicMuted") == "on";
       Laya.SoundManager.soundMuted = Laya.LocalStorage.getItem("soundMuted") == "on";

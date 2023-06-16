@@ -104,7 +104,7 @@ export class Oneself extends Performer {
     }
 
     private rocket(node: Laya.Sprite) {
-        let num =6;// Math.floor(Math.random() * 6) + 1;
+        let num = Math.floor(Math.random() * 6) + 1;
         this.owner.event(Player.Event.Rocket,[node.name, num]);
         this.player.rocket(node, num, Laya.Handler.create(this, this.onAdvanceComplete));
     }
@@ -128,6 +128,7 @@ export class Oneself extends Performer {
                         isPlusMagic = true;
                         route.setMagic(null);
                         this.player.plusAni(chess.hole);
+                        Laya.SoundManager.playSound("sounds/plus.mp3", 1);
                         break;
                     }
                 }

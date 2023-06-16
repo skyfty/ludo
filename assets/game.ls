@@ -1223,8 +1223,18 @@
                   ],
                   "_$child": [
                     {
+                      "_$override": "lbsblna6",
+                      "x": 0,
+                      "y": 0
+                    },
+                    {
+                      "_$override": "9x2tcgjj",
+                      "visible": false
+                    },
+                    {
                       "_$override": "t8h17dpc",
-                      "skin": "res://46f0b17f-7211-4b0f-a9ea-b82657131698"
+                      "skin": "res://46f0b17f-7211-4b0f-a9ea-b82657131698",
+                      "y": -5.5
                     }
                   ]
                 },
