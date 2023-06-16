@@ -122,6 +122,7 @@ export class Oneself extends Performer {
                 switch(route.magic.name) {
                     case "rocket": {
                         route.setMagic(null);
+                        Laya.SoundManager.playSound("sounds/sou.mp3", 1);
                         return this.rocket(node);
                     }
                     case "plus": {
