@@ -17,7 +17,6 @@ export class SelectPlayer extends Laya.Script {
     public colorCheckBox: Laya.CheckBox[] = [];
     public numberOfPlayer:number = 2;
 
-    
     @property(Laya.CheckBox)
     public magic: Laya.CheckBox;
 
@@ -57,6 +56,10 @@ export class SelectPlayer extends Laya.Script {
                 }
             });
         }
+    }
+
+    public randomMagic() {
+        return Math.floor(Math.random() * Config.MagicMap.length);
     }
 
 }

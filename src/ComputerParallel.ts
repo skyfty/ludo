@@ -32,7 +32,7 @@ export class ComputerParallel extends Laya.Script {
                 "number":parallel.numberOfPlayer
             };
             if (parallel.magic.selected) {
-                param.magic = 0;
+                param.magic = parallel.randomMagic();
             }
             Laya.Scene.open("game.ls", true ,param);
         });

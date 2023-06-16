@@ -33,6 +33,9 @@ export class Extreme extends Performer {
 
     onStateChange() {
         let trade = this.player.trade.getComponent(Trade);
+        if (this.state == Player.State.Running) {
+            this.player.defend(false);
+        }
         trade.disabled(this.state != Player.State.Running);
     }
 
@@ -79,9 +82,9 @@ export class Extreme extends Performer {
         }
     }
 
-    private onRocket(name:string, step:number) {
+    private onRocket(name:string, rand:number) {
         let chess = this.player.getChessInChippy(name);
-        this.player.advance(chess, step,Laya.Handler.create(this,  this.onAdvanceComplete));
+        this.player.rocket(chess, rand, Laya.Handler.create(this,  this.onAdvanceComplete));
     }
 
     private onAdvanceComplete(node:Laya.Sprite) {

@@ -23,7 +23,12 @@ export class Oneself extends Performer {
     onStart(): void {
         this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
         this.player.trade.on(Player.Event.CountdownStop, this, this.onCountdownStop);
+        this.player.trade.on(Player.Event.Rocket, this, this.onRocket);
 
+    }
+
+    onRocket(reason: string) {
+        
     }
 
     onCountdownStop(reason: string) {
@@ -44,6 +49,7 @@ export class Oneself extends Performer {
         } else {
             this.player.room.owner.event(Player.Event.Countdown, [trade, Player.Event.Hurl])
             trade.becareful();
+            this.player.defend(false);
         }
         trade.disabled(this.state != Player.State.Running);
     }
@@ -97,6 +103,12 @@ export class Oneself extends Performer {
         this.player.advance(chess, this.currentDiceNumber, Laya.Handler.create(this, this.onAdvanceComplete));
     }
 
+    private rocket(node: Laya.Sprite) {
+        let num =6;// Math.floor(Math.random() * 6) + 1;
+        this.owner.event(Player.Event.Rocket,[node.name, num]);
+        this.player.rocket(node, num, Laya.Handler.create(this, this.onAdvanceComplete));
+    }
+
     private onAdvanceComplete(node: Laya.Sprite) {
         this.isAdvanceing = false;
         let chess = node.getComponent(Chess);
@@ -105,9 +117,20 @@ export class Oneself extends Performer {
         } else {
             let route = chess.hole.getComponent(Route);
             let trade = this.player.trade.getComponent(Trade);
-            let isPlusMagic = route.magic != null && route.magic.name == "plus";
-            if (isPlusMagic) {
-                route.setMagic(null);
+            let isPlusMagic = false;
+            if (route.magic != null) {
+                switch(route.magic.name) {
+                    case "rocket": {
+                        route.setMagic(null);
+                        return this.rocket(node);
+                    }
+                    case "plus": {
+                        isPlusMagic = true;
+                        route.setMagic(null);
+                        this.player.plusAni(chess.hole);
+                        break;
+                    }
+                }
             }
             if (chess.hole == this.player.entry || isPlusMagic) {
                 trade.becareful();
@@ -117,6 +140,7 @@ export class Oneself extends Performer {
             }
         }
     }
+
 
     private onReckonMultiChessComplete(chesses: Laya.Sprite[], complete: Laya.Handler) {
         let trade = this.player.trade.getComponent(Trade);

@@ -15,4 +15,6 @@ export class Parallel extends SelectPlayer {
         super.onAwake();
     }
 
+    
+
 }

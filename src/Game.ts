@@ -9,7 +9,6 @@ import { Config } from "./Config";
 import  {Station} from "./Station";
 import { Profile } from "./Profile";
 import { Generalize } from "./Generalize";
-import { Magic } from "./Magic";
 
 @regClass()
 export class Game extends Laya.Scene {
@@ -43,10 +42,13 @@ export class Game extends Laya.Scene {
 
     private challengeExtreme(param: any) {
         this.room.chitchat.visible = true;
+        if (param.magic != null) {
+            this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
+        }
         this.room.sortSeat( param.number, param.color);
         this.addComponentInstance(new Online(param));
         this.addComponentInstance(new Generalize(param.type));
-
+    
         let users = Station.getUserList();
         for (let i = 0; i < users.length; ++i) {
             let color = Station.getUserColor(users[i]);
@@ -68,11 +70,11 @@ export class Game extends Laya.Scene {
     }
 
     private challengeComputer(param: any) {
+        if (param.magic != null) {
+            this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
+        }
         this.room.sortSeat(param && param.number ? param.number : 2, param.color);
         this.addComponentInstance(new Local(param));
-        if (param.magic != null) {
-            this.addComponentInstance(new Magic(param));
-        }
 
         this.room.addPlayer(param.color, Player.Type.Oneself, {
             "id": 0,

@@ -10,11 +10,15 @@ export class Config {
     static MagicMap= [
         {
             "makeup":{
-                6:{
+                48:{
                     name:"rocket",
                     clip:2
                 },
-                10:{
+                12:{
+                    name:"rocket",
+                    clip:2
+                },
+                6:{
                     name:"defender",
                     clip:0
                 },
@@ -22,23 +26,19 @@ export class Config {
                     name:"plus",
                     clip:1
                  },
+                 19:{
+                     name:"plus",
+                     clip:1
+                  },
+                  25:{
+                      name:"rocket",
+                      clip:2
+                   },
+                   31:{
+                       name:"defender",
+                       clip:0
+                    },
             }
-        },
-        {
-            "makeup":{
-                10:{
-                    name:"rocket",
-                    clip:1
-                },
-                30:{
-                    name:"defender",
-                    clip:0
-                },
-                35:{
-                    name:"plus",
-                    clip:2
-                 },
-            }
-        },
+        }
     ];
 }

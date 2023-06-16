@@ -5,6 +5,7 @@ import * as Player from "./Player";
 import { Performer } from "./Performer";
 import { Config } from "./Config";
 import { Reward } from "./Reward";
+import { Route } from "./Route";
 
 const { regClass, property } = Laya;
 
@@ -128,6 +129,20 @@ export class Room extends Laya.Script {
             } else {
                 performer.setState(Player.State.Idle);
             }
+        }
+    }
+
+    public setupMagic(color:string, magicMakeup:any) {
+        let idx = this.colorOfPlayer.indexOf(color);
+        let orgpos = idx == 0 ? 0 : (39 - 13 * (idx - 1));
+        let universal = this.universal;
+        for(let routeId in magicMakeup.makeup) {
+            let routeName =  orgpos + Number.parseInt(routeId);
+            if (routeName > Config.NUMBER_UNIVERSAL_HOLD) {
+                routeName = routeName - Config.NUMBER_UNIVERSAL_HOLD;
+            }
+            let route = universal.getChildByName(routeName.toString()).getComponent(Route);
+            route.setMagic(magicMakeup.makeup[routeId]);
         }
     }
 

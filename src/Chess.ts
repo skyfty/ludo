@@ -97,6 +97,28 @@ export class Chess extends Laya.Script {
         }
     }
 
+    public rocket(step:number, complete: Laya.Handler) {
+        let roadway = this.owner.parent;
+        let nextHole = null;
+        let currentHoleNumber: number = Number.parseInt(this.hole.name);
+        for(let roadIdx = 0; roadIdx < step; ++roadIdx) {
+            currentHoleNumber += 1;
+            nextHole = roadway.getChildByName(currentHoleNumber.toString()) as Laya.Sprite;
+            if (nextHole == this.player.door) {
+                currentHoleNumber = 0;
+                ++roadIdx
+                roadway = this.player.personal as Laya.Sprite;
+            } else {
+                if (currentHoleNumber >  Config.NUMBER_UNIVERSAL_HOLD - 1) {
+                    currentHoleNumber = currentHoleNumber - Config.NUMBER_UNIVERSAL_HOLD;
+                }
+            }
+            nextHole = roadway.getChildByName(currentHoleNumber.toString()) as Laya.Sprite;
+
+        }
+        this.jump(nextHole, complete);
+    }
+
     private pass(nextHole: Laya.Sprite) {
         let route = this.hole.getComponent(Route.Route);
         if (route != null) {

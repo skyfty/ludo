@@ -130,7 +130,16 @@ export class Militant extends Laya.Scene {
         }
 
         if (users.length == this.numberOfPlayer && cnt == users.length) {
-            Laya.Scene.open("game.ls", true, { "type": "extreme","color":this.color, "number": this.numberOfPlayer });
+            let param:any =  {
+                "type": "extreme",
+                "color":this.color,
+                "number": this.numberOfPlayer
+            };
+            let magic = Station.sfs.lastJoinedRoom.getVariable("magic");
+            if (magic) {
+                param.magic = magic.value;
+            }
+            Laya.Scene.open("game.ls", true,param);
         }
     }
 }

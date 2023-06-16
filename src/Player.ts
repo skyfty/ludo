@@ -90,12 +90,14 @@ export class Player extends Laya.Script {
     @property(Laya.Label)
     public nickname: Laya.Label;
 
-
     @property([Laya.Sprite])
     protected chippy: Laya.Sprite[] = [];
 
     @property([Laya.Sprite])
     protected home: Laya.Sprite[] = [];
+
+    @property(Laya.Prefab)
+    public plus: Laya.Prefab;
 
     constructor() {
         super();
@@ -243,13 +245,7 @@ export class Player extends Laya.Script {
         });
     }
 
-    private rocket(node: Laya.Sprite, complete: Laya.Handler) {
-        let num = 3;//Math.floor(Math.random() * 6);
-        this.advance(node, num, complete);
-        this.owner.event(Event.Rocket, [node.name, num]);
-    }
-
-    private onAdvanceComplete(node: Laya.Sprite, complete: Laya.Handler) {
+    public onAdvanceComplete(node: Laya.Sprite, complete: Laya.Handler) {
         let chess = node.getComponent(Chess) as Chess;
         if (chess.hole == this.goal) {
             let idx = this.chippy.indexOf(node);
@@ -274,13 +270,9 @@ export class Player extends Laya.Script {
             } else {
                 if (route.magic != null) {
                     switch(route.magic.name) {
-                        case "rocket": {
-                            route.setMagic(null);
-                            return this.rocket(node, complete);
-                        }
                         case "defender": {
+                            this.defend(true);
                             route.setMagic(null);
-                            chess.setDefender(true);
                             break;
                         }
                     }
@@ -290,10 +282,24 @@ export class Player extends Laya.Script {
         }
     }
 
+    public defend(b:boolean) {
+        for (let i = 0; i < this.chippy.length; ++i) {
+            if (this.chippy[i].parent == this.universal) {
+                let chess = this.chippy[i].getComponent(Chess) as Chess;
+                chess.setDefender(b);
+            }
+        }
+    }
+
+    public rocket(node: Laya.Sprite, num:number, complete: Laya.Handler) {
+        let chess = node.getComponent(Chess) as Chess;
+        chess.rocket(num, Laya.Handler.create(this, () => {
+            this.onAdvanceComplete(node, complete);
+        }));
+    }
+
     public advance(node: Laya.Sprite, diceNumber: number, complete: Laya.Handler) {
         let chess = node.getComponent(Chess) as Chess;
-        chess.setDefender(false);
-
         if (this.chippy.indexOf(node) != -1) {
             chess.step(diceNumber + 1, 1, Laya.Handler.create(this, () => {
                 this.onAdvanceComplete(node, complete);
@@ -329,4 +335,20 @@ export class Player extends Laya.Script {
         this.trade.getComponent(Trade).avatar.index = this.profile.avatar;
     }
 
+    
+    public plusAni(hold:Laya.Sprite) {
+        let plus = this.plus.create()  as Laya.Sprite;
+        let holdParent = hold.parent as Laya.Sprite;
+        let holdWorldPoint = holdParent.localToGlobal(new Laya.Point(hold.x, hold.y));
+        Laya.stage.addChild(plus.pos(holdWorldPoint.x, holdWorldPoint.y));
+    
+        let destParent = this.trade.getComponent(Trade).owner as Laya.Sprite;
+        let diceRoll = destParent.getComponent(Dice).diceRoll;
+        let destWorldPoint = destParent.localToGlobal(new Laya.Point(diceRoll.x + 30, diceRoll.y + 30));
+
+        Laya.Tween.to(plus, { y: destWorldPoint.y, x: destWorldPoint.x }, 500, Laya.Ease.quintInOut, Laya.Handler.create(this, () => {
+            Laya.stage.removeChild(plus);
+        }));
+
+    }
 }

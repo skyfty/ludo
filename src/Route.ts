@@ -55,6 +55,7 @@ export class Route extends Laya.Script {
         });
     }
 
+
     public scaleChess(hole:Laya.Point) {
         if (this.chess.length == 1) {
             this.chess[0].scale(1, 1).pos(hole.x, hole.y);

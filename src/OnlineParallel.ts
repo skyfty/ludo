@@ -81,16 +81,21 @@ export class OnlineParallel extends GameRoom {
             Laya.Scene.open("dialog/nogold.lh", false);
             return;
         }
-
-        let roomVars = this.getRoomInitVariable(false);
-        var settings = this.getRoomSettings(parallel.numberOfPlayer);
-        settings.variables = roomVars;
-
+        
         var exp = new SFS2X.MatchExpression(SFS2X.RoomProperties.IS_GAME, SFS2X.BoolMatch.EQUALS, true)
             .and(SFS2X.RoomProperties.HAS_FREE_PLAYER_SLOTS, SFS2X.BoolMatch.EQUALS, true)
             .and(SFS2X.RoomProperties.MAX_USERS, SFS2X.NumberMatch.EQUALS, parallel.numberOfPlayer)
             .and("private", SFS2X.BoolMatch.EQUALS, false)
             .and(Config.Colors[this.colorIdx], SFS2X.NumberMatch.EQUALS, -1);
+        let roomVars = this.getRoomInitVariable(false);
+        if (parallel.magic.selected) {
+            roomVars.push(new SFS2X.SFSRoomVariable("magic",  parallel.randomMagic()));
+            exp.and("magic", SFS2X.NumberMatch.NOT_EQUALS, -1)
+        } else {
+            roomVars.push(new SFS2X.SFSRoomVariable("magic",  -1));
+        }
+        var settings = this.getRoomSettings(parallel.numberOfPlayer);
+        settings.variables = roomVars;
 
         Station.sfs.send(new SFS2X.QuickJoinOrCreateRoomRequest(exp, ["default"], settings, Station.sfs.lastJoinedRoom));
     }
