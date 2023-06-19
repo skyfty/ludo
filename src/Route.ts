@@ -42,7 +42,21 @@ export class Route extends Laya.Script {
         this.magic = magic;
         this.magicClip.visible = magic != null;
         if (magic != null) {
-            this.magicClip.index = magic.clip;
+            switch(magic.name) {
+                case "rocket": {
+                    this.magicClip.index = 2;
+                    break;
+                }
+                case "defender": {
+                    this.magicClip.index = 0;
+                    break;
+                }
+                case "plus": {
+                    this.magicClip.index = 1;
+                    break;
+                }
+            }
+
         }
     }
 

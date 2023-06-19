@@ -15,6 +15,7 @@ export class Sender extends Laya.Script {
         this.owner.on(Player.Event.Achieve, this, this.onAchieve)
         this.owner.on(Player.Event.Victory, this, this.onVictory)
         this.owner.on(Player.Event.Rocket, this, this.onRocket)
+        this.owner.on(Player.Event.GenerateMagic, this, this.onGenerateMagic)
 
     }
 
@@ -39,6 +40,13 @@ export class Sender extends Laya.Script {
         Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", params));
     }
 
+    onGenerateMagic(num:number,type:string) {
+        var dataObj = new SFS2X.SFSObject();
+        dataObj.putUtfString("event", Player.Event.GenerateMagic);
+        dataObj.putInt("num", num);
+        dataObj.putUtfString("type", type);
+        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj));
+    }
     onRocket(name:string,num:number) {
         var dataObj = new SFS2X.SFSObject();
         dataObj.putUtfString("event", Player.Event.Rocket);

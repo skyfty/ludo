@@ -132,16 +132,20 @@ export class Room extends Laya.Script {
         }
     }
 
-    public setupMagic(color:string, magicMakeup:any) {
-        let idx = this.colorOfPlayer.indexOf(color);
+    public static getMagicRoute(color:string, routeId:number) {
+        let idx = Config.Colors.indexOf(color);
         let orgpos = idx == 0 ? 0 : (39 - 13 * (idx - 1));
+        let routeName =  orgpos + routeId;
+        if (routeName > Config.NUMBER_UNIVERSAL_HOLD) {
+            routeName = routeName - Config.NUMBER_UNIVERSAL_HOLD;
+        }
+        return routeName.toString();
+    }
+
+    public setupMagic(color:string, magicMakeup:any) {
         let universal = this.universal;
         for(let routeId in magicMakeup.makeup) {
-            let routeName =  orgpos + Number.parseInt(routeId);
-            if (routeName > Config.NUMBER_UNIVERSAL_HOLD) {
-                routeName = routeName - Config.NUMBER_UNIVERSAL_HOLD;
-            }
-            let route = universal.getChildByName(routeName.toString()).getComponent(Route);
+            let route = universal.getChildByName(Room.getMagicRoute(color, Number.parseInt(routeId))).getComponent(Route);
             route.setMagic(magicMakeup.makeup[routeId]);
         }
     }

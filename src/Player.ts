@@ -21,6 +21,7 @@ export class Event {
     static Achieve = "ACHIEVE";
     static Victory = "VICTORY";
     static Rocket = "Rocket";
+    static GenerateMagic = "GenerateMagic";
 
 }
 
@@ -245,6 +246,20 @@ export class Player extends Laya.Script {
         });
     }
 
+    public generateMagic(type:string) {
+        let num = -1;
+        while(true) {
+            num = Math.floor(Math.random() * Config.NUMBER_UNIVERSAL_HOLD);
+            if (Config.MagicPersevere.indexOf(num) == -1) {
+                break;
+            }
+        }
+        if (num != -1) {
+            let route = this.universal.getChildByName(Room.getMagicRoute(this.color, num)).getComponent(Route.Route);
+            route.setMagic({name:type});
+            this.owner.event(Event.GenerateMagic,[num, type]);
+        }
+    }
     public onAdvanceComplete(node: Laya.Sprite, complete: Laya.Handler) {
         let chess = node.getComponent(Chess) as Chess;
         if (chess.hole == this.goal) {
@@ -273,6 +288,7 @@ export class Player extends Laya.Script {
                         case "defender": {
                             this.defend(true);
                             route.setMagic(null);
+                            this.generateMagic(route.magic.name);
                             break;
                         }
                     }

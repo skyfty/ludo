@@ -31,14 +31,11 @@ export class GameRoom extends Laya.Script {
 
     onRoomCreated(evtParams: SFS2X.SFSEvent)
     {
-        console.log("Room created: " + evtParams.room);
     }
 
     onRoomCreationError(evtParams: SFS2X.SFSEvent)
     {
-        console.log("Room creation failed: " + evtParams.errorMessage);
     }
-
 
     protected getRoomInitVariable(isPrivate:boolean) {
         var roomVars = [];

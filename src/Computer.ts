@@ -76,12 +76,14 @@ export class Computer extends Performer {
             switch (route.magic.name) {
                 case "rocket": {
                     route.setMagic(null);
+                    this.player.generateMagic(route.magic.name);
                     return this.rocket(node);
                 }
                 case "plus": {
                     isPlusMagic = true;
                     route.setMagic(null);
                     this.player.plusAni(chess.hole);
+                    this.player.generateMagic(route.magic.name);
                     break;
                 }
             }

@@ -24,7 +24,7 @@ export class Local extends Laya.Script {
 
     onHurl(player: Laya.Sprite) {
         Laya.timer.once(900, this, () => {
-            let num = 5;//Math.floor(Math.random() * 6);
+            let num = Math.floor(Math.random() * 6);
             player.event(Player.Event.Hurl, num);
         });
     }

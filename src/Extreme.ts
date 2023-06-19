@@ -5,6 +5,7 @@ import { Chess } from "./Chess";
 import { Trade } from "./Trade";
 import { Dice } from "./Dice";
 import { Route } from "./Route";
+import { Room } from "./Room";
 import * as SFS2X from "../node_modules/sfs2x-api";
 
 @regClass()
@@ -66,6 +67,10 @@ export class Extreme extends Performer {
                 this.onRocket(dataObj.get("name"), dataObj.get("num"));
                 break;
             }
+            case Player.Event.GenerateMagic: {
+                this.onGenerateMagic(dataObj.get("num"), dataObj.get("type"));
+                break;
+            }
         }
     }
     private onChooseChesses(name:string) {
@@ -80,6 +85,11 @@ export class Extreme extends Performer {
                 break;
             }
         }
+    }
+
+    onGenerateMagic(num:number,type:string) {
+        let route = this.player.universal.getChildByName(Room.getMagicRoute(this.player.color, num)).getComponent(Route);
+        route.setMagic({name:type});
     }
 
     private onRocket(name:string, rand:number) {
