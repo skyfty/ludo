@@ -9,6 +9,7 @@ import { Route } from "./Route";
 @regClass()
 export class Oneself extends Performer {
     private isAdvanceing = false;
+    private dicecount:number[] = [];
 
     constructor() {
         super();
@@ -55,6 +56,9 @@ export class Oneself extends Performer {
     }
 
     onHurl(num: number) {
+        if (num == 5) {
+            this.dicecount.push(num);
+        }
         this.currentDiceNumber = num;
         this.player.trade.getComponent(Dice).stop(Laya.Handler.create(this, this.onRollStop));
     }
