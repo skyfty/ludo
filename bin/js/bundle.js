@@ -11838,15 +11838,15 @@
         if (route.magic != null) {
           switch (route.magic.name) {
             case "rocket": {
-              route.setMagic(null);
               this.player.generateMagic(route.magic.name);
+              route.setMagic(null);
               Laya.SoundManager.playSound("sounds/sou.mp3", 1);
               return this.rocket(node);
             }
             case "plus": {
               isPlusMagic = true;
-              route.setMagic(null);
               this.player.generateMagic(route.magic.name);
+              route.setMagic(null);
               this.player.plusAni(chess.hole);
               Laya.SoundManager.playSound("sounds/plus.mp3", 1);
               break;
