@@ -12705,6 +12705,11 @@
     }
     setDefender(b) {
       this.defender.visible = b;
+      if (b) {
+        this.chess.getComponent(Laya.Animator2D).play("defender");
+      } else {
+        this.chess.getComponent(Laya.Animator2D).play("idle");
+      }
     }
     isDefinder() {
       return this.defender.visible;

@@ -199,6 +199,11 @@ export class Chess extends Laya.Script {
 
     public setDefender(b:boolean) {
         this.defender.visible = b;
+        if (b) {
+            this.chess.getComponent(Laya.Animator2D).play("defender");
+        } else {
+            this.chess.getComponent(Laya.Animator2D).play("idle");
+        }
     }
 
     public isDefinder() {

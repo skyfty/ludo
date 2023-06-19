@@ -63,6 +63,17 @@
           "clip": {
             "_$uuid": "4e5c241e-daef-42bf-bfb5-53ebec2dd466"
           }
+        },
+        {
+          "x": 217.86095709548476,
+          "y": 237.3176449256461,
+          "id": "3",
+          "name": "defender",
+          "speed": 1,
+          "clipEnd": 1,
+          "clip": {
+            "_$uuid": "63c41487-a5b3-474d-92c6-82af84c5e93e"
+          }
         }
       ],
       "defaultWeight": 1

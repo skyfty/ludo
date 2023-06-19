@@ -83,18 +83,6 @@
       ],
       "_$child": [
         {
-          "_$id": "9x2tcgjj",
-          "_$type": "Image",
-          "name": "defender",
-          "x": -8,
-          "y": -12,
-          "width": 54,
-          "height": 54,
-          "visible": false,
-          "skin": "res://ef3383ed-47e9-48f1-8b29-9ec27c0e248b",
-          "color": "#ffffff"
-        },
-        {
           "_$id": "t8h17dpc",
           "_$type": "Image",
           "name": "chess",
@@ -117,6 +105,19 @@
           "visible": false,
           "skin": "res://52585135-c650-46fe-b873-974c25b33195",
           "useSourceSize": true,
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "9x2tcgjj",
+          "_$type": "Image",
+          "name": "defender",
+          "x": -1.5000000000000036,
+          "y": 5.5000000000000036,
+          "width": 35.5,
+          "height": 35.5,
+          "rotation": -30,
+          "visible": false,
+          "skin": "res://30ce58ad-1266-4052-8da7-89f8625a3697",
           "color": "#ffffff"
         }
       ]
