@@ -287,8 +287,8 @@ export class Player extends Laya.Script {
                     switch(route.magic.name) {
                         case "defender": {
                             this.defend(true);
-                            route.setMagic(null);
                             this.generateMagic(route.magic.name);
+                            route.setMagic(null);
                             break;
                         }
                     }

@@ -75,15 +75,15 @@ export class Computer extends Performer {
         if (route.magic != null) {
             switch (route.magic.name) {
                 case "rocket": {
-                    route.setMagic(null);
                     this.player.generateMagic(route.magic.name);
+                    route.setMagic(null);
                     return this.rocket(node);
                 }
                 case "plus": {
                     isPlusMagic = true;
+                    this.player.generateMagic(route.magic.name);
                     route.setMagic(null);
                     this.player.plusAni(chess.hole);
-                    this.player.generateMagic(route.magic.name);
                     break;
                 }
             }
