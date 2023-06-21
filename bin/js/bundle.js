@@ -10678,7 +10678,7 @@
       this.addSmartFoxListener();
       if (Station.sfs.isConnected) {
         if (Station.sfs.mySelf == null) {
-          Station.sfs.send(new SFS2X2.LoginRequest());
+          Station.sfs.send(new SFS2X2.LoginRequest(Profile.getNickname()));
         } else {
           Station.sync();
         }
@@ -10692,6 +10692,12 @@
       Station.sfs.addEventListener(SFS2X2.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
       Station.sfs.addEventListener(SFS2X2.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
       Station.sfs.addEventListener(SFS2X2.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_LIST_INIT, Station.onBuddyListInit, this);
+      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyListUpdate, this);
+      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_VARIABLES_UPDATE, Station.onBuddyListUpdate, this);
+      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ADD, Station.onBuddyListUpdate, this);
+      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_REMOVE, Station.onBuddyListUpdate, this);
+      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_BLOCK, Station.onBuddyListUpdate, this);
     }
     onDestroy() {
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.CONNECTION, Station.onConnection, Station.sfs);
@@ -10699,10 +10705,22 @@
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSEvent.BUDDY_LIST_INIT, Station.onBuddyListInit, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyListUpdate, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_VARIABLES_UPDATE, Station.onBuddyListUpdate, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ADD, Station.onBuddyListUpdate, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_REMOVE, Station.onBuddyListUpdate, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_BLOCK, Station.onBuddyListUpdate, this);
+    }
+    static onBuddyListUpdate(event) {
+      console.log("onBuddyListUpdate");
+    }
+    static onBuddyListInit(event) {
+      console.log("onBuddyListInit");
     }
     static onConnection(event) {
       if (event.success) {
-        Station.sfs.send(new SFS2X2.LoginRequest());
+        Station.sfs.send(new SFS2X2.LoginRequest(Profile.getNickname()));
       }
     }
     static onConnectionLost() {
@@ -10721,6 +10739,7 @@
     }
     static onLogin(event) {
       Station.sync();
+      Station.sfs.send(new SFS2X2.InitBuddyListRequest());
     }
     static onLoginError(event) {
       Laya.timer.once(5e3, this, () => {
@@ -10827,41 +10846,33 @@
   var BuddyList = class extends Laya.Script {
     constructor() {
       super();
-      this.buddies = null;
     }
     onAwake() {
-      this.addStationListener();
       this.list.renderHandler = new Laya.Handler(this, this.updateItem);
     }
     onStart() {
-      Station.sfs.send(new SFS2X3.InitBuddyListRequest());
+      this.addStationListener();
+      this.onBuddyListUpdate(null);
     }
     onDestroy() {
       this.removeStationListener();
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X3.SFSBuddyEvent.BUDDY_LIST_INIT, this.onBuddyListInit, this);
-      Station.sfs.addEventListener(SFS2X3.SFSBuddyEvent.BUDDY_ERROR, this.onBuddyError, this);
       Station.sfs.addEventListener(SFS2X3.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, this.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X3.SFSBuddyEvent.BUDDY_VARIABLES_UPDATE, this.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X3.SFSBuddyEvent.BUDDY_ADD, this.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X3.SFSBuddyEvent.BUDDY_REMOVE, this.onBuddyListUpdate, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X3.SFSBuddyEvent.BUDDY_LIST_INIT, this.onBuddyListInit, this);
-      Station.sfs.removeEventListener(SFS2X3.SFSBuddyEvent.BUDDY_ERROR, this.onBuddyError, this);
       Station.sfs.removeEventListener(SFS2X3.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, this.onBuddyListUpdate, this);
       Station.sfs.removeEventListener(SFS2X3.SFSBuddyEvent.BUDDY_VARIABLES_UPDATE, this.onBuddyListUpdate, this);
       Station.sfs.removeEventListener(SFS2X3.SFSBuddyEvent.BUDDY_ADD, this.onBuddyListUpdate, this);
       Station.sfs.removeEventListener(SFS2X3.SFSBuddyEvent.BUDDY_REMOVE, this.onBuddyListUpdate, this);
     }
     updateItem(cell, index) {
-      let data = this.buddies.getSFSObject(index);
+      let data = this.list.array[index];
       let item = cell.getComponent(BuddyItem);
-      let avatar = data.getInt("avatar");
-      item.avatar.index = avatar;
       item.nickname.text = this.getBuddyDisplayName(data);
-      item.icon.index = Math.min(index, 3);
     }
     getBuddyDisplayName(buddy) {
       if (buddy.nickName != null && buddy.nickName != "")
@@ -10869,23 +10880,8 @@
       else
         return buddy.name;
     }
-    /**
-     * Build buddies list.
-     */
     onBuddyListUpdate(event) {
-      this.buddies = Station.sfs.buddyManager.getBuddyList();
-      var data = [];
-      for (var m = 0; m < this.buddies.size(); m++) {
-        data.push(this.buddies.getSFSObject(m));
-      }
-      this.list.array = data;
-    }
-    onBuddyMessage(event) {
-    }
-    onBuddyListInit(event) {
-      this.onBuddyListUpdate(event);
-    }
-    onBuddyError(event) {
+      this.list.array = Station.sfs.buddyManager.getBuddyList();
     }
   };
   __name(BuddyList, "BuddyList");
@@ -11025,6 +11021,7 @@
   ], UserInfo);
 
   // src/BuddyInfo.ts
+  var SFS2X4 = __toESM(require_sfs2x_api());
   var { regClass: regClass11, property: property11 } = Laya;
   var BuddyInfo = class extends UserInfo {
     constructor() {
@@ -11032,19 +11029,39 @@
     }
     onAwake() {
       super.onAwake();
+      this.addStationListener();
       this.viewStack.selectedIndex = 0;
+      this.addBuddy.on(Laya.Event.CLICK, this, this.onAddBuddy);
+    }
+    onAddBuddy() {
+      Station.sfs.send(new SFS2X4.AddBuddyRequest(this.name.text));
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    addStationListener() {
+      Station.sfs.addEventListener(SFS2X4.SFSBuddyEvent.BUDDY_ADD, this.onBuddyAddRequest, this);
+    }
+    removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X4.SFSBuddyEvent.BUDDY_ADD, this.onBuddyAddRequest, this);
+    }
+    onBuddyAddRequest(event) {
+      this.viewStack.selectedIndex = 1;
     }
   };
   __name(BuddyInfo, "BuddyInfo");
   __decorateClass([
     property11(Laya.ViewStack)
   ], BuddyInfo.prototype, "viewStack", 2);
+  __decorateClass([
+    property11(Laya.Button)
+  ], BuddyInfo.prototype, "addBuddy", 2);
   BuddyInfo = __decorateClass([
     regClass11("f2165027-65e9-40f7-8ad3-7a408a96585e", "../src/BuddyInfo.ts")
   ], BuddyInfo);
 
   // src/BuddyInfoDialog.ts
-  var SFS2X4 = __toESM(require_sfs2x_api());
+  var SFS2X5 = __toESM(require_sfs2x_api());
   var { regClass: regClass12, property: property12 } = Laya;
   var BuddyInfoDialog = class extends Laya.Dialog {
     constructor() {
@@ -11057,9 +11074,9 @@
       this.removeStationListener();
     }
     onOpened(param) {
-      var params = new SFS2X4.SFSObject();
+      var params = new SFS2X5.SFSObject();
       params.putInt("id", param.userid);
-      Station.sfs.send(new SFS2X4.ExtensionRequest("GetProfileRequest", params));
+      Station.sfs.send(new SFS2X5.ExtensionRequest("GetProfileRequest", params));
     }
     onExtensionResponse(evtParams) {
       if ("GetProfileRequest" == evtParams.cmd) {
@@ -11067,10 +11084,10 @@
       }
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X4.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X4.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
   };
   __name(BuddyInfoDialog, "BuddyInfoDialog");
@@ -11079,7 +11096,7 @@
   ], BuddyInfoDialog);
 
   // src/Buycoin.ts
-  var SFS2X5 = __toESM(require_sfs2x_api());
+  var SFS2X6 = __toESM(require_sfs2x_api());
 
   // src/BuyItem.ts
   var { regClass: regClass13, property: property13 } = Laya;
@@ -11117,7 +11134,7 @@
       this.removeStationListener();
     }
     onStart() {
-      Station.sfs.send(new SFS2X5.ExtensionRequest("GetCoinRequest"));
+      Station.sfs.send(new SFS2X6.ExtensionRequest("GetCoinRequest"));
     }
     setCollectPoint(point) {
       this.collectPoint = point;
@@ -11129,11 +11146,11 @@
         item.coin.text = data.getInt("amount").toLocaleString("en-US");
         item.price.text = data.getDouble("price");
         item.buyBtn.on(Laya.Event.CLICK, this, () => {
-          var params = new SFS2X5.SFSObject();
+          var params = new SFS2X6.SFSObject();
           params.putInt("id", Profile.getUserId());
           params.putInt("amount", data.getInt("amount"));
           params.putInt("selectindex", index);
-          Station.sfs.send(new SFS2X5.ExtensionRequest("BuyGoldRequest", params));
+          Station.sfs.send(new SFS2X6.ExtensionRequest("BuyGoldRequest", params));
         });
       }
     }
@@ -11176,10 +11193,10 @@
       }
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X5.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
   };
   __name(Buycoin, "Buycoin");
@@ -11197,7 +11214,7 @@
   ], Buycoin);
 
   // src/GameRoom.ts
-  var SFS2X6 = __toESM(require_sfs2x_api());
+  var SFS2X7 = __toESM(require_sfs2x_api());
   var { regClass: regClass15, property: property15 } = Laya;
   var GameRoom = class extends Laya.Script {
     constructor() {
@@ -11211,12 +11228,12 @@
       this.removeStationListener();
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
-      Station.sfs.addEventListener(SFS2X6.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
+      Station.sfs.addEventListener(SFS2X7.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
+      Station.sfs.addEventListener(SFS2X7.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
-      Station.sfs.removeEventListener(SFS2X6.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
+      Station.sfs.removeEventListener(SFS2X7.SFSEvent.ROOM_ADD, this.onRoomCreated, this);
+      Station.sfs.removeEventListener(SFS2X7.SFSEvent.ROOM_CREATION_ERROR, this.onRoomCreationError, this);
     }
     onRoomCreated(evtParams) {
     }
@@ -11224,15 +11241,15 @@
     }
     getRoomInitVariable(isPrivate) {
       var roomVars = [];
-      roomVars.push(new SFS2X6.SFSRoomVariable("red", -1));
-      roomVars.push(new SFS2X6.SFSRoomVariable("green", -1));
-      roomVars.push(new SFS2X6.SFSRoomVariable("blue", -1));
-      roomVars.push(new SFS2X6.SFSRoomVariable("yellow", -1));
-      roomVars.push(new SFS2X6.SFSRoomVariable("private", isPrivate));
+      roomVars.push(new SFS2X7.SFSRoomVariable("red", -1));
+      roomVars.push(new SFS2X7.SFSRoomVariable("green", -1));
+      roomVars.push(new SFS2X7.SFSRoomVariable("blue", -1));
+      roomVars.push(new SFS2X7.SFSRoomVariable("yellow", -1));
+      roomVars.push(new SFS2X7.SFSRoomVariable("private", isPrivate));
       return roomVars;
     }
     getRoomSettings(maxUsers) {
-      var settings = new SFS2X6.SFSGameSettings(Station.sfs.mySelf.name + "'s game");
+      var settings = new SFS2X7.SFSGameSettings(Station.sfs.mySelf.name + "'s game");
       settings.isPublic = true;
       settings.isGame = true;
       settings.maxVariables = 50;
@@ -11262,7 +11279,7 @@
   Config.MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
 
   // src/CreateRoom.ts
-  var SFS2X7 = __toESM(require_sfs2x_api());
+  var SFS2X8 = __toESM(require_sfs2x_api());
 
   // src/SelectPlayer.ts
   var { regClass: regClass16, property: property16, SoundManager: SoundManager2 } = Laya;
@@ -11349,18 +11366,18 @@
     }
     addStationListener() {
       super.addStationListener();
-      Station.sfs.addEventListener(SFS2X7.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      Station.sfs.addEventListener(SFS2X7.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X8.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.addEventListener(SFS2X8.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
       super.removeStationListener();
-      Station.sfs.removeEventListener(SFS2X7.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      Station.sfs.removeEventListener(SFS2X7.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X8.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.removeEventListener(SFS2X8.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     onRoomJoin(event) {
-      var params = new SFS2X7.SFSObject();
+      var params = new SFS2X8.SFSObject();
       params.putUtfString("scope", "createroom");
-      Station.sfs.send(new SFS2X7.ExtensionRequest("GetJettonRequest", params));
+      Station.sfs.send(new SFS2X8.ExtensionRequest("GetJettonRequest", params));
     }
     getRoomCode() {
       const today = /* @__PURE__ */ new Date();
@@ -11372,17 +11389,17 @@
     onCreateRoom() {
       let selectPlayer = this.owner.getComponent(SelectPlayer);
       var roomVars = this.getRoomInitVariable(true);
-      roomVars.push(new SFS2X7.SFSRoomVariable("RoomCode", this.getRoomCode()));
+      roomVars.push(new SFS2X8.SFSRoomVariable("RoomCode", this.getRoomCode()));
       var settings = this.getRoomSettings(selectPlayer.numberOfPlayer);
       settings.variables = roomVars;
-      Station.sfs.send(new SFS2X7.CreateSFSGameRequest(settings));
+      Station.sfs.send(new SFS2X8.CreateSFSGameRequest(settings));
     }
     onExtensionResponse(evtParams) {
       if ("GetJettonRequest" == evtParams.cmd) {
         let jettons = evtParams.params.getSFSArray("list");
         let item = jettons.getSFSObject(0);
         let varname = Station.getUserJettonName();
-        Station.sfs.send(new SFS2X7.SetRoomVariablesRequest([new SFS2X7.SFSRoomVariable(varname, item)]));
+        Station.sfs.send(new SFS2X8.SetRoomVariablesRequest([new SFS2X8.SFSRoomVariable(varname, item)]));
         Laya.Dialog.closeAll();
         Laya.Scene.open("invite.ls", true, { "color": Config.Colors[this.colorIdx] });
       }
@@ -11400,7 +11417,7 @@
   ], CreateRoom);
 
   // src/JoinRoom.ts
-  var SFS2X8 = __toESM(require_sfs2x_api());
+  var SFS2X9 = __toESM(require_sfs2x_api());
 
   // src/Dialog.ts
   var { regClass: regClass18, property: property18 } = Laya;
@@ -11420,8 +11437,8 @@
     onAwake() {
       this.play.on(Laya.Event.CLICK, this, () => {
         let roomId = this.roomInput.text;
-        var exp = new SFS2X8.MatchExpression("RoomCode", SFS2X8.StringMatch.EQUALS, roomId);
-        Station.sfs.send(new SFS2X8.FindRoomsRequest(exp, null, 1));
+        var exp = new SFS2X9.MatchExpression("RoomCode", SFS2X9.StringMatch.EQUALS, roomId);
+        Station.sfs.send(new SFS2X9.FindRoomsRequest(exp, null, 1));
       });
       this.closeBtn.on(Laya.Event.CLICK, this, () => {
         this.owner.event(Laya.Event.CLOSE);
@@ -11436,16 +11453,16 @@
       this.removeStationListener();
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X8.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
-      Station.sfs.addEventListener(SFS2X8.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      Station.sfs.addEventListener(SFS2X8.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
-      Station.sfs.addEventListener(SFS2X8.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X9.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
+      Station.sfs.addEventListener(SFS2X9.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.addEventListener(SFS2X9.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
+      Station.sfs.addEventListener(SFS2X9.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X8.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
-      Station.sfs.removeEventListener(SFS2X8.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      Station.sfs.removeEventListener(SFS2X8.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
-      Station.sfs.removeEventListener(SFS2X8.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X9.SFSEvent.ROOM_FIND_RESULT, this.onRoomFindResult, this);
+      Station.sfs.removeEventListener(SFS2X9.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.removeEventListener(SFS2X9.SFSEvent.ROOM_JOIN_ERROR, this.joinRoomError, this);
+      Station.sfs.removeEventListener(SFS2X9.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     onRoomFindResult(event) {
       if (event.rooms != null && event.rooms.length == 1) {
@@ -11455,9 +11472,9 @@
       }
     }
     onRoomJoin(event) {
-      var params = new SFS2X8.SFSObject();
+      var params = new SFS2X9.SFSObject();
       params.putUtfString("scope", "joinroom");
-      Station.sfs.send(new SFS2X8.ExtensionRequest("GetJettonRequest", params));
+      Station.sfs.send(new SFS2X9.ExtensionRequest("GetJettonRequest", params));
       this.dialog.close();
     }
     onExtensionResponse(evtParams) {
@@ -11465,7 +11482,7 @@
         let jettons = evtParams.params.getSFSArray("list");
         let item = jettons.getSFSObject(0);
         let varname = Station.getUserJettonName();
-        Station.sfs.send(new SFS2X8.SetRoomVariablesRequest([new SFS2X8.SFSRoomVariable(varname, item)]));
+        Station.sfs.send(new SFS2X9.SetRoomVariablesRequest([new SFS2X9.SFSRoomVariable(varname, item)]));
         Laya.Scene.open("dialog/selectcolor.lh", false, null, Laya.Handler.create(this, (dlg) => {
           dlg.on(Laya.Event.PLAYED, this, (color) => {
             Dialog.closeAll();
@@ -11534,7 +11551,7 @@
   ], Chamber);
 
   // src/CheckinDialog.ts
-  var SFS2X9 = __toESM(require_sfs2x_api());
+  var SFS2X10 = __toESM(require_sfs2x_api());
 
   // src/CheckinItem.ts
   var { regClass: regClass21, property: property21 } = Laya;
@@ -11575,7 +11592,7 @@
     }
     checkinListRequest(point) {
       this.collectPoint = point;
-      Station.sfs.send(new SFS2X9.ExtensionRequest("CheckinListRequest"));
+      Station.sfs.send(new SFS2X10.ExtensionRequest("CheckinListRequest"));
     }
     onDestroy() {
       this.removeStationListener();
@@ -11597,9 +11614,9 @@
       }
     }
     onCheckin() {
-      var params = new SFS2X9.SFSObject();
+      var params = new SFS2X10.SFSObject();
       params.putInt("id", Profile.getUserId());
-      Station.sfs.send(new SFS2X9.ExtensionRequest("CheckinRequest", params));
+      Station.sfs.send(new SFS2X10.ExtensionRequest("CheckinRequest", params));
     }
     onExtensionResponse(evtParams) {
       if ("CheckinListRequest" == evtParams.cmd) {
@@ -11645,10 +11662,10 @@
       Laya.SoundManager.playSound("sounds/jinbi.mp3", 1);
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X9.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X10.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X9.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X10.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
   };
   __name(CheckinDialog, "CheckinDialog");
@@ -13019,7 +13036,7 @@
   ], Chess);
 
   // src/Chitchat.ts
-  var SFS2X10 = __toESM(require_sfs2x_api());
+  var SFS2X11 = __toESM(require_sfs2x_api());
   var { regClass: regClass35, property: property35 } = Laya;
   var Chitchat = class extends Laya.Script {
     constructor() {
@@ -13041,7 +13058,7 @@
     }
     onSend() {
       if (this.message.text != "") {
-        Station.sfs.send(new SFS2X10.PublicMessageRequest(this.message.text));
+        Station.sfs.send(new SFS2X11.PublicMessageRequest(this.message.text));
         this.message.text = "";
       }
     }
@@ -13091,7 +13108,7 @@
   ], Script);
 
   // src/CombatInfo.ts
-  var SFS2X11 = __toESM(require_sfs2x_api());
+  var SFS2X12 = __toESM(require_sfs2x_api());
 
   // src/CombatWin.ts
   var { regClass: regClass38, property: property38 } = Laya;
@@ -13225,17 +13242,17 @@
       }
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X11.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X12.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X11.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X12.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     setProfile(isSelf) {
       this.viewStack.selectedIndex = isSelf;
-      var params = new SFS2X11.SFSObject();
+      var params = new SFS2X12.SFSObject();
       params.putInt("id", Profile.getUserId());
       params.putInt("victory", isSelf);
-      Station.sfs.send(new SFS2X11.ExtensionRequest("CombatRequest", params));
+      Station.sfs.send(new SFS2X12.ExtensionRequest("CombatRequest", params));
     }
   };
   __name(CombatInfo, "CombatInfo");
@@ -13354,7 +13371,7 @@
   ], Entry);
 
   // src/Online.ts
-  var SFS2X12 = __toESM(require_sfs2x_api());
+  var SFS2X13 = __toESM(require_sfs2x_api());
 
   // src/Medal.ts
   var { regClass: regClass46, property: property46 } = Laya;
@@ -13537,30 +13554,30 @@
       }
     }
     onHurl(player) {
-      var params = new SFS2X12.SFSObject();
-      Station.sfs.send(new SFS2X12.ExtensionRequest(Event3.Hurl, params));
+      var params = new SFS2X13.SFSObject();
+      Station.sfs.send(new SFS2X13.ExtensionRequest(Event3.Hurl, params));
     }
     onDestroy() {
       Station.levelRoom();
       this.removeStationListener();
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X12.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
-      Station.sfs.addEventListener(SFS2X12.SFSEvent.LOGOUT, this.onUserExitRoom, this);
-      Station.sfs.addEventListener(SFS2X12.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
-      Station.sfs.addEventListener(SFS2X12.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
-      Station.sfs.addEventListener(SFS2X12.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
-      Station.sfs.addEventListener(SFS2X12.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
-      Station.sfs.addEventListener(SFS2X12.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+      Station.sfs.addEventListener(SFS2X13.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+      Station.sfs.addEventListener(SFS2X13.SFSEvent.LOGOUT, this.onUserExitRoom, this);
+      Station.sfs.addEventListener(SFS2X13.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
+      Station.sfs.addEventListener(SFS2X13.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
+      Station.sfs.addEventListener(SFS2X13.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
+      Station.sfs.addEventListener(SFS2X13.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X13.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X12.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
-      Station.sfs.removeEventListener(SFS2X12.SFSEvent.LOGOUT, this.onUserExitRoom, this);
-      Station.sfs.removeEventListener(SFS2X12.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
-      Station.sfs.removeEventListener(SFS2X12.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
-      Station.sfs.removeEventListener(SFS2X12.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
-      Station.sfs.removeEventListener(SFS2X12.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
-      Station.sfs.removeEventListener(SFS2X12.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+      Station.sfs.removeEventListener(SFS2X13.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
+      Station.sfs.removeEventListener(SFS2X13.SFSEvent.LOGOUT, this.onUserExitRoom, this);
+      Station.sfs.removeEventListener(SFS2X13.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
+      Station.sfs.removeEventListener(SFS2X13.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
+      Station.sfs.removeEventListener(SFS2X13.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
+      Station.sfs.removeEventListener(SFS2X13.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X13.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
     }
     onPublicMessage(evtParams) {
       let player = this.room.players[evtParams.sender.id];
@@ -13682,7 +13699,7 @@
   ], Local);
 
   // src/Sender.ts
-  var SFS2X13 = __toESM(require_sfs2x_api());
+  var SFS2X14 = __toESM(require_sfs2x_api());
   var { regClass: regClass51, property: property51 } = Laya;
   var Sender = class extends Laya.Script {
     constructor() {
@@ -13698,48 +13715,48 @@
       this.owner.on(Event3.GenerateMagic, this, this.onGenerateMagic);
     }
     onAchieve() {
-      var params = new SFS2X13.SFSObject();
+      var params = new SFS2X14.SFSObject();
       params.putUtfString("event", Event3.Achieve);
       this.sendEventRequest(params);
     }
     onVictory() {
-      var params = new SFS2X13.SFSObject();
+      var params = new SFS2X14.SFSObject();
       params.putUtfString("event", Event3.Victory);
       this.sendEventRequest(params);
     }
     onChoose(name) {
-      var params = new SFS2X13.SFSObject();
+      var params = new SFS2X14.SFSObject();
       params.putUtfString("event", Event3.Choose);
       params.putUtfString("name", name);
       this.sendEventRequest(params);
     }
     sendEventRequest(params) {
-      Station.sfs.send(new SFS2X13.ExtensionRequest("EventRequest", params));
+      Station.sfs.send(new SFS2X14.ExtensionRequest("EventRequest", params));
     }
     onGenerateMagic(num, type) {
-      var dataObj = new SFS2X13.SFSObject();
+      var dataObj = new SFS2X14.SFSObject();
       dataObj.putUtfString("event", Event3.GenerateMagic);
       dataObj.putInt("num", num);
       dataObj.putUtfString("type", type);
-      Station.sfs.send(new SFS2X13.ObjectMessageRequest(dataObj));
+      Station.sfs.send(new SFS2X14.ObjectMessageRequest(dataObj));
     }
     onRocket(name, num) {
-      var dataObj = new SFS2X13.SFSObject();
+      var dataObj = new SFS2X14.SFSObject();
       dataObj.putUtfString("event", Event3.Rocket);
       dataObj.putInt("num", num);
       dataObj.putUtfString("name", name);
-      Station.sfs.send(new SFS2X13.ObjectMessageRequest(dataObj));
+      Station.sfs.send(new SFS2X14.ObjectMessageRequest(dataObj));
     }
     onRollEnd(num) {
-      var dataObj = new SFS2X13.SFSObject();
+      var dataObj = new SFS2X14.SFSObject();
       dataObj.putUtfString("event", Event3.RollEnd);
       dataObj.putInt("num", num);
-      Station.sfs.send(new SFS2X13.ObjectMessageRequest(dataObj));
+      Station.sfs.send(new SFS2X14.ObjectMessageRequest(dataObj));
     }
     onRollStart() {
-      var dataObj = new SFS2X13.SFSObject();
+      var dataObj = new SFS2X14.SFSObject();
       dataObj.putUtfString("event", Event3.RollStart);
-      Station.sfs.send(new SFS2X13.ObjectMessageRequest(dataObj));
+      Station.sfs.send(new SFS2X14.ObjectMessageRequest(dataObj));
     }
   };
   __name(Sender, "Sender");
@@ -13748,7 +13765,7 @@
   ], Sender);
 
   // src/Generalize.ts
-  var SFS2X14 = __toESM(require_sfs2x_api());
+  var SFS2X15 = __toESM(require_sfs2x_api());
   var { regClass: regClass52, property: property52 } = Laya;
   var Generalize = class extends Laya.Script {
     constructor(type) {
@@ -13761,11 +13778,11 @@
       this.owner.on(Event3.Victory, this, this.onVictory);
     }
     onVictory() {
-      var params = new SFS2X14.SFSObject();
+      var params = new SFS2X15.SFSObject();
       params.putInt("id", Profile.getUserId());
       params.putUtfString("type", this.type);
       params.putInt("duration", Date.now() - this.startTime);
-      Station.sfs.send(new SFS2X14.ExtensionRequest("GeneralizeRequest", params));
+      Station.sfs.send(new SFS2X15.ExtensionRequest("GeneralizeRequest", params));
     }
   };
   __name(Generalize, "Generalize");
@@ -13905,7 +13922,7 @@
   ], Groove);
 
   // src/Invite.ts
-  var SFS2X15 = __toESM(require_sfs2x_api());
+  var SFS2X16 = __toESM(require_sfs2x_api());
   var { regClass: regClass56, property: property56, SoundManager: SoundManager10 } = Laya;
   var Invite = class extends Laya.Scene {
     constructor() {
@@ -13936,9 +13953,9 @@
       this.item = this.viewStack.getChildByName("item" + itemName);
       let stateName = Station.getUserStateName(this.color, Station.mySelfId());
       let roomVars = [];
-      roomVars.push(new SFS2X15.SFSRoomVariable(stateName, "ready"));
-      roomVars.push(new SFS2X15.SFSRoomVariable(this.color, Station.mySelfId()));
-      Station.sfs.send(new SFS2X15.SetRoomVariablesRequest(roomVars));
+      roomVars.push(new SFS2X16.SFSRoomVariable(stateName, "ready"));
+      roomVars.push(new SFS2X16.SFSRoomVariable(this.color, Station.mySelfId()));
+      Station.sfs.send(new SFS2X16.SetRoomVariablesRequest(roomVars));
       Laya.timer.loop(1e3, this, () => {
         let timeout = Number.parseInt(this.clock.text) - 1;
         if (timeout <= 0) {
@@ -13958,18 +13975,18 @@
       Laya.Scene.open("menu.ls");
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X15.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
-      Station.sfs.addEventListener(SFS2X15.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
-      Station.sfs.addEventListener(SFS2X15.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
-      Station.sfs.addEventListener(SFS2X15.SFSEvent.LOGOUT, this.onLogout, this);
-      Station.sfs.addEventListener(SFS2X15.SFSEvent.CONNECTION_LOST, this.onLogout, this);
+      Station.sfs.addEventListener(SFS2X16.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
+      Station.sfs.addEventListener(SFS2X16.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
+      Station.sfs.addEventListener(SFS2X16.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
+      Station.sfs.addEventListener(SFS2X16.SFSEvent.LOGOUT, this.onLogout, this);
+      Station.sfs.addEventListener(SFS2X16.SFSEvent.CONNECTION_LOST, this.onLogout, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X15.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
-      Station.sfs.removeEventListener(SFS2X15.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
-      Station.sfs.removeEventListener(SFS2X15.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
-      Station.sfs.removeEventListener(SFS2X15.SFSEvent.LOGOUT, this.onLogout, this);
-      Station.sfs.removeEventListener(SFS2X15.SFSEvent.CONNECTION_LOST, this.onLogout, this);
+      Station.sfs.removeEventListener(SFS2X16.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
+      Station.sfs.removeEventListener(SFS2X16.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
+      Station.sfs.removeEventListener(SFS2X16.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
+      Station.sfs.removeEventListener(SFS2X16.SFSEvent.LOGOUT, this.onLogout, this);
+      Station.sfs.removeEventListener(SFS2X16.SFSEvent.CONNECTION_LOST, this.onLogout, this);
     }
     stopAllClip(b) {
       for (let i = 0; i < this.item.numChildren; ++i) {
@@ -14200,7 +14217,7 @@
   ], Lunch);
 
   // src/OnlineParallel.ts
-  var SFS2X16 = __toESM(require_sfs2x_api());
+  var SFS2X17 = __toESM(require_sfs2x_api());
   var { regClass: regClass59, property: property59 } = Laya;
   var OnlineParallel = class extends GameRoom {
     constructor() {
@@ -14237,9 +14254,9 @@
         }
         this.refreshEarnPayLabel();
       });
-      var params = new SFS2X16.SFSObject();
+      var params = new SFS2X17.SFSObject();
       params.putUtfString("scope", "extreme");
-      Station.sfs.send(new SFS2X16.ExtensionRequest("GetJettonRequest", params));
+      Station.sfs.send(new SFS2X17.ExtensionRequest("GetJettonRequest", params));
     }
     refreshEarnPayLabel() {
       let item = this.jettons.getSFSObject(this.idx);
@@ -14250,8 +14267,8 @@
       Laya.Dialog.closeAll();
       let roomVars = [];
       let varname = Station.getUserJettonName();
-      roomVars.push(new SFS2X16.SFSRoomVariable(varname, this.jettons.getSFSObject(this.idx)));
-      Station.sfs.send(new SFS2X16.SetRoomVariablesRequest(roomVars));
+      roomVars.push(new SFS2X17.SFSRoomVariable(varname, this.jettons.getSFSObject(this.idx)));
+      Station.sfs.send(new SFS2X17.SetRoomVariablesRequest(roomVars));
       Laya.Scene.open("militant.ls", true, { "color": Config.Colors[this.colorIdx] });
     }
     onPlay() {
@@ -14265,17 +14282,17 @@
         Laya.Scene.open("dialog/nogold.lh", false);
         return;
       }
-      var exp = new SFS2X16.MatchExpression(SFS2X16.RoomProperties.IS_GAME, SFS2X16.BoolMatch.EQUALS, true).and(SFS2X16.RoomProperties.HAS_FREE_PLAYER_SLOTS, SFS2X16.BoolMatch.EQUALS, true).and(SFS2X16.RoomProperties.MAX_USERS, SFS2X16.NumberMatch.EQUALS, parallel.numberOfPlayer).and("private", SFS2X16.BoolMatch.EQUALS, false).and(Config.Colors[this.colorIdx], SFS2X16.NumberMatch.EQUALS, -1);
+      var exp = new SFS2X17.MatchExpression(SFS2X17.RoomProperties.IS_GAME, SFS2X17.BoolMatch.EQUALS, true).and(SFS2X17.RoomProperties.HAS_FREE_PLAYER_SLOTS, SFS2X17.BoolMatch.EQUALS, true).and(SFS2X17.RoomProperties.MAX_USERS, SFS2X17.NumberMatch.EQUALS, parallel.numberOfPlayer).and("private", SFS2X17.BoolMatch.EQUALS, false).and(Config.Colors[this.colorIdx], SFS2X17.NumberMatch.EQUALS, -1);
       let roomVars = this.getRoomInitVariable(false);
       if (parallel.magic.selected) {
-        roomVars.push(new SFS2X16.SFSRoomVariable("magic", parallel.randomMagic()));
-        exp.and("magic", SFS2X16.NumberMatch.NOT_EQUALS, -1);
+        roomVars.push(new SFS2X17.SFSRoomVariable("magic", parallel.randomMagic()));
+        exp.and("magic", SFS2X17.NumberMatch.NOT_EQUALS, -1);
       } else {
-        roomVars.push(new SFS2X16.SFSRoomVariable("magic", -1));
+        roomVars.push(new SFS2X17.SFSRoomVariable("magic", -1));
       }
       var settings = this.getRoomSettings(parallel.numberOfPlayer);
       settings.variables = roomVars;
-      Station.sfs.send(new SFS2X16.QuickJoinOrCreateRoomRequest(exp, ["default"], settings, Station.sfs.lastJoinedRoom));
+      Station.sfs.send(new SFS2X17.QuickJoinOrCreateRoomRequest(exp, ["default"], settings, Station.sfs.lastJoinedRoom));
     }
     onExtensionResponse(evtParams) {
       if ("GetJettonRequest" == evtParams.cmd) {
@@ -14285,13 +14302,13 @@
     }
     addStationListener() {
       super.addStationListener();
-      Station.sfs.addEventListener(SFS2X16.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      Station.sfs.addEventListener(SFS2X16.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X17.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.addEventListener(SFS2X17.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
       super.removeStationListener();
-      Station.sfs.removeEventListener(SFS2X16.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
-      Station.sfs.removeEventListener(SFS2X16.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X17.SFSEvent.ROOM_JOIN, this.onRoomJoin, this);
+      Station.sfs.removeEventListener(SFS2X17.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
   };
   __name(OnlineParallel, "OnlineParallel");
@@ -14466,7 +14483,7 @@
   ], Menu);
 
   // src/Militant.ts
-  var SFS2X17 = __toESM(require_sfs2x_api());
+  var SFS2X18 = __toESM(require_sfs2x_api());
   var { regClass: regClass61, property: property61, SoundManager: SoundManager12 } = Laya;
   var Militant = class extends Laya.Scene {
     constructor() {
@@ -14495,9 +14512,9 @@
       this.item = this.viewStack.getChildByName("item" + itemName);
       let stateName = Station.getUserStateName(this.color, Station.mySelfId());
       let roomVars = [];
-      roomVars.push(new SFS2X17.SFSRoomVariable(stateName, "ready"));
-      roomVars.push(new SFS2X17.SFSRoomVariable(this.color, Station.mySelfId()));
-      Station.sfs.send(new SFS2X17.SetRoomVariablesRequest(roomVars));
+      roomVars.push(new SFS2X18.SFSRoomVariable(stateName, "ready"));
+      roomVars.push(new SFS2X18.SFSRoomVariable(this.color, Station.mySelfId()));
+      Station.sfs.send(new SFS2X18.SetRoomVariablesRequest(roomVars));
       Laya.timer.loop(1e3, this, () => {
         let timeout = Number.parseInt(this.clock.text) - 1;
         if (timeout <= 0) {
@@ -14517,18 +14534,18 @@
       Laya.Scene.open("menu.ls");
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X17.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
-      Station.sfs.addEventListener(SFS2X17.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
-      Station.sfs.addEventListener(SFS2X17.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
-      Station.sfs.addEventListener(SFS2X17.SFSEvent.LOGOUT, this.onLogout, this);
-      Station.sfs.addEventListener(SFS2X17.SFSEvent.CONNECTION_LOST, this.onLogout, this);
+      Station.sfs.addEventListener(SFS2X18.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
+      Station.sfs.addEventListener(SFS2X18.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
+      Station.sfs.addEventListener(SFS2X18.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
+      Station.sfs.addEventListener(SFS2X18.SFSEvent.LOGOUT, this.onLogout, this);
+      Station.sfs.addEventListener(SFS2X18.SFSEvent.CONNECTION_LOST, this.onLogout, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X17.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
-      Station.sfs.removeEventListener(SFS2X17.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
-      Station.sfs.removeEventListener(SFS2X17.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
-      Station.sfs.removeEventListener(SFS2X17.SFSEvent.LOGOUT, this.onLogout, this);
-      Station.sfs.removeEventListener(SFS2X17.SFSEvent.CONNECTION_LOST, this.onLogout, this);
+      Station.sfs.removeEventListener(SFS2X18.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomUpdate, this);
+      Station.sfs.removeEventListener(SFS2X18.SFSEvent.USER_EXIT_ROOM, this.onRoomUpdate, this);
+      Station.sfs.removeEventListener(SFS2X18.SFSEvent.USER_ENTER_ROOM, this.onRoomUpdate, this);
+      Station.sfs.removeEventListener(SFS2X18.SFSEvent.LOGOUT, this.onLogout, this);
+      Station.sfs.removeEventListener(SFS2X18.SFSEvent.CONNECTION_LOST, this.onLogout, this);
     }
     stopAllClip(b) {
       for (let i = 0; i < this.item.numChildren; ++i) {
@@ -14729,7 +14746,7 @@
   ], ProfileDialog);
 
   // src/RanklistDialog.ts
-  var SFS2X18 = __toESM(require_sfs2x_api());
+  var SFS2X19 = __toESM(require_sfs2x_api());
 
   // src/RanklistItem.ts
   var { regClass: regClass68, property: property68 } = Laya;
@@ -14770,7 +14787,7 @@
       this.list.renderHandler = new Laya.Handler(this, this.updateItem);
     }
     onStart() {
-      Station.sfs.send(new SFS2X18.ExtensionRequest("RanklistRequest"));
+      Station.sfs.send(new SFS2X19.ExtensionRequest("RanklistRequest"));
     }
     onDestroy() {
       this.removeStationListener();
@@ -14796,10 +14813,10 @@
       }
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X18.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X19.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X18.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X19.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
   };
   __name(RanklistDialog, "RanklistDialog");
@@ -14811,7 +14828,7 @@
   ], RanklistDialog);
 
   // src/SelectColor.ts
-  var SFS2X19 = __toESM(require_sfs2x_api());
+  var SFS2X20 = __toESM(require_sfs2x_api());
   var { regClass: regClass70, property: property70 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
@@ -14831,10 +14848,10 @@
           }
           let roomVars = [];
           if (this.colorIdx != -1) {
-            roomVars.push(new SFS2X19.SFSRoomVariable(Config.Colors[this.colorIdx], -1));
+            roomVars.push(new SFS2X20.SFSRoomVariable(Config.Colors[this.colorIdx], -1));
           }
           this.colorIdx = Number.parseInt(idx);
-          roomVars.push(new SFS2X19.SFSRoomVariable(Config.Colors[this.colorIdx], Station.sfs.mySelf.id));
+          roomVars.push(new SFS2X20.SFSRoomVariable(Config.Colors[this.colorIdx], Station.sfs.mySelf.id));
           Station.setRoomVariables(roomVars);
         });
       }
@@ -14854,10 +14871,10 @@
       this.removeStationListener();
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X19.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
+      Station.sfs.addEventListener(SFS2X20.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X19.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
+      Station.sfs.removeEventListener(SFS2X20.SFSEvent.ROOM_VARIABLES_UPDATE, this.onRoomVariablesUpdate);
     }
     onRoomUsersUpdate(room) {
       let mySelfId = Station.mySelfId();
@@ -14945,72 +14962,26 @@
   ], Settings);
 
   // src/StatisticsDialog.ts
-  var SFS2X20 = __toESM(require_sfs2x_api());
+  var SFS2X21 = __toESM(require_sfs2x_api());
 
   // src/StatisticsInfo.ts
   var { regClass: regClass72, property: property72 } = Laya;
-  var StatisticsInfo = class extends Laya.Script {
+  var StatisticsInfo = class extends UserInfo {
     constructor() {
       super();
     }
     setProfile(profile) {
-      this.name.text = profile.getUtfString("nickname");
-      this.avatar.index = profile.getInt("avatar");
+      super.setProfile(profile);
       let rank = profile.getInt("rank");
       this.level.text = Math.floor(rank / 100).toString();
       let processValue = rank % 100;
       this.levelProcess.value = processValue / 100;
-      this.winsOfVsComputer.text = profile.getInt("vscomputer_wins");
-      this.timerOfVsComputer.text = profile.getInt("vscomputer_timer");
-      this.rateOfVsComputer.text = profile.getInt("vscomputer_rate");
-      this.winsOfOnline.text = profile.getInt("online_wins");
-      this.timerOfOnline.text = profile.getInt("online_timer");
-      this.rateOfOnline.text = profile.getInt("online_rate");
-      this.winsOfVsFriend.text = profile.getInt("vsfriend_wins");
-      this.timerOfVsFriend.text = profile.getInt("vsfriend_timer");
-      this.rateOfVsFriend.text = profile.getInt("vsfriend_rate");
     }
   };
   __name(StatisticsInfo, "StatisticsInfo");
   __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "name", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "level", 2);
-  __decorateClass([
     property72(Laya.ProgressBar)
   ], StatisticsInfo.prototype, "levelProcess", 2);
-  __decorateClass([
-    property72(Laya.Clip)
-  ], StatisticsInfo.prototype, "avatar", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "winsOfVsComputer", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "timerOfVsComputer", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "rateOfVsComputer", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "winsOfOnline", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "timerOfOnline", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "rateOfOnline", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "winsOfVsFriend", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "timerOfVsFriend", 2);
-  __decorateClass([
-    property72(Laya.Label)
-  ], StatisticsInfo.prototype, "rateOfVsFriend", 2);
   StatisticsInfo = __decorateClass([
     regClass72("0e8653a1-8f66-4a79-846c-ca9815eff74a", "../src/StatisticsInfo.ts")
   ], StatisticsInfo);
@@ -15028,9 +14999,9 @@
       this.removeStationListener();
     }
     onOpened(param) {
-      var params = new SFS2X20.SFSObject();
+      var params = new SFS2X21.SFSObject();
       params.putInt("id", param.userid);
-      Station.sfs.send(new SFS2X20.ExtensionRequest("GetProfileRequest", params));
+      Station.sfs.send(new SFS2X21.ExtensionRequest("GetProfileRequest", params));
     }
     onExtensionResponse(evtParams) {
       if ("GetProfileRequest" == evtParams.cmd) {
@@ -15038,10 +15009,10 @@
       }
     }
     addStationListener() {
-      Station.sfs.addEventListener(SFS2X20.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.addEventListener(SFS2X21.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
-      Station.sfs.removeEventListener(SFS2X20.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+      Station.sfs.removeEventListener(SFS2X21.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
   };
   __name(StatisticsDialog, "StatisticsDialog");

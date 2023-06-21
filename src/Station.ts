@@ -55,10 +55,9 @@ export class Station extends Laya.Script {
 
     onStart(): void {
         this.addSmartFoxListener();
-
         if (Station.sfs.isConnected) {
             if (Station.sfs.mySelf == null) {
-                Station.sfs.send(new SFS2X.LoginRequest());
+                Station.sfs.send(new SFS2X.LoginRequest( Profile.getNickname()));
             } else {
                 Station.sync();
             }
@@ -73,6 +72,13 @@ export class Station extends Laya.Script {
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
         Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+        Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_LIST_INIT, Station.onBuddyListInit, this);
+        
+        Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE,  Station.onBuddyListUpdate, this);
+        Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_VARIABLES_UPDATE,  Station.onBuddyListUpdate, this);
+        Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_ADD,  Station.onBuddyListUpdate, this);
+        Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_REMOVE,  Station.onBuddyListUpdate, this);
+        Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_BLOCK,  Station.onBuddyListUpdate, this);
 
     }
 
@@ -82,11 +88,29 @@ export class Station extends Laya.Script {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGIN_ERROR, Station.onLoginError, Station.sfs);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.BUDDY_LIST_INIT, Station.onBuddyListInit, this);
+        
+        Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE,  Station.onBuddyListUpdate, this);
+        Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_VARIABLES_UPDATE,  Station.onBuddyListUpdate, this);
+        Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_ADD,  Station.onBuddyListUpdate, this);
+        Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_REMOVE,  Station.onBuddyListUpdate, this);
+        Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_BLOCK,  Station.onBuddyListUpdate, this);
+
+    }
+
+    private static onBuddyListUpdate(event: SFS2X.SFSEvent) {
+            console.log("onBuddyListUpdate");
+    }
+
+    private static onBuddyListInit(event: SFS2X.SFSEvent)
+    {
+        console.log("onBuddyListInit");
+
     }
 
     private static onConnection(event: SFS2X.SFSEvent) {
         if (event.success) {
-            Station.sfs.send(new SFS2X.LoginRequest());
+            Station.sfs.send(new SFS2X.LoginRequest( Profile.getNickname()));
         }
     }
 
@@ -109,6 +133,8 @@ export class Station extends Laya.Script {
 
     private static onLogin(event: SFS2X.SFSEvent) {
         Station.sync();
+        // Initialize the Buddy List system
+        Station.sfs.send(new SFS2X.InitBuddyListRequest());
     }
 
     private static onLoginError(event: SFS2X.SFSEvent) {

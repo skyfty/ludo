@@ -22,9 +22,6 @@
       "avatar": {
         "_$ref": "6gki6n54"
       },
-      "viewStack": {
-        "_$ref": "tms7krnq"
-      },
       "winsOfVsComputer": {
         "_$ref": "prljwga2"
       },
@@ -51,6 +48,12 @@
       },
       "rateOfVsFriend": {
         "_$ref": "pkt8s2vt"
+      },
+      "viewStack": {
+        "_$ref": "tms7krnq"
+      },
+      "addBuddy": {
+        "_$ref": "d2g89bw0"
       }
     }
   ],
