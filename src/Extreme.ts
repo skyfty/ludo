@@ -29,7 +29,7 @@ export class Extreme extends Performer {
         let param:any = {
             "userid":this.userid
         };
-        Laya.Scene.open("dialog/statistics.lh", true,param);
+        Laya.Scene.open("dialog/buddyinfo.lh", true,param);
     }
 
     onStateChange() {

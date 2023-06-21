@@ -42,7 +42,7 @@ export class Game extends Laya.Scene {
 
     private challengeExtreme(param: any) {
         this.room.chitchat.visible = true;
-        if (param.magic != null) {
+        if (param.magic != -1) {
             this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
         }
         this.room.sortSeat( param.number, param.color);
@@ -70,7 +70,7 @@ export class Game extends Laya.Scene {
     }
 
     private challengeComputer(param: any) {
-        if (param.magic != null) {
+        if (param.magic != -1) {
             this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
         }
         this.room.sortSeat(param && param.number ? param.number : 2, param.color);

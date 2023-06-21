@@ -22,6 +22,10 @@ export class Menu extends Laya.Script {
     @property(Laya.Button)
     public settings: Laya.Button;
 
+    
+    @property(Laya.Button)
+    public buddy: Laya.Button;
+
     @property(Laya.Box)
     public avatar: Laya.Box;
 
@@ -79,6 +83,14 @@ export class Menu extends Laya.Script {
                 "userid": Profile.getUserId()
             };
             Laya.Scene.open("dialog/statistics.lh", true, param);
+        });
+
+        this.buddy.on(Laya.Event.CLICK, this, ()=>{
+            if (Station.isUnconnected()) {
+                Laya.Scene.open("dialog/nonet.lh");
+            } else {
+                Laya.Scene.open("dialog/buddy.lh", true);
+            }
         });
 
     }

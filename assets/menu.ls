@@ -28,6 +28,9 @@
       "settings": {
         "_$ref": "foe94s5k"
       },
+      "buddy": {
+        "_$ref": "p9nfamtu"
+      },
       "avatar": {
         "_$ref": "upjap8ug"
       },
@@ -332,7 +335,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 0,
+              "index": 6,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
@@ -428,6 +431,22 @@
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://845d7c64-1a5d-4065-bc8f-c5abd4b9557a",
+      "label": "",
+      "labelSize": 20
+    },
+    {
+      "_$id": "p9nfamtu",
+      "_$type": "Button",
+      "name": "buddy",
+      "x": 30,
+      "y": 1221,
+      "width": 83,
+      "height": 83,
+      "mouseEnabled": true,
+      "left": 30,
+      "bottom": 30,
+      "stateNum": 2,
+      "skin": "res://77bd2846-9777-435a-96de-f3a0a98199d0",
       "label": "",
       "labelSize": 20
     }

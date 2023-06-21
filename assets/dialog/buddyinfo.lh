@@ -1,0 +1,677 @@
+{
+  "_$ver": 1,
+  "_$id": "g45ebp6e",
+  "_$runtime": "res://128b3427-407b-44c3-83d4-93bd4a7bcf55",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "f2165027-65e9-40f7-8ad3-7a408a96585e",
+      "scriptPath": "../src/BuddyInfo.ts",
+      "name": {
+        "_$ref": "avm01q92"
+      },
+      "level": {
+        "_$ref": "5o6rc4w5"
+      },
+      "avatar": {
+        "_$ref": "6gki6n54"
+      },
+      "viewStack": {
+        "_$ref": "tms7krnq"
+      },
+      "winsOfVsComputer": {
+        "_$ref": "prljwga2"
+      },
+      "timerOfVsComputer": {
+        "_$ref": "rnxmiwco"
+      },
+      "rateOfVsComputer": {
+        "_$ref": "7c9teizh"
+      },
+      "winsOfOnline": {
+        "_$ref": "wi5j8r5o"
+      },
+      "timerOfOnline": {
+        "_$ref": "7ttb0qwt"
+      },
+      "rateOfOnline": {
+        "_$ref": "qa9qi4kl"
+      },
+      "winsOfVsFriend": {
+        "_$ref": "s93al5rd"
+      },
+      "timerOfVsFriend": {
+        "_$ref": "49uf4ay6"
+      },
+      "rateOfVsFriend": {
+        "_$ref": "pkt8s2vt"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "gndkm3ea",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 29,
+      "y": 260,
+      "width": 693,
+      "height": 678,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "4oq1xgu8",
+      "_$type": "Button",
+      "name": "return",
+      "x": 341,
+      "y": 953,
+      "width": 67,
+      "height": 67,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+          "scriptPath": "../src/ClickReturn.ts",
+          "dialog": {
+            "_$ref": "g45ebp6e"
+          }
+        }
+      ]
+    },
+    {
+      "_$id": "whd1ua5z",
+      "_$type": "Sprite",
+      "name": "Sprite(1)",
+      "x": 72,
+      "y": 325,
+      "width": 100,
+      "height": 100,
+      "_$child": [
+        {
+          "_$id": "6gki6n54",
+          "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+          "name": "avatarclip",
+          "active": true,
+          "x": 2.000000000000057,
+          "y": -1.0000000000000568,
+          "visible": true,
+          "width": 100,
+          "height": 100
+        },
+        {
+          "_$id": "e1ae3dyz",
+          "_$type": "Image",
+          "name": "Image(1)",
+          "x": -7.999999999999886,
+          "y": -17.000000000000057,
+          "width": 121,
+          "height": 131,
+          "mouseEnabled": true,
+          "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+          "useSourceSize": true,
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "_$id": "avm01q92",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 196,
+      "y": 321,
+      "width": 478,
+      "height": 56,
+      "text": "",
+      "fontSize": 38,
+      "color": "#FFFFFF",
+      "valign": "middle",
+      "bgColor": "rgba(0, 0, 0, 1)",
+      "leading": 0,
+      "padding": "2,6,2,6"
+    },
+    {
+      "_$id": "q76e84v6",
+      "_$type": "Image",
+      "name": "Image(2)",
+      "x": 69,
+      "y": 457,
+      "width": 613,
+      "height": 430,
+      "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "4shyx7hb",
+      "_$type": "Label",
+      "name": "Label(1)",
+      "x": 196,
+      "y": 393,
+      "width": 59,
+      "height": 26,
+      "text": "LV.",
+      "fontSize": 34,
+      "color": "rgba(243, 202, 13, 1)",
+      "bold": true,
+      "leading": 0,
+      "padding": "0,0,0,0"
+    },
+    {
+      "_$id": "5o6rc4w5",
+      "_$type": "Label",
+      "name": "lv",
+      "x": 258,
+      "y": 393,
+      "width": 75,
+      "height": 26,
+      "text": "0",
+      "fontSize": 34,
+      "color": "#FFFFFF",
+      "leading": 0,
+      "padding": "0,0,0,0"
+    },
+    {
+      "_$id": "uc9m12ru",
+      "_$type": "Sprite",
+      "name": "Sprite(2)",
+      "x": 91,
+      "y": 488,
+      "width": 274,
+      "height": 179,
+      "_gcmds": [
+        {
+          "_$type": "DrawRectCmd",
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "lineWidth": 1,
+          "lineColor": "rgba(255, 255, 255, 1)",
+          "fillColor": "rgba(0, 0, 0, 1)"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "ocjfvtve",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 60,
+          "y": 14,
+          "width": 154,
+          "height": 28,
+          "text": "VS.Computer",
+          "fontSize": 23,
+          "color": "rgba(255, 251, 3, 1)",
+          "align": "center",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "ybn69o5v",
+          "_$type": "Label",
+          "name": "Label(1)",
+          "x": 17,
+          "y": 48,
+          "width": 120,
+          "height": 28,
+          "text": "Wins\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "2xyr7lrp",
+          "_$type": "Label",
+          "name": "Label(3)",
+          "x": 17,
+          "y": 90,
+          "width": 120,
+          "height": 28,
+          "text": "Rate",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "prljwga2",
+          "_$type": "Label",
+          "name": "Label(4)",
+          "x": 139,
+          "y": 48,
+          "width": 117,
+          "height": 28,
+          "text": "0\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "7c9teizh",
+          "_$type": "Label",
+          "name": "Label(6)",
+          "x": 139,
+          "y": 91,
+          "width": 117,
+          "height": 28,
+          "text": "0",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "bdprp3e1",
+          "_$type": "Label",
+          "name": "Label(7)",
+          "x": 17,
+          "y": 132,
+          "width": 120,
+          "height": 28,
+          "text": "Timer",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "rnxmiwco",
+          "_$type": "Label",
+          "name": "Label(8)",
+          "x": 139,
+          "y": 134,
+          "width": 117,
+          "height": 28,
+          "text": "0",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "_$id": "9ykhcgqq",
+      "_$type": "Sprite",
+      "name": "Sprite(3)",
+      "x": 384,
+      "y": 488,
+      "width": 274,
+      "height": 179,
+      "_gcmds": [
+        {
+          "_$type": "DrawRectCmd",
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "lineWidth": 1,
+          "lineColor": "rgba(255, 255, 255, 1)",
+          "fillColor": "rgba(0, 0, 0, 1)"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "h4g9d5pr",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 60,
+          "y": 14,
+          "width": 154,
+          "height": 28,
+          "text": "Online",
+          "fontSize": 23,
+          "color": "rgba(255, 251, 3, 1)",
+          "align": "center",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "eahx0ylg",
+          "_$type": "Label",
+          "name": "Label(1)",
+          "x": 17,
+          "y": 48,
+          "width": 120,
+          "height": 28,
+          "text": "Wins\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "3rs0t9ul",
+          "_$type": "Label",
+          "name": "Label(3)",
+          "x": 17,
+          "y": 91,
+          "width": 120,
+          "height": 28,
+          "text": "Rate",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "wi5j8r5o",
+          "_$type": "Label",
+          "name": "Label(4)",
+          "x": 140,
+          "y": 48,
+          "width": 117,
+          "height": 28,
+          "text": "0",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "qa9qi4kl",
+          "_$type": "Label",
+          "name": "Label(6)",
+          "x": 140,
+          "y": 94,
+          "width": 117,
+          "height": 28,
+          "text": "0\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "7lwugbwr",
+          "_$type": "Label",
+          "name": "Label(7)",
+          "x": 17,
+          "y": 134,
+          "width": 120,
+          "height": 28,
+          "text": "Timer",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "7ttb0qwt",
+          "_$type": "Label",
+          "name": "Label(8)",
+          "x": 140,
+          "y": 140,
+          "width": 117,
+          "height": 28,
+          "text": "0\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "_$id": "6mtuqu0g",
+      "_$type": "Sprite",
+      "name": "Sprite(4)",
+      "x": 92,
+      "y": 682,
+      "width": 274,
+      "height": 177,
+      "_gcmds": [
+        {
+          "_$type": "DrawRectCmd",
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1,
+          "percent": true,
+          "lineWidth": 1,
+          "lineColor": "rgba(255, 255, 255, 1)",
+          "fillColor": "rgba(0, 0, 0, 1)"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "dz9max7c",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 60,
+          "y": 10,
+          "width": 154,
+          "height": 28,
+          "text": "VS.Friends",
+          "fontSize": 23,
+          "color": "rgba(255, 251, 3, 1)",
+          "align": "center",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "gs1i2nvq",
+          "_$type": "Label",
+          "name": "Label(1)",
+          "x": 15,
+          "y": 41,
+          "width": 120,
+          "height": 28,
+          "text": "Wins\n",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "a6zqbviy",
+          "_$type": "Label",
+          "name": "Label(3)",
+          "x": 15,
+          "y": 87,
+          "width": 120,
+          "height": 28,
+          "text": "Rate",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "s93al5rd",
+          "_$type": "Label",
+          "name": "Label(4)",
+          "x": 136,
+          "y": 41,
+          "width": 117,
+          "height": 28,
+          "text": "0",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "6t8g6odv",
+          "_$type": "Label",
+          "name": "Label(6)",
+          "x": 136,
+          "y": 90,
+          "width": 117,
+          "height": 28,
+          "text": "0",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "49uf4ay6",
+          "_$type": "Label",
+          "name": "Label(7)",
+          "x": 15,
+          "y": 133,
+          "width": 120,
+          "height": 28,
+          "text": "Timer",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "pkt8s2vt",
+          "_$type": "Label",
+          "name": "Label(8)",
+          "x": 136,
+          "y": 139,
+          "width": 117,
+          "height": 28,
+          "text": "0",
+          "fontSize": 20,
+          "color": "#FFFFFF",
+          "align": "right",
+          "valign": "middle",
+          "leading": 0,
+          "padding": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "_$id": "tms7krnq",
+      "_$type": "ViewStack",
+      "name": "ViewStack",
+      "x": 105,
+      "y": 129,
+      "width": 540,
+      "height": 128,
+      "mouseEnabled": true,
+      "selectedIndex": null,
+      "_$child": [
+        {
+          "_$id": "odk734jq",
+          "_$type": "Box",
+          "name": "item0",
+          "y": 16,
+          "width": 551,
+          "height": 106,
+          "mouseEnabled": true,
+          "_$child": [
+            {
+              "_$id": "d2g89bw0",
+              "_$type": "Button",
+              "name": "Button",
+              "x": 92,
+              "y": 14,
+              "width": 351,
+              "height": 89,
+              "mouseEnabled": true,
+              "stateNum": 2,
+              "skin": "res://561bd258-f58e-4616-ab1f-e0698916f2f2",
+              "sizeGrid": "14,19,17,18,0",
+              "label": "ADD AS BUDDY",
+              "labelSize": 29,
+              "labelBold": true,
+              "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+              "labelStrokeColor": "rgba(0, 0, 0, 1)",
+              "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0"
+            }
+          ]
+        },
+        {
+          "_$id": "f796mclv",
+          "_$type": "Box",
+          "name": "item1",
+          "width": 547,
+          "height": 121,
+          "_$child": [
+            {
+              "_$id": "uag0g25q",
+              "_$type": "Image",
+              "name": "Image(1)",
+              "x": 54,
+              "y": 17,
+              "width": 436,
+              "height": 109,
+              "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "2wnn1bm2",
+              "_$type": "Image",
+              "name": "Image",
+              "x": 53.999999999999986,
+              "y": 16,
+              "width": 436,
+              "height": 111,
+              "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "6hazlfda",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 73,
+              "y": 40,
+              "width": 400,
+              "height": 59,
+              "text": "BUDDY REQUEST SENT, NOT ACCEPT YET",
+              "fontSize": 27,
+              "color": "rgba(255, 253, 4, 1)",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "wordWrap": true,
+              "leading": 6,
+              "padding": "0,0,0,0",
+              "underlineColor": "rgba(255, 253, 6, 1)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
