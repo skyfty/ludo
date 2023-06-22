@@ -74,19 +74,24 @@ export class Profile {
         Laya.LocalStorage.setItem("nickname",nickname);
         Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
         Station.sync();
+        Station.updateBuddyInfo();
     }
 
     public static setAvatar(avatar:number) {
         Laya.LocalStorage.setItem("avatar",avatar.toString());
         Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
         Station.sync();
+        Station.updateBuddyInfo();
     }
 
     public static getUserId() {
         let userId = Laya.LocalStorage.getItem("userid");
-        return userId == null?1:Number.parseInt(userId);
+        return userId == null?null:Number.parseInt(userId);
     }
 
+    public static setUserId(userId:number) {
+        Laya.LocalStorage.setItem("userid", userId.toString());
+    }
     public static getNickname() {
         let nickname = Laya.LocalStorage.getItem("nickname");
         return nickname;

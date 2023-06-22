@@ -4,6 +4,8 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 @regClass()
 export class UserInfo extends Laya.Script {
 
+    public userid:number = 0;
+
     @property(Laya.Label)
     public name: Laya.Label;
 
@@ -61,6 +63,7 @@ export class UserInfo extends Laya.Script {
     }
 
     public setProfile(profile:SFS2X.SFSObject) {
+        this.userid = profile.getInt("id");
         this.name.text = profile.getUtfString("nickname");
         this.avatar.index = profile.getInt("avatar");
         let rank = profile.getInt("rank");

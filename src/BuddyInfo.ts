@@ -20,12 +20,21 @@ export class BuddyInfo extends UserInfo {
     onAwake(): void {
         super.onAwake();
         this.addStationListener();
-        this.viewStack.selectedIndex = 0;
         this.addBuddy.on(Laya.Event.CLICK, this, this.onAddBuddy);
     }
 
+    public setProfile(profile:SFS2X.SFSObject) {
+        super.setProfile(profile);
+        if (Station.sfs.buddyManager.containsBuddy(this.userid.toString())) {
+            this.viewStack.visible = false;
+        } else {
+            this.viewStack.visible = true;
+            this.viewStack.selectedIndex = 0;
+        }
+    }
+
     private onAddBuddy() {
-		Station.sfs.send(new SFS2X.AddBuddyRequest(this.name.text));
+		Station.sfs.send(new SFS2X.AddBuddyRequest(this.userid.toString()));
     }
     
     onDestroy(): void {

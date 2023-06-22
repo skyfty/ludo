@@ -10600,15 +10600,20 @@
       Laya.LocalStorage.setItem("nickname", nickname);
       Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
       Station.sync();
+      Station.updateBuddyInfo();
     }
     static setAvatar(avatar) {
       Laya.LocalStorage.setItem("avatar", avatar.toString());
       Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
       Station.sync();
+      Station.updateBuddyInfo();
     }
     static getUserId() {
       let userId = Laya.LocalStorage.getItem("userid");
-      return userId == null ? 1 : Number.parseInt(userId);
+      return userId == null ? null : Number.parseInt(userId);
+    }
+    static setUserId(userId) {
+      Laya.LocalStorage.setItem("userid", userId.toString());
     }
     static getNickname() {
       let nickname = Laya.LocalStorage.getItem("nickname");
@@ -10678,7 +10683,7 @@
       this.addSmartFoxListener();
       if (Station.sfs.isConnected) {
         if (Station.sfs.mySelf == null) {
-          Station.sfs.send(new SFS2X2.LoginRequest(Profile.getNickname()));
+          Station.sfs.send(new SFS2X2.LoginRequest());
         } else {
           Station.sync();
         }
@@ -10693,11 +10698,13 @@
       Station.sfs.addEventListener(SFS2X2.SFSEvent.LOGIN, Station.onLogin, Station.sfs);
       Station.sfs.addEventListener(SFS2X2.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_LIST_INIT, Station.onBuddyListInit, this);
+      Station.sfs.addEventListener(SFS2X2.SFSEvent.LOGOUT, Station.onLogout, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_VARIABLES_UPDATE, Station.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ADD, Station.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_REMOVE, Station.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_BLOCK, Station.onBuddyListUpdate, this);
+      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyOnlineStateChanged, this);
     }
     onDestroy() {
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.CONNECTION, Station.onConnection, Station.sfs);
@@ -10711,16 +10718,39 @@
       Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ADD, Station.onBuddyListUpdate, this);
       Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_REMOVE, Station.onBuddyListUpdate, this);
       Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_BLOCK, Station.onBuddyListUpdate, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSEvent.LOGOUT, Station.onLogout, this);
+      Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyOnlineStateChanged, this);
+    }
+    static onBuddyOnlineStateChanged(evtParams) {
+      var isItMe = evtParams.isItMe;
+      if (isItMe) {
+        if (Station.sfs.buddyManager.getMyOnlineState()) {
+        }
+      }
     }
     static onBuddyListUpdate(event) {
       console.log("onBuddyListUpdate");
     }
     static onBuddyListInit(event) {
-      console.log("onBuddyListInit");
+      Station.sfs.send(new SFS2X2.GoOnlineRequest(true));
+      Station.updateBuddyInfo();
+    }
+    static updateBuddyInfo() {
+      Station.sfs.send(new SFS2X2.SetBuddyVariablesRequest([
+        new SFS2X2.SFSBuddyVariable("avatar", Profile.getAvatar()),
+        new SFS2X2.SFSBuddyVariable(SFS2X2.ReservedBuddyVariables.BV_NICKNAME, Profile.getNickname())
+      ]));
     }
     static onConnection(event) {
       if (event.success) {
-        Station.sfs.send(new SFS2X2.LoginRequest(Profile.getNickname()));
+        Station.login(Profile.getUserId());
+      }
+    }
+    static login(userid) {
+      if (userid != null) {
+        Station.sfs.send(new SFS2X2.LoginRequest(userid.toString()));
+      } else {
+        Station.sfs.send(new SFS2X2.LoginRequest());
       }
     }
     static onConnectionLost() {
@@ -10737,13 +10767,25 @@
       let params = Profile.getSyncParam();
       Station.sfs.send(new SFS2X2.ExtensionRequest("SyncProfile", params));
     }
+    static onLogout(evtParams) {
+      Station.login(Profile.getUserId());
+    }
     static onLogin(event) {
-      Station.sync();
-      Station.sfs.send(new SFS2X2.InitBuddyListRequest());
+      let userid = null;
+      if (event.data != null) {
+        userid = event.data.getInt("userid");
+      }
+      if (userid != null) {
+        Profile.setUserId(userid);
+        Station.sfs.send(new SFS2X2.LogoutRequest());
+      } else {
+        Station.sync();
+        Station.sfs.send(new SFS2X2.InitBuddyListRequest());
+      }
     }
     static onLoginError(event) {
       Laya.timer.once(5e3, this, () => {
-        Station.sfs.send(new SFS2X2.LoginRequest());
+        Station.login(Profile.getUserId());
       });
     }
     static getUserColor(user, roomVars = null) {
@@ -10872,6 +10914,12 @@
     updateItem(cell, index) {
       let data = this.list.array[index];
       let item = cell.getComponent(BuddyItem);
+      let avatar = data.getVariable("avatar");
+      if (avatar != null) {
+        item.avatar.index = avatar.value;
+      } else {
+        item.avatar.index = 0;
+      }
       item.nickname.text = this.getBuddyDisplayName(data);
     }
     getBuddyDisplayName(buddy) {
@@ -10960,10 +11008,12 @@
   var UserInfo = class extends Laya.Script {
     constructor() {
       super();
+      this.userid = 0;
     }
     onAwake() {
     }
     setProfile(profile) {
+      this.userid = profile.getInt("id");
       this.name.text = profile.getUtfString("nickname");
       this.avatar.index = profile.getInt("avatar");
       let rank = profile.getInt("rank");
@@ -11030,11 +11080,19 @@
     onAwake() {
       super.onAwake();
       this.addStationListener();
-      this.viewStack.selectedIndex = 0;
       this.addBuddy.on(Laya.Event.CLICK, this, this.onAddBuddy);
     }
+    setProfile(profile) {
+      super.setProfile(profile);
+      if (Station.sfs.buddyManager.containsBuddy(this.userid.toString())) {
+        this.viewStack.visible = false;
+      } else {
+        this.viewStack.visible = true;
+        this.viewStack.selectedIndex = 0;
+      }
+    }
     onAddBuddy() {
-      Station.sfs.send(new SFS2X4.AddBuddyRequest(this.name.text));
+      Station.sfs.send(new SFS2X4.AddBuddyRequest(this.userid.toString()));
     }
     onDestroy() {
       this.removeStationListener();

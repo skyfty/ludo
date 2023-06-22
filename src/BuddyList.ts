@@ -42,8 +42,12 @@ export class BuddyList extends Laya.Script {
     private updateItem(cell: any, index: number): void {
         let data = this.list.array[index];
         let item = cell.getComponent(BuddyItem) as BuddyItem;
-        // let avatar =  data.getInt("avatar");
-        // item.avatar.index =avatar;
+        let avatar =  data.getVariable("avatar");
+        if (avatar != null) {
+            item.avatar.index = avatar.value;
+        } else {
+            item.avatar.index = 0;
+        }
         item.nickname.text =this.getBuddyDisplayName(data);
     }
 

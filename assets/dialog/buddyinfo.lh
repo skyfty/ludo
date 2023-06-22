@@ -591,6 +591,7 @@
       "y": 129,
       "width": 540,
       "height": 128,
+      "visible": false,
       "mouseEnabled": true,
       "selectedIndex": null,
       "_$child": [
@@ -601,6 +602,7 @@
           "y": 16,
           "width": 551,
           "height": 106,
+          "visible": false,
           "mouseEnabled": true,
           "_$child": [
             {
@@ -619,7 +621,7 @@
               "labelSize": 29,
               "labelBold": true,
               "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
-              "labelStrokeColor": "rgba(0, 0, 0, 1)",
+              "labelStrokeColor": "#32556b",
               "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0"
             }
           ]
@@ -630,6 +632,7 @@
           "name": "item1",
           "width": 547,
           "height": 121,
+          "visible": false,
           "_$child": [
             {
               "_$id": "uag0g25q",
