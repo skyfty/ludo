@@ -104,6 +104,9 @@ export class Loader extends Laya.Script {
                 "resources/images/defender.png",
                 "resources/images/magic.png",
                 "resources/images/magicprops.png",
+                "resources/images/delete.png",
+                "resources/images/buddies.png",
+                "resources/images/buddybtn.png",
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },

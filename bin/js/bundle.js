@@ -10704,7 +10704,6 @@
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ADD, Station.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_REMOVE, Station.onBuddyListUpdate, this);
       Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_BLOCK, Station.onBuddyListUpdate, this);
-      Station.sfs.addEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyOnlineStateChanged, this);
     }
     onDestroy() {
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.CONNECTION, Station.onConnection, Station.sfs);
@@ -10719,7 +10718,6 @@
       Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_REMOVE, Station.onBuddyListUpdate, this);
       Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_BLOCK, Station.onBuddyListUpdate, this);
       Station.sfs.removeEventListener(SFS2X2.SFSEvent.LOGOUT, Station.onLogout, this);
-      Station.sfs.removeEventListener(SFS2X2.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyOnlineStateChanged, this);
     }
     static onBuddyOnlineStateChanged(evtParams) {
       var isItMe = evtParams.isItMe;
@@ -14268,6 +14266,9 @@
           "resources/images/defender.png",
           "resources/images/magic.png",
           "resources/images/magicprops.png",
+          "resources/images/delete.png",
+          "resources/images/buddies.png",
+          "resources/images/buddybtn.png",
           { url: "game.ls", type: Laya.Loader.HIERARCHY },
           { url: "menu.ls", type: Laya.Loader.HIERARCHY },
           { url: "militant.ls", type: Laya.Loader.HIERARCHY },

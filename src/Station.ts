@@ -80,7 +80,6 @@ export class Station extends Laya.Script {
         Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_ADD,  Station.onBuddyListUpdate, this);
         Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_REMOVE,  Station.onBuddyListUpdate, this);
         Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_BLOCK,  Station.onBuddyListUpdate, this);
-        Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyOnlineStateChanged, this);
     }
 
     onDestroy(): void {
@@ -97,7 +96,6 @@ export class Station extends Laya.Script {
         Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_REMOVE,  Station.onBuddyListUpdate, this);
         Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_BLOCK,  Station.onBuddyListUpdate, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.LOGOUT, Station.onLogout, this);
-        Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, Station.onBuddyOnlineStateChanged, this);
 
     }
     private static onBuddyOnlineStateChanged(evtParams: SFS2X.SFSEvent) {

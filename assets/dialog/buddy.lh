@@ -173,7 +173,9 @@
                       "avatar": {
                         "_$ref": "tvymj5sb"
                       },
-                      "icon": null
+                      "button": {
+                        "_$ref": "efpq65b9"
+                      }
                     }
                   ],
                   "_$child": [
@@ -238,6 +240,20 @@
                           "color": "#ffffff"
                         }
                       ]
+                    },
+                    {
+                      "_$id": "efpq65b9",
+                      "_$type": "Button",
+                      "name": "Button",
+                      "x": -2.1316282072803006e-14,
+                      "y": 1.1368683772161603e-13,
+                      "width": 30,
+                      "height": 30,
+                      "mouseEnabled": true,
+                      "stateNum": 1,
+                      "skin": "res://63e2b7e1-33cd-4780-a5a5-a805c9738bf0",
+                      "label": "",
+                      "labelSize": 20
                     }
                   ]
                 }
@@ -302,7 +318,9 @@
                       "avatar": {
                         "_$ref": "tbexth6r"
                       },
-                      "icon": null
+                      "button": {
+                        "_$ref": "gklddoxj"
+                      }
                     }
                   ],
                   "_$child": [
