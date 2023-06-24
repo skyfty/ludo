@@ -48,7 +48,7 @@ export class GameRoom extends Laya.Script {
     }
 
     protected getRoomSettings(maxUsers:number) {
-        var settings = new SFS2X.SFSGameSettings(Station.sfs.mySelf.name + "'s game");
+        var settings = new SFS2X.SFSGameSettings(Station.sfs.mySelf.name + Date.now().toString() + "'s game");
         settings.isPublic = true;
         settings.isGame = true;
         settings.maxVariables = 50;
@@ -56,7 +56,6 @@ export class GameRoom extends Laya.Script {
         settings.minPlayersToStartGame = maxUsers;
         settings.leaveLastJoinedRoom = true;
         settings.notifyGameStarted = true;
-
         return settings;
     }
 

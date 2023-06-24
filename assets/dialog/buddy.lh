@@ -18,6 +18,9 @@
       "tab": {
         "_$ref": "parn4n6c"
       },
+      "buddyCount": {
+        "_$ref": "o859ar3v"
+      },
       "buddyList": {
         "_$ref": "cpk9svrd",
         "_$type": "cab6d964-0574-4c06-bbbf-da75941d2329"
@@ -118,8 +121,9 @@
           "_$id": "cpk9svrd",
           "_$type": "Box",
           "name": "item0",
-          "width": 656.5,
-          "height": 697.5,
+          "y": -15,
+          "width": 657,
+          "height": 713,
           "visible": false,
           "mouseEnabled": true,
           "_$comp": [
@@ -186,7 +190,7 @@
                       "_$id": "p34cc489",
                       "_$type": "Label",
                       "name": "Label",
-                      "x": 120,
+                      "x": 109,
                       "y": 41,
                       "width": 339,
                       "height": 39,
@@ -204,7 +208,7 @@
                       "_$id": "dsdmxv2w",
                       "_$type": "Sprite",
                       "name": "Sprite(1)",
-                      "x": 8,
+                      "x": 3,
                       "y": 6,
                       "width": 101,
                       "height": 107,
@@ -245,8 +249,9 @@
           "_$id": "m62n9jzq",
           "_$type": "Box",
           "name": "item1",
-          "width": 658,
-          "height": 711,
+          "y": -15,
+          "width": 657,
+          "height": 713,
           "visible": false,
           "mouseEnabled": true,
           "_$comp": [
@@ -287,6 +292,17 @@
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
                       "scriptPath": "../src/ClickSound.ts"
+                    },
+                    {
+                      "_$type": "88d28a41-930e-459b-98f4-600c6eec131d",
+                      "scriptPath": "../src/BuddyItem.ts",
+                      "nickname": {
+                        "_$ref": "69w4qizb"
+                      },
+                      "avatar": {
+                        "_$ref": "tbexth6r"
+                      },
+                      "icon": null
                     }
                   ],
                   "_$child": [
@@ -303,9 +319,9 @@
                       "_$id": "69w4qizb",
                       "_$type": "Label",
                       "name": "Label",
-                      "x": 120,
+                      "x": 109,
                       "y": 41,
-                      "width": 339,
+                      "width": 350,
                       "height": 39,
                       "text": "Anonymous",
                       "font": "Tahoma",
@@ -318,10 +334,29 @@
                       "strokeColor": "rgba(74, 74, 75, 1)"
                     },
                     {
+                      "_$id": "gklddoxj",
+                      "_$type": "Button",
+                      "name": "Button",
+                      "x": 467,
+                      "y": 27,
+                      "width": 175,
+                      "height": 67,
+                      "mouseEnabled": true,
+                      "stateNum": 2,
+                      "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
+                      "sizeGrid": "16,15,17,15,0",
+                      "label": "ADD AS BUDDY",
+                      "labelSize": 19,
+                      "labelBold": true,
+                      "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+                      "labelStrokeColor": "#32556b",
+                      "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0"
+                    },
+                    {
                       "_$id": "tk898mpt",
                       "_$type": "Sprite",
                       "name": "Sprite(1)",
-                      "x": 8,
+                      "x": 3,
                       "y": 6,
                       "width": 101,
                       "height": 107,
@@ -351,15 +386,6 @@
                           "color": "#ffffff"
                         }
                       ]
-                    },
-                    {
-                      "_$id": "qe5sbroz",
-                      "_$type": "Sprite",
-                      "name": "Sprite(3)",
-                      "x": 288,
-                      "y": 70,
-                      "width": 119,
-                      "height": 66
                     }
                   ]
                 }
@@ -394,6 +420,23 @@
           "color": "#ffffff"
         }
       ]
+    },
+    {
+      "_$id": "o859ar3v",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 486,
+      "y": 128,
+      "width": 191,
+      "height": 40,
+      "text": "0",
+      "fontSize": 45,
+      "color": "#FFFFFF",
+      "bold": true,
+      "align": "right",
+      "leading": 0,
+      "padding": "0,0,0,0",
+      "stroke": 2
     }
   ]
 }

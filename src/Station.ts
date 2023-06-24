@@ -120,7 +120,7 @@ export class Station extends Laya.Script {
 
     public static updateBuddyInfo() {
         Station.sfs.send(new SFS2X.SetBuddyVariablesRequest([
-            new SFS2X.SFSBuddyVariable("avatar", Profile.getAvatar()),
+            new SFS2X.SFSBuddyVariable(SFS2X.SFSBuddyVariable.OFFLINE_PREFIX + "avatar", Profile.getAvatar()),
             new SFS2X.SFSBuddyVariable(SFS2X.ReservedBuddyVariables.BV_NICKNAME, Profile.getNickname())
         ]));
     }

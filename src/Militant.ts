@@ -103,6 +103,16 @@ export class Militant extends Laya.Scene {
         }));
     }
 
+
+    private addRecentRequest() {
+        let users = Station.sfs.lastJoinedRoom.getUserList();
+        let ids = users.map((user: SFS2X.SFSUser)=>{return user.id;})
+        var params = new SFS2X.SFSObject();
+        params.putInt("myselfid", Station.mySelfId());
+        params.putIntArray("userids", ids);
+        Station.sfs.send(new SFS2X.ExtensionRequest("AddRecentRequest", params));
+    }
+
     onRoomUpdate() {
         this.stopAllClip(true);
         if (Station.sfs.lastJoinedRoom == null) {
@@ -139,6 +149,7 @@ export class Militant extends Laya.Scene {
             if (magic) {
                 param.magic = magic.value;
             }
+            this.addRecentRequest();
             Laya.Scene.open("game.ls", true,param);
         }
     }

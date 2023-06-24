@@ -9,8 +9,8 @@ export class BuddyItem extends Laya.Script {
     @property( Laya.Clip)
     public avatar: Laya.Clip;
 
-    @property( Laya.Clip)
-    public icon: Laya.Clip;
+    @property( Laya.Button)
+    public button: Laya.Button;
 
     constructor() {
         super();
