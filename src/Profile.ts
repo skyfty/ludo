@@ -127,4 +127,14 @@ export class Profile {
     public static setRank(v:number) {
         Laya.LocalStorage.setItem("rank",v.toString());
     }
+
+    public static getLevel(rank:number) {
+        return Math.floor(rank / 100).toString();
+    }
+
+    
+    public static getMyLevel() {
+        let rank = Profile.getRank();
+        return  Profile.getLevel(rank);
+    }
 }

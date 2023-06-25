@@ -18,7 +18,10 @@ export class Extreme extends Performer {
     }
     onAwake(): void {
         super.onAwake();
+        this.player.level.visible = true;
+        this.player.goldSprite.visible = false;
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
+  
     }
 
     onStart(): void {

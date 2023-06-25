@@ -14,6 +14,8 @@ export class Computer extends Performer {
     }
     onAwake(): void {
         super.onAwake();
+        this.player.level.visible = false;
+        this.player.goldSprite.visible = false;
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
         this.owner.on(Player.Event.Hurl, this, this.onHurl);
     }

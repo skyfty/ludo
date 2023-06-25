@@ -42,7 +42,7 @@ export class Game extends Laya.Scene {
 
     private challengeExtreme(param: any) {
         this.room.chitchat.visible = true;
-        if (param.magic != -1) {
+        if (param.magic != null) {
             this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
         }
         this.room.sortSeat( param.number, param.color);
@@ -56,12 +56,17 @@ export class Game extends Laya.Scene {
             let nickname = users[i].getVariable("nickname");
             let avatar = users[i].getVariable("avatar");
             let userid = users[i].getVariable("userid");
+            let rank =  users[i].getVariable("rank");
+            let gold = users[i].getVariable("gold");
 
             let player = this.room.addPlayer(color, type, {
                 "id": users[i].id,
                 "userid":userid.value,
                 "nickname": nickname.value,
-                "avatar": avatar.value
+                "avatar": avatar.value,
+                "level": Profile.getLevel(rank.value),
+                "gold":gold.value,
+
             });
             if (users[i].isItMe) {
                 player.addComponentInstance(new Sender());
@@ -70,7 +75,7 @@ export class Game extends Laya.Scene {
     }
 
     private challengeComputer(param: any) {
-        if (param.magic != -1) {
+        if (param.magic != null) {
             this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
         }
         this.room.sortSeat(param && param.number ? param.number : 2, param.color);
@@ -79,7 +84,9 @@ export class Game extends Laya.Scene {
         this.room.addPlayer(param.color, Player.Type.Oneself, {
             "id": 0,
             "nickname": Profile.getNickname(),
-            "avatar": Profile.getAvatar()
+            "avatar": Profile.getAvatar(),
+            "gold":Profile.getGold(),
+            "level":Profile.getMyLevel(),
         });
         let colors = JSON.parse(JSON.stringify(Config.Colors))
         let idx = colors.indexOf(param.color);
@@ -94,14 +101,15 @@ export class Game extends Laya.Scene {
                 this.addComputerPlayer(colors[i], i + 1);
             }
         }
-
     }
 
     private addComputerPlayer(color:string, id:number) {
         this.room.addPlayer(color, Player.Type.Computer, {
             "id": id,
             "nickname": "Computer",
-            "avatar": 0
+            "avatar": 0,
+            "gold": 0,
+            "level": 0
         });
     }
 

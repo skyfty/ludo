@@ -111,9 +111,9 @@
       "_$type": "ViewStack",
       "name": "ViewStack",
       "x": 47,
-      "y": 298,
+      "y": 280,
       "width": 651,
-      "height": 681,
+      "height": 705,
       "mouseEnabled": true,
       "selectedIndex": null,
       "_$child": [
@@ -121,9 +121,8 @@
           "_$id": "cpk9svrd",
           "_$type": "Box",
           "name": "item0",
-          "y": -15,
           "width": 657,
-          "height": 713,
+          "height": 709,
           "visible": false,
           "mouseEnabled": true,
           "_$comp": [
@@ -141,7 +140,7 @@
               "_$type": "List",
               "name": "List",
               "width": 653,
-              "height": 685,
+              "height": 707,
               "mouseEnabled": true,
               "itemTemplate": {
                 "_$ref": "6tzxdfpo",
@@ -265,9 +264,8 @@
           "_$id": "m62n9jzq",
           "_$type": "Box",
           "name": "item1",
-          "y": -15,
           "width": 657,
-          "height": 713,
+          "height": 709,
           "visible": false,
           "mouseEnabled": true,
           "_$comp": [
@@ -286,7 +284,7 @@
               "name": "List",
               "x": 3.552713678800501e-14,
               "width": 653,
-              "height": 685,
+              "height": 709,
               "mouseEnabled": true,
               "itemTemplate": {
                 "_$ref": "8szpuojf",

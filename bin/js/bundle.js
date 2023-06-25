@@ -10644,6 +10644,13 @@
     static setRank(v) {
       Laya.LocalStorage.setItem("rank", v.toString());
     }
+    static getLevel(rank) {
+      return Math.floor(rank / 100).toString();
+    }
+    static getMyLevel() {
+      let rank = Profile.getRank();
+      return Profile.getLevel(rank);
+    }
   };
   __name(Profile, "Profile");
 
@@ -10736,7 +10743,8 @@
     static updateBuddyInfo() {
       Station.sfs.send(new SFS2X2.SetBuddyVariablesRequest([
         new SFS2X2.SFSBuddyVariable(SFS2X2.SFSBuddyVariable.OFFLINE_PREFIX + "avatar", Profile.getAvatar()),
-        new SFS2X2.SFSBuddyVariable(SFS2X2.ReservedBuddyVariables.BV_NICKNAME, Profile.getNickname())
+        new SFS2X2.SFSBuddyVariable(SFS2X2.ReservedBuddyVariables.BV_NICKNAME, Profile.getNickname()),
+        new SFS2X2.SFSBuddyVariable(SFS2X2.SFSBuddyVariable.OFFLINE_PREFIX + SFS2X2.ReservedBuddyVariables.BV_NICKNAME, Profile.getNickname())
       ]));
     }
     static onConnection(event) {
@@ -10933,10 +10941,7 @@
       });
     }
     getBuddyDisplayName(buddy) {
-      if (buddy.nickName != null && buddy.nickName != "")
-        return buddy.nickName;
-      else
-        return buddy.name;
+      return buddy.nickName != null && buddy.nickName != "" ? buddy.nickName : buddy.name;
     }
     onBuddyListUpdate(event) {
       this.list.array = Station.sfs.buddyManager.getOnlineBuddies().concat(Station.sfs.buddyManager.getOfflineBuddies());
@@ -11153,19 +11158,29 @@
       }
     }
     onAddBuddy() {
-      Station.sfs.send(new SFS2X6.AddBuddyRequest(this.userid.toString()));
+      var params = new SFS2X6.SFSObject();
+      params.putInt("id", this.userid);
+      Station.sfs.send(new SFS2X6.ExtensionRequest("AddRecentBuddyRequest", params));
     }
     onDestroy() {
       this.removeStationListener();
     }
     addStationListener() {
+      Station.sfs.addEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
       Station.sfs.addEventListener(SFS2X6.SFSBuddyEvent.BUDDY_ADD, this.onBuddyAddRequest, this);
     }
     removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X6.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
       Station.sfs.removeEventListener(SFS2X6.SFSBuddyEvent.BUDDY_ADD, this.onBuddyAddRequest, this);
     }
     onBuddyAddRequest(event) {
       this.viewStack.selectedIndex = 1;
+    }
+    onExtensionResponse(evtParams) {
+      if ("AddRecentBuddyRequest" == evtParams.cmd) {
+        let userid = evtParams.params.getInt("id");
+        Station.sfs.send(new SFS2X6.AddBuddyRequest(userid.toString()));
+      }
     }
   };
   __name(BuddyInfo, "BuddyInfo");
@@ -12068,6 +12083,8 @@
     }
     onAwake() {
       super.onAwake();
+      this.player.level.visible = false;
+      this.player.goldSprite.visible = false;
       this.owner.on(Event3.StateChange, this, this.onStateChange);
       this.owner.on(Event3.Hurl, this, this.onHurl);
     }
@@ -12160,6 +12177,8 @@
     }
     onAwake() {
       super.onAwake();
+      this.player.level.visible = true;
+      this.player.goldSprite.visible = true;
       this.owner.on(Event3.StateChange, this, this.onStateChange);
       this.owner.on(Event3.Hurl, this, this.onHurl);
     }
@@ -12318,6 +12337,8 @@
     }
     onAwake() {
       super.onAwake();
+      this.player.level.visible = true;
+      this.player.goldSprite.visible = false;
       this.owner.on(Event3.StateChange, this, this.onStateChange);
     }
     onStart() {
@@ -12889,6 +12910,8 @@
       this.profile = profile;
       this.nickname.text = profile.nickname;
       this.trade.getComponent(Trade).avatar.index = this.profile.avatar;
+      this.gold.text = profile.gold.toString();
+      this.level.text = "LV. " + profile.level.toString();
     }
     plusAni(hold) {
       let plus = this.plus.create();
@@ -12946,6 +12969,15 @@
   __decorateClass([
     property33(Laya.Label)
   ], Player.prototype, "nickname", 2);
+  __decorateClass([
+    property33(Laya.Label)
+  ], Player.prototype, "level", 2);
+  __decorateClass([
+    property33(Laya.Label)
+  ], Player.prototype, "gold", 2);
+  __decorateClass([
+    property33(Laya.Sprite)
+  ], Player.prototype, "goldSprite", 2);
   __decorateClass([
     property33([Laya.Sprite])
   ], Player.prototype, "chippy", 2);
@@ -13936,7 +13968,7 @@
     }
     challengeExtreme(param) {
       this.room.chitchat.visible = true;
-      if (param.magic != -1) {
+      if (param.magic != null) {
         this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
       }
       this.room.sortSeat(param.number, param.color);
@@ -13949,11 +13981,15 @@
         let nickname = users[i].getVariable("nickname");
         let avatar = users[i].getVariable("avatar");
         let userid = users[i].getVariable("userid");
+        let rank = users[i].getVariable("rank");
+        let gold = users[i].getVariable("gold");
         let player = this.room.addPlayer(color, type, {
           "id": users[i].id,
           "userid": userid.value,
           "nickname": nickname.value,
-          "avatar": avatar.value
+          "avatar": avatar.value,
+          "level": Profile.getLevel(rank.value),
+          "gold": gold.value
         });
         if (users[i].isItMe) {
           player.addComponentInstance(new Sender());
@@ -13961,7 +13997,7 @@
       }
     }
     challengeComputer(param) {
-      if (param.magic != -1) {
+      if (param.magic != null) {
         this.room.setupMagic(param.color, Config.MagicMap[param.magic]);
       }
       this.room.sortSeat(param && param.number ? param.number : 2, param.color);
@@ -13969,7 +14005,9 @@
       this.room.addPlayer(param.color, 2 /* Oneself */, {
         "id": 0,
         "nickname": Profile.getNickname(),
-        "avatar": Profile.getAvatar()
+        "avatar": Profile.getAvatar(),
+        "gold": Profile.getGold(),
+        "level": Profile.getMyLevel()
       });
       let colors = JSON.parse(JSON.stringify(Config.Colors));
       let idx = colors.indexOf(param.color);
@@ -13988,7 +14026,9 @@
       this.room.addPlayer(color, 1 /* Computer */, {
         "id": id,
         "nickname": "Computer",
-        "avatar": 0
+        "avatar": 0,
+        "gold": 0,
+        "level": 0
       });
     }
   };
@@ -14059,6 +14099,13 @@
       this.viewStack = this.getChildByName("ViewStack");
       this.clock = this.getChildByName("clockbk").getChildByName("clock");
       this.roomCode = this.getChildByName("RoomTitle").getChildByName("RoomCode");
+      this.getChildByName("InviteFriends").on(Laya.Event.CLICK, this, () => {
+        Laya.Scene.open("dialog/buddyselect.lh", false, null, Laya.Handler.create(this, (dlg) => {
+          this.onInvite(dlg);
+        }));
+      });
+    }
+    onInvite(dlg) {
     }
     onDestroy() {
       this.removeStationListener();
@@ -14489,50 +14536,6 @@
         }
       });
     }
-    // ggg4() {
-    //     let MagicMap:any[] = [];
-    //     for(let i = 0; i < 30; ++i) {
-    //         let makeup:any = {};
-    //             let ranext:number[] = [];
-    //             for(let j = 0; j < 3; j++) {
-    //                 let num  = this.ggg222(ranext);
-    //                 makeup[num] = {
-    //                     name: "rocket",
-    //                     clip: 2
-    //                 };
-    //             }
-    //             for(let j = 0; j < 3; j++) {
-    //                 let num  = this.ggg222(ranext);
-    //                 makeup[num] = {
-    //                     name: "defender",
-    //                     clip: 0
-    //                 };
-    //             }
-    //             for(let j = 0; j < 3; j++) {
-    //                 let num  = this.ggg222(ranext);
-    //                 makeup[num] = {
-    //                     name: "plus",
-    //                     clip: 1
-    //                 };
-    //             }
-    //             MagicMap.push({"makeup":makeup});
-    //     }
-    //     console.log(JSON.stringify(MagicMap));
-    // }
-    // ggg222( ranext:number[]) {
-    //     let num  = 0;
-    //     while(true) {
-    //         num =Math.floor(Math.random() * Config.NUMBER_UNIVERSAL_HOLD);
-    //         if (num == 0 || num == 8 ||num == 13 ||num == 21 ||num == 26 ||num == 34 || num == 39 || num == 47 || ranext.indexOf(num) != -1 ) {
-    //             continue;
-    //         }
-    //         else {
-    //             ranext.push(num);
-    //             break;
-    //         }
-    //     }
-    //     return num;
-    // }
     onStart() {
       Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("musicMuted") == "on";
       Laya.SoundManager.soundMuted = Laya.LocalStorage.getItem("soundMuted") == "on";
@@ -14725,7 +14728,7 @@
           "number": this.numberOfPlayer
         };
         let magic = Station.sfs.lastJoinedRoom.getVariable("magic");
-        if (magic) {
+        if (magic != null && magic.value != -1) {
           param.magic = magic.value;
         }
         this.addRecentRequest();
@@ -14787,8 +14790,7 @@
     }
     onLateUpdate() {
       let label = this.owner;
-      let rank = Profile.getRank();
-      label.text = Math.floor(rank / 100).toString();
+      label.text = Profile.getMyLevel();
     }
   };
   __name(MyselfLv, "MyselfLv");
@@ -15152,6 +15154,57 @@
   StatisticsDialog = __decorateClass([
     regClass73("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
+
+  // src/BuddySelect.ts
+  var SFS2X24 = __toESM(require_sfs2x_api());
+  var { regClass: regClass74, property: property74 } = Laya;
+  var BuddySelect = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+    }
+    onStart() {
+      this.onBuddyListUpdate(null);
+      this.addStationListener();
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    addStationListener() {
+      Station.sfs.addEventListener(SFS2X24.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, this.onBuddyListUpdate, this);
+    }
+    removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X24.SFSBuddyEvent.BUDDY_ONLINE_STATE_CHANGE, this.onBuddyListUpdate, this);
+    }
+    onBuddyListUpdate(event) {
+      this.list.array = Station.sfs.buddyManager.getOnlineBuddies();
+    }
+    updateItem(cell, index) {
+      let data = this.list.array[index];
+      let item = cell.getComponent(BuddyItem);
+      let avatar = data.getVariable(SFS2X24.SFSBuddyVariable.OFFLINE_PREFIX + "avatar");
+      if (avatar != null) {
+        item.avatar.index = avatar.value;
+      } else {
+        item.avatar.index = 0;
+      }
+      item.nickname.text = data.nickName != null && data.nickName != "" ? data.nickName : data.name;
+      item.button.on(Laya.Event.CLICK, this, () => {
+      });
+    }
+  };
+  __name(BuddySelect, "BuddySelect");
+  __decorateClass([
+    property74(Laya.Label)
+  ], BuddySelect.prototype, "buddyCount", 2);
+  __decorateClass([
+    property74(Laya.List)
+  ], BuddySelect.prototype, "list", 2);
+  BuddySelect = __decorateClass([
+    regClass74("0c398a54-333d-4e1f-ac77-5e88e2bd4894", "../src/BuddySelect.ts")
+  ], BuddySelect);
 })();
 /*! Bundled license information:
 

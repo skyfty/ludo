@@ -29,6 +29,8 @@ export interface Profile {
     id: number,
     nickname: string;
     avatar: number;
+    level:string;
+    gold:number;
 }
 
 export enum Type {
@@ -90,6 +92,16 @@ export class Player extends Laya.Script {
     
     @property(Laya.Label)
     public nickname: Laya.Label;
+
+    @property(Laya.Label)
+    public level: Laya.Label;
+
+    @property(Laya.Label)
+    public gold: Laya.Label;
+
+
+    @property(Laya.Sprite)
+    public goldSprite: Laya.Sprite;
 
     @property([Laya.Sprite])
     protected chippy: Laya.Sprite[] = [];
@@ -349,6 +361,8 @@ export class Player extends Laya.Script {
         this.profile = profile;
         this.nickname.text = profile.nickname;
         this.trade.getComponent(Trade).avatar.index = this.profile.avatar;
+        this.gold.text = profile.gold.toString();
+        this.level.text = "LV. " + profile.level.toString();
     }
 
     

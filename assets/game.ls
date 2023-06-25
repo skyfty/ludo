@@ -892,8 +892,8 @@
           "_$prefab": "e0727edd-d6a4-4342-925e-21743d3e127e",
           "name": "red",
           "active": true,
-          "x": -256.99999999999994,
-          "y": 374.00000000000006,
+          "x": -257.99999999999994,
+          "y": 376.00000000000006,
           "visible": true,
           "disabled": false,
           "bgColor": null,
@@ -956,6 +956,15 @@
               "nickname": {
                 "_$ref": "mm094egv"
               },
+              "level": {
+                "_$ref": "3jt8eps1"
+              },
+              "gold": {
+                "_$ref": "6asehhz5"
+              },
+              "goldSprite": {
+                "_$ref": "vecvedk3"
+              },
               "chippy": [],
               "home": [],
               "plus": {
@@ -968,7 +977,7 @@
             {
               "_$override": "sc3b00yx",
               "x": -10,
-              "y": 10,
+              "y": 19,
               "_$comp": [
                 {
                   "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
@@ -995,6 +1004,10 @@
             {
               "_$override": "dn8vhuyq",
               "x": 97
+            },
+            {
+              "_$override": "gr4bj7wo",
+              "x": 78
             },
             {
               "_$id": "mm094egv",
@@ -1228,13 +1241,13 @@
                       "y": 0
                     },
                     {
-                      "_$override": "9x2tcgjj",
-                      "visible": false
-                    },
-                    {
                       "_$override": "t8h17dpc",
                       "skin": "res://46f0b17f-7211-4b0f-a9ea-b82657131698",
                       "y": -5.5
+                    },
+                    {
+                      "_$override": "9x2tcgjj",
+                      "visible": false
                     }
                   ]
                 },
@@ -1339,12 +1352,65 @@
             {
               "_$id": "p4fglvnm",
               "_$prefab": "28f808ae-0603-4959-878b-2010c8dc5664",
+              "_$index": 6,
               "name": "crown",
               "active": true,
               "x": -10.000000000000057,
               "y": -260.00000000000006,
               "visible": false,
               "bgColor": null
+            },
+            {
+              "_$id": "vecvedk3",
+              "_$index": 7,
+              "_$type": "Sprite",
+              "name": "Sprite",
+              "x": -5,
+              "y": 3,
+              "width": 94,
+              "height": 24,
+              "_$child": [
+                {
+                  "_$id": "6asehhz5",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 31,
+                  "y": 3,
+                  "width": 87,
+                  "height": 20,
+                  "text": "???",
+                  "fontSize": 16,
+                  "color": "#FFFFFF",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "99x4lf1f",
+                  "_$prefab": "89a50e27-7b1e-4b6b-9a47-7cba536895b5",
+                  "name": "goldcoin",
+                  "active": true,
+                  "x": 0,
+                  "y": 0,
+                  "visible": true,
+                  "width": 27.415384615384628,
+                  "height": 23.676923076923078
+                }
+              ]
+            },
+            {
+              "_$id": "3jt8eps1",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 2,
+              "y": 131,
+              "width": 82,
+              "height": 16,
+              "text": "",
+              "fontSize": 15,
+              "color": "rgba(254, 255, 0, 1)",
+              "leading": 0,
+              "padding": "0,0,0,0"
             }
           ]
         },
@@ -1414,6 +1480,15 @@
               },
               "nickname": {
                 "_$ref": "60j9qyf3"
+              },
+              "level": {
+                "_$ref": "50a5n8io"
+              },
+              "gold": {
+                "_$ref": "1ltb6mxi"
+              },
+              "goldSprite": {
+                "_$ref": "3ji9dz8t"
               },
               "chippy": [],
               "home": [],
@@ -1759,6 +1834,7 @@
             {
               "_$id": "8jrz6tko",
               "_$prefab": "3afe6414-4d87-479e-a251-ee931b2bfb6f",
+              "_$index": 6,
               "name": "message",
               "active": true,
               "x": -5,
@@ -1795,6 +1871,59 @@
                   "y": 30,
                   "x": 12,
                   "width": 271
+                }
+              ]
+            },
+            {
+              "_$id": "50a5n8io",
+              "_$index": 7,
+              "_$type": "Label",
+              "name": "Label",
+              "x": 1,
+              "y": -69,
+              "width": 82,
+              "height": 16,
+              "text": "",
+              "fontSize": 15,
+              "color": "rgba(254, 255, 0, 1)",
+              "leading": 0,
+              "padding": "0,0,0,0"
+            },
+            {
+              "_$id": "3ji9dz8t",
+              "_$type": "Sprite",
+              "name": "Sprite",
+              "x": -5,
+              "y": 48,
+              "width": 94,
+              "height": 24,
+              "visible": false,
+              "_$child": [
+                {
+                  "_$id": "1ltb6mxi",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 31,
+                  "y": 3,
+                  "width": 87,
+                  "height": 20,
+                  "text": "???",
+                  "fontSize": 16,
+                  "color": "#FFFFFF",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "owrch0cw",
+                  "_$prefab": "89a50e27-7b1e-4b6b-9a47-7cba536895b5",
+                  "name": "goldcoin",
+                  "active": true,
+                  "x": 0,
+                  "y": 0,
+                  "visible": true,
+                  "width": 27.415384615384628,
+                  "height": 23.676923076923078
                 }
               ]
             }
@@ -1867,6 +1996,15 @@
               "nickname": {
                 "_$ref": "yh7nx9ez"
               },
+              "level": {
+                "_$ref": "ptl5ogs3"
+              },
+              "gold": {
+                "_$ref": "em530op5"
+              },
+              "goldSprite": {
+                "_$ref": "s3y580t1"
+              },
               "chippy": [],
               "home": [],
               "plus": {
@@ -1879,7 +2017,7 @@
             {
               "_$override": "5a788y2g",
               "x": -51,
-              "y": 10,
+              "y": 19,
               "_$comp": [
                 {
                   "_$override": "39d67820-6b75-4090-969f-b2fef892effc",
@@ -2196,6 +2334,7 @@
             {
               "_$id": "9gd4kjms",
               "_$prefab": "e48a8486-1223-4a7f-a01c-41acc787d7ed",
+              "_$index": 6,
               "name": "message",
               "active": true,
               "x": -130,
@@ -2215,6 +2354,60 @@
                 {
                   "_$override": "iz248g3j",
                   "y": 6
+                }
+              ]
+            },
+            {
+              "_$id": "ptl5ogs3",
+              "_$index": 7,
+              "_$type": "Label",
+              "name": "Label",
+              "x": 74,
+              "y": 134,
+              "width": 82,
+              "height": 16,
+              "text": "",
+              "fontSize": 15,
+              "color": "rgba(254, 255, 0, 1)",
+              "align": "right",
+              "leading": 0,
+              "padding": "0,0,0,0"
+            },
+            {
+              "_$id": "s3y580t1",
+              "_$type": "Sprite",
+              "name": "Sprite",
+              "x": 71,
+              "y": 3,
+              "width": 94,
+              "height": 24,
+              "visible": false,
+              "_$child": [
+                {
+                  "_$id": "em530op5",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 31,
+                  "y": 3,
+                  "width": 87,
+                  "height": 20,
+                  "text": "???",
+                  "fontSize": 16,
+                  "color": "#FFFFFF",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "0uv4hiu9",
+                  "_$prefab": "89a50e27-7b1e-4b6b-9a47-7cba536895b5",
+                  "name": "goldcoin",
+                  "active": true,
+                  "x": 0,
+                  "y": 0,
+                  "visible": true,
+                  "width": 27.415384615384628,
+                  "height": 23.676923076923078
                 }
               ]
             }
@@ -2285,6 +2478,15 @@
               },
               "nickname": {
                 "_$ref": "lxkl8giz"
+              },
+              "level": {
+                "_$ref": "thj616b7"
+              },
+              "gold": {
+                "_$ref": "n136wa7j"
+              },
+              "goldSprite": {
+                "_$ref": "lmsvfp06"
               },
               "chippy": [],
               "home": [],
@@ -2639,6 +2841,7 @@
             {
               "_$id": "8idgin6m",
               "_$prefab": "3afe6414-4d87-479e-a251-ee931b2bfb6f",
+              "_$index": 6,
               "name": "message",
               "active": true,
               "x": -113,
@@ -2676,6 +2879,60 @@
                   "y": 35,
                   "x": 12,
                   "width": 268
+                }
+              ]
+            },
+            {
+              "_$id": "thj616b7",
+              "_$index": 7,
+              "_$type": "Label",
+              "name": "Label",
+              "x": 80,
+              "y": -68,
+              "width": 82,
+              "height": 16,
+              "text": "",
+              "fontSize": 15,
+              "color": "rgba(254, 255, 0, 1)",
+              "align": "right",
+              "leading": 0,
+              "padding": "0,0,0,0"
+            },
+            {
+              "_$id": "lmsvfp06",
+              "_$type": "Sprite",
+              "name": "Sprite",
+              "x": 71,
+              "y": 53,
+              "width": 94,
+              "height": 24,
+              "visible": false,
+              "_$child": [
+                {
+                  "_$id": "n136wa7j",
+                  "_$type": "Label",
+                  "name": "Label",
+                  "x": 31,
+                  "y": 3,
+                  "width": 87,
+                  "height": 20,
+                  "text": "",
+                  "fontSize": 16,
+                  "color": "#FFFFFF",
+                  "valign": "middle",
+                  "leading": 0,
+                  "padding": "0,0,0,0"
+                },
+                {
+                  "_$id": "yw33nnt7",
+                  "_$prefab": "89a50e27-7b1e-4b6b-9a47-7cba536895b5",
+                  "name": "goldcoin",
+                  "active": true,
+                  "x": 0,
+                  "y": 0,
+                  "visible": true,
+                  "width": 27.415384615384628,
+                  "height": 23.676923076923078
                 }
               ]
             }

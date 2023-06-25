@@ -34,21 +34,31 @@ export class BuddyInfo extends UserInfo {
     }
 
     private onAddBuddy() {
-		Station.sfs.send(new SFS2X.AddBuddyRequest(this.userid.toString()));
+        var params = new SFS2X.SFSObject();
+        params.putInt("id",this.userid);
+        Station.sfs.send(new SFS2X.ExtensionRequest("AddRecentBuddyRequest", params));
     }
     
     onDestroy(): void {
         this.removeStationListener();
     }
     public addStationListener() {
+        Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
         Station.sfs.addEventListener(SFS2X.SFSBuddyEvent.BUDDY_ADD,  this.onBuddyAddRequest, this);
 
     }
     public removeStationListener() {
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
         Station.sfs.removeEventListener(SFS2X.SFSBuddyEvent.BUDDY_ADD,  this.onBuddyAddRequest, this);
     }
 
     private onBuddyAddRequest(event: SFS2X.SFSEvent){
         this.viewStack.selectedIndex = 1;
+    }
+    private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
+        if ("AddRecentBuddyRequest" == evtParams.cmd) {
+            let userid = evtParams.params.getInt("id");
+            Station.sfs.send(new SFS2X.AddBuddyRequest(userid.toString()));
+        } 
     }
 }

@@ -66,10 +66,7 @@ export class BuddyList extends Laya.Script {
 
 
     private getBuddyDisplayName(buddy:SFS2X.Buddy) {
-        if (buddy.nickName != null && buddy.nickName != "")
-            return buddy.nickName;
-        else
-            return buddy.name;
+        return  (buddy.nickName != null && buddy.nickName != "") ? buddy.nickName:buddy.name;
     }
     
     private onBuddyListUpdate(event: SFS2X.SFSEvent) {

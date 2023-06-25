@@ -1,0 +1,248 @@
+{
+  "_$ver": 1,
+  "_$id": "e9x057bl",
+  "_$type": "Dialog",
+  "name": "view",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "0c398a54-333d-4e1f-ac77-5e88e2bd4894",
+      "scriptPath": "../src/BuddySelect.ts",
+      "buddyCount": {
+        "_$ref": "o859ar3v"
+      },
+      "list": {
+        "_$ref": "l2xxh5go"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "e1pw1yjw",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 9,
+      "y": 89,
+      "width": 728,
+      "height": 955,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "bz2qxaeg",
+      "_$type": "Button",
+      "name": "return",
+      "x": 329.5,
+      "y": 1061.5,
+      "width": 82.5,
+      "height": 82.5,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+          "scriptPath": "../src/ClickReturn.ts",
+          "dialog": {
+            "_$ref": "e9x057bl"
+          }
+        }
+      ]
+    },
+    {
+      "_$id": "2jha6v9t",
+      "_$type": "Image",
+      "name": "Image(3)",
+      "x": 40,
+      "y": 201,
+      "width": 666,
+      "height": 794,
+      "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+      "sizeGrid": "17,18,18,15,0",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "l2xxh5go",
+      "_$type": "List",
+      "name": "List",
+      "x": 47,
+      "y": 207,
+      "width": 653,
+      "height": 780,
+      "mouseEnabled": true,
+      "itemTemplate": {
+        "_$ref": "6tzxdfpo",
+        "_$tmpl": "itemRender"
+      },
+      "repeatX": 1,
+      "repeatY": 4,
+      "spaceY": 14,
+      "scrollType": 2,
+      "_$child": [
+        {
+          "_$id": "6tzxdfpo",
+          "_$type": "Box",
+          "name": "Box",
+          "width": 650,
+          "height": 125,
+          "mouseEnabled": true,
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "88d28a41-930e-459b-98f4-600c6eec131d",
+              "scriptPath": "../src/BuddyItem.ts",
+              "nickname": {
+                "_$ref": "p34cc489"
+              },
+              "avatar": {
+                "_$ref": "tvymj5sb"
+              },
+              "button": {
+                "_$ref": "3lahtvp4"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "1r5uk0ij",
+              "_$type": "Image",
+              "name": "Image",
+              "width": 650,
+              "height": 124,
+              "skin": "res://60815850-2a86-4053-8509-e1e77d973722",
+              "color": "#ffffff"
+            },
+            {
+              "_$id": "p34cc489",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 109,
+              "y": 41,
+              "width": 339,
+              "height": 39,
+              "text": "Anonymous",
+              "font": "Tahoma",
+              "fontSize": 42,
+              "color": "rgba(254, 212, 3, 1)",
+              "bold": true,
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "stroke": 3,
+              "strokeColor": "rgba(74, 74, 75, 1)"
+            },
+            {
+              "_$id": "dsdmxv2w",
+              "_$type": "Sprite",
+              "name": "Sprite(1)",
+              "x": 3,
+              "y": 6,
+              "width": 101,
+              "height": 107,
+              "_$child": [
+                {
+                  "_$id": "tvymj5sb",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatarclip",
+                  "active": true,
+                  "x": 14,
+                  "y": 17,
+                  "visible": true,
+                  "width": 77,
+                  "height": 77,
+                  "index": 4
+                },
+                {
+                  "_$id": "6bphh4tq",
+                  "_$type": "Image",
+                  "name": "Image(1)",
+                  "x": 3,
+                  "y": 2,
+                  "width": 96.87761775988932,
+                  "height": 104.8840324507891,
+                  "mouseEnabled": true,
+                  "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
+                  "color": "#ffffff"
+                }
+              ]
+            },
+            {
+              "_$id": "3lahtvp4",
+              "_$type": "Button",
+              "name": "Button",
+              "x": 461,
+              "y": 28,
+              "width": 175,
+              "height": 67,
+              "mouseEnabled": true,
+              "stateNum": 2,
+              "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
+              "sizeGrid": "16,15,17,15,0",
+              "label": "INVITE",
+              "labelSize": 26,
+              "labelBold": true,
+              "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+              "labelStrokeColor": "#32556b",
+              "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$id": "iou3mhfp",
+      "_$type": "Image",
+      "name": "Image(2)",
+      "x": 50,
+      "y": 111,
+      "width": 647,
+      "height": 82,
+      "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
+      "sizeGrid": "10,20,12,16,0",
+      "color": "#ffffff",
+      "_$child": [
+        {
+          "_$id": "dg4044ni",
+          "_$type": "Image",
+          "name": "Image(3)",
+          "x": 34,
+          "y": 10,
+          "width": 247,
+          "height": 59,
+          "skin": "res://2b7b8a14-fcef-481a-ad0d-03ecfb7666ef",
+          "useSourceSize": true,
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "_$id": "o859ar3v",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 486,
+      "y": 128,
+      "width": 191,
+      "height": 40,
+      "text": "0",
+      "fontSize": 45,
+      "color": "#FFFFFF",
+      "bold": true,
+      "align": "right",
+      "leading": 0,
+      "padding": "0,0,0,0",
+      "stroke": 2
+    }
+  ]
+}

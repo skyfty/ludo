@@ -146,7 +146,7 @@ export class Militant extends Laya.Scene {
                 "number": this.numberOfPlayer
             };
             let magic = Station.sfs.lastJoinedRoom.getVariable("magic");
-            if (magic) {
+            if (magic != null && magic.value != -1) {
                 param.magic = magic.value;
             }
             this.addRecentRequest();

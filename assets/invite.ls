@@ -368,7 +368,7 @@
     {
       "_$id": "dxwfyv0n",
       "_$type": "Button",
-      "name": "Button",
+      "name": "InviteFriends",
       "x": 240,
       "y": 752,
       "width": 267,

@@ -10,8 +10,7 @@ export class MyselfLv extends Laya.Script {
 
     onLateUpdate(): void {
         let label = this.owner as Laya.Label;
-        let rank = Profile.getRank();
-        label.text = Math.floor(rank / 100).toString();
+        label.text = Profile.getMyLevel();
     }
 
 }

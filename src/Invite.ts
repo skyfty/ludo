@@ -32,6 +32,16 @@ export class Invite extends Laya.Scene {
         this.viewStack = this.getChildByName("ViewStack") as Laya.ViewStack;
         this.clock = this.getChildByName("clockbk").getChildByName("clock") as Laya.Label;
         this.roomCode = this.getChildByName("RoomTitle").getChildByName("RoomCode") as Laya.Label;
+        this.getChildByName("InviteFriends").on(Laya.Event.CLICK, this, () => {
+            Laya.Scene.open("dialog/buddyselect.lh", false, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
+                this.onInvite(dlg);
+            }));
+        });
+
+    }
+
+    onInvite(dlg: Laya.Dialog):void {
+        
     }
 
     onDestroy(): void {
