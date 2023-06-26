@@ -14431,6 +14431,8 @@
           "resources/images/delete.png",
           "resources/images/buddies.png",
           "resources/images/buddybtn.png",
+          "resources/images/giftbtn.png",
+          "resources/images/props.png",
           { url: "game.ls", type: Laya.Loader.HIERARCHY },
           { url: "menu.ls", type: Laya.Loader.HIERARCHY },
           { url: "militant.ls", type: Laya.Loader.HIERARCHY },
