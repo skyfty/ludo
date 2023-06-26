@@ -7,6 +7,7 @@ import { Dice } from "./Dice";
 import { Route } from "./Route";
 import { Room } from "./Room";
 import * as SFS2X from "../node_modules/sfs2x-api";
+import { Station } from "./Station";
 
 @regClass()
 export class Extreme extends Performer {
@@ -20,15 +21,25 @@ export class Extreme extends Performer {
         super.onAwake();
         this.player.level.visible = true;
         this.player.goldSprite.visible = false;
+        this.player.trade.getComponent(Trade).props.visible = true;
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
   
     }
 
     onStart(): void {
-        this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
+        let trade = this.player.trade.getComponent(Trade);
+        trade.avatar.on(Laya.Event.CLICK, this, this.onClickAvatar);
+        trade.props.on(Laya.Event.CLICK, this, this.onClickProps);
     }
 
-    onClickTrade() {
+    onClickProps() {
+        let param:any = {
+            "userid":this.userid
+        };
+        Laya.Scene.open("dialog/props.lh", true,param);
+    }
+
+    onClickAvatar() {
         let param:any = {
             "userid":this.userid
         };
@@ -72,6 +83,10 @@ export class Extreme extends Performer {
             }
             case Player.Event.GenerateMagic: {
                 this.onGenerateMagic(dataObj.get("num"), dataObj.get("type"));
+                break;
+            }
+            case Player.Event.UseProps: {
+                this.onUseProps(dataObj);
                 break;
             }
         }
@@ -132,4 +147,13 @@ export class Extreme extends Performer {
             this.player.hopChesses(chesses);
         }
     }
+
+    
+    private onUseProps(evtParams: SFS2X.SFSEvent) {
+        let prop = evtParams.get("prop");
+        let userid = evtParams.get("userid");
+        let user = Station.sfs.userManager.getUserByName(userid.toString());
+        this.player.showProps(user.id, prop);
+    }
+
 }

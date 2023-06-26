@@ -43,6 +43,10 @@
       "loser": {
         "_$uuid": "2191a9de-75c1-4ec6-9a1a-a3ebf2dbee7f",
         "_$type": "Prefab"
+      },
+      "props": {
+        "_$uuid": "d225aaf0-b0b6-418c-90f3-9a01084b5139",
+        "_$type": "Prefab"
       }
     }
   ],
@@ -886,6 +890,7 @@
       "y": 468.99999999999994,
       "width": 100,
       "height": 100,
+      "mouseEnabled": true,
       "_$child": [
         {
           "_$id": "hqy9lgmf",
@@ -992,6 +997,12 @@
                       "hqy9lgmf",
                       "8zfiqxp5"
                     ]
+                  },
+                  "props": {
+                    "_$ref": [
+                      "hqy9lgmf",
+                      "x17g8mv4"
+                    ]
                   }
                 }
               ]
@@ -1008,6 +1019,10 @@
             {
               "_$override": "gr4bj7wo",
               "x": 78
+            },
+            {
+              "_$override": "x17g8mv4",
+              "visible": false
             },
             {
               "_$id": "mm094egv",
@@ -1383,7 +1398,13 @@
                   "color": "#FFFFFF",
                   "valign": "middle",
                   "leading": 0,
-                  "padding": "0,0,0,0"
+                  "padding": "0,0,0,0",
+                  "_$comp": [
+                    {
+                      "_$type": "12b679ee-f2ac-4f30-9b77-97dedf5b62a2",
+                      "scriptPath": "../src/MyselfGold.ts"
+                    }
+                  ]
                 },
                 {
                   "_$id": "99x4lf1f",
@@ -1517,9 +1538,22 @@
                       "hknjlm1h",
                       "8zfiqxp5"
                     ]
+                  },
+                  "props": {
+                    "_$ref": [
+                      "hknjlm1h",
+                      "x17g8mv4"
+                    ]
                   }
                 }
               ]
+            },
+            {
+              "_$override": "x17g8mv4",
+              "visible": true,
+              "x": -1,
+              "y": 111,
+              "width": 26
             },
             {
               "_$id": "60j9qyf3",
@@ -2046,6 +2080,17 @@
               ]
             },
             {
+              "_$override": "5ft64053",
+              "visible": true
+            },
+            {
+              "_$override": "2e90lc4h",
+              "y": -18.000000000000014,
+              "x": 195,
+              "width": 26,
+              "height": 26
+            },
+            {
               "_$id": "yh7nx9ez",
               "_$index": 1,
               "_$type": "Label",
@@ -2527,6 +2572,13 @@
                   }
                 }
               ]
+            },
+            {
+              "_$override": "2e90lc4h",
+              "x": 198,
+              "y": 110.99999999999999,
+              "width": 26,
+              "height": 26
             },
             {
               "_$id": "lxkl8giz",

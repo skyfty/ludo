@@ -19,6 +19,7 @@ export class Oneself extends Performer {
         super.onAwake();
         this.player.level.visible = true;
         this.player.goldSprite.visible = true;
+        this.player.trade.getComponent(Trade).props.visible = false;
         this.owner.on(Player.Event.StateChange, this, this.onStateChange);
         this.owner.on(Player.Event.Hurl, this, this.onHurl);
     }
@@ -27,8 +28,6 @@ export class Oneself extends Performer {
         this.player.trade.on(Laya.Event.CLICK, this, this.onClickTrade);
         this.player.trade.on(Player.Event.CountdownStop, this, this.onCountdownStop);
         this.player.trade.on(Player.Event.Rocket, this, this.onRocket);
-
-
     }
 
     onRocket(reason: string) {

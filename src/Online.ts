@@ -1,4 +1,4 @@
-const { regClass, property,SoundManager } = Laya;
+const { regClass, property, SoundManager } = Laya;
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Station } from "./Station";
 import { Room } from "./Room";
@@ -31,15 +31,15 @@ export class Online extends Laya.Script {
         this.room.chitchat.visible = true;
     }
 
-    
-    onCountdown(trade:Trade, reason:string) {
+
+    onCountdown(trade: Trade, reason: string) {
         if (reason == Player.Event.Hurl) {
             trade.startCountdown(Config.TIMEOUT_CHUNK, reason);
-        }else if (reason == Player.Event.Choose) {
+        } else if (reason == Player.Event.Choose) {
             trade.startCountdown(Config.TIMEOUT_CHOOSE_CHESS, reason);
         }
     }
-    onCountdownStop(trade:Trade) {
+    onCountdownStop(trade: Trade) {
         trade.stopCountdown();
     }
 
@@ -51,7 +51,7 @@ export class Online extends Laya.Script {
     }
 
     onStart(): void {
-        let idx = Config.Colors.findIndex((colorName:string)=>{
+        let idx = Config.Colors.findIndex((colorName: string) => {
             return this.playerColorFind(colorName);
         });
         if (idx != -1) {
@@ -59,7 +59,7 @@ export class Online extends Laya.Script {
         }
     }
 
-    onHurl(player:Laya.Sprite) {
+    onHurl(player: Laya.Sprite) {
         var params = new SFS2X.SFSObject();
         Station.sfs.send(new SFS2X.ExtensionRequest(Player.Event.Hurl, params));
     }
@@ -71,12 +71,13 @@ export class Online extends Laya.Script {
 
     private addStationListener() {
         Station.sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, this.onUserExitRoom, this);
-        Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom,this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, this.onUserExitRoom, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.CONNECTION_LOST, this.onUserExitRoom, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, this.onObjectMessage, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
         Station.sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+        Station.sfs.addEventListener(SFS2X.SFSEvent.PRIVATE_MESSAGE, this.onPrivateMessage, this);
 
     }
 
@@ -88,8 +89,16 @@ export class Online extends Laya.Script {
         Station.sfs.removeEventListener(SFS2X.SFSEvent.MODERATOR_MESSAGE, this.onModeratorMessage, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
         Station.sfs.removeEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, this.onPublicMessage, this);
+        Station.sfs.removeEventListener(SFS2X.SFSEvent.PRIVATE_MESSAGE, this.onPrivateMessage, this);
+
     }
 
+    onPrivateMessage(evtParams: SFS2X.SFSEvent) {
+        let player = this.room.players[evtParams.sender.id];
+        if (player != null) {
+            player.getComponent(Player.Player).messageBubble.show(evtParams.message);
+        }
+    }
 
     onPublicMessage(evtParams: SFS2X.SFSEvent) {
         let player = this.room.players[evtParams.sender.id];
@@ -97,12 +106,12 @@ export class Online extends Laya.Script {
             player.getComponent(Player.Player).messageBubble.show(evtParams.message);
         }
     }
-  
+
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
         if (Player.Event.Hurl == evtParams.cmd) {
             let num = evtParams.params.get("number");
             let playerid = evtParams.params.get("playerid");
-            Laya.timer.once(900, this, ()=>{
+            Laya.timer.once(900, this, () => {
                 this.room.players[playerid].event(Player.Event.Hurl, num);
             });
         }
@@ -113,9 +122,9 @@ export class Online extends Laya.Script {
         let reward = this.room.reward.create() as Laya.Sprite;
         let earn = evtParam.data.get("earn");
         let winPlayerId = evtParam.data.get("winner");
-        reward.getComponent(Reward).setEarn(winPlayerId, earn,this.room.numberOfPlayer, this.room.players);
-        reward.on(Laya.Event.CLOSE, this, ()=>{
-             this.quitRoomGame();
+        reward.getComponent(Reward).setEarn(winPlayerId, earn, this.room.numberOfPlayer, this.room.players);
+        reward.on(Laya.Event.CLOSE, this, () => {
+            this.quitRoomGame();
         });
         this.owner.addChild(reward);
     }
@@ -124,26 +133,26 @@ export class Online extends Laya.Script {
         let winPlayerId = evtParam.data.get("winner");
         Profile.setGold(evtParam.data.get("amount"));
         let loser = this.room.loser.create() as Laya.Sprite;
-        loser.getComponent(Loser).setEarn(winPlayerId,this.room.numberOfPlayer, this.room.players);
-        loser.on(Laya.Event.CLOSE, this, ()=>{
-             this.quitRoomGame();
+        loser.getComponent(Loser).setEarn(winPlayerId, this.room.numberOfPlayer, this.room.players);
+        loser.on(Laya.Event.CLOSE, this, () => {
+            this.quitRoomGame();
         });
         this.owner.addChild(loser);
     }
 
     private onModeratorMessage(evtParam: SFS2X.SFSEvents) {
-        if (evtParam.message =="Winner") {
+        if (evtParam.message == "Winner") {
             this.onWinner(evtParam);
-        }else if (evtParam.message =="Loser") {
+        } else if (evtParam.message == "Loser") {
             this.onLoser(evtParam);
-         }
+        }
     }
 
     private onUserExitRoom(inEvent: SFS2X.SFSEvent) {
         if (!this.room.isVictory) {
-            Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg:Laya.Dialog)=>{
+            Laya.Scene.open("dialog/exitroom.lh", false, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
                 let view = dlg.getChildByName("view");
-                view.getChildByName("okay").on(Laya.Event.CLICK, this, ()=>{
+                view.getChildByName("okay").on(Laya.Event.CLICK, this, () => {
                     this.quitRoomGame();
                 });
             }));
@@ -159,7 +168,7 @@ export class Online extends Laya.Script {
     }
 
     private onObjectMessage(evtParams: SFS2X.SFSEvent) {
-        var dataObj:SFS2X.SFSObject  = evtParams.message;
+        var dataObj: SFS2X.SFSObject = evtParams.message;
         switch (dataObj.get("event")) {
             case Player.Event.Achieve: {
                 this.room.onAchieve();

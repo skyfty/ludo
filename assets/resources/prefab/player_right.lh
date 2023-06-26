@@ -5,6 +5,7 @@
   "name": "Box",
   "width": 220,
   "height": 120,
+  "mouseEnabled": true,
   "_$child": [
     {
       "_$id": "5a788y2g",
@@ -12,6 +13,7 @@
       "name": "trade",
       "width": 220,
       "height": 120,
+      "mouseEnabled": true,
       "_$comp": [
         {
           "_$type": "Animator2D",
@@ -70,6 +72,9 @@
           },
           "blackmark": {
             "_$ref": "92hcm53i"
+          },
+          "props": {
+            "_$ref": "2e90lc4h"
           }
         },
         {
@@ -194,6 +199,20 @@
           "alpha": 0.76,
           "skin": "res://1c9341a1-46ca-4fbe-a769-9e36bca85724",
           "color": "#ffffff"
+        },
+        {
+          "_$id": "2e90lc4h",
+          "_$type": "Button",
+          "name": "props",
+          "x": 196,
+          "y": 107.99999999999999,
+          "width": 23.418544194107476,
+          "height": 25.45493934142114,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://fbeeb648-45ae-4d2c-9cfd-02dc13d51864",
+          "label": "",
+          "labelSize": 20
         }
       ]
     }

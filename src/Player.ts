@@ -4,6 +4,7 @@ import { Config } from "./Config";
 import { Dice } from "./Dice";
 import { Room } from "./Room";
 import { Trade } from "./Trade";
+import { UseProps } from "./UseProps";
 import { MessageBubble } from "./MessageBubble";
 
 const { regClass, property, SoundManager } = Laya;
@@ -22,6 +23,7 @@ export class Event {
     static Victory = "VICTORY";
     static Rocket = "Rocket";
     static GenerateMagic = "GenerateMagic";
+    static UseProps = "UseProps";
 
 }
 
@@ -381,4 +383,24 @@ export class Player extends Laya.Script {
         }));
 
     }
+
+    
+    public showProps(userid:number, prop:number) {
+        let targetPlayer = this.room.players[userid].getComponent(Player);
+        let targetTradeParent = targetPlayer.trade.parent as Laya.Sprite;
+        let destpos = targetTradeParent.localToGlobal(new Laya.Point(targetPlayer.trade.x, targetPlayer.trade.y));
+
+        let tradeParent = this.trade.parent as Laya.Sprite;
+        let orgpos = tradeParent.localToGlobal(new Laya.Point(this.trade.x, this.trade.y));
+        
+        let props = this.room.props.create()  as Laya.Sprite;
+        props.getComponent(UseProps).clip.index = prop
+        Laya.stage.addChild(props.pos(orgpos.x, orgpos.y));
+    
+        Laya.Tween.to(props, { y: destpos.y, x:destpos.x }, 2000, Laya.Ease.quartInOut, Laya.Handler.create(this, () => {
+            Laya.stage.removeChild(props);
+        }));
+
+    }
+
 }

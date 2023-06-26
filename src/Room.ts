@@ -4,7 +4,7 @@ import { Extreme } from "./Extreme";
 import * as Player from "./Player";
 import { Performer } from "./Performer";
 import { Config } from "./Config";
-import { Reward } from "./Reward";
+import { UseProps } from "./UseProps";
 import { Route } from "./Route";
 
 const { regClass, property } = Laya;
@@ -29,6 +29,10 @@ export class Room extends Laya.Script {
 
     @property(Laya.Prefab)
     public loser: Laya.Prefab;
+
+    
+    @property(Laya.Prefab)
+    public props: Laya.Prefab;
 
     public numberOfPlayer: number = 0;
     public players: Laya.Sprite[] = [];
@@ -197,4 +201,5 @@ export class Room extends Laya.Script {
         }
         return player;
     }
+
 }

@@ -1,0 +1,171 @@
+{
+  "_$ver": 1,
+  "_$id": "krocf9g2",
+  "_$runtime": "res://fcc18deb-08ab-438a-abed-3b50c1cf6780",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "75332ac8-0118-48e1-ae6b-2c148b8ace30",
+      "scriptPath": "../src/PropsList.ts",
+      "list": {
+        "_$ref": "tad4wevn"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "m8h9mes6",
+      "_$type": "Button",
+      "name": "close",
+      "x": 335,
+      "y": 1090,
+      "width": 64,
+      "height": 63.5,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "2pmf2dyu",
+      "_$type": "Image",
+      "name": "Image(6)",
+      "x": 18,
+      "y": 87.64305949008505,
+      "width": 712.171957594696,
+      "height": 996.5200490639877,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "pbtvo4am",
+      "_$type": "Image",
+      "name": "Image(9)",
+      "x": 58,
+      "y": 126,
+      "width": 630,
+      "height": 914,
+      "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "tad4wevn",
+      "_$type": "List",
+      "name": "List",
+      "x": 69,
+      "y": 139,
+      "width": 611,
+      "height": 891,
+      "mouseEnabled": true,
+      "itemTemplate": {
+        "_$ref": "pal6youk",
+        "_$tmpl": "itemRender"
+      },
+      "repeatX": 3,
+      "repeatY": 4,
+      "spaceX": 6,
+      "spaceY": 7,
+      "scrollType": 2,
+      "selectEnable": true,
+      "_$child": [
+        {
+          "_$id": "pal6youk",
+          "_$type": "Box",
+          "name": "Box",
+          "width": 197,
+          "height": 216,
+          "mouseEnabled": true,
+          "_filters": [],
+          "_$comp": [
+            {
+              "_$type": "632fe6a4-d7be-43f1-a32a-5c5e46228c6f",
+              "scriptPath": "../src/PropsItem.ts",
+              "gold": {
+                "_$ref": "7e8yb6b9"
+              },
+              "image": {
+                "_$ref": "1eacjx6e"
+              },
+              "useBtn": {
+                "_$ref": "rc8qudja"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "rc8qudja",
+              "_$type": "Button",
+              "name": "Button",
+              "width": 197,
+              "height": 216,
+              "mouseEnabled": true,
+              "_filters": [],
+              "stateNum": 1,
+              "skin": "res://238ef9cb-8a20-414b-8d5e-986c5acccb2d",
+              "label": "",
+              "labelSize": 20,
+              "labelColors": "#32556b,#32cc6b,#ff0000,#40406e"
+            },
+            {
+              "_$id": "1eacjx6e",
+              "_$type": "Clip",
+              "name": "Clip",
+              "x": 30,
+              "y": 15,
+              "width": 137,
+              "height": 136.5,
+              "clipWidth": 0,
+              "clipHeight": 0,
+              "clipX": 4,
+              "clipY": 8,
+              "index": 6,
+              "interval": 50,
+              "skin": "res://94d9f4e0-6229-49ef-b6ee-fe9f4cff29cc"
+            },
+            {
+              "_$id": "7e8yb6b9",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 81,
+              "y": 161,
+              "width": 99,
+              "height": 35,
+              "text": "10",
+              "fontSize": 41,
+              "color": "#FFFFFF",
+              "bold": true,
+              "valign": "middle",
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "stroke": 1
+            },
+            {
+              "_$id": "omyjs0h5",
+              "_$type": "Image",
+              "name": "Image(2)",
+              "x": 37,
+              "y": 161,
+              "width": 39.235502958579886,
+              "height": 33.885207100591714,
+              "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
+              "color": "#ffffff"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

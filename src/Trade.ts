@@ -17,6 +17,10 @@ export class Trade extends Laya.Script {
     @property(Laya.Sprite)
     public blackmark: Laya.Sprite;
 
+    
+    @property(Laya.Button)
+    public props: Laya.Button;
+
     constructor() {
         super();
     }
@@ -25,7 +29,7 @@ export class Trade extends Laya.Script {
     }
 
     onStart(): void {
-        this.countdown.on(Laya.Event.STOPPED, this, this.onCountdownStop)
+        this.countdown.on(Laya.Event.STOPPED, this, this.onCountdownStop);
     }
 
     public stop() {

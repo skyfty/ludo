@@ -1,0 +1,33 @@
+{
+  "_$ver": 1,
+  "_$id": "4bcnq8x6j5",
+  "_$type": "Box",
+  "name": "Box",
+  "width": 137,
+  "height": 137,
+  "_$comp": [
+    {
+      "_$type": "02a58e97-0408-4f92-96b7-ac95db3cb428",
+      "scriptPath": "../src/UseProps.ts",
+      "clip": {
+        "_$ref": "lxnmki6g"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "lxnmki6g",
+      "_$type": "Clip",
+      "name": "Clip",
+      "width": 137,
+      "height": 137,
+      "clipWidth": 0,
+      "clipHeight": 0,
+      "clipX": 4,
+      "clipY": 8,
+      "index": 0,
+      "interval": 50,
+      "skin": "res://94d9f4e0-6229-49ef-b6ee-fe9f4cff29cc"
+    }
+  ]
+}
