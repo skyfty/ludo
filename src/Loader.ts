@@ -109,6 +109,7 @@ export class Loader extends Laya.Script {
                 "resources/images/buddybtn.png",
                 "resources/images/giftbtn.png",
                 "resources/images/props.png",
+                "resources/images/selectprofiletrim.png",
 
                 { url: "game.ls", type: Laya.Loader.HIERARCHY },
                 { url: "menu.ls", type: Laya.Loader.HIERARCHY },
