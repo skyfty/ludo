@@ -40,6 +40,11 @@ export class Menu extends Laya.Script {
 
     @property(Laya.Sprite)
     public level: Laya.Sprite;
+
+    
+    @property(Laya.Sprite)
+    public trims: Laya.Sprite;
+
     constructor() {
         super();
     }
@@ -67,6 +72,13 @@ export class Menu extends Laya.Script {
             }
         });
 
+        this.trims.on(Laya.Event.CLICK, this, () => {
+            if (Station.isUnconnected()) {
+                Laya.Scene.open("dialog/nonet.lh");
+            } else {
+                Laya.Scene.open("dialog/trims.lh", true);
+            }
+        });
 
         this.checkin.on(Laya.Event.CLICK, this, () => {
             if (Station.isUnconnected()) {

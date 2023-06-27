@@ -22,6 +22,11 @@ export class Profile {
             params.putInt("avatar", Number.parseInt(avatar));
         }
 
+        let trim = Laya.LocalStorage.getItem("trim");
+        if (trim != null) {
+            params.putUtfString("trim", trim);
+        }
+
         let checkinday = Laya.LocalStorage.getItem("checkinday");
         if (checkinday != null) {
             params.putInt("checkinday", Number.parseInt(checkinday));
@@ -47,6 +52,12 @@ export class Profile {
         let avatar = params.get("avatar");
         if (avatar != null) {
             Laya.LocalStorage.setItem("avatar", avatar);
+        }
+        let trim = params.get("trim");
+        if (trim != null) {
+            Laya.LocalStorage.setItem("trim", trim);
+        } else {
+            Laya.LocalStorage.setItem("trim", "0.png");
         }
         let rank = params.get("rank");
         if (rank != null) {
@@ -84,6 +95,13 @@ export class Profile {
         Station.updateBuddyInfo();
     }
 
+    public static setTrim(trim:string) {
+        Laya.LocalStorage.setItem("trim",trim);
+        Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
+        Station.sync();
+        Station.updateBuddyInfo();
+    }
+
     public static getUserId() {
         let userId = Laya.LocalStorage.getItem("userid");
         return userId == null?null:Number.parseInt(userId);
@@ -100,6 +118,15 @@ export class Profile {
     public static getAvatar() {
         let avatar = Laya.LocalStorage.getItem("avatar");
         return avatar == null?1:Number.parseInt(avatar);
+    }
+
+    public static getTrim() {
+        let trim = Laya.LocalStorage.getItem("trim");
+        return trim != null ? trim:"0.png";
+    }
+
+    public static getTrimImage(trim:string) {
+        return "resources/images/trims/" + trim;
     }
 
     public static getGold() {

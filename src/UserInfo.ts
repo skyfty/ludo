@@ -1,5 +1,6 @@
 const { regClass, property } = Laya;
 import * as SFS2X from "../node_modules/sfs2x-api";
+import { Profile } from "./Profile";
 
 @regClass()
 export class UserInfo extends Laya.Script {
@@ -16,6 +17,11 @@ export class UserInfo extends Laya.Script {
  
     @property(Laya.Clip)
     public avatar: Laya.Clip;
+
+    
+    @property(Laya.Image)
+    public trim: Laya.Image;
+
 
 
     @property(Laya.Label)
@@ -66,6 +72,7 @@ export class UserInfo extends Laya.Script {
         this.userid = profile.getInt("id");
         this.name.text = profile.getUtfString("nickname");
         this.avatar.index = profile.getInt("avatar");
+        this.trim.skin = Profile.getTrimImage(profile.getInt("trim"));
         let rank = profile.getInt("rank");
         this.level.text = Math.floor(rank / 100).toString();
 

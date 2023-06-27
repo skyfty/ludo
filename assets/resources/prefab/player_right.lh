@@ -75,7 +75,8 @@
           },
           "props": {
             "_$ref": "2e90lc4h"
-          }
+          },
+          "trim": null
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -107,11 +108,11 @@
           "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
           "name": "avatarclip",
           "active": true,
-          "x": 140,
-          "y": 26,
+          "x": 139,
+          "y": 28,
           "visible": true,
-          "width": 66.5,
-          "height": 66.5
+          "width": 63,
+          "height": 63
         },
         {
           "_$id": "4nqhjgzi",
@@ -213,6 +214,17 @@
           "skin": "res://fbeeb648-45ae-4d2c-9cfd-02dc13d51864",
           "label": "",
           "labelSize": 20
+        },
+        {
+          "_$id": "jss9amdb",
+          "_$type": "Image",
+          "name": "trim",
+          "x": 126,
+          "y": 16,
+          "width": 89.5,
+          "height": 89.5,
+          "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
+          "color": "#ffffff"
         }
       ]
     }

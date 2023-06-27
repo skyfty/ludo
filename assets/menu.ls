@@ -45,12 +45,15 @@
       },
       "level": {
         "_$ref": "6j8qzh0l"
+      },
+      "trims": {
+        "_$ref": "jutu8ny7"
       }
     },
     {
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
-      "host": "39.104.230.103",
+      "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
       "debug": false
@@ -232,6 +235,23 @@
               "height": 136.5,
               "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
               "color": "#ffffff"
+            },
+            {
+              "_$id": "89vysct8",
+              "_$type": "Image",
+              "name": "trim",
+              "x": 11.000000000000002,
+              "y": 11.000000000000018,
+              "width": 114,
+              "height": 114,
+              "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
+              "color": "#ffffff",
+              "_$comp": [
+                {
+                  "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
+                  "scriptPath": "../src/MyselfTrim.ts"
+                }
+              ]
             }
           ]
         },
@@ -335,7 +355,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 6,
+              "index": 2,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
@@ -447,6 +467,20 @@
       "bottom": 30,
       "stateNum": 2,
       "skin": "res://77bd2846-9777-435a-96de-f3a0a98199d0",
+      "label": "",
+      "labelSize": 20
+    },
+    {
+      "_$id": "jutu8ny7",
+      "_$type": "Button",
+      "name": "trims",
+      "x": 22,
+      "y": 195,
+      "width": 83,
+      "height": 89,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://119274e4-8e4b-48da-ab33-f491f7513b22",
       "label": "",
       "labelSize": 20
     }

@@ -55,6 +55,7 @@ export class Game extends Laya.Scene {
             let type = users[i].isItMe ? Player.Type.Oneself : Player.Type.Extreme;
             let nickname = users[i].getVariable("nickname");
             let avatar = users[i].getVariable("avatar");
+            let trim = users[i].getVariable("trim");
             let userid = users[i].getVariable("userid");
             let rank =  users[i].getVariable("rank");
             let gold = users[i].getVariable("gold");
@@ -64,6 +65,7 @@ export class Game extends Laya.Scene {
                 "userid":userid.value,
                 "nickname": nickname.value,
                 "avatar": avatar.value,
+                "trim": trim.value,
                 "level": Profile.getLevel(rank.value),
                 "gold":gold.value,
 
@@ -85,6 +87,7 @@ export class Game extends Laya.Scene {
             "id": 0,
             "nickname": Profile.getNickname(),
             "avatar": Profile.getAvatar(),
+            "trim": Profile.getTrim(),
             "gold":Profile.getGold(),
             "level":Profile.getMyLevel(),
         });
@@ -108,6 +111,7 @@ export class Game extends Laya.Scene {
             "id": id,
             "nickname": "Computer",
             "avatar": 0,
+            "trim": "0.png",
             "gold": 0,
             "level": 0
         });

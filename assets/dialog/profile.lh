@@ -78,17 +78,24 @@
               ]
             },
             {
-              "_$id": "i3ngc7oz",
+              "_$id": "8lyg0ej4",
               "_$type": "Image",
-              "name": "Image(1)",
-              "x": -7.999999999999886,
-              "y": -17.000000000000057,
-              "width": 121,
-              "height": 131,
-              "mouseEnabled": true,
-              "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
-              "useSourceSize": true,
-              "color": "#ffffff"
+              "name": "trim",
+              "x": -11.499999999999998,
+              "y": -11.499999999999982,
+              "width": 125,
+              "height": 125,
+              "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
+              "color": "#ffffff",
+              "_$comp": [
+                {
+                  "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
+                  "scriptPath": "../src/MyselfTrim.ts",
+                  "image": {
+                    "_$ref": "8lyg0ej4"
+                  }
+                }
+              ]
             }
           ]
         },

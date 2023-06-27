@@ -31,6 +31,8 @@ export interface Profile {
     id: number,
     nickname: string;
     avatar: number;
+    trim: string;
+
     level:string;
     gold:number;
 }
@@ -362,7 +364,9 @@ export class Player extends Laya.Script {
     public setProfile( profile:Profile) {
         this.profile = profile;
         this.nickname.text = profile.nickname;
-        this.trade.getComponent(Trade).avatar.index = this.profile.avatar;
+        let trade = this.trade.getComponent(Trade);
+        trade.avatar.index = this.profile.avatar;
+        trade.trim.skin = "resources/images/trims/" + this.profile.trim;
         this.gold.text = profile.gold.toString();
         this.level.text = "LV. " + profile.level.toString();
     }

@@ -70,8 +70,15 @@
           "countdown": {
             "_$ref": "gr4bj7wo"
           },
-          "blackmark": null,
-          "props": null
+          "blackmark": {
+            "_$ref": "8zfiqxp5"
+          },
+          "props": {
+            "_$ref": "x17g8mv4"
+          },
+          "trim": {
+            "_$ref": "z8ybkgsg"
+          }
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -103,10 +110,10 @@
           "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
           "name": "avatarclip",
           "active": true,
-          "x": 16,
+          "x": 17,
           "y": 27,
           "visible": true,
-          "width": 62.5,
+          "width": 63,
           "height": 62.5
         },
         {
@@ -200,6 +207,17 @@
           "skin": "res://fbeeb648-45ae-4d2c-9cfd-02dc13d51864",
           "label": "",
           "labelSize": 20
+        },
+        {
+          "_$id": "z8ybkgsg",
+          "_$type": "Image",
+          "name": "trim",
+          "x": 4,
+          "y": 15,
+          "width": 89.5,
+          "height": 89.5,
+          "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
+          "color": "#ffffff"
         }
       ]
     }

@@ -447,7 +447,7 @@
       "height": 40,
       "text": "0",
       "fontSize": 45,
-      "color": "#FFFFFF",
+      "color": "rgba(219, 216, 20, 1)",
       "bold": true,
       "align": "right",
       "leading": 0,

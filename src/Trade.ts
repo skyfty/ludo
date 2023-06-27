@@ -21,6 +21,9 @@ export class Trade extends Laya.Script {
     @property(Laya.Button)
     public props: Laya.Button;
 
+    @property(Laya.Image)
+    public trim: Laya.Image;
+
     constructor() {
         super();
     }

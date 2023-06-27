@@ -10552,6 +10552,10 @@
       if (avatar != null) {
         params.putInt("avatar", Number.parseInt(avatar));
       }
+      let trim = Laya.LocalStorage.getItem("trim");
+      if (trim != null) {
+        params.putUtfString("trim", trim);
+      }
       let checkinday = Laya.LocalStorage.getItem("checkinday");
       if (checkinday != null) {
         params.putInt("checkinday", Number.parseInt(checkinday));
@@ -10575,6 +10579,12 @@
       let avatar = params.get("avatar");
       if (avatar != null) {
         Laya.LocalStorage.setItem("avatar", avatar);
+      }
+      let trim = params.get("trim");
+      if (trim != null) {
+        Laya.LocalStorage.setItem("trim", trim);
+      } else {
+        Laya.LocalStorage.setItem("trim", "0.png");
       }
       let rank = params.get("rank");
       if (rank != null) {
@@ -10608,6 +10618,12 @@
       Station.sync();
       Station.updateBuddyInfo();
     }
+    static setTrim(trim) {
+      Laya.LocalStorage.setItem("trim", trim);
+      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
+      Station.sync();
+      Station.updateBuddyInfo();
+    }
     static getUserId() {
       let userId = Laya.LocalStorage.getItem("userid");
       return userId == null ? null : Number.parseInt(userId);
@@ -10622,6 +10638,13 @@
     static getAvatar() {
       let avatar = Laya.LocalStorage.getItem("avatar");
       return avatar == null ? 1 : Number.parseInt(avatar);
+    }
+    static getTrim() {
+      let trim = Laya.LocalStorage.getItem("trim");
+      return trim != null ? trim : "0.png";
+    }
+    static getTrimImage(trim) {
+      return "resources/images/trims/" + trim;
     }
     static getGold() {
       let gold = Laya.LocalStorage.getItem("gold");
@@ -11082,6 +11105,7 @@
       this.userid = profile.getInt("id");
       this.name.text = profile.getUtfString("nickname");
       this.avatar.index = profile.getInt("avatar");
+      this.trim.skin = Profile.getTrimImage(profile.getInt("trim"));
       let rank = profile.getInt("rank");
       this.level.text = Math.floor(rank / 100).toString();
       this.winsOfVsComputer.text = profile.getInt("vscomputer_wins");
@@ -11105,6 +11129,9 @@
   __decorateClass([
     property10(Laya.Clip)
   ], UserInfo.prototype, "avatar", 2);
+  __decorateClass([
+    property10(Laya.Image)
+  ], UserInfo.prototype, "trim", 2);
   __decorateClass([
     property10(Laya.Label)
   ], UserInfo.prototype, "winsOfVsComputer", 2);
@@ -12125,6 +12152,9 @@
   __decorateClass([
     property28(Laya.Button)
   ], Trade.prototype, "props", 2);
+  __decorateClass([
+    property28(Laya.Image)
+  ], Trade.prototype, "trim", 2);
   Trade = __decorateClass([
     regClass28("39d67820-6b75-4090-969f-b2fef892effc", "../src/Trade.ts")
   ], Trade);
@@ -13003,7 +13033,9 @@
     setProfile(profile) {
       this.profile = profile;
       this.nickname.text = profile.nickname;
-      this.trade.getComponent(Trade).avatar.index = this.profile.avatar;
+      let trade = this.trade.getComponent(Trade);
+      trade.avatar.index = this.profile.avatar;
+      trade.trim.skin = "resources/images/trims/" + this.profile.trim;
       this.gold.text = profile.gold.toString();
       this.level.text = "LV. " + profile.level.toString();
     }
@@ -14095,6 +14127,7 @@
         let type = users[i].isItMe ? 2 /* Oneself */ : 0 /* Extreme */;
         let nickname = users[i].getVariable("nickname");
         let avatar = users[i].getVariable("avatar");
+        let trim = users[i].getVariable("trim");
         let userid = users[i].getVariable("userid");
         let rank = users[i].getVariable("rank");
         let gold = users[i].getVariable("gold");
@@ -14103,6 +14136,7 @@
           "userid": userid.value,
           "nickname": nickname.value,
           "avatar": avatar.value,
+          "trim": trim.value,
           "level": Profile.getLevel(rank.value),
           "gold": gold.value
         });
@@ -14121,6 +14155,7 @@
         "id": 0,
         "nickname": Profile.getNickname(),
         "avatar": Profile.getAvatar(),
+        "trim": Profile.getTrim(),
         "gold": Profile.getGold(),
         "level": Profile.getMyLevel()
       });
@@ -14142,6 +14177,7 @@
         "id": id,
         "nickname": "Computer",
         "avatar": 0,
+        "trim": "0.png",
         "gold": 0,
         "level": 0
       });
@@ -14630,6 +14666,13 @@
           Laya.Scene.open("dialog/ranklist.lh", true);
         }
       });
+      this.trims.on(Laya.Event.CLICK, this, () => {
+        if (Station.isUnconnected()) {
+          Laya.Scene.open("dialog/nonet.lh");
+        } else {
+          Laya.Scene.open("dialog/trims.lh", true);
+        }
+      });
       this.checkin.on(Laya.Event.CLICK, this, () => {
         if (Station.isUnconnected()) {
           Laya.Scene.open("dialog/nonet.lh");
@@ -14720,6 +14763,9 @@
   __decorateClass([
     property62(Laya.Sprite)
   ], Menu.prototype, "level", 2);
+  __decorateClass([
+    property62(Laya.Sprite)
+  ], Menu.prototype, "trims", 2);
   Menu = __decorateClass([
     regClass62("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
@@ -14931,8 +14977,26 @@
     regClass67("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
   ], MyselfName);
 
-  // src/PlayerProfile.ts
+  // src/MyselfTrim.ts
   var { regClass: regClass68, property: property68 } = Laya;
+  var MyselfTrim = class extends Laya.Script {
+    //declare owner : Laya.Sprite3D;
+    constructor() {
+      super();
+    }
+    onLateUpdate() {
+      let trim = Profile.getTrim();
+      let image = this.owner;
+      image.skin = Profile.getTrimImage(trim);
+    }
+  };
+  __name(MyselfTrim, "MyselfTrim");
+  MyselfTrim = __decorateClass([
+    regClass68("de3ddc02-0b18-42f2-9cc9-7367db4fcf46", "../src/MyselfTrim.ts")
+  ], MyselfTrim);
+
+  // src/PlayerProfile.ts
+  var { regClass: regClass69, property: property69 } = Laya;
   var PlayerProfile = class extends Laya.Script {
     constructor() {
       super();
@@ -14941,11 +15005,11 @@
   };
   __name(PlayerProfile, "PlayerProfile");
   PlayerProfile = __decorateClass([
-    regClass68("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
+    regClass69("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
   ], PlayerProfile);
 
   // src/ProfileDialog.ts
-  var { regClass: regClass69, property: property69 } = Laya;
+  var { regClass: regClass70, property: property70 } = Laya;
   var ProfileDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -14979,27 +15043,27 @@
   };
   __name(ProfileDialog, "ProfileDialog");
   __decorateClass([
-    property69(Laya.TextInput)
+    property70(Laya.TextInput)
   ], ProfileDialog.prototype, "name", 2);
   __decorateClass([
-    property69(Laya.List)
+    property70(Laya.List)
   ], ProfileDialog.prototype, "avatarList", 2);
   __decorateClass([
-    property69(Number)
+    property70(Number)
   ], ProfileDialog.prototype, "avatarNumber", 2);
   __decorateClass([
-    property69(Laya.Label)
+    property70(Laya.Label)
   ], ProfileDialog.prototype, "level", 2);
   __decorateClass([
-    property69(Laya.ProgressBar)
+    property70(Laya.ProgressBar)
   ], ProfileDialog.prototype, "levelProcess", 2);
   ProfileDialog = __decorateClass([
-    regClass69("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
+    regClass70("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
   ], ProfileDialog);
 
   // src/PropsDialog.ts
   var SFS2X22 = __toESM(require_sfs2x_api());
-  var { regClass: regClass70, property: property70 } = Laya;
+  var { regClass: regClass71, property: property71 } = Laya;
   var PropsDialog = class extends Laya.Dialog {
     constructor() {
       super();
@@ -15044,11 +15108,11 @@
   };
   __name(PropsDialog, "PropsDialog");
   PropsDialog = __decorateClass([
-    regClass70("fcc18deb-08ab-438a-abed-3b50c1cf6780", "../src/PropsDialog.ts")
+    regClass71("fcc18deb-08ab-438a-abed-3b50c1cf6780", "../src/PropsDialog.ts")
   ], PropsDialog);
 
   // src/PropsItem.ts
-  var { regClass: regClass71, property: property71 } = Laya;
+  var { regClass: regClass72, property: property72 } = Laya;
   var PropsItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15058,20 +15122,20 @@
   };
   __name(PropsItem, "PropsItem");
   __decorateClass([
-    property71(Laya.Label)
+    property72(Laya.Label)
   ], PropsItem.prototype, "gold", 2);
   __decorateClass([
-    property71(Laya.Clip)
+    property72(Laya.Clip)
   ], PropsItem.prototype, "image", 2);
   __decorateClass([
-    property71(Laya.Button)
+    property72(Laya.Button)
   ], PropsItem.prototype, "useBtn", 2);
   PropsItem = __decorateClass([
-    regClass71("632fe6a4-d7be-43f1-a32a-5c5e46228c6f", "../src/PropsItem.ts")
+    regClass72("632fe6a4-d7be-43f1-a32a-5c5e46228c6f", "../src/PropsItem.ts")
   ], PropsItem);
 
   // src/PropsList.ts
-  var { regClass: regClass72, property: property72 } = Laya;
+  var { regClass: regClass73, property: property73 } = Laya;
   var PropsList = class extends Laya.Script {
     constructor() {
       super();
@@ -15096,17 +15160,17 @@
   };
   __name(PropsList, "PropsList");
   __decorateClass([
-    property72(Laya.List)
+    property73(Laya.List)
   ], PropsList.prototype, "list", 2);
   PropsList = __decorateClass([
-    regClass72("75332ac8-0118-48e1-ae6b-2c148b8ace30", "../src/PropsList.ts")
+    regClass73("75332ac8-0118-48e1-ae6b-2c148b8ace30", "../src/PropsList.ts")
   ], PropsList);
 
   // src/RanklistDialog.ts
   var SFS2X23 = __toESM(require_sfs2x_api());
 
   // src/RanklistItem.ts
-  var { regClass: regClass73, property: property73 } = Laya;
+  var { regClass: regClass74, property: property74 } = Laya;
   var RanklistItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15114,26 +15178,26 @@
   };
   __name(RanklistItem, "RanklistItem");
   __decorateClass([
-    property73(Laya.Label)
+    property74(Laya.Label)
   ], RanklistItem.prototype, "wins", 2);
   __decorateClass([
-    property73(Laya.Label)
+    property74(Laya.Label)
   ], RanklistItem.prototype, "rank", 2);
   __decorateClass([
-    property73(Laya.Label)
+    property74(Laya.Label)
   ], RanklistItem.prototype, "nickname", 2);
   __decorateClass([
-    property73(Laya.Clip)
+    property74(Laya.Clip)
   ], RanklistItem.prototype, "avatar", 2);
   __decorateClass([
-    property73(Laya.Clip)
+    property74(Laya.Clip)
   ], RanklistItem.prototype, "icon", 2);
   RanklistItem = __decorateClass([
-    regClass73("11031840-a06f-486c-800f-1a0b954f0d89", "../src/RanklistItem.ts")
+    regClass74("11031840-a06f-486c-800f-1a0b954f0d89", "../src/RanklistItem.ts")
   ], RanklistItem);
 
   // src/RanklistDialog.ts
-  var { regClass: regClass74, property: property74 } = Laya;
+  var { regClass: regClass75, property: property75 } = Laya;
   var RanklistDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -15178,15 +15242,15 @@
   };
   __name(RanklistDialog, "RanklistDialog");
   __decorateClass([
-    property74(Laya.List)
+    property75(Laya.List)
   ], RanklistDialog.prototype, "list", 2);
   RanklistDialog = __decorateClass([
-    regClass74("f3623e2b-f742-4477-ab8f-37a8cdb21c85", "../src/RanklistDialog.ts")
+    regClass75("f3623e2b-f742-4477-ab8f-37a8cdb21c85", "../src/RanklistDialog.ts")
   ], RanklistDialog);
 
   // src/SelectColor.ts
   var SFS2X24 = __toESM(require_sfs2x_api());
-  var { regClass: regClass75, property: property75 } = Laya;
+  var { regClass: regClass76, property: property76 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
       super();
@@ -15272,20 +15336,20 @@
   };
   __name(SelectColor, "SelectColor");
   __decorateClass([
-    property75(Laya.Button)
+    property76(Laya.Button)
   ], SelectColor.prototype, "closeBtn", 2);
   __decorateClass([
-    property75(Laya.Button)
+    property76(Laya.Button)
   ], SelectColor.prototype, "play", 2);
   __decorateClass([
-    property75([Laya.CheckBox])
+    property76([Laya.CheckBox])
   ], SelectColor.prototype, "colorCheckBox", 2);
   SelectColor = __decorateClass([
-    regClass75("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
+    regClass76("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
   ], SelectColor);
 
   // src/Settings.ts
-  var { regClass: regClass76, property: property76 } = Laya;
+  var { regClass: regClass77, property: property77 } = Laya;
   var Settings = class extends Laya.Script {
     constructor() {
       super();
@@ -15309,20 +15373,20 @@
   };
   __name(Settings, "Settings");
   __decorateClass([
-    property76(Laya.CheckBox)
+    property77(Laya.CheckBox)
   ], Settings.prototype, "musicMuted", 2);
   __decorateClass([
-    property76(Laya.CheckBox)
+    property77(Laya.CheckBox)
   ], Settings.prototype, "soundMuted", 2);
   Settings = __decorateClass([
-    regClass76("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
+    regClass77("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
 
   // src/StatisticsDialog.ts
   var SFS2X25 = __toESM(require_sfs2x_api());
 
   // src/StatisticsInfo.ts
-  var { regClass: regClass77, property: property77 } = Laya;
+  var { regClass: regClass78, property: property78 } = Laya;
   var StatisticsInfo = class extends UserInfo {
     constructor() {
       super();
@@ -15337,14 +15401,14 @@
   };
   __name(StatisticsInfo, "StatisticsInfo");
   __decorateClass([
-    property77(Laya.ProgressBar)
+    property78(Laya.ProgressBar)
   ], StatisticsInfo.prototype, "levelProcess", 2);
   StatisticsInfo = __decorateClass([
-    regClass77("0e8653a1-8f66-4a79-846c-ca9815eff74a", "../src/StatisticsInfo.ts")
+    regClass78("0e8653a1-8f66-4a79-846c-ca9815eff74a", "../src/StatisticsInfo.ts")
   ], StatisticsInfo);
 
   // src/StatisticsDialog.ts
-  var { regClass: regClass78, property: property78 } = Laya;
+  var { regClass: regClass79, property: property79 } = Laya;
   var StatisticsDialog = class extends Laya.Dialog {
     constructor() {
       super();
@@ -15374,8 +15438,278 @@
   };
   __name(StatisticsDialog, "StatisticsDialog");
   StatisticsDialog = __decorateClass([
-    regClass78("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
+    regClass79("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
+
+  // src/TrimItem.ts
+  var { regClass: regClass80, property: property80 } = Laya;
+  var TrimItem = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+  };
+  __name(TrimItem, "TrimItem");
+  __decorateClass([
+    property80(Laya.Label)
+  ], TrimItem.prototype, "title", 2);
+  __decorateClass([
+    property80(Laya.Image)
+  ], TrimItem.prototype, "image", 2);
+  __decorateClass([
+    property80(Laya.Image)
+  ], TrimItem.prototype, "background", 2);
+  TrimItem = __decorateClass([
+    regClass80("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
+  ], TrimItem);
+
+  // src/TrimCoinItem.ts
+  var { regClass: regClass81, property: property81 } = Laya;
+  var TrimCoinItem = class extends TrimItem {
+    constructor() {
+      super();
+    }
+    setState(b) {
+      this.background.disabled = b;
+    }
+  };
+  __name(TrimCoinItem, "TrimCoinItem");
+  __decorateClass([
+    property81(Laya.Label)
+  ], TrimCoinItem.prototype, "gold", 2);
+  __decorateClass([
+    property81(Laya.ViewStack)
+  ], TrimCoinItem.prototype, "viewStack", 2);
+  __decorateClass([
+    property81(Laya.Button)
+  ], TrimCoinItem.prototype, "buybutton", 2);
+  __decorateClass([
+    property81(Laya.CheckBox)
+  ], TrimCoinItem.prototype, "selectBox", 2);
+  TrimCoinItem = __decorateClass([
+    regClass81("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
+  ], TrimCoinItem);
+
+  // src/TrimConfig.ts
+  var TrimConfig = class {
+  };
+  __name(TrimConfig, "TrimConfig");
+  TrimConfig.Level = [
+    {
+      image: "0.png",
+      level: 0
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    },
+    {
+      image: "1.png",
+      level: 100
+    }
+  ];
+  TrimConfig.Coins = [
+    {
+      image: "0.png",
+      gold: 0
+    },
+    {
+      image: "1.png",
+      gold: 1222200
+    }
+  ];
+
+  // src/TrimCoinsList.ts
+  var { regClass: regClass82, property: property82 } = Laya;
+  var TrimCoinsList = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+    }
+    onStart() {
+      this.addStationListener();
+      this.list.array = TrimConfig.Coins;
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    addStationListener() {
+    }
+    removeStationListener() {
+    }
+    onBuddyRemoved(evtParams) {
+      console.log("This buddy was removed: " + evtParams.buddy.name);
+    }
+    updateItem(cell, index) {
+      let data = this.list.array[index];
+      let item = cell.getComponent(TrimCoinItem);
+      Laya.loader.load("resources/images/trims/" + data.image, Laya.Loader.IMAGE).then((res) => {
+        item.image.texture = res;
+        item.gold.text = data.gold.toString();
+      });
+      item.setState(Profile.getGold() < data.gold);
+      item.viewStack.selectedIndex = 0;
+      item.index = index;
+    }
+  };
+  __name(TrimCoinsList, "TrimCoinsList");
+  __decorateClass([
+    property82(Laya.List)
+  ], TrimCoinsList.prototype, "list", 2);
+  TrimCoinsList = __decorateClass([
+    regClass82("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
+  ], TrimCoinsList);
+
+  // src/TrimLevelItem.ts
+  var { regClass: regClass83, property: property83 } = Laya;
+  var TrimLevelItem = class extends TrimItem {
+    constructor() {
+      super();
+    }
+    onAwake() {
+    }
+    onStart() {
+      this.button.on(Laya.Event.CLICK, this, this.onSelected);
+    }
+    onSelected() {
+      this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+    }
+    setState(b) {
+      this.background.disabled = b;
+      this.button.visible = !b;
+    }
+  };
+  __name(TrimLevelItem, "TrimLevelItem");
+  __decorateClass([
+    property83(Laya.CheckBox)
+  ], TrimLevelItem.prototype, "button", 2);
+  TrimLevelItem = __decorateClass([
+    regClass83("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
+  ], TrimLevelItem);
+
+  // src/TrimLevelList.ts
+  var { regClass: regClass84, property: property84 } = Laya;
+  var TrimLevelList = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+      this.owner.on(Laya.Event.SELECT, this, this.onSelected);
+    }
+    onStart() {
+      this.addStationListener();
+      this.list.array = TrimConfig.Level;
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    addStationListener() {
+    }
+    removeStationListener() {
+    }
+    onSelected(index) {
+      let data = this.list.array[index];
+      Profile.setTrim(data.image);
+    }
+    updateItem(cell, index) {
+      let data = this.list.array[index];
+      let item = cell.getComponent(TrimLevelItem);
+      Laya.loader.load("resources/images/trims/" + data.image, Laya.Loader.IMAGE).then((res) => {
+        item.image.texture = res;
+      });
+      item.index = index;
+    }
+  };
+  __name(TrimLevelList, "TrimLevelList");
+  __decorateClass([
+    property84(Laya.List)
+  ], TrimLevelList.prototype, "list", 2);
+  TrimLevelList = __decorateClass([
+    regClass84("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
+  ], TrimLevelList);
+
+  // src/TrimDialog.ts
+  var { regClass: regClass85, property: property85 } = Laya;
+  var TrimDialog = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      this.tab.selectHandler = new Laya.Handler(this, this.onTabSelected);
+      this.viewStack.selectedIndex = 0;
+    }
+    onStart() {
+      this.addStationListener();
+    }
+    onDestroy() {
+      this.removeStationListener();
+    }
+    addStationListener() {
+    }
+    removeStationListener() {
+    }
+    onTabSelected(index) {
+      this.viewStack.selectedIndex = index;
+    }
+  };
+  __name(TrimDialog, "TrimDialog");
+  __decorateClass([
+    property85(Laya.ViewStack)
+  ], TrimDialog.prototype, "viewStack", 2);
+  __decorateClass([
+    property85(Laya.Tab)
+  ], TrimDialog.prototype, "tab", 2);
+  __decorateClass([
+    property85(TrimLevelList)
+  ], TrimDialog.prototype, "trimLevelList", 2);
+  __decorateClass([
+    property85(TrimCoinsList)
+  ], TrimDialog.prototype, "trimCoinsList", 2);
+  TrimDialog = __decorateClass([
+    regClass85("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
+  ], TrimDialog);
 })();
 /*! Bundled license information:
 

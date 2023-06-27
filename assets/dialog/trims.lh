@@ -1,0 +1,484 @@
+{
+  "_$ver": 1,
+  "_$id": "e9x057bl",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "bda5c9ce-4dda-4de2-8989-11dc7b447d88",
+      "scriptPath": "../src/TrimDialog.ts",
+      "viewStack": {
+        "_$ref": "0r8ncp3c"
+      },
+      "tab": {
+        "_$ref": "parn4n6c"
+      },
+      "trimLevelList": {
+        "_$ref": "cpk9svrd",
+        "_$type": "e201d219-c8da-498e-b5a0-3d3eb415e08a"
+      },
+      "trimCoinsList": {
+        "_$ref": "m62n9jzq",
+        "_$type": "8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "e1pw1yjw",
+      "_$type": "Image",
+      "name": "Image(1)",
+      "x": 9,
+      "y": 89,
+      "width": 728,
+      "height": 955,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "bz2qxaeg",
+      "_$type": "Button",
+      "name": "return",
+      "x": 329.5,
+      "y": 1061.5,
+      "width": 82.5,
+      "height": 82.5,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "d6fdce77-760c-4d42-805b-5fb705be6f02",
+          "scriptPath": "../src/ClickReturn.ts",
+          "dialog": {
+            "_$ref": "e9x057bl"
+          }
+        }
+      ]
+    },
+    {
+      "_$id": "2jha6v9t",
+      "_$type": "Image",
+      "name": "Image(3)",
+      "x": 40,
+      "y": 273,
+      "width": 666,
+      "height": 722,
+      "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+      "sizeGrid": "17,18,18,15,0",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "parn4n6c",
+      "_$type": "Tab",
+      "name": "Tab",
+      "x": 92,
+      "y": 217,
+      "width": 567,
+      "height": 57,
+      "mouseEnabled": true,
+      "skin": "res://27500e65-93c0-47aa-8262-e23e43002041",
+      "stateNum": 2,
+      "labels": "LEVEL,COINS",
+      "space": 0,
+      "selectedIndex": 0,
+      "labelFont": null,
+      "labelSize": 30,
+      "labelBold": true,
+      "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+      "labelStroke": null,
+      "labelStrokeColor": null,
+      "labelAlign": null,
+      "labelPadding": "6,0,0,0",
+      "strokeColors": null
+    },
+    {
+      "_$id": "0r8ncp3c",
+      "_$type": "ViewStack",
+      "name": "ViewStack",
+      "x": 47,
+      "y": 280,
+      "width": 651,
+      "height": 705,
+      "mouseEnabled": true,
+      "selectedIndex": null,
+      "_$child": [
+        {
+          "_$id": "cpk9svrd",
+          "_$type": "Box",
+          "name": "item0",
+          "width": 657,
+          "height": 709,
+          "visible": false,
+          "mouseEnabled": true,
+          "_$comp": [
+            {
+              "_$type": "e201d219-c8da-498e-b5a0-3d3eb415e08a",
+              "scriptPath": "../src/TrimLevelList.ts",
+              "list": {
+                "_$ref": "l2xxh5go"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "l2xxh5go",
+              "_$type": "List",
+              "name": "List",
+              "width": 653,
+              "height": 707,
+              "mouseEnabled": true,
+              "itemTemplate": {
+                "_$ref": "6tzxdfpo",
+                "_$tmpl": "itemRender"
+              },
+              "repeatX": 1,
+              "repeatY": 4,
+              "spaceY": 9,
+              "scrollType": 2,
+              "_$child": [
+                {
+                  "_$id": "6tzxdfpo",
+                  "_$type": "Box",
+                  "name": "Box",
+                  "width": 650,
+                  "height": 134,
+                  "mouseEnabled": true,
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    },
+                    {
+                      "_$type": "0cbbe0ca-efc5-4639-932e-58e4811acce6",
+                      "scriptPath": "../src/TrimLevelItem.ts",
+                      "list": {
+                        "_$ref": "cpk9svrd"
+                      },
+                      "title": {
+                        "_$ref": "p34cc489"
+                      },
+                      "image": {
+                        "_$ref": "m9kzuidd"
+                      },
+                      "background": {
+                        "_$ref": "1r5uk0ij"
+                      },
+                      "button": {
+                        "_$ref": "10qkxakv"
+                      }
+                    }
+                  ],
+                  "_$child": [
+                    {
+                      "_$id": "1r5uk0ij",
+                      "_$type": "Image",
+                      "name": "Image",
+                      "width": 650,
+                      "height": 134,
+                      "skin": "res://60815850-2a86-4053-8509-e1e77d973722",
+                      "color": "#ffffff"
+                    },
+                    {
+                      "_$id": "p34cc489",
+                      "_$type": "Label",
+                      "name": "Label",
+                      "x": 132,
+                      "y": 36,
+                      "width": 274,
+                      "height": 26,
+                      "text": "Level up to obtain",
+                      "font": "Tahoma",
+                      "fontSize": 22,
+                      "color": "rgba(193, 193, 193, 1)",
+                      "bold": true,
+                      "leading": 0,
+                      "padding": "0,0,0,0",
+                      "strokeColor": "rgba(74, 74, 75, 1)"
+                    },
+                    {
+                      "_$id": "10qkxakv",
+                      "_$type": "CheckBox",
+                      "name": "checked",
+                      "x": 549,
+                      "y": 32,
+                      "width": 77,
+                      "height": 64,
+                      "mouseEnabled": true,
+                      "stateNum": 2,
+                      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+                      "label": "",
+                      "labelSize": 20,
+                      "labelAlign": "left",
+                      "_$comp": [
+                        {
+                          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                          "scriptPath": "../src/ClickSound.ts"
+                        }
+                      ]
+                    },
+                    {
+                      "_$id": "m9kzuidd",
+                      "_$type": "Image",
+                      "name": "Image(1)",
+                      "x": 17,
+                      "y": 17,
+                      "width": 95.5,
+                      "height": 95.5,
+                      "color": "#ffffff"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_$id": "m62n9jzq",
+          "_$type": "Box",
+          "name": "item1",
+          "width": 657,
+          "height": 709,
+          "visible": false,
+          "mouseEnabled": true,
+          "_$comp": [
+            {
+              "_$type": "8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce",
+              "scriptPath": "../src/TrimCoinsList.ts",
+              "list": {
+                "_$ref": "15afft9o"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "15afft9o",
+              "_$type": "List",
+              "name": "List",
+              "x": 3.552713678800501e-14,
+              "width": 653,
+              "height": 709,
+              "mouseEnabled": true,
+              "itemTemplate": {
+                "_$ref": "8szpuojf",
+                "_$tmpl": "itemRender"
+              },
+              "repeatX": 1,
+              "repeatY": 4,
+              "spaceY": 9,
+              "scrollType": 2,
+              "_$child": [
+                {
+                  "_$id": "8szpuojf",
+                  "_$type": "Box",
+                  "name": "Box",
+                  "width": 650,
+                  "height": 134,
+                  "mouseEnabled": true,
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    },
+                    {
+                      "_$type": "a83945b7-ea3b-4af7-a772-46bf8325f2c5",
+                      "scriptPath": "../src/TrimCoinItem.ts",
+                      "list": {
+                        "_$ref": "m62n9jzq"
+                      },
+                      "title": {
+                        "_$ref": "ueylacbn"
+                      },
+                      "image": {
+                        "_$ref": "hho6vvmv"
+                      },
+                      "background": {
+                        "_$ref": "er830bmy"
+                      },
+                      "gold": {
+                        "_$ref": "4a2h7can"
+                      },
+                      "viewStack": {
+                        "_$ref": "yy2artar"
+                      },
+                      "buybutton": {
+                        "_$ref": "gklddoxj"
+                      },
+                      "selectBox": {
+                        "_$ref": "vvou89eq"
+                      }
+                    }
+                  ],
+                  "_$child": [
+                    {
+                      "_$id": "er830bmy",
+                      "_$type": "Image",
+                      "name": "Image",
+                      "width": 650,
+                      "height": 134,
+                      "mouseEnabled": true,
+                      "skin": "res://60815850-2a86-4053-8509-e1e77d973722",
+                      "color": "#ffffff"
+                    },
+                    {
+                      "_$id": "yy2artar",
+                      "_$type": "ViewStack",
+                      "name": "ViewStack",
+                      "x": 438,
+                      "y": 10,
+                      "width": 193,
+                      "height": 111,
+                      "mouseEnabled": true,
+                      "selectedIndex": null,
+                      "_$child": [
+                        {
+                          "_$id": "gklddoxj",
+                          "_$type": "Button",
+                          "name": "item0",
+                          "x": 9.999999999999886,
+                          "y": 5.999999999999943,
+                          "width": 175,
+                          "height": 99,
+                          "visible": false,
+                          "mouseEnabled": true,
+                          "stateNum": 2,
+                          "skin": "res://561bd258-f58e-4616-ab1f-e0698916f2f2",
+                          "sizeGrid": "15,13,18,15,0",
+                          "label": "",
+                          "labelSize": 19,
+                          "labelBold": true,
+                          "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+                          "labelStrokeColor": "#32556b",
+                          "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0",
+                          "_$comp": [
+                            {
+                              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                              "scriptPath": "../src/ClickSound.ts"
+                            }
+                          ],
+                          "_$child": [
+                            {
+                              "_$id": "5uvg54b9",
+                              "_$type": "Image",
+                              "name": "Image",
+                              "x": 12.999999999999943,
+                              "y": 46,
+                              "width": 34.41893491124261,
+                              "height": 29.725443786982215,
+                              "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
+                              "color": "#ffffff"
+                            },
+                            {
+                              "_$id": "68ei8f58",
+                              "_$type": "Label",
+                              "name": "Label",
+                              "x": 32,
+                              "y": 13,
+                              "width": 112,
+                              "height": 28,
+                              "text": "BUY FOR",
+                              "fontSize": 24,
+                              "color": "#FFFFFF",
+                              "bold": true,
+                              "leading": 0,
+                              "padding": "0,0,0,0",
+                              "stroke": 2
+                            },
+                            {
+                              "_$id": "4a2h7can",
+                              "_$type": "Label",
+                              "name": "Label(1)",
+                              "x": 53,
+                              "y": 48,
+                              "width": 110,
+                              "height": 28,
+                              "text": "????",
+                              "fontSize": 25,
+                              "color": "rgba(54, 52, 52, 1)",
+                              "bold": true,
+                              "valign": "middle",
+                              "leading": 0,
+                              "padding": "0,0,0,0",
+                              "stroke": 1,
+                              "strokeColor": "rgba(255, 255, 255, 1)"
+                            }
+                          ]
+                        },
+                        {
+                          "_$id": "vvou89eq",
+                          "_$type": "CheckBox",
+                          "name": "item1",
+                          "x": 64.00000000000011,
+                          "y": 18.000000000000057,
+                          "width": 77,
+                          "height": 64,
+                          "visible": false,
+                          "mouseEnabled": true,
+                          "stateNum": 2,
+                          "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+                          "label": "",
+                          "labelSize": 20,
+                          "labelAlign": "left"
+                        }
+                      ]
+                    },
+                    {
+                      "_$id": "hho6vvmv",
+                      "_$type": "Image",
+                      "name": "Image(1)",
+                      "x": 17,
+                      "y": 17,
+                      "width": 95.5,
+                      "height": 95.5,
+                      "color": "#ffffff"
+                    },
+                    {
+                      "_$id": "ueylacbn",
+                      "_$type": "Label",
+                      "name": "Label",
+                      "x": 132,
+                      "y": 36,
+                      "width": 274,
+                      "height": 26,
+                      "text": "Gold coin purchase",
+                      "font": "Tahoma",
+                      "fontSize": 22,
+                      "color": "rgba(193, 193, 193, 1)",
+                      "bold": true,
+                      "leading": 0,
+                      "padding": "0,0,0,0",
+                      "strokeColor": "rgba(74, 74, 75, 1)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$id": "a5n47huh",
+      "_$type": "Image",
+      "name": "Image(4)",
+      "x": 90,
+      "y": 123,
+      "width": 569,
+      "height": 60,
+      "skin": "res://81ab4f4c-44e1-41ad-b28d-1a7c8a418251",
+      "useSourceSize": true,
+      "color": "#ffffff"
+    }
+  ]
+}
