@@ -9,49 +9,29 @@ export class TrimConfig {
             level:100
         },
         {
-            image:"1.png",
+            image:"2.png",
             level:100
         },
         {
-            image:"1.png",
+            image:"3.png",
             level:100
         },
         {
-            image:"1.png",
+            image:"4.png",
             level:100
         },
         {
-            image:"1.png",
+            image:"5.png",
             level:100
         },
         {
-            image:"1.png",
+            image:"6.png",
             level:100
         },
         {
-            image:"1.png",
+            image:"7.png",
             level:100
         },
-        {
-            image:"1.png",
-            level:100
-        },
-        {
-            image:"1.png",
-            level:100
-        },
-        {
-            image:"1.png",
-            level:100
-        },
-        {
-            image:"1.png",
-            level:100
-        },
-        {
-            image:"1.png",
-            level:100
-        }
     ];
 
     static Coins = [

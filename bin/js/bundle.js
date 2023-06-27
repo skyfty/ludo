@@ -15468,6 +15468,14 @@
     constructor() {
       super();
     }
+    onStart() {
+      this.selectBox.on(Laya.Event.CLICK, this, () => {
+        this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+      });
+      this.buybutton.on(Laya.Event.CLICK, this, () => {
+        this.owner.parent.parent.parent.event("Buy", [this.index]);
+      });
+    }
     setState(b) {
       this.background.disabled = b;
     }
@@ -15503,47 +15511,27 @@
       level: 100
     },
     {
-      image: "1.png",
+      image: "2.png",
       level: 100
     },
     {
-      image: "1.png",
+      image: "3.png",
       level: 100
     },
     {
-      image: "1.png",
+      image: "4.png",
       level: 100
     },
     {
-      image: "1.png",
+      image: "5.png",
       level: 100
     },
     {
-      image: "1.png",
+      image: "6.png",
       level: 100
     },
     {
-      image: "1.png",
-      level: 100
-    },
-    {
-      image: "1.png",
-      level: 100
-    },
-    {
-      image: "1.png",
-      level: 100
-    },
-    {
-      image: "1.png",
-      level: 100
-    },
-    {
-      image: "1.png",
-      level: 100
-    },
-    {
-      image: "1.png",
+      image: "7.png",
       level: 100
     }
   ];
@@ -15566,6 +15554,8 @@
     }
     onAwake() {
       this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+      this.owner.on(Laya.Event.SELECT, this, this.onSelected);
+      this.owner.on("Buy", this, this.onBuy);
     }
     onStart() {
       this.addStationListener();
@@ -15581,16 +15571,23 @@
     onBuddyRemoved(evtParams) {
       console.log("This buddy was removed: " + evtParams.buddy.name);
     }
+    onBuy(index) {
+      let data = this.list.array[index];
+    }
+    onSelected(index) {
+      let data = this.list.array[index];
+      Profile.setTrim(data.image);
+      this.list.refresh();
+    }
     updateItem(cell, index) {
       let data = this.list.array[index];
       let item = cell.getComponent(TrimCoinItem);
-      Laya.loader.load("resources/images/trims/" + data.image, Laya.Loader.IMAGE).then((res) => {
-        item.image.texture = res;
-        item.gold.text = data.gold.toString();
-      });
+      item.gold.text = data.gold.toString();
+      item.image.skin = Profile.getTrimImage(data.image);
       item.setState(Profile.getGold() < data.gold);
       item.viewStack.selectedIndex = 0;
       item.index = index;
+      item.selectBox.selected = data.image == Profile.getTrim();
     }
   };
   __name(TrimCoinsList, "TrimCoinsList");
@@ -15610,10 +15607,9 @@
     onAwake() {
     }
     onStart() {
-      this.button.on(Laya.Event.CLICK, this, this.onSelected);
-    }
-    onSelected() {
-      this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+      this.button.on(Laya.Event.CLICK, this, () => {
+        this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+      });
     }
     setState(b) {
       this.background.disabled = b;
@@ -15652,6 +15648,7 @@
     onSelected(index) {
       let data = this.list.array[index];
       Profile.setTrim(data.image);
+      this.list.refresh();
     }
     updateItem(cell, index) {
       let data = this.list.array[index];
@@ -15660,6 +15657,8 @@
         item.image.texture = res;
       });
       item.index = index;
+      item.button.selected = data.image == Profile.getTrim();
+      item.setState(Profile.getMyLevel() < data.level);
     }
   };
   __name(TrimLevelList, "TrimLevelList");

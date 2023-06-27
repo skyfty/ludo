@@ -2067,7 +2067,12 @@
                       "n7gt0l5f"
                     ]
                   },
-                  "trim": null
+                  "trim": {
+                    "_$ref": [
+                      "b7zhaso0",
+                      "jss9amdb"
+                    ]
+                  }
                 },
                 {
                   "_$override": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -2562,7 +2567,12 @@
                       "n7gt0l5f"
                     ]
                   },
-                  "trim": null
+                  "trim": {
+                    "_$ref": [
+                      "qs7wy01p",
+                      "jss9amdb"
+                    ]
+                  }
                 },
                 {
                   "_$override": "26418778-2a8b-4ac8-aa46-9e423be83978",

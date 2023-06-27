@@ -19,12 +19,20 @@ export class TrimCoinItem extends TrimItem {
     public selectBox: Laya.CheckBox;
 
 
-
     constructor() {
         super();
     }
 
     
+    onStart(): void {
+        this.selectBox.on(Laya.Event.CLICK, this, ()=>{
+            this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+        });
+        this.buybutton.on(Laya.Event.CLICK, this, ()=>{
+            this.owner.parent.parent.parent.event("Buy", [this.index]);
+        });
+    }
+
     public setState(b:boolean) {
         this.background.disabled = b;
     }

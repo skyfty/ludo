@@ -17,6 +17,8 @@ export class TrimCoinsList extends Laya.Script {
 
     onAwake(): void {
         this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+        this.owner.on(Laya.Event.SELECT, this, this.onSelected);
+        this.owner.on("Buy", this, this.onBuy);
     }
 
     onStart(): void {
@@ -40,17 +42,26 @@ export class TrimCoinsList extends Laya.Script {
         console.log("This buddy was removed: " + evtParams.buddy.name);
     }
 
+    public onBuy(index: number){
+        let data = this.list.array[index];
+      
+        
+    }
+    public onSelected(index: number){
+        let data = this.list.array[index];
+        Profile.setTrim(data.image);
+        this.list.refresh();
+    }
+
     private updateItem(cell: any, index: number): void {
         let data = this.list.array[index];
         let item = cell.getComponent(TrimCoinItem) as TrimCoinItem;
-        Laya.loader.load("resources/images/trims/" +data.image, Laya.Loader.IMAGE).then((res: Laya.Texture) => {
-            item.image.texture = res;
-            item.gold.text = data.gold.toString();
-        });
+        item.gold.text = data.gold.toString();
+        item.image.skin = Profile.getTrimImage(data.image);
         item.setState(Profile.getGold() < data.gold);
         item.viewStack.selectedIndex = 0;
         item.index = index;
-
+        item.selectBox.selected = (data.image == Profile.getTrim());
     }
 
 

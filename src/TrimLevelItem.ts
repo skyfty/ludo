@@ -16,12 +16,9 @@ export class TrimLevelItem extends TrimItem {
     }
 
     onStart(): void {
-        this.button.on(Laya.Event.CLICK, this, this.onSelected);
-    }
-
-    onSelected() {
-        this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
-
+        this.button.on(Laya.Event.CLICK, this, ()=>{
+            this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+        });
     }
 
     public setState(b:boolean) {

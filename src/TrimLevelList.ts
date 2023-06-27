@@ -39,6 +39,7 @@ export class TrimLevelList extends Laya.Script {
     public onSelected(index: number){
         let data = this.list.array[index];
         Profile.setTrim(data.image);
+        this.list.refresh();
     }
 
     private updateItem(cell: any, index: number): void {
@@ -48,9 +49,7 @@ export class TrimLevelList extends Laya.Script {
             item.image.texture = res;
         });
         item.index = index;
-
-        // item.setState(Profile.getMyLevel() < data.level);
+        item.button.selected = (data.image == Profile.getTrim());
+        item.setState(Profile.getMyLevel() < data.level);
     }
-
-
 }
