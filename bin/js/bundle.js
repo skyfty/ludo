@@ -15498,6 +15498,9 @@
     regClass81("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
   ], TrimCoinItem);
 
+  // src/TrimCoinsList.ts
+  var SFS2X26 = __toESM(require_sfs2x_api());
+
   // src/TrimConfig.ts
   var TrimConfig = class {
   };
@@ -15543,7 +15546,7 @@
     },
     {
       image: "1.png",
-      gold: 1222200
+      gold: 100
     }
   ];
 
@@ -15552,6 +15555,7 @@
   var TrimCoinsList = class extends Laya.Script {
     constructor() {
       super();
+      this.trims = [];
     }
     onAwake() {
       this.list.renderHandler = new Laya.Handler(this, this.updateItem);
@@ -15561,19 +15565,42 @@
     onStart() {
       this.addStationListener();
       this.list.array = TrimConfig.Coins;
+      var params = new SFS2X26.SFSObject();
+      Station.sfs.send(new SFS2X26.ExtensionRequest("GetTrimRequest", params));
     }
     onDestroy() {
       this.removeStationListener();
     }
     addStationListener() {
+      Station.sfs.addEventListener(SFS2X26.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
     removeStationListener() {
+      Station.sfs.removeEventListener(SFS2X26.SFSEvent.EXTENSION_RESPONSE, this.onExtensionResponse, this);
     }
-    onBuddyRemoved(evtParams) {
-      console.log("This buddy was removed: " + evtParams.buddy.name);
+    onExtensionResponse(evtParams) {
+      if ("GetTrimRequest" == evtParams.cmd) {
+        let trims = evtParams.params.getSFSArray("list");
+        for (var m = 0; m < trims.size(); m++) {
+          let trim = trims.getSFSObject(m);
+          this.trims.push(trim.getUtfString("fund"));
+        }
+        this.list.refresh();
+      } else if ("BuyTrimRequest" == evtParams.cmd) {
+        this.trims.push(evtParams.params.getUtfString("fund"));
+        this.list.refresh();
+      }
     }
     onBuy(index) {
       let data = this.list.array[index];
+      if (Profile.getGold() < data.gold) {
+        Laya.Scene.open("dialog/nogold.lh", false);
+      } else {
+        var params = new SFS2X26.SFSObject();
+        params.putInt("amount", data.gold);
+        params.putUtfString("type", "frame");
+        params.putUtfString("fund", data.image);
+        Station.sfs.send(new SFS2X26.ExtensionRequest("BuyTrimRequest", params));
+      }
     }
     onSelected(index) {
       let data = this.list.array[index];
@@ -15586,7 +15613,7 @@
       item.gold.text = data.gold.toString();
       item.image.skin = Profile.getTrimImage(data.image);
       item.setState(Profile.getGold() < data.gold);
-      item.viewStack.selectedIndex = 0;
+      item.viewStack.selectedIndex = this.trims.indexOf(data.image) != -1 ? 1 : 0;
       item.index = index;
       item.selectBox.selected = data.image == Profile.getTrim();
     }
@@ -15654,9 +15681,7 @@
     updateItem(cell, index) {
       let data = this.list.array[index];
       let item = cell.getComponent(TrimLevelItem);
-      Laya.loader.load("resources/images/trims/" + data.image, Laya.Loader.IMAGE).then((res) => {
-        item.image.texture = res;
-      });
+      item.image.skin = "resources/images/trims/" + data.image;
       item.index = index;
       item.button.selected = data.image == Profile.getTrim();
       item.setState(Profile.getMyLevel() < data.level);
@@ -15692,6 +15717,11 @@
     }
     onTabSelected(index) {
       this.viewStack.selectedIndex = index;
+      if (index == 0) {
+        this.trimLevelList.list.refresh();
+      } else {
+        this.trimCoinsList.list.refresh();
+      }
     }
   };
   __name(TrimDialog, "TrimDialog");

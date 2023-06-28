@@ -41,7 +41,7 @@ export class TrimConfig {
         },
         {
             image:"1.png",
-            gold:1222200
+            gold:100
         }
     ];
 }

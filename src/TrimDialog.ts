@@ -44,7 +44,12 @@ export class TrimDialog extends Laya.Script {
 
     private onTabSelected(index: number) {
         this.viewStack.selectedIndex = index;
+        if (index == 0) {
+            this.trimLevelList.list.refresh();
+        } else {
+            this.trimCoinsList.list.refresh();
 
+        }
     }
 
 }

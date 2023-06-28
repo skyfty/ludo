@@ -45,9 +45,7 @@ export class TrimLevelList extends Laya.Script {
     private updateItem(cell: any, index: number): void {
         let data = this.list.array[index];
         let item = cell.getComponent(TrimLevelItem) as TrimLevelItem;
-        Laya.loader.load("resources/images/trims/" +data.image, Laya.Loader.IMAGE).then((res: Laya.Texture) => {
-            item.image.texture = res;
-        });
+        item.image.skin = "resources/images/trims/" +data.image;
         item.index = index;
         item.button.selected = (data.image == Profile.getTrim());
         item.setState(Profile.getMyLevel() < data.level);
