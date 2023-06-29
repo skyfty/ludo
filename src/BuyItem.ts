@@ -2,7 +2,9 @@ const { regClass, property } = Laya;
 
 @regClass()
 export class BuyItem extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
+
+    public index:number;
+
 
     @property( Laya.Label)
     public coin: Laya.Label;
@@ -16,5 +18,11 @@ export class BuyItem extends Laya.Script {
 
     constructor() {
         super();
+    }
+    
+    onStart(): void {
+        this.buyBtn.on(Laya.Event.CLICK, this, ()=>{
+            this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+        });
     }
 }

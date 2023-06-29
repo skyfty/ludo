@@ -144,7 +144,7 @@
                 "_$tmpl": "itemRender"
               },
               "repeatX": 1,
-              "repeatY": 4,
+              "repeatY": 5,
               "spaceY": 9,
               "scrollType": 2,
               "_$child": [
@@ -163,9 +163,6 @@
                     {
                       "_$type": "0cbbe0ca-efc5-4639-932e-58e4811acce6",
                       "scriptPath": "../src/TrimLevelItem.ts",
-                      "list": {
-                        "_$ref": "cpk9svrd"
-                      },
                       "title": {
                         "_$ref": "p34cc489"
                       },
@@ -236,6 +233,7 @@
                       "y": 17,
                       "width": 95.5,
                       "height": 95.5,
+                      "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
                       "color": "#ffffff"
                     }
                   ]
@@ -275,7 +273,7 @@
                 "_$tmpl": "itemRender"
               },
               "repeatX": 1,
-              "repeatY": 4,
+              "repeatY": 5,
               "spaceY": 9,
               "scrollType": 2,
               "_$child": [
@@ -294,9 +292,6 @@
                     {
                       "_$type": "a83945b7-ea3b-4af7-a772-46bf8325f2c5",
                       "scriptPath": "../src/TrimCoinItem.ts",
-                      "list": {
-                        "_$ref": "m62n9jzq"
-                      },
                       "title": {
                         "_$ref": "ueylacbn"
                       },
@@ -441,6 +436,7 @@
                       "y": 17,
                       "width": 95.5,
                       "height": 95.5,
+                      "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
                       "color": "#ffffff"
                     },
                     {

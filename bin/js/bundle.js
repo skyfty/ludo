@@ -11316,6 +11316,11 @@
     constructor() {
       super();
     }
+    onStart() {
+      this.buyBtn.on(Laya.Event.CLICK, this, () => {
+        this.owner.parent.parent.parent.event(Laya.Event.SELECT, [this.index]);
+      });
+    }
   };
   __name(BuyItem, "BuyItem");
   __decorateClass([
@@ -11341,6 +11346,7 @@
     onAwake() {
       this.addStationListener();
       this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+      this.owner.on(Laya.Event.SELECT, this, this.onSelected);
     }
     onDestroy() {
       this.removeStationListener();
@@ -11351,19 +11357,21 @@
     setCollectPoint(point) {
       this.collectPoint = point;
     }
+    onSelected(index) {
+      let data = this.list.array[index];
+      var params = new SFS2X9.SFSObject();
+      params.putInt("id", Profile.getUserId());
+      params.putInt("amount", data.getInt("amount"));
+      params.putInt("selectindex", index);
+      Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
+    }
     updateItem(cell, index) {
       if (this.coins != null) {
         let data = this.coins.getSFSObject(index);
         let item = cell.getComponent(BuyItem);
+        item.index = index;
         item.coin.text = data.getInt("amount").toLocaleString("en-US");
         item.price.text = data.getDouble("price");
-        item.buyBtn.on(Laya.Event.CLICK, this, () => {
-          var params = new SFS2X9.SFSObject();
-          params.putInt("id", Profile.getUserId());
-          params.putInt("amount", data.getInt("amount"));
-          params.putInt("selectindex", index);
-          Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
-        });
       }
     }
     startGoldCoin(selectindex) {
@@ -15546,6 +15554,10 @@
     },
     {
       image: "1.png",
+      gold: 100
+    },
+    {
+      image: "8.png",
       gold: 100
     }
   ];

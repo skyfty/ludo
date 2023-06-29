@@ -42,6 +42,10 @@ export class TrimConfig {
         {
             image:"1.png",
             gold:100
+        },
+        {
+            image:"8.png",
+            gold:100
         }
     ];
 }

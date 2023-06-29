@@ -25,6 +25,7 @@ export class Buycoin extends Laya.Script {
     onAwake(): void {
         this.addStationListener();
         this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+        this.owner.on(Laya.Event.SELECT, this, this.onSelected);
     }
 
     onDestroy(): void {
@@ -39,20 +40,23 @@ export class Buycoin extends Laya.Script {
         this.collectPoint = point;
     }
 
+    public onSelected(index: number){
+        let data = this.list.array[index];
+        var params = new SFS2X.SFSObject();
+        params.putInt("id", Profile.getUserId());
+        params.putInt("amount", data.getInt("amount"));
+        params.putInt("selectindex", index);
+        Station.sfs.send(new SFS2X.ExtensionRequest("BuyGoldRequest", params));
+    }
+
 
     private updateItem(cell: any, index: number): void {
         if ( this.coins != null) {
             let data:SFS2X.SFSObject = this.coins.getSFSObject(index);
             let item = cell.getComponent(BuyItem) as BuyItem;
+            item.index = index;
             item.coin.text = data.getInt("amount").toLocaleString('en-US');
             item.price.text = data.getDouble("price");
-            item.buyBtn.on(Laya.Event.CLICK, this, ()=>{
-                var params = new SFS2X.SFSObject();
-                params.putInt("id", Profile.getUserId());
-                params.putInt("amount", data.getInt("amount"));
-                params.putInt("selectindex", index);
-                Station.sfs.send(new SFS2X.ExtensionRequest("BuyGoldRequest", params));
-            });
         }
     }
 
