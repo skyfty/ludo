@@ -10704,9 +10704,6 @@
     initSmartFox() {
       if (Station.sfs == null) {
         Station.sfs = new SFS2X2.SmartFox(Station.config);
-        Station.sfs.logger.level = SFS2X2.LogLevel.DEBUG;
-        Station.sfs.logger.enableConsoleOutput = true;
-        Station.sfs.logger.enableEventDispatching = true;
       }
     }
     onStart() {

@@ -33,6 +33,18 @@
   ],
   "_$child": [
     {
+      "_$id": "2jha6v9t",
+      "_$type": "Image",
+      "name": "Image(3)",
+      "x": 17.000000000000092,
+      "y": 222,
+      "width": 710,
+      "height": 721,
+      "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
+      "sizeGrid": "17,18,18,15,0",
+      "color": "#ffffff"
+    },
+    {
       "_$id": "e1pw1yjw",
       "_$type": "Image",
       "name": "Image(1)",
@@ -69,18 +81,6 @@
           }
         }
       ]
-    },
-    {
-      "_$id": "2jha6v9t",
-      "_$type": "Image",
-      "name": "Image(3)",
-      "x": 40,
-      "y": 273,
-      "width": 666,
-      "height": 722,
-      "skin": "res://b4afa3f5-568e-47b4-9fb2-04f20975a1b5",
-      "sizeGrid": "17,18,18,15,0",
-      "color": "#ffffff"
     },
     {
       "_$id": "parn4n6c",
@@ -415,9 +415,9 @@
       "_$id": "iou3mhfp",
       "_$type": "Image",
       "name": "Image(2)",
-      "x": 50,
-      "y": 111,
-      "width": 647,
+      "x": 117,
+      "y": 103,
+      "width": 509,
       "height": 82,
       "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
       "sizeGrid": "10,20,12,16,0",
@@ -441,8 +441,8 @@
       "_$id": "o859ar3v",
       "_$type": "Label",
       "name": "Label",
-      "x": 486,
-      "y": 128,
+      "x": 420,
+      "y": 122,
       "width": 191,
       "height": 40,
       "text": "0",

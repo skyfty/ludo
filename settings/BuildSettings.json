@@ -16,6 +16,7 @@
   ],
   "excludeFilesRule": [],
   "android": {
+    "standalone": true,
     "screenOrientation": "portrait"
   }
 }

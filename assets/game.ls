@@ -1048,18 +1048,31 @@
               "name": "message",
               "active": true,
               "x": -16,
-              "y": -27,
+              "y": -49,
               "visible": false,
+              "height": 86,
               "_$child": [
                 {
                   "_$override": "bpdtqtcb",
-                  "y": -4,
-                  "height": 40,
-                  "useSourceSize": false
+                  "y": -9,
+                  "height": 73,
+                  "useSourceSize": false,
+                  "sizeGrid": "8,28,4,31,0",
+                  "x": 0
+                },
+                {
+                  "_$override": "sstyarjo",
+                  "y": 60,
+                  "x": 0
                 },
                 {
                   "_$override": "iz248g3j",
-                  "y": 6
+                  "y": 0,
+                  "color": "rgba(255, 255, 255, 1)",
+                  "x": 32,
+                  "width": 235,
+                  "height": 58,
+                  "text": ""
                 }
               ]
             },
@@ -1440,7 +1453,7 @@
           "_$prefab": "e0727edd-d6a4-4342-925e-21743d3e127e",
           "name": "green",
           "active": true,
-          "x": -255.99999999999994,
+          "x": -257.99999999999994,
           "y": -349.99999999999994,
           "visible": true,
           "disabled": false,
@@ -1874,6 +1887,7 @@
               "x": -5,
               "y": 35,
               "visible": false,
+              "height": 100,
               "_$comp": [
                 {
                   "_$override": "9a515693-ac84-4241-ae56-70cbe2347324",
@@ -1890,8 +1904,8 @@
                   "_$override": "bpdtqtcb",
                   "skin": "res://061b9221-cb35-486c-95a3-bb34472ff29f",
                   "y": 26,
-                  "sizeGrid": "5,13,15,12,0",
-                  "height": 42,
+                  "sizeGrid": "5,27,10,25,0",
+                  "height": 73,
                   "useSourceSize": false
                 },
                 {
@@ -1903,8 +1917,11 @@
                 {
                   "_$override": "iz248g3j",
                   "y": 30,
-                  "x": 12,
-                  "width": 271
+                  "x": 29,
+                  "width": 241,
+                  "height": 58,
+                  "color": "rgba(255, 255, 255, 1)",
+                  "text": ""
                 }
               ]
             },
@@ -2389,22 +2406,30 @@
               "name": "message",
               "active": true,
               "x": -130,
-              "y": -27.999999999999943,
+              "y": -52.99999999999994,
               "visible": false,
+              "height": 89,
               "_$child": [
                 {
                   "_$override": "bpdtqtcb",
                   "y": -3,
-                  "height": 39,
-                  "useSourceSize": false
+                  "height": 70,
+                  "useSourceSize": false,
+                  "sizeGrid": "11,28,6,29,0"
                 },
                 {
                   "_$override": "sstyarjo",
-                  "skin": "res://1a5b52e4-00fe-4dea-bd98-5c0306aa1148"
+                  "skin": "res://1a5b52e4-00fe-4dea-bd98-5c0306aa1148",
+                  "y": 65
                 },
                 {
                   "_$override": "iz248g3j",
-                  "y": 6
+                  "y": 6,
+                  "color": "rgba(255, 255, 255, 1)",
+                  "height": 57,
+                  "x": 30,
+                  "width": 236,
+                  "text": ""
                 }
               ]
             },
@@ -2911,6 +2936,7 @@
               "x": -113,
               "y": 27.000000000000057,
               "visible": false,
+              "height": 95,
               "_$comp": [
                 {
                   "_$override": "9a515693-ac84-4241-ae56-70cbe2347324",
@@ -2928,8 +2954,8 @@
                   "skin": "res://061b9221-cb35-486c-95a3-bb34472ff29f",
                   "y": 31,
                   "x": -2,
-                  "sizeGrid": "8,14,14,12,0",
-                  "height": 44,
+                  "sizeGrid": "8,27,9,28,0",
+                  "height": 68,
                   "useSourceSize": false
                 },
                 {
@@ -2941,8 +2967,11 @@
                 {
                   "_$override": "iz248g3j",
                   "y": 35,
-                  "x": 12,
-                  "width": 268
+                  "x": 27,
+                  "width": 239,
+                  "color": "rgba(255, 255, 255, 1)",
+                  "height": 57,
+                  "text": ""
                 }
               ]
             },

@@ -46,9 +46,6 @@ export class Station extends Laya.Script {
     private initSmartFox() {
         if (Station.sfs == null) {
             Station.sfs = new SFS2X.SmartFox(Station.config);
-            Station.sfs.logger.level = SFS2X.LogLevel.DEBUG;
-            Station.sfs.logger.enableConsoleOutput = true;
-            Station.sfs.logger.enableEventDispatching = true;
         }
     }
 
