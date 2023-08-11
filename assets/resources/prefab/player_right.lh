@@ -172,23 +172,6 @@
           "color": "#ffffff"
         },
         {
-          "_$id": "n7gt0l5f",
-          "_$prefab": "340e16ca-46bb-47b0-9aff-ae39997d000e",
-          "name": "countdown",
-          "active": true,
-          "x": 66,
-          "y": -28,
-          "visible": false,
-          "width": 99,
-          "height": 55,
-          "_$child": [
-            {
-              "_$override": "cn2npk7a",
-              "y": 13.000000000000014
-            }
-          ]
-        },
-        {
           "_$id": "92hcm53i",
           "_$type": "Image",
           "name": "Image(1)",
@@ -219,12 +202,29 @@
           "_$id": "jss9amdb",
           "_$type": "Image",
           "name": "trim",
-          "x": 126,
-          "y": 16,
-          "width": 89.5,
-          "height": 89.5,
+          "x": 112,
+          "y": -1,
+          "width": 119,
+          "height": 119,
           "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
           "color": "#ffffff"
+        },
+        {
+          "_$id": "n7gt0l5f",
+          "_$prefab": "340e16ca-46bb-47b0-9aff-ae39997d000e",
+          "name": "countdown",
+          "active": true,
+          "x": 66,
+          "y": -28.000000000000007,
+          "visible": false,
+          "width": 99,
+          "height": 55,
+          "_$child": [
+            {
+              "_$override": "cn2npk7a",
+              "y": 13.000000000000014
+            }
+          ]
         }
       ]
     }

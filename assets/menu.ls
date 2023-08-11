@@ -158,7 +158,6 @@
       "_$type": "Box",
       "name": "title",
       "x": 3,
-      "y": 2,
       "width": 745,
       "height": 120,
       "mouseEnabled": true,
@@ -202,28 +201,11 @@
               "name": "Image(1)",
               "x": 10.465059856708397,
               "y": 12.57201599216338,
-              "width": 110.53494014329162,
-              "height": 107.9279840078366,
+              "width": 101.84417892087066,
+              "height": 99.44219356896335,
+              "visible": false,
               "skin": "res://00000000-0000-0000-0001-000000000000",
               "color": "#ffffff"
-            },
-            {
-              "_$id": "qyjdg8vb",
-              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
-              "name": "avatarclip",
-              "active": true,
-              "x": 21,
-              "y": 22,
-              "visible": true,
-              "width": 95,
-              "height": 95,
-              "index": 6,
-              "_$comp": [
-                {
-                  "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
-                  "scriptPath": "../src/MyselfAvatar.ts"
-                }
-              ]
             },
             {
               "_$id": "7orvzytu",
@@ -237,13 +219,31 @@
               "color": "#ffffff"
             },
             {
+              "_$id": "qyjdg8vb",
+              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+              "name": "avatarclip",
+              "active": true,
+              "x": 20.000000000000004,
+              "y": 19.99999999999999,
+              "visible": true,
+              "width": 95,
+              "height": 95,
+              "index": 6,
+              "_$comp": [
+                {
+                  "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
+                  "scriptPath": "../src/MyselfAvatar.ts"
+                }
+              ]
+            },
+            {
               "_$id": "89vysct8",
               "_$type": "Image",
               "name": "trim",
-              "x": 8.500000000000002,
-              "y": 5.500000000000018,
-              "width": 114.5,
-              "height": 114.5,
+              "x": 3.5000000000000018,
+              "y": 1.5000000000000142,
+              "width": 129,
+              "height": 129,
               "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
               "color": "#ffffff",
               "_$comp": [
@@ -279,7 +279,7 @@
           "_$type": "Image",
           "name": "goldcoin",
           "x": 379,
-          "y": 8.9454971056211,
+          "y": 7,
           "width": 254.68106970409812,
           "height": 43.733316825554034,
           "skin": "res://60a21851-71fd-44f0-a297-b362629a30f8",
@@ -296,7 +296,7 @@
               "_$type": "Image",
               "name": "Image",
               "x": -10,
-              "y": -1.5987211554602254e-14,
+              "y": -2,
               "width": 50.899408284023664,
               "height": 43.958579881656796,
               "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
@@ -337,7 +337,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 4,
+              "index": 5,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -355,7 +355,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 6,
+              "index": 2,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

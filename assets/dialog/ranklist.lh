@@ -61,7 +61,7 @@
       "_$type": "List",
       "name": "List",
       "x": 46,
-      "y": 189,
+      "y": 205,
       "width": 653,
       "height": 784,
       "mouseEnabled": true,
@@ -287,6 +287,7 @@
           "y": 7.999999999999957,
           "width": 403,
           "height": 54,
+          "visible": false,
           "bgColor": "rgba(120, 78, 164, 1)"
         },
         {

@@ -3,6 +3,13 @@
   "importer": {
     "textureType": 2,
     "sRGB": true,
-    "generateMipmap": true
+    "generateMipmap": true,
+    "sizeGrid": [
+      23,
+      22,
+      24,
+      23,
+      0
+    ]
   }
 }

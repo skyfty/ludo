@@ -90,10 +90,7 @@
               "_$comp": [
                 {
                   "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
-                  "scriptPath": "../src/MyselfTrim.ts",
-                  "image": {
-                    "_$ref": "8lyg0ej4"
-                  }
+                  "scriptPath": "../src/MyselfTrim.ts"
                 }
               ]
             }
@@ -132,6 +129,7 @@
           "y": -105.00000000000011,
           "width": 496,
           "height": 382,
+          "visible": false,
           "bgColor": "rgba(78, 56, 102, 1)"
         },
         {
@@ -297,6 +295,7 @@
               "y": 7.999999999999957,
               "width": 403,
               "height": 54,
+              "visible": false,
               "bgColor": "rgba(120, 78, 164, 1)"
             },
             {
@@ -315,7 +314,7 @@
               "_$type": "Image",
               "name": "Image(4)",
               "x": 116,
-              "y": 18,
+              "y": 14,
               "width": 193.23872861582166,
               "height": 38.7770023978236,
               "skin": "res://e4a96311-ccbc-4576-aa82-7862235210cb",

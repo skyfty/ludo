@@ -1008,6 +1008,10 @@
               ]
             },
             {
+              "_$override": "8220s38k",
+              "visible": false
+            },
+            {
               "_$override": "dm1y2zws",
               "y": -6,
               "x": 97
@@ -1017,12 +1021,20 @@
               "x": 97
             },
             {
-              "_$override": "gr4bj7wo",
-              "x": 78
-            },
-            {
               "_$override": "x17g8mv4",
               "visible": false
+            },
+            {
+              "_$override": "z8ybkgsg",
+              "x": -12.5,
+              "y": -1.5,
+              "width": 119,
+              "height": 119,
+              "useSourceSize": false
+            },
+            {
+              "_$override": "gr4bj7wo",
+              "x": 78
             },
             {
               "_$id": "mm094egv",
@@ -1562,11 +1574,28 @@
               ]
             },
             {
+              "_$override": "8220s38k",
+              "x": 10.000000000000014,
+              "y": 22.000000000000007,
+              "width": 72.5,
+              "height": 72.5,
+              "active": true,
+              "visible": false
+            },
+            {
               "_$override": "x17g8mv4",
               "visible": true,
               "x": -1,
               "y": 111,
               "width": 26
+            },
+            {
+              "_$override": "z8ybkgsg",
+              "width": 119,
+              "useSourceSize": false,
+              "height": 119,
+              "x": -12,
+              "y": 0
             },
             {
               "_$id": "60j9qyf3",
@@ -2104,7 +2133,13 @@
             },
             {
               "_$override": "5ft64053",
-              "visible": true
+              "visible": false,
+              "x": 133,
+              "active": true
+            },
+            {
+              "_$override": "taf855d7",
+              "x": 143
             },
             {
               "_$override": "2e90lc4h",
@@ -2112,6 +2147,14 @@
               "x": 195,
               "width": 26,
               "height": 26
+            },
+            {
+              "_$override": "jss9amdb",
+              "x": 113,
+              "width": 119,
+              "useSourceSize": false,
+              "height": 119,
+              "y": 1
             },
             {
               "_$id": "yh7nx9ez",
@@ -2611,11 +2654,29 @@
               ]
             },
             {
+              "_$override": "5ft64053",
+              "y": 18,
+              "active": true,
+              "visible": false
+            },
+            {
+              "_$override": "taf855d7",
+              "x": 143
+            },
+            {
               "_$override": "2e90lc4h",
               "x": 198,
               "y": 110.99999999999999,
               "width": 26,
               "height": 26
+            },
+            {
+              "_$override": "jss9amdb",
+              "x": 113,
+              "width": 119,
+              "useSourceSize": false,
+              "height": 119,
+              "y": 1
             },
             {
               "_$id": "lxkl8giz",

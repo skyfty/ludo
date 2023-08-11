@@ -122,7 +122,8 @@
                     {
                       "_$ref": "as36casd"
                     }
-                  ]
+                  ],
+                  "magic": null
                 }
               ],
               "_$child": [
@@ -141,10 +142,10 @@
                   "_$id": "3agryvs3",
                   "_$type": "Image",
                   "name": "Image(5)",
-                  "x": 95,
+                  "x": 73,
                   "y": 40,
-                  "width": 419.99060381441683,
-                  "height": 154.92112798392387,
+                  "width": 462.99060381441683,
+                  "height": 167.92112798392387,
                   "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
                   "color": "#ffffff"
                 },
@@ -281,7 +282,7 @@
                   "_$type": "Image",
                   "name": "Image(6)",
                   "x": 147,
-                  "y": 235,
+                  "y": 228,
                   "width": 314.10300866904595,
                   "height": 35.69352371239155,
                   "skin": "res://ca3037ad-63f6-4dc1-ab05-13153f01d38f",
@@ -291,10 +292,10 @@
                   "_$id": "8132rh4e",
                   "_$type": "Image",
                   "name": "Image(7)",
-                  "x": 95,
-                  "y": 278.35833952875595,
-                  "width": 419.99060381441683,
-                  "height": 124.64166047124479,
+                  "x": 81,
+                  "y": 268.35833952875595,
+                  "width": 447.99060381441683,
+                  "height": 148.6416604712448,
                   "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
                   "color": "#ffffff"
                 },
@@ -383,7 +384,7 @@
                   "label": "CREATE ROOM",
                   "labelFont": "Impact",
                   "labelSize": 32,
-                  "labelColors": "#ffffff,#fcfffd,#ffffff",
+                  "labelColors": "#515113,#c7c719,#ffffff,#c0c0c0",
                   "labelStroke": 1,
                   "labelStrokeColor": "rgba(4, 3, 4, 1)",
                   "_$comp": [
@@ -476,7 +477,7 @@
                   "label": "JOIN ROOM",
                   "labelFont": "Impact",
                   "labelSize": 32,
-                  "labelColors": "#ffffff,#ffffff,#ffffff",
+                  "labelColors": "#ffffff,#ffffff,#ffffff,#C0C0C0",
                   "labelStroke": 1,
                   "_$comp": [
                     {

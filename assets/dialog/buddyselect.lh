@@ -193,7 +193,7 @@
               "label": "INVITE",
               "labelSize": 26,
               "labelBold": true,
-              "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+              "labelColors": "#797930,#797930,#ffffff,#c0c0c0",
               "labelStrokeColor": "#32556b",
               "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0"
             }

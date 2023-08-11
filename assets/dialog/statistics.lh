@@ -19,12 +19,10 @@
       "level": {
         "_$ref": "5o6rc4w5"
       },
-      "levelProcess": {
-        "_$ref": "q90kvatj"
-      },
       "avatar": {
         "_$ref": "6gki6n54"
       },
+      "trim": null,
       "winsOfVsComputer": {
         "_$ref": "prljwga2"
       },
@@ -51,6 +49,9 @@
       },
       "rateOfVsFriend": {
         "_$ref": "6t8g6odv"
+      },
+      "levelProcess": {
+        "_$ref": "q90kvatj"
       }
     }
   ],
@@ -213,6 +214,7 @@
           "y": 7.999999999999957,
           "width": 453,
           "height": 54,
+          "visible": false,
           "bgColor": "rgba(120, 78, 164, 1)"
         },
         {
