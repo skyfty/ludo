@@ -71,7 +71,7 @@
             "_$ref": "gr4bj7wo"
           },
           "blackmark": {
-            "_$ref": "8zfiqxp5"
+            "_$ref": "zkg2rdnw"
           },
           "props": {
             "_$ref": "x17g8mv4"
@@ -171,15 +171,15 @@
           "color": "#ffffff"
         },
         {
-          "_$id": "8zfiqxp5",
+          "_$id": "zkg2rdnw",
           "_$type": "Image",
           "name": "Image(1)",
-          "x": 99,
-          "y": -0.4999855090664944,
-          "width": 121.74889144358681,
-          "height": 120.25439316800784,
+          "x": 96.79945514090019,
+          "y": -3.004405243785806,
+          "width": 125.20273782037032,
+          "height": 125.7542917314734,
           "visible": false,
-          "alpha": 0.76,
+          "alpha": 0.87,
           "skin": "res://1c9341a1-46ca-4fbe-a769-9e36bca85724",
           "color": "#ffffff"
         },

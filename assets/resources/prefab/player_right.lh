@@ -70,13 +70,13 @@
           "countdown": {
             "_$ref": "n7gt0l5f"
           },
-          "blackmark": {
-            "_$ref": "92hcm53i"
-          },
+          "blackmark": null,
           "props": {
             "_$ref": "2e90lc4h"
           },
-          "trim": null
+          "trim": {
+            "_$ref": "jss9amdb"
+          }
         },
         {
           "_$type": "26418778-2a8b-4ac8-aa46-9e423be83978",
@@ -175,10 +175,10 @@
           "_$id": "92hcm53i",
           "_$type": "Image",
           "name": "Image(1)",
-          "x": -1.4934066252548002,
-          "y": -0.4999855090664942,
-          "width": 121.74889144358681,
-          "height": 121.25439316800784,
+          "x": -3.9995031524721236,
+          "y": -1.4959156362772414,
+          "width": 126.75904542064356,
+          "height": 126.24419778111832,
           "visible": false,
           "alpha": 0.76,
           "skin": "res://1c9341a1-46ca-4fbe-a769-9e36bca85724",

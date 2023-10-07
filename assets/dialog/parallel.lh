@@ -122,17 +122,6 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "jk07a06y",
-      "_$type": "Image",
-      "name": "Image",
-      "x": 282,
-      "y": 173,
-      "width": 220.44637972817884,
-      "height": 35.057510522809984,
-      "skin": "res://89d6d660-12cf-44cb-9203-8e2986d053b0",
-      "color": "#ffffff"
-    },
-    {
       "_$id": "witdtfyr",
       "_$type": "Image",
       "name": "Image(11)",
@@ -141,6 +130,17 @@
       "width": 485,
       "height": 65,
       "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "jk07a06y",
+      "_$type": "Image",
+      "name": "Image",
+      "x": 281.99999999999994,
+      "y": 172.99999999999997,
+      "width": 220.44637972817884,
+      "height": 35.057510522809984,
+      "skin": "res://89d6d660-12cf-44cb-9203-8e2986d053b0",
       "color": "#ffffff"
     },
     {
@@ -621,7 +621,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 0,
+                      "index": 3,
                       "interval": 226,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     },
@@ -639,7 +639,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 0,
+                      "index": 2,
                       "interval": 140,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     }
