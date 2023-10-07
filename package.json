@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/skyfty/ludo#readme",
   "dependencies": {
+    "roddeh-i18n": "^1.2.1",
     "sfs2x-api": "^1.7.20"
   }
 }

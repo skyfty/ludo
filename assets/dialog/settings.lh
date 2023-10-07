@@ -17,6 +17,9 @@
       },
       "soundMuted": {
         "_$ref": "bkjsg7oi"
+      },
+      "languages": {
+        "_$ref": "7c5jt3aj"
       }
     }
   ],
@@ -28,7 +31,7 @@
       "x": 81,
       "y": 273,
       "width": 588,
-      "height": 372,
+      "height": 428,
       "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
       "color": "#ffffff"
     },
@@ -48,7 +51,7 @@
       "_$type": "Button",
       "name": "return",
       "x": 343,
-      "y": 644,
+      "y": 719,
       "width": 77,
       "height": 77,
       "mouseEnabled": true,
@@ -56,6 +59,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -84,6 +88,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -105,12 +110,30 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
         }
       ]
+    },
+    {
+      "_$id": "7c5jt3aj",
+      "_$type": "ComboBox",
+      "name": "ComboBox",
+      "x": 250,
+      "y": 570,
+      "width": 256,
+      "height": 70,
+      "mouseEnabled": true,
+      "skin": "res://f64d4387-f2c7-4e48-bea1-a0dfd22a109d",
+      "labels": "",
+      "labelSize": 20,
+      "itemSize": 12,
+      "itemColors": "#5e95b6,#ffffff,#000000,#8fa4b1,#ffffff",
+      "selectedLabel": "",
+      "defaultLabel": ""
     }
   ]
 }

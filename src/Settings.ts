@@ -1,4 +1,5 @@
 const { regClass, property } = Laya;
+import { TranslateLanguage } from "./TranslateLanguage";
 
 @regClass()
 export class Settings extends Laya.Script {
@@ -9,6 +10,22 @@ export class Settings extends Laya.Script {
 
     @property(Laya.CheckBox)
     public soundMuted: Laya.CheckBox;
+
+    private regions = [
+        "zh-cn", 
+        "en",
+        "jp"
+    ];
+    private regionsText = [
+        "简体中文", 
+        "English",
+        "Japanese"
+    ];
+    @property(Laya.ComboBox)
+    public languages: Laya.ComboBox;
+
+    private currentLang:any = null;
+
     constructor() {
         super();
     }
@@ -28,6 +45,18 @@ export class Settings extends Laya.Script {
         });
         this.musicMuted.selected = Laya.LocalStorage.getItem("musicMuted") == "on";
         this.soundMuted.selected = Laya.LocalStorage.getItem("soundMuted") == "on";
+
+        this.languages.labels = this.regionsText.join(",");
+        this.languages.selectHandler = new Laya.Handler(this, this.onLanguageSelected);
+
+        this.currentLang = Laya.LocalStorage.getItem("language");
+        this.languages.selectedIndex = this.regions.indexOf(this.currentLang);
     }
 
+    private onLanguageSelected(index: number) {
+        if (this.currentLang != this.regions[index]) {
+            Laya.LocalStorage.setItem("language", this.regions[index]);
+            TranslateLanguage.setLanguage(this.regions[index]);
+        }
+    }
 }

@@ -7,6 +7,7 @@ import { Profile } from "./Profile";
 import { Buycoin } from "./Buycoin";
 import { Station } from "./Station";
 import { Config } from "./Config";
+import i18n from "../node_modules/roddeh-i18n";
 
 @regClass()
 export class Menu extends Laya.Script {

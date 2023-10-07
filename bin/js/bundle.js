@@ -1,3 +1,4 @@
+"use strict";
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -38,6 +39,7 @@
   // node_modules/sfs2x-api/sfs2x-api.js
   var require_sfs2x_api = __commonJS({
     "node_modules/sfs2x-api/sfs2x-api.js"(exports, module) {
+      "use strict";
       !function(e, t) {
         "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.SFS2X = t() : e.SFS2X = t();
       }(exports, function() {
@@ -9906,7 +9908,7 @@
           }, "_"), y = /* @__PURE__ */ __name(function(e2, t2, n2) {
             return 0 === t2 ? n2 : t2 % 2 == 1 ? y(e2, t2 - 1, n2 * e2) : y(e2 * e2, t2 / 2, n2);
           }, "y");
-          r(r.P + r.F * (!!a && ("0.000" !== 8e-5 .toFixed(3) || "1" !== 0.9 .toFixed(0) || "1.25" !== 1.255 .toFixed(2) || "1000000000000000128" !== 1000000000000000100 .toFixed(0)) || !n(3)(function() {
+          r(r.P + r.F * (!!a && ("0.000" !== 8e-5.toFixed(3) || "1" !== 0.9.toFixed(0) || "1.25" !== 1.255.toFixed(2) || "1000000000000000128" !== 1000000000000000100 .toFixed(0)) || !n(3)(function() {
             a.call({});
           })), "Number", { toFixed: function(e2) {
             var t2, n2, r2, a2, u2 = o(this, l), c2 = i(e2), p = "", d = "0";
@@ -10475,6 +10477,250 @@
     }
   });
 
+  // node_modules/roddeh-i18n/dist/i18n.js
+  var require_i18n = __commonJS({
+    "node_modules/roddeh-i18n/dist/i18n.js"(exports, module) {
+      "use strict";
+      (function() {
+        "use strict";
+        var __bind = /* @__PURE__ */ __name(function(fn, me) {
+          return function() {
+            return fn.apply(me, arguments);
+          };
+        }, "__bind");
+        (function(root, factory) {
+          if (typeof define === "function" && define.amd) {
+            return define([], function() {
+              return root.i18n = factory();
+            });
+          } else if (typeof module === "object" && module.exports) {
+            return module.exports = factory();
+          } else {
+            return root.i18n = factory();
+          }
+        })(typeof self !== "undefined" && self !== null ? self : this, function() {
+          var Translator, i18n3, translator;
+          Translator = function() {
+            function Translator2() {
+              this.translate = __bind(this.translate, this);
+              this.data = {
+                values: {},
+                contexts: []
+              };
+              this.globalContext = {};
+            }
+            __name(Translator2, "Translator");
+            Translator2.prototype.translate = function(text, defaultNumOrFormatting, numOrFormattingOrContext, formattingOrContext, context) {
+              var defaultText, formatting, isObject, num;
+              if (context == null) {
+                context = this.globalContext;
+              }
+              isObject = /* @__PURE__ */ __name(function(obj) {
+                var type;
+                type = typeof obj;
+                return type === "function" || type === "object" && !!obj;
+              }, "isObject");
+              if (isObject(defaultNumOrFormatting)) {
+                defaultText = null;
+                num = null;
+                formatting = defaultNumOrFormatting;
+                context = numOrFormattingOrContext || this.globalContext;
+              } else {
+                if (typeof defaultNumOrFormatting === "number") {
+                  defaultText = null;
+                  num = defaultNumOrFormatting;
+                  formatting = numOrFormattingOrContext;
+                  context = formattingOrContext || this.globalContext;
+                } else {
+                  defaultText = defaultNumOrFormatting;
+                  if (typeof numOrFormattingOrContext === "number") {
+                    num = numOrFormattingOrContext;
+                    formatting = formattingOrContext;
+                    context = context;
+                  } else {
+                    num = null;
+                    formatting = numOrFormattingOrContext;
+                    context = formattingOrContext || this.globalContext;
+                  }
+                }
+              }
+              if (isObject(text)) {
+                if (isObject(text["i18n"])) {
+                  text = text["i18n"];
+                }
+                return this.translateHash(text, context);
+              } else {
+                return this.translateText(text, num, formatting, context, defaultText);
+              }
+            };
+            Translator2.prototype.add = function(d) {
+              var c, k, v, _i, _len, _ref, _ref1, _results;
+              if (d.values != null) {
+                _ref = d.values;
+                for (k in _ref) {
+                  v = _ref[k];
+                  this.data.values[k] = v;
+                }
+              }
+              if (d.contexts != null) {
+                _ref1 = d.contexts;
+                _results = [];
+                for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+                  c = _ref1[_i];
+                  _results.push(this.data.contexts.push(c));
+                }
+                return _results;
+              }
+            };
+            Translator2.prototype.setContext = function(key, value) {
+              return this.globalContext[key] = value;
+            };
+            Translator2.prototype.extend = function(ext) {
+              return this.extension = ext;
+            };
+            Translator2.prototype.clearContext = function(key) {
+              return this.globalContext[key] = null;
+            };
+            Translator2.prototype.reset = function() {
+              this.resetData();
+              return this.resetContext();
+            };
+            Translator2.prototype.resetData = function() {
+              return this.data = {
+                values: {},
+                contexts: []
+              };
+            };
+            Translator2.prototype.resetContext = function() {
+              return this.globalContext = {};
+            };
+            Translator2.prototype.translateHash = function(hash, context) {
+              var k, v;
+              for (k in hash) {
+                v = hash[k];
+                if (typeof v === "string") {
+                  hash[k] = this.translateText(v, null, null, context);
+                }
+              }
+              return hash;
+            };
+            Translator2.prototype.translateText = function(text, num, formatting, context, defaultText) {
+              var contextData, result;
+              if (context == null) {
+                context = this.globalContext;
+              }
+              if (this.data == null) {
+                return this.useOriginalText(defaultText || text, num, formatting);
+              }
+              contextData = this.getContextData(this.data, context);
+              if (contextData != null) {
+                result = this.findTranslation(text, num, formatting, contextData.values, defaultText);
+              }
+              if (result == null) {
+                result = this.findTranslation(text, num, formatting, this.data.values, defaultText);
+              }
+              if (result == null) {
+                return this.useOriginalText(defaultText || text, num, formatting);
+              }
+              return result;
+            };
+            Translator2.prototype.findTranslation = function(text, num, formatting, data, defaultText) {
+              var a, b, c, d, e, result, triple, value, _i, _len;
+              value = data[text];
+              if (value == null) {
+                return null;
+              }
+              if (typeof value === "object" && !Array.isArray(value)) {
+                if (this.extension && typeof this.extension === "function") {
+                  value = this.extension(text, num, formatting, value);
+                  value = this.applyNumbers(value, num);
+                  return this.applyFormatting(value, num, formatting);
+                } else {
+                  return this.useOriginalText(defaultText || text, num, formatting);
+                }
+              }
+              if (num == null && !Array.isArray(value)) {
+                if (typeof value === "string") {
+                  return this.applyFormatting(value, num, formatting);
+                }
+              } else {
+                if (value instanceof Array || value.length) {
+                  a = num === null;
+                  for (_i = 0, _len = value.length; _i < _len; _i++) {
+                    triple = value[_i];
+                    b = triple[0] === null;
+                    c = triple[1] === null;
+                    d = num >= triple[0];
+                    e = num <= triple[1];
+                    if (a && b && c || !a && (!b && d && (c || e) || b && !c && e)) {
+                      result = this.applyFormatting(triple[2].replace("-%n", String(-num)), num, formatting);
+                      return this.applyFormatting(result.replace("%n", String(num)), num, formatting);
+                    }
+                  }
+                }
+              }
+              return null;
+            };
+            Translator2.prototype.applyNumbers = function(str, num) {
+              str = str.replace("-%n", String(-num));
+              str = str.replace("%n", String(num));
+              return str;
+            };
+            Translator2.prototype.getContextData = function(data, context) {
+              var c, equal, key, value, _i, _len, _ref, _ref1;
+              if (data.contexts == null) {
+                return null;
+              }
+              _ref = data.contexts;
+              for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                c = _ref[_i];
+                equal = true;
+                _ref1 = c.matches;
+                for (key in _ref1) {
+                  value = _ref1[key];
+                  equal = equal && value === context[key];
+                }
+                if (equal) {
+                  return c;
+                }
+              }
+              return null;
+            };
+            Translator2.prototype.useOriginalText = function(text, num, formatting) {
+              if (num == null) {
+                return this.applyFormatting(text, num, formatting);
+              }
+              return this.applyFormatting(text.replace("%n", String(num)), num, formatting);
+            };
+            Translator2.prototype.applyFormatting = function(text, num, formatting) {
+              var ind, regex;
+              for (ind in formatting) {
+                regex = new RegExp("%{" + ind + "}", "g");
+                text = text.replace(regex, formatting[ind]);
+              }
+              return text;
+            };
+            return Translator2;
+          }();
+          translator = new Translator();
+          i18n3 = translator.translate;
+          i18n3.translator = translator;
+          i18n3.create = function(data) {
+            var trans;
+            trans = new Translator();
+            if (data != null) {
+              trans.add(data);
+            }
+            trans.translate.create = i18n3.create;
+            trans.translate.translator = trans;
+            return trans.translate;
+          };
+          return i18n3;
+        });
+      }).call(exports);
+    }
+  });
+
   // src/Attire.ts
   var { regClass, property, SoundManager } = Laya;
   var Attire = class extends Laya.Script {
@@ -10537,7 +10783,7 @@
   // src/Profile.ts
   var SFS2X = __toESM(require_sfs2x_api());
   var { regClass: regClass4, property: property4 } = Laya;
-  var Profile = class {
+  var _Profile = class _Profile {
     static getSyncParam() {
       let params = new SFS2X.SFSObject();
       let userId = Laya.LocalStorage.getItem("userid");
@@ -10562,7 +10808,7 @@
       }
       let updatetime = Laya.LocalStorage.getItem("updatetime");
       if (updatetime == null) {
-        updatetime = Profile.getCurrentUpdateTime();
+        updatetime = _Profile.getCurrentUpdateTime();
       }
       params.putLong("updatetime", Number.parseInt(updatetime));
       return params;
@@ -10608,19 +10854,19 @@
     }
     static setNickname(nickname) {
       Laya.LocalStorage.setItem("nickname", nickname);
-      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
+      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
       Station.sync();
       Station.updateBuddyInfo();
     }
     static setAvatar(avatar) {
       Laya.LocalStorage.setItem("avatar", avatar.toString());
-      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
+      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
       Station.sync();
       Station.updateBuddyInfo();
     }
     static setTrim(trim) {
       Laya.LocalStorage.setItem("trim", trim);
-      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
+      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
       Station.sync();
       Station.updateBuddyInfo();
     }
@@ -10671,23 +10917,25 @@
       return Math.floor(rank / 100).toString();
     }
     static getMyLevel() {
-      let rank = Profile.getRank();
-      return Profile.getLevel(rank);
+      let rank = _Profile.getRank();
+      return _Profile.getLevel(rank);
     }
   };
-  __name(Profile, "Profile");
+  __name(_Profile, "Profile");
+  var Profile = _Profile;
 
   // src/Station.ts
   var { regClass: regClass5, property: property5 } = Laya;
-  var Event = class {
+  var _Event = class _Event {
   };
-  __name(Event, "Event");
-  Event.Login = "LOGIN";
-  Event.Join = "ROOM_JOIN";
-  Event.Disconnect = "DISCONNECT";
-  Event.Exit = "ROOM_EXIT";
-  Event.Error = "ROOM_ERROR";
-  Event.LoginError = "LOGIN_ERROR";
+  __name(_Event, "Event");
+  _Event.Login = "LOGIN";
+  _Event.Join = "ROOM_JOIN";
+  _Event.Disconnect = "DISCONNECT";
+  _Event.Exit = "ROOM_EXIT";
+  _Event.Error = "ROOM_ERROR";
+  _Event.LoginError = "LOGIN_ERROR";
+  var Event = _Event;
   var Station = class extends Laya.Script {
     constructor() {
       super();
@@ -11483,17 +11731,18 @@
   ], GameRoom);
 
   // src/Config.ts
-  var Config = class {
+  var _Config = class _Config {
   };
-  __name(Config, "Config");
-  Config.NUMBER_UNIVERSAL_HOLD = 52;
-  Config.NUMBER_PERSONAL_HOLD = 6;
-  Config.TIMEOUT_CHOOSE_CHESS = 30;
-  Config.TIMEOUT_CHUNK = 30;
-  Config.Colors = ["red", "green", "yellow", "blue"];
-  Config.ColorValue = { "red": "#ff0000", "green": "#00a300", "yellow": "#ffc400", "blue": "#008cf8" };
-  Config.MagicMap = [{ "makeup": { "6": { "name": "plus", "clip": 1 }, "11": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "15": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "23": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "defender", "clip": 0 } } }, { "makeup": { "14": { "name": "defender", "clip": 0 }, "15": { "name": "defender", "clip": 0 }, "18": { "name": "defender", "clip": 0 }, "25": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "33": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "3": { "name": "plus", "clip": 1 }, "11": { "name": "defender", "clip": 0 }, "22": { "name": "rocket", "clip": 2 }, "28": { "name": "rocket", "clip": 2 }, "31": { "name": "rocket", "clip": 2 }, "33": { "name": "defender", "clip": 0 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 }, "51": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "12": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "23": { "name": "plus", "clip": 1 }, "33": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "46": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "12": { "name": "rocket", "clip": 2 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 } } }, { "makeup": { "12": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "19": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "27": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "40": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "43": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "7": { "name": "rocket", "clip": 2 }, "11": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "17": { "name": "plus", "clip": 1 }, "18": { "name": "defender", "clip": 0 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "11": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "28": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "2": { "name": "rocket", "clip": 2 }, "7": { "name": "defender", "clip": 0 }, "11": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "29": { "name": "plus", "clip": 1 }, "38": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "defender", "clip": 0 }, "6": { "name": "plus", "clip": 1 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "plus", "clip": 1 }, "44": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "defender", "clip": 0 }, "5": { "name": "plus", "clip": 1 }, "7": { "name": "defender", "clip": 0 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "25": { "name": "plus", "clip": 1 }, "42": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "18": { "name": "plus", "clip": 1 }, "24": { "name": "rocket", "clip": 2 }, "31": { "name": "defender", "clip": 0 }, "33": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "44": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "25": { "name": "rocket", "clip": 2 }, "27": { "name": "rocket", "clip": 2 }, "35": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "50": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "10": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "rocket", "clip": 2 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "plus", "clip": 1 }, "9": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "25": { "name": "defender", "clip": 0 }, "32": { "name": "plus", "clip": 1 }, "36": { "name": "rocket", "clip": 2 }, "37": { "name": "defender", "clip": 0 }, "42": { "name": "rocket", "clip": 2 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "12": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "35": { "name": "rocket", "clip": 2 }, "41": { "name": "rocket", "clip": 2 }, "43": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 }, "49": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "defender", "clip": 0 }, "19": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "44": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "50": { "name": "defender", "clip": 0 } } }, { "makeup": { "4": { "name": "defender", "clip": 0 }, "12": { "name": "plus", "clip": 1 }, "17": { "name": "plus", "clip": 1 }, "19": { "name": "rocket", "clip": 2 }, "28": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "plus", "clip": 1 }, "37": { "name": "defender", "clip": 0 }, "41": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 } } }, { "makeup": { "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "10": { "name": "defender", "clip": 0 }, "15": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "18": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "6": { "name": "rocket", "clip": 2 }, "14": { "name": "plus", "clip": 1 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "14": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "plus", "clip": 1 }, "30": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "42": { "name": "plus", "clip": 1 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "7": { "name": "rocket", "clip": 2 }, "9": { "name": "plus", "clip": 1 }, "30": { "name": "plus", "clip": 1 }, "31": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "50": { "name": "rocket", "clip": 2 } } }, { "makeup": { "7": { "name": "plus", "clip": 1 }, "15": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "24": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "42": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "10": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "defender", "clip": 0 }, "28": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "plus", "clip": 1 }, "37": { "name": "rocket", "clip": 2 }, "40": { "name": "plus", "clip": 1 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "5": { "name": "rocket", "clip": 2 }, "17": { "name": "defender", "clip": 0 }, "20": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "30": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "46": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "3": { "name": "rocket", "clip": 2 }, "4": { "name": "plus", "clip": 1 }, "16": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "25": { "name": "defender", "clip": 0 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 }, "48": { "name": "defender", "clip": 0 }, "51": { "name": "rocket", "clip": 2 } } }, { "makeup": { "3": { "name": "defender", "clip": 0 }, "10": { "name": "rocket", "clip": 2 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "defender", "clip": 0 }, "32": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "42": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "plus", "clip": 1 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "35": { "name": "rocket", "clip": 2 }, "38": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "45": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "51": { "name": "plus", "clip": 1 } } }];
-  Config.MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
+  __name(_Config, "Config");
+  _Config.NUMBER_UNIVERSAL_HOLD = 52;
+  _Config.NUMBER_PERSONAL_HOLD = 6;
+  _Config.TIMEOUT_CHOOSE_CHESS = 30;
+  _Config.TIMEOUT_CHUNK = 30;
+  _Config.Colors = ["red", "green", "yellow", "blue"];
+  _Config.ColorValue = { "red": "#ff0000", "green": "#00a300", "yellow": "#ffc400", "blue": "#008cf8" };
+  _Config.MagicMap = [{ "makeup": { "6": { "name": "plus", "clip": 1 }, "11": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "15": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "23": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "defender", "clip": 0 } } }, { "makeup": { "14": { "name": "defender", "clip": 0 }, "15": { "name": "defender", "clip": 0 }, "18": { "name": "defender", "clip": 0 }, "25": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "33": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "3": { "name": "plus", "clip": 1 }, "11": { "name": "defender", "clip": 0 }, "22": { "name": "rocket", "clip": 2 }, "28": { "name": "rocket", "clip": 2 }, "31": { "name": "rocket", "clip": 2 }, "33": { "name": "defender", "clip": 0 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 }, "51": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "12": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "23": { "name": "plus", "clip": 1 }, "33": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "46": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "12": { "name": "rocket", "clip": 2 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 } } }, { "makeup": { "12": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "19": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "27": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "40": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "43": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "7": { "name": "rocket", "clip": 2 }, "11": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "17": { "name": "plus", "clip": 1 }, "18": { "name": "defender", "clip": 0 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "11": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "28": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "2": { "name": "rocket", "clip": 2 }, "7": { "name": "defender", "clip": 0 }, "11": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "29": { "name": "plus", "clip": 1 }, "38": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "defender", "clip": 0 }, "6": { "name": "plus", "clip": 1 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "plus", "clip": 1 }, "44": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "defender", "clip": 0 }, "5": { "name": "plus", "clip": 1 }, "7": { "name": "defender", "clip": 0 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "25": { "name": "plus", "clip": 1 }, "42": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "18": { "name": "plus", "clip": 1 }, "24": { "name": "rocket", "clip": 2 }, "31": { "name": "defender", "clip": 0 }, "33": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "44": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "25": { "name": "rocket", "clip": 2 }, "27": { "name": "rocket", "clip": 2 }, "35": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "50": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "10": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "rocket", "clip": 2 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "plus", "clip": 1 }, "9": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "25": { "name": "defender", "clip": 0 }, "32": { "name": "plus", "clip": 1 }, "36": { "name": "rocket", "clip": 2 }, "37": { "name": "defender", "clip": 0 }, "42": { "name": "rocket", "clip": 2 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "12": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "35": { "name": "rocket", "clip": 2 }, "41": { "name": "rocket", "clip": 2 }, "43": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 }, "49": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "defender", "clip": 0 }, "19": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "44": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "50": { "name": "defender", "clip": 0 } } }, { "makeup": { "4": { "name": "defender", "clip": 0 }, "12": { "name": "plus", "clip": 1 }, "17": { "name": "plus", "clip": 1 }, "19": { "name": "rocket", "clip": 2 }, "28": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "plus", "clip": 1 }, "37": { "name": "defender", "clip": 0 }, "41": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 } } }, { "makeup": { "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "10": { "name": "defender", "clip": 0 }, "15": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "18": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "6": { "name": "rocket", "clip": 2 }, "14": { "name": "plus", "clip": 1 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "14": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "plus", "clip": 1 }, "30": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "42": { "name": "plus", "clip": 1 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "7": { "name": "rocket", "clip": 2 }, "9": { "name": "plus", "clip": 1 }, "30": { "name": "plus", "clip": 1 }, "31": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "50": { "name": "rocket", "clip": 2 } } }, { "makeup": { "7": { "name": "plus", "clip": 1 }, "15": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "24": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "42": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "10": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "defender", "clip": 0 }, "28": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "plus", "clip": 1 }, "37": { "name": "rocket", "clip": 2 }, "40": { "name": "plus", "clip": 1 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "5": { "name": "rocket", "clip": 2 }, "17": { "name": "defender", "clip": 0 }, "20": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "30": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "46": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "3": { "name": "rocket", "clip": 2 }, "4": { "name": "plus", "clip": 1 }, "16": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "25": { "name": "defender", "clip": 0 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 }, "48": { "name": "defender", "clip": 0 }, "51": { "name": "rocket", "clip": 2 } } }, { "makeup": { "3": { "name": "defender", "clip": 0 }, "10": { "name": "rocket", "clip": 2 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "defender", "clip": 0 }, "32": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "42": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "plus", "clip": 1 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "35": { "name": "rocket", "clip": 2 }, "38": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "45": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "51": { "name": "plus", "clip": 1 } } }];
+  _Config.MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
+  var Config = _Config;
 
   // src/CreateRoom.ts
   var SFS2X11 = __toESM(require_sfs2x_api());
@@ -11906,11 +12155,12 @@
     Safe2[Safe2["yes"] = 1] = "yes";
     return Safe2;
   })(Safe || {});
-  var Event2 = class {
+  var _Event2 = class _Event2 {
   };
-  __name(Event2, "Event");
-  Event2.Enter = "ROUTE_ENTER";
-  Event2.Exit = "ROUTE_EXIT";
+  __name(_Event2, "Event");
+  _Event2.Enter = "ROUTE_ENTER";
+  _Event2.Exit = "ROUTE_EXIT";
+  var Event2 = _Event2;
   var Route = class extends Laya.Script {
     constructor() {
       super();
@@ -12780,23 +13030,24 @@
 
   // src/Player.ts
   var { regClass: regClass35, property: property35, SoundManager: SoundManager4 } = Laya;
-  var Event3 = class {
+  var _Event3 = class _Event3 {
   };
-  __name(Event3, "Event");
-  Event3.EntryRoom = "ENTRY_ROOM";
-  Event3.ExitRoom = "EXIT_ROOM";
-  Event3.StateChange = "STATE_CHANGE";
-  Event3.Countdown = "COUNTDOWN";
-  Event3.CountdownStop = "COUNTDOWN_STOP";
-  Event3.Hurl = "Hurl";
-  Event3.RollStart = "ROLL_START";
-  Event3.RollEnd = "ROLL_END";
-  Event3.Choose = "CHOOSE";
-  Event3.Achieve = "ACHIEVE";
-  Event3.Victory = "VICTORY";
-  Event3.Rocket = "Rocket";
-  Event3.GenerateMagic = "GenerateMagic";
-  Event3.UseProps = "UseProps";
+  __name(_Event3, "Event");
+  _Event3.EntryRoom = "ENTRY_ROOM";
+  _Event3.ExitRoom = "EXIT_ROOM";
+  _Event3.StateChange = "STATE_CHANGE";
+  _Event3.Countdown = "COUNTDOWN";
+  _Event3.CountdownStop = "COUNTDOWN_STOP";
+  _Event3.Hurl = "Hurl";
+  _Event3.RollStart = "ROLL_START";
+  _Event3.RollEnd = "ROLL_END";
+  _Event3.Choose = "CHOOSE";
+  _Event3.Achieve = "ACHIEVE";
+  _Event3.Victory = "VICTORY";
+  _Event3.Rocket = "Rocket";
+  _Event3.GenerateMagic = "GenerateMagic";
+  _Event3.UseProps = "UseProps";
+  var Event3 = _Event3;
   var Type = /* @__PURE__ */ ((Type2) => {
     Type2[Type2["Extreme"] = 0] = "Extreme";
     Type2[Type2["Computer"] = 1] = "Computer";
@@ -13652,24 +13903,11 @@
     regClass46("679087f6-f6b5-4a60-9f2e-ff9a7d356e0f", "../src/Door.ts")
   ], Door);
 
-  // src/Entry.ts
-  var { regClass: regClass47, property: property47 } = Laya;
-  var Entry = class extends Laya.Script {
-    //declare owner : Laya.Sprite3D;
-    constructor() {
-      super();
-    }
-  };
-  __name(Entry, "Entry");
-  Entry = __decorateClass([
-    regClass47("e3ae5b8d-b787-4412-854b-2c694a132fb2", "../src/Entry.ts")
-  ], Entry);
-
   // src/Online.ts
   var SFS2X16 = __toESM(require_sfs2x_api());
 
   // src/Medal.ts
-  var { regClass: regClass48, property: property48 } = Laya;
+  var { regClass: regClass47, property: property47 } = Laya;
   var Medal = class extends Laya.Script {
     constructor(winPlayerId, numberOfPlayer, players) {
       super();
@@ -13704,11 +13942,11 @@
   };
   __name(Medal, "Medal");
   Medal = __decorateClass([
-    regClass48("fef801f1-3048-4418-84a4-c96f7e9f1fa5", "../src/Medal.ts")
+    regClass47("fef801f1-3048-4418-84a4-c96f7e9f1fa5", "../src/Medal.ts")
   ], Medal);
 
   // src/Reward.ts
-  var { regClass: regClass49, property: property49 } = Laya;
+  var { regClass: regClass48, property: property48 } = Laya;
   var Reward = class extends Laya.Script {
     constructor() {
       super();
@@ -13758,26 +13996,26 @@
   };
   __name(Reward, "Reward");
   __decorateClass([
-    property49(Laya.Prefab)
+    property48(Laya.Prefab)
   ], Reward.prototype, "goldcoin", 2);
   __decorateClass([
-    property49(Laya.Sprite)
+    property48(Laya.Sprite)
   ], Reward.prototype, "collectPoint", 2);
   __decorateClass([
-    property49(Laya.Button)
+    property48(Laya.Button)
   ], Reward.prototype, "return", 2);
   __decorateClass([
-    property49(Laya.ViewStack)
+    property48(Laya.ViewStack)
   ], Reward.prototype, "viewStack", 2);
   __decorateClass([
-    property49(Laya.Label)
+    property48(Laya.Label)
   ], Reward.prototype, "earnNumber", 2);
   Reward = __decorateClass([
-    regClass49("77d4c2e1-62b9-4db4-adb3-ab523bbbc5f9", "../src/Reward.ts")
+    regClass48("77d4c2e1-62b9-4db4-adb3-ab523bbbc5f9", "../src/Reward.ts")
   ], Reward);
 
   // src/Loser.ts
-  var { regClass: regClass50, property: property50 } = Laya;
+  var { regClass: regClass49, property: property49 } = Laya;
   var Loser = class extends Laya.Script {
     constructor() {
       super();
@@ -13798,17 +14036,17 @@
   };
   __name(Loser, "Loser");
   __decorateClass([
-    property50(Laya.Button)
+    property49(Laya.Button)
   ], Loser.prototype, "return", 2);
   __decorateClass([
-    property50(Laya.ViewStack)
+    property49(Laya.ViewStack)
   ], Loser.prototype, "viewStack", 2);
   Loser = __decorateClass([
-    regClass50("526b0624-b995-44ec-b03d-bc9c997a6a43", "../src/Loser.ts")
+    regClass49("526b0624-b995-44ec-b03d-bc9c997a6a43", "../src/Loser.ts")
   ], Loser);
 
   // src/Online.ts
-  var { regClass: regClass51, property: property51, SoundManager: SoundManager9 } = Laya;
+  var { regClass: regClass50, property: property50, SoundManager: SoundManager9 } = Laya;
   var Online = class extends Laya.Script {
     constructor(param) {
       super();
@@ -13964,11 +14202,11 @@
   };
   __name(Online, "Online");
   Online = __decorateClass([
-    regClass51("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
+    regClass50("5cbe8df7-2989-4a1c-91eb-0242529c5c83", "../src/Online.ts")
   ], Online);
 
   // src/Local.ts
-  var { regClass: regClass52, property: property52 } = Laya;
+  var { regClass: regClass51, property: property51 } = Laya;
   var Local = class extends Laya.Script {
     constructor(param) {
       super();
@@ -13998,12 +14236,12 @@
   };
   __name(Local, "Local");
   Local = __decorateClass([
-    regClass52("ed19b477-e87e-4df5-8fdf-ff8ce928ab06", "../src/Local.ts")
+    regClass51("ed19b477-e87e-4df5-8fdf-ff8ce928ab06", "../src/Local.ts")
   ], Local);
 
   // src/Sender.ts
   var SFS2X17 = __toESM(require_sfs2x_api());
-  var { regClass: regClass53, property: property53 } = Laya;
+  var { regClass: regClass52, property: property52 } = Laya;
   var Sender = class extends Laya.Script {
     constructor() {
       super();
@@ -14064,12 +14302,12 @@
   };
   __name(Sender, "Sender");
   Sender = __decorateClass([
-    regClass53("6390de23-70be-4e01-af2f-17838191304f", "../src/Sender.ts")
+    regClass52("6390de23-70be-4e01-af2f-17838191304f", "../src/Sender.ts")
   ], Sender);
 
   // src/Generalize.ts
   var SFS2X18 = __toESM(require_sfs2x_api());
-  var { regClass: regClass54, property: property54 } = Laya;
+  var { regClass: regClass53, property: property53 } = Laya;
   var Generalize = class extends Laya.Script {
     constructor(type) {
       super();
@@ -14090,11 +14328,11 @@
   };
   __name(Generalize, "Generalize");
   Generalize = __decorateClass([
-    regClass54("c50e534c-2a58-49eb-9e7c-c6270d971f53", "../src/Generalize.ts")
+    regClass53("c50e534c-2a58-49eb-9e7c-c6270d971f53", "../src/Generalize.ts")
   ], Generalize);
 
   // src/Game.ts
-  var { regClass: regClass55, property: property55 } = Laya;
+  var { regClass: regClass54, property: property54 } = Laya;
   var Game = class extends Laya.Scene {
     constructor() {
       super();
@@ -14190,11 +14428,11 @@
   };
   __name(Game, "Game");
   Game = __decorateClass([
-    regClass55("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
+    regClass54("8c577d42-46cc-4475-a29f-579458d7564e", "../src/Game.ts")
   ], Game);
 
   // src/GameToolbar.ts
-  var { regClass: regClass56, property: property56 } = Laya;
+  var { regClass: regClass55, property: property55 } = Laya;
   var GameToolbar = class extends Laya.Script {
     constructor() {
       super();
@@ -14213,14 +14451,14 @@
   };
   __name(GameToolbar, "GameToolbar");
   __decorateClass([
-    property56(Laya.Sprite)
+    property55(Laya.Sprite)
   ], GameToolbar.prototype, "backButton", 2);
   GameToolbar = __decorateClass([
-    regClass56("2eaec3fb-1805-4cbc-89c7-008aa7b68c01", "../src/GameToolbar.ts")
+    regClass55("2eaec3fb-1805-4cbc-89c7-008aa7b68c01", "../src/GameToolbar.ts")
   ], GameToolbar);
 
   // src/Groove.ts
-  var { regClass: regClass57, property: property57 } = Laya;
+  var { regClass: regClass56, property: property56 } = Laya;
   var Groove = class extends Laya.Script {
     constructor() {
       super();
@@ -14233,12 +14471,12 @@
   };
   __name(Groove, "Groove");
   Groove = __decorateClass([
-    regClass57("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
+    regClass56("9423b787-8e07-485d-bf20-a0797b54ba35", "../src/Groove.ts")
   ], Groove);
 
   // src/Invite.ts
   var SFS2X19 = __toESM(require_sfs2x_api());
-  var { regClass: regClass58, property: property58, SoundManager: SoundManager10 } = Laya;
+  var { regClass: regClass57, property: property57, SoundManager: SoundManager10 } = Laya;
   var Invite = class extends Laya.Scene {
     constructor() {
       super(...arguments);
@@ -14353,23 +14591,23 @@
   };
   __name(Invite, "Invite");
   __decorateClass([
-    property58(Laya.Box)
+    property57(Laya.Box)
   ], Invite.prototype, "item", 2);
   __decorateClass([
-    property58(Laya.ViewStack)
+    property57(Laya.ViewStack)
   ], Invite.prototype, "viewStack", 2);
   __decorateClass([
-    property58(Laya.Label)
+    property57(Laya.Label)
   ], Invite.prototype, "clock", 2);
   __decorateClass([
-    property58(Laya.Label)
+    property57(Laya.Label)
   ], Invite.prototype, "roomCode", 2);
   Invite = __decorateClass([
-    regClass58("ddd78c04-cc08-49b6-8797-563c8b0aaefc", "../src/Invite.ts")
+    regClass57("ddd78c04-cc08-49b6-8797-563c8b0aaefc", "../src/Invite.ts")
   ], Invite);
 
   // src/Loader.ts
-  var { regClass: regClass59, property: property59 } = Laya;
+  var { regClass: regClass58, property: property58 } = Laya;
   var Loader = class extends Laya.Script {
     onAwake() {
       Laya.loader.load(
@@ -14527,26 +14765,26 @@
   };
   __name(Loader, "Loader");
   __decorateClass([
-    property59(Laya.ProgressBar)
+    property58(Laya.ProgressBar)
   ], Loader.prototype, "progress", 2);
   Loader = __decorateClass([
-    regClass59("6ba36595-2b25-4c8e-94ec-93bc12bea352", "../src/Loader.ts")
+    regClass58("6ba36595-2b25-4c8e-94ec-93bc12bea352", "../src/Loader.ts")
   ], Loader);
 
   // src/Lunch.ts
-  var { regClass: regClass60, property: property60 } = Laya;
+  var { regClass: regClass59, property: property59 } = Laya;
   var Lunch = class extends Laya.Script {
     onStart() {
     }
   };
   __name(Lunch, "Lunch");
   Lunch = __decorateClass([
-    regClass60("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
+    regClass59("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
   ], Lunch);
 
   // src/OnlineParallel.ts
   var SFS2X20 = __toESM(require_sfs2x_api());
-  var { regClass: regClass61, property: property61 } = Laya;
+  var { regClass: regClass60, property: property60 } = Laya;
   var OnlineParallel = class extends GameRoom {
     constructor() {
       super();
@@ -14641,11 +14879,11 @@
   };
   __name(OnlineParallel, "OnlineParallel");
   OnlineParallel = __decorateClass([
-    regClass61("ed529f9a-99b9-4ca5-9c9f-f8dc68b088a5", "../src/OnlineParallel.ts")
+    regClass60("ed529f9a-99b9-4ca5-9c9f-f8dc68b088a5", "../src/OnlineParallel.ts")
   ], OnlineParallel);
 
   // src/Menu.ts
-  var { regClass: regClass62, property: property62, SoundManager: SoundManager11 } = Laya;
+  var { regClass: regClass61, property: property61, SoundManager: SoundManager11 } = Laya;
   var Menu = class extends Laya.Script {
     constructor() {
       super();
@@ -14740,45 +14978,45 @@
   };
   __name(Menu, "Menu");
   __decorateClass([
-    property62(Laya.Button)
+    property61(Laya.Button)
   ], Menu.prototype, "challengeComputer", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property61(Laya.Button)
   ], Menu.prototype, "challengeExtreme", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property61(Laya.Button)
   ], Menu.prototype, "challengeFriend", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property61(Laya.Button)
   ], Menu.prototype, "settings", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property61(Laya.Button)
   ], Menu.prototype, "buddy", 2);
   __decorateClass([
-    property62(Laya.Box)
+    property61(Laya.Box)
   ], Menu.prototype, "avatar", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property61(Laya.Sprite)
   ], Menu.prototype, "goldcoin", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property61(Laya.Sprite)
   ], Menu.prototype, "ranklist", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property61(Laya.Sprite)
   ], Menu.prototype, "checkin", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property61(Laya.Sprite)
   ], Menu.prototype, "level", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property61(Laya.Sprite)
   ], Menu.prototype, "trims", 2);
   Menu = __decorateClass([
-    regClass62("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
+    regClass61("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
 
   // src/Militant.ts
   var SFS2X21 = __toESM(require_sfs2x_api());
-  var { regClass: regClass63, property: property63, SoundManager: SoundManager12 } = Laya;
+  var { regClass: regClass62, property: property62, SoundManager: SoundManager12 } = Laya;
   var Militant = class extends Laya.Scene {
     constructor() {
       super(...arguments);
@@ -14907,20 +15145,20 @@
   };
   __name(Militant, "Militant");
   __decorateClass([
-    property63(Laya.Box)
+    property62(Laya.Box)
   ], Militant.prototype, "item", 2);
   __decorateClass([
-    property63(Laya.ViewStack)
+    property62(Laya.ViewStack)
   ], Militant.prototype, "viewStack", 2);
   __decorateClass([
-    property63(Laya.Label)
+    property62(Laya.Label)
   ], Militant.prototype, "clock", 2);
   Militant = __decorateClass([
-    regClass63("ad36c844-687a-4547-a0c9-d64724488c9e", "../src/Militant.ts")
+    regClass62("ad36c844-687a-4547-a0c9-d64724488c9e", "../src/Militant.ts")
   ], Militant);
 
   // src/MyselfAvatar.ts
-  var { regClass: regClass64, property: property64 } = Laya;
+  var { regClass: regClass63, property: property63 } = Laya;
   var MyselfAvatar = class extends Laya.Script {
     constructor() {
       super();
@@ -14932,11 +15170,11 @@
   };
   __name(MyselfAvatar, "MyselfAvatar");
   MyselfAvatar = __decorateClass([
-    regClass64("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
+    regClass63("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
   ], MyselfAvatar);
 
   // src/MyselfGold.ts
-  var { regClass: regClass65, property: property65 } = Laya;
+  var { regClass: regClass64, property: property64 } = Laya;
   var MyselfGold = class extends Laya.Script {
     constructor() {
       super();
@@ -14948,11 +15186,11 @@
   };
   __name(MyselfGold, "MyselfGold");
   MyselfGold = __decorateClass([
-    regClass65("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
+    regClass64("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
   ], MyselfGold);
 
   // src/MyselfLv.ts
-  var { regClass: regClass66, property: property66 } = Laya;
+  var { regClass: regClass65, property: property65 } = Laya;
   var MyselfLv = class extends Laya.Script {
     constructor() {
       super();
@@ -14964,11 +15202,11 @@
   };
   __name(MyselfLv, "MyselfLv");
   MyselfLv = __decorateClass([
-    regClass66("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
+    regClass65("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
   ], MyselfLv);
 
   // src/MyselfName.ts
-  var { regClass: regClass67, property: property67 } = Laya;
+  var { regClass: regClass66, property: property66 } = Laya;
   var MyselfName = class extends Laya.Script {
     constructor() {
       super();
@@ -14980,11 +15218,11 @@
   };
   __name(MyselfName, "MyselfName");
   MyselfName = __decorateClass([
-    regClass67("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
+    regClass66("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
   ], MyselfName);
 
   // src/MyselfTrim.ts
-  var { regClass: regClass68, property: property68 } = Laya;
+  var { regClass: regClass67, property: property67 } = Laya;
   var MyselfTrim = class extends Laya.Script {
     //declare owner : Laya.Sprite3D;
     constructor() {
@@ -14998,11 +15236,11 @@
   };
   __name(MyselfTrim, "MyselfTrim");
   MyselfTrim = __decorateClass([
-    regClass68("de3ddc02-0b18-42f2-9cc9-7367db4fcf46", "../src/MyselfTrim.ts")
+    regClass67("de3ddc02-0b18-42f2-9cc9-7367db4fcf46", "../src/MyselfTrim.ts")
   ], MyselfTrim);
 
   // src/PlayerProfile.ts
-  var { regClass: regClass69, property: property69 } = Laya;
+  var { regClass: regClass68, property: property68 } = Laya;
   var PlayerProfile = class extends Laya.Script {
     constructor() {
       super();
@@ -15011,11 +15249,11 @@
   };
   __name(PlayerProfile, "PlayerProfile");
   PlayerProfile = __decorateClass([
-    regClass69("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
+    regClass68("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
   ], PlayerProfile);
 
   // src/ProfileDialog.ts
-  var { regClass: regClass70, property: property70 } = Laya;
+  var { regClass: regClass69, property: property69 } = Laya;
   var ProfileDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -15049,27 +15287,27 @@
   };
   __name(ProfileDialog, "ProfileDialog");
   __decorateClass([
-    property70(Laya.TextInput)
+    property69(Laya.TextInput)
   ], ProfileDialog.prototype, "name", 2);
   __decorateClass([
-    property70(Laya.List)
+    property69(Laya.List)
   ], ProfileDialog.prototype, "avatarList", 2);
   __decorateClass([
-    property70(Number)
+    property69(Number)
   ], ProfileDialog.prototype, "avatarNumber", 2);
   __decorateClass([
-    property70(Laya.Label)
+    property69(Laya.Label)
   ], ProfileDialog.prototype, "level", 2);
   __decorateClass([
-    property70(Laya.ProgressBar)
+    property69(Laya.ProgressBar)
   ], ProfileDialog.prototype, "levelProcess", 2);
   ProfileDialog = __decorateClass([
-    regClass70("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
+    regClass69("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
   ], ProfileDialog);
 
   // src/PropsDialog.ts
   var SFS2X22 = __toESM(require_sfs2x_api());
-  var { regClass: regClass71, property: property71 } = Laya;
+  var { regClass: regClass70, property: property70 } = Laya;
   var PropsDialog = class extends Laya.Dialog {
     constructor() {
       super();
@@ -15114,11 +15352,11 @@
   };
   __name(PropsDialog, "PropsDialog");
   PropsDialog = __decorateClass([
-    regClass71("fcc18deb-08ab-438a-abed-3b50c1cf6780", "../src/PropsDialog.ts")
+    regClass70("fcc18deb-08ab-438a-abed-3b50c1cf6780", "../src/PropsDialog.ts")
   ], PropsDialog);
 
   // src/PropsItem.ts
-  var { regClass: regClass72, property: property72 } = Laya;
+  var { regClass: regClass71, property: property71 } = Laya;
   var PropsItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15128,20 +15366,20 @@
   };
   __name(PropsItem, "PropsItem");
   __decorateClass([
-    property72(Laya.Label)
+    property71(Laya.Label)
   ], PropsItem.prototype, "gold", 2);
   __decorateClass([
-    property72(Laya.Clip)
+    property71(Laya.Clip)
   ], PropsItem.prototype, "image", 2);
   __decorateClass([
-    property72(Laya.Button)
+    property71(Laya.Button)
   ], PropsItem.prototype, "useBtn", 2);
   PropsItem = __decorateClass([
-    regClass72("632fe6a4-d7be-43f1-a32a-5c5e46228c6f", "../src/PropsItem.ts")
+    regClass71("632fe6a4-d7be-43f1-a32a-5c5e46228c6f", "../src/PropsItem.ts")
   ], PropsItem);
 
   // src/PropsList.ts
-  var { regClass: regClass73, property: property73 } = Laya;
+  var { regClass: regClass72, property: property72 } = Laya;
   var PropsList = class extends Laya.Script {
     constructor() {
       super();
@@ -15166,17 +15404,17 @@
   };
   __name(PropsList, "PropsList");
   __decorateClass([
-    property73(Laya.List)
+    property72(Laya.List)
   ], PropsList.prototype, "list", 2);
   PropsList = __decorateClass([
-    regClass73("75332ac8-0118-48e1-ae6b-2c148b8ace30", "../src/PropsList.ts")
+    regClass72("75332ac8-0118-48e1-ae6b-2c148b8ace30", "../src/PropsList.ts")
   ], PropsList);
 
   // src/RanklistDialog.ts
   var SFS2X23 = __toESM(require_sfs2x_api());
 
   // src/RanklistItem.ts
-  var { regClass: regClass74, property: property74 } = Laya;
+  var { regClass: regClass73, property: property73 } = Laya;
   var RanklistItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15184,26 +15422,26 @@
   };
   __name(RanklistItem, "RanklistItem");
   __decorateClass([
-    property74(Laya.Label)
+    property73(Laya.Label)
   ], RanklistItem.prototype, "wins", 2);
   __decorateClass([
-    property74(Laya.Label)
+    property73(Laya.Label)
   ], RanklistItem.prototype, "rank", 2);
   __decorateClass([
-    property74(Laya.Label)
+    property73(Laya.Label)
   ], RanklistItem.prototype, "nickname", 2);
   __decorateClass([
-    property74(Laya.Clip)
+    property73(Laya.Clip)
   ], RanklistItem.prototype, "avatar", 2);
   __decorateClass([
-    property74(Laya.Clip)
+    property73(Laya.Clip)
   ], RanklistItem.prototype, "icon", 2);
   RanklistItem = __decorateClass([
-    regClass74("11031840-a06f-486c-800f-1a0b954f0d89", "../src/RanklistItem.ts")
+    regClass73("11031840-a06f-486c-800f-1a0b954f0d89", "../src/RanklistItem.ts")
   ], RanklistItem);
 
   // src/RanklistDialog.ts
-  var { regClass: regClass75, property: property75 } = Laya;
+  var { regClass: regClass74, property: property74 } = Laya;
   var RanklistDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -15248,15 +15486,15 @@
   };
   __name(RanklistDialog, "RanklistDialog");
   __decorateClass([
-    property75(Laya.List)
+    property74(Laya.List)
   ], RanklistDialog.prototype, "list", 2);
   RanklistDialog = __decorateClass([
-    regClass75("f3623e2b-f742-4477-ab8f-37a8cdb21c85", "../src/RanklistDialog.ts")
+    regClass74("f3623e2b-f742-4477-ab8f-37a8cdb21c85", "../src/RanklistDialog.ts")
   ], RanklistDialog);
 
   // src/SelectColor.ts
   var SFS2X24 = __toESM(require_sfs2x_api());
-  var { regClass: regClass76, property: property76 } = Laya;
+  var { regClass: regClass75, property: property75 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
       super();
@@ -15342,23 +15580,77 @@
   };
   __name(SelectColor, "SelectColor");
   __decorateClass([
-    property76(Laya.Button)
+    property75(Laya.Button)
   ], SelectColor.prototype, "closeBtn", 2);
   __decorateClass([
-    property76(Laya.Button)
+    property75(Laya.Button)
   ], SelectColor.prototype, "play", 2);
   __decorateClass([
-    property76([Laya.CheckBox])
+    property75([Laya.CheckBox])
   ], SelectColor.prototype, "colorCheckBox", 2);
   SelectColor = __decorateClass([
-    regClass76("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
+    regClass75("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
   ], SelectColor);
+
+  // src/TranslateLanguage.ts
+  var import_roddeh_i18n = __toESM(require_i18n());
+  var { regClass: regClass76, property: property76 } = Laya;
+  var TranslateLanguage = class extends Laya.Script {
+    constructor() {
+      super();
+      let language = Laya.LocalStorage.getItem("language");
+      TranslateLanguage.setLanguage(language);
+    }
+    static setLanguage(region) {
+      switch (region) {
+        case "en": {
+          import_roddeh_i18n.default.translator.add({
+            values: {
+              "LV.": "ddd"
+            }
+          });
+          break;
+        }
+        case "jp": {
+          import_roddeh_i18n.default.translator.add({
+            values: {
+              "LV.": "aaa"
+            }
+          });
+          break;
+        }
+        default: {
+          import_roddeh_i18n.default.translator.add({
+            values: {
+              "LV.": "bbbb"
+            }
+          });
+          break;
+        }
+      }
+    }
+  };
+  __name(TranslateLanguage, "TranslateLanguage");
+  TranslateLanguage = __decorateClass([
+    regClass76("fc5b90a5-bb9d-4c46-a1eb-22ca0f40b5cf", "../src/TranslateLanguage.ts")
+  ], TranslateLanguage);
 
   // src/Settings.ts
   var { regClass: regClass77, property: property77 } = Laya;
   var Settings = class extends Laya.Script {
     constructor() {
       super();
+      this.regions = [
+        "zh-cn",
+        "en",
+        "jp"
+      ];
+      this.regionsText = [
+        "\u7B80\u4F53\u4E2D\u6587",
+        "English",
+        "Japanese"
+      ];
+      this.currentLang = null;
     }
     /**
      * 组件被激活后执行，此时所有节点和组件均已创建完毕，此方法只执行一次
@@ -15375,6 +15667,16 @@
       });
       this.musicMuted.selected = Laya.LocalStorage.getItem("musicMuted") == "on";
       this.soundMuted.selected = Laya.LocalStorage.getItem("soundMuted") == "on";
+      this.languages.labels = this.regionsText.join(",");
+      this.languages.selectHandler = new Laya.Handler(this, this.onLanguageSelected);
+      this.currentLang = Laya.LocalStorage.getItem("language");
+      this.languages.selectedIndex = this.regions.indexOf(this.currentLang);
+    }
+    onLanguageSelected(index) {
+      if (this.currentLang != this.regions[index]) {
+        Laya.LocalStorage.setItem("language", this.regions[index]);
+        TranslateLanguage.setLanguage(this.regions[index]);
+      }
     }
   };
   __name(Settings, "Settings");
@@ -15384,6 +15686,9 @@
   __decorateClass([
     property77(Laya.CheckBox)
   ], Settings.prototype, "soundMuted", 2);
+  __decorateClass([
+    property77(Laya.ComboBox)
+  ], Settings.prototype, "languages", 2);
   Settings = __decorateClass([
     regClass77("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
@@ -15447,8 +15752,36 @@
     regClass79("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
 
-  // src/TrimItem.ts
+  // src/Translate.ts
+  var import_roddeh_i18n2 = __toESM(require_i18n());
   var { regClass: regClass80, property: property80 } = Laya;
+  var Translate = class extends Laya.Script {
+    constructor() {
+      super(...arguments);
+      this.labelText = null;
+    }
+    onAwake() {
+      let label = this.owner;
+      if (label != null) {
+        this.labelText = label.text;
+      }
+    }
+    onStart() {
+    }
+    onUpdate() {
+      let label = this.owner;
+      if (label != null) {
+        label.text = (0, import_roddeh_i18n2.default)(this.labelText);
+      }
+    }
+  };
+  __name(Translate, "Translate");
+  Translate = __decorateClass([
+    regClass80("06261119-b6b4-40ce-962b-8d5cdda7368a", "../src/Translate.ts")
+  ], Translate);
+
+  // src/TrimItem.ts
+  var { regClass: regClass81, property: property81 } = Laya;
   var TrimItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15456,20 +15789,20 @@
   };
   __name(TrimItem, "TrimItem");
   __decorateClass([
-    property80(Laya.Label)
+    property81(Laya.Label)
   ], TrimItem.prototype, "title", 2);
   __decorateClass([
-    property80(Laya.Image)
+    property81(Laya.Image)
   ], TrimItem.prototype, "image", 2);
   __decorateClass([
-    property80(Laya.Image)
+    property81(Laya.Image)
   ], TrimItem.prototype, "background", 2);
   TrimItem = __decorateClass([
-    regClass80("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
+    regClass81("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
   ], TrimItem);
 
   // src/TrimCoinItem.ts
-  var { regClass: regClass81, property: property81 } = Laya;
+  var { regClass: regClass82, property: property82 } = Laya;
   var TrimCoinItem = class extends TrimItem {
     constructor() {
       super();
@@ -15488,29 +15821,29 @@
   };
   __name(TrimCoinItem, "TrimCoinItem");
   __decorateClass([
-    property81(Laya.Label)
+    property82(Laya.Label)
   ], TrimCoinItem.prototype, "gold", 2);
   __decorateClass([
-    property81(Laya.ViewStack)
+    property82(Laya.ViewStack)
   ], TrimCoinItem.prototype, "viewStack", 2);
   __decorateClass([
-    property81(Laya.Button)
+    property82(Laya.Button)
   ], TrimCoinItem.prototype, "buybutton", 2);
   __decorateClass([
-    property81(Laya.CheckBox)
+    property82(Laya.CheckBox)
   ], TrimCoinItem.prototype, "selectBox", 2);
   TrimCoinItem = __decorateClass([
-    regClass81("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
+    regClass82("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
   ], TrimCoinItem);
 
   // src/TrimCoinsList.ts
   var SFS2X26 = __toESM(require_sfs2x_api());
 
   // src/TrimConfig.ts
-  var TrimConfig = class {
+  var _TrimConfig = class _TrimConfig {
   };
-  __name(TrimConfig, "TrimConfig");
-  TrimConfig.Level = [
+  __name(_TrimConfig, "TrimConfig");
+  _TrimConfig.Level = [
     {
       image: "0.png",
       level: 0
@@ -15544,7 +15877,7 @@
       level: 100
     }
   ];
-  TrimConfig.Coins = [
+  _TrimConfig.Coins = [
     {
       image: "0.png",
       gold: 0
@@ -15558,9 +15891,10 @@
       gold: 100
     }
   ];
+  var TrimConfig = _TrimConfig;
 
   // src/TrimCoinsList.ts
-  var { regClass: regClass82, property: property82 } = Laya;
+  var { regClass: regClass83, property: property83 } = Laya;
   var TrimCoinsList = class extends Laya.Script {
     constructor() {
       super();
@@ -15629,14 +15963,14 @@
   };
   __name(TrimCoinsList, "TrimCoinsList");
   __decorateClass([
-    property82(Laya.List)
+    property83(Laya.List)
   ], TrimCoinsList.prototype, "list", 2);
   TrimCoinsList = __decorateClass([
-    regClass82("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
+    regClass83("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
   ], TrimCoinsList);
 
   // src/TrimLevelItem.ts
-  var { regClass: regClass83, property: property83 } = Laya;
+  var { regClass: regClass84, property: property84 } = Laya;
   var TrimLevelItem = class extends TrimItem {
     constructor() {
       super();
@@ -15655,14 +15989,14 @@
   };
   __name(TrimLevelItem, "TrimLevelItem");
   __decorateClass([
-    property83(Laya.CheckBox)
+    property84(Laya.CheckBox)
   ], TrimLevelItem.prototype, "button", 2);
   TrimLevelItem = __decorateClass([
-    regClass83("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
+    regClass84("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
   ], TrimLevelItem);
 
   // src/TrimLevelList.ts
-  var { regClass: regClass84, property: property84 } = Laya;
+  var { regClass: regClass85, property: property85 } = Laya;
   var TrimLevelList = class extends Laya.Script {
     constructor() {
       super();
@@ -15698,14 +16032,14 @@
   };
   __name(TrimLevelList, "TrimLevelList");
   __decorateClass([
-    property84(Laya.List)
+    property85(Laya.List)
   ], TrimLevelList.prototype, "list", 2);
   TrimLevelList = __decorateClass([
-    regClass84("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
+    regClass85("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
   ], TrimLevelList);
 
   // src/TrimDialog.ts
-  var { regClass: regClass85, property: property85 } = Laya;
+  var { regClass: regClass86, property: property86 } = Laya;
   var TrimDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -15735,20 +16069,33 @@
   };
   __name(TrimDialog, "TrimDialog");
   __decorateClass([
-    property85(Laya.ViewStack)
+    property86(Laya.ViewStack)
   ], TrimDialog.prototype, "viewStack", 2);
   __decorateClass([
-    property85(Laya.Tab)
+    property86(Laya.Tab)
   ], TrimDialog.prototype, "tab", 2);
   __decorateClass([
-    property85(TrimLevelList)
+    property86(TrimLevelList)
   ], TrimDialog.prototype, "trimLevelList", 2);
   __decorateClass([
-    property85(TrimCoinsList)
+    property86(TrimCoinsList)
   ], TrimDialog.prototype, "trimCoinsList", 2);
   TrimDialog = __decorateClass([
-    regClass85("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
+    regClass86("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
   ], TrimDialog);
+
+  // src/Entry.ts
+  var { regClass: regClass87, property: property87 } = Laya;
+  var Entry = class extends Laya.Script {
+    //declare owner : Laya.Sprite3D;
+    constructor() {
+      super();
+    }
+  };
+  __name(Entry, "Entry");
+  Entry = __decorateClass([
+    regClass87("fb42bd91-a049-48ad-9e6b-8ac7011df73a", "../src/Entry.ts")
+  ], Entry);
 })();
 /*! Bundled license information:
 
