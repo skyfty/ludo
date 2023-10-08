@@ -12,10 +12,6 @@ export class Translate extends Laya.Script {
             this.labelText = label.text;
         }
     }
-    onStart(): void {
-      
-    }
-
     onUpdate(): void {
         let label = this.owner  as Laya.Label;
         if (label != null) {

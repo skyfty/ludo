@@ -43,6 +43,7 @@
       "y": 301,
       "width": 451.7123916369198,
       "height": 51.330953595104496,
+      "visible": false,
       "skin": "res://20dc4ed7-3cdc-453e-b055-73e6412b723d",
       "color": "#ffffff"
     },
@@ -134,6 +135,31 @@
       "itemColors": "#5e95b6,#ffffff,#000000,#8fa4b1,#ffffff",
       "selectedLabel": "",
       "defaultLabel": ""
+    },
+    {
+      "_$id": "ygb41m8l",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 271,
+      "y": 300,
+      "width": 225,
+      "height": 60,
+      "text": "Settings",
+      "fontSize": 55,
+      "color": "rgba(253, 203, 4, 1)",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "leading": 2,
+      "padding": "0,0,0,0",
+      "stroke": 7,
+      "strokeColor": "rgba(87, 86, 73, 1)",
+      "_$comp": [
+        {
+          "_$type": "06261119-b6b4-40ce-962b-8d5cdda7368a",
+          "scriptPath": "../src/Translate.ts"
+        }
+      ]
     }
   ]
 }

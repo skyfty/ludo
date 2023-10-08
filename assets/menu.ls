@@ -57,6 +57,10 @@
       "port": 8080,
       "zone": "Ludo",
       "debug": false
+    },
+    {
+      "_$type": "fc5b90a5-bb9d-4c46-a1eb-22ca0f40b5cf",
+      "scriptPath": "../src/TranslateLanguage.ts"
     }
   ],
   "_$child": [
@@ -106,6 +110,7 @@
       "skin": "res://81906343-13e7-46b0-99ac-72f789289ed4",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -126,6 +131,7 @@
       "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -146,6 +152,7 @@
       "skin": "res://687a6406-d29a-4b76-99b3-0d8343323c24",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -267,6 +274,7 @@
           "skin": "res://c35ba747-0789-4a01-a091-24514ed42549",
           "label": "",
           "labelSize": 20,
+          "labelVAlign": "middle",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -337,7 +345,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 5,
+              "index": 3,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -355,7 +363,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 3,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
@@ -382,6 +390,7 @@
               "fontSize": 34,
               "color": "rgba(243, 202, 13, 1)",
               "bold": true,
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0"
             },
@@ -396,6 +405,7 @@
               "text": "???",
               "fontSize": 34,
               "color": "#FFFFFF",
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0",
               "_$comp": [
@@ -433,6 +443,7 @@
       "skin": "res://b86621ff-1319-4a8d-8963-40698e57ad65",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -452,7 +463,8 @@
       "stateNum": 2,
       "skin": "res://845d7c64-1a5d-4065-bc8f-c5abd4b9557a",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "labelVAlign": "middle"
     },
     {
       "_$id": "p9nfamtu",
@@ -468,7 +480,8 @@
       "stateNum": 2,
       "skin": "res://77bd2846-9777-435a-96de-f3a0a98199d0",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "labelVAlign": "middle"
     },
     {
       "_$id": "jutu8ny7",
@@ -482,7 +495,8 @@
       "stateNum": 2,
       "skin": "res://119274e4-8e4b-48da-ab33-f491f7513b22",
       "label": "",
-      "labelSize": 20
+      "labelSize": 20,
+      "labelVAlign": "middle"
     }
   ]
 }

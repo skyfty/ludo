@@ -24,8 +24,6 @@ export class Settings extends Laya.Script {
     @property(Laya.ComboBox)
     public languages: Laya.ComboBox;
 
-    private currentLang:any = null;
-
     constructor() {
         super();
     }
@@ -48,14 +46,11 @@ export class Settings extends Laya.Script {
 
         this.languages.labels = this.regionsText.join(",");
         this.languages.selectHandler = new Laya.Handler(this, this.onLanguageSelected);
-
-        this.currentLang = Laya.LocalStorage.getItem("language");
-        this.languages.selectedIndex = this.regions.indexOf(this.currentLang);
+        this.languages.selectedIndex = this.regions.indexOf(Laya.LocalStorage.getItem("language"));
     }
 
     private onLanguageSelected(index: number) {
-        if (this.currentLang != this.regions[index]) {
-            Laya.LocalStorage.setItem("language", this.regions[index]);
+        if (Laya.LocalStorage.getItem("language") != this.regions[index]) {
             TranslateLanguage.setLanguage(this.regions[index]);
         }
     }

@@ -5,36 +5,26 @@ import i18n from "../node_modules/roddeh-i18n";
 export class TranslateLanguage extends Laya.Script {
     constructor() {
         super();
-        let language = Laya.LocalStorage.getItem("language");
-        TranslateLanguage.setLanguage(language);
+        TranslateLanguage.setLanguage(Laya.LocalStorage.getItem("language"));
     }
 
     static setLanguage(region:string) {
-      switch(region) {
-        case "en": {
-          i18n.translator.add({
-            values:{
-              "LV.": "ddd"
-            }
-          })
-          break;
+      TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
+      TranslateLanguage.loadLocalLanguage("http://api.touchmagic.cn/locale/" + region + ".json", region);
+    }
+
+    static loadLocalLanguage(url:string, region:string) {
+      Laya.loader.load(url, Laya.Loader.JSON).then((json) => {
+        if (json == null || json.data == null) {
+          return;
         }
-        case "jp": {
-          i18n.translator.add({
-            values:{
-              "LV.": "aaa"
-            }
-          })
-          break;
-        }
-        default: {
-          i18n.translator.add({
-            values:{
-              "LV.": "bbbb"
-            }
-          })
-          break;
-        }
-      }
+        i18n.translator.add(json.data);
+        Laya.LocalStorage.setItem("language", region);
+      });
+      Laya.loader.on(Laya.Event.ERROR, this, function(err: string){
+        console.log("加载失败: " + err);
+
+      });
+
     }
 }
