@@ -10499,7 +10499,7 @@
             return root.i18n = factory();
           }
         })(typeof self !== "undefined" && self !== null ? self : this, function() {
-          var Translator, i18n3, translator;
+          var Translator, i18n4, translator;
           Translator = function() {
             function Translator2() {
               this.translate = __bind(this.translate, this);
@@ -10703,19 +10703,19 @@
             return Translator2;
           }();
           translator = new Translator();
-          i18n3 = translator.translate;
-          i18n3.translator = translator;
-          i18n3.create = function(data) {
+          i18n4 = translator.translate;
+          i18n4.translator = translator;
+          i18n4.create = function(data) {
             var trans;
             trans = new Translator();
             if (data != null) {
               trans.add(data);
             }
-            trans.translate.create = i18n3.create;
+            trans.translate.create = i18n4.create;
             trans.translate.translator = trans;
             return trans.translate;
           };
-          return i18n3;
+          return i18n4;
         });
       }).call(exports);
     }
@@ -15749,34 +15749,8 @@
     regClass80("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
 
-  // src/Translate.ts
-  var import_roddeh_i18n2 = __toESM(require_i18n());
-  var { regClass: regClass81, property: property81 } = Laya;
-  var Translate = class extends Laya.Script {
-    constructor() {
-      super(...arguments);
-      this.labelText = null;
-    }
-    onAwake() {
-      let label = this.owner;
-      if (label != null) {
-        this.labelText = label.text;
-      }
-    }
-    onUpdate() {
-      let label = this.owner;
-      if (label != null) {
-        label.text = (0, import_roddeh_i18n2.default)(this.labelText);
-      }
-    }
-  };
-  __name(Translate, "Translate");
-  Translate = __decorateClass([
-    regClass81("06261119-b6b4-40ce-962b-8d5cdda7368a", "../src/Translate.ts")
-  ], Translate);
-
   // src/TrimItem.ts
-  var { regClass: regClass82, property: property82 } = Laya;
+  var { regClass: regClass81, property: property81 } = Laya;
   var TrimItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15784,20 +15758,20 @@
   };
   __name(TrimItem, "TrimItem");
   __decorateClass([
-    property82(Laya.Label)
+    property81(Laya.Label)
   ], TrimItem.prototype, "title", 2);
   __decorateClass([
-    property82(Laya.Image)
+    property81(Laya.Image)
   ], TrimItem.prototype, "image", 2);
   __decorateClass([
-    property82(Laya.Image)
+    property81(Laya.Image)
   ], TrimItem.prototype, "background", 2);
   TrimItem = __decorateClass([
-    regClass82("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
+    regClass81("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
   ], TrimItem);
 
   // src/TrimCoinItem.ts
-  var { regClass: regClass83, property: property83 } = Laya;
+  var { regClass: regClass82, property: property82 } = Laya;
   var TrimCoinItem = class extends TrimItem {
     constructor() {
       super();
@@ -15816,19 +15790,19 @@
   };
   __name(TrimCoinItem, "TrimCoinItem");
   __decorateClass([
-    property83(Laya.Label)
+    property82(Laya.Label)
   ], TrimCoinItem.prototype, "gold", 2);
   __decorateClass([
-    property83(Laya.ViewStack)
+    property82(Laya.ViewStack)
   ], TrimCoinItem.prototype, "viewStack", 2);
   __decorateClass([
-    property83(Laya.Button)
+    property82(Laya.Button)
   ], TrimCoinItem.prototype, "buybutton", 2);
   __decorateClass([
-    property83(Laya.CheckBox)
+    property82(Laya.CheckBox)
   ], TrimCoinItem.prototype, "selectBox", 2);
   TrimCoinItem = __decorateClass([
-    regClass83("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
+    regClass82("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
   ], TrimCoinItem);
 
   // src/TrimCoinsList.ts
@@ -15889,7 +15863,7 @@
   var TrimConfig = _TrimConfig;
 
   // src/TrimCoinsList.ts
-  var { regClass: regClass84, property: property84 } = Laya;
+  var { regClass: regClass83, property: property83 } = Laya;
   var TrimCoinsList = class extends Laya.Script {
     constructor() {
       super();
@@ -15958,14 +15932,14 @@
   };
   __name(TrimCoinsList, "TrimCoinsList");
   __decorateClass([
-    property84(Laya.List)
+    property83(Laya.List)
   ], TrimCoinsList.prototype, "list", 2);
   TrimCoinsList = __decorateClass([
-    regClass84("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
+    regClass83("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
   ], TrimCoinsList);
 
   // src/TrimLevelItem.ts
-  var { regClass: regClass85, property: property85 } = Laya;
+  var { regClass: regClass84, property: property84 } = Laya;
   var TrimLevelItem = class extends TrimItem {
     constructor() {
       super();
@@ -15984,14 +15958,14 @@
   };
   __name(TrimLevelItem, "TrimLevelItem");
   __decorateClass([
-    property85(Laya.CheckBox)
+    property84(Laya.CheckBox)
   ], TrimLevelItem.prototype, "button", 2);
   TrimLevelItem = __decorateClass([
-    regClass85("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
+    regClass84("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
   ], TrimLevelItem);
 
   // src/TrimLevelList.ts
-  var { regClass: regClass86, property: property86 } = Laya;
+  var { regClass: regClass85, property: property85 } = Laya;
   var TrimLevelList = class extends Laya.Script {
     constructor() {
       super();
@@ -16027,14 +16001,14 @@
   };
   __name(TrimLevelList, "TrimLevelList");
   __decorateClass([
-    property86(Laya.List)
+    property85(Laya.List)
   ], TrimLevelList.prototype, "list", 2);
   TrimLevelList = __decorateClass([
-    regClass86("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
+    regClass85("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
   ], TrimLevelList);
 
   // src/TrimDialog.ts
-  var { regClass: regClass87, property: property87 } = Laya;
+  var { regClass: regClass86, property: property86 } = Laya;
   var TrimDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -16064,20 +16038,72 @@
   };
   __name(TrimDialog, "TrimDialog");
   __decorateClass([
-    property87(Laya.ViewStack)
+    property86(Laya.ViewStack)
   ], TrimDialog.prototype, "viewStack", 2);
   __decorateClass([
-    property87(Laya.Tab)
+    property86(Laya.Tab)
   ], TrimDialog.prototype, "tab", 2);
   __decorateClass([
-    property87(TrimLevelList)
+    property86(TrimLevelList)
   ], TrimDialog.prototype, "trimLevelList", 2);
   __decorateClass([
-    property87(TrimCoinsList)
+    property86(TrimCoinsList)
   ], TrimDialog.prototype, "trimCoinsList", 2);
   TrimDialog = __decorateClass([
-    regClass87("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
+    regClass86("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
   ], TrimDialog);
+
+  // src/TranslateLabel.ts
+  var import_roddeh_i18n2 = __toESM(require_i18n());
+  var { regClass: regClass87, property: property87 } = Laya;
+  var TranslateLabel = class extends Laya.Script {
+    constructor() {
+      super(...arguments);
+      this.labelText = null;
+    }
+    onAwake() {
+      let label = this.owner;
+      if (label != null) {
+        this.labelText = label.text;
+      }
+    }
+    onUpdate() {
+      let label = this.owner;
+      if (label != null) {
+        label.text = (0, import_roddeh_i18n2.default)(this.labelText);
+      }
+    }
+  };
+  __name(TranslateLabel, "TranslateLabel");
+  TranslateLabel = __decorateClass([
+    regClass87("95d9c950-3df0-48f6-983a-191d7ee0bdd1", "../src/TranslateLabel.ts")
+  ], TranslateLabel);
+
+  // src/TranslateTab.ts
+  var import_roddeh_i18n3 = __toESM(require_i18n());
+  var { regClass: regClass88, property: property88 } = Laya;
+  var TranslateTab = class extends Laya.Script {
+    onAwake() {
+      let tab = this.owner;
+      if (tab != null) {
+        this.labels = tab.labels.split(",");
+      }
+    }
+    onUpdate() {
+      let tab = this.owner;
+      if (tab != null) {
+        let labelsArr = [];
+        for (let i in this.labels) {
+          labelsArr.push((0, import_roddeh_i18n3.default)(this.labels[i]));
+        }
+        tab.labels = labelsArr.join(",");
+      }
+    }
+  };
+  __name(TranslateTab, "TranslateTab");
+  TranslateTab = __decorateClass([
+    regClass88("af3f1d27-46d7-496d-8441-57069404b191", "../src/TranslateTab.ts")
+  ], TranslateTab);
 })();
 /*! Bundled license information:
 

@@ -68,6 +68,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -104,7 +105,13 @@
       "labelStrokeColor": null,
       "labelAlign": null,
       "labelPadding": "6,0,0,0",
-      "strokeColors": null
+      "strokeColors": null,
+      "_$comp": [
+        {
+          "_$type": "af3f1d27-46d7-496d-8441-57069404b191",
+          "scriptPath": "../src/TranslateTab.ts"
+        }
+      ]
     },
     {
       "_$id": "0r8ncp3c",
@@ -200,6 +207,7 @@
                       "fontSize": 42,
                       "color": "rgba(254, 212, 3, 1)",
                       "bold": true,
+                      "valign": "top",
                       "leading": 0,
                       "padding": "0,0,0,0",
                       "stroke": 3,
@@ -252,7 +260,8 @@
                       "stateNum": 1,
                       "skin": "res://63e2b7e1-33cd-4780-a5a5-a805c9738bf0",
                       "label": "",
-                      "labelSize": 20
+                      "labelSize": 20,
+                      "labelVAlign": "middle"
                     }
                   ]
                 }
@@ -344,6 +353,7 @@
                       "fontSize": 42,
                       "color": "rgba(254, 212, 3, 1)",
                       "bold": true,
+                      "valign": "top",
                       "leading": 0,
                       "padding": "0,0,0,0",
                       "stroke": 3,
@@ -364,9 +374,10 @@
                       "label": "ADD AS BUDDY",
                       "labelSize": 19,
                       "labelBold": true,
-                      "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+                      "labelColors": "#ffffff,#ffffff,#ffffff",
+                      "labelVAlign": "middle",
                       "labelStrokeColor": "#32556b",
-                      "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0"
+                      "strokeColors": "#32556b,#32cc6b,#ff0000"
                     },
                     {
                       "_$id": "tk898mpt",
@@ -450,6 +461,7 @@
       "color": "rgba(219, 216, 20, 1)",
       "bold": true,
       "align": "right",
+      "valign": "top",
       "leading": 0,
       "padding": "0,0,0,0",
       "stroke": 2

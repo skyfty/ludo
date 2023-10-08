@@ -1,7 +1,12 @@
 {
     "values":{
         "LV.": "aaa",
-        "Settings":"Settings"
+        "Settings":"Settings",
+        "VS COMPUTER":"VS COMPUTER",
+        "ONLINE MULTIPLAYER":"ONLINE MULTIPLAYER",
+        "PLAY WITH FRIENDS":"PLAY WITH FRIENDS",
+        "BUDDIES":"BUDDIES",
+        "RECENT":"RECENT"
     }
   }
        

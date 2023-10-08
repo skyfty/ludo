@@ -116,6 +116,35 @@
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
         }
+      ],
+      "_$child": [
+        {
+          "_$id": "g1etl9n5",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 207,
+          "y": 34,
+          "width": 275,
+          "height": 69,
+          "text": "VS COMPUTER",
+          "font": "Tahoma",
+          "fontSize": 35,
+          "color": "#FFFFFF",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 0,
+          "padding": "0,0,0,0",
+          "stroke": 6,
+          "strokeColor": "rgba(111, 101, 88, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
+        }
       ]
     },
     {
@@ -137,6 +166,35 @@
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
         }
+      ],
+      "_$child": [
+        {
+          "_$id": "cqpp4gng",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 207,
+          "y": 34,
+          "width": 275,
+          "height": 69,
+          "text": "ONLINE MULTIPLAYER",
+          "font": "Tahoma",
+          "fontSize": 35,
+          "color": "#FFFFFF",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 0,
+          "padding": "0,0,0,0",
+          "stroke": 6,
+          "strokeColor": "rgba(111, 101, 88, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
+        }
       ]
     },
     {
@@ -157,6 +215,35 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "7g752mun",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 207,
+          "y": 34,
+          "width": 275,
+          "height": 69,
+          "text": "PLAY WITH FRIENDS",
+          "font": "Tahoma",
+          "fontSize": 35,
+          "color": "#FFFFFF",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 0,
+          "padding": "0,0,0,0",
+          "stroke": 6,
+          "strokeColor": "rgba(111, 101, 88, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     },
@@ -345,7 +432,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 4,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -363,7 +450,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 5,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

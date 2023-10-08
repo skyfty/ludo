@@ -2,7 +2,7 @@ const { regClass, property } = Laya;
 import i18n from "../node_modules/roddeh-i18n";
 
 @regClass()
-export class Translate extends Laya.Script {
+export class TranslateLabel extends Laya.Script {
     
     private labelText:string = null;
 
