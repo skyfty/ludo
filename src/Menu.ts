@@ -105,7 +105,6 @@ export class Menu extends Laya.Script {
                 Laya.Scene.open("dialog/buddy.lh", true);
             }
         });
-
     }
     onStart(): void {
         Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("musicMuted") == "on";

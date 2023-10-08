@@ -146,6 +146,11 @@ export class Loader extends Laya.Script {
             });
             Laya.loader.on(Laya.Event.ERROR, this, this.onError);
         });
+
+        let language = Laya.LocalStorage.getItem("language");
+        if (language == null) {
+            Laya.LocalStorage.setItem("language", navigator.language.toLowerCase());
+        }
     }
 
     /**

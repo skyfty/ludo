@@ -1,4 +1,4 @@
-const { regClass, property,SoundManager } = Laya;
+const { regClass, property,SoundManager, Browser } = Laya;
 
 @regClass()
 export class Attire extends Laya.Script {
