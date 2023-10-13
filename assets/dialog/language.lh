@@ -1,0 +1,123 @@
+{
+  "_$ver": 1,
+  "_$id": "krocf9g2",
+  "_$type": "Dialog",
+  "name": "Dialog",
+  "width": 750,
+  "height": 1334,
+  "mouseEnabled": true,
+  "autoDestroyAtClosed": true,
+  "isModal": true,
+  "_$comp": [
+    {
+      "_$type": "8869f30b-ebf7-450e-9d69-f27a1155a13d",
+      "scriptPath": "../src/LanguageList.ts",
+      "list": {
+        "_$ref": "tad4wevn"
+      }
+    }
+  ],
+  "_$child": [
+    {
+      "_$id": "m8h9mes6",
+      "_$type": "Button",
+      "name": "close",
+      "x": 335,
+      "y": 1090,
+      "width": 64,
+      "height": 63.5,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
+      "label": "",
+      "labelSize": 20,
+      "labelVAlign": "middle",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "2pmf2dyu",
+      "_$type": "Image",
+      "name": "Image(6)",
+      "x": 18,
+      "y": 87.64305949008505,
+      "width": 712.171957594696,
+      "height": 996.5200490639877,
+      "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "pbtvo4am",
+      "_$type": "Image",
+      "name": "Image(9)",
+      "x": 58,
+      "y": 126,
+      "width": 630,
+      "height": 914,
+      "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
+      "color": "#ffffff"
+    },
+    {
+      "_$id": "tad4wevn",
+      "_$type": "List",
+      "name": "List",
+      "x": 76.6969239257643,
+      "y": 142.26507236964989,
+      "width": 592.8183536354472,
+      "height": 886.6958315698572,
+      "mouseEnabled": true,
+      "itemTemplate": {
+        "_$ref": "pal6youk",
+        "_$tmpl": "itemRender"
+      },
+      "repeatX": 2,
+      "repeatY": 9,
+      "spaceX": 9,
+      "spaceY": 10,
+      "scrollType": 2,
+      "selectEnable": true,
+      "_$child": [
+        {
+          "_$id": "pal6youk",
+          "_$type": "Box",
+          "name": "Box",
+          "width": 292,
+          "height": 90,
+          "mouseEnabled": true,
+          "_filters": [],
+          "_$comp": [
+            {
+              "_$type": "0602bce0-19ff-4b9e-94b7-3aaf0894ea88",
+              "scriptPath": "../src/LanguageItem.ts",
+              "useBtn": {
+                "_$ref": "rc8qudja"
+              }
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "rc8qudja",
+              "_$type": "Button",
+              "name": "Button",
+              "width": 292,
+              "height": 86,
+              "mouseEnabled": true,
+              "_filters": [],
+              "stateNum": 1,
+              "skin": "res://238ef9cb-8a20-414b-8d5e-986c5acccb2d",
+              "label": "sdfsdf",
+              "labelSize": 32,
+              "labelBold": true,
+              "labelColors": "#ffffff,#32cc6b,#ff0000",
+              "labelVAlign": "middle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

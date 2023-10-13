@@ -1,5 +1,4 @@
 const { regClass, property } = Laya;
-import { TranslateLanguage } from "./TranslateLanguage";
 
 @regClass()
 export class Settings extends Laya.Script {
@@ -11,8 +10,9 @@ export class Settings extends Laya.Script {
     @property(Laya.CheckBox)
     public soundMuted: Laya.CheckBox;
 
-    @property(Laya.ComboBox)
-    public languages: Laya.ComboBox;
+    @property(Laya.Button)
+    public languages: Laya.Button;
+
 
     onAwake(): void {
         this.musicMuted.on(Laya.Event.CLICK, this, ()=>{
@@ -27,15 +27,9 @@ export class Settings extends Laya.Script {
         this.musicMuted.selected = Laya.LocalStorage.getItem("musicMuted") == "on";
         this.soundMuted.selected = Laya.LocalStorage.getItem("soundMuted") == "on";
 
-        this.languages.labels = TranslateLanguage.getRegionNameList().join(",");
-        this.languages.selectHandler = new Laya.Handler(this, this.onLanguageSelected);
-        this.languages.selectedIndex = TranslateLanguage.getIndexOfRegion(Laya.LocalStorage.getItem("language"));
-    }
+        this.languages.on(Laya.Event.CLICK, this, ()=>{
+            Laya.Scene.open("dialog/language.lh", false, null);
+        });
 
-    private onLanguageSelected(index: number) {
-        let language = TranslateLanguage.getRegion(index);
-        if (Laya.LocalStorage.getItem("language") != language) {
-            TranslateLanguage.setLanguage(language);
-        }
     }
 }

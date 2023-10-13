@@ -65,11 +65,11 @@
             return n.d(t2, "a", t2), t2;
           }, n.o = function(e2, t2) {
             return Object.prototype.hasOwnProperty.call(e2, t2);
-          }, n.p = "", n(n.s = 325);
+          }, n.p = "", n(n.s = 327);
         }([function(e, t, n) {
-          var r = n(6), i = n(37), o = n(18), s = n(15), a = n(27), u = /* @__PURE__ */ __name(function(e2, t2, n2) {
-            var c, l, f, h, _ = e2 & u.F, y = e2 & u.G, p = e2 & u.S, d = e2 & u.P, g = e2 & u.B, v = y ? r : p ? r[t2] || (r[t2] = {}) : (r[t2] || {}).prototype, b = y ? i : i[t2] || (i[t2] = {}), m = b.prototype || (b.prototype = {});
-            for (c in y && (n2 = t2), n2)
+          var r = n(6), i = n(38), o = n(18), s = n(15), a = n(27), u = /* @__PURE__ */ __name(function(e2, t2, n2) {
+            var c, l, f, h, _ = e2 & u.F, p = e2 & u.G, y = e2 & u.S, d = e2 & u.P, g = e2 & u.B, v = p ? r : y ? r[t2] || (r[t2] = {}) : (r[t2] || {}).prototype, b = p ? i : i[t2] || (i[t2] = {}), m = b.prototype || (b.prototype = {});
+            for (c in p && (n2 = t2), n2)
               f = ((l = !_ && v && void 0 !== v[c]) ? v : n2)[c], h = g && l ? a(f, r) : d && "function" == typeof f ? a(Function.call, f) : f, v && s(v, c, f, e2 & u.U), b[c] != f && o(b, c, h), d && m[c] != f && (m[c] = f);
           }, "u");
           r.core = i, u.F = 1, u.G = 2, u.S = 4, u.P = 8, u.B = 16, u.W = 32, u.U = 64, u.R = 128, e.exports = u;
@@ -106,7 +106,7 @@
               var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [];
               r(this, t2);
               var o2 = i(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3));
-              return o2.name = "SFSValidationError", o2.errors = n2, o2;
+              return o2.name = "SFSValidationError", o2.errors = n2, Object.setPrototypeOf(o2, t2.prototype), o2;
             }
             __name(t2, "t");
             return o(t2, s), t2;
@@ -134,7 +134,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(8), o = n(50);
+          }(), i = n(8), o = n(53);
           function s(e2, t2) {
             if (!(e2 instanceof t2))
               throw new TypeError("Cannot call a class as a function");
@@ -172,7 +172,7 @@
             } }, { key: "content", get: function() {
               return this._content;
             } }]), e2;
-          }(), c = Object.freeze({ Handshake: 0, Login: 1, Logout: 2, JoinRoom: 4, CreateRoom: 6, GenericMessage: 7, ChangeRoomName: 8, ChangeRoomPassword: 9, SetRoomVariables: 11, SetUserVariables: 12, CallExtension: 13, LeaveRoom: 14, SubscribeRoomGroup: 15, UnsubscribeRoomGroup: 16, SpectatorToPlayer: 17, PlayerToSpectator: 18, ChangeRoomCapacity: 19, KickUser: 24, BanUser: 25, FindRooms: 27, FindUsers: 28, PingPong: 29, SetUserPosition: 30, QuickJoinOrCreateRoom: 31, InitBuddyList: 200, AddBuddy: 201, BlockBuddy: 202, RemoveBuddy: 203, SetBuddyVariables: 204, GoOnline: 205, InviteUsers: 300, InvitationReply: 301, CreateSFSGame: 302, QuickJoinGame: 303, JoinRoomInvite: 304, getNameFromId: function(e2) {
+          }(), c = Object.freeze({ Handshake: 0, Login: 1, Logout: 2, JoinRoom: 4, CreateRoom: 6, GenericMessage: 7, ChangeRoomName: 8, ChangeRoomPassword: 9, SetRoomVariables: 11, SetUserVariables: 12, CallExtension: 13, LeaveRoom: 14, SubscribeRoomGroup: 15, UnsubscribeRoomGroup: 16, SpectatorToPlayer: 17, PlayerToSpectator: 18, ChangeRoomCapacity: 19, KickUser: 24, BanUser: 25, FindRooms: 27, FindUsers: 28, PingPong: 29, SetUserPosition: 30, QuickJoinOrCreateRoom: 31, InitBuddyList: 200, AddBuddy: 201, BlockBuddy: 202, RemoveBuddy: 203, SetBuddyVariables: 204, GoOnline: 205, InviteUsers: 300, InvitationReply: 301, CreateSFSGame: 302, QuickJoinGame: 303, JoinRoomInvite: 304, ClusterJoinOrCreateRequest: 500, ClusterInviteUsers: 502, GameServerConnectionRequired: 600, getNameFromId: function(e2) {
             for (var t2 in this)
               if (this.hasOwnProperty(t2) && this[t2] === e2)
                 return t2;
@@ -202,7 +202,7 @@
           var n = e.exports = "undefined" != typeof window && window.Math == Math ? window : "undefined" != typeof self && self.Math == Math ? self : Function("return this")();
           "number" == typeof __g && (__g = n);
         }, function(e, t, n) {
-          var r = n(95)("wks"), i = n(35), o = n(6).Symbol, s = "function" == typeof o;
+          var r = n(96)("wks"), i = n(36), o = n(6).Symbol, s = "function" == typeof o;
           (e.exports = function(e2) {
             return r[e2] || (r[e2] = s && o[e2] || (s ? o : i)("Symbol." + e2));
           }).store = r;
@@ -220,7 +220,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(174), o = n(51), s = n(50), a = n(1);
+          }(), i = n(176), o = n(54), s = n(53), a = n(1);
           function u(e2, t2) {
             if (!(e2 instanceof t2))
               throw new TypeError("Cannot call a class as a function");
@@ -552,7 +552,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(8), o = n(49), s = n(119), a = n(1);
+          }(), i = n(8), o = n(52), s = n(121), a = n(1);
           function u(e2, t2) {
             if (!(e2 instanceof t2))
               throw new TypeError("Cannot call a class as a function");
@@ -725,7 +725,7 @@
           }();
           t.SFSRoom = c, t.MMORoom = l;
         }, function(e, t, n) {
-          var r = n(5), i = n(148), o = n(30), s = Object.defineProperty;
+          var r = n(5), i = n(150), o = n(30), s = Object.defineProperty;
           t.f = n(11) ? Object.defineProperty : function(e2, t2, n2) {
             if (r(e2), t2 = o(t2, true), r(n2), i)
               try {
@@ -765,8 +765,8 @@
             return Object(r(e2));
           };
         }, function(e, t, n) {
-          var r = n(6), i = n(18), o = n(16), s = n(35)("src"), a = Function.toString, u = ("" + a).split("toString");
-          n(37).inspectSource = function(e2) {
+          var r = n(6), i = n(18), o = n(16), s = n(36)("src"), a = Function.toString, u = ("" + a).split("toString");
+          n(38).inspectSource = function(e2) {
             return a.call(e2);
           }, (e.exports = function(e2, t2, n2, a2) {
             var c = "function" == typeof n2;
@@ -789,19 +789,19 @@
             });
           };
         }, function(e, t, n) {
-          var r = n(10), i = n(36);
+          var r = n(10), i = n(37);
           e.exports = n(11) ? function(e2, t2, n2) {
             return r.f(e2, t2, i(1, n2));
           } : function(e2, t2, n2) {
             return e2[t2] = n2, e2;
           };
         }, function(e, t, n) {
-          var r = n(27), i = n(54), o = n(14), s = n(12), a = n(231);
+          var r = n(27), i = n(57), o = n(14), s = n(12), a = n(233);
           e.exports = function(e2, t2) {
             var n2 = 1 == e2, u = 2 == e2, c = 3 == e2, l = 4 == e2, f = 6 == e2, h = 5 == e2 || f, _ = t2 || a;
-            return function(t3, a2, y) {
-              for (var p, d, g = o(t3), v = i(g), b = r(a2, y, 3), m = s(v.length), S = 0, E = n2 ? _(t3, m) : u ? _(t3, 0) : void 0; m > S; S++)
-                if ((h || S in v) && (d = b(p = v[S], S, g), e2)) {
+            return function(t3, a2, p) {
+              for (var y, d, g = o(t3), v = i(g), b = r(a2, p, 3), m = s(v.length), S = 0, E = n2 ? _(t3, m) : u ? _(t3, 0) : void 0; m > S; S++)
+                if ((h || S in v) && (d = b(y = v[S], S, g), e2)) {
                   if (n2)
                     E[S] = d;
                   else if (d)
@@ -809,11 +809,11 @@
                       case 3:
                         return true;
                       case 5:
-                        return p;
+                        return y;
                       case 6:
                         return S;
                       case 2:
-                        E.push(p);
+                        E.push(y);
                     }
                   else if (l)
                     return false;
@@ -822,7 +822,7 @@
             };
           };
         }, function(e, t, n) {
-          var r = n(0), i = n(37), o = n(3);
+          var r = n(0), i = n(38), o = n(3);
           e.exports = function(e2, t2) {
             var n2 = (i.Object || {})[e2] || Object[e2], s = {};
             s[e2] = t2(n2), r(r.S + r.F * o(function() {
@@ -830,133 +830,133 @@
             }), "Object", s);
           };
         }, function(e, t, n) {
-          var r = n(54), i = n(28);
+          var r = n(57), i = n(28);
           e.exports = function(e2) {
             return r(i(e2));
           };
         }, function(e, t, n) {
           "use strict";
           if (n(11)) {
-            var r = n(44), i = n(6), o = n(3), s = n(0), a = n(60), u = n(75), c = n(27), l = n(42), f = n(36), h = n(18), _ = n(41), y = n(24), p = n(12), d = n(121), g = n(34), v = n(30), b = n(16), m = n(66), S = n(4), E = n(14), R = n(80), O = n(33), w = n(31), A = n(32).f, I = n(79), M = n(35), T = n(7), k = n(19), P = n(94), F = n(76), j = n(128), U = n(53), N = n(64), B = n(43), L = n(78), D = n(129), Y = n(10), C = n(23), x = Y.f, q = C.f, V = i.RangeError, K = i.TypeError, G = i.Uint8Array, z = Array.prototype, H = u.ArrayBuffer, J = u.DataView, W = k(0), X = k(2), Q = k(3), Z = k(4), $ = k(5), ee = k(6), te = P(true), ne = P(false), re = j.values, ie = j.keys, oe = j.entries, se = z.lastIndexOf, ae = z.reduce, ue = z.reduceRight, ce = z.join, le = z.sort, fe = z.slice, he = z.toString, _e = z.toLocaleString, ye = T("iterator"), pe = T("toStringTag"), de = M("typed_constructor"), ge = M("def_constructor"), ve = a.CONSTR, be = a.TYPED, me = a.VIEW, Se = k(1, function(e2, t2) {
-              return Ae(F(e2, e2[ge]), t2);
+            var r = n(47), i = n(6), o = n(3), s = n(0), a = n(60), u = n(76), c = n(27), l = n(45), f = n(37), h = n(18), _ = n(44), p = n(24), y = n(12), d = n(123), g = n(35), v = n(30), b = n(16), m = n(66), S = n(4), E = n(14), R = n(81), O = n(34), A = n(32), w = n(33).f, I = n(80), T = n(36), M = n(7), k = n(19), P = n(95), F = n(77), N = n(130), j = n(56), U = n(64), B = n(46), L = n(79), D = n(131), Y = n(10), C = n(23), q = Y.f, x = C.f, V = i.RangeError, K = i.TypeError, G = i.Uint8Array, z = Array.prototype, H = u.ArrayBuffer, J = u.DataView, X = k(0), W = k(2), Q = k(3), Z = k(4), $ = k(5), ee = k(6), te = P(true), ne = P(false), re = N.values, ie = N.keys, oe = N.entries, se = z.lastIndexOf, ae = z.reduce, ue = z.reduceRight, ce = z.join, le = z.sort, fe = z.slice, he = z.toString, _e = z.toLocaleString, pe = M("iterator"), ye = M("toStringTag"), de = T("typed_constructor"), ge = T("def_constructor"), ve = a.CONSTR, be = a.TYPED, me = a.VIEW, Se = k(1, function(e2, t2) {
+              return we(F(e2, e2[ge]), t2);
             }), Ee = o(function() {
               return 1 === new G(new Uint16Array([1]).buffer)[0];
             }), Re = !!G && !!G.prototype.set && o(function() {
               new G(1).set({});
             }), Oe = /* @__PURE__ */ __name(function(e2, t2) {
-              var n2 = y(e2);
+              var n2 = p(e2);
               if (n2 < 0 || n2 % t2)
                 throw V("Wrong offset!");
               return n2;
-            }, "Oe"), we = /* @__PURE__ */ __name(function(e2) {
+            }, "Oe"), Ae = /* @__PURE__ */ __name(function(e2) {
               if (S(e2) && be in e2)
                 return e2;
               throw K(e2 + " is not a typed array!");
-            }, "we"), Ae = /* @__PURE__ */ __name(function(e2, t2) {
+            }, "Ae"), we = /* @__PURE__ */ __name(function(e2, t2) {
               if (!(S(e2) && de in e2))
                 throw K("It is not a typed array constructor!");
               return new e2(t2);
-            }, "Ae"), Ie = /* @__PURE__ */ __name(function(e2, t2) {
-              return Me(F(e2, e2[ge]), t2);
-            }, "Ie"), Me = /* @__PURE__ */ __name(function(e2, t2) {
-              for (var n2 = 0, r2 = t2.length, i2 = Ae(e2, r2); r2 > n2; )
+            }, "we"), Ie = /* @__PURE__ */ __name(function(e2, t2) {
+              return Te(F(e2, e2[ge]), t2);
+            }, "Ie"), Te = /* @__PURE__ */ __name(function(e2, t2) {
+              for (var n2 = 0, r2 = t2.length, i2 = we(e2, r2); r2 > n2; )
                 i2[n2] = t2[n2++];
               return i2;
-            }, "Me"), Te = /* @__PURE__ */ __name(function(e2, t2, n2) {
-              x(e2, t2, { get: function() {
+            }, "Te"), Me = /* @__PURE__ */ __name(function(e2, t2, n2) {
+              q(e2, t2, { get: function() {
                 return this._d[n2];
               } });
-            }, "Te"), ke = /* @__PURE__ */ __name(function(e2) {
+            }, "Me"), ke = /* @__PURE__ */ __name(function(e2) {
               var t2, n2, r2, i2, o2, s2, a2 = E(e2), u2 = arguments.length, l2 = u2 > 1 ? arguments[1] : void 0, f2 = void 0 !== l2, h2 = I(a2);
               if (void 0 != h2 && !R(h2)) {
                 for (s2 = h2.call(a2), r2 = [], t2 = 0; !(o2 = s2.next()).done; t2++)
                   r2.push(o2.value);
                 a2 = r2;
               }
-              for (f2 && u2 > 2 && (l2 = c(l2, arguments[2], 2)), t2 = 0, n2 = p(a2.length), i2 = Ae(this, n2); n2 > t2; t2++)
+              for (f2 && u2 > 2 && (l2 = c(l2, arguments[2], 2)), t2 = 0, n2 = y(a2.length), i2 = we(this, n2); n2 > t2; t2++)
                 i2[t2] = f2 ? l2(a2[t2], t2) : a2[t2];
               return i2;
             }, "ke"), Pe = /* @__PURE__ */ __name(function() {
-              for (var e2 = 0, t2 = arguments.length, n2 = Ae(this, t2); t2 > e2; )
+              for (var e2 = 0, t2 = arguments.length, n2 = we(this, t2); t2 > e2; )
                 n2[e2] = arguments[e2++];
               return n2;
             }, "Pe"), Fe = !!G && o(function() {
               _e.call(new G(1));
-            }), je = /* @__PURE__ */ __name(function() {
-              return _e.apply(Fe ? fe.call(we(this)) : we(this), arguments);
-            }, "je"), Ue = { copyWithin: function(e2, t2) {
-              return D.call(we(this), e2, t2, arguments.length > 2 ? arguments[2] : void 0);
+            }), Ne = /* @__PURE__ */ __name(function() {
+              return _e.apply(Fe ? fe.call(Ae(this)) : Ae(this), arguments);
+            }, "Ne"), je = { copyWithin: function(e2, t2) {
+              return D.call(Ae(this), e2, t2, arguments.length > 2 ? arguments[2] : void 0);
             }, every: function(e2) {
-              return Z(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              return Z(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, fill: function(e2) {
-              return L.apply(we(this), arguments);
+              return L.apply(Ae(this), arguments);
             }, filter: function(e2) {
-              return Ie(this, X(we(this), e2, arguments.length > 1 ? arguments[1] : void 0));
+              return Ie(this, W(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0));
             }, find: function(e2) {
-              return $(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              return $(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, findIndex: function(e2) {
-              return ee(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              return ee(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, forEach: function(e2) {
-              W(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              X(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, indexOf: function(e2) {
-              return ne(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              return ne(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, includes: function(e2) {
-              return te(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              return te(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, join: function(e2) {
-              return ce.apply(we(this), arguments);
+              return ce.apply(Ae(this), arguments);
             }, lastIndexOf: function(e2) {
-              return se.apply(we(this), arguments);
+              return se.apply(Ae(this), arguments);
             }, map: function(e2) {
-              return Se(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              return Se(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, reduce: function(e2) {
-              return ae.apply(we(this), arguments);
+              return ae.apply(Ae(this), arguments);
             }, reduceRight: function(e2) {
-              return ue.apply(we(this), arguments);
+              return ue.apply(Ae(this), arguments);
             }, reverse: function() {
-              for (var e2, t2 = we(this).length, n2 = Math.floor(t2 / 2), r2 = 0; r2 < n2; )
+              for (var e2, t2 = Ae(this).length, n2 = Math.floor(t2 / 2), r2 = 0; r2 < n2; )
                 e2 = this[r2], this[r2++] = this[--t2], this[t2] = e2;
               return this;
             }, some: function(e2) {
-              return Q(we(this), e2, arguments.length > 1 ? arguments[1] : void 0);
+              return Q(Ae(this), e2, arguments.length > 1 ? arguments[1] : void 0);
             }, sort: function(e2) {
-              return le.call(we(this), e2);
+              return le.call(Ae(this), e2);
             }, subarray: function(e2, t2) {
-              var n2 = we(this), r2 = n2.length, i2 = g(e2, r2);
-              return new (F(n2, n2[ge]))(n2.buffer, n2.byteOffset + i2 * n2.BYTES_PER_ELEMENT, p((void 0 === t2 ? r2 : g(t2, r2)) - i2));
-            } }, Ne = /* @__PURE__ */ __name(function(e2, t2) {
-              return Ie(this, fe.call(we(this), e2, t2));
-            }, "Ne"), Be = /* @__PURE__ */ __name(function(e2) {
-              we(this);
-              var t2 = Oe(arguments[1], 1), n2 = this.length, r2 = E(e2), i2 = p(r2.length), o2 = 0;
+              var n2 = Ae(this), r2 = n2.length, i2 = g(e2, r2);
+              return new (F(n2, n2[ge]))(n2.buffer, n2.byteOffset + i2 * n2.BYTES_PER_ELEMENT, y((void 0 === t2 ? r2 : g(t2, r2)) - i2));
+            } }, Ue = /* @__PURE__ */ __name(function(e2, t2) {
+              return Ie(this, fe.call(Ae(this), e2, t2));
+            }, "Ue"), Be = /* @__PURE__ */ __name(function(e2) {
+              Ae(this);
+              var t2 = Oe(arguments[1], 1), n2 = this.length, r2 = E(e2), i2 = y(r2.length), o2 = 0;
               if (i2 + t2 > n2)
                 throw V("Wrong length!");
               for (; o2 < i2; )
                 this[t2 + o2] = r2[o2++];
             }, "Be"), Le = { entries: function() {
-              return oe.call(we(this));
+              return oe.call(Ae(this));
             }, keys: function() {
-              return ie.call(we(this));
+              return ie.call(Ae(this));
             }, values: function() {
-              return re.call(we(this));
+              return re.call(Ae(this));
             } }, De = /* @__PURE__ */ __name(function(e2, t2) {
               return S(e2) && e2[be] && "symbol" != typeof t2 && t2 in e2 && String(+t2) == String(t2);
             }, "De"), Ye = /* @__PURE__ */ __name(function(e2, t2) {
-              return De(e2, t2 = v(t2, true)) ? f(2, e2[t2]) : q(e2, t2);
+              return De(e2, t2 = v(t2, true)) ? f(2, e2[t2]) : x(e2, t2);
             }, "Ye"), Ce = /* @__PURE__ */ __name(function(e2, t2, n2) {
-              return !(De(e2, t2 = v(t2, true)) && S(n2) && b(n2, "value")) || b(n2, "get") || b(n2, "set") || n2.configurable || b(n2, "writable") && !n2.writable || b(n2, "enumerable") && !n2.enumerable ? x(e2, t2, n2) : (e2[t2] = n2.value, e2);
+              return !(De(e2, t2 = v(t2, true)) && S(n2) && b(n2, "value")) || b(n2, "get") || b(n2, "set") || n2.configurable || b(n2, "writable") && !n2.writable || b(n2, "enumerable") && !n2.enumerable ? q(e2, t2, n2) : (e2[t2] = n2.value, e2);
             }, "Ce");
             ve || (C.f = Ye, Y.f = Ce), s(s.S + s.F * !ve, "Object", { getOwnPropertyDescriptor: Ye, defineProperty: Ce }), o(function() {
               he.call({});
             }) && (he = _e = /* @__PURE__ */ __name(function() {
               return ce.call(this);
             }, "_e"));
-            var xe = _({}, Ue);
-            _(xe, Le), h(xe, ye, Le.values), _(xe, { slice: Ne, set: Be, constructor: function() {
-            }, toString: he, toLocaleString: je }), Te(xe, "buffer", "b"), Te(xe, "byteOffset", "o"), Te(xe, "byteLength", "l"), Te(xe, "length", "e"), x(xe, pe, { get: function() {
+            var qe = _({}, je);
+            _(qe, Le), h(qe, pe, Le.values), _(qe, { slice: Ue, set: Be, constructor: function() {
+            }, toString: he, toLocaleString: Ne }), Me(qe, "buffer", "b"), Me(qe, "byteOffset", "o"), Me(qe, "byteLength", "l"), Me(qe, "length", "e"), q(qe, ye, { get: function() {
               return this[be];
             } }), e.exports = function(e2, t2, n2, u2) {
-              var c2 = e2 + ((u2 = !!u2) ? "Clamped" : "") + "Array", f2 = "get" + e2, _2 = "set" + e2, y2 = i[c2], g2 = y2 || {}, v2 = y2 && w(y2), b2 = !y2 || !a.ABV, E2 = {}, R2 = y2 && y2.prototype, I2 = /* @__PURE__ */ __name(function(e3, n3) {
-                x(e3, n3, { get: function() {
+              var c2 = e2 + ((u2 = !!u2) ? "Clamped" : "") + "Array", f2 = "get" + e2, _2 = "set" + e2, p2 = i[c2], g2 = p2 || {}, v2 = p2 && A(p2), b2 = !p2 || !a.ABV, E2 = {}, R2 = p2 && p2.prototype, I2 = /* @__PURE__ */ __name(function(e3, n3) {
+                q(e3, n3, { get: function() {
                   return function(e4, n4) {
                     var r2 = e4._d;
                     return r2.v[f2](n4 * t2 + r2.o, Ee);
@@ -968,12 +968,12 @@
                   }(this, n3, e4);
                 }, enumerable: true });
               }, "I");
-              b2 ? (y2 = n2(function(e3, n3, r2, i2) {
-                l(e3, y2, c2, "_d");
+              b2 ? (p2 = n2(function(e3, n3, r2, i2) {
+                l(e3, p2, c2, "_d");
                 var o2, s2, a2, u3, f3 = 0, _3 = 0;
                 if (S(n3)) {
                   if (!(n3 instanceof H || "ArrayBuffer" == (u3 = m(n3)) || "SharedArrayBuffer" == u3))
-                    return be in n3 ? Me(y2, n3) : ke.call(y2, n3);
+                    return be in n3 ? Te(p2, n3) : ke.call(p2, n3);
                   o2 = n3, _3 = Oe(r2, t2);
                   var g3 = n3.byteLength;
                   if (void 0 === i2) {
@@ -981,43 +981,43 @@
                       throw V("Wrong length!");
                     if ((s2 = g3 - _3) < 0)
                       throw V("Wrong length!");
-                  } else if ((s2 = p(i2) * t2) + _3 > g3)
+                  } else if ((s2 = y(i2) * t2) + _3 > g3)
                     throw V("Wrong length!");
                   a2 = s2 / t2;
                 } else
                   a2 = d(n3), o2 = new H(s2 = a2 * t2);
                 for (h(e3, "_d", { b: o2, o: _3, l: s2, e: a2, v: new J(o2) }); f3 < a2; )
                   I2(e3, f3++);
-              }), R2 = y2.prototype = O(xe), h(R2, "constructor", y2)) : o(function() {
-                y2(1);
+              }), R2 = p2.prototype = O(qe), h(R2, "constructor", p2)) : o(function() {
+                p2(1);
               }) && o(function() {
-                new y2(-1);
-              }) && N(function(e3) {
-                new y2(), new y2(null), new y2(1.5), new y2(e3);
-              }, true) || (y2 = n2(function(e3, n3, r2, i2) {
+                new p2(-1);
+              }) && U(function(e3) {
+                new p2(), new p2(null), new p2(1.5), new p2(e3);
+              }, true) || (p2 = n2(function(e3, n3, r2, i2) {
                 var o2;
-                return l(e3, y2, c2), S(n3) ? n3 instanceof H || "ArrayBuffer" == (o2 = m(n3)) || "SharedArrayBuffer" == o2 ? void 0 !== i2 ? new g2(n3, Oe(r2, t2), i2) : void 0 !== r2 ? new g2(n3, Oe(r2, t2)) : new g2(n3) : be in n3 ? Me(y2, n3) : ke.call(y2, n3) : new g2(d(n3));
-              }), W(v2 !== Function.prototype ? A(g2).concat(A(v2)) : A(g2), function(e3) {
-                e3 in y2 || h(y2, e3, g2[e3]);
-              }), y2.prototype = R2, r || (R2.constructor = y2));
-              var M2 = R2[ye], T2 = !!M2 && ("values" == M2.name || void 0 == M2.name), k2 = Le.values;
-              h(y2, de, true), h(R2, be, c2), h(R2, me, true), h(R2, ge, y2), (u2 ? new y2(1)[pe] == c2 : pe in R2) || x(R2, pe, { get: function() {
+                return l(e3, p2, c2), S(n3) ? n3 instanceof H || "ArrayBuffer" == (o2 = m(n3)) || "SharedArrayBuffer" == o2 ? void 0 !== i2 ? new g2(n3, Oe(r2, t2), i2) : void 0 !== r2 ? new g2(n3, Oe(r2, t2)) : new g2(n3) : be in n3 ? Te(p2, n3) : ke.call(p2, n3) : new g2(d(n3));
+              }), X(v2 !== Function.prototype ? w(g2).concat(w(v2)) : w(g2), function(e3) {
+                e3 in p2 || h(p2, e3, g2[e3]);
+              }), p2.prototype = R2, r || (R2.constructor = p2));
+              var T2 = R2[pe], M2 = !!T2 && ("values" == T2.name || void 0 == T2.name), k2 = Le.values;
+              h(p2, de, true), h(R2, be, c2), h(R2, me, true), h(R2, ge, p2), (u2 ? new p2(1)[ye] == c2 : ye in R2) || q(R2, ye, { get: function() {
                 return c2;
-              } }), E2[c2] = y2, s(s.G + s.W + s.F * (y2 != g2), E2), s(s.S, c2, { BYTES_PER_ELEMENT: t2 }), s(s.S + s.F * o(function() {
-                g2.of.call(y2, 1);
-              }), c2, { from: ke, of: Pe }), "BYTES_PER_ELEMENT" in R2 || h(R2, "BYTES_PER_ELEMENT", t2), s(s.P, c2, Ue), B(c2), s(s.P + s.F * Re, c2, { set: Be }), s(s.P + s.F * !T2, c2, Le), r || R2.toString == he || (R2.toString = he), s(s.P + s.F * o(function() {
-                new y2(1).slice();
-              }), c2, { slice: Ne }), s(s.P + s.F * (o(function() {
-                return [1, 2].toLocaleString() != new y2([1, 2]).toLocaleString();
+              } }), E2[c2] = p2, s(s.G + s.W + s.F * (p2 != g2), E2), s(s.S, c2, { BYTES_PER_ELEMENT: t2 }), s(s.S + s.F * o(function() {
+                g2.of.call(p2, 1);
+              }), c2, { from: ke, of: Pe }), "BYTES_PER_ELEMENT" in R2 || h(R2, "BYTES_PER_ELEMENT", t2), s(s.P, c2, je), B(c2), s(s.P + s.F * Re, c2, { set: Be }), s(s.P + s.F * !M2, c2, Le), r || R2.toString == he || (R2.toString = he), s(s.P + s.F * o(function() {
+                new p2(1).slice();
+              }), c2, { slice: Ue }), s(s.P + s.F * (o(function() {
+                return [1, 2].toLocaleString() != new p2([1, 2]).toLocaleString();
               }) || !o(function() {
                 R2.toLocaleString.call([1, 2]);
-              })), c2, { toLocaleString: je }), U[c2] = T2 ? M2 : k2, r || T2 || h(R2, ye, k2);
+              })), c2, { toLocaleString: Ne }), j[c2] = M2 ? T2 : k2, r || M2 || h(R2, pe, k2);
             };
           } else
             e.exports = function() {
             };
         }, function(e, t, n) {
-          var r = n(67), i = n(36), o = n(21), s = n(30), a = n(16), u = n(148), c = Object.getOwnPropertyDescriptor;
+          var r = n(67), i = n(37), o = n(21), s = n(30), a = n(16), u = n(150), c = Object.getOwnPropertyDescriptor;
           t.f = n(11) ? c : function(e2, t2) {
             if (e2 = o(e2), t2 = s(t2, true), u)
               try {
@@ -1073,7 +1073,7 @@
             return e2;
           };
         }, function(e, t, n) {
-          var r = n(35)("meta"), i = n(4), o = n(16), s = n(10).f, a = 0, u = Object.isExtensible || function() {
+          var r = n(36)("meta"), i = n(4), o = n(16), s = n(10).f, a = 0, u = Object.isExtensible || function() {
             return true;
           }, c = !n(3)(function() {
             return u(Object.preventExtensions({}));
@@ -1116,45 +1116,6 @@
               return i;
             throw TypeError("Can't convert object to primitive value");
           };
-        }, function(e, t, n) {
-          var r = n(16), i = n(14), o = n(93)("IE_PROTO"), s = Object.prototype;
-          e.exports = Object.getPrototypeOf || function(e2) {
-            return e2 = i(e2), r(e2, o) ? e2[o] : "function" == typeof e2.constructor && e2 instanceof e2.constructor ? e2.constructor.prototype : e2 instanceof Object ? s : null;
-          };
-        }, function(e, t, n) {
-          var r = n(146), i = n(92).concat("length", "prototype");
-          t.f = Object.getOwnPropertyNames || function(e2) {
-            return r(e2, i);
-          };
-        }, function(e, t, n) {
-          var r = n(5), i = n(145), o = n(92), s = n(93)("IE_PROTO"), a = /* @__PURE__ */ __name(function() {
-          }, "a"), u = /* @__PURE__ */ __name(function() {
-            var e2, t2 = n(96)("iframe"), r2 = o.length;
-            for (t2.style.display = "none", n(90).appendChild(t2), t2.src = "javascript:", (e2 = t2.contentWindow.document).open(), e2.write("<script>document.F=Object<\/script>"), e2.close(), u = e2.F; r2--; )
-              delete u.prototype[o[r2]];
-            return u();
-          }, "u");
-          e.exports = Object.create || function(e2, t2) {
-            var n2;
-            return null !== e2 ? (a.prototype = r(e2), n2 = new a(), a.prototype = null, n2[s] = e2) : n2 = u(), void 0 === t2 ? n2 : i(n2, t2);
-          };
-        }, function(e, t, n) {
-          var r = n(24), i = Math.max, o = Math.min;
-          e.exports = function(e2, t2) {
-            return (e2 = r(e2)) < 0 ? i(e2 + t2, 0) : o(e2, t2);
-          };
-        }, function(e, t) {
-          var n = 0, r = Math.random();
-          e.exports = function(e2) {
-            return "Symbol(".concat(void 0 === e2 ? "" : e2, ")_", (++n + r).toString(36));
-          };
-        }, function(e, t) {
-          e.exports = function(e2, t2) {
-            return { enumerable: !(1 & e2), configurable: !(2 & e2), writable: !(4 & e2), value: t2 };
-          };
-        }, function(e, t) {
-          var n = e.exports = { version: "2.5.4" };
-          "number" == typeof __e && (__e = n);
         }, function(e, t, n) {
           "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.LogicOperator = t.MatchExpression = void 0;
@@ -1236,101 +1197,47 @@
           }();
           t.MatchExpression = s, t.LogicOperator = a;
         }, function(e, t, n) {
-          "use strict";
-          Object.defineProperty(t, "__esModule", { value: true });
-          var r = function() {
-            function e2(e3, t2) {
-              for (var n2 = 0; n2 < t2.length; n2++) {
-                var r2 = t2[n2];
-                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
-              }
-            }
-            __name(e2, "e");
-            return function(t2, n2, r2) {
-              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
-            };
-          }();
-          var i = function() {
-            function e2() {
-              !function(e3, t2) {
-                if (!(e3 instanceof t2))
-                  throw new TypeError("Cannot call a class as a function");
-              }(this, e2), this._listenersByEvent = {};
-            }
-            __name(e2, "e");
-            return r(e2, [{ key: "addEventListener", value: function(e3, t2, n2) {
-              this._listenersByEvent[e3] || (this._listenersByEvent[e3] = []), this._listenersByEvent[e3].push({ callback: t2, scope: n2 });
-            } }, { key: "removeEventListener", value: function(e3, t2) {
-              var n2 = this._listenersByEvent[e3];
-              if (n2) {
-                for (var r2 = 0; r2 < n2.length; r2++)
-                  if (n2[r2].callback === t2) {
-                    n2.splice(r2, 1);
-                    break;
-                  }
-              }
-            } }, { key: "dispatchEvent", value: function(e3, t2) {
-              var n2 = this._listenersByEvent[e3];
-              if (n2) {
-                var r2 = true, i2 = false, o2 = void 0;
-                try {
-                  for (var s2, a = n2[Symbol.iterator](); !(r2 = (s2 = a.next()).done); r2 = true) {
-                    var u = s2.value;
-                    u.callback.call(u.scope, t2);
-                  }
-                } catch (e4) {
-                  i2 = true, o2 = e4;
-                } finally {
-                  try {
-                    !r2 && a.return && a.return();
-                  } finally {
-                    if (i2)
-                      throw o2;
-                  }
-                }
-              }
-            } }]), e2;
-          }(), o = Object.freeze({ HANDSHAKE: "handshake", CONNECTION: "connection", CONNECTION_LOST: "connectionLost", LOGIN: "login", LOGIN_ERROR: "loginError", LOGOUT: "logout", ROOM_ADD: "roomAdd", ROOM_CREATION_ERROR: "roomCreationError", ROOM_REMOVE: "roomRemove", ROOM_JOIN: "roomJoin", ROOM_JOIN_ERROR: "roomJoinError", USER_ENTER_ROOM: "userEnterRoom", USER_EXIT_ROOM: "userExitRoom", USER_COUNT_CHANGE: "userCountChange", PROXIMITY_LIST_UPDATE: "proximityListUpdate", PLAYER_TO_SPECTATOR: "playerToSpectator", PLAYER_TO_SPECTATOR_ERROR: "playerToSpectatorError", SPECTATOR_TO_PLAYER: "spectatorToPlayer", SPECTATOR_TO_PLAYER_ERROR: "spectatorToPlayerError", ROOM_NAME_CHANGE: "roomNameChange", ROOM_NAME_CHANGE_ERROR: "roomNameChangeError", ROOM_PASSWORD_STATE_CHANGE: "roomPasswordStateChange", ROOM_PASSWORD_STATE_CHANGE_ERROR: "roomPasswordStateChangeError", ROOM_CAPACITY_CHANGE: "roomCapacityChange", ROOM_CAPACITY_CHANGE_ERROR: "roomCapacityChangeError", PUBLIC_MESSAGE: "publicMessage", PRIVATE_MESSAGE: "privateMessage", OBJECT_MESSAGE: "objectMessage", MODERATOR_MESSAGE: "moderatorMessage", ADMIN_MESSAGE: "adminMessage", EXTENSION_RESPONSE: "extensionResponse", ROOM_VARIABLES_UPDATE: "roomVariablesUpdate", USER_VARIABLES_UPDATE: "userVariablesUpdate", MMOITEM_VARIABLES_UPDATE: "mmoItemVariablesUpdate", ROOM_GROUP_SUBSCRIBE: "roomGroupSubscribe", ROOM_GROUP_SUBSCRIBE_ERROR: "roomGroupSubscribeError", ROOM_GROUP_UNSUBSCRIBE: "roomGroupUnsubscribe", ROOM_GROUP_UNSUBSCRIBE_ERROR: "roomGroupUnsubscribeError", ROOM_FIND_RESULT: "roomFindResult", USER_FIND_RESULT: "userFindResult", INVITATION: "invitation", INVITATION_REPLY: "invitationReply", INVITATION_REPLY_ERROR: "invitationReplyError", PING_PONG: "pingPong", SOCKET_ERROR: "socketError" }), s = Object.freeze({ BUDDY_LIST_INIT: "buddyListInit", BUDDY_ADD: "buddyAdd", BUDDY_REMOVE: "buddyRemove", BUDDY_BLOCK: "buddyBlock", BUDDY_ERROR: "buddyError", BUDDY_ONLINE_STATE_CHANGE: "buddyOnlineStateChange", BUDDY_VARIABLES_UPDATE: "buddyVariablesUpdate", BUDDY_MESSAGE: "buddyMessage" });
-          t.EventDispatcher = i, t.SFSEvent = o, t.SFSBuddyEvent = s;
+          var r = n(16), i = n(14), o = n(94)("IE_PROTO"), s = Object.prototype;
+          e.exports = Object.getPrototypeOf || function(e2) {
+            return e2 = i(e2), r(e2, o) ? e2[o] : "function" == typeof e2.constructor && e2 instanceof e2.constructor ? e2.constructor.prototype : e2 instanceof Object ? s : null;
+          };
         }, function(e, t, n) {
-          var r = n(4);
+          var r = n(148), i = n(93).concat("length", "prototype");
+          t.f = Object.getOwnPropertyNames || function(e2) {
+            return r(e2, i);
+          };
+        }, function(e, t, n) {
+          var r = n(5), i = n(147), o = n(93), s = n(94)("IE_PROTO"), a = /* @__PURE__ */ __name(function() {
+          }, "a"), u = /* @__PURE__ */ __name(function() {
+            var e2, t2 = n(97)("iframe"), r2 = o.length;
+            for (t2.style.display = "none", n(91).appendChild(t2), t2.src = "javascript:", (e2 = t2.contentWindow.document).open(), e2.write("<script>document.F=Object<\/script>"), e2.close(), u = e2.F; r2--; )
+              delete u.prototype[o[r2]];
+            return u();
+          }, "u");
+          e.exports = Object.create || function(e2, t2) {
+            var n2;
+            return null !== e2 ? (a.prototype = r(e2), n2 = new a(), a.prototype = null, n2[s] = e2) : n2 = u(), void 0 === t2 ? n2 : i(n2, t2);
+          };
+        }, function(e, t, n) {
+          var r = n(24), i = Math.max, o = Math.min;
           e.exports = function(e2, t2) {
-            if (!r(e2) || e2._t !== t2)
-              throw TypeError("Incompatible receiver, " + t2 + " required!");
-            return e2;
-          };
-        }, function(e, t, n) {
-          var r = n(15);
-          e.exports = function(e2, t2, n2) {
-            for (var i in t2)
-              r(e2, i, t2[i], n2);
-            return e2;
+            return (e2 = r(e2)) < 0 ? i(e2 + t2, 0) : o(e2, t2);
           };
         }, function(e, t) {
-          e.exports = function(e2, t2, n, r) {
-            if (!(e2 instanceof t2) || void 0 !== r && r in e2)
-              throw TypeError(n + ": incorrect invocation!");
-            return e2;
-          };
-        }, function(e, t, n) {
-          "use strict";
-          var r = n(6), i = n(10), o = n(11), s = n(7)("species");
+          var n = 0, r = Math.random();
           e.exports = function(e2) {
-            var t2 = r[e2];
-            o && t2 && !t2[s] && i.f(t2, s, { configurable: true, get: function() {
-              return this;
-            } });
+            return "Symbol(".concat(void 0 === e2 ? "" : e2, ")_", (++n + r).toString(36));
           };
         }, function(e, t) {
-          e.exports = false;
-        }, function(e, t, n) {
-          var r = n(10).f, i = n(16), o = n(7)("toStringTag");
-          e.exports = function(e2, t2, n2) {
-            e2 && !i(e2 = n2 ? e2 : e2.prototype, o) && r(e2, o, { configurable: true, value: t2 });
+          e.exports = function(e2, t2) {
+            return { enumerable: !(1 & e2), configurable: !(2 & e2), writable: !(4 & e2), value: t2 };
           };
+        }, function(e, t) {
+          var n = e.exports = { version: "2.5.4" };
+          "number" == typeof __e && (__e = n);
         }, function(e, t, n) {
           "use strict";
-          Object.defineProperty(t, "__esModule", { value: true }), t.SFSBuddyVariable = t.ReservedBuddyVariables = void 0;
+          Object.defineProperty(t, "__esModule", { value: true }), t.ClusterTarget = t.ClusterRoomSettings = t.MessageRecipientMode = t.BanMode = t.MapLimits = t.RoomExtension = t.RoomEvents = t.RoomPermissions = t.MMORoomSettings = t.SFSGameSettings = t.RoomSettings = void 0;
           var r = function() {
             function e2(e3, t2) {
               for (var n2 = 0; n2 < t2.length; n2++) {
@@ -1342,37 +1249,195 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(48);
-          var o = Object.freeze({ BV_ONLINE: "$__BV_ONLINE__", BV_STATE: "$__BV_STATE__", BV_NICKNAME: "$__BV_NICKNAME__" }), s = function(e2) {
-            function t2(e3, n2) {
-              var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : -1;
-              !function(e4, t3) {
-                if (!(e4 instanceof t3))
-                  throw new TypeError("Cannot call a class as a function");
-              }(this, t2);
-              var i2 = function(e4, t3) {
-                if (!e4)
-                  throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-                return !t3 || "object" != typeof t3 && "function" != typeof t3 ? e4 : t3;
-              }(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3, n2, r2));
-              return Object.freeze(i2), i2;
+          }(), i = n(1);
+          n(40);
+          function o(e2, t2) {
+            if (!e2)
+              throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+            return !t2 || "object" != typeof t2 && "function" != typeof t2 ? e2 : t2;
+          }
+          __name(o, "o");
+          function s(e2, t2) {
+            if ("function" != typeof t2 && null !== t2)
+              throw new TypeError("Super expression must either be null or a function, not " + typeof t2);
+            e2.prototype = Object.create(t2 && t2.prototype, { constructor: { value: e2, enumerable: false, writable: true, configurable: true } }), t2 && (Object.setPrototypeOf ? Object.setPrototypeOf(e2, t2) : e2.__proto__ = t2);
+          }
+          __name(s, "s");
+          function a(e2, t2) {
+            if (!(e2 instanceof t2))
+              throw new TypeError("Cannot call a class as a function");
+          }
+          __name(a, "a");
+          var u = /* @__PURE__ */ __name(function e2(t2) {
+            a(this, e2), this.name = t2, this.password = "", this.groupId = "default", this.isGame = false, this.maxUsers = 10, this.maxSpectators = 0, this.maxVariables = 5, this.variables = [], this.permissions = null, this.events = null, this.extension = null, this.allowOwnerOnlyInvitation = true;
+          }, "e"), c = function(e2) {
+            function t2(e3) {
+              a(this, t2);
+              var n2 = o(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3));
+              return n2.isPublic = true, n2.minPlayersToStartGame = 2, n2.invitedPlayers = null, n2.searchableRooms = null, n2.invitationExpiryTime = 15, n2.leaveLastJoinedRoom = true, n2.notifyGameStarted = false, n2.playerMatchExpression = null, n2.spectatorMatchExpression = null, n2.invitationParams = null, Object.seal(n2), n2;
             }
             __name(t2, "t");
-            return function(e3, t3) {
-              if ("function" != typeof t3 && null !== t3)
-                throw new TypeError("Super expression must either be null or a function, not " + typeof t3);
-              e3.prototype = Object.create(t3 && t3.prototype, { constructor: { value: e3, enumerable: false, writable: true, configurable: true } }), t3 && (Object.setPrototypeOf ? Object.setPrototypeOf(e3, t3) : e3.__proto__ = t3);
-            }(t2, i.BaseVariable), r(t2, null, [{ key: "OFFLINE_PREFIX", get: function() {
-              return "$";
-            } }]), r(t2, [{ key: "toString", value: function() {
-              return "[BuddyVar: " + this.name + ", Type: " + this.type + ", Value: " + this.value + "]";
-            } }, { key: "isOffline", get: function() {
-              return this._name.charAt(0) === t2.OFFLINE_PREFIX;
-            } }], [{ key: "fromSFSArray", value: function(e3) {
-              return new t2(e3.get(0), e3.get(2), e3.get(1));
-            } }]), t2;
+            return s(t2, u), t2;
+          }(), l = function(e2) {
+            function t2(e3, n2) {
+              a(this, t2);
+              var r2 = o(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3));
+              return r2.defaultAOI = n2, r2.mapLimits = null, r2.userMaxLimboSeconds = 50, r2.proximityListUpdateMillis = 250, r2.sendAOIEntryPoint = true, Object.seal(r2), r2;
+            }
+            __name(t2, "t");
+            return s(t2, u), t2;
+          }(), f = function(e2) {
+            function t2(e3) {
+              a(this, t2);
+              var n2 = o(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3));
+              return n2.isPublic = true, n2.minPlayersToStartGame = 2, n2.invitedPlayers = null, n2.invitationExpiryTime = 30, n2.notifyGameStarted = false, n2.invitationParams = null, Object.seal(n2), n2;
+            }
+            __name(t2, "t");
+            return s(t2, u), t2;
+          }(), h = Object.freeze({ BY_ADDRESS: 0, BY_NAME: 1 }), _ = function() {
+            function e2(t2, n2) {
+              if (a(this, e2), t2 < e2.TO_USER || t2 > e2.TO_ZONE)
+                throw new i.SFSError("Illegal recipient mode: " + t2);
+              this._mode = t2, this._target = n2, Object.freeze(this);
+            }
+            __name(e2, "e");
+            return r(e2, null, [{ key: "TO_USER", get: function() {
+              return 0;
+            } }, { key: "TO_ROOM", get: function() {
+              return 1;
+            } }, { key: "TO_GROUP", get: function() {
+              return 2;
+            } }, { key: "TO_ZONE", get: function() {
+              return 3;
+            } }]), r(e2, [{ key: "mode", get: function() {
+              return this._mode;
+            } }, { key: "target", get: function() {
+              return this._target;
+            } }]), e2;
+          }(), p = function() {
+            function e2(t2, n2) {
+              a(this, e2), this._nodeId = t2, this._roomId = n2, Object.freeze(this);
+            }
+            __name(e2, "e");
+            return r(e2, [{ key: "nodeId", get: function() {
+              return this._nodeId;
+            } }, { key: "roomId", get: function() {
+              return this._roomId;
+            } }]), e2;
           }();
-          t.ReservedBuddyVariables = o, t.SFSBuddyVariable = s;
+          t.RoomSettings = u, t.SFSGameSettings = c, t.MMORoomSettings = l, t.RoomPermissions = /* @__PURE__ */ __name(function e2() {
+            a(this, e2), this.allowNameChange = false, this.allowPasswordStateChange = false, this.allowPublicMessages = true, this.allowResizing = false, Object.seal(this);
+          }, "e"), t.RoomEvents = /* @__PURE__ */ __name(function e2() {
+            a(this, e2), this.allowUserCountChange = false, this.allowUserEnter = false, this.allowUserExit = false, this.allowUserVariablesUpdate = false, Object.seal(this);
+          }, "e"), t.RoomExtension = /* @__PURE__ */ __name(function e2(t2, n2) {
+            a(this, e2), this.id = t2, this.className = n2, this.propertiesFile = "", Object.seal(this);
+          }, "e"), t.MapLimits = /* @__PURE__ */ __name(function e2(t2, n2) {
+            if (a(this, e2), null == t2 || null == n2)
+              throw new i.SFSError("Map limits arguments must be both non null!");
+            this.lowerLimit = t2, this.higherLimit = n2, Object.seal(this);
+          }, "e"), t.BanMode = h, t.MessageRecipientMode = _, t.ClusterRoomSettings = f, t.ClusterTarget = p;
+        }, function(e, t, n) {
+          "use strict";
+          Object.defineProperty(t, "__esModule", { value: true }), t.BuddyOnlineState = t.SFSBuddy = void 0;
+          var r = function() {
+            function e2(e3, t2) {
+              for (var n2 = 0; n2 < t2.length; n2++) {
+                var r2 = t2[n2];
+                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
+              }
+            }
+            __name(e2, "e");
+            return function(t2, n2, r2) {
+              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
+            };
+          }(), i = n(50);
+          var o = function() {
+            function e2(t2, n2) {
+              var r2 = arguments.length > 2 && void 0 !== arguments[2] && arguments[2], i2 = arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
+              !function(e3, t3) {
+                if (!(e3 instanceof t3))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, e2), this._id = t2, this._name = n2, this._isBlocked = r2, this._isTemp = i2, this._variables = /* @__PURE__ */ new Map(), Object.seal(this);
+            }
+            __name(e2, "e");
+            return r(e2, [{ key: "toString", value: function() {
+              return "[Buddy: " + this.name + ", Id: " + this.id + "]";
+            } }, { key: "getVariable", value: function(e3) {
+              return this._variables.get(e3);
+            } }, { key: "containsVariable", value: function(e3) {
+              return this._variables.has(e3);
+            } }, { key: "getVariables", value: function() {
+              return Array.from(this._variables.values());
+            } }, { key: "getOfflineVariables", value: function() {
+              return this.getVariables().filter(function(e3) {
+                return e3.name.charAt(0) === i.SFSBuddyVariable.OFFLINE_PREFIX;
+              });
+            } }, { key: "getOnlineVariables", value: function() {
+              return this.getVariables().filter(function(e3) {
+                return e3.name.charAt(0) !== i.SFSBuddyVariable.OFFLINE_PREFIX;
+              });
+            } }, { key: "_setVariables", value: function(e3) {
+              var t2 = true, n2 = false, r2 = void 0;
+              try {
+                for (var i2, o2 = e3[Symbol.iterator](); !(t2 = (i2 = o2.next()).done); t2 = true) {
+                  var s2 = i2.value;
+                  this._setVariable(s2);
+                }
+              } catch (e4) {
+                n2 = true, r2 = e4;
+              } finally {
+                try {
+                  !t2 && o2.return && o2.return();
+                } finally {
+                  if (n2)
+                    throw r2;
+                }
+              }
+            } }, { key: "_setVariable", value: function(e3) {
+              e3.isNull ? this._variables.delete(e3.name) : this._variables.set(e3.name, e3);
+            } }, { key: "_removeVariable", value: function(e3) {
+              this._variables.delete(e3);
+            } }, { key: "_clearVolatileVariables", value: function() {
+              var e3 = true, t2 = false, n2 = void 0;
+              try {
+                for (var r2, i2 = this.getOnlineVariables()[Symbol.iterator](); !(e3 = (r2 = i2.next()).done); e3 = true) {
+                  var o2 = r2.value;
+                  this._removeVariable(o2.name);
+                }
+              } catch (e4) {
+                t2 = true, n2 = e4;
+              } finally {
+                try {
+                  !e3 && i2.return && i2.return();
+                } finally {
+                  if (t2)
+                    throw n2;
+                }
+              }
+            } }, { key: "id", get: function() {
+              return this._id;
+            } }, { key: "name", get: function() {
+              return this._name;
+            } }, { key: "isBlocked", get: function() {
+              return this._isBlocked;
+            } }, { key: "isTemp", get: function() {
+              return this._isTemp;
+            } }, { key: "isOnline", get: function() {
+              var e3 = true;
+              return this.containsVariable(i.ReservedBuddyVariables.BV_ONLINE) && (e3 = this.getVariable(i.ReservedBuddyVariables.BV_ONLINE).value), e3 && this._id > -1;
+            } }, { key: "state", get: function() {
+              return this.containsVariable(i.ReservedBuddyVariables.BV_STATE) ? this.getVariable(i.ReservedBuddyVariables.BV_STATE).value : null;
+            } }, { key: "nickName", get: function() {
+              return this.containsVariable(i.ReservedBuddyVariables.BV_NICKNAME) ? this.getVariable(i.ReservedBuddyVariables.BV_NICKNAME).value : null;
+            } }], [{ key: "fromSFSArray", value: function(t2) {
+              var n2 = new e2(t2.get(0), t2.get(1), t2.get(2), t2.size() > 3 && t2.get(4)), r2 = t2.get(3);
+              if (null != r2)
+                for (var o2 = 0; o2 < r2.size(); o2++)
+                  n2._setVariable(i.SFSBuddyVariable.fromSFSArray(r2.get(o2)));
+              return n2;
+            } }]), e2;
+          }(), s = Object.freeze({ ONLINE: 0, OFFLINE: 1, LEFT_THE_SERVER: 2 });
+          t.SFSBuddy = o, t.BuddyOnlineState = s;
         }, function(e, t, n) {
           "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.UserPrivileges = t.SFSUser = void 0;
@@ -1478,6 +1543,264 @@
           t.SFSUser = s, t.UserPrivileges = a;
         }, function(e, t, n) {
           "use strict";
+          Object.defineProperty(t, "__esModule", { value: true });
+          var r = function() {
+            function e2(e3, t2) {
+              for (var n2 = 0; n2 < t2.length; n2++) {
+                var r2 = t2[n2];
+                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
+              }
+            }
+            __name(e2, "e");
+            return function(t2, n2, r2) {
+              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
+            };
+          }();
+          var i = function() {
+            function e2() {
+              !function(e3, t2) {
+                if (!(e3 instanceof t2))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, e2), this._listenersByEvent = {};
+            }
+            __name(e2, "e");
+            return r(e2, [{ key: "addEventListener", value: function(e3, t2, n2) {
+              this._listenersByEvent[e3] || (this._listenersByEvent[e3] = []), this._listenersByEvent[e3].push({ callback: t2, scope: n2 });
+            } }, { key: "removeEventListener", value: function(e3, t2) {
+              var n2 = this._listenersByEvent[e3];
+              if (n2) {
+                for (var r2 = 0; r2 < n2.length; r2++)
+                  if (n2[r2].callback === t2) {
+                    n2.splice(r2, 1);
+                    break;
+                  }
+              }
+            } }, { key: "dispatchEvent", value: function(e3, t2) {
+              var n2 = this._listenersByEvent[e3];
+              if (n2) {
+                var r2 = true, i2 = false, o2 = void 0;
+                try {
+                  for (var s2, a2 = n2[Symbol.iterator](); !(r2 = (s2 = a2.next()).done); r2 = true) {
+                    var u = s2.value;
+                    u.callback.call(u.scope, t2);
+                  }
+                } catch (e4) {
+                  i2 = true, o2 = e4;
+                } finally {
+                  try {
+                    !r2 && a2.return && a2.return();
+                  } finally {
+                    if (i2)
+                      throw o2;
+                  }
+                }
+              }
+            } }]), e2;
+          }(), o = Object.freeze({ HANDSHAKE: "handshake", CONNECTION: "connection", CONNECTION_LOST: "connectionLost", LOGIN: "login", LOGIN_ERROR: "loginError", LOGOUT: "logout", ROOM_ADD: "roomAdd", ROOM_CREATION_ERROR: "roomCreationError", ROOM_REMOVE: "roomRemove", ROOM_JOIN: "roomJoin", ROOM_JOIN_ERROR: "roomJoinError", USER_ENTER_ROOM: "userEnterRoom", USER_EXIT_ROOM: "userExitRoom", USER_COUNT_CHANGE: "userCountChange", PROXIMITY_LIST_UPDATE: "proximityListUpdate", PLAYER_TO_SPECTATOR: "playerToSpectator", PLAYER_TO_SPECTATOR_ERROR: "playerToSpectatorError", SPECTATOR_TO_PLAYER: "spectatorToPlayer", SPECTATOR_TO_PLAYER_ERROR: "spectatorToPlayerError", ROOM_NAME_CHANGE: "roomNameChange", ROOM_NAME_CHANGE_ERROR: "roomNameChangeError", ROOM_PASSWORD_STATE_CHANGE: "roomPasswordStateChange", ROOM_PASSWORD_STATE_CHANGE_ERROR: "roomPasswordStateChangeError", ROOM_CAPACITY_CHANGE: "roomCapacityChange", ROOM_CAPACITY_CHANGE_ERROR: "roomCapacityChangeError", PUBLIC_MESSAGE: "publicMessage", PRIVATE_MESSAGE: "privateMessage", OBJECT_MESSAGE: "objectMessage", MODERATOR_MESSAGE: "moderatorMessage", ADMIN_MESSAGE: "adminMessage", EXTENSION_RESPONSE: "extensionResponse", ROOM_VARIABLES_UPDATE: "roomVariablesUpdate", USER_VARIABLES_UPDATE: "userVariablesUpdate", MMOITEM_VARIABLES_UPDATE: "mmoItemVariablesUpdate", ROOM_GROUP_SUBSCRIBE: "roomGroupSubscribe", ROOM_GROUP_SUBSCRIBE_ERROR: "roomGroupSubscribeError", ROOM_GROUP_UNSUBSCRIBE: "roomGroupUnsubscribe", ROOM_GROUP_UNSUBSCRIBE_ERROR: "roomGroupUnsubscribeError", ROOM_FIND_RESULT: "roomFindResult", USER_FIND_RESULT: "userFindResult", INVITATION: "invitation", INVITATION_REPLY: "invitationReply", INVITATION_REPLY_ERROR: "invitationReplyError", PING_PONG: "pingPong", SOCKET_ERROR: "socketError" }), s = Object.freeze({ BUDDY_LIST_INIT: "buddyListInit", BUDDY_ADD: "buddyAdd", BUDDY_REMOVE: "buddyRemove", BUDDY_BLOCK: "buddyBlock", BUDDY_ERROR: "buddyError", BUDDY_ONLINE_STATE_CHANGE: "buddyOnlineStateChange", BUDDY_VARIABLES_UPDATE: "buddyVariablesUpdate", BUDDY_MESSAGE: "buddyMessage" }), a = Object.freeze({ CONNECTION_REQUIRED: "connectionRequired", LOAD_BALANCER_ERROR: "loadBalancerError" });
+          t.EventDispatcher = i, t.SFSEvent = o, t.SFSBuddyEvent = s, t.SFSClusterEvent = a;
+        }, function(e, t, n) {
+          var r = n(4);
+          e.exports = function(e2, t2) {
+            if (!r(e2) || e2._t !== t2)
+              throw TypeError("Incompatible receiver, " + t2 + " required!");
+            return e2;
+          };
+        }, function(e, t, n) {
+          var r = n(15);
+          e.exports = function(e2, t2, n2) {
+            for (var i in t2)
+              r(e2, i, t2[i], n2);
+            return e2;
+          };
+        }, function(e, t) {
+          e.exports = function(e2, t2, n, r) {
+            if (!(e2 instanceof t2) || void 0 !== r && r in e2)
+              throw TypeError(n + ": incorrect invocation!");
+            return e2;
+          };
+        }, function(e, t, n) {
+          "use strict";
+          var r = n(6), i = n(10), o = n(11), s = n(7)("species");
+          e.exports = function(e2) {
+            var t2 = r[e2];
+            o && t2 && !t2[s] && i.f(t2, s, { configurable: true, get: function() {
+              return this;
+            } });
+          };
+        }, function(e, t) {
+          e.exports = false;
+        }, function(e, t, n) {
+          var r = n(10).f, i = n(16), o = n(7)("toStringTag");
+          e.exports = function(e2, t2, n2) {
+            e2 && !i(e2 = n2 ? e2 : e2.prototype, o) && r(e2, o, { configurable: true, value: t2 });
+          };
+        }, function(e, t, n) {
+          "use strict";
+          Object.defineProperty(t, "__esModule", { value: true }), t.CreateRoomRequest = void 0;
+          var r = function() {
+            function e2(e3, t2) {
+              for (var n2 = 0; n2 < t2.length; n2++) {
+                var r2 = t2[n2];
+                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
+              }
+            }
+            __name(e2, "e");
+            return function(t2, n2, r2) {
+              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
+            };
+          }(), i = n(2), o = n(1), s = n(39), a = n(8), u = n(9), c = n(52);
+          var l = function(e2) {
+            function t2(e3) {
+              var n2 = arguments.length > 1 && void 0 !== arguments[1] && arguments[1], r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
+              !function(e4, t3) {
+                if (!(e4 instanceof t3))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, t2);
+              var o2 = function(e4, t3) {
+                if (!e4)
+                  throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+                return !t3 || "object" != typeof t3 && "function" != typeof t3 ? e4 : t3;
+              }(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, i.Requests.CreateRoom));
+              return o2._settings = e3, o2._autoJoin = n2, o2._roomToLeave = r2, Object.seal(o2), o2;
+            }
+            __name(t2, "t");
+            return function(e3, t3) {
+              if ("function" != typeof t3 && null !== t3)
+                throw new TypeError("Super expression must either be null or a function, not " + typeof t3);
+              e3.prototype = Object.create(t3 && t3.prototype, { constructor: { value: e3, enumerable: false, writable: true, configurable: true } }), t3 && (Object.setPrototypeOf ? Object.setPrototypeOf(e3, t3) : e3.__proto__ = t3);
+            }(t2, i.BaseRequest), r(t2, null, [{ key: "KEY_ROOM", get: function() {
+              return "r";
+            } }, { key: "KEY_NAME", get: function() {
+              return "n";
+            } }, { key: "KEY_PASSWORD", get: function() {
+              return "p";
+            } }, { key: "KEY_GROUP_ID", get: function() {
+              return "g";
+            } }, { key: "KEY_ISGAME", get: function() {
+              return "ig";
+            } }, { key: "KEY_MAXUSERS", get: function() {
+              return "mu";
+            } }, { key: "KEY_MAXSPECTATORS", get: function() {
+              return "ms";
+            } }, { key: "KEY_MAXVARS", get: function() {
+              return "mv";
+            } }, { key: "KEY_ROOMVARS", get: function() {
+              return "rv";
+            } }, { key: "KEY_PERMISSIONS", get: function() {
+              return "pm";
+            } }, { key: "KEY_EVENTS", get: function() {
+              return "ev";
+            } }, { key: "KEY_EXTID", get: function() {
+              return "xn";
+            } }, { key: "KEY_EXTCLASS", get: function() {
+              return "xc";
+            } }, { key: "KEY_EXTPROP", get: function() {
+              return "xp";
+            } }, { key: "KEY_AUTOJOIN", get: function() {
+              return "aj";
+            } }, { key: "KEY_ROOM_TO_LEAVE", get: function() {
+              return "rl";
+            } }, { key: "KEY_ALLOW_JOIN_INVITATION_BY_OWNER", get: function() {
+              return "aji";
+            } }, { key: "KEY_MMO_DEFAULT_AOI", get: function() {
+              return "maoi";
+            } }, { key: "KEY_MMO_MAP_LOW_LIMIT", get: function() {
+              return "mllm";
+            } }, { key: "KEY_MMO_MAP_HIGH_LIMIT", get: function() {
+              return "mlhm";
+            } }, { key: "KEY_MMO_USER_MAX_LIMBO_SECONDS", get: function() {
+              return "muls";
+            } }, { key: "KEY_MMO_PROXIMITY_UPDATE_MILLIS", get: function() {
+              return "mpum";
+            } }, { key: "KEY_MMO_SEND_ENTRY_POINT", get: function() {
+              return "msep";
+            } }]), r(t2, [{ key: "validate", value: function(e3) {
+              if (!(this._settings instanceof s.RoomSettings))
+                throw new o.SFSValidationError("CreateRoomRequest Error", ["Room configuration must be an instance of RoomSettings class"]);
+              var t3 = [];
+              if (null != this._settings.name && 0 !== this._settings.name.length || t3.push("Missing Room name"), this._settings.maxUsers <= 0 && t3.push("Max number of users must be > 0"), this._settings.maxSpectators < 0 && t3.push("Max number of spectators must be >= 0"), this._settings.maxVariables < 0 && t3.push("Max number of Room Variables must be >= 0"), null != this._settings.variables && (this._settings.variables instanceof Array ? this._settings.variables.every(function(e4) {
+                return e4 instanceof c.SFSRoomVariable;
+              }) || t3.push("Each Room Variable must be an instance of SFSRoomVariable class") : t3.push("Room Variables must be passed in an array")), null == this._settings.permissions || this._settings.permissions instanceof s.RoomPermissions || t3.push("Allowed room permissions must be an instance of RoomPermissions class"), null == this._settings.events || this._settings.events instanceof s.RoomEvents || t3.push("Allowed room events must be an instance of RoomEvents class"), null != this._settings.extension && (this._settings.extension instanceof s.RoomExtension ? (null != this._settings.extension.className && 0 !== this._settings.extension.className.length || t3.push("Missing Room Extension class name"), null != this._settings.extension.id && 0 !== this._settings.extension.id.length || t3.push("Missing Room Extension id")) : t3.push("Room Extension settings must be an instance of RoomExtension class")), this._settings instanceof s.MMORoomSettings && (null == this._settings.defaultAOI && t3.push("Missing MMORoom's default AoI (Area of Interest)"), this._settings.defaultAOI instanceof a.Vec3D || t3.push("MMORoom's AoI (Area of Interest) must be an instance of Vec3D class"), null != this._settings.mapLimits && (this._settings.mapLimits instanceof s.MapLimits ? (null != this._settings.mapLimits.lowerLimit && null != this._settings.mapLimits.higherLimit || t3.push("MMORoom's lower and higher map limits must be both set"), this._settings.mapLimits.lowerLimit instanceof a.Vec3D && this._settings.mapLimits.higherLimit instanceof a.Vec3D || t3.push("MMORoom's lower and higher map limits must be both instances of Vec3D class")) : t3.push("MMORoom's map limits must be set in an instance of MapLimits class"))), null == this._roomToLeave || this._roomToLeave instanceof u.SFSRoom || t3.push("Room to leave must be an instance of SFSRoom class"), t3.length > 0)
+                throw new o.SFSValidationError("CreateRoomRequest Error", t3);
+            } }, { key: "execute", value: function(e3) {
+              if (this._reqObj.putUtfString(t2.KEY_NAME, this._settings.name), this._reqObj.putUtfString(t2.KEY_GROUP_ID, this._settings.groupId), this._reqObj.putUtfString(t2.KEY_PASSWORD, this._settings.password), this._reqObj.putBool(t2.KEY_ISGAME, this._settings.isGame), this._reqObj.putShort(t2.KEY_MAXUSERS, this._settings.maxUsers), this._reqObj.putShort(t2.KEY_MAXSPECTATORS, this._settings.maxSpectators), this._reqObj.putShort(t2.KEY_MAXVARS, this._settings.maxVariables), this._reqObj.putBool(t2.KEY_ALLOW_JOIN_INVITATION_BY_OWNER, this._settings.allowOwnerOnlyInvitation), null != this._settings.variables && this._settings.variables.length > 0) {
+                var n2 = new a.SFSArray(), r2 = true, i2 = false, o2 = void 0;
+                try {
+                  for (var u2, c2 = this._settings.variables[Symbol.iterator](); !(r2 = (u2 = c2.next()).done); r2 = true) {
+                    var l2 = u2.value;
+                    n2.addSFSArray(l2.toSFSArray());
+                  }
+                } catch (e4) {
+                  i2 = true, o2 = e4;
+                } finally {
+                  try {
+                    !r2 && c2.return && c2.return();
+                  } finally {
+                    if (i2)
+                      throw o2;
+                  }
+                }
+                this._reqObj.putSFSArray(t2.KEY_ROOMVARS, n2);
+              }
+              if (null != this._settings.permissions) {
+                var f = [];
+                f.push(this._settings.permissions.allowNameChange), f.push(this._settings.permissions.allowPasswordStateChange), f.push(this._settings.permissions.allowPublicMessages), f.push(this._settings.permissions.allowResizing), this._reqObj.putBoolArray(t2.KEY_PERMISSIONS, f);
+              }
+              if (null != this._settings.events) {
+                var h = [];
+                h.push(this._settings.events.allowUserEnter), h.push(this._settings.events.allowUserExit), h.push(this._settings.events.allowUserCountChange), h.push(this._settings.events.allowUserVariablesUpdate), this._reqObj.putBoolArray(t2.KEY_EVENTS, h);
+              }
+              null != this._settings.extension && (this._reqObj.putUtfString(t2.KEY_EXTID, this._settings.extension.id), this._reqObj.putUtfString(t2.KEY_EXTCLASS, this._settings.extension.className), null != this._settings.extension.propertiesFile && this._settings.extension.propertiesFile.length > 0 && this._reqObj.putUtfString(t2.KEY_EXTPROP, this._settings.extension.propertiesFile)), this._settings instanceof s.MMORoomSettings && (this._settings.defaultAOI.isFloat ? (this._reqObj.putFloatArray(t2.KEY_MMO_DEFAULT_AOI, this._settings.defaultAOI.toArray()), null != this._settings.mapLimits && (this._reqObj.putFloatArray(t2.KEY_MMO_MAP_LOW_LIMIT, this._settings.mapLimits.lowerLimit.toArray()), this._reqObj.putFloatArray(t2.KEY_MMO_MAP_HIGH_LIMIT, this._settings.mapLimits.higherLimit.toArray()))) : (this._reqObj.putIntArray(t2.KEY_MMO_DEFAULT_AOI, this._settings.defaultAOI.toArray()), null != this._settings.mapLimits && (this._reqObj.putIntArray(t2.KEY_MMO_MAP_LOW_LIMIT, this._settings.mapLimits.lowerLimit.toArray()), this._reqObj.putIntArray(t2.KEY_MMO_MAP_HIGH_LIMIT, this._settings.mapLimits.higherLimit.toArray()))), this._reqObj.putShort(t2.KEY_MMO_USER_MAX_LIMBO_SECONDS, this._settings.userMaxLimboSeconds), this._reqObj.putShort(t2.KEY_MMO_PROXIMITY_UPDATE_MILLIS, this._settings.proximityListUpdateMillis), this._reqObj.putBool(t2.KEY_MMO_SEND_ENTRY_POINT, this._settings.sendAOIEntryPoint)), this._reqObj.putBool(t2.KEY_AUTOJOIN, this._autoJoin), null != this._roomToLeave && this._reqObj.putInt(t2.KEY_ROOM_TO_LEAVE, this._roomToLeave.id);
+            } }]), t2;
+          }();
+          t.CreateRoomRequest = l;
+        }, function(e, t, n) {
+          "use strict";
+          Object.defineProperty(t, "__esModule", { value: true }), t.SFSBuddyVariable = t.ReservedBuddyVariables = void 0;
+          var r = function() {
+            function e2(e3, t2) {
+              for (var n2 = 0; n2 < t2.length; n2++) {
+                var r2 = t2[n2];
+                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
+              }
+            }
+            __name(e2, "e");
+            return function(t2, n2, r2) {
+              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
+            };
+          }(), i = n(51);
+          var o = Object.freeze({ BV_ONLINE: "$__BV_ONLINE__", BV_STATE: "$__BV_STATE__", BV_NICKNAME: "$__BV_NICKNAME__" }), s = function(e2) {
+            function t2(e3, n2) {
+              var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : -1;
+              !function(e4, t3) {
+                if (!(e4 instanceof t3))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, t2);
+              var i2 = function(e4, t3) {
+                if (!e4)
+                  throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+                return !t3 || "object" != typeof t3 && "function" != typeof t3 ? e4 : t3;
+              }(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3, n2, r2));
+              return Object.freeze(i2), i2;
+            }
+            __name(t2, "t");
+            return function(e3, t3) {
+              if ("function" != typeof t3 && null !== t3)
+                throw new TypeError("Super expression must either be null or a function, not " + typeof t3);
+              e3.prototype = Object.create(t3 && t3.prototype, { constructor: { value: e3, enumerable: false, writable: true, configurable: true } }), t3 && (Object.setPrototypeOf ? Object.setPrototypeOf(e3, t3) : e3.__proto__ = t3);
+            }(t2, i.BaseVariable), r(t2, null, [{ key: "OFFLINE_PREFIX", get: function() {
+              return "$";
+            } }]), r(t2, [{ key: "toString", value: function() {
+              return "[BuddyVar: " + this.name + ", Type: " + this.type + ", Value: " + this.value + "]";
+            } }, { key: "isOffline", get: function() {
+              return this._name.charAt(0) === t2.OFFLINE_PREFIX;
+            } }], [{ key: "fromSFSArray", value: function(e3) {
+              return new t2(e3.get(0), e3.get(2), e3.get(1));
+            } }]), t2;
+          }();
+          t.ReservedBuddyVariables = o, t.SFSBuddyVariable = s;
+        }, function(e, t, n) {
+          "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.BaseVariable = t.VariableType = void 0;
           var r = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e2) {
             return typeof e2;
@@ -1568,7 +1891,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(48);
+          }(), i = n(51);
           var o = Object.freeze({ RV_GAME_STARTED: "$GS" }), s = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : -1;
@@ -1624,7 +1947,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(39);
+          }(), i = n(42);
           var o = Object.freeze({ DEBUG: 0, INFO: 1, WARN: 2, ERROR: 3, toString: function(e2) {
             return e2 === this.DEBUG ? "DEBUG" : e2 === this.INFO ? "INFO" : e2 === this.WARN ? "WARN" : e2 === this.ERROR ? "ERROR" : void 0;
           } }), s = Object.freeze({ DEBUG: "debug", INFO: "info", WARNING: "warn", ERROR: "error" }), a = Symbol(), u = Symbol(), c = function(e2) {
@@ -1821,314 +2144,10 @@
             return "String" == r(e2) ? e2.split("") : Object(e2);
           };
         }, function(e, t, n) {
-          var r = n(146), i = n(92);
+          var r = n(148), i = n(93);
           e.exports = Object.keys || function(e2) {
             return r(e2, i);
           };
-        }, function(e, t, n) {
-          "use strict";
-          Object.defineProperty(t, "__esModule", { value: true }), t.MessageRecipientMode = t.BanMode = t.MapLimits = t.RoomExtension = t.RoomEvents = t.RoomPermissions = t.MMORoomSettings = t.SFSGameSettings = t.RoomSettings = void 0;
-          var r = function() {
-            function e2(e3, t2) {
-              for (var n2 = 0; n2 < t2.length; n2++) {
-                var r2 = t2[n2];
-                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
-              }
-            }
-            __name(e2, "e");
-            return function(t2, n2, r2) {
-              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
-            };
-          }(), i = n(1);
-          function o(e2, t2) {
-            if (!e2)
-              throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-            return !t2 || "object" != typeof t2 && "function" != typeof t2 ? e2 : t2;
-          }
-          __name(o, "o");
-          function s(e2, t2) {
-            if ("function" != typeof t2 && null !== t2)
-              throw new TypeError("Super expression must either be null or a function, not " + typeof t2);
-            e2.prototype = Object.create(t2 && t2.prototype, { constructor: { value: e2, enumerable: false, writable: true, configurable: true } }), t2 && (Object.setPrototypeOf ? Object.setPrototypeOf(e2, t2) : e2.__proto__ = t2);
-          }
-          __name(s, "s");
-          function a(e2, t2) {
-            if (!(e2 instanceof t2))
-              throw new TypeError("Cannot call a class as a function");
-          }
-          __name(a, "a");
-          var u = /* @__PURE__ */ __name(function e2(t2) {
-            a(this, e2), this.name = t2, this.password = "", this.groupId = "default", this.isGame = false, this.maxUsers = 10, this.maxSpectators = 0, this.maxVariables = 5, this.variables = [], this.permissions = null, this.events = null, this.extension = null, this.allowOwnerOnlyInvitation = true;
-          }, "e"), c = function(e2) {
-            function t2(e3) {
-              a(this, t2);
-              var n2 = o(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3));
-              return n2.isPublic = true, n2.minPlayersToStartGame = 2, n2.invitedPlayers = null, n2.searchableRooms = null, n2.invitationExpiryTime = 15, n2.leaveLastJoinedRoom = true, n2.notifyGameStarted = false, n2.playerMatchExpression = null, n2.spectatorMatchExpression = null, n2.invitationParams = null, Object.seal(n2), n2;
-            }
-            __name(t2, "t");
-            return s(t2, u), t2;
-          }(), l = function(e2) {
-            function t2(e3, n2) {
-              a(this, t2);
-              var r2 = o(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, e3));
-              return r2.defaultAOI = n2, r2.mapLimits = null, r2.userMaxLimboSeconds = 50, r2.proximityListUpdateMillis = 250, r2.sendAOIEntryPoint = true, Object.seal(r2), r2;
-            }
-            __name(t2, "t");
-            return s(t2, u), t2;
-          }(), f = Object.freeze({ BY_ADDRESS: 0, BY_NAME: 1 }), h = function() {
-            function e2(t2, n2) {
-              if (a(this, e2), t2 < e2.TO_USER || t2 > e2.TO_ZONE)
-                throw new i.SFSError("Illegal recipient mode: " + t2);
-              this._mode = t2, this._target = n2, Object.freeze(this);
-            }
-            __name(e2, "e");
-            return r(e2, null, [{ key: "TO_USER", get: function() {
-              return 0;
-            } }, { key: "TO_ROOM", get: function() {
-              return 1;
-            } }, { key: "TO_GROUP", get: function() {
-              return 2;
-            } }, { key: "TO_ZONE", get: function() {
-              return 3;
-            } }]), r(e2, [{ key: "mode", get: function() {
-              return this._mode;
-            } }, { key: "target", get: function() {
-              return this._target;
-            } }]), e2;
-          }();
-          t.RoomSettings = u, t.SFSGameSettings = c, t.MMORoomSettings = l, t.RoomPermissions = /* @__PURE__ */ __name(function e2() {
-            a(this, e2), this.allowNameChange = false, this.allowPasswordStateChange = false, this.allowPublicMessages = true, this.allowResizing = false, Object.seal(this);
-          }, "e"), t.RoomEvents = /* @__PURE__ */ __name(function e2() {
-            a(this, e2), this.allowUserCountChange = false, this.allowUserEnter = false, this.allowUserExit = false, this.allowUserVariablesUpdate = false, Object.seal(this);
-          }, "e"), t.RoomExtension = /* @__PURE__ */ __name(function e2(t2, n2) {
-            a(this, e2), this.id = t2, this.className = n2, this.propertiesFile = "", Object.seal(this);
-          }, "e"), t.MapLimits = /* @__PURE__ */ __name(function e2(t2, n2) {
-            if (a(this, e2), null == t2 || null == n2)
-              throw new i.SFSError("Map limits arguments must be both non null!");
-            this.lowerLimit = t2, this.higherLimit = n2, Object.seal(this);
-          }, "e"), t.BanMode = f, t.MessageRecipientMode = h;
-        }, function(e, t, n) {
-          "use strict";
-          Object.defineProperty(t, "__esModule", { value: true }), t.CreateRoomRequest = void 0;
-          var r = function() {
-            function e2(e3, t2) {
-              for (var n2 = 0; n2 < t2.length; n2++) {
-                var r2 = t2[n2];
-                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
-              }
-            }
-            __name(e2, "e");
-            return function(t2, n2, r2) {
-              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
-            };
-          }(), i = n(2), o = n(1), s = n(56), a = n(8), u = n(9), c = n(49);
-          var l = function(e2) {
-            function t2(e3) {
-              var n2 = arguments.length > 1 && void 0 !== arguments[1] && arguments[1], r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
-              !function(e4, t3) {
-                if (!(e4 instanceof t3))
-                  throw new TypeError("Cannot call a class as a function");
-              }(this, t2);
-              var o2 = function(e4, t3) {
-                if (!e4)
-                  throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-                return !t3 || "object" != typeof t3 && "function" != typeof t3 ? e4 : t3;
-              }(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, i.Requests.CreateRoom));
-              return o2._settings = e3, o2._autoJoin = n2, o2._roomToLeave = r2, Object.seal(o2), o2;
-            }
-            __name(t2, "t");
-            return function(e3, t3) {
-              if ("function" != typeof t3 && null !== t3)
-                throw new TypeError("Super expression must either be null or a function, not " + typeof t3);
-              e3.prototype = Object.create(t3 && t3.prototype, { constructor: { value: e3, enumerable: false, writable: true, configurable: true } }), t3 && (Object.setPrototypeOf ? Object.setPrototypeOf(e3, t3) : e3.__proto__ = t3);
-            }(t2, i.BaseRequest), r(t2, null, [{ key: "KEY_ROOM", get: function() {
-              return "r";
-            } }, { key: "KEY_NAME", get: function() {
-              return "n";
-            } }, { key: "KEY_PASSWORD", get: function() {
-              return "p";
-            } }, { key: "KEY_GROUP_ID", get: function() {
-              return "g";
-            } }, { key: "KEY_ISGAME", get: function() {
-              return "ig";
-            } }, { key: "KEY_MAXUSERS", get: function() {
-              return "mu";
-            } }, { key: "KEY_MAXSPECTATORS", get: function() {
-              return "ms";
-            } }, { key: "KEY_MAXVARS", get: function() {
-              return "mv";
-            } }, { key: "KEY_ROOMVARS", get: function() {
-              return "rv";
-            } }, { key: "KEY_PERMISSIONS", get: function() {
-              return "pm";
-            } }, { key: "KEY_EVENTS", get: function() {
-              return "ev";
-            } }, { key: "KEY_EXTID", get: function() {
-              return "xn";
-            } }, { key: "KEY_EXTCLASS", get: function() {
-              return "xc";
-            } }, { key: "KEY_EXTPROP", get: function() {
-              return "xp";
-            } }, { key: "KEY_AUTOJOIN", get: function() {
-              return "aj";
-            } }, { key: "KEY_ROOM_TO_LEAVE", get: function() {
-              return "rl";
-            } }, { key: "KEY_ALLOW_JOIN_INVITATION_BY_OWNER", get: function() {
-              return "aji";
-            } }, { key: "KEY_MMO_DEFAULT_AOI", get: function() {
-              return "maoi";
-            } }, { key: "KEY_MMO_MAP_LOW_LIMIT", get: function() {
-              return "mllm";
-            } }, { key: "KEY_MMO_MAP_HIGH_LIMIT", get: function() {
-              return "mlhm";
-            } }, { key: "KEY_MMO_USER_MAX_LIMBO_SECONDS", get: function() {
-              return "muls";
-            } }, { key: "KEY_MMO_PROXIMITY_UPDATE_MILLIS", get: function() {
-              return "mpum";
-            } }, { key: "KEY_MMO_SEND_ENTRY_POINT", get: function() {
-              return "msep";
-            } }]), r(t2, [{ key: "validate", value: function(e3) {
-              if (!(this._settings instanceof s.RoomSettings))
-                throw new o.SFSValidationError("CreateRoomRequest Error", ["Room configuration must be an instance of RoomSettings class"]);
-              var t3 = [];
-              if (null != this._settings.name && 0 !== this._settings.name.length || t3.push("Missing Room name"), this._settings.maxUsers <= 0 && t3.push("Max number of users must be > 0"), this._settings.maxSpectators < 0 && t3.push("Max number of spectators must be >= 0"), this._settings.maxVariables < 0 && t3.push("Max number of Room Variables must be >= 0"), null != this._settings.variables && (this._settings.variables instanceof Array ? this._settings.variables.every(function(e4) {
-                return e4 instanceof c.SFSRoomVariable;
-              }) || t3.push("Each Room Variable must be an instance of SFSRoomVariable class") : t3.push("Room Variables must be passed in an array")), null == this._settings.permissions || this._settings.permissions instanceof s.RoomPermissions || t3.push("Allowed room permissions must be an instance of RoomPermissions class"), null == this._settings.events || this._settings.events instanceof s.RoomEvents || t3.push("Allowed room events must be an instance of RoomEvents class"), null != this._settings.extension && (this._settings.extension instanceof s.RoomExtension ? (null != this._settings.extension.className && 0 !== this._settings.extension.className.length || t3.push("Missing Room Extension class name"), null != this._settings.extension.id && 0 !== this._settings.extension.id.length || t3.push("Missing Room Extension id")) : t3.push("Room Extension settings must be an instance of RoomExtension class")), this._settings instanceof s.MMORoomSettings && (null == this._settings.defaultAOI && t3.push("Missing MMORoom's default AoI (Area of Interest)"), this._settings.defaultAOI instanceof a.Vec3D || t3.push("MMORoom's AoI (Area of Interest) must be an instance of Vec3D class"), null != this._settings.mapLimits && (this._settings.mapLimits instanceof s.MapLimits ? (null != this._settings.mapLimits.lowerLimit && null != this._settings.mapLimits.higherLimit || t3.push("MMORoom's lower and higher map limits must be both set"), this._settings.mapLimits.lowerLimit instanceof a.Vec3D && this._settings.mapLimits.higherLimit instanceof a.Vec3D || t3.push("MMORoom's lower and higher map limits must be both instances of Vec3D class")) : t3.push("MMORoom's map limits must be set in an instance of MapLimits class"))), null == this._roomToLeave || this._roomToLeave instanceof u.SFSRoom || t3.push("Room to leave must be an instance of SFSRoom class"), t3.length > 0)
-                throw new o.SFSValidationError("CreateRoomRequest Error", t3);
-            } }, { key: "execute", value: function(e3) {
-              if (this._reqObj.putUtfString(t2.KEY_NAME, this._settings.name), this._reqObj.putUtfString(t2.KEY_GROUP_ID, this._settings.groupId), this._reqObj.putUtfString(t2.KEY_PASSWORD, this._settings.password), this._reqObj.putBool(t2.KEY_ISGAME, this._settings.isGame), this._reqObj.putShort(t2.KEY_MAXUSERS, this._settings.maxUsers), this._reqObj.putShort(t2.KEY_MAXSPECTATORS, this._settings.maxSpectators), this._reqObj.putShort(t2.KEY_MAXVARS, this._settings.maxVariables), this._reqObj.putBool(t2.KEY_ALLOW_JOIN_INVITATION_BY_OWNER, this._settings.allowOwnerOnlyInvitation), null != this._settings.variables && this._settings.variables.length > 0) {
-                var n2 = new a.SFSArray(), r2 = true, i2 = false, o2 = void 0;
-                try {
-                  for (var u2, c2 = this._settings.variables[Symbol.iterator](); !(r2 = (u2 = c2.next()).done); r2 = true) {
-                    var l2 = u2.value;
-                    n2.addSFSArray(l2.toSFSArray());
-                  }
-                } catch (e4) {
-                  i2 = true, o2 = e4;
-                } finally {
-                  try {
-                    !r2 && c2.return && c2.return();
-                  } finally {
-                    if (i2)
-                      throw o2;
-                  }
-                }
-                this._reqObj.putSFSArray(t2.KEY_ROOMVARS, n2);
-              }
-              if (null != this._settings.permissions) {
-                var f = [];
-                f.push(this._settings.permissions.allowNameChange), f.push(this._settings.permissions.allowPasswordStateChange), f.push(this._settings.permissions.allowPublicMessages), f.push(this._settings.permissions.allowResizing), this._reqObj.putBoolArray(t2.KEY_PERMISSIONS, f);
-              }
-              if (null != this._settings.events) {
-                var h = [];
-                h.push(this._settings.events.allowUserEnter), h.push(this._settings.events.allowUserExit), h.push(this._settings.events.allowUserCountChange), h.push(this._settings.events.allowUserVariablesUpdate), this._reqObj.putBoolArray(t2.KEY_EVENTS, h);
-              }
-              null != this._settings.extension && (this._reqObj.putUtfString(t2.KEY_EXTID, this._settings.extension.id), this._reqObj.putUtfString(t2.KEY_EXTCLASS, this._settings.extension.className), null != this._settings.extension.propertiesFile && this._settings.extension.propertiesFile.length > 0 && this._reqObj.putUtfString(t2.KEY_EXTPROP, this._settings.extension.propertiesFile)), this._settings instanceof s.MMORoomSettings && (this._settings.defaultAOI.isFloat ? (this._reqObj.putFloatArray(t2.KEY_MMO_DEFAULT_AOI, this._settings.defaultAOI.toArray()), null != this._settings.mapLimits && (this._reqObj.putFloatArray(t2.KEY_MMO_MAP_LOW_LIMIT, this._settings.mapLimits.lowerLimit.toArray()), this._reqObj.putFloatArray(t2.KEY_MMO_MAP_HIGH_LIMIT, this._settings.mapLimits.higherLimit.toArray()))) : (this._reqObj.putIntArray(t2.KEY_MMO_DEFAULT_AOI, this._settings.defaultAOI.toArray()), null != this._settings.mapLimits && (this._reqObj.putIntArray(t2.KEY_MMO_MAP_LOW_LIMIT, this._settings.mapLimits.lowerLimit.toArray()), this._reqObj.putIntArray(t2.KEY_MMO_MAP_HIGH_LIMIT, this._settings.mapLimits.higherLimit.toArray()))), this._reqObj.putShort(t2.KEY_MMO_USER_MAX_LIMBO_SECONDS, this._settings.userMaxLimboSeconds), this._reqObj.putShort(t2.KEY_MMO_PROXIMITY_UPDATE_MILLIS, this._settings.proximityListUpdateMillis), this._reqObj.putBool(t2.KEY_MMO_SEND_ENTRY_POINT, this._settings.sendAOIEntryPoint)), this._reqObj.putBool(t2.KEY_AUTOJOIN, this._autoJoin), null != this._roomToLeave && this._reqObj.putInt(t2.KEY_ROOM_TO_LEAVE, this._roomToLeave.id);
-            } }]), t2;
-          }();
-          t.CreateRoomRequest = l;
-        }, function(e, t, n) {
-          "use strict";
-          Object.defineProperty(t, "__esModule", { value: true }), t.BuddyOnlineState = t.SFSBuddy = void 0;
-          var r = function() {
-            function e2(e3, t2) {
-              for (var n2 = 0; n2 < t2.length; n2++) {
-                var r2 = t2[n2];
-                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
-              }
-            }
-            __name(e2, "e");
-            return function(t2, n2, r2) {
-              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
-            };
-          }(), i = n(46);
-          var o = function() {
-            function e2(t2, n2) {
-              var r2 = arguments.length > 2 && void 0 !== arguments[2] && arguments[2], i2 = arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
-              !function(e3, t3) {
-                if (!(e3 instanceof t3))
-                  throw new TypeError("Cannot call a class as a function");
-              }(this, e2), this._id = t2, this._name = n2, this._isBlocked = r2, this._isTemp = i2, this._variables = /* @__PURE__ */ new Map(), Object.seal(this);
-            }
-            __name(e2, "e");
-            return r(e2, [{ key: "toString", value: function() {
-              return "[Buddy: " + this.name + ", Id: " + this.id + "]";
-            } }, { key: "getVariable", value: function(e3) {
-              return this._variables.get(e3);
-            } }, { key: "containsVariable", value: function(e3) {
-              return this._variables.has(e3);
-            } }, { key: "getVariables", value: function() {
-              return Array.from(this._variables.values());
-            } }, { key: "getOfflineVariables", value: function() {
-              return this.getVariables().filter(function(e3) {
-                return e3.name.charAt(0) === i.SFSBuddyVariable.OFFLINE_PREFIX;
-              });
-            } }, { key: "getOnlineVariables", value: function() {
-              return this.getVariables().filter(function(e3) {
-                return e3.name.charAt(0) !== i.SFSBuddyVariable.OFFLINE_PREFIX;
-              });
-            } }, { key: "_setVariables", value: function(e3) {
-              var t2 = true, n2 = false, r2 = void 0;
-              try {
-                for (var i2, o2 = e3[Symbol.iterator](); !(t2 = (i2 = o2.next()).done); t2 = true) {
-                  var s2 = i2.value;
-                  this._setVariable(s2);
-                }
-              } catch (e4) {
-                n2 = true, r2 = e4;
-              } finally {
-                try {
-                  !t2 && o2.return && o2.return();
-                } finally {
-                  if (n2)
-                    throw r2;
-                }
-              }
-            } }, { key: "_setVariable", value: function(e3) {
-              e3.isNull ? this._variables.delete(e3.name) : this._variables.set(e3.name, e3);
-            } }, { key: "_removeVariable", value: function(e3) {
-              this._variables.delete(e3);
-            } }, { key: "_clearVolatileVariables", value: function() {
-              var e3 = true, t2 = false, n2 = void 0;
-              try {
-                for (var r2, i2 = this.getOnlineVariables()[Symbol.iterator](); !(e3 = (r2 = i2.next()).done); e3 = true) {
-                  var o2 = r2.value;
-                  this._removeVariable(o2.name);
-                }
-              } catch (e4) {
-                t2 = true, n2 = e4;
-              } finally {
-                try {
-                  !e3 && i2.return && i2.return();
-                } finally {
-                  if (t2)
-                    throw n2;
-                }
-              }
-            } }, { key: "id", get: function() {
-              return this._id;
-            } }, { key: "name", get: function() {
-              return this._name;
-            } }, { key: "isBlocked", get: function() {
-              return this._isBlocked;
-            } }, { key: "isTemp", get: function() {
-              return this._isTemp;
-            } }, { key: "isOnline", get: function() {
-              var e3 = true;
-              return this.containsVariable(i.ReservedBuddyVariables.BV_ONLINE) && (e3 = this.getVariable(i.ReservedBuddyVariables.BV_ONLINE).value), e3 && this._id > -1;
-            } }, { key: "state", get: function() {
-              return this.containsVariable(i.ReservedBuddyVariables.BV_STATE) ? this.getVariable(i.ReservedBuddyVariables.BV_STATE).value : null;
-            } }, { key: "nickName", get: function() {
-              return this.containsVariable(i.ReservedBuddyVariables.BV_NICKNAME) ? this.getVariable(i.ReservedBuddyVariables.BV_NICKNAME).value : null;
-            } }], [{ key: "fromSFSArray", value: function(t2) {
-              var n2 = new e2(t2.get(0), t2.get(1), t2.get(2), t2.size() > 3 && t2.get(4)), r2 = t2.get(3);
-              if (null != r2)
-                for (var o2 = 0; o2 < r2.size(); o2++)
-                  n2._setVariable(i.SFSBuddyVariable.fromSFSArray(r2.get(o2)));
-              return n2;
-            } }]), e2;
-          }(), s = Object.freeze({ ONLINE: 0, OFFLINE: 1, LEFT_THE_SERVER: 2 });
-          t.SFSBuddy = o, t.BuddyOnlineState = s;
         }, function(e, t, n) {
           "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.SFSUserVariable = void 0;
@@ -2143,7 +2162,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(48);
+          }(), i = n(51);
           var o = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : -1;
@@ -2186,13 +2205,13 @@
           }();
           t.SFSUserVariable = o;
         }, function(e, t, n) {
-          for (var r, i = n(6), o = n(18), s = n(35), a = s("typed_array"), u = s("view"), c = !(!i.ArrayBuffer || !i.DataView), l = c, f = 0, h = "Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array".split(","); f < 9; )
+          for (var r, i = n(6), o = n(18), s = n(36), a = s("typed_array"), u = s("view"), c = !(!i.ArrayBuffer || !i.DataView), l = c, f = 0, h = "Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array".split(","); f < 9; )
             (r = i[h[f++]]) ? (o(r.prototype, a, true), o(r.prototype, u, true)) : l = false;
           e.exports = { ABV: c, CONSTR: l, TYPED: a, VIEW: u };
         }, function(e, t, n) {
           "use strict";
-          var r = n(6), i = n(0), o = n(15), s = n(41), a = n(29), u = n(62), c = n(42), l = n(4), f = n(3), h = n(64), _ = n(45), y = n(87);
-          e.exports = function(e2, t2, n2, p, d, g) {
+          var r = n(6), i = n(0), o = n(15), s = n(44), a = n(29), u = n(62), c = n(45), l = n(4), f = n(3), h = n(64), _ = n(48), p = n(88);
+          e.exports = function(e2, t2, n2, y, d, g) {
             var v = r[e2], b = v, m = d ? "set" : "add", S = b && b.prototype, E = {}, R = /* @__PURE__ */ __name(function(e3) {
               var t3 = S[e3];
               o(S, e3, "delete" == e3 ? function(e4) {
@@ -2210,39 +2229,39 @@
             if ("function" == typeof b && (g || S.forEach && !f(function() {
               new b().entries().next();
             }))) {
-              var O = new b(), w = O[m](g ? {} : -0, 1) != O, A = f(function() {
+              var O = new b(), A = O[m](g ? {} : -0, 1) != O, w = f(function() {
                 O.has(1);
               }), I = h(function(e3) {
                 new b(e3);
-              }), M = !g && f(function() {
+              }), T = !g && f(function() {
                 for (var e3 = new b(), t3 = 5; t3--; )
                   e3[m](t3, t3);
                 return !e3.has(-0);
               });
               I || ((b = t2(function(t3, n3) {
                 c(t3, b, e2);
-                var r2 = y(new v(), t3, b);
+                var r2 = p(new v(), t3, b);
                 return void 0 != n3 && u(n3, d, r2[m], r2), r2;
-              })).prototype = S, S.constructor = b), (A || M) && (R("delete"), R("has"), d && R("get")), (M || w) && R(m), g && S.clear && delete S.clear;
+              })).prototype = S, S.constructor = b), (w || T) && (R("delete"), R("has"), d && R("get")), (T || A) && R(m), g && S.clear && delete S.clear;
             } else
-              b = p.getConstructor(t2, e2, d, m), s(b.prototype, n2), a.NEED = true;
-            return _(b, e2), E[e2] = b, i(i.G + i.W + i.F * (b != v), E), g || p.setStrong(b, e2, d), b;
+              b = y.getConstructor(t2, e2, d, m), s(b.prototype, n2), a.NEED = true;
+            return _(b, e2), E[e2] = b, i(i.G + i.W + i.F * (b != v), E), g || y.setStrong(b, e2, d), b;
           };
         }, function(e, t, n) {
-          var r = n(27), i = n(132), o = n(80), s = n(5), a = n(12), u = n(79), c = {}, l = {};
+          var r = n(27), i = n(134), o = n(81), s = n(5), a = n(12), u = n(80), c = {}, l = {};
           (t = e.exports = function(e2, t2, n2, f, h) {
-            var _, y, p, d, g = h ? function() {
+            var _, p, y, d, g = h ? function() {
               return e2;
             } : u(e2), v = r(n2, f, t2 ? 2 : 1), b = 0;
             if ("function" != typeof g)
               throw TypeError(e2 + " is not iterable!");
             if (o(g)) {
               for (_ = a(e2.length); _ > b; b++)
-                if ((d = t2 ? v(s(y = e2[b])[0], y[1]) : v(e2[b])) === c || d === l)
+                if ((d = t2 ? v(s(p = e2[b])[0], p[1]) : v(e2[b])) === c || d === l)
                   return d;
             } else
-              for (p = g.call(e2); !(y = p.next()).done; )
-                if ((d = i(p, v, y.value, t2)) === c || d === l)
+              for (y = g.call(e2); !(p = y.next()).done; )
+                if ((d = i(y, v, p.value, t2)) === c || d === l)
                   return d;
           }).BREAK = c, t.RETURN = l;
         }, function(e, t, n) {
@@ -2288,7 +2307,7 @@
             return n2;
           };
         }, function(e, t, n) {
-          var r = n(0), i = n(28), o = n(3), s = n(88), a = "[" + s + "]", u = RegExp("^" + a + a + "*"), c = RegExp(a + a + "*$"), l = /* @__PURE__ */ __name(function(e2, t2, n2) {
+          var r = n(0), i = n(28), o = n(3), s = n(89), a = "[" + s + "]", u = RegExp("^" + a + a + "*"), c = RegExp(a + a + "*$"), l = /* @__PURE__ */ __name(function(e2, t2, n2) {
             var i2 = {}, a2 = o(function() {
               return !!s[e2]() || "\u200B\x85" != "\u200B\x85"[e2]();
             }), u2 = i2[e2] = a2 ? t2(f) : s[e2];
@@ -2316,6 +2335,97 @@
           t.f = Object.getOwnPropertySymbols;
         }, function(e, t, n) {
           "use strict";
+          Object.defineProperty(t, "__esModule", { value: true }), t.ClusterInviteUsersRequest = void 0;
+          var r = function() {
+            function e2(e3, t2) {
+              for (var n2 = 0; n2 < t2.length; n2++) {
+                var r2 = t2[n2];
+                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
+              }
+            }
+            __name(e2, "e");
+            return function(t2, n2, r2) {
+              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
+            };
+          }(), i = n(2), o = n(1), s = n(39), a = n(41), u = n(40), c = n(8);
+          var l = function(e2) {
+            function t2(e3, n2, r2) {
+              var o2 = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : null;
+              !function(e4, t3) {
+                if (!(e4 instanceof t3))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, t2);
+              var s2 = function(e4, t3) {
+                if (!e4)
+                  throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+                return !t3 || "object" != typeof t3 && "function" != typeof t3 ? e4 : t3;
+              }(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, i.Requests.ClusterInviteUsers));
+              return s2._target = e3, s2._invitedUsers = n2, s2._secondsForAnswer = r2, s2._params = o2, Object.seal(s2), s2;
+            }
+            __name(t2, "t");
+            return function(e3, t3) {
+              if ("function" != typeof t3 && null !== t3)
+                throw new TypeError("Super expression must either be null or a function, not " + typeof t3);
+              e3.prototype = Object.create(t3 && t3.prototype, { constructor: { value: e3, enumerable: false, writable: true, configurable: true } }), t3 && (Object.setPrototypeOf ? Object.setPrototypeOf(e3, t3) : e3.__proto__ = t3);
+            }(t2, i.BaseRequest), r(t2, null, [{ key: "KEY_USER", get: function() {
+              return "u";
+            } }, { key: "KEY_USER_ID", get: function() {
+              return "ui";
+            } }, { key: "KEY_INVITATION_ID", get: function() {
+              return "ii";
+            } }, { key: "KEY_TIME", get: function() {
+              return "t";
+            } }, { key: "KEY_PARAMS", get: function() {
+              return "p";
+            } }, { key: "KEY_INVITEE_ID", get: function() {
+              return "ee";
+            } }, { key: "KEY_INVITED_USERS", get: function() {
+              return "iu";
+            } }, { key: "KEY_SERVER_ID", get: function() {
+              return "ss";
+            } }, { key: "KEY_ROOM_ID", get: function() {
+              return "rr";
+            } }, { key: "KEY_REPLY_ID", get: function() {
+              return "ri";
+            } }, { key: "MAX_INVITATIONS_FROM_CLIENT_SIDE", get: function() {
+              return 8;
+            } }, { key: "MIN_EXPIRY_TIME", get: function() {
+              return 5;
+            } }, { key: "MAX_EXPIRY_TIME", get: function() {
+              return 300;
+            } }]), r(t2, [{ key: "validate", value: function(e3) {
+              var n2 = [];
+              if (null != this._target && this._target instanceof s.ClusterTarget || n2.push("Invalid target"), null == this._invitedUsers ? n2.push("No invited users") : this._invitedUsers instanceof Array ? (this._invitedUsers.length < 1 && n2.push("No invited users"), this._invitedUsers.length > t2.MAX_INVITATIONS_FROM_CLIENT_SIDE && n2.push("Too many invitations; " + t2.MAX_INVITATIONS_FROM_CLIENT_SIDE + " max are allowed from client side"), this._invitedUsers.every(function(e4) {
+                return e4 instanceof a.SFSUser || e4 instanceof u.SFSBuddy;
+              }) || n2.push("Each invited user must be an instance of SFSUser or SFSBuddy class")) : n2.push("Invited users must be passed in an array"), (this._secondsForAnswer < t2.MIN_EXPIRY_TIME || this._secondsForAnswer > t2.MAX_EXPIRY_TIME) && n2.push("secondsForAnswer value is out of range (min: " + t2.MIN_EXPIRY_TIME + "; max: " + t2.MAX_EXPIRY_TIME + ")"), null == this._params || this._params instanceof c.SFSObject || n2.push("Custom invitation parameters must be set in a SFSObject class instance"), n2.length > 0)
+                throw new o.SFSValidationError("InviteUsersRequest Error", n2);
+            } }, { key: "execute", value: function(e3) {
+              var n2 = [], r2 = true, i2 = false, o2 = void 0;
+              try {
+                for (var s2, c2 = this._invitedUsers[Symbol.iterator](); !(r2 = (s2 = c2.next()).done); r2 = true) {
+                  var l2 = s2.value;
+                  if (l2 instanceof a.SFSUser || l2 instanceof u.SFSBuddy) {
+                    if (l2 === e3.mySelf)
+                      continue;
+                    n2.push(l2.id);
+                  }
+                }
+              } catch (e4) {
+                i2 = true, o2 = e4;
+              } finally {
+                try {
+                  !r2 && c2.return && c2.return();
+                } finally {
+                  if (i2)
+                    throw o2;
+                }
+              }
+              this._reqObj.putUtfString(t2.KEY_SERVER_ID, this._target.nodeId), this._reqObj.putInt(t2.KEY_ROOM_ID, this._target.roomId), this._reqObj.putIntArray(t2.KEY_INVITED_USERS, n2), this._reqObj.putShort(t2.KEY_TIME, this._secondsForAnswer), null != this._params && this._reqObj.putSFSObject(t2.KEY_PARAMS, this._params);
+            } }]), t2;
+          }();
+          t.ClusterInviteUsersRequest = l;
+        }, function(e, t, n) {
+          "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.InviteUsersRequest = void 0;
           var r = function() {
             function e2(e3, t2) {
@@ -2328,7 +2438,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(47), a = n(58), u = n(8);
+          }(), i = n(2), o = n(1), s = n(41), a = n(40), u = n(8);
           var c = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -2415,7 +2525,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(56), a = n(8), u = n(9), c = n(47);
+          }(), i = n(2), o = n(1), s = n(39), a = n(8), u = n(9), c = n(41);
           function l(e2, t2) {
             if (!(e2 instanceof t2))
               throw new TypeError("Cannot call a class as a function");
@@ -2433,7 +2543,7 @@
             e2.prototype = Object.create(t2 && t2.prototype, { constructor: { value: e2, enumerable: false, writable: true, configurable: true } }), t2 && (Object.setPrototypeOf ? Object.setPrototypeOf(e2, t2) : e2.__proto__ = t2);
           }
           __name(h, "h");
-          var _ = Object.freeze({ PUBLIC_MSG: 0, PRIVATE_MSG: 1, MODERATOR_MSG: 2, ADMING_MSG: 3, OBJECT_MSG: 4, BUDDY_MSG: 5 }), y = function(e2) {
+          var _ = Object.freeze({ PUBLIC_MSG: 0, PRIVATE_MSG: 1, MODERATOR_MSG: 2, ADMING_MSG: 3, OBJECT_MSG: 4, BUDDY_MSG: 5 }), p = function(e2) {
             function t2() {
               l(this, t2);
               var e3 = f(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, i.Requests.GenericMessage));
@@ -2554,7 +2664,7 @@
               }
               n2.size > 0 && this._reqObj.putIntArray(t2.KEY_RECIPIENT, Array.from(n2));
             } }]), t2;
-          }(), p = function(e2) {
+          }(), y = function(e2) {
             function t2(e3) {
               var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
               l(this, t2);
@@ -2562,7 +2672,7 @@
               return i2._type = _.OBJECT_MSG, i2._params = e3, i2._room = n2, i2._recipient = r2, Object.seal(i2), i2;
             }
             __name(t2, "t");
-            return h(t2, y), t2;
+            return h(t2, p), t2;
           }(), d = function(e2) {
             function t2(e3) {
               var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -2571,7 +2681,7 @@
               return i2._type = _.PUBLIC_MSG, i2._message = e3, i2._room = r2, i2._params = n2, Object.seal(i2), i2;
             }
             __name(t2, "t");
-            return h(t2, y), t2;
+            return h(t2, p), t2;
           }(), g = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -2580,7 +2690,7 @@
               return i2._type = _.PRIVATE_MSG, i2._message = e3, i2._recipient = n2, i2._params = r2, Object.seal(i2), i2;
             }
             __name(t2, "t");
-            return h(t2, y), t2;
+            return h(t2, p), t2;
           }(), v = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -2593,7 +2703,7 @@
               return i2._type = _.MODERATOR_MSG, i2._message = e3, i2._params = r2, i2._recipient = n2.target, i2._sendMode = n2.mode, Object.seal(i2), i2;
             }
             __name(t2, "t");
-            return h(t2, y), t2;
+            return h(t2, p), t2;
           }(), b = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -2606,9 +2716,9 @@
               return i2._type = _.ADMING_MSG, i2._message = e3, i2._params = r2, i2._recipient = n2.target, i2._sendMode = n2.mode, Object.seal(i2), i2;
             }
             __name(t2, "t");
-            return h(t2, y), t2;
+            return h(t2, p), t2;
           }();
-          t.GenericMessageType = _, t.GenericMessageRequest = y, t.PublicMessageRequest = d, t.PrivateMessageRequest = g, t.ObjectMessageRequest = p, t.ModeratorMessageRequest = v, t.AdminMessageRequest = b;
+          t.GenericMessageType = _, t.GenericMessageRequest = p, t.PublicMessageRequest = d, t.PrivateMessageRequest = g, t.ObjectMessageRequest = y, t.ModeratorMessageRequest = v, t.AdminMessageRequest = b;
         }, function(e, t, n) {
           "use strict";
           n.r(t), n.d(t, "MD5", function() {
@@ -2769,7 +2879,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(48);
+          }(), i = n(51);
           var o = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : -1;
@@ -2840,17 +2950,17 @@
           var o = ["Client API version is obsolete: {0}; required version: {1}", "Requested Zone {0} does not exist", "User name {0} is not recognized", "Wrong password for user {0}", "User {0} is banned", "Zone {0} is full", "User {0} is already logged in Zone {1}", "The server is full", "Zone {0} is currently inactive", "User name {0} contains bad words; filtered: {1}", "Guest users not allowed in Zone {0}", "IP address {0} is banned", "A Room with the same name already exists: {0}", "Requested Group is not available - Room: {0}; Group: {1}", "Bad Room name length -  Min: {0}; max: {1}; passed name length: {2}", "Room name contains bad words: {0}", "Zone is full; can't add Rooms anymore", "You have exceeded the number of Rooms that you can create per session: {0}", "Room creation failed, wrong parameter: {0}", "User {0} already joined in Room", "Room {0} is full", "Wrong password for Room {0}", "Requested Room does not exist", "Room {0} is locked", "Group {0} is already subscribed", "Group {0} does not exist", "Group {0} is not subscribed", "Group {0} does not exist", "{0}", "Room permission error; Room {0} cannot be renamed", "Room permission error; Room {0} cannot change password state", "Room permission error; Room {0} cannot change capacity", "Switch user error; no player slots available in Room {0}", "Switch user error; no spectator slots available in Room {0}", "Switch user error; Room {0} is not a Game Room", "Switch user error; you are not joined in Room {0}", "Buddy Manager initialization error, could not load buddy list: {0}", "Buddy Manager error, your buddy list is full; size is {0}", "Buddy Manager error, was not able to block buddy {0} because offline", "Buddy Manager error, you are attempting to set too many Buddy Variables; limit is {0}", "Game {0} access denied, user does not match access criteria", "QuickJoinGame action failed: no matching Rooms were found", "Your previous invitation reply was invalid or arrived too late"];
         }, function(e, t, n) {
           "use strict";
-          var r = n(6), i = n(11), o = n(44), s = n(60), a = n(18), u = n(41), c = n(3), l = n(42), f = n(24), h = n(12), _ = n(121), y = n(32).f, p = n(10).f, d = n(78), g = n(45), v = "prototype", b = "Wrong index!", m = r.ArrayBuffer, S = r.DataView, E = r.Math, R = r.RangeError, O = r.Infinity, w = m, A = E.abs, I = E.pow, M = E.floor, T = E.log, k = E.LN2, P = i ? "_b" : "buffer", F = i ? "_l" : "byteLength", j = i ? "_o" : "byteOffset";
-          function U(e2, t2, n2) {
+          var r = n(6), i = n(11), o = n(47), s = n(60), a = n(18), u = n(44), c = n(3), l = n(45), f = n(24), h = n(12), _ = n(123), p = n(33).f, y = n(10).f, d = n(79), g = n(48), v = "prototype", b = "Wrong index!", m = r.ArrayBuffer, S = r.DataView, E = r.Math, R = r.RangeError, O = r.Infinity, A = m, w = E.abs, I = E.pow, T = E.floor, M = E.log, k = E.LN2, P = i ? "_b" : "buffer", F = i ? "_l" : "byteLength", N = i ? "_o" : "byteOffset";
+          function j(e2, t2, n2) {
             var r2, i2, o2, s2 = new Array(n2), a2 = 8 * n2 - t2 - 1, u2 = (1 << a2) - 1, c2 = u2 >> 1, l2 = 23 === t2 ? I(2, -24) - I(2, -77) : 0, f2 = 0, h2 = e2 < 0 || 0 === e2 && 1 / e2 < 0 ? 1 : 0;
-            for ((e2 = A(e2)) != e2 || e2 === O ? (i2 = e2 != e2 ? 1 : 0, r2 = u2) : (r2 = M(T(e2) / k), e2 * (o2 = I(2, -r2)) < 1 && (r2--, o2 *= 2), (e2 += r2 + c2 >= 1 ? l2 / o2 : l2 * I(2, 1 - c2)) * o2 >= 2 && (r2++, o2 /= 2), r2 + c2 >= u2 ? (i2 = 0, r2 = u2) : r2 + c2 >= 1 ? (i2 = (e2 * o2 - 1) * I(2, t2), r2 += c2) : (i2 = e2 * I(2, c2 - 1) * I(2, t2), r2 = 0)); t2 >= 8; s2[f2++] = 255 & i2, i2 /= 256, t2 -= 8)
+            for ((e2 = w(e2)) != e2 || e2 === O ? (i2 = e2 != e2 ? 1 : 0, r2 = u2) : (r2 = T(M(e2) / k), e2 * (o2 = I(2, -r2)) < 1 && (r2--, o2 *= 2), (e2 += r2 + c2 >= 1 ? l2 / o2 : l2 * I(2, 1 - c2)) * o2 >= 2 && (r2++, o2 /= 2), r2 + c2 >= u2 ? (i2 = 0, r2 = u2) : r2 + c2 >= 1 ? (i2 = (e2 * o2 - 1) * I(2, t2), r2 += c2) : (i2 = e2 * I(2, c2 - 1) * I(2, t2), r2 = 0)); t2 >= 8; s2[f2++] = 255 & i2, i2 /= 256, t2 -= 8)
               ;
             for (r2 = r2 << t2 | i2, a2 += t2; a2 > 0; s2[f2++] = 255 & r2, r2 /= 256, a2 -= 8)
               ;
             return s2[--f2] |= 128 * h2, s2;
           }
-          __name(U, "U");
-          function N(e2, t2, n2) {
+          __name(j, "j");
+          function U(e2, t2, n2) {
             var r2, i2 = 8 * n2 - t2 - 1, o2 = (1 << i2) - 1, s2 = o2 >> 1, a2 = i2 - 7, u2 = n2 - 1, c2 = e2[u2--], l2 = 127 & c2;
             for (c2 >>= 7; a2 > 0; l2 = 256 * l2 + e2[u2], u2--, a2 -= 8)
               ;
@@ -2865,7 +2975,7 @@
             }
             return (c2 ? -1 : 1) * r2 * I(2, l2 - t2);
           }
-          __name(N, "N");
+          __name(U, "U");
           function B(e2) {
             return e2[3] << 24 | e2[2] << 16 | e2[1] << 8 | e2[0];
           }
@@ -2883,24 +2993,24 @@
           }
           __name(Y, "Y");
           function C(e2) {
-            return U(e2, 52, 8);
+            return j(e2, 52, 8);
           }
           __name(C, "C");
-          function x(e2) {
-            return U(e2, 23, 4);
+          function q(e2) {
+            return j(e2, 23, 4);
           }
-          __name(x, "x");
-          function q(e2, t2, n2) {
-            p(e2[v], t2, { get: function() {
+          __name(q, "q");
+          function x(e2, t2, n2) {
+            y(e2[v], t2, { get: function() {
               return this[n2];
             } });
           }
-          __name(q, "q");
+          __name(x, "x");
           function V(e2, t2, n2, r2) {
             var i2 = _(+n2);
             if (i2 + t2 > e2[F])
               throw R(b);
-            var o2 = e2[P]._b, s2 = i2 + e2[j], a2 = o2.slice(s2, s2 + t2);
+            var o2 = e2[P]._b, s2 = i2 + e2[N], a2 = o2.slice(s2, s2 + t2);
             return r2 ? a2 : a2.reverse();
           }
           __name(V, "V");
@@ -2908,7 +3018,7 @@
             var s2 = _(+n2);
             if (s2 + t2 > e2[F])
               throw R(b);
-            for (var a2 = e2[P]._b, u2 = s2 + e2[j], c2 = r2(+i2), l2 = 0; l2 < t2; l2++)
+            for (var a2 = e2[P]._b, u2 = s2 + e2[N], c2 = r2(+i2), l2 = 0; l2 < t2; l2++)
               a2[u2 + l2] = c2[o2 ? l2 : t2 - l2 - 1];
           }
           __name(K, "K");
@@ -2921,16 +3031,16 @@
               return new m(), new m(1.5), new m(NaN), "ArrayBuffer" != m.name;
             })) {
               for (var G, z = (m = /* @__PURE__ */ __name(function(e2) {
-                return l(this, m), new w(_(e2));
-              }, "m"))[v] = w[v], H = y(w), J = 0; H.length > J; )
-                (G = H[J++]) in m || a(m, G, w[G]);
+                return l(this, m), new A(_(e2));
+              }, "m"))[v] = A[v], H = p(A), J = 0; H.length > J; )
+                (G = H[J++]) in m || a(m, G, A[G]);
               o || (z.constructor = m);
             }
-            var W = new S(new m(2)), X = S[v].setInt8;
-            W.setInt8(0, 2147483648), W.setInt8(1, 2147483649), !W.getInt8(0) && W.getInt8(1) || u(S[v], { setInt8: function(e2, t2) {
-              X.call(this, e2, t2 << 24 >> 24);
+            var X = new S(new m(2)), W = S[v].setInt8;
+            X.setInt8(0, 2147483648), X.setInt8(1, 2147483649), !X.getInt8(0) && X.getInt8(1) || u(S[v], { setInt8: function(e2, t2) {
+              W.call(this, e2, t2 << 24 >> 24);
             }, setUint8: function(e2, t2) {
-              X.call(this, e2, t2 << 24 >> 24);
+              W.call(this, e2, t2 << 24 >> 24);
             } }, true);
           } else
             m = /* @__PURE__ */ __name(function(e2) {
@@ -2944,8 +3054,8 @@
                 throw R("Wrong offset!");
               if (i2 + (n2 = void 0 === n2 ? r2 - i2 : h(n2)) > r2)
                 throw R("Wrong length!");
-              this[P] = e2, this[j] = i2, this[F] = n2;
-            }, "S"), i && (q(m, "byteLength", "_l"), q(S, "buffer", "_b"), q(S, "byteLength", "_l"), q(S, "byteOffset", "_o")), u(S[v], { getInt8: function(e2) {
+              this[P] = e2, this[N] = i2, this[F] = n2;
+            }, "S"), i && (x(m, "byteLength", "_l"), x(S, "buffer", "_b"), x(S, "byteLength", "_l"), x(S, "byteOffset", "_o")), u(S[v], { getInt8: function(e2) {
               return V(this, 1, e2)[0] << 24 >> 24;
             }, getUint8: function(e2) {
               return V(this, 1, e2)[0];
@@ -2960,9 +3070,9 @@
             }, getUint32: function(e2) {
               return B(V(this, 4, e2, arguments[1])) >>> 0;
             }, getFloat32: function(e2) {
-              return N(V(this, 4, e2, arguments[1]), 23, 4);
+              return U(V(this, 4, e2, arguments[1]), 23, 4);
             }, getFloat64: function(e2) {
-              return N(V(this, 8, e2, arguments[1]), 52, 8);
+              return U(V(this, 8, e2, arguments[1]), 52, 8);
             }, setInt8: function(e2, t2) {
               K(this, 1, e2, L, t2);
             }, setUint8: function(e2, t2) {
@@ -2976,7 +3086,7 @@
             }, setUint32: function(e2, t2) {
               K(this, 4, e2, Y, t2, arguments[2]);
             }, setFloat32: function(e2, t2) {
-              K(this, 4, e2, x, t2, arguments[2]);
+              K(this, 4, e2, q, t2, arguments[2]);
             }, setFloat64: function(e2, t2) {
               K(this, 8, e2, C, t2, arguments[2]);
             } });
@@ -2996,20 +3106,20 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(14), i = n(34), o = n(12);
+          var r = n(14), i = n(35), o = n(12);
           e.exports = function(e2) {
             for (var t2 = r(this), n2 = o(t2.length), s = arguments.length, a = i(s > 1 ? arguments[1] : void 0, n2), u = s > 2 ? arguments[2] : void 0, c = void 0 === u ? n2 : i(u, n2); c > a; )
               t2[a++] = e2;
             return t2;
           };
         }, function(e, t, n) {
-          var r = n(66), i = n(7)("iterator"), o = n(53);
-          e.exports = n(37).getIteratorMethod = function(e2) {
+          var r = n(66), i = n(7)("iterator"), o = n(56);
+          e.exports = n(38).getIteratorMethod = function(e2) {
             if (void 0 != e2)
               return e2[i] || e2["@@iterator"] || o[r(e2)];
           };
         }, function(e, t, n) {
-          var r = n(53), i = n(7)("iterator"), o = Array.prototype;
+          var r = n(56), i = n(7)("iterator"), o = Array.prototype;
           e.exports = function(e2) {
             return void 0 !== e2 && (r.Array === e2 || o[i] === e2);
           };
@@ -3034,7 +3144,7 @@
             return r(e2) && (void 0 !== (t2 = e2[o]) ? !!t2 : "RegExp" == i(e2));
           };
         }, function(e, t, n) {
-          var r = n(82), i = n(28);
+          var r = n(83), i = n(28);
           e.exports = function(e2, t2, n2) {
             if (r(t2))
               throw TypeError("String#" + n2 + " doesn't accept regex!");
@@ -3042,14 +3152,14 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(44), i = n(0), o = n(15), s = n(18), a = n(53), u = n(133), c = n(45), l = n(31), f = n(7)("iterator"), h = !([].keys && "next" in [].keys()), _ = /* @__PURE__ */ __name(function() {
+          var r = n(47), i = n(0), o = n(15), s = n(18), a = n(56), u = n(135), c = n(48), l = n(32), f = n(7)("iterator"), h = !([].keys && "next" in [].keys()), _ = /* @__PURE__ */ __name(function() {
             return this;
           }, "_");
-          e.exports = function(e2, t2, n2, y, p, d, g) {
-            u(n2, t2, y);
+          e.exports = function(e2, t2, n2, p, y, d, g) {
+            u(n2, t2, p);
             var v, b, m, S = /* @__PURE__ */ __name(function(e3) {
-              if (!h && e3 in w)
-                return w[e3];
+              if (!h && e3 in A)
+                return A[e3];
               switch (e3) {
                 case "keys":
                 case "values":
@@ -3060,13 +3170,13 @@
               return function() {
                 return new n2(this, e3);
               };
-            }, "S"), E = t2 + " Iterator", R = "values" == p, O = false, w = e2.prototype, A = w[f] || w["@@iterator"] || p && w[p], I = A || S(p), M = p ? R ? S("entries") : I : void 0, T = "Array" == t2 && w.entries || A;
-            if (T && (m = l(T.call(new e2()))) !== Object.prototype && m.next && (c(m, E, true), r || "function" == typeof m[f] || s(m, f, _)), R && A && "values" !== A.name && (O = true, I = /* @__PURE__ */ __name(function() {
-              return A.call(this);
-            }, "I")), r && !g || !h && !O && w[f] || s(w, f, I), a[t2] = I, a[E] = _, p)
-              if (v = { values: R ? I : S("values"), keys: d ? I : S("keys"), entries: M }, g)
+            }, "S"), E = t2 + " Iterator", R = "values" == y, O = false, A = e2.prototype, w = A[f] || A["@@iterator"] || y && A[y], I = w || S(y), T = y ? R ? S("entries") : I : void 0, M = "Array" == t2 && A.entries || w;
+            if (M && (m = l(M.call(new e2()))) !== Object.prototype && m.next && (c(m, E, true), r || "function" == typeof m[f] || s(m, f, _)), R && w && "values" !== w.name && (O = true, I = /* @__PURE__ */ __name(function() {
+              return w.call(this);
+            }, "I")), r && !g || !h && !O && A[f] || s(A, f, I), a[t2] = I, a[E] = _, y)
+              if (v = { values: R ? I : S("values"), keys: d ? I : S("keys"), entries: T }, g)
                 for (b in v)
-                  b in w || o(w, b, v[b]);
+                  b in A || o(A, b, v[b]);
               else
                 i(i.P + i.F * (h || O), t2, v);
             return v;
@@ -3081,7 +3191,7 @@
             return 0 == (e2 = +e2) || e2 != e2 ? e2 : e2 < 0 ? -1 : 1;
           };
         }, function(e, t, n) {
-          var r = n(4), i = n(89).set;
+          var r = n(4), i = n(90).set;
           e.exports = function(e2, t2, n2) {
             var o, s = t2.constructor;
             return s !== n2 && "function" == typeof s && (o = s.prototype) !== n2.prototype && r(o) && i && i(e2, o), e2;
@@ -3114,12 +3224,12 @@
         }, function(e, t) {
           e.exports = "constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",");
         }, function(e, t, n) {
-          var r = n(95)("keys"), i = n(35);
+          var r = n(96)("keys"), i = n(36);
           e.exports = function(e2) {
             return r[e2] || (r[e2] = i(e2));
           };
         }, function(e, t, n) {
-          var r = n(21), i = n(12), o = n(34);
+          var r = n(21), i = n(12), o = n(35);
           e.exports = function(e2) {
             return function(t2, n2, s) {
               var a, u = r(t2), c = i(u.length), l = o(s, c);
@@ -3195,6 +3305,94 @@
           t.ExtensionRequest = u;
         }, function(e, t, n) {
           "use strict";
+          Object.defineProperty(t, "__esModule", { value: true }), t.ClusterJoinOrCreateRequest = void 0;
+          var r = function() {
+            function e2(e3, t2) {
+              for (var n2 = 0; n2 < t2.length; n2++) {
+                var r2 = t2[n2];
+                r2.enumerable = r2.enumerable || false, r2.configurable = true, "value" in r2 && (r2.writable = true), Object.defineProperty(e3, r2.key, r2);
+              }
+            }
+            __name(e2, "e");
+            return function(t2, n2, r2) {
+              return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
+            };
+          }(), i = n(2), o = n(49), s = n(69), a = n(1), u = n(31), c = n(39);
+          var l = function(e2) {
+            function t2() {
+              var e3 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
+              !function(e4, t3) {
+                if (!(e4 instanceof t3))
+                  throw new TypeError("Cannot call a class as a function");
+              }(this, t2);
+              var s2 = function(e4, t3) {
+                if (!e4)
+                  throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+                return !t3 || "object" != typeof t3 && "function" != typeof t3 ? e4 : t3;
+              }(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this, i.Requests.ClusterJoinOrCreateRequest));
+              return s2._matchExpression = e3, s2._groupList = n2, s2._settings = r2, null != r2 && (s2._createRoomRequest = new o.CreateRoomRequest(r2, false, null)), Object.seal(s2), s2;
+            }
+            __name(t2, "t");
+            return function(e3, t3) {
+              if ("function" != typeof t3 && null !== t3)
+                throw new TypeError("Super expression must either be null or a function, not " + typeof t3);
+              e3.prototype = Object.create(t3 && t3.prototype, { constructor: { value: e3, enumerable: false, writable: true, configurable: true } }), t3 && (Object.setPrototypeOf ? Object.setPrototypeOf(e3, t3) : e3.__proto__ = t3);
+            }(t2, i.BaseRequest), r(t2, null, [{ key: "KEY_GROUP_LIST", get: function() {
+              return "gl";
+            } }, { key: "KEY_ROOM_SETTINGS", get: function() {
+              return "rs";
+            } }, { key: "KEY_MATCH_EXPRESSION", get: function() {
+              return "me";
+            } }, { key: "KEY_IS_PUBLIC", get: function() {
+              return "gip";
+            } }, { key: "KEY_MIN_PLAYERS", get: function() {
+              return "gmp";
+            } }, { key: "KEY_INVITED_PLAYERS", get: function() {
+              return "ginp";
+            } }, { key: "KEY_INVITATION_EXPIRY", get: function() {
+              return "gie";
+            } }, { key: "KEY_NOTIFY_GAME_STARTED", get: function() {
+              return "gns";
+            } }, { key: "KEY_INVITATION_PARAMS", get: function() {
+              return "ip";
+            } }]), r(t2, [{ key: "validate", value: function(e3) {
+              var t3 = [];
+              if (null == this._matchExpression || this._matchExpression instanceof u.MatchExpression || t3.push("Match expression must be an instance of MatchExpression class"), null != this._settings) {
+                var n2 = this._settings instanceof c.ClusterRoomSettings, r2 = this._settings instanceof c.MMORoomSettings;
+                if (n2 || r2) {
+                  try {
+                    this._createRoomRequest.validate(e3);
+                  } catch (e4) {
+                    t3 = t3.concat(e4.errors);
+                  }
+                  n2 && (this._settings.minPlayersToStartGame > this._settings.maxUsers && t3.push("minPlayersToStartGame cannot be greater than maxUsers"), (this._settings.invitationExpiryTime < s.ClusterInviteUsersRequest.MIN_EXPIRY_TIME || this._settings.InvitationExpiryTime > s.ClusterInviteUsersRequest.MAX_EXPIRY_TIME) && t3.Add("Expiry time value is out of range (" + s.ClusterInviteUsersRequest.MIN_EXPIRY_TIME + "-" + s.ClusterInviteUsersRequest.MAX_EXPIRY_TIME + ")"), null != this._settings.invitedPlayers && this._settings.invitedPlayers.length > s.ClusterInviteUsersRequest.MAX_INVITATIONS_FROM_CLIENT_SIDE && t3.Add("Cannot invite more than " + s.ClusterInviteUsersRequest.MAX_INVITATIONS_FROM_CLIENT_SIDE + " players from client side"));
+                } else
+                  t3.push("Unsupported RoomSetting type; accepted types are ClusterRoomSettings and MMORoomSettings");
+              }
+              if (t3.length > 0)
+                throw new a.SFSValidationError("ClusterJoinOrCreateRequest Error", t3);
+            } }, { key: "execute", value: function(e3) {
+              if (null != this._matchExpression && this._reqObj.putSFSArray(t2.KEY_MATCH_EXPRESSION, this._matchExpression.toSFSArray()), null != this._groupList && this._groupList.length > 0 && this._reqObj.putUtfStringArray(t2.KEY_GROUP_LIST, this._groupList), null != this._settings) {
+                this._createRoomRequest.execute(e3);
+                var n2 = this._createRoomRequest.getMessage().content;
+                if (this._settings instanceof c.ClusterRoomSettings) {
+                  n2.putBool(t2.KEY_IS_PUBLIC, this._settings.isPublic), n2.putShort(t2.KEY_MIN_PLAYERS, this._settings.minPlayersToStartGame), n2.putShort(t2.KEY_INVITATION_EXPIRY, this._settings.invitationExpiryTime), n2.putBool(t2.KEY_NOTIFY_GAME_STARTED, this._settings.notifyGameStarted);
+                  var r2 = this._settings.invitedPlayers;
+                  if (null != r2) {
+                    var i2 = r2.map(function(e4) {
+                      return e4.id;
+                    });
+                    n2.putIntArray(t2.KEY_INVITED_PLAYERS, i2);
+                  }
+                  null != this._settings.invitationParams && n2.putSFSObject(t2.KEY_INVITATION_PARAMS, this._settings.invitationParams);
+                }
+                this._reqObj.putSFSObject(t2.KEY_ROOM_SETTINGS, n2);
+              }
+            } }]), t2;
+          }();
+          t.ClusterJoinOrCreateRequest = l;
+        }, function(e, t, n) {
+          "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.SetBuddyVariablesRequest = void 0;
           var r = function() {
             function e2(e3, t2) {
@@ -3207,7 +3405,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(8), a = n(46);
+          }(), i = n(2), o = n(1), s = n(8), a = n(50);
           var u = function(e2) {
             function t2(e3) {
               !function(e4, t3) {
@@ -3565,7 +3763,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(9), a = n(38);
+          }(), i = n(2), o = n(1), s = n(9), a = n(31);
           var u = function(e2) {
             function t2(e3) {
               var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0;
@@ -3618,7 +3816,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(38);
+          }(), i = n(2), o = n(1), s = n(31);
           var a = function(e2) {
             function t2(e3) {
               var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0;
@@ -3919,7 +4117,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(8), a = n(9), u = n(49);
+          }(), i = n(2), o = n(1), s = n(8), a = n(9), u = n(52);
           var c = function(e2) {
             function t2(e3) {
               var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
@@ -4222,7 +4420,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(71), o = n(2), s = n(1), a = n(8);
+          }(), i = n(72), o = n(2), s = n(1), a = n(8);
           var u = function(e2) {
             function t2() {
               var e3 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null, n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null, r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null, i2 = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : null;
@@ -4756,16 +4954,16 @@
                       }
                     } else if ("*" == u)
                       for (i = [], this.buffer; ; ) {
-                        var y = this.position;
+                        var p = this.position;
                         try {
-                          var p = this.readType(c, t2);
-                          if (null == p) {
-                            this.position = y;
+                          var y = this.readType(c, t2);
+                          if (null == y) {
+                            this.position = p;
                             break;
                           }
-                          i.push(p);
+                          i.push(y);
                         } catch (e4) {
-                          this.position = y;
+                          this.position = p;
                           break;
                         }
                       }
@@ -4883,7 +5081,7 @@
             }, void 0 === (n2 = function() {
               return r;
             }.apply(t, [])) || (e2.exports = n2), "object" == typeof e2 && e2 && e2.exports && (e2.exports = r);
-          }).call(this, n(173)(e));
+          }).call(this, n(175)(e));
         }, function(e, t, n) {
           var r = n(24), i = n(12);
           e.exports = function(e2) {
@@ -4896,9 +5094,9 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(41), i = n(29).getWeak, o = n(5), s = n(4), a = n(42), u = n(62), c = n(19), l = n(16), f = n(40), h = c(5), _ = c(6), y = 0, p = /* @__PURE__ */ __name(function(e2) {
+          var r = n(44), i = n(29).getWeak, o = n(5), s = n(4), a = n(45), u = n(62), c = n(19), l = n(16), f = n(43), h = c(5), _ = c(6), p = 0, y = /* @__PURE__ */ __name(function(e2) {
             return e2._l || (e2._l = new d());
-          }, "p"), d = /* @__PURE__ */ __name(function() {
+          }, "y"), d = /* @__PURE__ */ __name(function() {
             this.a = [];
           }, "d"), g = /* @__PURE__ */ __name(function(e2, t2) {
             return h(e2.a, function(e3) {
@@ -4921,26 +5119,26 @@
             return ~t2 && this.a.splice(t2, 1), !!~t2;
           } }, e.exports = { getConstructor: function(e2, t2, n2, o2) {
             var c2 = e2(function(e3, r2) {
-              a(e3, c2, t2, "_i"), e3._t = t2, e3._i = y++, e3._l = void 0, void 0 != r2 && u(r2, n2, e3[o2], e3);
+              a(e3, c2, t2, "_i"), e3._t = t2, e3._i = p++, e3._l = void 0, void 0 != r2 && u(r2, n2, e3[o2], e3);
             });
             return r(c2.prototype, { delete: function(e3) {
               if (!s(e3))
                 return false;
               var n3 = i(e3);
-              return true === n3 ? p(f(this, t2)).delete(e3) : n3 && l(n3, this._i) && delete n3[this._i];
+              return true === n3 ? y(f(this, t2)).delete(e3) : n3 && l(n3, this._i) && delete n3[this._i];
             }, has: function(e3) {
               if (!s(e3))
                 return false;
               var n3 = i(e3);
-              return true === n3 ? p(f(this, t2)).has(e3) : n3 && l(n3, this._i);
+              return true === n3 ? y(f(this, t2)).has(e3) : n3 && l(n3, this._i);
             } }), c2;
           }, def: function(e2, t2, n2) {
             var r2 = i(o(t2), true);
-            return true === r2 ? p(e2).set(t2, n2) : r2[e2._i] = n2, e2;
-          }, ufstore: p };
+            return true === r2 ? y(e2).set(t2, n2) : r2[e2._i] = n2, e2;
+          }, ufstore: y };
         }, function(e, t, n) {
           "use strict";
-          var r = n(10).f, i = n(33), o = n(41), s = n(27), a = n(42), u = n(62), c = n(84), l = n(127), f = n(43), h = n(11), _ = n(29).fastKey, y = n(40), p = h ? "_s" : "size", d = /* @__PURE__ */ __name(function(e2, t2) {
+          var r = n(10).f, i = n(34), o = n(44), s = n(27), a = n(45), u = n(62), c = n(85), l = n(129), f = n(46), h = n(11), _ = n(29).fastKey, p = n(43), y = h ? "_s" : "size", d = /* @__PURE__ */ __name(function(e2, t2) {
             var n2, r2 = _(t2);
             if ("F" !== r2)
               return e2._i[r2];
@@ -4950,35 +5148,35 @@
           }, "d");
           e.exports = { getConstructor: function(e2, t2, n2, c2) {
             var l2 = e2(function(e3, r2) {
-              a(e3, l2, t2, "_i"), e3._t = t2, e3._i = i(null), e3._f = void 0, e3._l = void 0, e3[p] = 0, void 0 != r2 && u(r2, n2, e3[c2], e3);
+              a(e3, l2, t2, "_i"), e3._t = t2, e3._i = i(null), e3._f = void 0, e3._l = void 0, e3[y] = 0, void 0 != r2 && u(r2, n2, e3[c2], e3);
             });
             return o(l2.prototype, { clear: function() {
-              for (var e3 = y(this, t2), n3 = e3._i, r2 = e3._f; r2; r2 = r2.n)
+              for (var e3 = p(this, t2), n3 = e3._i, r2 = e3._f; r2; r2 = r2.n)
                 r2.r = true, r2.p && (r2.p = r2.p.n = void 0), delete n3[r2.i];
-              e3._f = e3._l = void 0, e3[p] = 0;
+              e3._f = e3._l = void 0, e3[y] = 0;
             }, delete: function(e3) {
-              var n3 = y(this, t2), r2 = d(n3, e3);
+              var n3 = p(this, t2), r2 = d(n3, e3);
               if (r2) {
                 var i2 = r2.n, o2 = r2.p;
-                delete n3._i[r2.i], r2.r = true, o2 && (o2.n = i2), i2 && (i2.p = o2), n3._f == r2 && (n3._f = i2), n3._l == r2 && (n3._l = o2), n3[p]--;
+                delete n3._i[r2.i], r2.r = true, o2 && (o2.n = i2), i2 && (i2.p = o2), n3._f == r2 && (n3._f = i2), n3._l == r2 && (n3._l = o2), n3[y]--;
               }
               return !!r2;
             }, forEach: function(e3) {
-              y(this, t2);
+              p(this, t2);
               for (var n3, r2 = s(e3, arguments.length > 1 ? arguments[1] : void 0, 3); n3 = n3 ? n3.n : this._f; )
                 for (r2(n3.v, n3.k, this); n3 && n3.r; )
                   n3 = n3.p;
             }, has: function(e3) {
-              return !!d(y(this, t2), e3);
+              return !!d(p(this, t2), e3);
             } }), h && r(l2.prototype, "size", { get: function() {
-              return y(this, t2)[p];
+              return p(this, t2)[y];
             } }), l2;
           }, def: function(e2, t2, n2) {
             var r2, i2, o2 = d(e2, t2);
-            return o2 ? o2.v = n2 : (e2._l = o2 = { i: i2 = _(t2, true), k: t2, v: n2, p: r2 = e2._l, n: void 0, r: false }, e2._f || (e2._f = o2), r2 && (r2.n = o2), e2[p]++, "F" !== i2 && (e2._i[i2] = o2)), e2;
+            return o2 ? o2.v = n2 : (e2._l = o2 = { i: i2 = _(t2, true), k: t2, v: n2, p: r2 = e2._l, n: void 0, r: false }, e2._f || (e2._f = o2), r2 && (r2.n = o2), e2[y]++, "F" !== i2 && (e2._i[i2] = o2)), e2;
           }, getEntry: d, setStrong: function(e2, t2, n2) {
             c(e2, t2, function(e3, n3) {
-              this._t = y(e3, t2), this._k = n3, this._l = void 0;
+              this._t = p(e3, t2), this._k = n3, this._l = void 0;
             }, function() {
               for (var e3 = this._k, t3 = this._l; t3 && t3.r; )
                 t3 = t3.p;
@@ -4999,7 +5197,7 @@
             }(e2);
           };
         }, function(e, t, n) {
-          var r, i, o, s = n(27), a = n(141), u = n(90), c = n(96), l = n(6), f = l.process, h = l.setImmediate, _ = l.clearImmediate, y = l.MessageChannel, p = l.Dispatch, d = 0, g = {}, v = /* @__PURE__ */ __name(function() {
+          var r, i, o, s = n(27), a = n(143), u = n(91), c = n(97), l = n(6), f = l.process, h = l.setImmediate, _ = l.clearImmediate, p = l.MessageChannel, y = l.Dispatch, d = 0, g = {}, v = /* @__PURE__ */ __name(function() {
             var e2 = +this;
             if (g.hasOwnProperty(e2)) {
               var t2 = g[e2];
@@ -5018,9 +5216,9 @@
             delete g[e2];
           }, "_"), "process" == n(25)(f) ? r = /* @__PURE__ */ __name(function(e2) {
             f.nextTick(s(v, e2, 1));
-          }, "r") : p && p.now ? r = /* @__PURE__ */ __name(function(e2) {
-            p.now(s(v, e2, 1));
-          }, "r") : y ? (o = (i = new y()).port2, i.port1.onmessage = b, r = s(o.postMessage, o, 1)) : l.addEventListener && "function" == typeof postMessage && !l.importScripts ? (r = /* @__PURE__ */ __name(function(e2) {
+          }, "r") : y && y.now ? r = /* @__PURE__ */ __name(function(e2) {
+            y.now(s(v, e2, 1));
+          }, "r") : p ? (o = (i = new p()).port2, i.port1.onmessage = b, r = s(o.postMessage, o, 1)) : l.addEventListener && "function" == typeof postMessage && !l.importScripts ? (r = /* @__PURE__ */ __name(function(e2) {
             l.postMessage(e2 + "", "*");
           }, "r"), l.addEventListener("message", b, false)) : r = "onreadystatechange" in c("script") ? function(e2) {
             u.appendChild(c("script")).onreadystatechange = function() {
@@ -5030,15 +5228,15 @@
             setTimeout(s(v, e2, 1), 0);
           }), e.exports = { set: h, clear: _ };
         }, function(e, t, n) {
-          n(11) && "g" != /./g.flags && n(10).f(RegExp.prototype, "flags", { configurable: true, get: n(77) });
+          n(11) && "g" != /./g.flags && n(10).f(RegExp.prototype, "flags", { configurable: true, get: n(78) });
         }, function(e, t) {
           e.exports = function(e2, t2) {
             return { value: t2, done: !!e2 };
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(52), i = n(127), o = n(53), s = n(21);
-          e.exports = n(84)(Array, "Array", function(e2, t2) {
+          var r = n(55), i = n(129), o = n(56), s = n(21);
+          e.exports = n(85)(Array, "Array", function(e2, t2) {
             this._t = s(e2), this._i = 0, this._k = t2;
           }, function() {
             var e2 = this._t, t2 = this._k, n2 = this._i++;
@@ -5046,7 +5244,7 @@
           }, "values"), o.Arguments = o.Array, r("keys"), r("values"), r("entries");
         }, function(e, t, n) {
           "use strict";
-          var r = n(14), i = n(34), o = n(12);
+          var r = n(14), i = n(35), o = n(12);
           e.exports = [].copyWithin || function(e2, t2) {
             var n2 = r(this), s = o(n2.length), a = i(e2, s), u = i(t2, s), c = arguments.length > 2 ? arguments[2] : void 0, l = Math.min((void 0 === c ? s : i(c, s)) - u, s - a), f = 1;
             for (u < a && a < u + l && (f = -1, u += l - 1, a += l - 1); l-- > 0; )
@@ -5054,7 +5252,7 @@
             return n2;
           };
         }, function(e, t, n) {
-          var r = n(26), i = n(14), o = n(54), s = n(12);
+          var r = n(26), i = n(14), o = n(57), s = n(12);
           e.exports = function(e2, t2, n2, a, u) {
             r(t2);
             var c = i(e2), l = o(c), f = s(c.length), h = u ? f - 1 : 0, _ = u ? -1 : 1;
@@ -5073,7 +5271,7 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(10), i = n(36);
+          var r = n(10), i = n(37);
           e.exports = function(e2, t2, n2) {
             t2 in e2 ? r.f(e2, t2, i(0, n2)) : e2[t2] = n2;
           };
@@ -5089,7 +5287,7 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(33), i = n(36), o = n(45), s = {};
+          var r = n(34), i = n(37), o = n(48), s = {};
           n(18)(s, n(7)("iterator"), function() {
             return this;
           }), e.exports = function(e2, t2, n2) {
@@ -5132,12 +5330,12 @@
           };
         }, function(e, t, n) {
           var r = n(6).parseFloat, i = n(65).trim;
-          e.exports = 1 / r(n(88) + "-0") != -1 / 0 ? function(e2) {
+          e.exports = 1 / r(n(89) + "-0") != -1 / 0 ? function(e2) {
             var t2 = i(String(e2), 3), n2 = r(t2);
             return 0 === n2 && "-" == t2.charAt(0) ? -0 : n2;
           } : r;
         }, function(e, t, n) {
-          var r = n(6).parseInt, i = n(65).trim, o = n(88), s = /^[-+]?0[xX]/;
+          var r = n(6).parseInt, i = n(65).trim, o = n(89), s = /^[-+]?0[xX]/;
           e.exports = 8 !== r(o + "08") || 22 !== r(o + "0x16") ? function(e2, t2) {
             var n2 = i(String(e2), 3);
             return r(n2, t2 >>> 0 || (s.test(n2) ? 16 : 10));
@@ -5161,7 +5359,7 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(26), i = n(4), o = n(141), s = [].slice, a = {};
+          var r = n(26), i = n(4), o = n(143), s = [].slice, a = {};
           e.exports = Function.bind || function(e2) {
             var t2 = r(this), n2 = s.call(arguments, 1), u = /* @__PURE__ */ __name(function() {
               var r2 = n2.concat(s.call(arguments));
@@ -5178,7 +5376,7 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(55), i = n(68), o = n(67), s = n(14), a = n(54), u = Object.assign;
+          var r = n(58), i = n(68), o = n(67), s = n(14), a = n(57), u = Object.assign;
           e.exports = !u || n(3)(function() {
             var e2 = {}, t2 = {}, n2 = Symbol(), r2 = "abcdefghijklmnopqrst";
             return e2[n2] = 7, r2.split("").forEach(function(e3) {
@@ -5186,12 +5384,12 @@
             }), 7 != u({}, e2)[n2] || Object.keys(u({}, t2)).join("") != r2;
           }) ? function(e2, t2) {
             for (var n2 = s(e2), u2 = arguments.length, c = 1, l = i.f, f = o.f; u2 > c; )
-              for (var h, _ = a(arguments[c++]), y = l ? r(_).concat(l(_)) : r(_), p = y.length, d = 0; p > d; )
-                f.call(_, h = y[d++]) && (n2[h] = _[h]);
+              for (var h, _ = a(arguments[c++]), p = l ? r(_).concat(l(_)) : r(_), y = p.length, d = 0; y > d; )
+                f.call(_, h = p[d++]) && (n2[h] = _[h]);
             return n2;
           } : u;
         }, function(e, t, n) {
-          var r = n(21), i = n(32).f, o = {}.toString, s = "object" == typeof window && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
+          var r = n(21), i = n(33).f, o = {}.toString, s = "object" == typeof window && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
           e.exports.f = function(e2) {
             return s && "[object Window]" == o.call(e2) ? function(e3) {
               try {
@@ -5202,7 +5400,7 @@
             }(e2) : i(r(e2));
           };
         }, function(e, t, n) {
-          var r = n(10), i = n(5), o = n(55);
+          var r = n(10), i = n(5), o = n(58);
           e.exports = n(11) ? Object.defineProperties : function(e2, t2) {
             i(e2);
             for (var n2, s = o(t2), a = s.length, u = 0; a > u; )
@@ -5210,7 +5408,7 @@
             return e2;
           };
         }, function(e, t, n) {
-          var r = n(16), i = n(21), o = n(94)(false), s = n(93)("IE_PROTO");
+          var r = n(16), i = n(21), o = n(95)(false), s = n(94)("IE_PROTO");
           e.exports = function(e2, t2) {
             var n2, a = i(e2), u = 0, c = [];
             for (n2 in a)
@@ -5223,7 +5421,7 @@
           t.f = n(7);
         }, function(e, t, n) {
           e.exports = !n(11) && !n(3)(function() {
-            return 7 != Object.defineProperty(n(96)("div"), "a", { get: function() {
+            return 7 != Object.defineProperty(n(97)("div"), "a", { get: function() {
               return 7;
             } }).a;
           });
@@ -5247,7 +5445,7 @@
         }, function(e, t, n) {
           "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.BuddyMessageRequest = void 0;
-          var r = n(70), i = n(1), o = n(58);
+          var r = n(71), i = n(1), o = n(40);
           var s = function(e2) {
             function t2(e3, n2) {
               var s2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -5286,7 +5484,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(9), a = n(38);
+          }(), i = n(2), o = n(1), s = n(9), a = n(31);
           var u = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -5415,7 +5613,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(8), a = n(72);
+          }(), i = n(2), o = n(1), s = n(8), a = n(73);
           var u = function(e2) {
             function t2(e3, n2) {
               var r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
@@ -5464,7 +5662,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(1), s = n(56), a = n(57), u = n(69), c = n(47), l = n(58), f = n(8), h = n(38);
+          }(), i = n(2), o = n(1), s = n(39), a = n(49), u = n(70), c = n(41), l = n(40), f = n(8), h = n(31);
           var _ = function(e2) {
             function t2(e3) {
               !function(e4, t3) {
@@ -5701,7 +5899,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(57), s = n(1), a = n(9), u = n(38);
+          }(), i = n(2), o = n(49), s = n(1), a = n(9), u = n(31);
           var c = function(e2) {
             function t2(e3, n2, r2) {
               var s2 = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : null;
@@ -5762,7 +5960,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(71);
+          }(), i = n(72);
           var o = function() {
             function e2() {
               throw function(e3, t2) {
@@ -5927,7 +6125,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(162);
+          }(), i = n(164);
           var o = function() {
             function e2(t2) {
               var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 4, r2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 10;
@@ -6024,7 +6222,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(46);
+          }(), i = n(50);
           var o = function() {
             function e2(t2) {
               !function(e3, t3) {
@@ -6284,10 +6482,10 @@
               this.buffer = new (o ? Uint16Array : Array)(2 * e3), this.length = 0;
             }
             __name(_, "_");
-            function y(e3) {
-              var t3, n2, r2, i2, s2, a2, u2, c2, l2, f2, h2 = e3.length, _2 = 0, y2 = Number.POSITIVE_INFINITY;
+            function p(e3) {
+              var t3, n2, r2, i2, s2, a2, u2, c2, l2, f2, h2 = e3.length, _2 = 0, p2 = Number.POSITIVE_INFINITY;
               for (c2 = 0; c2 < h2; ++c2)
-                e3[c2] > _2 && (_2 = e3[c2]), e3[c2] < y2 && (y2 = e3[c2]);
+                e3[c2] > _2 && (_2 = e3[c2]), e3[c2] < p2 && (p2 = e3[c2]);
               for (t3 = 1 << _2, n2 = new (o ? Uint32Array : Array)(t3), r2 = 1, i2 = 0, s2 = 2; r2 <= _2; ) {
                 for (c2 = 0; c2 < h2; ++c2)
                   if (e3[c2] === r2) {
@@ -6299,13 +6497,13 @@
                   }
                 ++r2, i2 <<= 1, s2 <<= 1;
               }
-              return [n2, _2, y2];
-            }
-            __name(y, "y");
-            function p(e3, t3) {
-              this.h = g, this.w = 0, this.input = o && e3 instanceof Array ? new Uint8Array(e3) : e3, this.b = 0, t3 && (t3.lazy && (this.w = t3.lazy), "number" == typeof t3.compressionType && (this.h = t3.compressionType), t3.outputBuffer && (this.a = o && t3.outputBuffer instanceof Array ? new Uint8Array(t3.outputBuffer) : t3.outputBuffer), "number" == typeof t3.outputIndex && (this.b = t3.outputIndex)), this.a || (this.a = new (o ? Uint8Array : Array)(32768));
+              return [n2, _2, p2];
             }
             __name(p, "p");
+            function y(e3, t3) {
+              this.h = g, this.w = 0, this.input = o && e3 instanceof Array ? new Uint8Array(e3) : e3, this.b = 0, t3 && (t3.lazy && (this.w = t3.lazy), "number" == typeof t3.compressionType && (this.h = t3.compressionType), t3.outputBuffer && (this.a = o && t3.outputBuffer instanceof Array ? new Uint8Array(t3.outputBuffer) : t3.outputBuffer), "number" == typeof t3.outputIndex && (this.b = t3.outputIndex)), this.a || (this.a = new (o ? Uint8Array : Array)(32768));
+            }
+            __name(y, "y");
             _.prototype.getParent = function(e3) {
               return 2 * ((e3 - 2) / 4 | 0);
             }, _.prototype.push = function(e3, t3) {
@@ -6337,22 +6535,22 @@
                 default:
                   e2("invalid literal: " + d);
               }
-            p.prototype.j = function() {
+            y.prototype.j = function() {
               var r2, i2, a2, u2, c2 = this.input;
               switch (this.h) {
                 case 0:
                   for (a2 = 0, u2 = c2.length; a2 < u2; ) {
-                    var l2, f2, h2, _2 = i2 = o ? c2.subarray(a2, a2 + 65535) : c2.slice(a2, a2 + 65535), y2 = (a2 += i2.length) === u2, p2 = t2, d2 = t2, v2 = this.a, m2 = this.b;
+                    var l2, f2, h2, _2 = i2 = o ? c2.subarray(a2, a2 + 65535) : c2.slice(a2, a2 + 65535), p2 = (a2 += i2.length) === u2, y2 = t2, d2 = t2, v2 = this.a, m2 = this.b;
                     if (o) {
                       for (v2 = new Uint8Array(this.a.buffer); v2.length <= m2 + _2.length + 5; )
                         v2 = new Uint8Array(v2.length << 1);
                       v2.set(this.a);
                     }
-                    if (l2 = y2 ? 1 : 0, v2[m2++] = 0 | l2, h2 = 65536 + ~(f2 = _2.length) & 65535, v2[m2++] = 255 & f2, v2[m2++] = f2 >>> 8 & 255, v2[m2++] = 255 & h2, v2[m2++] = h2 >>> 8 & 255, o)
+                    if (l2 = p2 ? 1 : 0, v2[m2++] = 0 | l2, h2 = 65536 + ~(f2 = _2.length) & 65535, v2[m2++] = 255 & f2, v2[m2++] = f2 >>> 8 & 255, v2[m2++] = 255 & h2, v2[m2++] = h2 >>> 8 & 255, o)
                       v2.set(_2, m2), m2 += _2.length, v2 = v2.subarray(0, m2);
                     else {
-                      for (p2 = 0, d2 = _2.length; p2 < d2; ++p2)
-                        v2[m2++] = _2[p2];
+                      for (y2 = 0, d2 = _2.length; y2 < d2; ++y2)
+                        v2[m2++] = _2[y2];
                       v2.length = m2;
                     }
                     this.b = m2, this.a = v2;
@@ -6361,69 +6559,69 @@
                 case 1:
                   var S2 = new s(o ? new Uint8Array(this.a.buffer) : this.a, this.b);
                   S2.d(1, 1, n), S2.d(1, 2, n);
-                  var R2, A2, I2, M2 = E(this, c2);
-                  for (R2 = 0, A2 = M2.length; R2 < A2; R2++)
-                    if (I2 = M2[R2], s.prototype.d.apply(S2, b[I2]), 256 < I2)
-                      S2.d(M2[++R2], M2[++R2], n), S2.d(M2[++R2], 5), S2.d(M2[++R2], M2[++R2], n);
+                  var R2, w2, I2, T2 = E(this, c2);
+                  for (R2 = 0, w2 = T2.length; R2 < w2; R2++)
+                    if (I2 = T2[R2], s.prototype.d.apply(S2, b[I2]), 256 < I2)
+                      S2.d(T2[++R2], T2[++R2], n), S2.d(T2[++R2], 5), S2.d(T2[++R2], T2[++R2], n);
                     else if (256 === I2)
                       break;
                   this.a = S2.finish(), this.b = this.a.length;
                   break;
                 case g:
-                  var T2, k2, P2, F2, j2, U2, N2, B2, L2, D2, Y2, C2, x2, q2, V2, K2 = new s(o ? new Uint8Array(this.a.buffer) : this.a, this.b), G2 = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15], z2 = Array(19);
-                  for (T2 = g, K2.d(1, 1, n), K2.d(T2, 2, n), k2 = E(this, c2), N2 = w(U2 = O(this.M, 15)), L2 = w(B2 = O(this.L, 7)), P2 = 286; 257 < P2 && 0 === U2[P2 - 1]; P2--)
+                  var M2, k2, P2, F2, N2, j2, U2, B2, L2, D2, Y2, C2, q2, x2, V2, K2 = new s(o ? new Uint8Array(this.a.buffer) : this.a, this.b), G2 = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15], z2 = Array(19);
+                  for (M2 = g, K2.d(1, 1, n), K2.d(M2, 2, n), k2 = E(this, c2), U2 = A(j2 = O(this.M, 15)), L2 = A(B2 = O(this.L, 7)), P2 = 286; 257 < P2 && 0 === j2[P2 - 1]; P2--)
                     ;
                   for (F2 = 30; 1 < F2 && 0 === B2[F2 - 1]; F2--)
                     ;
-                  var H2, J2, W2, X2, Q2, Z2, $2 = P2, ee2 = F2, te2 = new (o ? Uint32Array : Array)($2 + ee2), ne2 = new (o ? Uint32Array : Array)(316), re = new (o ? Uint8Array : Array)(19);
+                  var H2, J2, X2, W2, Q2, Z2, $2 = P2, ee2 = F2, te2 = new (o ? Uint32Array : Array)($2 + ee2), ne2 = new (o ? Uint32Array : Array)(316), re = new (o ? Uint8Array : Array)(19);
                   for (H2 = J2 = 0; H2 < $2; H2++)
-                    te2[J2++] = U2[H2];
+                    te2[J2++] = j2[H2];
                   for (H2 = 0; H2 < ee2; H2++)
                     te2[J2++] = B2[H2];
                   if (!o)
-                    for (H2 = 0, X2 = re.length; H2 < X2; ++H2)
+                    for (H2 = 0, W2 = re.length; H2 < W2; ++H2)
                       re[H2] = 0;
-                  for (H2 = Q2 = 0, X2 = te2.length; H2 < X2; H2 += J2) {
-                    for (J2 = 1; H2 + J2 < X2 && te2[H2 + J2] === te2[H2]; ++J2)
+                  for (H2 = Q2 = 0, W2 = te2.length; H2 < W2; H2 += J2) {
+                    for (J2 = 1; H2 + J2 < W2 && te2[H2 + J2] === te2[H2]; ++J2)
                       ;
-                    if (W2 = J2, 0 === te2[H2])
-                      if (3 > W2)
-                        for (; 0 < W2--; )
+                    if (X2 = J2, 0 === te2[H2])
+                      if (3 > X2)
+                        for (; 0 < X2--; )
                           ne2[Q2++] = 0, re[0]++;
                       else
-                        for (; 0 < W2; )
-                          (Z2 = 138 > W2 ? W2 : 138) > W2 - 3 && Z2 < W2 && (Z2 = W2 - 3), 10 >= Z2 ? (ne2[Q2++] = 17, ne2[Q2++] = Z2 - 3, re[17]++) : (ne2[Q2++] = 18, ne2[Q2++] = Z2 - 11, re[18]++), W2 -= Z2;
-                    else if (ne2[Q2++] = te2[H2], re[te2[H2]]++, 3 > --W2)
-                      for (; 0 < W2--; )
+                        for (; 0 < X2; )
+                          (Z2 = 138 > X2 ? X2 : 138) > X2 - 3 && Z2 < X2 && (Z2 = X2 - 3), 10 >= Z2 ? (ne2[Q2++] = 17, ne2[Q2++] = Z2 - 3, re[17]++) : (ne2[Q2++] = 18, ne2[Q2++] = Z2 - 11, re[18]++), X2 -= Z2;
+                    else if (ne2[Q2++] = te2[H2], re[te2[H2]]++, 3 > --X2)
+                      for (; 0 < X2--; )
                         ne2[Q2++] = te2[H2], re[te2[H2]]++;
                     else
-                      for (; 0 < W2; )
-                        (Z2 = 6 > W2 ? W2 : 6) > W2 - 3 && Z2 < W2 && (Z2 = W2 - 3), ne2[Q2++] = 16, ne2[Q2++] = Z2 - 3, re[16]++, W2 -= Z2;
+                      for (; 0 < X2; )
+                        (Z2 = 6 > X2 ? X2 : 6) > X2 - 3 && Z2 < X2 && (Z2 = X2 - 3), ne2[Q2++] = 16, ne2[Q2++] = Z2 - 3, re[16]++, X2 -= Z2;
                   }
-                  for (r2 = o ? ne2.subarray(0, Q2) : ne2.slice(0, Q2), D2 = O(re, 7), q2 = 0; 19 > q2; q2++)
-                    z2[q2] = D2[G2[q2]];
-                  for (j2 = 19; 4 < j2 && 0 === z2[j2 - 1]; j2--)
+                  for (r2 = o ? ne2.subarray(0, Q2) : ne2.slice(0, Q2), D2 = O(re, 7), x2 = 0; 19 > x2; x2++)
+                    z2[x2] = D2[G2[x2]];
+                  for (N2 = 19; 4 < N2 && 0 === z2[N2 - 1]; N2--)
                     ;
-                  for (Y2 = w(D2), K2.d(P2 - 257, 5, n), K2.d(F2 - 1, 5, n), K2.d(j2 - 4, 4, n), q2 = 0; q2 < j2; q2++)
-                    K2.d(z2[q2], 3, n);
-                  for (q2 = 0, V2 = r2.length; q2 < V2; q2++)
-                    if (C2 = r2[q2], K2.d(Y2[C2], D2[C2], n), 16 <= C2) {
-                      switch (q2++, C2) {
+                  for (Y2 = A(D2), K2.d(P2 - 257, 5, n), K2.d(F2 - 1, 5, n), K2.d(N2 - 4, 4, n), x2 = 0; x2 < N2; x2++)
+                    K2.d(z2[x2], 3, n);
+                  for (x2 = 0, V2 = r2.length; x2 < V2; x2++)
+                    if (C2 = r2[x2], K2.d(Y2[C2], D2[C2], n), 16 <= C2) {
+                      switch (x2++, C2) {
                         case 16:
-                          x2 = 2;
+                          q2 = 2;
                           break;
                         case 17:
-                          x2 = 3;
+                          q2 = 3;
                           break;
                         case 18:
-                          x2 = 7;
+                          q2 = 7;
                           break;
                         default:
                           e2("invalid code: " + C2);
                       }
-                      K2.d(r2[q2], x2, n);
+                      K2.d(r2[x2], q2, n);
                     }
-                  var ie, oe, se, ae, ue, ce, le, fe, he = [N2, U2], _e = [L2, B2];
+                  var ie, oe, se, ae, ue, ce, le, fe, he = [U2, j2], _e = [L2, B2];
                   for (ue = he[0], ce = he[1], le = _e[0], fe = _e[1], ie = 0, oe = k2.length; ie < oe; ++ie)
                     if (se = k2[ie], K2.d(ue[se], ce[se], n), 256 < se)
                       K2.d(k2[++ie], k2[++ie], n), ae = k2[++ie], K2.d(le[ae], fe[ae], n), K2.d(k2[++ie], k2[++ie], n);
@@ -6606,10 +6804,10 @@
                 }
                 for (i3 = o2, c3[l3++] = i3[0], c3[l3++] = i3[1], c3[l3++] = i3[2], s3 = 0, a3 = c3.length; s3 < a3; ++s3)
                   g2[v2++] = c3[s3];
-                m2[c3[0]]++, E2[c3[3]]++, b2 = t3.length + r3 - 1, y2 = null;
+                m2[c3[0]]++, E2[c3[3]]++, b2 = t3.length + r3 - 1, p2 = null;
               }
               __name(s2, "s");
-              var a2, u2, c2, l2, f2, h2, _2, y2, p2, d2 = {}, g2 = o ? new Uint16Array(2 * i2.length) : [], v2 = 0, b2 = 0, m2 = new (o ? Uint32Array : Array)(286), E2 = new (o ? Uint32Array : Array)(30), O2 = r2.w;
+              var a2, u2, c2, l2, f2, h2, _2, p2, y2, d2 = {}, g2 = o ? new Uint16Array(2 * i2.length) : [], v2 = 0, b2 = 0, m2 = new (o ? Uint32Array : Array)(286), E2 = new (o ? Uint32Array : Array)(30), O2 = r2.w;
               if (!o) {
                 for (c2 = 0; 285 >= c2; )
                   m2[c2++] = 0;
@@ -6623,11 +6821,11 @@
                   for (; 0 < h2.length && 32768 < a2 - h2[0]; )
                     h2.shift();
                   if (a2 + 3 >= u2) {
-                    for (y2 && s2(y2, -1), c2 = 0, l2 = u2 - a2; c2 < l2; ++c2)
-                      p2 = i2[a2 + c2], g2[v2++] = p2, ++m2[p2];
+                    for (p2 && s2(p2, -1), c2 = 0, l2 = u2 - a2; c2 < l2; ++c2)
+                      y2 = i2[a2 + c2], g2[v2++] = y2, ++m2[y2];
                     break;
                   }
-                  0 < h2.length ? (_2 = R(i2, a2, h2), y2 ? y2.length < _2.length ? (p2 = i2[a2 - 1], g2[v2++] = p2, ++m2[p2], s2(_2, 0)) : s2(y2, -1) : _2.length < O2 ? y2 = _2 : s2(_2, 0)) : y2 ? s2(y2, -1) : (p2 = i2[a2], g2[v2++] = p2, ++m2[p2]);
+                  0 < h2.length ? (_2 = R(i2, a2, h2), p2 ? p2.length < _2.length ? (y2 = i2[a2 - 1], g2[v2++] = y2, ++m2[y2], s2(_2, 0)) : s2(p2, -1) : _2.length < O2 ? p2 = _2 : s2(_2, 0)) : p2 ? s2(p2, -1) : (y2 = i2[a2], g2[v2++] = y2, ++m2[y2]);
                 }
                 h2.push(a2);
               }
@@ -6668,25 +6866,25 @@
                 n2[s2] = c2.pop(), r2[s2] = n2[s2].value;
               for (i2 = function(e4, t4, n3) {
                 function r3(e5) {
-                  var n4 = y2[e5][p2[e5]];
-                  n4 === t4 ? (r3(e5 + 1), r3(e5 + 1)) : --h2[n4], ++p2[e5];
+                  var n4 = p2[e5][y2[e5]];
+                  n4 === t4 ? (r3(e5 + 1), r3(e5 + 1)) : --h2[n4], ++y2[e5];
                 }
                 __name(r3, "r");
-                var i3, s3, a3, u3, c3, l3 = new (o ? Uint16Array : Array)(n3), f2 = new (o ? Uint8Array : Array)(n3), h2 = new (o ? Uint8Array : Array)(t4), _2 = Array(n3), y2 = Array(n3), p2 = Array(n3), d2 = (1 << n3) - t4, g2 = 1 << n3 - 1;
+                var i3, s3, a3, u3, c3, l3 = new (o ? Uint16Array : Array)(n3), f2 = new (o ? Uint8Array : Array)(n3), h2 = new (o ? Uint8Array : Array)(t4), _2 = Array(n3), p2 = Array(n3), y2 = Array(n3), d2 = (1 << n3) - t4, g2 = 1 << n3 - 1;
                 for (l3[n3 - 1] = t4, s3 = 0; s3 < n3; ++s3)
                   d2 < g2 ? f2[s3] = 0 : (f2[s3] = 1, d2 -= g2), d2 <<= 1, l3[n3 - 2 - s3] = (l3[n3 - 1 - s3] / 2 | 0) + t4;
-                for (l3[0] = f2[0], _2[0] = Array(l3[0]), y2[0] = Array(l3[0]), s3 = 1; s3 < n3; ++s3)
-                  l3[s3] > 2 * l3[s3 - 1] + f2[s3] && (l3[s3] = 2 * l3[s3 - 1] + f2[s3]), _2[s3] = Array(l3[s3]), y2[s3] = Array(l3[s3]);
+                for (l3[0] = f2[0], _2[0] = Array(l3[0]), p2[0] = Array(l3[0]), s3 = 1; s3 < n3; ++s3)
+                  l3[s3] > 2 * l3[s3 - 1] + f2[s3] && (l3[s3] = 2 * l3[s3 - 1] + f2[s3]), _2[s3] = Array(l3[s3]), p2[s3] = Array(l3[s3]);
                 for (i3 = 0; i3 < t4; ++i3)
                   h2[i3] = n3;
                 for (a3 = 0; a3 < l3[n3 - 1]; ++a3)
-                  _2[n3 - 1][a3] = e4[a3], y2[n3 - 1][a3] = a3;
+                  _2[n3 - 1][a3] = e4[a3], p2[n3 - 1][a3] = a3;
                 for (i3 = 0; i3 < n3; ++i3)
-                  p2[i3] = 0;
-                for (1 === f2[n3 - 1] && (--h2[0], ++p2[n3 - 1]), s3 = n3 - 2; 0 <= s3; --s3) {
-                  for (u3 = i3 = 0, c3 = p2[s3 + 1], a3 = 0; a3 < l3[s3]; a3++)
-                    (u3 = _2[s3 + 1][c3] + _2[s3 + 1][c3 + 1]) > e4[i3] ? (_2[s3][a3] = u3, y2[s3][a3] = t4, c3 += 2) : (_2[s3][a3] = e4[i3], y2[s3][a3] = i3, ++i3);
-                  p2[s3] = 0, 1 === f2[s3] && r3(s3);
+                  y2[i3] = 0;
+                for (1 === f2[n3 - 1] && (--h2[0], ++y2[n3 - 1]), s3 = n3 - 2; 0 <= s3; --s3) {
+                  for (u3 = i3 = 0, c3 = y2[s3 + 1], a3 = 0; a3 < l3[s3]; a3++)
+                    (u3 = _2[s3 + 1][c3] + _2[s3 + 1][c3 + 1]) > e4[i3] ? (_2[s3][a3] = u3, p2[s3][a3] = t4, c3 += 2) : (_2[s3][a3] = e4[i3], p2[s3][a3] = i3, ++i3);
+                  y2[s3] = 0, 1 === f2[s3] && r3(s3);
                 }
                 return h2;
               }(r2, r2.length, t3), s2 = 0, a2 = n2.length; s2 < a2; ++s2)
@@ -6694,7 +6892,7 @@
               return l2;
             }
             __name(O, "O");
-            function w(e3) {
+            function A(e3) {
               var t3, n2, r2, i2, s2 = new (o ? Uint16Array : Array)(e3.length), a2 = [], u2 = [], c2 = 0;
               for (t3 = 0, n2 = e3.length; t3 < n2; t3++)
                 a2[e3[t3]] = 1 + (0 | a2[e3[t3]]);
@@ -6705,22 +6903,22 @@
                   s2[t3] = s2[t3] << 1 | 1 & c2, c2 >>>= 1;
               return s2;
             }
-            __name(w, "w");
-            function A(t3, n2) {
-              switch (this.l = [], this.m = 32768, this.e = this.g = this.c = this.q = 0, this.input = o ? new Uint8Array(t3) : t3, this.s = false, this.n = M, this.C = false, !n2 && (n2 = {}) || (n2.index && (this.c = n2.index), n2.bufferSize && (this.m = n2.bufferSize), n2.bufferType && (this.n = n2.bufferType), n2.resize && (this.C = n2.resize)), this.n) {
+            __name(A, "A");
+            function w(t3, n2) {
+              switch (this.l = [], this.m = 32768, this.e = this.g = this.c = this.q = 0, this.input = o ? new Uint8Array(t3) : t3, this.s = false, this.n = T, this.C = false, !n2 && (n2 = {}) || (n2.index && (this.c = n2.index), n2.bufferSize && (this.m = n2.bufferSize), n2.bufferType && (this.n = n2.bufferType), n2.resize && (this.C = n2.resize)), this.n) {
                 case I:
                   this.b = 32768, this.a = new (o ? Uint8Array : Array)(32768 + this.m + 258);
                   break;
-                case M:
+                case T:
                   this.b = 0, this.a = new (o ? Uint8Array : Array)(this.m), this.f = this.K, this.t = this.I, this.o = this.J;
                   break;
                 default:
                   e2(Error("invalid inflate mode"));
               }
             }
-            __name(A, "A");
-            var I = 0, M = 1, T = { F: I, D: M };
-            A.prototype.p = function() {
+            __name(w, "w");
+            var I = 0, T = 1, M = { F: I, D: T };
+            w.prototype.p = function() {
               for (; !this.s; ) {
                 var r2 = J(this, 3);
                 switch (1 & r2 && (this.s = n), r2 >>>= 1) {
@@ -6737,7 +6935,7 @@
                           this.b = u2, a2 = this.f(), u2 = this.b;
                         }
                         break;
-                      case M:
+                      case T:
                         for (; u2 + l2 > a2.length; )
                           a2 = this.f({ v: 2 });
                         break;
@@ -6755,7 +6953,7 @@
                     this.o(G, H);
                     break;
                   case 2:
-                    X(this);
+                    W(this);
                     break;
                   default:
                     e2(Error("unknown BTYPE: " + r2));
@@ -6763,30 +6961,30 @@
               }
               return this.t();
             };
-            var k, P, F = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15], j = o ? new Uint16Array(F) : F, U = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 258, 258], N = o ? new Uint16Array(U) : U, B = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 0, 0], L = o ? new Uint8Array(B) : B, D = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577], Y = o ? new Uint16Array(D) : D, C = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13], x = o ? new Uint8Array(C) : C, q = new (o ? Uint8Array : Array)(288);
-            for (k = 0, P = q.length; k < P; ++k)
-              q[k] = 143 >= k ? 8 : 255 >= k ? 9 : 279 >= k ? 7 : 8;
-            var V, K, G = y(q), z = new (o ? Uint8Array : Array)(30);
+            var k, P, F = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15], N = o ? new Uint16Array(F) : F, j = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 258, 258], U = o ? new Uint16Array(j) : j, B = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 0, 0], L = o ? new Uint8Array(B) : B, D = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577], Y = o ? new Uint16Array(D) : D, C = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13], q = o ? new Uint8Array(C) : C, x = new (o ? Uint8Array : Array)(288);
+            for (k = 0, P = x.length; k < P; ++k)
+              x[k] = 143 >= k ? 8 : 255 >= k ? 9 : 279 >= k ? 7 : 8;
+            var V, K, G = p(x), z = new (o ? Uint8Array : Array)(30);
             for (V = 0, K = z.length; V < K; ++V)
               z[V] = 5;
-            var H = y(z);
+            var H = p(z);
             function J(t3, n2) {
               for (var r2, i2 = t3.g, o2 = t3.e, s2 = t3.input, a2 = t3.c, u2 = s2.length; o2 < n2; )
                 a2 >= u2 && e2(Error("input buffer is broken")), i2 |= s2[a2++] << o2, o2 += 8;
               return r2 = i2 & (1 << n2) - 1, t3.g = i2 >>> n2, t3.e = o2 - n2, t3.c = a2, r2;
             }
             __name(J, "J");
-            function W(e3, t3) {
+            function X(e3, t3) {
               for (var n2, r2, i2 = e3.g, o2 = e3.e, s2 = e3.input, a2 = e3.c, u2 = s2.length, c2 = t3[0], l2 = t3[1]; o2 < l2 && !(a2 >= u2); )
                 i2 |= s2[a2++] << o2, o2 += 8;
               return r2 = (n2 = c2[i2 & (1 << l2) - 1]) >>> 16, e3.g = i2 >> r2, e3.e = o2 - r2, e3.c = a2, 65535 & n2;
             }
-            __name(W, "W");
-            function X(e3) {
+            __name(X, "X");
+            function W(e3) {
               function t3(e4, t4, n3) {
                 var r3, i3, o2, s3 = this.z;
                 for (o2 = 0; o2 < e4; )
-                  switch (r3 = W(this, t4), r3) {
+                  switch (r3 = X(this, t4), r3) {
                     case 16:
                       for (i3 = 3 + J(this, 2); i3--; )
                         n3[o2++] = s3;
@@ -6807,15 +7005,15 @@
                 return this.z = s3, n3;
               }
               __name(t3, "t");
-              var n2, r2, i2, s2, a2 = J(e3, 5) + 257, u2 = J(e3, 5) + 1, c2 = J(e3, 4) + 4, l2 = new (o ? Uint8Array : Array)(j.length);
+              var n2, r2, i2, s2, a2 = J(e3, 5) + 257, u2 = J(e3, 5) + 1, c2 = J(e3, 4) + 4, l2 = new (o ? Uint8Array : Array)(N.length);
               for (s2 = 0; s2 < c2; ++s2)
-                l2[j[s2]] = J(e3, 3);
+                l2[N[s2]] = J(e3, 3);
               if (!o)
                 for (s2 = c2, c2 = l2.length; s2 < c2; ++s2)
-                  l2[j[s2]] = 0;
-              n2 = y(l2), r2 = new (o ? Uint8Array : Array)(a2), i2 = new (o ? Uint8Array : Array)(u2), e3.z = 0, e3.o(y(t3.call(e3, a2, n2, r2)), y(t3.call(e3, u2, n2, i2)));
+                  l2[N[s2]] = 0;
+              n2 = p(l2), r2 = new (o ? Uint8Array : Array)(a2), i2 = new (o ? Uint8Array : Array)(u2), e3.z = 0, e3.o(p(t3.call(e3, a2, n2, r2)), p(t3.call(e3, u2, n2, i2)));
             }
-            __name(X, "X");
+            __name(W, "W");
             function Q(e3) {
               if ("string" == typeof e3) {
                 var t3, n2, r2 = e3.split("");
@@ -6842,34 +7040,34 @@
                 default:
                   e2(Error("unsupported compression method"));
               }
-              0 != ((r2 << 8) + i2) % 31 && e2(Error("invalid fcheck flag:" + ((r2 << 8) + i2) % 31)), 32 & i2 && e2(Error("fdict flag is not supported")), this.B = new A(t3, { index: this.c, bufferSize: n2.bufferSize, bufferType: n2.bufferType, resize: n2.resize });
+              0 != ((r2 << 8) + i2) % 31 && e2(Error("invalid fcheck flag:" + ((r2 << 8) + i2) % 31)), 32 & i2 && e2(Error("fdict flag is not supported")), this.B = new w(t3, { index: this.c, bufferSize: n2.bufferSize, bufferType: n2.bufferType, resize: n2.resize });
             }
             __name(Z, "Z");
-            A.prototype.o = function(e3, t3) {
+            w.prototype.o = function(e3, t3) {
               var n2 = this.a, r2 = this.b;
               this.u = e3;
-              for (var i2, o2, s2, a2, u2 = n2.length - 258; 256 !== (i2 = W(this, e3)); )
+              for (var i2, o2, s2, a2, u2 = n2.length - 258; 256 !== (i2 = X(this, e3)); )
                 if (256 > i2)
                   r2 >= u2 && (this.b = r2, n2 = this.f(), r2 = this.b), n2[r2++] = i2;
                 else
-                  for (a2 = N[o2 = i2 - 257], 0 < L[o2] && (a2 += J(this, L[o2])), i2 = W(this, t3), s2 = Y[i2], 0 < x[i2] && (s2 += J(this, x[i2])), r2 >= u2 && (this.b = r2, n2 = this.f(), r2 = this.b); a2--; )
+                  for (a2 = U[o2 = i2 - 257], 0 < L[o2] && (a2 += J(this, L[o2])), i2 = X(this, t3), s2 = Y[i2], 0 < q[i2] && (s2 += J(this, q[i2])), r2 >= u2 && (this.b = r2, n2 = this.f(), r2 = this.b); a2--; )
                     n2[r2] = n2[r2++ - s2];
               for (; 8 <= this.e; )
                 this.e -= 8, this.c--;
               this.b = r2;
-            }, A.prototype.J = function(e3, t3) {
+            }, w.prototype.J = function(e3, t3) {
               var n2 = this.a, r2 = this.b;
               this.u = e3;
-              for (var i2, o2, s2, a2, u2 = n2.length; 256 !== (i2 = W(this, e3)); )
+              for (var i2, o2, s2, a2, u2 = n2.length; 256 !== (i2 = X(this, e3)); )
                 if (256 > i2)
                   r2 >= u2 && (u2 = (n2 = this.f()).length), n2[r2++] = i2;
                 else
-                  for (a2 = N[o2 = i2 - 257], 0 < L[o2] && (a2 += J(this, L[o2])), i2 = W(this, t3), s2 = Y[i2], 0 < x[i2] && (s2 += J(this, x[i2])), r2 + a2 > u2 && (u2 = (n2 = this.f()).length); a2--; )
+                  for (a2 = U[o2 = i2 - 257], 0 < L[o2] && (a2 += J(this, L[o2])), i2 = X(this, t3), s2 = Y[i2], 0 < q[i2] && (s2 += J(this, q[i2])), r2 + a2 > u2 && (u2 = (n2 = this.f()).length); a2--; )
                     n2[r2] = n2[r2++ - s2];
               for (; 8 <= this.e; )
                 this.e -= 8, this.c--;
               this.b = r2;
-            }, A.prototype.f = function() {
+            }, w.prototype.f = function() {
               var e3, t3, n2 = new (o ? Uint8Array : Array)(this.b - 32768), r2 = this.b - 32768, i2 = this.a;
               if (o)
                 n2.set(i2.subarray(32768, n2.length));
@@ -6882,10 +7080,10 @@
                 for (e3 = 0; 32768 > e3; ++e3)
                   i2[e3] = i2[r2 + e3];
               return this.b = 32768, i2;
-            }, A.prototype.K = function(e3) {
+            }, w.prototype.K = function(e3) {
               var t3, n2, r2, i2 = this.input.length / this.c + 1 | 0, s2 = this.input, a2 = this.a;
               return e3 && ("number" == typeof e3.v && (i2 = e3.v), "number" == typeof e3.G && (i2 += e3.G)), 2 > i2 ? n2 = (r2 = (s2.length - this.c) / this.u[2] / 2 * 258 | 0) < a2.length ? a2.length + r2 : a2.length << 1 : n2 = a2.length * i2, o ? (t3 = new Uint8Array(n2)).set(a2) : t3 = a2, this.a = t3;
-            }, A.prototype.t = function() {
+            }, w.prototype.t = function() {
               var e3, t3, n2, r2, i2, s2 = 0, a2 = this.a, u2 = this.l, c2 = new (o ? Uint8Array : Array)(this.q + (this.b - 32768));
               if (0 === u2.length)
                 return o ? this.a.subarray(32768, this.b) : this.a.slice(32768, this.b);
@@ -6895,7 +7093,7 @@
               for (t3 = 32768, n2 = this.b; t3 < n2; ++t3)
                 c2[s2++] = a2[t3];
               return this.l = [], this.buffer = c2;
-            }, A.prototype.I = function() {
+            }, w.prototype.I = function() {
               var e3, t3 = this.b;
               return o ? this.C ? (e3 = new Uint8Array(t3)).set(this.a.subarray(0, t3)) : e3 = this.a.subarray(0, t3) : (this.a.length > t3 && (this.a.length = t3), e3 = this.a), this.buffer = e3;
             }, Z.prototype.p = function() {
@@ -6908,7 +7106,7 @@
               var n2, r2 = {};
               for (n2 in !t3 && (t3 = {}) || "number" != typeof t3.compressionType || (this.h = t3.compressionType), t3)
                 r2[n2] = t3[n2];
-              r2.outputBuffer = this.a, this.A = new p(this.input, r2);
+              r2.outputBuffer = this.a, this.A = new y(this.input, r2);
             }
             __name(ee, "ee");
             var te = v;
@@ -6952,7 +7150,7 @@
                   e2(Error("invalid compression method"));
               }
               return i2 = s2 << 6 | 0, u2[c2++] = i2 | 31 - (256 * r2 + i2) % 31, a2 = Q(this.input), this.A.b = c2, c2 = (u2 = this.A.j()).length, o && ((u2 = new Uint8Array(u2.buffer)).length <= c2 + 4 && (this.a = new Uint8Array(u2.length + 4), this.a.set(u2), u2 = this.a), u2 = u2.subarray(0, c2 + 4)), u2[c2++] = a2 >> 24 & 255, u2[c2++] = a2 >> 16 & 255, u2[c2++] = a2 >> 8 & 255, u2[c2++] = 255 & a2, u2;
-            }, i("Zlib.Inflate", Z), i("Zlib.Inflate.prototype.decompress", Z.prototype.p), ne("Zlib.Inflate.BufferType", { ADAPTIVE: T.D, BLOCK: T.F }), i("Zlib.Deflate", ee), i("Zlib.Deflate.compress", function(e3, t3) {
+            }, i("Zlib.Inflate", Z), i("Zlib.Inflate.prototype.decompress", Z.prototype.p), ne("Zlib.Inflate.BufferType", { ADAPTIVE: M.D, BLOCK: M.F }), i("Zlib.Deflate", ee), i("Zlib.Deflate.compress", function(e3, t3) {
               return new ee(e3, t3).j();
             }), i("Zlib.Deflate.prototype.compress", ee.prototype.j), ne("Zlib.Deflate.CompressionType", { NONE: te.NONE, FIXED: te.r, DYNAMIC: te.k });
           }).call(this);
@@ -6970,15 +7168,15 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), o = n(120), s = (r = o) && r.__esModule ? r : { default: r }, a = n(167), u = n(39), c = n(8), l = n(2), f = n(50), h = n(51), _ = n(1);
-          function y(e2, t2) {
+          }(), o = n(122), s = (r = o) && r.__esModule ? r : { default: r }, a = n(169), u = n(42), c = n(8), l = n(2), f = n(53), h = n(54), _ = n(1);
+          function p(e2, t2) {
             if (!(e2 instanceof t2))
               throw new TypeError("Cannot call a class as a function");
           }
-          __name(y, "y");
-          var p = Object.freeze({ CONNECT: "socketConnect", DISCONNECT: "socketDisconnect", DATA: "socketData", IOERROR: "socketIOError" }), d = function(e2) {
+          __name(p, "p");
+          var y = Object.freeze({ CONNECT: "socketConnect", DISCONNECT: "socketDisconnect", DATA: "socketData", IOERROR: "socketIOError" }), d = function(e2) {
             function t2(e3) {
-              y(this, t2);
+              p(this, t2);
               var n2 = function(e4, t3) {
                 if (!e4)
                   throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -7005,15 +7203,17 @@
               this._sfs.debug && this._logger.debug("OUTGOING MESSAGE: " + e3.dump());
               var t3 = this._protocolCodec.onPacketWrite(e3);
               this._socket.send(t3);
+            } }, { key: "kill", value: function() {
+              this._socket.close();
             } }, { key: "_onSocketConnect", value: function() {
-              this._scope._sfs.debug && this._scope._logger.debug("Socket connection established"), this._scope._isConnected = true, this._scope._isConnecting = false, this._scope.dispatchEvent(p.CONNECT, { success: true });
+              this._scope._sfs.debug && this._scope._logger.debug("Socket connection established"), this._scope._isConnected = true, this._scope._isConnecting = false, this._scope.dispatchEvent(y.CONNECT, { success: true });
             } }, { key: "_onSocketDisconnect", value: function() {
-              this._scope._isConnected = false, this._scope.isConnecting ? (this._scope._sfs.debug && this._scope._logger.debug("Can't establish socket connection"), this._scope._isConnecting = false, this._scope.dispatchEvent(p.CONNECT, { success: false })) : (this._scope._sfs.debug && this._scope._logger.debug("Socket disconnection occurred"), this._scope.dispatchEvent(p.DISCONNECT, { reason: this._scope._disconnectionReason }), this._scope._disconnectionReason = h.ClientDisconnectionReason.UNKNOWN);
+              this._scope._isConnected = false, this._scope.isConnecting ? (this._scope._sfs.debug && this._scope._logger.debug("Can't establish socket connection"), this._scope._isConnecting = false, this._scope.dispatchEvent(y.CONNECT, { success: false })) : (this._scope._sfs.debug && this._scope._logger.debug("Socket disconnection occurred"), this._scope.dispatchEvent(y.DISCONNECT, { reason: this._scope._disconnectionReason }), this._scope._disconnectionReason = h.ClientDisconnectionReason.UNKNOWN);
             } }, { key: "_onSocketData", value: function(e3) {
               var t3 = this._scope._protocolCodec.onPacketRead(e3.data);
-              this._scope._sfs.debug && this._scope._logger.debug("INCOMING MESSAGE: " + t3.dump()), this._scope.dispatchEvent(p.DATA, t3);
+              this._scope._sfs.debug && this._scope._logger.debug("INCOMING MESSAGE: " + t3.dump()), this._scope.dispatchEvent(y.DATA, t3);
             } }, { key: "_onSocketError", value: function(e3) {
-              this._scope.dispatchEvent(p.IOERROR, e3.data);
+              this._scope.dispatchEvent(y.IOERROR, e3.data);
             } }, { key: "isConnected", get: function() {
               return this._isConnected;
             } }, { key: "isConnecting", get: function() {
@@ -7029,7 +7229,7 @@
             } }]), t2;
           }(), g = function() {
             function e2(t2) {
-              y(this, e2), this.CONTROLLER_ID = "c", this.ACTION_ID = "a", this.PARAM_ID = "p", this._maxMessageSize = 1e4, this._compressionThreshold = 1024, this._sfs = t2, this._logger = f.Logger.instance, Object.seal(this);
+              p(this, e2), this.CONTROLLER_ID = "c", this.ACTION_ID = "a", this.PARAM_ID = "p", this._maxMessageSize = 1e4, this._compressionThreshold = 1024, this._sfs = t2, this._logger = f.Logger.instance, Object.seal(this);
             }
             __name(e2, "e");
             return i(e2, [{ key: "onPacketRead", value: function(e3) {
@@ -7065,7 +7265,7 @@
               this._compressionThreshold = e3;
             } }]), e2;
           }();
-          t.SocketEvent = p, t.SocketEngine = d;
+          t.SocketEvent = y, t.SocketEngine = d;
         }, function(e, t, n) {
           "use strict";
           Object.defineProperty(t, "__esModule", { value: true }), t.ExtensionController = void 0;
@@ -7080,7 +7280,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(39), o = n(97);
+          }(), i = n(42), o = n(98);
           var s = function() {
             function e2(t2) {
               !function(e3, t3) {
@@ -7146,7 +7346,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(73);
+          }(), i = n(74);
           var o = function() {
             function e2(t2) {
               !function(e3, t3) {
@@ -7265,16 +7465,16 @@
                 if (0 !== a2) {
                   if (t2(_2, 48, 57) && e3)
                     return u2 = _2, null;
-                  var y2 = a2, p2 = null;
+                  var p2 = a2, y2 = null;
                   a2 = 0;
                   var d2 = _2 < 127 ? 64 : 65;
-                  return (t2(_2, 64, 126) || t2(_2, 128, 254)) && (p2 = 190 * (y2 - 129) + (_2 - d2)), f2 = null === p2 ? null : l(p2, h.gbk), null === p2 && n3.offset(-1), null === f2 ? o(s2) : f2;
+                  return (t2(_2, 64, 126) || t2(_2, 128, 254)) && (y2 = 190 * (p2 - 129) + (_2 - d2)), f2 = null === y2 ? null : l(y2, h.gbk), null === y2 && n3.offset(-1), null === f2 ? o(s2) : f2;
                 }
                 return t2(_2, 0, 127) ? _2 : 128 === _2 ? 8364 : t2(_2, 129, 254) ? (a2 = _2, null) : o(s2);
               };
             }
             __name(_, "_");
-            function y(e3, o2) {
+            function p(e3, o2) {
               o2.fatal;
               this.encode = function(o3, a2) {
                 var u2 = a2.get();
@@ -7284,12 +7484,12 @@
                   return o3.emit(u2);
                 var c2 = f(u2, h.gbk);
                 if (null !== c2) {
-                  var l2 = n(c2, 190) + 129, _2 = c2 % 190, y2 = _2 < 63 ? 64 : 65;
-                  return o3.emit(l2, _2 + y2);
+                  var l2 = n(c2, 190) + 129, _2 = c2 % 190, p2 = _2 < 63 ? 64 : 65;
+                  return o3.emit(l2, _2 + p2);
                 }
                 if (null === c2 && !e3)
                   return s();
-                var p2 = n(n(n(c2 = function(e4) {
+                var y2 = n(n(n(c2 = function(e4) {
                   var t3, n2 = 0, r2 = 0, i2 = h.gb18030;
                   for (t3 = 0; t3 < i2.length; ++t3) {
                     var o4 = i2[t3];
@@ -7298,12 +7498,12 @@
                     n2 = o4[1], r2 = o4[0];
                   }
                   return r2 + e4 - n2;
-                }(u2), 10), 126), 10), d2 = n(n(c2 -= 10 * p2 * 126 * 10, 10), 126), g2 = n(c2 -= 10 * d2 * 126, 10), v2 = c2 - 10 * g2;
-                return o3.emit(p2 + 129, d2 + 48, g2 + 129, v2 + 48);
+                }(u2), 10), 126), 10), d2 = n(n(c2 -= 10 * y2 * 126 * 10, 10), 126), g2 = n(c2 -= 10 * d2 * 126, 10), v2 = c2 - 10 * g2;
+                return o3.emit(y2 + 129, d2 + 48, g2 + 129, v2 + 48);
               };
             }
-            __name(y, "y");
-            function p(e3, n2) {
+            __name(p, "p");
+            function y(e3, n2) {
               var s2 = n2.fatal, a2 = null, u2 = null;
               this.decode = function(n3) {
                 var c2, l2 = n3.get();
@@ -7320,7 +7520,7 @@
                 return t2(c2, 55296, 56319) ? (u2 = c2, null) : t2(c2, 56320, 57343) ? o(s2) : c2;
               };
             }
-            __name(p, "p");
+            __name(y, "y");
             function d(e3, o2) {
               o2.fatal;
               this.encode = function(o3, a2) {
@@ -7415,11 +7615,11 @@
                 }(a2, e4);
               };
             }), u.gbk.getEncoder = function(e3) {
-              return new y(false, e3);
+              return new p(false, e3);
             }, u.gbk.getDecoder = function(e3) {
               return new _(false, e3);
             }, u.gb18030.getEncoder = function(e3) {
-              return new y(true, e3);
+              return new p(true, e3);
             }, u.gb18030.getDecoder = function(e3) {
               return new _(true, e3);
             }, u["hz-gb-2312"].getEncoder = function(e3) {
@@ -7496,8 +7696,8 @@
                   if (e5.offset(1), 0 !== s2) {
                     var f2 = s2, _2 = null;
                     s2 = 0;
-                    var y2 = c2 < 127 ? 64 : 98;
-                    if ((t2(c2, 64, 126) || t2(c2, 161, 254)) && (_2 = 157 * (f2 - 129) + (c2 - y2)), 1133 === _2)
+                    var p2 = c2 < 127 ? 64 : 98;
+                    if ((t2(c2, 64, 126) || t2(c2, 161, 254)) && (_2 = 157 * (f2 - 129) + (c2 - p2)), 1133 === _2)
                       return a2 = 772, 202;
                     if (1135 === _2)
                       return a2 = 780, 202;
@@ -7505,8 +7705,8 @@
                       return a2 = 772, 234;
                     if (1166 === _2)
                       return a2 = 780, 234;
-                    var p2 = null === _2 ? null : l(_2, h.big5);
-                    return null === _2 && e5.offset(-1), null === p2 ? o(n2) : p2;
+                    var y2 = null === _2 ? null : l(_2, h.big5);
+                    return null === _2 && e5.offset(-1), null === y2 ? o(n2) : y2;
                   }
                   return t2(c2, 0, 127) ? c2 : t2(c2, 129, 254) ? (s2 = c2, null) : o(n2);
                 };
@@ -7562,38 +7762,38 @@
                     return e5.emit(_2 - 65377 - 33);
                   if (c2 !== a2)
                     return l2.offset(-1), c2 = a2, e5.emit(27, 36, 66);
-                  var y2 = f(_2, h.jis0208);
-                  if (null === y2)
+                  var p2 = f(_2, h.jis0208);
+                  if (null === p2)
                     return s();
-                  var p2 = n(y2, 94) + 33, d2 = y2 % 94 + 33;
-                  return e5.emit(p2, d2);
+                  var y2 = n(p2, 94) + 33, d2 = p2 % 94 + 33;
+                  return e5.emit(y2, d2);
                 };
               }(e3);
             }, u["iso-2022-jp"].getDecoder = function(e3) {
               return new function(e4) {
-                var n2 = e4.fatal, s2 = 0, a2 = 1, u2 = 2, c2 = 3, f2 = 4, _2 = 5, y2 = 6, p2 = s2, d2 = false, g2 = 0;
+                var n2 = e4.fatal, s2 = 0, a2 = 1, u2 = 2, c2 = 3, f2 = 4, _2 = 5, p2 = 6, y2 = s2, d2 = false, g2 = 0;
                 this.decode = function(e5) {
                   var v2 = e5.get();
-                  switch (v2 !== r && e5.offset(1), p2) {
+                  switch (v2 !== r && e5.offset(1), y2) {
                     default:
                     case s2:
-                      return 27 === v2 ? (p2 = a2, null) : t2(v2, 0, 127) ? v2 : v2 === r ? i : o(n2);
+                      return 27 === v2 ? (y2 = a2, null) : t2(v2, 0, 127) ? v2 : v2 === r ? i : o(n2);
                     case a2:
-                      return 36 === v2 || 40 === v2 ? (g2 = v2, p2 = u2, null) : (v2 !== r && e5.offset(-1), p2 = s2, o(n2));
+                      return 36 === v2 || 40 === v2 ? (g2 = v2, y2 = u2, null) : (v2 !== r && e5.offset(-1), y2 = s2, o(n2));
                     case u2:
                       var b2 = g2;
-                      return g2 = 0, 36 !== b2 || 64 !== v2 && 66 !== v2 ? 36 === b2 && 40 === v2 ? (p2 = c2, null) : 40 !== b2 || 66 !== v2 && 74 !== v2 ? 40 === b2 && 73 === v2 ? (p2 = y2, null) : (v2 === r ? e5.offset(-1) : e5.offset(-2), p2 = s2, o(n2)) : (p2 = s2, null) : (d2 = false, p2 = f2, null);
+                      return g2 = 0, 36 !== b2 || 64 !== v2 && 66 !== v2 ? 36 === b2 && 40 === v2 ? (y2 = c2, null) : 40 !== b2 || 66 !== v2 && 74 !== v2 ? 40 === b2 && 73 === v2 ? (y2 = p2, null) : (v2 === r ? e5.offset(-1) : e5.offset(-2), y2 = s2, o(n2)) : (y2 = s2, null) : (d2 = false, y2 = f2, null);
                     case c2:
-                      return 68 === v2 ? (d2 = true, p2 = f2, null) : (v2 === r ? e5.offset(-2) : e5.offset(-3), p2 = s2, o(n2));
+                      return 68 === v2 ? (d2 = true, y2 = f2, null) : (v2 === r ? e5.offset(-2) : e5.offset(-3), y2 = s2, o(n2));
                     case f2:
-                      return 10 === v2 ? (p2 = s2, o(n2, 10)) : 27 === v2 ? (p2 = a2, null) : v2 === r ? i : (g2 = v2, p2 = _2, null);
+                      return 10 === v2 ? (y2 = s2, o(n2, 10)) : 27 === v2 ? (y2 = a2, null) : v2 === r ? i : (g2 = v2, y2 = _2, null);
                     case _2:
-                      if (p2 = f2, v2 === r)
+                      if (y2 = f2, v2 === r)
                         return o(n2);
                       var m = null, S = 94 * (g2 - 33) + v2 - 33;
                       return t2(g2, 33, 126) && t2(v2, 33, 126) && (m = l(S, false === d2 ? h.jis0208 : h.jis0212)), null === m ? o(n2) : m;
-                    case y2:
-                      return 27 === v2 ? (p2 = a2, null) : t2(v2, 33, 95) ? 65377 + v2 - 33 : v2 === r ? i : o(n2);
+                    case p2:
+                      return 27 === v2 ? (y2 = a2, null) : t2(v2, 33, 95) ? 65377 + v2 - 33 : v2 === r ? i : o(n2);
                   }
                 };
               }(e3);
@@ -7614,8 +7814,8 @@
                   var u2 = f(a2, h.jis0208);
                   if (null === u2)
                     return s();
-                  var c2 = n(u2, 188), l2 = c2 < 31 ? 129 : 193, _2 = u2 % 188, y2 = _2 < 63 ? 64 : 65;
-                  return e5.emit(c2 + l2, _2 + y2);
+                  var c2 = n(u2, 188), l2 = c2 < 31 ? 129 : 193, _2 = u2 % 188, p2 = _2 < 63 ? 64 : 65;
+                  return e5.emit(c2 + l2, _2 + p2);
                 };
               }(e3);
             }, u.shift_jis.getDecoder = function(e3) {
@@ -7693,43 +7893,43 @@
                     return e5.emit(_2);
                   if (c2 !== a2)
                     return l2.offset(-1), c2 = a2, e5.emit(14);
-                  var y2, p2, d2 = f(_2, h["euc-kr"]);
-                  return null === d2 ? s() : d2 < 12460 ? (p2 = d2 % 178 - 26 - 26 + 1, t2(y2 = n(d2, 178) + 1, 33, 70) && t2(p2, 33, 126) ? e5.emit(y2, p2) : s()) : (p2 = (d2 -= 12460) % 94 + 33, t2(y2 = n(d2, 94) + 71, 71, 126) && t2(p2, 33, 126) ? e5.emit(y2, p2) : s());
+                  var p2, y2, d2 = f(_2, h["euc-kr"]);
+                  return null === d2 ? s() : d2 < 12460 ? (y2 = d2 % 178 - 26 - 26 + 1, t2(p2 = n(d2, 178) + 1, 33, 70) && t2(y2, 33, 126) ? e5.emit(p2, y2) : s()) : (y2 = (d2 -= 12460) % 94 + 33, t2(p2 = n(d2, 94) + 71, 71, 126) && t2(y2, 33, 126) ? e5.emit(p2, y2) : s());
                 };
               }(e3);
             }, u["iso-2022-kr"].getDecoder = function(e3) {
               return new function(e4) {
-                var n2 = e4.fatal, s2 = 0, a2 = 1, u2 = 2, c2 = 3, f2 = 4, _2 = 5, y2 = s2, p2 = 0;
+                var n2 = e4.fatal, s2 = 0, a2 = 1, u2 = 2, c2 = 3, f2 = 4, _2 = 5, p2 = s2, y2 = 0;
                 this.decode = function(e5) {
                   var d2 = e5.get();
-                  switch (d2 !== r && e5.offset(1), y2) {
+                  switch (d2 !== r && e5.offset(1), p2) {
                     default:
                     case s2:
-                      return 14 === d2 ? (y2 = f2, null) : 15 === d2 ? null : 27 === d2 ? (y2 = a2, null) : t2(d2, 0, 127) ? d2 : d2 === r ? i : o(n2);
+                      return 14 === d2 ? (p2 = f2, null) : 15 === d2 ? null : 27 === d2 ? (p2 = a2, null) : t2(d2, 0, 127) ? d2 : d2 === r ? i : o(n2);
                     case a2:
-                      return 36 === d2 ? (y2 = u2, null) : (d2 !== r && e5.offset(-1), y2 = s2, o(n2));
+                      return 36 === d2 ? (p2 = u2, null) : (d2 !== r && e5.offset(-1), p2 = s2, o(n2));
                     case u2:
-                      return 41 === d2 ? (y2 = c2, null) : (d2 === r ? e5.offset(-1) : e5.offset(-2), y2 = s2, o(n2));
+                      return 41 === d2 ? (p2 = c2, null) : (d2 === r ? e5.offset(-1) : e5.offset(-2), p2 = s2, o(n2));
                     case c2:
-                      return 67 === d2 ? (y2 = s2, null) : (d2 === r ? e5.offset(-2) : e5.offset(-3), y2 = s2, o(n2));
+                      return 67 === d2 ? (p2 = s2, null) : (d2 === r ? e5.offset(-2) : e5.offset(-3), p2 = s2, o(n2));
                     case f2:
-                      return 10 === d2 ? (y2 = s2, o(n2, 10)) : 14 === d2 ? null : 15 === d2 ? (y2 = s2, null) : d2 === r ? i : (p2 = d2, y2 = _2, null);
+                      return 10 === d2 ? (p2 = s2, o(n2, 10)) : 14 === d2 ? null : 15 === d2 ? (p2 = s2, null) : d2 === r ? i : (y2 = d2, p2 = _2, null);
                     case _2:
-                      if (y2 = f2, d2 === r)
+                      if (p2 = f2, d2 === r)
                         return o(n2);
                       var g2 = null;
-                      return t2(p2, 33, 70) && t2(d2, 33, 126) ? g2 = l(178 * (p2 - 1) + 26 + 26 + d2 - 1, h["euc-kr"]) : t2(p2, 71, 126) && t2(d2, 33, 126) && (g2 = l(12460 + 94 * (p2 - 71) + (d2 - 33), h["euc-kr"])), null !== g2 ? g2 : o(n2);
+                      return t2(y2, 33, 70) && t2(d2, 33, 126) ? g2 = l(178 * (y2 - 1) + 26 + 26 + d2 - 1, h["euc-kr"]) : t2(y2, 71, 126) && t2(d2, 33, 126) && (g2 = l(12460 + 94 * (y2 - 71) + (d2 - 33), h["euc-kr"])), null !== g2 ? g2 : o(n2);
                   }
                 };
               }(e3);
             }, u["utf-16"].getEncoder = function(e3) {
               return new d(false, e3);
             }, u["utf-16"].getDecoder = function(e3) {
-              return new p(false, e3);
+              return new y(false, e3);
             }, u["utf-16be"].getEncoder = function(e3) {
               return new d(true, e3);
             }, u["utf-16be"].getDecoder = function(e3) {
-              return new p(true, e3);
+              return new y(true, e3);
             };
             var g = "utf-8";
             function v(t3, n2) {
@@ -7863,7 +8063,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), o = n(120), s = (r = o) && r.__esModule ? r : { default: r }, a = n(172), u = n(8);
+          }(), o = n(122), s = (r = o) && r.__esModule ? r : { default: r }, a = n(174), u = n(8);
           var c = Symbol(), l = Symbol(), f = function() {
             function e2(t2) {
               if (function(e3, t3) {
@@ -8228,7 +8428,8 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(2), o = n(39), s = n(74), a = n(8), u = n(9), c = n(47), l = n(171), f = n(58), h = n(72), _ = n(59), y = n(49), p = n(73), d = n(46), g = n(51), v = n(118), b = n(117), m = n(116), S = n(57), E = n(115), R = n(114), O = n(113), w = n(70), A = n(112), I = n(111), M = n(110), T = n(109), k = n(108), P = n(107), F = n(106), j = n(105), U = n(69), N = n(170), B = n(104), L = n(103), D = n(102), Y = n(101), C = n(100), x = n(99), q = n(98);
+          }(), i = n(2), o = n(42), s = n(75), a = n(8), u = n(9), c = n(41), l = n(173), f = n(40), h = n(73), _ = n(59), p = n(52), y = n(74), d = n(50), g = n(54), v = n(120), b = n(119), m = n(118), S = n(49), E = n(117), R = n(116), O = n(115), A = n(71), w = n(114), I = n(113), T = n(112), M = n(111), k = n(110), P = n(109), F = n(108), N = n(107), j = n(70), U = n(172), B = n(106), L = n(105), D = n(104), Y = n(103), C = n(102), q = n(101), x = n(100);
+          n(69), n(99);
           var V = function() {
             function e2(t2) {
               !function(e3, t3) {
@@ -8255,7 +8456,7 @@
               var n2 = this._messageHandlers.get(t2);
               null != n2 ? (this._sfs.debug && this._logger.info("Handling server event: " + n2.name + " (" + t2 + ")"), n2.handler.call(this, e3)) : this._logger.warn("Unknown server event received; id: " + t2);
             } }, { key: "_initMessageHandlers", value: function() {
-              this._setHandler(i.Requests.Handshake, this._fnHandshake), this._setHandler(i.Requests.Login, this._fnLogin), this._setHandler(i.Requests.Logout, this._fnLogout), this._setHandler(i.Requests.JoinRoom, this._fnJoinRoom), this._setHandler(i.Requests.CreateRoom, this._fnCreateRoom), this._setHandler(i.Requests.ChangeRoomName, this._fnChangeRoomName), this._setHandler(i.Requests.ChangeRoomPassword, this._fnChangeRoomPassword), this._setHandler(i.Requests.ChangeRoomCapacity, this._fnChangeRoomCapacity), this._setHandler(i.Requests.GenericMessage, this._fnGenericMessage), this._setHandler(i.Requests.SetRoomVariables, this._fnSetRoomVariables), this._setHandler(i.Requests.SetUserVariables, this._fnSetUserVariables), this._setHandler(i.Requests.SubscribeRoomGroup, this._fnSubscribeRoomGroup), this._setHandler(i.Requests.UnsubscribeRoomGroup, this._fnUnsubscribeRoomGroup), this._setHandler(i.Requests.SpectatorToPlayer, this._fnSpectatorToPlayer), this._setHandler(i.Requests.PlayerToSpectator, this._fnPlayerToSpectator), this._setHandler(i.Requests.FindRooms, this._fnFindRooms), this._setHandler(i.Requests.FindUsers, this._fnFindUsers), this._setHandler(i.Requests.PingPong, this._fnPingPong), this._setHandler(i.Requests.InitBuddyList, this._fnInitBuddyList), this._setHandler(i.Requests.AddBuddy, this._fnAddBuddy), this._setHandler(i.Requests.RemoveBuddy, this._fnRemoveBuddy), this._setHandler(i.Requests.BlockBuddy, this._fnBlockBuddy), this._setHandler(i.Requests.GoOnline, this._fnGoOnline), this._setHandler(i.Requests.SetBuddyVariables, this._fnSetBuddyVariables), this._setHandler(i.Requests.QuickJoinGame, this._fnQuickJoinGame), this._setHandler(i.Requests.InviteUsers, this._fnInviteUsers), this._setHandler(i.Requests.InvitationReply, this._fnInvitationReply), this._setHandler(i.Requests.SetUserPosition, this._fnSetUserPosition), this._setHandler(1e3, this._fnUserEnterRoom, "UserEnterRoom"), this._setHandler(1001, this._fnUserCountChange, "UserCountChange"), this._setHandler(1002, this._fnUserLost, "UserLost"), this._setHandler(1003, this._fnRoomLost, "RoomLost"), this._setHandler(1004, this._fnUserExitRoom, "UserExitRoom"), this._setHandler(1005, this._fnClientDisconnection, "ClientDisconnection"), this._setHandler(1007, this._fnSetMMOItemVariables, "SetMMOItemVariables");
+              this._setHandler(i.Requests.Handshake, this._fnHandshake), this._setHandler(i.Requests.Login, this._fnLogin), this._setHandler(i.Requests.Logout, this._fnLogout), this._setHandler(i.Requests.JoinRoom, this._fnJoinRoom), this._setHandler(i.Requests.CreateRoom, this._fnCreateRoom), this._setHandler(i.Requests.ChangeRoomName, this._fnChangeRoomName), this._setHandler(i.Requests.ChangeRoomPassword, this._fnChangeRoomPassword), this._setHandler(i.Requests.ChangeRoomCapacity, this._fnChangeRoomCapacity), this._setHandler(i.Requests.GenericMessage, this._fnGenericMessage), this._setHandler(i.Requests.SetRoomVariables, this._fnSetRoomVariables), this._setHandler(i.Requests.SetUserVariables, this._fnSetUserVariables), this._setHandler(i.Requests.SubscribeRoomGroup, this._fnSubscribeRoomGroup), this._setHandler(i.Requests.UnsubscribeRoomGroup, this._fnUnsubscribeRoomGroup), this._setHandler(i.Requests.SpectatorToPlayer, this._fnSpectatorToPlayer), this._setHandler(i.Requests.PlayerToSpectator, this._fnPlayerToSpectator), this._setHandler(i.Requests.FindRooms, this._fnFindRooms), this._setHandler(i.Requests.FindUsers, this._fnFindUsers), this._setHandler(i.Requests.PingPong, this._fnPingPong), this._setHandler(i.Requests.InitBuddyList, this._fnInitBuddyList), this._setHandler(i.Requests.AddBuddy, this._fnAddBuddy), this._setHandler(i.Requests.RemoveBuddy, this._fnRemoveBuddy), this._setHandler(i.Requests.BlockBuddy, this._fnBlockBuddy), this._setHandler(i.Requests.GoOnline, this._fnGoOnline), this._setHandler(i.Requests.SetBuddyVariables, this._fnSetBuddyVariables), this._setHandler(i.Requests.QuickJoinGame, this._fnQuickJoinGame), this._setHandler(i.Requests.InviteUsers, this._fnInviteUsers), this._setHandler(i.Requests.InvitationReply, this._fnInvitationReply), this._setHandler(i.Requests.SetUserPosition, this._fnSetUserPosition), this._setHandler(i.Requests.GameServerConnectionRequired, this._fnGameServerConnectionRequired), this._setHandler(1e3, this._fnUserEnterRoom, "UserEnterRoom"), this._setHandler(1001, this._fnUserCountChange, "UserCountChange"), this._setHandler(1002, this._fnUserLost, "UserLost"), this._setHandler(1003, this._fnRoomLost, "RoomLost"), this._setHandler(1004, this._fnUserExitRoom, "UserExitRoom"), this._setHandler(1005, this._fnClientDisconnection, "ClientDisconnection"), this._setHandler(1007, this._fnSetMMOItemVariables, "SetMMOItemVariables"), this._setHandler(1600, this._fnLoadBalancerError, "LoadBalancerError");
             } }, { key: "_setHandler", value: function(e3, t2) {
               var n2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null;
               null == n2 && (n2 = i.Requests.getNameFromId(e3)), this._messageHandlers.set(e3, { name: n2, handler: t2 });
@@ -8264,8 +8465,13 @@
             } }, { key: "_fnLogin", value: function(t2) {
               if (null == t2.get(e2.KEY_ERROR_CODE)) {
                 this._populateRoomList(t2.get(v.LoginRequest.KEY_ROOMLIST)), this._sfs._mySelf = new c.SFSUser(t2.get(v.LoginRequest.KEY_ID), t2.get(v.LoginRequest.KEY_USER_NAME), true), this._sfs.mySelf._setUserManager(this._sfs.userManager), this._sfs.mySelf._privilegeId = t2.get(v.LoginRequest.KEY_PRIVILEGE_ID), this._sfs.userManager._addUser(this._sfs.mySelf);
-                var n2 = {};
-                n2.zone = t2.get(v.LoginRequest.KEY_ZONE_NAME), n2.user = this._sfs.mySelf, n2.data = t2.get(v.LoginRequest.KEY_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.LOGIN, n2);
+                var n2 = t2.get(v.LoginRequest.KEY_PARAMS);
+                if (null != n2) {
+                  var r2 = n2.getUtfString("_sid");
+                  null != r2 && (this._sfs._nodeId = r2);
+                }
+                var i2 = {};
+                i2.zone = t2.get(v.LoginRequest.KEY_ZONE_NAME), i2.user = this._sfs.mySelf, i2.data = t2.get(v.LoginRequest.KEY_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.LOGIN, i2);
               } else
                 this._dispatchError(o.SFSEvent.LOGIN_ERROR, t2);
             } }, { key: "_fnLogout", value: function(e3) {
@@ -8328,58 +8534,58 @@
               } else
                 this._dispatchError(o.SFSEvent.ROOM_CAPACITY_CHANGE_ERROR, t2);
             } }, { key: "_fnGenericMessage", value: function(e3) {
-              switch (e3.get(w.GenericMessageRequest.KEY_MESSAGE_TYPE)) {
-                case w.GenericMessageType.PUBLIC_MSG:
+              switch (e3.get(A.GenericMessageRequest.KEY_MESSAGE_TYPE)) {
+                case A.GenericMessageType.PUBLIC_MSG:
                   this._handlePublicMessage(e3);
                   break;
-                case w.GenericMessageType.PRIVATE_MSG:
+                case A.GenericMessageType.PRIVATE_MSG:
                   this._handlePrivateMessage(e3);
                   break;
-                case w.GenericMessageType.BUDDY_MSG:
+                case A.GenericMessageType.BUDDY_MSG:
                   this._handleBuddyMessage(e3);
                   break;
-                case w.GenericMessageType.MODERATOR_MSG:
+                case A.GenericMessageType.MODERATOR_MSG:
                   this._handleModMessage(e3);
                   break;
-                case w.GenericMessageType.ADMING_MSG:
+                case A.GenericMessageType.ADMING_MSG:
                   this._handleAdminMessage(e3);
                   break;
-                case w.GenericMessageType.OBJECT_MSG:
+                case A.GenericMessageType.OBJECT_MSG:
                   this._handleObjectMessage(e3);
               }
             } }, { key: "_handlePublicMessage", value: function(e3) {
-              var t2 = e3.get(w.GenericMessageRequest.KEY_ROOM_ID), n2 = this._sfs.roomManager.getRoomById(t2);
+              var t2 = e3.get(A.GenericMessageRequest.KEY_ROOM_ID), n2 = this._sfs.roomManager.getRoomById(t2);
               if (null != n2) {
                 var r2 = {};
-                r2.room = n2, r2.sender = this._sfs.userManager.getUserById(e3.get(w.GenericMessageRequest.KEY_USER_ID)), r2.message = e3.get(w.GenericMessageRequest.KEY_MESSAGE), r2.data = e3.get(w.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.PUBLIC_MESSAGE, r2);
+                r2.room = n2, r2.sender = this._sfs.userManager.getUserById(e3.get(A.GenericMessageRequest.KEY_USER_ID)), r2.message = e3.get(A.GenericMessageRequest.KEY_MESSAGE), r2.data = e3.get(A.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.PUBLIC_MESSAGE, r2);
               } else
                 this._logger.warn("Unexpected PublicMessage event error; unknown Room id: " + t2);
             } }, { key: "_handlePrivateMessage", value: function(e3) {
-              var t2 = e3.get(w.GenericMessageRequest.KEY_USER_ID), n2 = this._sfs.userManager.getUserById(t2);
+              var t2 = e3.get(A.GenericMessageRequest.KEY_USER_ID), n2 = this._sfs.userManager.getUserById(t2);
               if (null == n2) {
-                if (null == e3.get(w.GenericMessageRequest.KEY_SENDER_DATA))
+                if (null == e3.get(A.GenericMessageRequest.KEY_SENDER_DATA))
                   return void this._logger.warn("Unexpected PublicMessage event error; missing sender details");
-                n2 = c.SFSUser.fromSFSArray(e3.get(w.GenericMessageRequest.KEY_SENDER_DATA));
+                n2 = c.SFSUser.fromSFSArray(e3.get(A.GenericMessageRequest.KEY_SENDER_DATA));
               }
               var r2 = {};
-              r2.sender = n2, r2.message = e3.get(w.GenericMessageRequest.KEY_MESSAGE), r2.data = e3.get(w.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.PRIVATE_MESSAGE, r2);
+              r2.sender = n2, r2.message = e3.get(A.GenericMessageRequest.KEY_MESSAGE), r2.data = e3.get(A.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.PRIVATE_MESSAGE, r2);
             } }, { key: "_handleBuddyMessage", value: function(e3) {
-              var t2 = e3.get(w.GenericMessageRequest.KEY_USER_ID), n2 = this._sfs.buddyManager.getBuddyById(t2), r2 = {};
-              r2.isItMe = this._sfs.mySelf.id === t2, r2.buddy = n2, r2.message = e3.get(w.GenericMessageRequest.KEY_MESSAGE), r2.data = e3.get(w.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSBuddyEvent.BUDDY_MESSAGE, r2);
+              var t2 = e3.get(A.GenericMessageRequest.KEY_USER_ID), n2 = this._sfs.buddyManager.getBuddyById(t2), r2 = {};
+              r2.isItMe = this._sfs.mySelf.id === t2, r2.buddy = n2, r2.message = e3.get(A.GenericMessageRequest.KEY_MESSAGE), r2.data = e3.get(A.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSBuddyEvent.BUDDY_MESSAGE, r2);
             } }, { key: "_handleObjectMessage", value: function(e3) {
               var t2 = {};
-              t2.sender = this._sfs.userManager.getUserById(e3.get(w.GenericMessageRequest.KEY_USER_ID)), t2.message = e3.get(w.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.OBJECT_MESSAGE, t2);
+              t2.sender = this._sfs.userManager.getUserById(e3.get(A.GenericMessageRequest.KEY_USER_ID)), t2.message = e3.get(A.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.OBJECT_MESSAGE, t2);
             } }, { key: "_handleModMessage", value: function(e3) {
               var t2 = {};
-              t2.sender = c.SFSUser.fromSFSArray(e3.get(w.GenericMessageRequest.KEY_SENDER_DATA)), t2.message = e3.get(w.GenericMessageRequest.KEY_MESSAGE), t2.data = e3.get(w.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.MODERATOR_MESSAGE, t2);
+              t2.sender = c.SFSUser.fromSFSArray(e3.get(A.GenericMessageRequest.KEY_SENDER_DATA)), t2.message = e3.get(A.GenericMessageRequest.KEY_MESSAGE), t2.data = e3.get(A.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.MODERATOR_MESSAGE, t2);
             } }, { key: "_handleAdminMessage", value: function(e3) {
               var t2 = {};
-              t2.sender = c.SFSUser.fromSFSArray(e3.get(w.GenericMessageRequest.KEY_SENDER_DATA)), t2.message = e3.get(w.GenericMessageRequest.KEY_MESSAGE), t2.data = e3.get(w.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.ADMIN_MESSAGE, t2);
+              t2.sender = c.SFSUser.fromSFSArray(e3.get(A.GenericMessageRequest.KEY_SENDER_DATA)), t2.message = e3.get(A.GenericMessageRequest.KEY_MESSAGE), t2.data = e3.get(A.GenericMessageRequest.KEY_XTRA_PARAMS), this._sfs.dispatchEvent(o.SFSEvent.ADMIN_MESSAGE, t2);
             } }, { key: "_fnSetRoomVariables", value: function(e3) {
-              var t2 = e3.get(A.SetRoomVariablesRequest.KEY_VAR_ROOM), n2 = e3.get(A.SetRoomVariablesRequest.KEY_VAR_LIST), r2 = this._sfs.roomManager.getRoomById(t2), i2 = /* @__PURE__ */ new Set();
+              var t2 = e3.get(w.SetRoomVariablesRequest.KEY_VAR_ROOM), n2 = e3.get(w.SetRoomVariablesRequest.KEY_VAR_LIST), r2 = this._sfs.roomManager.getRoomById(t2), i2 = /* @__PURE__ */ new Set();
               if (null != r2) {
                 for (var s2 = 0; s2 < n2.size(); s2++) {
-                  var a2 = y.SFSRoomVariable.fromSFSArray(n2.get(s2));
+                  var a2 = p.SFSRoomVariable.fromSFSArray(n2.get(s2));
                   r2._setVariable(a2), i2.add(a2.name);
                 }
                 var u2 = {};
@@ -8399,7 +8605,7 @@
                 this._logger.warn("Unexpected UserVariablesUpdate event error; unknown User id: " + t2);
             } }, { key: "_fnSubscribeRoomGroup", value: function(t2) {
               if (null == t2.get(e2.KEY_ERROR_CODE)) {
-                var n2 = t2.get(M.SubscribeRoomGroupRequest.KEY_GROUP_ID), r2 = t2.get(M.SubscribeRoomGroupRequest.KEY_ROOM_LIST);
+                var n2 = t2.get(T.SubscribeRoomGroupRequest.KEY_GROUP_ID), r2 = t2.get(T.SubscribeRoomGroupRequest.KEY_ROOM_LIST);
                 this._sfs.roomManager.containsGroup(n2) && this._logger.warn("Unexpected SubscribeRoomGroup event error; group already subscribed: " + n2), this._sfs.roomManager._addGroup(n2), this._populateRoomList(r2);
                 var i2 = {};
                 i2.groupId = n2, i2.newRooms = this._sfs.roomManager.getRoomListFromGroup(n2), this._sfs.dispatchEvent(o.SFSEvent.ROOM_GROUP_SUBSCRIBE, i2);
@@ -8407,7 +8613,7 @@
                 this._dispatchError(o.SFSEvent.ROOM_GROUP_SUBSCRIBE_ERROR, t2);
             } }, { key: "_fnUnsubscribeRoomGroup", value: function(t2) {
               if (null == t2.get(e2.KEY_ERROR_CODE)) {
-                var n2 = t2.get(T.UnsubscribeRoomGroupRequest.KEY_GROUP_ID);
+                var n2 = t2.get(M.UnsubscribeRoomGroupRequest.KEY_GROUP_ID);
                 this._sfs.roomManager.containsGroup(n2) || this._logger.warn("Unexpected UnsubscribeRoomGroup event error; group not found: " + n2 + " (maybe never subscribed, or the Room Manager doesn't contain Rooms belonging to that Group)"), this._sfs.roomManager._removeGroup(n2);
                 var r2 = {};
                 r2.groupId = n2, this._sfs.dispatchEvent(o.SFSEvent.ROOM_GROUP_UNSUBSCRIBE, r2);
@@ -8458,7 +8664,7 @@
               var c2 = {};
               c2.rooms = n2, this._sfs.dispatchEvent(o.SFSEvent.ROOM_FIND_RESULT, c2);
             } }, { key: "_fnFindUsers", value: function(e3) {
-              for (var t2 = e3.get(j.FindUsersRequest.KEY_FILTERED_USERS), n2 = [], r2 = this._sfs.mySelf, i2 = 0; i2 < t2.size(); i2++) {
+              for (var t2 = e3.get(N.FindUsersRequest.KEY_FILTERED_USERS), n2 = [], r2 = this._sfs.mySelf, i2 = 0; i2 < t2.size(); i2++) {
                 var s2 = t2.get(i2), a2 = c.SFSUser.fromSFSArray(s2);
                 a2.id === r2.id && (a2 = r2), n2.push(a2);
               }
@@ -8468,35 +8674,35 @@
               null != t2.get(e2.KEY_ERROR_CODE) && this._dispatchError(o.SFSEvent.ROOM_JOIN_ERROR, t2);
             } }, { key: "_fnInviteUsers", value: function(e3) {
               var t2 = null;
-              t2 = null != e3.get(U.InviteUsersRequest.KEY_USER_ID) ? this._sfs.userManager.getUserById(e3.get(U.InviteUsersRequest.KEY_USER_ID)) : c.SFSUser.fromSFSArray(e3.get(U.InviteUsersRequest.KEY_USER));
-              var n2 = e3.get(U.InviteUsersRequest.KEY_TIME), r2 = e3.get(U.InviteUsersRequest.KEY_INVITATION_ID), i2 = e3.get(U.InviteUsersRequest.KEY_PARAMS), s2 = new h.SFSInvitation(t2, this._sfs.mySelf, n2, i2);
+              t2 = null != e3.get(j.InviteUsersRequest.KEY_USER_ID) ? this._sfs.userManager.getUserById(e3.get(j.InviteUsersRequest.KEY_USER_ID)) : c.SFSUser.fromSFSArray(e3.get(j.InviteUsersRequest.KEY_USER));
+              var n2 = e3.get(j.InviteUsersRequest.KEY_TIME), r2 = e3.get(j.InviteUsersRequest.KEY_INVITATION_ID), i2 = e3.get(j.InviteUsersRequest.KEY_PARAMS), s2 = new h.SFSInvitation(t2, this._sfs.mySelf, n2, i2);
               s2._id = r2;
               var a2 = {};
               a2.invitation = s2, this._sfs.dispatchEvent(o.SFSEvent.INVITATION, a2);
             } }, { key: "_fnInvitationReply", value: function(t2) {
               if (null == t2.get(e2.KEY_ERROR_CODE)) {
                 var n2 = null;
-                n2 = null != t2.get(U.InviteUsersRequest.KEY_USER_ID) ? this._sfs.userManager.getUserById(t2.get(U.InviteUsersRequest.KEY_USER_ID)) : c.SFSUser.fromSFSArray(t2.get(U.InviteUsersRequest.KEY_USER));
-                var r2 = t2.get(U.InviteUsersRequest.KEY_REPLY_ID), i2 = t2.get(U.InviteUsersRequest.KEY_PARAMS), s2 = {};
+                n2 = null != t2.get(j.InviteUsersRequest.KEY_USER_ID) ? this._sfs.userManager.getUserById(t2.get(j.InviteUsersRequest.KEY_USER_ID)) : c.SFSUser.fromSFSArray(t2.get(j.InviteUsersRequest.KEY_USER));
+                var r2 = t2.get(j.InviteUsersRequest.KEY_REPLY_ID), i2 = t2.get(j.InviteUsersRequest.KEY_PARAMS), s2 = {};
                 s2.invitee = n2, s2.reply = r2, s2.data = i2, this._sfs.dispatchEvent(o.SFSEvent.INVITATION_REPLY, s2);
               } else
                 this._dispatchError(o.SFSEvent.INVITATION_REPLY_ERROR, t2);
             } }, { key: "_fnSetUserPosition", value: function(e3) {
               var t2 = e3.get(B.SetUserPositionRequest.KEY_ROOM), n2 = this._sfs.roomManager.getRoomById(t2), r2 = e3.get(B.SetUserPositionRequest.KEY_MINUS_USER_LIST), i2 = e3.get(B.SetUserPositionRequest.KEY_PLUS_USER_LIST), s2 = e3.get(B.SetUserPositionRequest.KEY_MINUS_ITEM_LIST), u2 = e3.get(B.SetUserPositionRequest.KEY_PLUS_ITEM_LIST), c2 = [], f2 = [], h2 = [], _2 = [];
               if (null != r2) {
-                var y2 = true, p2 = false, d2 = void 0;
+                var p2 = true, y2 = false, d2 = void 0;
                 try {
-                  for (var g2, v2 = r2[Symbol.iterator](); !(y2 = (g2 = v2.next()).done); y2 = true) {
+                  for (var g2, v2 = r2[Symbol.iterator](); !(p2 = (g2 = v2.next()).done); p2 = true) {
                     var b2 = g2.value, m2 = n2.getUserById(b2);
                     null != m2 && (n2._removeUser(m2), f2.push(m2));
                   }
                 } catch (e4) {
-                  p2 = true, d2 = e4;
+                  y2 = true, d2 = e4;
                 } finally {
                   try {
-                    !y2 && v2.return && v2.return();
+                    !p2 && v2.return && v2.return();
                   } finally {
-                    if (p2)
+                    if (y2)
                       throw d2;
                   }
                 }
@@ -8509,29 +8715,29 @@
                   null != O2 && (R2._aoiEntryPoint = a.Vec3D.fromArray(O2));
                 }
               if (null != s2) {
-                var w2 = true, A2 = false, I2 = void 0;
+                var A2 = true, w2 = false, I2 = void 0;
                 try {
-                  for (var M2, T2 = s2[Symbol.iterator](); !(w2 = (M2 = T2.next()).done); w2 = true) {
-                    var k2 = M2.value, P2 = n2.getMMOItem(k2);
+                  for (var T2, M2 = s2[Symbol.iterator](); !(A2 = (T2 = M2.next()).done); A2 = true) {
+                    var k2 = T2.value, P2 = n2.getMMOItem(k2);
                     null != P2 && (n2._removeItem(P2.id), _2.push(P2));
                   }
                 } catch (e4) {
-                  A2 = true, I2 = e4;
+                  w2 = true, I2 = e4;
                 } finally {
                   try {
-                    !w2 && T2.return && T2.return();
+                    !A2 && M2.return && M2.return();
                   } finally {
-                    if (A2)
+                    if (w2)
                       throw I2;
                   }
                 }
               }
               if (null != u2)
                 for (var F2 = 0; F2 < u2.size(); F2++) {
-                  var j2 = u2.get(F2), U2 = l.MMOItem.fromSFSArray(j2);
-                  h2.push(U2), n2._addMMOItem(U2);
-                  var N2 = j2.get(2);
-                  null != N2 && (U2._aoiEntryPoint = a.Vec3D.fromArray(N2));
+                  var N2 = u2.get(F2), j2 = l.MMOItem.fromSFSArray(N2);
+                  h2.push(j2), n2._addMMOItem(j2);
+                  var U2 = N2.get(2);
+                  null != U2 && (j2._aoiEntryPoint = a.Vec3D.fromArray(U2));
                 }
               var L2 = {};
               L2.addedItems = h2, L2.removedItems = _2, L2.removedUsers = f2, L2.addedUsers = c2, L2.room = n2, this._sfs.dispatchEvent(o.SFSEvent.PROXIMITY_LIST_UPDATE, L2);
@@ -8581,13 +8787,13 @@
                 this._dispatchError(o.SFSBuddyEvent.BUDDY_ERROR, t2);
             } }, { key: "_fnGoOnline", value: function(t2) {
               if (null == t2.get(e2.KEY_ERROR_CODE)) {
-                var n2 = t2.get(x.GoOnlineRequest.KEY_BUDDY_NAME), r2 = this._sfs.buddyManager.getBuddyByName(n2), i2 = n2 === this._sfs.mySelf.name, s2 = t2.get(x.GoOnlineRequest.KEY_ONLINE), a2 = s2 === f.BuddyOnlineState.ONLINE, u2 = true;
+                var n2 = t2.get(q.GoOnlineRequest.KEY_BUDDY_NAME), r2 = this._sfs.buddyManager.getBuddyByName(n2), i2 = n2 === this._sfs.mySelf.name, s2 = t2.get(q.GoOnlineRequest.KEY_ONLINE), a2 = s2 === f.BuddyOnlineState.ONLINE, u2 = true;
                 if (i2)
                   this._sfs.buddyManager.getMyOnlineState() != a2 && (this._logger.warn("Unexpected GoOnline event error; current user's online state is not in synch with the server; resynching to: " + a2), this._sfs.buddyManager._setMyOnlineState(a2));
                 else {
                   if (null == r2)
                     return void this._logger.warn("Unexpected GoOnline event error; can't find " + n2 + " in local buddy list");
-                  r2._id = t2.get(x.GoOnlineRequest.KEY_BUDDY_ID), r2._setVariable(new d.SFSBuddyVariable(d.ReservedBuddyVariables.BV_ONLINE, a2)), s2 === f.BuddyOnlineState.LEFT_THE_SERVER && r2._clearVolatileVariables(), u2 = this._sfs.buddyManager.getMyOnlineState();
+                  r2._id = t2.get(q.GoOnlineRequest.KEY_BUDDY_ID), r2._setVariable(new d.SFSBuddyVariable(d.ReservedBuddyVariables.BV_ONLINE, a2)), s2 === f.BuddyOnlineState.LEFT_THE_SERVER && r2._clearVolatileVariables(), u2 = this._sfs.buddyManager.getMyOnlineState();
                 }
                 if (u2) {
                   var c2 = {};
@@ -8597,7 +8803,7 @@
                 this._dispatchError(o.SFSBuddyEvent.BUDDY_ERROR, t2);
             } }, { key: "_fnSetBuddyVariables", value: function(t2) {
               if (null == t2.get(e2.KEY_ERROR_CODE)) {
-                for (var n2 = t2.get(q.SetBuddyVariablesRequest.KEY_BUDDY_NAME), r2 = t2.get(q.SetBuddyVariablesRequest.KEY_BUDDY_VARS), i2 = this._sfs.buddyManager.getBuddyByName(n2), s2 = n2 === this._sfs.mySelf.name, a2 = [], u2 = [], c2 = true, l2 = 0; l2 < r2.size(); l2++) {
+                for (var n2 = t2.get(x.SetBuddyVariablesRequest.KEY_BUDDY_NAME), r2 = t2.get(x.SetBuddyVariablesRequest.KEY_BUDDY_VARS), i2 = this._sfs.buddyManager.getBuddyByName(n2), s2 = n2 === this._sfs.mySelf.name, a2 = [], u2 = [], c2 = true, l2 = 0; l2 < r2.size(); l2++) {
                   var f2 = d.SFSBuddyVariable.fromSFSArray(r2.get(l2));
                   u2.push(f2), a2.push(f2.name);
                 }
@@ -8687,12 +8893,12 @@
               var n2 = t2.get(e2.DISCONNECTION_REASON_PARAM);
               this._sfs._handleClientDisconnection(g.ClientDisconnectionReason.getReason(n2));
             } }, { key: "_fnSetMMOItemVariables", value: function(e3) {
-              var t2 = e3.get(N.SetMMOItemVariables.KEY_ROOM_ID), n2 = e3.get(N.SetMMOItemVariables.KEY_ITEM_ID), r2 = e3.get(N.SetMMOItemVariables.KEY_VAR_LIST), i2 = this._sfs.roomManager.getRoomById(t2), s2 = /* @__PURE__ */ new Set();
+              var t2 = e3.get(U.SetMMOItemVariables.KEY_ROOM_ID), n2 = e3.get(U.SetMMOItemVariables.KEY_ITEM_ID), r2 = e3.get(U.SetMMOItemVariables.KEY_VAR_LIST), i2 = this._sfs.roomManager.getRoomById(t2), s2 = /* @__PURE__ */ new Set();
               if (null != i2) {
                 var a2 = i2.getMMOItem(n2);
                 if (null != a2) {
                   for (var u2 = 0; u2 < r2.size(); u2++) {
-                    var c2 = p.MMOItemVariable.fromSFSArray(r2.get(u2));
+                    var c2 = y.MMOItemVariable.fromSFSArray(r2.get(u2));
                     a2._setVariable(c2), s2.add(c2.name);
                   }
                   var l2 = {};
@@ -8701,6 +8907,15 @@
                   this._logger.warn("Unexpected MMOItemVariablesUpdate event error; unknown MMOItem id: " + n2);
               } else
                 this._logger.warn("Unexpected MMOItemVariablesUpdate event error; unknown MMORoom id: " + t2);
+            } }, { key: "_fnGameServerConnectionRequired", value: function(e3) {
+              var t2 = {};
+              t2.host = e3.getUtfString("h"), t2.port = e3.getInt("p"), t2.zone = e3.getUtfString("z");
+              var n2 = e3.getUtfString("at");
+              null != this._sfs.config && (t2.port = this._sfs.config.port);
+              var r2 = {};
+              r2.configObj = t2, r2.userName = this._sfs.mySelf.name, r2.password = n2, this._sfs.dispatchEvent(o.SFSClusterEvent.CONNECTION_REQUIRED, r2);
+            } }, { key: "_fnLoadBalancerError", value: function(e3) {
+              this._sfs.dispatchEvent(o.SFSClusterEvent.LOAD_BALANCER_ERROR, {});
             } }, { key: "_dispatchError", value: function(t2, n2) {
               var r2 = {};
               r2.errorCode = n2.get(e2.KEY_ERROR_CODE), r2.errorMessage = s.SFSErrorCodes.getErrorMessage(r2.errorCode, n2.get(e2.KEY_ERROR_PARAMS)), this._sfs.dispatchEvent(t2, r2);
@@ -8740,7 +8955,7 @@
             return function(t2, n2, r2) {
               return n2 && e2(t2.prototype, n2), r2 && e2(t2, r2), t2;
             };
-          }(), i = n(175), o = n(169), s = n(39), a = n(1), u = n(168), c = n(119), l = n(166), f = n(165), h = n(2), _ = n(164), y = n(74), p = n(50), d = n(163), g = n(51);
+          }(), i = n(177), o = n(171), s = n(42), a = n(1), u = n(170), c = n(121), l = n(168), f = n(167), h = n(2), _ = n(166), p = n(75), y = n(53), d = n(165), g = n(54);
           var v = function(e2) {
             function t2() {
               var e3 = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
@@ -8753,7 +8968,7 @@
                   throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
                 return !t3 || "object" != typeof t3 && "function" != typeof t3 ? e4 : t3;
               }(this, (t2.__proto__ || Object.getPrototypeOf(t2)).call(this));
-              return n2._majVersion = 1, n2._minVersion = 7, n2._subVersion = 20, n2._configData = e3, n2._logger = p.Logger.instance, n2._sessionToken = null, n2._socketEngine = new u.SocketEngine(n2), n2._socketEngine.addEventListener(u.SocketEvent.CONNECT, n2._onSocketConnect, n2), n2._socketEngine.addEventListener(u.SocketEvent.DISCONNECT, n2._onSocketDisconnect, n2), n2._socketEngine.addEventListener(u.SocketEvent.DATA, n2._onSocketData, n2), n2._socketEngine.addEventListener(u.SocketEvent.IOERROR, n2._onSocketIOError, n2), n2._controllers = {}, n2._controllers[0] = new i.SystemController(n2), n2._controllers[1] = new o.ExtensionController(n2), n2._reset(), n2._clientDetails = "JavaScript", n2.debug = null != n2.config && n2.config.debug, n2.debug && (n2._logger.info("SmartFox instance ready"), n2._logger.info("SFS2X JavaScript API v" + n2.version)), Object.seal(n2), n2;
+              return n2._majVersion = 1, n2._minVersion = 8, n2._subVersion = 0, n2._configData = e3, n2._logger = y.Logger.instance, n2._sessionToken = null, n2._socketEngine = new u.SocketEngine(n2), n2._socketEngine.addEventListener(u.SocketEvent.CONNECT, n2._onSocketConnect, n2), n2._socketEngine.addEventListener(u.SocketEvent.DISCONNECT, n2._onSocketDisconnect, n2), n2._socketEngine.addEventListener(u.SocketEvent.DATA, n2._onSocketData, n2), n2._socketEngine.addEventListener(u.SocketEvent.IOERROR, n2._onSocketIOError, n2), n2._controllers = {}, n2._controllers[0] = new i.SystemController(n2), n2._controllers[1] = new o.ExtensionController(n2), n2._reset(), n2._clientDetails = "JavaScript", n2._nodeId = null, n2.debug = null != n2.config && n2.config.debug, n2.debug && (n2._logger.info("SmartFox instance ready"), n2._logger.info("SFS2X JavaScript API v" + n2.version)), Object.seal(n2), n2;
             }
             __name(t2, "t");
             return function(e3, t3) {
@@ -8778,6 +8993,8 @@
               }
             } }, { key: "disconnect", value: function() {
               this.isConnected && this._handleClientDisconnection(g.ClientDisconnectionReason.MANUAL);
+            } }, { key: "killConnection", value: function() {
+              this._socketEngine.kill();
             } }, { key: "enableLagMonitor", value: function(e3) {
               var t3 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 4, n2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 10;
               null != this.mySelf ? (null != this._lagMonitor && this._lagMonitor.destroy(), e3 && (this._lagMonitor = new d.LagMonitor(this, t3, n2), this._lagMonitor.start())) : this._logger.warn("Lag monitoring requires that you are logged in a Zone; please retry after completing the login process");
@@ -8830,7 +9047,7 @@
               if (null == t3)
                 this._sessionToken = e3.get(_.HandshakeRequest.KEY_SESSION_TOKEN), this._socketEngine.maxMessageSize = e3.get(_.HandshakeRequest.KEY_MAX_MESSAGE_SIZE), this._socketEngine.compressionThreshold = e3.get(_.HandshakeRequest.KEY_COMPRESSION_THRESHOLD), this.dispatchEvent(s.SFSEvent.CONNECTION, { success: true });
               else {
-                var n2 = { success: false, errorMessage: y.SFSErrorCodes.getErrorMessage(t3, e3.get(h.BaseRequest.KEY_ERROR_PARAMS)), errorCode: t3 };
+                var n2 = { success: false, errorMessage: p.SFSErrorCodes.getErrorMessage(t3, e3.get(h.BaseRequest.KEY_ERROR_PARAMS)), errorCode: t3 };
                 this.dispatchEvent(s.SFSEvent.CONNECTION, n2);
               }
             } }, { key: "_handleLogout", value: function() {
@@ -8859,11 +9076,13 @@
               return null != this._socketEngine && this._socketEngine.isConnected;
             } }, { key: "maxMessageSize", get: function() {
               return null != this._socketEngine ? this._socketEngine.maxMessageSize : 0;
+            } }, { key: "nodeId", get: function() {
+              return this.isConnected ? this._nodeId : null;
             } }]), t2;
           }();
           t.SmartFox = v;
         }, function(e, t, n) {
-          var r = n(0), i = n(89);
+          var r = n(0), i = n(90);
           i && r(r.S, "Reflect", { setPrototypeOf: function(e2, t2) {
             i.check(e2, t2);
             try {
@@ -8873,15 +9092,15 @@
             }
           } });
         }, function(e, t, n) {
-          var r = n(10), i = n(23), o = n(31), s = n(16), a = n(0), u = n(36), c = n(5), l = n(4);
+          var r = n(10), i = n(23), o = n(32), s = n(16), a = n(0), u = n(37), c = n(5), l = n(4);
           a(a.S, "Reflect", { set: /* @__PURE__ */ __name(function e2(t2, n2, a2) {
-            var f, h, _ = arguments.length < 4 ? t2 : arguments[3], y = i.f(c(t2), n2);
-            if (!y) {
+            var f, h, _ = arguments.length < 4 ? t2 : arguments[3], p = i.f(c(t2), n2);
+            if (!p) {
               if (l(h = o(t2)))
                 return e2(h, n2, a2, _);
-              y = u(0);
+              p = u(0);
             }
-            return s(y, "value") ? !(false === y.writable || !l(_) || ((f = i.f(_, n2) || u(0)).value = a2, r.f(_, n2, f), 0)) : void 0 !== y.set && (y.set.call(_, a2), true);
+            return s(p, "value") ? !(false === p.writable || !l(_) || ((f = i.f(_, n2) || u(0)).value = a2, r.f(_, n2, f), 0)) : void 0 !== p.set && (p.set.call(_, a2), true);
           }, "e") });
         }, function(e, t, n) {
           var r = n(0), i = n(5), o = Object.preventExtensions;
@@ -8894,14 +9113,14 @@
             }
           } });
         }, function(e, t, n) {
-          var r = n(32), i = n(68), o = n(5), s = n(6).Reflect;
+          var r = n(33), i = n(68), o = n(5), s = n(6).Reflect;
           e.exports = s && s.ownKeys || function(e2) {
             var t2 = r.f(o(e2)), n2 = i.f;
             return n2 ? t2.concat(n2(e2)) : t2;
           };
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Reflect", { ownKeys: n(180) });
+          r(r.S, "Reflect", { ownKeys: n(182) });
         }, function(e, t, n) {
           var r = n(0), i = n(5), o = Object.isExtensible;
           r(r.S, "Reflect", { isExtensible: function(e2) {
@@ -8913,7 +9132,7 @@
             return t2 in e2;
           } });
         }, function(e, t, n) {
-          var r = n(0), i = n(31), o = n(5);
+          var r = n(0), i = n(32), o = n(5);
           r(r.S, "Reflect", { getPrototypeOf: function(e2) {
             return i(o(e2));
           } });
@@ -8923,7 +9142,7 @@
             return r.f(o(e2), t2);
           } });
         }, function(e, t, n) {
-          var r = n(23), i = n(31), o = n(16), s = n(0), a = n(4), u = n(5);
+          var r = n(23), i = n(32), o = n(16), s = n(0), a = n(4), u = n(5);
           s(s.S, "Reflect", { get: /* @__PURE__ */ __name(function e2(t2, n2) {
             var s2, c, l = arguments.length < 3 ? t2 : arguments[2];
             return u(t2) === l ? t2[n2] : (s2 = r.f(t2, n2)) ? o(s2, "value") ? s2.value : void 0 !== s2.get ? s2.get.call(l) : void 0 : a(c = i(t2)) ? e2(c, n2, l) : void 0;
@@ -8936,7 +9155,7 @@
             for (t2 in e2)
               n2.push(t2);
           }, "o");
-          n(133)(o, "Object", function() {
+          n(135)(o, "Object", function() {
             var e2, t2 = this._k;
             do {
               if (this._i >= t2.length)
@@ -8965,7 +9184,7 @@
             }
           } });
         }, function(e, t, n) {
-          var r = n(0), i = n(33), o = n(26), s = n(5), a = n(4), u = n(3), c = n(142), l = (n(6).Reflect || {}).construct, f = u(function() {
+          var r = n(0), i = n(34), o = n(26), s = n(5), a = n(4), u = n(3), c = n(144), l = (n(6).Reflect || {}).construct, f = u(function() {
             function e2() {
             }
             __name(e2, "e");
@@ -8996,8 +9215,8 @@
               var r2 = [null];
               return r2.push.apply(r2, t2), new (c.apply(e2, r2))();
             }
-            var u2 = n2.prototype, _ = i(a(u2) ? u2 : Object.prototype), y = Function.apply.call(e2, _, t2);
-            return a(y) ? y : _;
+            var u2 = n2.prototype, _ = i(a(u2) ? u2 : Object.prototype), p = Function.apply.call(e2, _, t2);
+            return a(p) ? p : _;
           } });
         }, function(e, t, n) {
           var r = n(0), i = n(26), o = n(5), s = (n(6).Reflect || {}).apply, a = Function.apply;
@@ -9064,24 +9283,24 @@
           });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.G + r.W + r.F * !n(60).ABV, { DataView: n(75).DataView });
+          r(r.G + r.W + r.F * !n(60).ABV, { DataView: n(76).DataView });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(60), o = n(75), s = n(5), a = n(34), u = n(12), c = n(4), l = n(6).ArrayBuffer, f = n(76), h = o.ArrayBuffer, _ = o.DataView, y = i.ABV && l.isView, p = h.prototype.slice, d = i.VIEW;
+          var r = n(0), i = n(60), o = n(76), s = n(5), a = n(35), u = n(12), c = n(4), l = n(6).ArrayBuffer, f = n(77), h = o.ArrayBuffer, _ = o.DataView, p = i.ABV && l.isView, y = h.prototype.slice, d = i.VIEW;
           r(r.G + r.W + r.F * (l !== h), { ArrayBuffer: h }), r(r.S + r.F * !i.CONSTR, "ArrayBuffer", { isView: function(e2) {
-            return y && y(e2) || c(e2) && d in e2;
+            return p && p(e2) || c(e2) && d in e2;
           } }), r(r.P + r.U + r.F * n(3)(function() {
             return !new h(2).slice(1, void 0).byteLength;
           }), "ArrayBuffer", { slice: function(e2, t2) {
-            if (void 0 !== p && void 0 === t2)
-              return p.call(s(this), e2);
-            for (var n2 = s(this).byteLength, r2 = a(e2, n2), i2 = a(void 0 === t2 ? n2 : t2, n2), o2 = new (f(this, h))(u(i2 - r2)), c2 = new _(this), l2 = new _(o2), y2 = 0; r2 < i2; )
-              l2.setUint8(y2++, c2.getUint8(r2++));
+            if (void 0 !== y && void 0 === t2)
+              return y.call(s(this), e2);
+            for (var n2 = s(this).byteLength, r2 = a(e2, n2), i2 = a(void 0 === t2 ? n2 : t2, n2), o2 = new (f(this, h))(u(i2 - r2)), c2 = new _(this), l2 = new _(o2), p2 = 0; r2 < i2; )
+              l2.setUint8(p2++, c2.getUint8(r2++));
             return o2;
-          } }), n(43)("ArrayBuffer");
+          } }), n(46)("ArrayBuffer");
         }, function(e, t, n) {
           "use strict";
-          var r = n(122), i = n(40);
+          var r = n(124), i = n(43);
           n(61)("WeakSet", function(e2) {
             return function() {
               return e2(this, arguments.length > 0 ? arguments[0] : void 0);
@@ -9091,20 +9310,20 @@
           } }, r, false, true);
         }, function(e, t, n) {
           "use strict";
-          var r, i = n(19)(0), o = n(15), s = n(29), a = n(143), u = n(122), c = n(4), l = n(3), f = n(40), h = s.getWeak, _ = Object.isExtensible, y = u.ufstore, p = {}, d = /* @__PURE__ */ __name(function(e2) {
+          var r, i = n(19)(0), o = n(15), s = n(29), a = n(145), u = n(124), c = n(4), l = n(3), f = n(43), h = s.getWeak, _ = Object.isExtensible, p = u.ufstore, y = {}, d = /* @__PURE__ */ __name(function(e2) {
             return function() {
               return e2(this, arguments.length > 0 ? arguments[0] : void 0);
             };
           }, "d"), g = { get: function(e2) {
             if (c(e2)) {
               var t2 = h(e2);
-              return true === t2 ? y(f(this, "WeakMap")).get(e2) : t2 ? t2[this._i] : void 0;
+              return true === t2 ? p(f(this, "WeakMap")).get(e2) : t2 ? t2[this._i] : void 0;
             }
           }, set: function(e2, t2) {
             return u.def(f(this, "WeakMap"), e2, t2);
           } }, v = e.exports = n(61)("WeakMap", d, g, u, true, true);
           l(function() {
-            return 7 != new v().set((Object.freeze || Object)(p), 7).get(p);
+            return 7 != new v().set((Object.freeze || Object)(y), 7).get(y);
           }) && (a((r = u.getConstructor(d, "WeakMap")).prototype, g), s.NEED = true, i(["delete", "has", "get", "set"], function(e2) {
             var t2 = v.prototype, n2 = t2[e2];
             o(t2, e2, function(t3, i2) {
@@ -9118,7 +9337,7 @@
           }));
         }, function(e, t, n) {
           "use strict";
-          var r = n(123), i = n(40);
+          var r = n(125), i = n(43);
           e.exports = n(61)("Set", function(e2) {
             return function() {
               return e2(this, arguments.length > 0 ? arguments[0] : void 0);
@@ -9128,7 +9347,7 @@
           } }, r);
         }, function(e, t, n) {
           "use strict";
-          var r = n(123), i = n(40);
+          var r = n(125), i = n(43);
           e.exports = n(61)("Map", function(e2) {
             return function() {
               return e2(this, arguments.length > 0 ? arguments[0] : void 0);
@@ -9140,7 +9359,7 @@
             return r.def(i(this, "Map"), 0 === e2 ? 0 : e2, t2);
           } }, r, true);
         }, function(e, t, n) {
-          var r = n(5), i = n(4), o = n(124);
+          var r = n(5), i = n(4), o = n(126);
           e.exports = function(e2, t2) {
             if (r(e2), i(t2) && t2.constructor === e2)
               return t2;
@@ -9156,7 +9375,7 @@
             }
           };
         }, function(e, t, n) {
-          var r = n(6), i = n(125).set, o = r.MutationObserver || r.WebKitMutationObserver, s = r.process, a = r.Promise, u = "process" == n(25)(s);
+          var r = n(6), i = n(127).set, o = r.MutationObserver || r.WebKitMutationObserver, s = r.process, a = r.Promise, u = "process" == n(25)(s);
           e.exports = function() {
             var e2, t2, n2, c = /* @__PURE__ */ __name(function() {
               var r2, i2;
@@ -9197,19 +9416,19 @@
           };
         }, function(e, t, n) {
           "use strict";
-          var r, i, o, s, a = n(44), u = n(6), c = n(27), l = n(66), f = n(0), h = n(4), _ = n(26), y = n(42), p = n(62), d = n(76), g = n(125).set, v = n(209)(), b = n(124), m = n(208), S = n(207), E = u.TypeError, R = u.process, O = u.Promise, w = "process" == l(R), A = /* @__PURE__ */ __name(function() {
-          }, "A"), I = i = b.f, M = !!function() {
+          var r, i, o, s, a = n(47), u = n(6), c = n(27), l = n(66), f = n(0), h = n(4), _ = n(26), p = n(45), y = n(62), d = n(77), g = n(127).set, v = n(211)(), b = n(126), m = n(210), S = n(209), E = u.TypeError, R = u.process, O = u.Promise, A = "process" == l(R), w = /* @__PURE__ */ __name(function() {
+          }, "w"), I = i = b.f, T = !!function() {
             try {
               var e2 = O.resolve(1), t2 = (e2.constructor = {})[n(7)("species")] = function(e3) {
-                e3(A, A);
+                e3(w, w);
               };
-              return (w || "function" == typeof PromiseRejectionEvent) && e2.then(A) instanceof t2;
+              return (A || "function" == typeof PromiseRejectionEvent) && e2.then(w) instanceof t2;
             } catch (e3) {
             }
-          }(), T = /* @__PURE__ */ __name(function(e2) {
+          }(), M = /* @__PURE__ */ __name(function(e2) {
             var t2;
             return !(!h(e2) || "function" != typeof (t2 = e2.then)) && t2;
-          }, "T"), k = /* @__PURE__ */ __name(function(e2, t2) {
+          }, "M"), k = /* @__PURE__ */ __name(function(e2, t2) {
             if (!e2._n) {
               e2._n = true;
               var n2 = e2._c;
@@ -9217,7 +9436,7 @@
                 for (var r2 = e2._v, i2 = 1 == e2._s, o2 = 0, s2 = function(t3) {
                   var n3, o3, s3, a2 = i2 ? t3.ok : t3.fail, u2 = t3.resolve, c2 = t3.reject, l2 = t3.domain;
                   try {
-                    a2 ? (i2 || (2 == e2._h && j(e2), e2._h = 1), true === a2 ? n3 = r2 : (l2 && l2.enter(), n3 = a2(r2), l2 && (l2.exit(), s3 = true)), n3 === t3.promise ? c2(E("Promise-chain cycle")) : (o3 = T(n3)) ? o3.call(n3, u2, c2) : u2(n3)) : c2(r2);
+                    a2 ? (i2 || (2 == e2._h && N(e2), e2._h = 1), true === a2 ? n3 = r2 : (l2 && l2.enter(), n3 = a2(r2), l2 && (l2.exit(), s3 = true)), n3 === t3.promise ? c2(E("Promise-chain cycle")) : (o3 = M(n3)) ? o3.call(n3, u2, c2) : u2(n3)) : c2(r2);
                   } catch (e3) {
                     l2 && !s3 && l2.exit(), c2(e3);
                   }
@@ -9230,70 +9449,70 @@
             g.call(u, function() {
               var t2, n2, r2, i2 = e2._v, o2 = F(e2);
               if (o2 && (t2 = m(function() {
-                w ? R.emit("unhandledRejection", i2, e2) : (n2 = u.onunhandledrejection) ? n2({ promise: e2, reason: i2 }) : (r2 = u.console) && r2.error && r2.error("Unhandled promise rejection", i2);
-              }), e2._h = w || F(e2) ? 2 : 1), e2._a = void 0, o2 && t2.e)
+                A ? R.emit("unhandledRejection", i2, e2) : (n2 = u.onunhandledrejection) ? n2({ promise: e2, reason: i2 }) : (r2 = u.console) && r2.error && r2.error("Unhandled promise rejection", i2);
+              }), e2._h = A || F(e2) ? 2 : 1), e2._a = void 0, o2 && t2.e)
                 throw t2.v;
             });
           }, "P"), F = /* @__PURE__ */ __name(function(e2) {
             return 1 !== e2._h && 0 === (e2._a || e2._c).length;
-          }, "F"), j = /* @__PURE__ */ __name(function(e2) {
+          }, "F"), N = /* @__PURE__ */ __name(function(e2) {
             g.call(u, function() {
               var t2;
-              w ? R.emit("rejectionHandled", e2) : (t2 = u.onrejectionhandled) && t2({ promise: e2, reason: e2._v });
+              A ? R.emit("rejectionHandled", e2) : (t2 = u.onrejectionhandled) && t2({ promise: e2, reason: e2._v });
             });
-          }, "j"), U = /* @__PURE__ */ __name(function(e2) {
+          }, "N"), j = /* @__PURE__ */ __name(function(e2) {
             var t2 = this;
             t2._d || (t2._d = true, (t2 = t2._w || t2)._v = e2, t2._s = 2, t2._a || (t2._a = t2._c.slice()), k(t2, true));
-          }, "U"), N = /* @__PURE__ */ __name(function(e2) {
+          }, "j"), U = /* @__PURE__ */ __name(function(e2) {
             var t2, n2 = this;
             if (!n2._d) {
               n2._d = true, n2 = n2._w || n2;
               try {
                 if (n2 === e2)
                   throw E("Promise can't be resolved itself");
-                (t2 = T(e2)) ? v(function() {
+                (t2 = M(e2)) ? v(function() {
                   var r2 = { _w: n2, _d: false };
                   try {
-                    t2.call(e2, c(N, r2, 1), c(U, r2, 1));
+                    t2.call(e2, c(U, r2, 1), c(j, r2, 1));
                   } catch (e3) {
-                    U.call(r2, e3);
+                    j.call(r2, e3);
                   }
                 }) : (n2._v = e2, n2._s = 1, k(n2, false));
               } catch (e3) {
-                U.call({ _w: n2, _d: false }, e3);
+                j.call({ _w: n2, _d: false }, e3);
               }
             }
-          }, "N");
-          M || (O = /* @__PURE__ */ __name(function(e2) {
-            y(this, O, "Promise", "_h"), _(e2), r.call(this);
+          }, "U");
+          T || (O = /* @__PURE__ */ __name(function(e2) {
+            p(this, O, "Promise", "_h"), _(e2), r.call(this);
             try {
-              e2(c(N, this, 1), c(U, this, 1));
+              e2(c(U, this, 1), c(j, this, 1));
             } catch (e3) {
-              U.call(this, e3);
+              j.call(this, e3);
             }
           }, "O"), (r = /* @__PURE__ */ __name(function(e2) {
             this._c = [], this._a = void 0, this._s = 0, this._d = false, this._v = void 0, this._h = 0, this._n = false;
-          }, "r")).prototype = n(41)(O.prototype, { then: function(e2, t2) {
+          }, "r")).prototype = n(44)(O.prototype, { then: function(e2, t2) {
             var n2 = I(d(this, O));
-            return n2.ok = "function" != typeof e2 || e2, n2.fail = "function" == typeof t2 && t2, n2.domain = w ? R.domain : void 0, this._c.push(n2), this._a && this._a.push(n2), this._s && k(this, false), n2.promise;
+            return n2.ok = "function" != typeof e2 || e2, n2.fail = "function" == typeof t2 && t2, n2.domain = A ? R.domain : void 0, this._c.push(n2), this._a && this._a.push(n2), this._s && k(this, false), n2.promise;
           }, catch: function(e2) {
             return this.then(void 0, e2);
           } }), o = /* @__PURE__ */ __name(function() {
             var e2 = new r();
-            this.promise = e2, this.resolve = c(N, e2, 1), this.reject = c(U, e2, 1);
+            this.promise = e2, this.resolve = c(U, e2, 1), this.reject = c(j, e2, 1);
           }, "o"), b.f = I = /* @__PURE__ */ __name(function(e2) {
             return e2 === O || e2 === s ? new o(e2) : i(e2);
-          }, "I")), f(f.G + f.W + f.F * !M, { Promise: O }), n(45)(O, "Promise"), n(43)("Promise"), s = n(37).Promise, f(f.S + f.F * !M, "Promise", { reject: function(e2) {
+          }, "I")), f(f.G + f.W + f.F * !T, { Promise: O }), n(48)(O, "Promise"), n(46)("Promise"), s = n(38).Promise, f(f.S + f.F * !T, "Promise", { reject: function(e2) {
             var t2 = I(this);
             return (0, t2.reject)(e2), t2.promise;
-          } }), f(f.S + f.F * (a || !M), "Promise", { resolve: function(e2) {
+          } }), f(f.S + f.F * (a || !T), "Promise", { resolve: function(e2) {
             return S(a && this === s ? O : this, e2);
-          } }), f(f.S + f.F * !(M && n(64)(function(e2) {
-            O.all(e2).catch(A);
+          } }), f(f.S + f.F * !(T && n(64)(function(e2) {
+            O.all(e2).catch(w);
           })), "Promise", { all: function(e2) {
             var t2 = this, n2 = I(t2), r2 = n2.resolve, i2 = n2.reject, o2 = m(function() {
               var n3 = [], o3 = 0, s2 = 1;
-              p(e2, false, function(e3) {
+              y(e2, false, function(e3) {
                 var a2 = o3++, u2 = false;
                 n3.push(void 0), s2++, t2.resolve(e3).then(function(e4) {
                   u2 || (u2 = true, n3[a2] = e4, --s2 || r2(n3));
@@ -9303,7 +9522,7 @@
             return o2.e && i2(o2.v), n2.promise;
           }, race: function(e2) {
             var t2 = this, n2 = I(t2), r2 = n2.reject, i2 = m(function() {
-              p(e2, false, function(e3) {
+              y(e2, false, function(e3) {
                 t2.resolve(e3).then(n2.resolve, r2);
               });
             });
@@ -9312,7 +9531,7 @@
         }, function(e, t, n) {
           n(63)("split", 2, function(e2, t2, r) {
             "use strict";
-            var i = n(82), o = r, s = [].push;
+            var i = n(83), o = r, s = [].push;
             if ("c" == "abbc".split(/(b)*/)[1] || 4 != "test".split(/(?:)/, -1).length || 2 != "ab".split(/(?:ab)*/).length || 4 != ".".split(/(.?)(.?)/).length || ".".split(/()()/).length > 1 || "".split(/.?/).length) {
               var a = void 0 === /()??/.exec("")[1];
               r = /* @__PURE__ */ __name(function(e3, t3) {
@@ -9321,13 +9540,13 @@
                   return [];
                 if (!i(e3))
                   return o.call(n2, e3, t3);
-                var r2, u, c, l, f, h = [], _ = (e3.ignoreCase ? "i" : "") + (e3.multiline ? "m" : "") + (e3.unicode ? "u" : "") + (e3.sticky ? "y" : ""), y = 0, p = void 0 === t3 ? 4294967295 : t3 >>> 0, d = new RegExp(e3.source, _ + "g");
-                for (a || (r2 = new RegExp("^" + d.source + "$(?!\\s)", _)); (u = d.exec(n2)) && !((c = u.index + u[0].length) > y && (h.push(n2.slice(y, u.index)), !a && u.length > 1 && u[0].replace(r2, function() {
+                var r2, u, c, l, f, h = [], _ = (e3.ignoreCase ? "i" : "") + (e3.multiline ? "m" : "") + (e3.unicode ? "u" : "") + (e3.sticky ? "y" : ""), p = 0, y = void 0 === t3 ? 4294967295 : t3 >>> 0, d = new RegExp(e3.source, _ + "g");
+                for (a || (r2 = new RegExp("^" + d.source + "$(?!\\s)", _)); (u = d.exec(n2)) && !((c = u.index + u[0].length) > p && (h.push(n2.slice(p, u.index)), !a && u.length > 1 && u[0].replace(r2, function() {
                   for (f = 1; f < arguments.length - 2; f++)
                     void 0 === arguments[f] && (u[f] = void 0);
-                }), u.length > 1 && u.index < n2.length && s.apply(h, u.slice(1)), l = u[0].length, y = c, h.length >= p)); )
+                }), u.length > 1 && u.index < n2.length && s.apply(h, u.slice(1)), l = u[0].length, p = c, h.length >= y)); )
                   d.lastIndex === u.index && d.lastIndex++;
-                return y === n2.length ? !l && d.test("") || h.push("") : h.push(n2.slice(y)), h.length > p ? h.slice(0, p) : h;
+                return p === n2.length ? !l && d.test("") || h.push("") : h.push(n2.slice(p)), h.length > y ? h.slice(0, y) : h;
               }, "r");
             } else
               "0".split(void 0, 0).length && (r = /* @__PURE__ */ __name(function(e3, t3) {
@@ -9364,8 +9583,8 @@
           });
         }, function(e, t, n) {
           "use strict";
-          n(126);
-          var r = n(5), i = n(77), o = n(11), s = /./.toString, a = /* @__PURE__ */ __name(function(e2) {
+          n(128);
+          var r = n(5), i = n(78), o = n(11), s = /./.toString, a = /* @__PURE__ */ __name(function(e2) {
             n(15)(RegExp.prototype, "toString", e2, true);
           }, "a");
           n(3)(function() {
@@ -9377,27 +9596,27 @@
             return s.call(this);
           });
         }, function(e, t, n) {
-          var r = n(6), i = n(87), o = n(10).f, s = n(32).f, a = n(82), u = n(77), c = r.RegExp, l = c, f = c.prototype, h = /a/g, _ = /a/g, y = new c(h) !== h;
-          if (n(11) && (!y || n(3)(function() {
+          var r = n(6), i = n(88), o = n(10).f, s = n(33).f, a = n(83), u = n(78), c = r.RegExp, l = c, f = c.prototype, h = /a/g, _ = /a/g, p = new c(h) !== h;
+          if (n(11) && (!p || n(3)(function() {
             return _[n(7)("match")] = false, c(h) != h || c(_) == _ || "/a/i" != c(h, "i");
           }))) {
             c = /* @__PURE__ */ __name(function(e2, t2) {
               var n2 = this instanceof c, r2 = a(e2), o2 = void 0 === t2;
-              return !n2 && r2 && e2.constructor === c && o2 ? e2 : i(y ? new l(r2 && !o2 ? e2.source : e2, t2) : l((r2 = e2 instanceof c) ? e2.source : e2, r2 && o2 ? u.call(e2) : t2), n2 ? this : f, c);
+              return !n2 && r2 && e2.constructor === c && o2 ? e2 : i(p ? new l(r2 && !o2 ? e2.source : e2, t2) : l((r2 = e2 instanceof c) ? e2.source : e2, r2 && o2 ? u.call(e2) : t2), n2 ? this : f, c);
             }, "c");
-            for (var p = function(e2) {
+            for (var y = function(e2) {
               e2 in c || o(c, e2, { configurable: true, get: function() {
                 return l[e2];
               }, set: function(t2) {
                 l[e2] = t2;
               } });
             }, d = s(l), g = 0; d.length > g; )
-              p(d[g++]);
+              y(d[g++]);
             f.constructor = c, c.prototype = f, n(15)(r, "RegExp", c);
           }
-          n(43)("RegExp");
+          n(46)("RegExp");
         }, function(e, t, n) {
-          n(43)("Array");
+          n(46)("Array");
         }, function(e, t, n) {
           "use strict";
           var r = n(0), i = n(19)(6), o = "findIndex", s = true;
@@ -9405,7 +9624,7 @@
             s = false;
           }), r(r.P + r.F * s, "Array", { findIndex: function(e2) {
             return i(this, e2, arguments.length > 1 ? arguments[1] : void 0);
-          } }), n(52)(o);
+          } }), n(55)(o);
         }, function(e, t, n) {
           "use strict";
           var r = n(0), i = n(19)(5), o = true;
@@ -9413,13 +9632,13 @@
             o = false;
           }), r(r.P + r.F * o, "Array", { find: function(e2) {
             return i(this, e2, arguments.length > 1 ? arguments[1] : void 0);
-          } }), n(52)("find");
+          } }), n(55)("find");
         }, function(e, t, n) {
           var r = n(0);
-          r(r.P, "Array", { fill: n(78) }), n(52)("fill");
+          r(r.P, "Array", { fill: n(79) }), n(55)("fill");
         }, function(e, t, n) {
           var r = n(0);
-          r(r.P, "Array", { copyWithin: n(129) }), n(52)("copyWithin");
+          r(r.P, "Array", { copyWithin: n(131) }), n(55)("copyWithin");
         }, function(e, t, n) {
           "use strict";
           var r = n(0), i = n(21), o = n(24), s = n(12), a = [].lastIndexOf, u = !!a && 1 / [1].lastIndexOf(1, -0) < 0;
@@ -9434,19 +9653,19 @@
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(94)(false), o = [].indexOf, s = !!o && 1 / [1].indexOf(1, -0) < 0;
+          var r = n(0), i = n(95)(false), o = [].indexOf, s = !!o && 1 / [1].indexOf(1, -0) < 0;
           r(r.P + r.F * (s || !n(17)(o)), "Array", { indexOf: function(e2) {
             return s ? o.apply(this, arguments) || 0 : i(this, e2, arguments[1]);
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(130);
+          var r = n(0), i = n(132);
           r(r.P + r.F * !n(17)([].reduceRight, true), "Array", { reduceRight: function(e2) {
             return i(this, e2, arguments.length, arguments[1], true);
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(130);
+          var r = n(0), i = n(132);
           r(r.P + r.F * !n(17)([].reduce, true), "Array", { reduce: function(e2) {
             return i(this, e2, arguments.length, arguments[1], false);
           } });
@@ -9475,13 +9694,13 @@
             return i(this, e2, arguments[1]);
           } });
         }, function(e, t, n) {
-          var r = n(4), i = n(91), o = n(7)("species");
+          var r = n(4), i = n(92), o = n(7)("species");
           e.exports = function(e2) {
             var t2;
             return i(e2) && ("function" != typeof (t2 = e2.constructor) || t2 !== Array && !i(t2.prototype) || (t2 = void 0), r(t2) && null === (t2 = t2[o]) && (t2 = void 0)), void 0 === t2 ? Array : t2;
           };
         }, function(e, t, n) {
-          var r = n(230);
+          var r = n(232);
           e.exports = function(e2, t2) {
             return new (r(e2))(t2);
           };
@@ -9503,7 +9722,7 @@
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(90), o = n(25), s = n(34), a = n(12), u = [].slice;
+          var r = n(0), i = n(91), o = n(25), s = n(35), a = n(12), u = [].slice;
           r(r.P + r.F * n(3)(function() {
             i && u.call(i);
           }), "Array", { slice: function(e2, t2) {
@@ -9517,12 +9736,12 @@
         }, function(e, t, n) {
           "use strict";
           var r = n(0), i = n(21), o = [].join;
-          r(r.P + r.F * (n(54) != Object || !n(17)(o)), "Array", { join: function(e2) {
+          r(r.P + r.F * (n(57) != Object || !n(17)(o)), "Array", { join: function(e2) {
             return o.call(i(this), void 0 === e2 ? "," : e2);
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(131);
+          var r = n(0), i = n(133);
           r(r.S + r.F * n(3)(function() {
             function e2() {
             }
@@ -9535,22 +9754,22 @@
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(27), i = n(0), o = n(14), s = n(132), a = n(80), u = n(12), c = n(131), l = n(79);
+          var r = n(27), i = n(0), o = n(14), s = n(134), a = n(81), u = n(12), c = n(133), l = n(80);
           i(i.S + i.F * !n(64)(function(e2) {
             Array.from(e2);
           }), "Array", { from: function(e2) {
-            var t2, n2, i2, f, h = o(e2), _ = "function" == typeof this ? this : Array, y = arguments.length, p = y > 1 ? arguments[1] : void 0, d = void 0 !== p, g = 0, v = l(h);
-            if (d && (p = r(p, y > 2 ? arguments[2] : void 0, 2)), void 0 == v || _ == Array && a(v))
+            var t2, n2, i2, f, h = o(e2), _ = "function" == typeof this ? this : Array, p = arguments.length, y = p > 1 ? arguments[1] : void 0, d = void 0 !== y, g = 0, v = l(h);
+            if (d && (y = r(y, p > 2 ? arguments[2] : void 0, 2)), void 0 == v || _ == Array && a(v))
               for (n2 = new _(t2 = u(h.length)); t2 > g; g++)
-                c(n2, g, d ? p(h[g], g) : h[g]);
+                c(n2, g, d ? y(h[g], g) : h[g]);
             else
               for (f = v.call(h), n2 = new _(); !(i2 = f.next()).done; g++)
-                c(n2, g, d ? s(f, p, [i2.value, g], true) : i2.value);
+                c(n2, g, d ? s(f, y, [i2.value, g], true) : i2.value);
             return n2.length = g, n2;
           } });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Array", { isArray: n(91) });
+          r(r.S, "Array", { isArray: n(92) });
         }, function(e, t, n) {
           "use strict";
           var r = n(5), i = n(30);
@@ -9561,7 +9780,7 @@
           };
         }, function(e, t, n) {
           var r = n(7)("toPrimitive"), i = Date.prototype;
-          r in i || n(18)(i, r, n(239));
+          r in i || n(18)(i, r, n(241));
         }, function(e, t, n) {
           var r = Date.prototype, i = r.toString, o = r.getTime;
           /* @__PURE__ */ new Date(NaN) + "" != "Invalid Date" && n(15)(r, "toString", function() {
@@ -9584,7 +9803,7 @@
             return r2 + ("00000" + Math.abs(t2)).slice(r2 ? -6 : -4) + "-" + s(e2.getUTCMonth() + 1) + "-" + s(e2.getUTCDate()) + "T" + s(e2.getUTCHours()) + ":" + s(e2.getUTCMinutes()) + ":" + s(e2.getUTCSeconds()) + "." + (n2 > 99 ? n2 : "0" + s(n2)) + "Z";
           } : o;
         }, function(e, t, n) {
-          var r = n(0), i = n(242);
+          var r = n(0), i = n(244);
           r(r.P + r.F * (Date.prototype.toISOString !== i), "Date", { toISOString: i });
         }, function(e, t, n) {
           "use strict";
@@ -9695,37 +9914,37 @@
           });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(12), o = n(83), s = "".startsWith;
-          r(r.P + r.F * n(81)("startsWith"), "String", { startsWith: function(e2) {
+          var r = n(0), i = n(12), o = n(84), s = "".startsWith;
+          r(r.P + r.F * n(82)("startsWith"), "String", { startsWith: function(e2) {
             var t2 = o(this, e2, "startsWith"), n2 = i(Math.min(arguments.length > 1 ? arguments[1] : void 0, t2.length)), r2 = String(e2);
             return s ? s.call(t2, r2, n2) : t2.slice(n2, n2 + r2.length) === r2;
           } });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.P, "String", { repeat: n(137) });
+          r(r.P, "String", { repeat: n(139) });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(83);
-          r(r.P + r.F * n(81)("includes"), "String", { includes: function(e2) {
+          var r = n(0), i = n(84);
+          r(r.P + r.F * n(82)("includes"), "String", { includes: function(e2) {
             return !!~i(this, e2, "includes").indexOf(e2, arguments.length > 1 ? arguments[1] : void 0);
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(12), o = n(83), s = "".endsWith;
-          r(r.P + r.F * n(81)("endsWith"), "String", { endsWith: function(e2) {
+          var r = n(0), i = n(12), o = n(84), s = "".endsWith;
+          r(r.P + r.F * n(82)("endsWith"), "String", { endsWith: function(e2) {
             var t2 = o(this, e2, "endsWith"), n2 = arguments.length > 1 ? arguments[1] : void 0, r2 = i(t2.length), a = void 0 === n2 ? r2 : Math.min(i(n2), r2), u = String(e2);
             return s ? s.call(t2, u, a) : t2.slice(a - u.length, a) === u;
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(134)(false);
+          var r = n(0), i = n(136)(false);
           r(r.P, "String", { codePointAt: function(e2) {
             return i(this, e2);
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(134)(true);
-          n(84)(String, "String", function(e2) {
+          var r = n(136)(true);
+          n(85)(String, "String", function(e2) {
             this._t = String(e2), this._i = 0;
           }, function() {
             var e2, t2 = this._t, n2 = this._i;
@@ -9746,7 +9965,7 @@
             return s.join("");
           } });
         }, function(e, t, n) {
-          var r = n(0), i = n(34), o = String.fromCharCode, s = String.fromCodePoint;
+          var r = n(0), i = n(35), o = String.fromCharCode, s = String.fromCodePoint;
           r(r.S + r.F * (!!s && 1 != s.length), "String", { fromCodePoint: function(e2) {
             for (var t2, n2 = [], r2 = arguments.length, s2 = 0; r2 > s2; ) {
               if (t2 = +arguments[s2++], i(t2, 1114111) !== t2)
@@ -9761,13 +9980,13 @@
             return (e2 > 0 ? Math.floor : Math.ceil)(e2);
           } });
         }, function(e, t, n) {
-          var r = n(0), i = n(85), o = Math.exp;
+          var r = n(0), i = n(86), o = Math.exp;
           r(r.S, "Math", { tanh: function(e2) {
             var t2 = i(e2 = +e2), n2 = i(-e2);
             return t2 == 1 / 0 ? 1 : n2 == 1 / 0 ? -1 : (t2 - n2) / (o(e2) + o(-e2));
           } });
         }, function(e, t, n) {
-          var r = n(0), i = n(85), o = Math.exp;
+          var r = n(0), i = n(86), o = Math.exp;
           r(r.S + r.F * n(3)(function() {
             return -2e-17 != !Math.sinh(-2e-17);
           }), "Math", { sinh: function(e2) {
@@ -9775,7 +9994,7 @@
           } });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Math", { sign: n(86) });
+          r(r.S, "Math", { sign: n(87) });
         }, function(e, t, n) {
           var r = n(0);
           r(r.S, "Math", { log2: function(e2) {
@@ -9783,7 +10002,7 @@
           } });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Math", { log1p: n(135) });
+          r(r.S, "Math", { log1p: n(137) });
         }, function(e, t, n) {
           var r = n(0);
           r(r.S, "Math", { log10: function(e2) {
@@ -9805,16 +10024,16 @@
             return u === 1 / 0 ? 1 / 0 : u * Math.sqrt(o);
           } });
         }, function(e, t, n) {
-          var r = n(86), i = Math.pow, o = i(2, -52), s = i(2, -23), a = i(2, 127) * (2 - s), u = i(2, -126);
+          var r = n(87), i = Math.pow, o = i(2, -52), s = i(2, -23), a = i(2, 127) * (2 - s), u = i(2, -126);
           e.exports = Math.fround || function(e2) {
             var t2, n2, i2 = Math.abs(e2), c = r(e2);
             return i2 < u ? c * (i2 / u / s + 1 / o - 1 / o) * u * s : (n2 = (t2 = (1 + s / o) * i2) - (t2 - i2)) > a || n2 != n2 ? c * (1 / 0) : c * n2;
           };
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Math", { fround: n(277) });
+          r(r.S, "Math", { fround: n(279) });
         }, function(e, t, n) {
-          var r = n(0), i = n(85);
+          var r = n(0), i = n(86);
           r(r.S + r.F * (i != Math.expm1), "Math", { expm1: i });
         }, function(e, t, n) {
           var r = n(0), i = Math.exp;
@@ -9827,7 +10046,7 @@
             return (e2 >>>= 0) ? 31 - Math.floor(Math.log(e2 + 0.5) * Math.LOG2E) : 32;
           } });
         }, function(e, t, n) {
-          var r = n(0), i = n(86);
+          var r = n(0), i = n(87);
           r(r.S, "Math", { cbrt: function(e2) {
             return i(e2 = +e2) * Math.pow(Math.abs(e2), 1 / 3);
           } });
@@ -9842,15 +10061,15 @@
             return isFinite(t2 = +t2) && 0 != t2 ? t2 < 0 ? -e2(-t2) : Math.log(t2 + Math.sqrt(t2 * t2 + 1)) : t2;
           }, "e") });
         }, function(e, t, n) {
-          var r = n(0), i = n(135), o = Math.sqrt, s = Math.acosh;
+          var r = n(0), i = n(137), o = Math.sqrt, s = Math.acosh;
           r(r.S + r.F * !(s && 710 == Math.floor(s(Number.MAX_VALUE)) && s(1 / 0) == 1 / 0), "Math", { acosh: function(e2) {
             return (e2 = +e2) < 1 ? NaN : e2 > 9490626562425156e-8 ? Math.log(e2) + Math.LN2 : i(e2 - 1 + o(e2 - 1) * o(e2 + 1));
           } });
         }, function(e, t, n) {
-          var r = n(0), i = n(140);
+          var r = n(0), i = n(142);
           r(r.S + r.F * (Number.parseInt != i), "Number", { parseInt: i });
         }, function(e, t, n) {
-          var r = n(0), i = n(139);
+          var r = n(0), i = n(141);
           r(r.S + r.F * (Number.parseFloat != i), "Number", { parseFloat: i });
         }, function(e, t, n) {
           var r = n(0);
@@ -9859,7 +10078,7 @@
           var r = n(0);
           r(r.S, "Number", { MAX_SAFE_INTEGER: 9007199254740991 });
         }, function(e, t, n) {
-          var r = n(0), i = n(136), o = Math.abs;
+          var r = n(0), i = n(138), o = Math.abs;
           r(r.S, "Number", { isSafeInteger: function(e2) {
             return i(e2) && o(e2) <= 9007199254740991;
           } });
@@ -9870,7 +10089,7 @@
           } });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Number", { isInteger: n(136) });
+          r(r.S, "Number", { isInteger: n(138) });
         }, function(e, t, n) {
           var r = n(0), i = n(6).isFinite;
           r(r.S, "Number", { isFinite: function(e2) {
@@ -9881,7 +10100,7 @@
           r(r.S, "Number", { EPSILON: Math.pow(2, -52) });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(3), o = n(138), s = 1 .toPrecision;
+          var r = n(0), i = n(3), o = n(140), s = 1 .toPrecision;
           r(r.P + r.F * (i(function() {
             return "1" !== s.call(1, void 0);
           }) || !i(function() {
@@ -9892,7 +10111,7 @@
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(0), i = n(24), o = n(138), s = n(137), a = 1 .toFixed, u = Math.floor, c = [0, 0, 0, 0, 0, 0], l = "Number.toFixed: incorrect invocation!", f = /* @__PURE__ */ __name(function(e2, t2) {
+          var r = n(0), i = n(24), o = n(140), s = n(139), a = 1 .toFixed, u = Math.floor, c = [0, 0, 0, 0, 0, 0], l = "Number.toFixed: incorrect invocation!", f = /* @__PURE__ */ __name(function(e2, t2) {
             for (var n2 = -1, r2 = t2; ++n2 < 6; )
               r2 += e2 * c[n2], c[n2] = r2 % 1e7, r2 = u(r2 / 1e7);
           }, "f"), h = /* @__PURE__ */ __name(function(e2) {
@@ -9905,39 +10124,39 @@
                 t2 = "" === t2 ? n2 : t2 + s.call("0", 7 - n2.length) + n2;
               }
             return t2;
-          }, "_"), y = /* @__PURE__ */ __name(function(e2, t2, n2) {
-            return 0 === t2 ? n2 : t2 % 2 == 1 ? y(e2, t2 - 1, n2 * e2) : y(e2 * e2, t2 / 2, n2);
-          }, "y");
+          }, "_"), p = /* @__PURE__ */ __name(function(e2, t2, n2) {
+            return 0 === t2 ? n2 : t2 % 2 == 1 ? p(e2, t2 - 1, n2 * e2) : p(e2 * e2, t2 / 2, n2);
+          }, "p");
           r(r.P + r.F * (!!a && ("0.000" !== 8e-5.toFixed(3) || "1" !== 0.9.toFixed(0) || "1.25" !== 1.255.toFixed(2) || "1000000000000000128" !== 1000000000000000100 .toFixed(0)) || !n(3)(function() {
             a.call({});
           })), "Number", { toFixed: function(e2) {
-            var t2, n2, r2, a2, u2 = o(this, l), c2 = i(e2), p = "", d = "0";
+            var t2, n2, r2, a2, u2 = o(this, l), c2 = i(e2), y = "", d = "0";
             if (c2 < 0 || c2 > 20)
               throw RangeError(l);
             if (u2 != u2)
               return "NaN";
             if (u2 <= -1e21 || u2 >= 1e21)
               return String(u2);
-            if (u2 < 0 && (p = "-", u2 = -u2), u2 > 1e-21)
+            if (u2 < 0 && (y = "-", u2 = -u2), u2 > 1e-21)
               if (n2 = (t2 = function(e3) {
                 for (var t3 = 0, n3 = e3; n3 >= 4096; )
                   t3 += 12, n3 /= 4096;
                 for (; n3 >= 2; )
                   t3 += 1, n3 /= 2;
                 return t3;
-              }(u2 * y(2, 69, 1)) - 69) < 0 ? u2 * y(2, -t2, 1) : u2 / y(2, t2, 1), n2 *= 4503599627370496, (t2 = 52 - t2) > 0) {
+              }(u2 * p(2, 69, 1)) - 69) < 0 ? u2 * p(2, -t2, 1) : u2 / p(2, t2, 1), n2 *= 4503599627370496, (t2 = 52 - t2) > 0) {
                 for (f(0, n2), r2 = c2; r2 >= 7; )
                   f(1e7, 0), r2 -= 7;
-                for (f(y(10, r2, 1), 0), r2 = t2 - 1; r2 >= 23; )
+                for (f(p(10, r2, 1), 0), r2 = t2 - 1; r2 >= 23; )
                   h(1 << 23), r2 -= 23;
                 h(1 << r2), f(1, 1), h(2), d = _();
               } else
                 f(0, n2), f(1 << -t2, 0), d = _() + s.call("0", c2);
-            return d = c2 > 0 ? p + ((a2 = d.length) <= c2 ? "0." + s.call("0", c2 - a2) + d : d.slice(0, a2 - c2) + "." + d.slice(a2 - c2)) : p + d;
+            return d = c2 > 0 ? y + ((a2 = d.length) <= c2 ? "0." + s.call("0", c2 - a2) + d : d.slice(0, a2 - c2) + "." + d.slice(a2 - c2)) : y + d;
           } });
         }, function(e, t, n) {
           "use strict";
-          var r = n(6), i = n(16), o = n(25), s = n(87), a = n(30), u = n(3), c = n(32).f, l = n(23).f, f = n(10).f, h = n(65).trim, _ = r.Number, y = _, p = _.prototype, d = "Number" == o(n(33)(p)), g = "trim" in String.prototype, v = /* @__PURE__ */ __name(function(e2) {
+          var r = n(6), i = n(16), o = n(25), s = n(88), a = n(30), u = n(3), c = n(33).f, l = n(23).f, f = n(10).f, h = n(65).trim, _ = r.Number, p = _, y = _.prototype, d = "Number" == o(n(34)(y)), g = "trim" in String.prototype, v = /* @__PURE__ */ __name(function(e2) {
             var t2 = a(e2, false);
             if ("string" == typeof t2 && t2.length > 2) {
               var n2, r2, i2, o2 = (t2 = g ? t2.trim() : h(t2, 3)).charCodeAt(0);
@@ -9969,22 +10188,22 @@
             _ = /* @__PURE__ */ __name(function(e2) {
               var t2 = arguments.length < 1 ? 0 : e2, n2 = this;
               return n2 instanceof _ && (d ? u(function() {
-                p.valueOf.call(n2);
-              }) : "Number" != o(n2)) ? s(new y(v(t2)), n2, _) : v(t2);
+                y.valueOf.call(n2);
+              }) : "Number" != o(n2)) ? s(new p(v(t2)), n2, _) : v(t2);
             }, "_");
-            for (var b, m = n(11) ? c(y) : "MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger".split(","), S = 0; m.length > S; S++)
-              i(y, b = m[S]) && !i(_, b) && f(_, b, l(y, b));
-            _.prototype = p, p.constructor = _, n(15)(r, "Number", _);
+            for (var b, m = n(11) ? c(p) : "MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger".split(","), S = 0; m.length > S; S++)
+              i(p, b = m[S]) && !i(_, b) && f(_, b, l(p, b));
+            _.prototype = y, y.constructor = _, n(15)(r, "Number", _);
           }
         }, function(e, t, n) {
-          var r = n(0), i = n(139);
+          var r = n(0), i = n(141);
           r(r.G + r.F * (parseFloat != i), { parseFloat: i });
         }, function(e, t, n) {
-          var r = n(0), i = n(140);
+          var r = n(0), i = n(142);
           r(r.G + r.F * (parseInt != i), { parseInt: i });
         }, function(e, t, n) {
           "use strict";
-          var r = n(4), i = n(31), o = n(7)("hasInstance"), s = Function.prototype;
+          var r = n(4), i = n(32), o = n(7)("hasInstance"), s = Function.prototype;
           o in s || n(10).f(s, o, { value: function(e2) {
             if ("function" != typeof this || !r(e2))
               return false;
@@ -10006,7 +10225,7 @@
           } });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.P, "Function", { bind: n(142) });
+          r(r.P, "Function", { bind: n(144) });
         }, function(e, t, n) {
           "use strict";
           var r = n(66), i = {};
@@ -10015,17 +10234,17 @@
           }, true);
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Object", { setPrototypeOf: n(89).set });
+          r(r.S, "Object", { setPrototypeOf: n(90).set });
         }, function(e, t) {
           e.exports = Object.is || function(e2, t2) {
             return e2 === t2 ? 0 !== e2 || 1 / e2 == 1 / t2 : e2 != e2 && t2 != t2;
           };
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Object", { is: n(305) });
+          r(r.S, "Object", { is: n(307) });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S + r.F, "Object", { assign: n(143) });
+          r(r.S + r.F, "Object", { assign: n(145) });
         }, function(e, t, n) {
           var r = n(4);
           n(20)("isExtensible", function(e2) {
@@ -10070,17 +10289,17 @@
           });
         }, function(e, t, n) {
           n(20)("getOwnPropertyNames", function() {
-            return n(144).f;
+            return n(146).f;
           });
         }, function(e, t, n) {
-          var r = n(14), i = n(55);
+          var r = n(14), i = n(58);
           n(20)("keys", function() {
             return function(e2) {
               return i(r(e2));
             };
           });
         }, function(e, t, n) {
-          var r = n(14), i = n(31);
+          var r = n(14), i = n(32);
           n(20)("getPrototypeOf", function() {
             return function(e2) {
               return i(r(e2));
@@ -10095,15 +10314,15 @@
           });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S + r.F * !n(11), "Object", { defineProperties: n(145) });
+          r(r.S + r.F * !n(11), "Object", { defineProperties: n(147) });
         }, function(e, t, n) {
           var r = n(0);
           r(r.S + r.F * !n(11), "Object", { defineProperty: n(10).f });
         }, function(e, t, n) {
           var r = n(0);
-          r(r.S, "Object", { create: n(33) });
+          r(r.S, "Object", { create: n(34) });
         }, function(e, t, n) {
-          var r = n(55), i = n(68), o = n(67);
+          var r = n(58), i = n(68), o = n(67);
           e.exports = function(e2) {
             var t2 = r(e2), n2 = i.f;
             if (n2)
@@ -10112,68 +10331,68 @@
             return t2;
           };
         }, function(e, t, n) {
-          var r = n(6), i = n(37), o = n(44), s = n(147), a = n(10).f;
+          var r = n(6), i = n(38), o = n(47), s = n(149), a = n(10).f;
           e.exports = function(e2) {
             var t2 = i.Symbol || (i.Symbol = o ? {} : r.Symbol || {});
             "_" == e2.charAt(0) || e2 in t2 || a(t2, e2, { value: s.f(e2) });
           };
         }, function(e, t, n) {
           "use strict";
-          var r = n(6), i = n(16), o = n(11), s = n(0), a = n(15), u = n(29).KEY, c = n(3), l = n(95), f = n(45), h = n(35), _ = n(7), y = n(147), p = n(322), d = n(321), g = n(91), v = n(5), b = n(4), m = n(21), S = n(30), E = n(36), R = n(33), O = n(144), w = n(23), A = n(10), I = n(55), M = w.f, T = A.f, k = O.f, P = r.Symbol, F = r.JSON, j = F && F.stringify, U = _("_hidden"), N = _("toPrimitive"), B = {}.propertyIsEnumerable, L = l("symbol-registry"), D = l("symbols"), Y = l("op-symbols"), C = Object.prototype, x = "function" == typeof P, q = r.QObject, V = !q || !q.prototype || !q.prototype.findChild, K = o && c(function() {
-            return 7 != R(T({}, "a", { get: function() {
-              return T(this, "a", { value: 7 }).a;
+          var r = n(6), i = n(16), o = n(11), s = n(0), a = n(15), u = n(29).KEY, c = n(3), l = n(96), f = n(48), h = n(36), _ = n(7), p = n(149), y = n(324), d = n(323), g = n(92), v = n(5), b = n(4), m = n(21), S = n(30), E = n(37), R = n(34), O = n(146), A = n(23), w = n(10), I = n(58), T = A.f, M = w.f, k = O.f, P = r.Symbol, F = r.JSON, N = F && F.stringify, j = _("_hidden"), U = _("toPrimitive"), B = {}.propertyIsEnumerable, L = l("symbol-registry"), D = l("symbols"), Y = l("op-symbols"), C = Object.prototype, q = "function" == typeof P, x = r.QObject, V = !x || !x.prototype || !x.prototype.findChild, K = o && c(function() {
+            return 7 != R(M({}, "a", { get: function() {
+              return M(this, "a", { value: 7 }).a;
             } })).a;
           }) ? function(e2, t2, n2) {
-            var r2 = M(C, t2);
-            r2 && delete C[t2], T(e2, t2, n2), r2 && e2 !== C && T(C, t2, r2);
-          } : T, G = /* @__PURE__ */ __name(function(e2) {
+            var r2 = T(C, t2);
+            r2 && delete C[t2], M(e2, t2, n2), r2 && e2 !== C && M(C, t2, r2);
+          } : M, G = /* @__PURE__ */ __name(function(e2) {
             var t2 = D[e2] = R(P.prototype);
             return t2._k = e2, t2;
-          }, "G"), z = x && "symbol" == typeof P.iterator ? function(e2) {
+          }, "G"), z = q && "symbol" == typeof P.iterator ? function(e2) {
             return "symbol" == typeof e2;
           } : function(e2) {
             return e2 instanceof P;
           }, H = /* @__PURE__ */ __name(function(e2, t2, n2) {
-            return e2 === C && H(Y, t2, n2), v(e2), t2 = S(t2, true), v(n2), i(D, t2) ? (n2.enumerable ? (i(e2, U) && e2[U][t2] && (e2[U][t2] = false), n2 = R(n2, { enumerable: E(0, false) })) : (i(e2, U) || T(e2, U, E(1, {})), e2[U][t2] = true), K(e2, t2, n2)) : T(e2, t2, n2);
+            return e2 === C && H(Y, t2, n2), v(e2), t2 = S(t2, true), v(n2), i(D, t2) ? (n2.enumerable ? (i(e2, j) && e2[j][t2] && (e2[j][t2] = false), n2 = R(n2, { enumerable: E(0, false) })) : (i(e2, j) || M(e2, j, E(1, {})), e2[j][t2] = true), K(e2, t2, n2)) : M(e2, t2, n2);
           }, "H"), J = /* @__PURE__ */ __name(function(e2, t2) {
             v(e2);
             for (var n2, r2 = d(t2 = m(t2)), i2 = 0, o2 = r2.length; o2 > i2; )
               H(e2, n2 = r2[i2++], t2[n2]);
             return e2;
-          }, "J"), W = /* @__PURE__ */ __name(function(e2) {
+          }, "J"), X = /* @__PURE__ */ __name(function(e2) {
             var t2 = B.call(this, e2 = S(e2, true));
-            return !(this === C && i(D, e2) && !i(Y, e2)) && (!(t2 || !i(this, e2) || !i(D, e2) || i(this, U) && this[U][e2]) || t2);
-          }, "W"), X = /* @__PURE__ */ __name(function(e2, t2) {
+            return !(this === C && i(D, e2) && !i(Y, e2)) && (!(t2 || !i(this, e2) || !i(D, e2) || i(this, j) && this[j][e2]) || t2);
+          }, "X"), W = /* @__PURE__ */ __name(function(e2, t2) {
             if (e2 = m(e2), t2 = S(t2, true), e2 !== C || !i(D, t2) || i(Y, t2)) {
-              var n2 = M(e2, t2);
-              return !n2 || !i(D, t2) || i(e2, U) && e2[U][t2] || (n2.enumerable = true), n2;
+              var n2 = T(e2, t2);
+              return !n2 || !i(D, t2) || i(e2, j) && e2[j][t2] || (n2.enumerable = true), n2;
             }
-          }, "X"), Q = /* @__PURE__ */ __name(function(e2) {
+          }, "W"), Q = /* @__PURE__ */ __name(function(e2) {
             for (var t2, n2 = k(m(e2)), r2 = [], o2 = 0; n2.length > o2; )
-              i(D, t2 = n2[o2++]) || t2 == U || t2 == u || r2.push(t2);
+              i(D, t2 = n2[o2++]) || t2 == j || t2 == u || r2.push(t2);
             return r2;
           }, "Q"), Z = /* @__PURE__ */ __name(function(e2) {
             for (var t2, n2 = e2 === C, r2 = k(n2 ? Y : m(e2)), o2 = [], s2 = 0; r2.length > s2; )
               !i(D, t2 = r2[s2++]) || n2 && !i(C, t2) || o2.push(D[t2]);
             return o2;
           }, "Z");
-          x || (a((P = /* @__PURE__ */ __name(function() {
+          q || (a((P = /* @__PURE__ */ __name(function() {
             if (this instanceof P)
               throw TypeError("Symbol is not a constructor!");
             var e2 = h(arguments.length > 0 ? arguments[0] : void 0), t2 = /* @__PURE__ */ __name(function(n2) {
-              this === C && t2.call(Y, n2), i(this, U) && i(this[U], e2) && (this[U][e2] = false), K(this, e2, E(1, n2));
+              this === C && t2.call(Y, n2), i(this, j) && i(this[j], e2) && (this[j][e2] = false), K(this, e2, E(1, n2));
             }, "t");
             return o && V && K(C, e2, { configurable: true, set: t2 }), G(e2);
           }, "P")).prototype, "toString", function() {
             return this._k;
-          }), w.f = X, A.f = H, n(32).f = O.f = Q, n(67).f = W, n(68).f = Z, o && !n(44) && a(C, "propertyIsEnumerable", W, true), y.f = function(e2) {
+          }), A.f = W, w.f = H, n(33).f = O.f = Q, n(67).f = X, n(68).f = Z, o && !n(47) && a(C, "propertyIsEnumerable", X, true), p.f = function(e2) {
             return G(_(e2));
-          }), s(s.G + s.W + s.F * !x, { Symbol: P });
+          }), s(s.G + s.W + s.F * !q, { Symbol: P });
           for (var $ = "hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","), ee = 0; $.length > ee; )
             _($[ee++]);
           for (var te = I(_.store), ne = 0; te.length > ne; )
-            p(te[ne++]);
-          s(s.S + s.F * !x, "Symbol", { for: function(e2) {
+            y(te[ne++]);
+          s(s.S + s.F * !q, "Symbol", { for: function(e2) {
             return i(L, e2 += "") ? L[e2] : L[e2] = P(e2);
           }, keyFor: function(e2) {
             if (!z(e2))
@@ -10185,11 +10404,11 @@
             V = true;
           }, useSimple: function() {
             V = false;
-          } }), s(s.S + s.F * !x, "Object", { create: function(e2, t2) {
+          } }), s(s.S + s.F * !q, "Object", { create: function(e2, t2) {
             return void 0 === t2 ? R(e2) : J(R(e2), t2);
-          }, defineProperty: H, defineProperties: J, getOwnPropertyDescriptor: X, getOwnPropertyNames: Q, getOwnPropertySymbols: Z }), F && s(s.S + s.F * (!x || c(function() {
+          }, defineProperty: H, defineProperties: J, getOwnPropertyDescriptor: W, getOwnPropertyNames: Q, getOwnPropertySymbols: Z }), F && s(s.S + s.F * (!q || c(function() {
             var e2 = P();
-            return "[null]" != j([e2]) || "{}" != j({ a: e2 }) || "{}" != j(Object(e2));
+            return "[null]" != N([e2]) || "{}" != N({ a: e2 }) || "{}" != N(Object(e2));
           })), "JSON", { stringify: function(e2) {
             for (var t2, n2, r2 = [e2], i2 = 1; arguments.length > i2; )
               r2.push(arguments[i2++]);
@@ -10197,28 +10416,30 @@
               return g(t2) || (t2 = /* @__PURE__ */ __name(function(e3, t3) {
                 if ("function" == typeof n2 && (t3 = n2.call(this, e3, t3)), !z(t3))
                   return t3;
-              }, "t")), r2[1] = t2, j.apply(F, r2);
-          } }), P.prototype[N] || n(18)(P.prototype, N, P.prototype.valueOf), f(P, "Symbol"), f(Math, "Math", true), f(r.JSON, "JSON", true);
+              }, "t")), r2[1] = t2, N.apply(F, r2);
+          } }), P.prototype[U] || n(18)(P.prototype, U, P.prototype.valueOf), f(P, "Symbol"), f(Math, "Math", true), f(r.JSON, "JSON", true);
         }, function(e, t, n) {
-          n(323), n(320), n(319), n(318), n(317), n(316), n(315), n(314), n(313), n(312), n(311), n(310), n(309), n(308), n(307), n(306), n(304), n(303), n(302), n(301), n(300), n(299), n(298), n(297), n(296), n(295), n(294), n(293), n(292), n(291), n(290), n(289), n(288), n(287), n(286), n(285), n(284), n(283), n(282), n(281), n(280), n(279), n(278), n(276), n(275), n(274), n(273), n(272), n(271), n(270), n(269), n(268), n(267), n(266), n(265), n(264), n(263), n(262), n(261), n(260), n(259), n(258), n(257), n(256), n(255), n(254), n(253), n(252), n(251), n(250), n(249), n(248), n(247), n(246), n(245), n(244), n(243), n(241), n(240), n(238), n(237), n(236), n(235), n(234), n(233), n(232), n(229), n(228), n(227), n(226), n(225), n(224), n(223), n(222), n(221), n(220), n(219), n(218), n(217), n(128), n(216), n(215), n(126), n(214), n(213), n(212), n(211), n(210), n(206), n(205), n(204), n(203), n(202), n(201), n(200), n(199), n(198), n(197), n(196), n(195), n(194), n(193), n(192), n(191), n(190), n(189), n(188), n(187), n(186), n(185), n(184), n(183), n(182), n(181), n(179), n(178), n(177), e.exports = n(37);
+          n(325), n(322), n(321), n(320), n(319), n(318), n(317), n(316), n(315), n(314), n(313), n(312), n(311), n(310), n(309), n(308), n(306), n(305), n(304), n(303), n(302), n(301), n(300), n(299), n(298), n(297), n(296), n(295), n(294), n(293), n(292), n(291), n(290), n(289), n(288), n(287), n(286), n(285), n(284), n(283), n(282), n(281), n(280), n(278), n(277), n(276), n(275), n(274), n(273), n(272), n(271), n(270), n(269), n(268), n(267), n(266), n(265), n(264), n(263), n(262), n(261), n(260), n(259), n(258), n(257), n(256), n(255), n(254), n(253), n(252), n(251), n(250), n(249), n(248), n(247), n(246), n(245), n(243), n(242), n(240), n(239), n(238), n(237), n(236), n(235), n(234), n(231), n(230), n(229), n(228), n(227), n(226), n(225), n(224), n(223), n(222), n(221), n(220), n(219), n(130), n(218), n(217), n(128), n(216), n(215), n(214), n(213), n(212), n(208), n(207), n(206), n(205), n(204), n(203), n(202), n(201), n(200), n(199), n(198), n(197), n(196), n(195), n(194), n(193), n(192), n(191), n(190), n(189), n(188), n(187), n(186), n(185), n(184), n(183), n(181), n(180), n(179), e.exports = n(38);
         }, function(e, t, n) {
           "use strict";
-          Object.defineProperty(t, "__esModule", { value: true }), t.MD5 = t.SFSRoom = t.SetBuddyVariablesRequest = t.RemoveBuddyRequest = t.InitBuddyListRequest = t.GoOnlineRequest = t.BuddyMessageRequest = t.BlockBuddyRequest = t.AddBuddyRequest = t.SetUserPositionRequest = t.QuickJoinGameRequest = t.JoinRoomInvitationRequest = t.InviteUsersRequest = t.InvitationReplyRequest = t.CreateSFSGameRequest = t.BanUserRequest = t.KickUserRequest = t.ExtensionRequest = t.FindUsersRequest = t.FindRoomsRequest = t.PlayerToSpectatorRequest = t.SpectatorToPlayerRequest = t.UnsubscribeRoomGroupRequest = t.SubscribeRoomGroupRequest = t.SetUserVariablesRequest = t.SetRoomVariablesRequest = t.AdminMessageRequest = t.ModeratorMessageRequest = t.ObjectMessageRequest = t.PrivateMessageRequest = t.PublicMessageRequest = t.ChangeRoomCapacityRequest = t.ChangeRoomPasswordStateRequest = t.ChangeRoomNameRequest = t.LeaveRoomRequest = t.QuickJoinOrCreateRoomRequest = t.CreateRoomRequest = t.JoinRoomRequest = t.LogoutRequest = t.LoginRequest = t.PasswordUtil = t.ClientDisconnectionReason = t.LoggerEvent = t.LogLevel = t.SFSErrorCodes = t.MessageRecipientMode = t.BanMode = t.MapLimits = t.RoomExtension = t.RoomEvents = t.RoomPermissions = t.MMORoomSettings = t.SFSGameSettings = t.RoomSettings = t.UserProperties = t.RoomProperties = t.StringMatch = t.NumberMatch = t.BoolMatch = t.LogicOperator = t.MatchExpression = t.MMOItemVariable = t.ReservedBuddyVariables = t.SFSBuddyVariable = t.ReservedRoomVariables = t.SFSRoomVariable = t.SFSUserVariable = t.VariableType = t.UserPrivileges = t.InvitationReply = t.Vec3D = t.SFSArray = t.SFSObject = t.SFSDataType = t.SFSBuddyEvent = t.SFSEvent = t.SmartFox = void 0;
-          var r = n(324);
+          Object.defineProperty(t, "__esModule", { value: true }), t.MD5 = t.SFSRoom = t.ClusterJoinOrCreateRequest = t.ClusterInviteUsersRequest = t.SetBuddyVariablesRequest = t.RemoveBuddyRequest = t.InitBuddyListRequest = t.GoOnlineRequest = t.BuddyMessageRequest = t.BlockBuddyRequest = t.AddBuddyRequest = t.SetUserPositionRequest = t.QuickJoinGameRequest = t.JoinRoomInvitationRequest = t.InviteUsersRequest = t.InvitationReplyRequest = t.CreateSFSGameRequest = t.BanUserRequest = t.KickUserRequest = t.ExtensionRequest = t.FindUsersRequest = t.FindRoomsRequest = t.PlayerToSpectatorRequest = t.SpectatorToPlayerRequest = t.UnsubscribeRoomGroupRequest = t.SubscribeRoomGroupRequest = t.SetUserVariablesRequest = t.SetRoomVariablesRequest = t.AdminMessageRequest = t.ModeratorMessageRequest = t.ObjectMessageRequest = t.PrivateMessageRequest = t.PublicMessageRequest = t.ChangeRoomCapacityRequest = t.ChangeRoomPasswordStateRequest = t.ChangeRoomNameRequest = t.LeaveRoomRequest = t.QuickJoinOrCreateRoomRequest = t.CreateRoomRequest = t.JoinRoomRequest = t.LogoutRequest = t.LoginRequest = t.PasswordUtil = t.ClientDisconnectionReason = t.LoggerEvent = t.LogLevel = t.SFSErrorCodes = t.ClusterTarget = t.ClusterRoomSettings = t.MessageRecipientMode = t.BanMode = t.MapLimits = t.RoomExtension = t.RoomEvents = t.RoomPermissions = t.MMORoomSettings = t.SFSGameSettings = t.RoomSettings = t.UserProperties = t.RoomProperties = t.StringMatch = t.NumberMatch = t.BoolMatch = t.LogicOperator = t.MatchExpression = t.MMOItemVariable = t.ReservedBuddyVariables = t.SFSBuddyVariable = t.ReservedRoomVariables = t.SFSRoomVariable = t.SFSUserVariable = t.VariableType = t.UserPrivileges = t.InvitationReply = t.Vec3D = t.SFSArray = t.SFSObject = t.SFSDataType = t.SFSClusterEvent = t.SFSBuddyEvent = t.SFSEvent = t.SmartFox = void 0;
+          var r = n(326);
           Object.keys(r).forEach(function(e2) {
             "default" !== e2 && "__esModule" !== e2 && Object.defineProperty(t, e2, { enumerable: true, get: function() {
               return r[e2];
             } });
           });
-          var i = n(176);
+          var i = n(178);
           Object.defineProperty(t, "SmartFox", { enumerable: true, get: function() {
             return i.SmartFox;
           } });
-          var o = n(39);
+          var o = n(42);
           Object.defineProperty(t, "SFSEvent", { enumerable: true, get: function() {
             return o.SFSEvent;
           } }), Object.defineProperty(t, "SFSBuddyEvent", { enumerable: true, get: function() {
             return o.SFSBuddyEvent;
+          } }), Object.defineProperty(t, "SFSClusterEvent", { enumerable: true, get: function() {
+            return o.SFSClusterEvent;
           } });
           var s = n(8);
           Object.defineProperty(t, "SFSDataType", { enumerable: true, get: function() {
@@ -10230,15 +10451,15 @@
           } }), Object.defineProperty(t, "Vec3D", { enumerable: true, get: function() {
             return s.Vec3D;
           } });
-          var a = n(72);
+          var a = n(73);
           Object.defineProperty(t, "InvitationReply", { enumerable: true, get: function() {
             return a.InvitationReply;
           } });
-          var u = n(47);
+          var u = n(41);
           Object.defineProperty(t, "UserPrivileges", { enumerable: true, get: function() {
             return u.UserPrivileges;
           } });
-          var c = n(48);
+          var c = n(51);
           Object.defineProperty(t, "VariableType", { enumerable: true, get: function() {
             return c.VariableType;
           } });
@@ -10246,43 +10467,43 @@
           Object.defineProperty(t, "SFSUserVariable", { enumerable: true, get: function() {
             return l.SFSUserVariable;
           } });
-          var f = n(49);
+          var f = n(52);
           Object.defineProperty(t, "SFSRoomVariable", { enumerable: true, get: function() {
             return f.SFSRoomVariable;
           } }), Object.defineProperty(t, "ReservedRoomVariables", { enumerable: true, get: function() {
             return f.ReservedRoomVariables;
           } });
-          var h = n(46);
+          var h = n(50);
           Object.defineProperty(t, "SFSBuddyVariable", { enumerable: true, get: function() {
             return h.SFSBuddyVariable;
           } }), Object.defineProperty(t, "ReservedBuddyVariables", { enumerable: true, get: function() {
             return h.ReservedBuddyVariables;
           } });
-          var _ = n(73);
+          var _ = n(74);
           Object.defineProperty(t, "MMOItemVariable", { enumerable: true, get: function() {
             return _.MMOItemVariable;
           } });
-          var y = n(38);
+          var p = n(31);
           Object.defineProperty(t, "MatchExpression", { enumerable: true, get: function() {
-            return y.MatchExpression;
+            return p.MatchExpression;
           } }), Object.defineProperty(t, "LogicOperator", { enumerable: true, get: function() {
-            return y.LogicOperator;
+            return p.LogicOperator;
           } });
-          var p = n(161);
+          var y = n(163);
           Object.defineProperty(t, "BoolMatch", { enumerable: true, get: function() {
-            return p.BoolMatch;
+            return y.BoolMatch;
           } }), Object.defineProperty(t, "NumberMatch", { enumerable: true, get: function() {
-            return p.NumberMatch;
+            return y.NumberMatch;
           } }), Object.defineProperty(t, "StringMatch", { enumerable: true, get: function() {
-            return p.StringMatch;
+            return y.StringMatch;
           } });
-          var d = n(160);
+          var d = n(162);
           Object.defineProperty(t, "RoomProperties", { enumerable: true, get: function() {
             return d.RoomProperties;
           } }), Object.defineProperty(t, "UserProperties", { enumerable: true, get: function() {
             return d.UserProperties;
           } });
-          var g = n(56);
+          var g = n(39);
           Object.defineProperty(t, "RoomSettings", { enumerable: true, get: function() {
             return g.RoomSettings;
           } }), Object.defineProperty(t, "SFSGameSettings", { enumerable: true, get: function() {
@@ -10301,62 +10522,66 @@
             return g.BanMode;
           } }), Object.defineProperty(t, "MessageRecipientMode", { enumerable: true, get: function() {
             return g.MessageRecipientMode;
+          } }), Object.defineProperty(t, "ClusterRoomSettings", { enumerable: true, get: function() {
+            return g.ClusterRoomSettings;
+          } }), Object.defineProperty(t, "ClusterTarget", { enumerable: true, get: function() {
+            return g.ClusterTarget;
           } });
-          var v = n(74);
+          var v = n(75);
           Object.defineProperty(t, "SFSErrorCodes", { enumerable: true, get: function() {
             return v.SFSErrorCodes;
           } });
-          var b = n(50);
+          var b = n(53);
           Object.defineProperty(t, "LogLevel", { enumerable: true, get: function() {
             return b.LogLevel;
           } }), Object.defineProperty(t, "LoggerEvent", { enumerable: true, get: function() {
             return b.LoggerEvent;
           } });
-          var m = n(51);
+          var m = n(54);
           Object.defineProperty(t, "ClientDisconnectionReason", { enumerable: true, get: function() {
             return m.ClientDisconnectionReason;
           } });
-          var S = n(159);
+          var S = n(161);
           Object.defineProperty(t, "PasswordUtil", { enumerable: true, get: function() {
             return S.PasswordUtil;
           } });
-          var E = n(118);
+          var E = n(120);
           Object.defineProperty(t, "LoginRequest", { enumerable: true, get: function() {
             return E.LoginRequest;
           } });
-          var R = n(117);
+          var R = n(119);
           Object.defineProperty(t, "LogoutRequest", { enumerable: true, get: function() {
             return R.LogoutRequest;
           } });
-          var O = n(116);
+          var O = n(118);
           Object.defineProperty(t, "JoinRoomRequest", { enumerable: true, get: function() {
             return O.JoinRoomRequest;
           } });
-          var w = n(57);
+          var A = n(49);
           Object.defineProperty(t, "CreateRoomRequest", { enumerable: true, get: function() {
-            return w.CreateRoomRequest;
+            return A.CreateRoomRequest;
           } });
-          var A = n(158);
+          var w = n(160);
           Object.defineProperty(t, "QuickJoinOrCreateRoomRequest", { enumerable: true, get: function() {
-            return A.QuickJoinOrCreateRoomRequest;
+            return w.QuickJoinOrCreateRoomRequest;
           } });
-          var I = n(157);
+          var I = n(159);
           Object.defineProperty(t, "LeaveRoomRequest", { enumerable: true, get: function() {
             return I.LeaveRoomRequest;
           } });
-          var M = n(115);
+          var T = n(117);
           Object.defineProperty(t, "ChangeRoomNameRequest", { enumerable: true, get: function() {
-            return M.ChangeRoomNameRequest;
+            return T.ChangeRoomNameRequest;
           } });
-          var T = n(114);
+          var M = n(116);
           Object.defineProperty(t, "ChangeRoomPasswordStateRequest", { enumerable: true, get: function() {
-            return T.ChangeRoomPasswordStateRequest;
+            return M.ChangeRoomPasswordStateRequest;
           } });
-          var k = n(113);
+          var k = n(115);
           Object.defineProperty(t, "ChangeRoomCapacityRequest", { enumerable: true, get: function() {
             return k.ChangeRoomCapacityRequest;
           } });
-          var P = n(70);
+          var P = n(71);
           Object.defineProperty(t, "PublicMessageRequest", { enumerable: true, get: function() {
             return P.PublicMessageRequest;
           } }), Object.defineProperty(t, "PrivateMessageRequest", { enumerable: true, get: function() {
@@ -10368,110 +10593,118 @@
           } }), Object.defineProperty(t, "AdminMessageRequest", { enumerable: true, get: function() {
             return P.AdminMessageRequest;
           } });
-          var F = n(112);
+          var F = n(114);
           Object.defineProperty(t, "SetRoomVariablesRequest", { enumerable: true, get: function() {
             return F.SetRoomVariablesRequest;
           } });
-          var j = n(111);
+          var N = n(113);
           Object.defineProperty(t, "SetUserVariablesRequest", { enumerable: true, get: function() {
-            return j.SetUserVariablesRequest;
+            return N.SetUserVariablesRequest;
           } });
-          var U = n(110);
+          var j = n(112);
           Object.defineProperty(t, "SubscribeRoomGroupRequest", { enumerable: true, get: function() {
-            return U.SubscribeRoomGroupRequest;
+            return j.SubscribeRoomGroupRequest;
           } });
-          var N = n(109);
+          var U = n(111);
           Object.defineProperty(t, "UnsubscribeRoomGroupRequest", { enumerable: true, get: function() {
-            return N.UnsubscribeRoomGroupRequest;
+            return U.UnsubscribeRoomGroupRequest;
           } });
-          var B = n(108);
+          var B = n(110);
           Object.defineProperty(t, "SpectatorToPlayerRequest", { enumerable: true, get: function() {
             return B.SpectatorToPlayerRequest;
           } });
-          var L = n(107);
+          var L = n(109);
           Object.defineProperty(t, "PlayerToSpectatorRequest", { enumerable: true, get: function() {
             return L.PlayerToSpectatorRequest;
           } });
-          var D = n(106);
+          var D = n(108);
           Object.defineProperty(t, "FindRoomsRequest", { enumerable: true, get: function() {
             return D.FindRoomsRequest;
           } });
-          var Y = n(105);
+          var Y = n(107);
           Object.defineProperty(t, "FindUsersRequest", { enumerable: true, get: function() {
             return Y.FindUsersRequest;
           } });
-          var C = n(97);
+          var C = n(98);
           Object.defineProperty(t, "ExtensionRequest", { enumerable: true, get: function() {
             return C.ExtensionRequest;
           } });
-          var x = n(156);
+          var q = n(158);
           Object.defineProperty(t, "KickUserRequest", { enumerable: true, get: function() {
-            return x.KickUserRequest;
+            return q.KickUserRequest;
           } });
-          var q = n(155);
+          var x = n(157);
           Object.defineProperty(t, "BanUserRequest", { enumerable: true, get: function() {
-            return q.BanUserRequest;
+            return x.BanUserRequest;
           } });
-          var V = n(154);
+          var V = n(156);
           Object.defineProperty(t, "CreateSFSGameRequest", { enumerable: true, get: function() {
             return V.CreateSFSGameRequest;
           } });
-          var K = n(153);
+          var K = n(155);
           Object.defineProperty(t, "InvitationReplyRequest", { enumerable: true, get: function() {
             return K.InvitationReplyRequest;
           } });
-          var G = n(69);
+          var G = n(70);
           Object.defineProperty(t, "InviteUsersRequest", { enumerable: true, get: function() {
             return G.InviteUsersRequest;
           } });
-          var z = n(152);
+          var z = n(154);
           Object.defineProperty(t, "JoinRoomInvitationRequest", { enumerable: true, get: function() {
             return z.JoinRoomInvitationRequest;
           } });
-          var H = n(151);
+          var H = n(153);
           Object.defineProperty(t, "QuickJoinGameRequest", { enumerable: true, get: function() {
             return H.QuickJoinGameRequest;
           } });
-          var J = n(104);
+          var J = n(106);
           Object.defineProperty(t, "SetUserPositionRequest", { enumerable: true, get: function() {
             return J.SetUserPositionRequest;
           } });
-          var W = n(102);
+          var X = n(104);
           Object.defineProperty(t, "AddBuddyRequest", { enumerable: true, get: function() {
-            return W.AddBuddyRequest;
+            return X.AddBuddyRequest;
           } });
-          var X = n(100);
+          var W = n(102);
           Object.defineProperty(t, "BlockBuddyRequest", { enumerable: true, get: function() {
-            return X.BlockBuddyRequest;
+            return W.BlockBuddyRequest;
           } });
-          var Q = n(150);
+          var Q = n(152);
           Object.defineProperty(t, "BuddyMessageRequest", { enumerable: true, get: function() {
             return Q.BuddyMessageRequest;
           } });
-          var Z = n(99);
+          var Z = n(101);
           Object.defineProperty(t, "GoOnlineRequest", { enumerable: true, get: function() {
             return Z.GoOnlineRequest;
           } });
-          var $ = n(103);
+          var $ = n(105);
           Object.defineProperty(t, "InitBuddyListRequest", { enumerable: true, get: function() {
             return $.InitBuddyListRequest;
           } });
-          var ee = n(101);
+          var ee = n(103);
           Object.defineProperty(t, "RemoveBuddyRequest", { enumerable: true, get: function() {
             return ee.RemoveBuddyRequest;
           } });
-          var te = n(98);
+          var te = n(100);
           Object.defineProperty(t, "SetBuddyVariablesRequest", { enumerable: true, get: function() {
             return te.SetBuddyVariablesRequest;
           } });
-          var ne = n(9);
-          Object.defineProperty(t, "SFSRoom", { enumerable: true, get: function() {
-            return ne.SFSRoom;
+          var ne = n(69);
+          Object.defineProperty(t, "ClusterInviteUsersRequest", { enumerable: true, get: function() {
+            return ne.ClusterInviteUsersRequest;
           } });
-          var re = n(71);
+          var re = n(99);
+          Object.defineProperty(t, "ClusterJoinOrCreateRequest", { enumerable: true, get: function() {
+            return re.ClusterJoinOrCreateRequest;
+          } });
+          var ie = n(9);
+          Object.defineProperty(t, "SFSRoom", { enumerable: true, get: function() {
+            return ie.SFSRoom;
+          } });
+          var oe = n(72);
           Object.defineProperty(t, "MD5", { enumerable: true, get: function() {
-            return re.MD5;
-          } }), n(149);
+            return oe.MD5;
+          } }), n(151);
         }]);
       });
     }
@@ -11742,6 +11975,8 @@
   _Config.ColorValue = { "red": "#ff0000", "green": "#00a300", "yellow": "#ffc400", "blue": "#008cf8" };
   _Config.MagicMap = [{ "makeup": { "6": { "name": "plus", "clip": 1 }, "11": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "15": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "23": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "defender", "clip": 0 } } }, { "makeup": { "14": { "name": "defender", "clip": 0 }, "15": { "name": "defender", "clip": 0 }, "18": { "name": "defender", "clip": 0 }, "25": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "33": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "3": { "name": "plus", "clip": 1 }, "11": { "name": "defender", "clip": 0 }, "22": { "name": "rocket", "clip": 2 }, "28": { "name": "rocket", "clip": 2 }, "31": { "name": "rocket", "clip": 2 }, "33": { "name": "defender", "clip": 0 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 }, "51": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "12": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "23": { "name": "plus", "clip": 1 }, "33": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "46": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "12": { "name": "rocket", "clip": 2 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 } } }, { "makeup": { "12": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "19": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "27": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "40": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "43": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "7": { "name": "rocket", "clip": 2 }, "11": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "17": { "name": "plus", "clip": 1 }, "18": { "name": "defender", "clip": 0 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "11": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "28": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "2": { "name": "rocket", "clip": 2 }, "7": { "name": "defender", "clip": 0 }, "11": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "29": { "name": "plus", "clip": 1 }, "38": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "defender", "clip": 0 }, "6": { "name": "plus", "clip": 1 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "plus", "clip": 1 }, "44": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "defender", "clip": 0 }, "5": { "name": "plus", "clip": 1 }, "7": { "name": "defender", "clip": 0 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "25": { "name": "plus", "clip": 1 }, "42": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "18": { "name": "plus", "clip": 1 }, "24": { "name": "rocket", "clip": 2 }, "31": { "name": "defender", "clip": 0 }, "33": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "44": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "25": { "name": "rocket", "clip": 2 }, "27": { "name": "rocket", "clip": 2 }, "35": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "50": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "10": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "rocket", "clip": 2 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "plus", "clip": 1 }, "9": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "25": { "name": "defender", "clip": 0 }, "32": { "name": "plus", "clip": 1 }, "36": { "name": "rocket", "clip": 2 }, "37": { "name": "defender", "clip": 0 }, "42": { "name": "rocket", "clip": 2 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "12": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "35": { "name": "rocket", "clip": 2 }, "41": { "name": "rocket", "clip": 2 }, "43": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 }, "49": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "defender", "clip": 0 }, "19": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "44": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "50": { "name": "defender", "clip": 0 } } }, { "makeup": { "4": { "name": "defender", "clip": 0 }, "12": { "name": "plus", "clip": 1 }, "17": { "name": "plus", "clip": 1 }, "19": { "name": "rocket", "clip": 2 }, "28": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "plus", "clip": 1 }, "37": { "name": "defender", "clip": 0 }, "41": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 } } }, { "makeup": { "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "10": { "name": "defender", "clip": 0 }, "15": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "18": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "6": { "name": "rocket", "clip": 2 }, "14": { "name": "plus", "clip": 1 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "14": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "plus", "clip": 1 }, "30": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "42": { "name": "plus", "clip": 1 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "7": { "name": "rocket", "clip": 2 }, "9": { "name": "plus", "clip": 1 }, "30": { "name": "plus", "clip": 1 }, "31": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "50": { "name": "rocket", "clip": 2 } } }, { "makeup": { "7": { "name": "plus", "clip": 1 }, "15": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "24": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "42": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "10": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "defender", "clip": 0 }, "28": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "plus", "clip": 1 }, "37": { "name": "rocket", "clip": 2 }, "40": { "name": "plus", "clip": 1 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "5": { "name": "rocket", "clip": 2 }, "17": { "name": "defender", "clip": 0 }, "20": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "30": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "46": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "3": { "name": "rocket", "clip": 2 }, "4": { "name": "plus", "clip": 1 }, "16": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "25": { "name": "defender", "clip": 0 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 }, "48": { "name": "defender", "clip": 0 }, "51": { "name": "rocket", "clip": 2 } } }, { "makeup": { "3": { "name": "defender", "clip": 0 }, "10": { "name": "rocket", "clip": 2 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "defender", "clip": 0 }, "32": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "42": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "plus", "clip": 1 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "35": { "name": "rocket", "clip": 2 }, "38": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "45": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "51": { "name": "plus", "clip": 1 } } }];
   _Config.MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
+  _Config.OSS_BASE_URL = "http://oss.touchmagic.cn/";
+  _Config.TRANSLATE_URL = _Config.OSS_BASE_URL + "promotion/translates/name/LudoFans";
   var Config = _Config;
 
   // src/CreateRoom.ts
@@ -13913,7 +14148,7 @@
   };
   __name(Entry, "Entry");
   Entry = __decorateClass([
-    regClass47("fb42bd91-a049-48ad-9e6b-8ac7011df73a", "../src/Entry.ts")
+    regClass47("67ad1baf-072e-4d2a-9e9b-214c2b99ce5d", "../src/Entry.ts")
   ], Entry);
 
   // src/Online.ts
@@ -14619,10 +14854,142 @@
     regClass58("ddd78c04-cc08-49b6-8797-563c8b0aaefc", "../src/Invite.ts")
   ], Invite);
 
-  // src/Loader.ts
+  // src/LanguageItem.ts
   var { regClass: regClass59, property: property59 } = Laya;
+  var LanguageItem = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onAwake() {
+    }
+  };
+  __name(LanguageItem, "LanguageItem");
+  __decorateClass([
+    property59(Laya.Button)
+  ], LanguageItem.prototype, "useBtn", 2);
+  LanguageItem = __decorateClass([
+    regClass59("0602bce0-19ff-4b9e-94b7-3aaf0894ea88", "../src/LanguageItem.ts")
+  ], LanguageItem);
+
+  // src/TranslateLanguage.ts
+  var import_roddeh_i18n = __toESM(require_i18n());
+  var { regClass: regClass60, property: property60 } = Laya;
+  var TranslateLanguage = class extends Laya.Script {
+    onAwake() {
+      let url = Laya.LocalStorage.getItem("url");
+      if (url == null) {
+        TranslateLanguage.loadUrls(Laya.Handler.create(this, this.onLoadUrl));
+      }
+      TranslateLanguage.setLanguage(Laya.LocalStorage.getItem("language"), url);
+    }
+    onLoadUrl() {
+      let lc = Laya.LocalStorage.getItem("language");
+      TranslateLanguage.loadLocalLanguage(Config.OSS_BASE_URL + TranslateLanguage.Urls[lc], lc);
+    }
+    static loadUrls(cb) {
+      Laya.loader.load(Config.TRANSLATE_URL, Laya.Loader.JSON).then((json) => {
+        if (json == null || json.data == null || json.data.data == null) {
+          return;
+        }
+        TranslateLanguage.Urls = json.data.data;
+        cb.run();
+      });
+    }
+    static setLanguage(region, url) {
+      TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
+      if (url != null) {
+        TranslateLanguage.loadLocalLanguage(url, region);
+      }
+    }
+    static loadLocalLanguage(url, region) {
+      Laya.loader.load(url, Laya.Loader.JSON).then((json) => {
+        if (json == null || json.data == null) {
+          return;
+        }
+        import_roddeh_i18n.default.translator.add(json.data);
+        Laya.LocalStorage.setItem("language", region);
+      });
+    }
+  };
+  __name(TranslateLanguage, "TranslateLanguage");
+  TranslateLanguage = __decorateClass([
+    regClass60("fc5b90a5-bb9d-4c46-a1eb-22ca0f40b5cf", "../src/TranslateLanguage.ts")
+  ], TranslateLanguage);
+
+  // src/LanguageList.ts
+  var { regClass: regClass61, property: property61 } = Laya;
+  var LanguageList = class extends Laya.Script {
+    constructor() {
+      super();
+    }
+    onAwake() {
+      this.list.renderHandler = new Laya.Handler(this, this.updateItem);
+      this.list.selectHandler = new Laya.Handler(this, this.onListSelected);
+    }
+    onListSelected(index) {
+      let language = this.list.array[index].lc;
+      if (Laya.LocalStorage.getItem("language") != language) {
+        Laya.LocalStorage.setItem("language", language);
+        let url = TranslateLanguage.Urls != null ? Config.OSS_BASE_URL + TranslateLanguage.Urls[language] : null;
+        Laya.LocalStorage.setItem("url", url);
+        TranslateLanguage.setLanguage(language, url);
+      }
+    }
+    onLoadUrl() {
+      let data = [];
+      for (let key in TranslateLanguage.Urls) {
+        let name = LanguageList.Names[key];
+        data.push({
+          "lc": key,
+          "name": name
+        });
+      }
+      this.list.array = data;
+    }
+    onStart() {
+      TranslateLanguage.loadUrls(Laya.Handler.create(this, this.onLoadUrl));
+    }
+    updateItem(cell, index) {
+      let item = cell.getComponent(LanguageItem);
+      item.useBtn.text = this.list.array[index].name;
+    }
+  };
+  __name(LanguageList, "LanguageList");
+  LanguageList.Names = {
+    "zh": "\u4E2D\u6587",
+    "en": "English",
+    "ara": "\u0639\u0631\u0628",
+    "fra": "France",
+    "de": "Deutschland",
+    "id": "Indonesia",
+    "it": "Italia",
+    "jp": "\u65E5\u672C",
+    "kor": "\uB300\uD55C\uBBFC\uAD6D",
+    "per": "Peru",
+    "pl": "Polska",
+    "pt": "Portugal",
+    "ru": "\u0420\u0430\u0441\u0435\u044F",
+    "spa": "Espa\xF1a",
+    "th": "\u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28\u0E44\u0E17\u0E22",
+    "tr": "T\xFCrkiye",
+    "vie": "Vi\u1EC7t Nam",
+    "cht": "\u4E2D\u6587"
+  };
+  __decorateClass([
+    property61(Laya.List)
+  ], LanguageList.prototype, "list", 2);
+  LanguageList = __decorateClass([
+    regClass61("8869f30b-ebf7-450e-9d69-f27a1155a13d", "../src/LanguageList.ts")
+  ], LanguageList);
+
+  // src/Loader.ts
+  var { regClass: regClass62, property: property62 } = Laya;
   var Loader = class extends Laya.Script {
     onAwake() {
+      let language = Laya.LocalStorage.getItem("language");
+      if (language == null) {
+        Laya.LocalStorage.setItem("language", navigator.language.split("-")[0].toLowerCase());
+      }
       Laya.loader.load(
         [
           "resources/images/menubk.png",
@@ -14750,7 +15117,8 @@
           { url: "sounds/move.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/jinbi.mp3", type: Laya.Loader.BUFFER },
           { url: "sounds/home.mp3", type: Laya.Loader.BUFFER },
-          { url: "sounds/message.mp3", type: Laya.Loader.BUFFER }
+          { url: "sounds/message.mp3", type: Laya.Loader.BUFFER },
+          { url: Config.TRANSLATE_URL, type: Laya.Loader.JSON }
         ];
         Laya.loader.load(resArr, null, Laya.Handler.create(this, this.onLoading, null, false)).then(() => {
           this.progress.value = 1;
@@ -14758,10 +15126,6 @@
         });
         Laya.loader.on(Laya.Event.ERROR, this, this.onError);
       });
-      let language = Laya.LocalStorage.getItem("language");
-      if (language == null) {
-        Laya.LocalStorage.setItem("language", navigator.language.toLowerCase());
-      }
     }
     /**
     * 当报错时打印错误
@@ -14782,26 +15146,26 @@
   };
   __name(Loader, "Loader");
   __decorateClass([
-    property59(Laya.ProgressBar)
+    property62(Laya.ProgressBar)
   ], Loader.prototype, "progress", 2);
   Loader = __decorateClass([
-    regClass59("6ba36595-2b25-4c8e-94ec-93bc12bea352", "../src/Loader.ts")
+    regClass62("6ba36595-2b25-4c8e-94ec-93bc12bea352", "../src/Loader.ts")
   ], Loader);
 
   // src/Lunch.ts
-  var { regClass: regClass60, property: property60 } = Laya;
+  var { regClass: regClass63, property: property63 } = Laya;
   var Lunch = class extends Laya.Script {
     onStart() {
     }
   };
   __name(Lunch, "Lunch");
   Lunch = __decorateClass([
-    regClass60("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
+    regClass63("7bad1742-6eed-4d8d-81c0-501dc5bf03d6", "../src/Lunch.ts")
   ], Lunch);
 
   // src/OnlineParallel.ts
   var SFS2X20 = __toESM(require_sfs2x_api());
-  var { regClass: regClass61, property: property61 } = Laya;
+  var { regClass: regClass64, property: property64 } = Laya;
   var OnlineParallel = class extends GameRoom {
     constructor() {
       super();
@@ -14896,11 +15260,11 @@
   };
   __name(OnlineParallel, "OnlineParallel");
   OnlineParallel = __decorateClass([
-    regClass61("ed529f9a-99b9-4ca5-9c9f-f8dc68b088a5", "../src/OnlineParallel.ts")
+    regClass64("ed529f9a-99b9-4ca5-9c9f-f8dc68b088a5", "../src/OnlineParallel.ts")
   ], OnlineParallel);
 
   // src/Menu.ts
-  var { regClass: regClass62, property: property62, SoundManager: SoundManager11 } = Laya;
+  var { regClass: regClass65, property: property65, SoundManager: SoundManager11 } = Laya;
   var Menu = class extends Laya.Script {
     constructor() {
       super();
@@ -14995,45 +15359,45 @@
   };
   __name(Menu, "Menu");
   __decorateClass([
-    property62(Laya.Button)
+    property65(Laya.Button)
   ], Menu.prototype, "challengeComputer", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property65(Laya.Button)
   ], Menu.prototype, "challengeExtreme", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property65(Laya.Button)
   ], Menu.prototype, "challengeFriend", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property65(Laya.Button)
   ], Menu.prototype, "settings", 2);
   __decorateClass([
-    property62(Laya.Button)
+    property65(Laya.Button)
   ], Menu.prototype, "buddy", 2);
   __decorateClass([
-    property62(Laya.Box)
+    property65(Laya.Box)
   ], Menu.prototype, "avatar", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property65(Laya.Sprite)
   ], Menu.prototype, "goldcoin", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property65(Laya.Sprite)
   ], Menu.prototype, "ranklist", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property65(Laya.Sprite)
   ], Menu.prototype, "checkin", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property65(Laya.Sprite)
   ], Menu.prototype, "level", 2);
   __decorateClass([
-    property62(Laya.Sprite)
+    property65(Laya.Sprite)
   ], Menu.prototype, "trims", 2);
   Menu = __decorateClass([
-    regClass62("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
+    regClass65("02f796be-4a4d-47b6-85e5-393116d386f4", "../src/Menu.ts")
   ], Menu);
 
   // src/Militant.ts
   var SFS2X21 = __toESM(require_sfs2x_api());
-  var { regClass: regClass63, property: property63, SoundManager: SoundManager12 } = Laya;
+  var { regClass: regClass66, property: property66, SoundManager: SoundManager12 } = Laya;
   var Militant = class extends Laya.Scene {
     constructor() {
       super(...arguments);
@@ -15162,20 +15526,20 @@
   };
   __name(Militant, "Militant");
   __decorateClass([
-    property63(Laya.Box)
+    property66(Laya.Box)
   ], Militant.prototype, "item", 2);
   __decorateClass([
-    property63(Laya.ViewStack)
+    property66(Laya.ViewStack)
   ], Militant.prototype, "viewStack", 2);
   __decorateClass([
-    property63(Laya.Label)
+    property66(Laya.Label)
   ], Militant.prototype, "clock", 2);
   Militant = __decorateClass([
-    regClass63("ad36c844-687a-4547-a0c9-d64724488c9e", "../src/Militant.ts")
+    regClass66("ad36c844-687a-4547-a0c9-d64724488c9e", "../src/Militant.ts")
   ], Militant);
 
   // src/MyselfAvatar.ts
-  var { regClass: regClass64, property: property64 } = Laya;
+  var { regClass: regClass67, property: property67 } = Laya;
   var MyselfAvatar = class extends Laya.Script {
     constructor() {
       super();
@@ -15187,11 +15551,11 @@
   };
   __name(MyselfAvatar, "MyselfAvatar");
   MyselfAvatar = __decorateClass([
-    regClass64("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
+    regClass67("6391ac00-78b9-4858-83c1-49b4c5192fc5", "../src/MyselfAvatar.ts")
   ], MyselfAvatar);
 
   // src/MyselfGold.ts
-  var { regClass: regClass65, property: property65 } = Laya;
+  var { regClass: regClass68, property: property68 } = Laya;
   var MyselfGold = class extends Laya.Script {
     constructor() {
       super();
@@ -15203,11 +15567,11 @@
   };
   __name(MyselfGold, "MyselfGold");
   MyselfGold = __decorateClass([
-    regClass65("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
+    regClass68("12b679ee-f2ac-4f30-9b77-97dedf5b62a2", "../src/MyselfGold.ts")
   ], MyselfGold);
 
   // src/MyselfLv.ts
-  var { regClass: regClass66, property: property66 } = Laya;
+  var { regClass: regClass69, property: property69 } = Laya;
   var MyselfLv = class extends Laya.Script {
     constructor() {
       super();
@@ -15219,11 +15583,11 @@
   };
   __name(MyselfLv, "MyselfLv");
   MyselfLv = __decorateClass([
-    regClass66("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
+    regClass69("360a2a0b-2e0c-429a-a557-81908ba925ac", "../src/MyselfLv.ts")
   ], MyselfLv);
 
   // src/MyselfName.ts
-  var { regClass: regClass67, property: property67 } = Laya;
+  var { regClass: regClass70, property: property70 } = Laya;
   var MyselfName = class extends Laya.Script {
     constructor() {
       super();
@@ -15235,11 +15599,11 @@
   };
   __name(MyselfName, "MyselfName");
   MyselfName = __decorateClass([
-    regClass67("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
+    regClass70("d8466b2f-776b-44d3-9475-f88cc34fe63d", "../src/MyselfName.ts")
   ], MyselfName);
 
   // src/MyselfTrim.ts
-  var { regClass: regClass68, property: property68 } = Laya;
+  var { regClass: regClass71, property: property71 } = Laya;
   var MyselfTrim = class extends Laya.Script {
     //declare owner : Laya.Sprite3D;
     constructor() {
@@ -15253,11 +15617,11 @@
   };
   __name(MyselfTrim, "MyselfTrim");
   MyselfTrim = __decorateClass([
-    regClass68("de3ddc02-0b18-42f2-9cc9-7367db4fcf46", "../src/MyselfTrim.ts")
+    regClass71("de3ddc02-0b18-42f2-9cc9-7367db4fcf46", "../src/MyselfTrim.ts")
   ], MyselfTrim);
 
   // src/PlayerProfile.ts
-  var { regClass: regClass69, property: property69 } = Laya;
+  var { regClass: regClass72, property: property72 } = Laya;
   var PlayerProfile = class extends Laya.Script {
     constructor() {
       super();
@@ -15266,11 +15630,11 @@
   };
   __name(PlayerProfile, "PlayerProfile");
   PlayerProfile = __decorateClass([
-    regClass69("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
+    regClass72("4b5b8de8-d817-409d-aeeb-51e8cd7705a7", "../src/PlayerProfile.ts")
   ], PlayerProfile);
 
   // src/ProfileDialog.ts
-  var { regClass: regClass70, property: property70 } = Laya;
+  var { regClass: regClass73, property: property73 } = Laya;
   var ProfileDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -15304,27 +15668,27 @@
   };
   __name(ProfileDialog, "ProfileDialog");
   __decorateClass([
-    property70(Laya.TextInput)
+    property73(Laya.TextInput)
   ], ProfileDialog.prototype, "name", 2);
   __decorateClass([
-    property70(Laya.List)
+    property73(Laya.List)
   ], ProfileDialog.prototype, "avatarList", 2);
   __decorateClass([
-    property70(Number)
+    property73(Number)
   ], ProfileDialog.prototype, "avatarNumber", 2);
   __decorateClass([
-    property70(Laya.Label)
+    property73(Laya.Label)
   ], ProfileDialog.prototype, "level", 2);
   __decorateClass([
-    property70(Laya.ProgressBar)
+    property73(Laya.ProgressBar)
   ], ProfileDialog.prototype, "levelProcess", 2);
   ProfileDialog = __decorateClass([
-    regClass70("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
+    regClass73("52ea4e1c-cbf1-47a8-a2e8-dc45ef860fc3", "../src/ProfileDialog.ts")
   ], ProfileDialog);
 
   // src/PropsDialog.ts
   var SFS2X22 = __toESM(require_sfs2x_api());
-  var { regClass: regClass71, property: property71 } = Laya;
+  var { regClass: regClass74, property: property74 } = Laya;
   var PropsDialog = class extends Laya.Dialog {
     constructor() {
       super();
@@ -15369,11 +15733,11 @@
   };
   __name(PropsDialog, "PropsDialog");
   PropsDialog = __decorateClass([
-    regClass71("fcc18deb-08ab-438a-abed-3b50c1cf6780", "../src/PropsDialog.ts")
+    regClass74("fcc18deb-08ab-438a-abed-3b50c1cf6780", "../src/PropsDialog.ts")
   ], PropsDialog);
 
   // src/PropsItem.ts
-  var { regClass: regClass72, property: property72 } = Laya;
+  var { regClass: regClass75, property: property75 } = Laya;
   var PropsItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15383,20 +15747,20 @@
   };
   __name(PropsItem, "PropsItem");
   __decorateClass([
-    property72(Laya.Label)
+    property75(Laya.Label)
   ], PropsItem.prototype, "gold", 2);
   __decorateClass([
-    property72(Laya.Clip)
+    property75(Laya.Clip)
   ], PropsItem.prototype, "image", 2);
   __decorateClass([
-    property72(Laya.Button)
+    property75(Laya.Button)
   ], PropsItem.prototype, "useBtn", 2);
   PropsItem = __decorateClass([
-    regClass72("632fe6a4-d7be-43f1-a32a-5c5e46228c6f", "../src/PropsItem.ts")
+    regClass75("632fe6a4-d7be-43f1-a32a-5c5e46228c6f", "../src/PropsItem.ts")
   ], PropsItem);
 
   // src/PropsList.ts
-  var { regClass: regClass73, property: property73 } = Laya;
+  var { regClass: regClass76, property: property76 } = Laya;
   var PropsList = class extends Laya.Script {
     constructor() {
       super();
@@ -15421,17 +15785,17 @@
   };
   __name(PropsList, "PropsList");
   __decorateClass([
-    property73(Laya.List)
+    property76(Laya.List)
   ], PropsList.prototype, "list", 2);
   PropsList = __decorateClass([
-    regClass73("75332ac8-0118-48e1-ae6b-2c148b8ace30", "../src/PropsList.ts")
+    regClass76("75332ac8-0118-48e1-ae6b-2c148b8ace30", "../src/PropsList.ts")
   ], PropsList);
 
   // src/RanklistDialog.ts
   var SFS2X23 = __toESM(require_sfs2x_api());
 
   // src/RanklistItem.ts
-  var { regClass: regClass74, property: property74 } = Laya;
+  var { regClass: regClass77, property: property77 } = Laya;
   var RanklistItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15439,26 +15803,26 @@
   };
   __name(RanklistItem, "RanklistItem");
   __decorateClass([
-    property74(Laya.Label)
+    property77(Laya.Label)
   ], RanklistItem.prototype, "wins", 2);
   __decorateClass([
-    property74(Laya.Label)
+    property77(Laya.Label)
   ], RanklistItem.prototype, "rank", 2);
   __decorateClass([
-    property74(Laya.Label)
+    property77(Laya.Label)
   ], RanklistItem.prototype, "nickname", 2);
   __decorateClass([
-    property74(Laya.Clip)
+    property77(Laya.Clip)
   ], RanklistItem.prototype, "avatar", 2);
   __decorateClass([
-    property74(Laya.Clip)
+    property77(Laya.Clip)
   ], RanklistItem.prototype, "icon", 2);
   RanklistItem = __decorateClass([
-    regClass74("11031840-a06f-486c-800f-1a0b954f0d89", "../src/RanklistItem.ts")
+    regClass77("11031840-a06f-486c-800f-1a0b954f0d89", "../src/RanklistItem.ts")
   ], RanklistItem);
 
   // src/RanklistDialog.ts
-  var { regClass: regClass75, property: property75 } = Laya;
+  var { regClass: regClass78, property: property78 } = Laya;
   var RanklistDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -15503,15 +15867,15 @@
   };
   __name(RanklistDialog, "RanklistDialog");
   __decorateClass([
-    property75(Laya.List)
+    property78(Laya.List)
   ], RanklistDialog.prototype, "list", 2);
   RanklistDialog = __decorateClass([
-    regClass75("f3623e2b-f742-4477-ab8f-37a8cdb21c85", "../src/RanklistDialog.ts")
+    regClass78("f3623e2b-f742-4477-ab8f-37a8cdb21c85", "../src/RanklistDialog.ts")
   ], RanklistDialog);
 
   // src/SelectColor.ts
   var SFS2X24 = __toESM(require_sfs2x_api());
-  var { regClass: regClass76, property: property76 } = Laya;
+  var { regClass: regClass79, property: property79 } = Laya;
   var SelectColor = class extends Laya.Script {
     constructor() {
       super();
@@ -15597,74 +15961,20 @@
   };
   __name(SelectColor, "SelectColor");
   __decorateClass([
-    property76(Laya.Button)
+    property79(Laya.Button)
   ], SelectColor.prototype, "closeBtn", 2);
   __decorateClass([
-    property76(Laya.Button)
+    property79(Laya.Button)
   ], SelectColor.prototype, "play", 2);
   __decorateClass([
-    property76([Laya.CheckBox])
+    property79([Laya.CheckBox])
   ], SelectColor.prototype, "colorCheckBox", 2);
   SelectColor = __decorateClass([
-    regClass76("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
+    regClass79("f32c4edf-6089-4ecb-bbcd-19da79e65ff7", "../src/SelectColor.ts")
   ], SelectColor);
 
-  // src/TranslateLanguage.ts
-  var import_roddeh_i18n = __toESM(require_i18n());
-  var { regClass: regClass77, property: property77 } = Laya;
-  var TranslateLanguage = class extends Laya.Script {
-    onAwake() {
-      Laya.loader.load("http://oss.touchmagic.cn/locale/index.json", Laya.Loader.JSON).then((json) => {
-        if (json == null || json.data == null) {
-          return;
-        }
-        TranslateLanguage.regions = json.data;
-      });
-      TranslateLanguage.setLanguage(Laya.LocalStorage.getItem("language"));
-    }
-    static getIndexOfRegion(local) {
-      for (let i = 0; i < TranslateLanguage.regions.length; ++i) {
-        if (TranslateLanguage.regions[i].local == local) {
-          return i;
-        }
-      }
-      return -1;
-    }
-    static getRegion(idx) {
-      return TranslateLanguage.regions[idx].local;
-    }
-    static getRegionNameList() {
-      let regionNames = [];
-      for (let i in TranslateLanguage.regions) {
-        regionNames.push(TranslateLanguage.regions[i].name);
-      }
-      return regionNames;
-    }
-    static setLanguage(region) {
-      TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
-      TranslateLanguage.loadLocalLanguage("http://oss.touchmagic.cn/locale/" + region + ".json", region);
-    }
-    static loadLocalLanguage(url, region) {
-      Laya.loader.load(url, Laya.Loader.JSON).then((json) => {
-        if (json == null || json.data == null) {
-          return;
-        }
-        import_roddeh_i18n.default.translator.add(json.data);
-        Laya.LocalStorage.setItem("language", region);
-      });
-    }
-  };
-  __name(TranslateLanguage, "TranslateLanguage");
-  TranslateLanguage.regions = [
-    { "local": "zh-cn", "name": "\u7B80\u4F53\u4E2D\u6587" },
-    { "local": "en-us", "name": "English" }
-  ];
-  TranslateLanguage = __decorateClass([
-    regClass77("fc5b90a5-bb9d-4c46-a1eb-22ca0f40b5cf", "../src/TranslateLanguage.ts")
-  ], TranslateLanguage);
-
   // src/Settings.ts
-  var { regClass: regClass78, property: property78 } = Laya;
+  var { regClass: regClass80, property: property80 } = Laya;
   var Settings = class extends Laya.Script {
     onAwake() {
       this.musicMuted.on(Laya.Event.CLICK, this, () => {
@@ -15678,36 +15988,30 @@
       });
       this.musicMuted.selected = Laya.LocalStorage.getItem("musicMuted") == "on";
       this.soundMuted.selected = Laya.LocalStorage.getItem("soundMuted") == "on";
-      this.languages.labels = TranslateLanguage.getRegionNameList().join(",");
-      this.languages.selectHandler = new Laya.Handler(this, this.onLanguageSelected);
-      this.languages.selectedIndex = TranslateLanguage.getIndexOfRegion(Laya.LocalStorage.getItem("language"));
-    }
-    onLanguageSelected(index) {
-      let language = TranslateLanguage.getRegion(index);
-      if (Laya.LocalStorage.getItem("language") != language) {
-        TranslateLanguage.setLanguage(language);
-      }
+      this.languages.on(Laya.Event.CLICK, this, () => {
+        Laya.Scene.open("dialog/language.lh", false, null);
+      });
     }
   };
   __name(Settings, "Settings");
   __decorateClass([
-    property78(Laya.CheckBox)
+    property80(Laya.CheckBox)
   ], Settings.prototype, "musicMuted", 2);
   __decorateClass([
-    property78(Laya.CheckBox)
+    property80(Laya.CheckBox)
   ], Settings.prototype, "soundMuted", 2);
   __decorateClass([
-    property78(Laya.ComboBox)
+    property80(Laya.Button)
   ], Settings.prototype, "languages", 2);
   Settings = __decorateClass([
-    regClass78("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
+    regClass80("a0857e55-7637-4bff-adf2-8d5101717b23", "../src/Settings.ts")
   ], Settings);
 
   // src/StatisticsDialog.ts
   var SFS2X25 = __toESM(require_sfs2x_api());
 
   // src/StatisticsInfo.ts
-  var { regClass: regClass79, property: property79 } = Laya;
+  var { regClass: regClass81, property: property81 } = Laya;
   var StatisticsInfo = class extends UserInfo {
     constructor() {
       super();
@@ -15722,14 +16026,14 @@
   };
   __name(StatisticsInfo, "StatisticsInfo");
   __decorateClass([
-    property79(Laya.ProgressBar)
+    property81(Laya.ProgressBar)
   ], StatisticsInfo.prototype, "levelProcess", 2);
   StatisticsInfo = __decorateClass([
-    regClass79("0e8653a1-8f66-4a79-846c-ca9815eff74a", "../src/StatisticsInfo.ts")
+    regClass81("0e8653a1-8f66-4a79-846c-ca9815eff74a", "../src/StatisticsInfo.ts")
   ], StatisticsInfo);
 
   // src/StatisticsDialog.ts
-  var { regClass: regClass80, property: property80 } = Laya;
+  var { regClass: regClass82, property: property82 } = Laya;
   var StatisticsDialog = class extends Laya.Dialog {
     constructor() {
       super();
@@ -15759,12 +16063,12 @@
   };
   __name(StatisticsDialog, "StatisticsDialog");
   StatisticsDialog = __decorateClass([
-    regClass80("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
+    regClass82("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
 
   // src/TranslateLabel.ts
   var import_roddeh_i18n2 = __toESM(require_i18n());
-  var { regClass: regClass81, property: property81 } = Laya;
+  var { regClass: regClass83, property: property83 } = Laya;
   var TranslateLabel = class extends Laya.Script {
     constructor() {
       super(...arguments);
@@ -15785,12 +16089,12 @@
   };
   __name(TranslateLabel, "TranslateLabel");
   TranslateLabel = __decorateClass([
-    regClass81("95d9c950-3df0-48f6-983a-191d7ee0bdd1", "../src/TranslateLabel.ts")
+    regClass83("95d9c950-3df0-48f6-983a-191d7ee0bdd1", "../src/TranslateLabel.ts")
   ], TranslateLabel);
 
   // src/TranslateTab.ts
   var import_roddeh_i18n3 = __toESM(require_i18n());
-  var { regClass: regClass82, property: property82 } = Laya;
+  var { regClass: regClass84, property: property84 } = Laya;
   var TranslateTab = class extends Laya.Script {
     onAwake() {
       let tab = this.owner;
@@ -15811,11 +16115,11 @@
   };
   __name(TranslateTab, "TranslateTab");
   TranslateTab = __decorateClass([
-    regClass82("af3f1d27-46d7-496d-8441-57069404b191", "../src/TranslateTab.ts")
+    regClass84("af3f1d27-46d7-496d-8441-57069404b191", "../src/TranslateTab.ts")
   ], TranslateTab);
 
   // src/TrimItem.ts
-  var { regClass: regClass83, property: property83 } = Laya;
+  var { regClass: regClass85, property: property85 } = Laya;
   var TrimItem = class extends Laya.Script {
     constructor() {
       super();
@@ -15823,20 +16127,20 @@
   };
   __name(TrimItem, "TrimItem");
   __decorateClass([
-    property83(Laya.Label)
+    property85(Laya.Label)
   ], TrimItem.prototype, "title", 2);
   __decorateClass([
-    property83(Laya.Image)
+    property85(Laya.Image)
   ], TrimItem.prototype, "image", 2);
   __decorateClass([
-    property83(Laya.Image)
+    property85(Laya.Image)
   ], TrimItem.prototype, "background", 2);
   TrimItem = __decorateClass([
-    regClass83("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
+    regClass85("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
   ], TrimItem);
 
   // src/TrimCoinItem.ts
-  var { regClass: regClass84, property: property84 } = Laya;
+  var { regClass: regClass86, property: property86 } = Laya;
   var TrimCoinItem = class extends TrimItem {
     constructor() {
       super();
@@ -15855,19 +16159,19 @@
   };
   __name(TrimCoinItem, "TrimCoinItem");
   __decorateClass([
-    property84(Laya.Label)
+    property86(Laya.Label)
   ], TrimCoinItem.prototype, "gold", 2);
   __decorateClass([
-    property84(Laya.ViewStack)
+    property86(Laya.ViewStack)
   ], TrimCoinItem.prototype, "viewStack", 2);
   __decorateClass([
-    property84(Laya.Button)
+    property86(Laya.Button)
   ], TrimCoinItem.prototype, "buybutton", 2);
   __decorateClass([
-    property84(Laya.CheckBox)
+    property86(Laya.CheckBox)
   ], TrimCoinItem.prototype, "selectBox", 2);
   TrimCoinItem = __decorateClass([
-    regClass84("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
+    regClass86("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
   ], TrimCoinItem);
 
   // src/TrimCoinsList.ts
@@ -15928,7 +16232,7 @@
   var TrimConfig = _TrimConfig;
 
   // src/TrimCoinsList.ts
-  var { regClass: regClass85, property: property85 } = Laya;
+  var { regClass: regClass87, property: property87 } = Laya;
   var TrimCoinsList = class extends Laya.Script {
     constructor() {
       super();
@@ -15997,14 +16301,14 @@
   };
   __name(TrimCoinsList, "TrimCoinsList");
   __decorateClass([
-    property85(Laya.List)
+    property87(Laya.List)
   ], TrimCoinsList.prototype, "list", 2);
   TrimCoinsList = __decorateClass([
-    regClass85("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
+    regClass87("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
   ], TrimCoinsList);
 
   // src/TrimLevelItem.ts
-  var { regClass: regClass86, property: property86 } = Laya;
+  var { regClass: regClass88, property: property88 } = Laya;
   var TrimLevelItem = class extends TrimItem {
     constructor() {
       super();
@@ -16023,14 +16327,14 @@
   };
   __name(TrimLevelItem, "TrimLevelItem");
   __decorateClass([
-    property86(Laya.CheckBox)
+    property88(Laya.CheckBox)
   ], TrimLevelItem.prototype, "button", 2);
   TrimLevelItem = __decorateClass([
-    regClass86("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
+    regClass88("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
   ], TrimLevelItem);
 
   // src/TrimLevelList.ts
-  var { regClass: regClass87, property: property87 } = Laya;
+  var { regClass: regClass89, property: property89 } = Laya;
   var TrimLevelList = class extends Laya.Script {
     constructor() {
       super();
@@ -16066,14 +16370,14 @@
   };
   __name(TrimLevelList, "TrimLevelList");
   __decorateClass([
-    property87(Laya.List)
+    property89(Laya.List)
   ], TrimLevelList.prototype, "list", 2);
   TrimLevelList = __decorateClass([
-    regClass87("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
+    regClass89("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
   ], TrimLevelList);
 
   // src/TrimDialog.ts
-  var { regClass: regClass88, property: property88 } = Laya;
+  var { regClass: regClass90, property: property90 } = Laya;
   var TrimDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -16103,26 +16407,26 @@
   };
   __name(TrimDialog, "TrimDialog");
   __decorateClass([
-    property88(Laya.ViewStack)
+    property90(Laya.ViewStack)
   ], TrimDialog.prototype, "viewStack", 2);
   __decorateClass([
-    property88(Laya.Tab)
+    property90(Laya.Tab)
   ], TrimDialog.prototype, "tab", 2);
   __decorateClass([
-    property88(TrimLevelList)
+    property90(TrimLevelList)
   ], TrimDialog.prototype, "trimLevelList", 2);
   __decorateClass([
-    property88(TrimCoinsList)
+    property90(TrimCoinsList)
   ], TrimDialog.prototype, "trimCoinsList", 2);
   TrimDialog = __decorateClass([
-    regClass88("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
+    regClass90("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
   ], TrimDialog);
 })();
 /*! Bundled license information:
 
 sfs2x-api/sfs2x-api.js:
   (*!
-   * SmartFoxServer 2X HTML5/JavaScript API v1.7.20
+   * SmartFoxServer 2X HTML5/JavaScript API v1.8.0
    * (c) gotoAndPlay | All rights reserved
    * http://www.smartfoxserver.com
    *)

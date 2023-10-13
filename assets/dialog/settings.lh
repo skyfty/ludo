@@ -19,7 +19,7 @@
         "_$ref": "bkjsg7oi"
       },
       "languages": {
-        "_$ref": "7c5jt3aj"
+        "_$ref": "vf1uaz8k"
       }
     }
   ],
@@ -79,17 +79,16 @@
       "_$id": "bkjsg7oi",
       "_$type": "CheckBox",
       "name": "soundMuted",
-      "x": 419,
-      "y": 413,
-      "width": 74,
-      "height": 74,
+      "x": 328,
+      "y": 440,
+      "width": 95,
+      "height": 88,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://0dfe8aa1-5809-4a32-8bc0-fc90e924e2f4",
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
-      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -101,40 +100,22 @@
       "_$id": "bgzvk3we",
       "_$type": "CheckBox",
       "name": "musicMuted",
-      "x": 238,
-      "y": 413,
-      "width": 74,
-      "height": 74,
+      "x": 147,
+      "y": 440,
+      "width": 92,
+      "height": 85,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://039a540e-3b49-4265-9c7b-8071f18afe6c",
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
-      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
         }
       ]
-    },
-    {
-      "_$id": "7c5jt3aj",
-      "_$type": "ComboBox",
-      "name": "ComboBox",
-      "x": 250,
-      "y": 570,
-      "width": 256,
-      "height": 70,
-      "mouseEnabled": true,
-      "skin": "res://f64d4387-f2c7-4e48-bea1-a0dfd22a109d",
-      "labels": "",
-      "labelSize": 20,
-      "itemSize": 12,
-      "itemColors": "#5e95b6,#ffffff,#000000,#8fa4b1,#ffffff",
-      "selectedLabel": "",
-      "defaultLabel": ""
     },
     {
       "_$id": "ygb41m8l",
@@ -160,6 +141,21 @@
           "scriptPath": "../src/TranslateLabel.ts"
         }
       ]
+    },
+    {
+      "_$id": "vf1uaz8k",
+      "_$type": "Button",
+      "name": "Button",
+      "x": 501,
+      "y": 440,
+      "width": 95,
+      "height": 88,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://a73a32f1-18da-4c46-81f5-e13edda4d127",
+      "label": "",
+      "labelSize": 20,
+      "labelVAlign": "middle"
     }
   ]
 }

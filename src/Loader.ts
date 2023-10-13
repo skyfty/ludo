@@ -1,3 +1,5 @@
+import { Config } from "./Config";
+
 const { regClass, property } = Laya;
 
 @regClass()
@@ -7,6 +9,10 @@ export class Loader extends Laya.Script {
     public progress: Laya.ProgressBar;
 
     onAwake(): void {
+        let language = Laya.LocalStorage.getItem("language");
+        if (language == null) {
+            Laya.LocalStorage.setItem("language", navigator.language.split("-")[0].toLowerCase());
+        }
         Laya.loader.load(
             [
                 "resources/images/menubk.png",
@@ -138,6 +144,7 @@ export class Loader extends Laya.Script {
                 { url: "sounds/jinbi.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/home.mp3", type: Laya.Loader.BUFFER },
                 { url: "sounds/message.mp3", type: Laya.Loader.BUFFER },
+                { url: Config.TRANSLATE_URL, type: Laya.Loader.JSON },
             ];
 
             Laya.loader.load(resArr, null, Laya.Handler.create(this, this.onLoading, null, false)).then(() => {
@@ -147,10 +154,6 @@ export class Loader extends Laya.Script {
             Laya.loader.on(Laya.Event.ERROR, this, this.onError);
         });
 
-        let language = Laya.LocalStorage.getItem("language");
-        if (language == null) {
-            Laya.LocalStorage.setItem("language", navigator.language.toLowerCase());
-        }
     }
 
     /**

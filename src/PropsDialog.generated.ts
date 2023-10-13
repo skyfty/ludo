@@ -2,7 +2,7 @@
 
 
 /**
- * dialog/props.lh
+ * dialog/language.lh
  */
 export class PropsDialogBase extends Laya.Dialog {
 }

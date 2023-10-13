@@ -1,47 +1,41 @@
 const { regClass, property } = Laya;
 import i18n from "../node_modules/roddeh-i18n";
+import { Config } from "./Config";
 
 @regClass()
 export class TranslateLanguage extends Laya.Script {
-    static regions = [
-      {"local":"zh-cn", "name":"简体中文"}, 
-      {"local":"en-us", "name":"English"}
-    ];
+
+    public static Urls:[]
 
     onAwake(): void {
-      Laya.loader.load("http://oss.touchmagic.cn/locale/index.json", Laya.Loader.JSON).then((json) => {
-        if (json == null || json.data == null) {
-          return;
-        }
-        TranslateLanguage.regions = json.data;
+      let url = Laya.LocalStorage.getItem("url");
+      if(url == null) {
+        TranslateLanguage.loadUrls(Laya.Handler.create(this, this.onLoadUrl));
+      }
+      TranslateLanguage.setLanguage(Laya.LocalStorage.getItem("language"), url);
+    }
+
+    onLoadUrl():void {
+      let lc = Laya.LocalStorage.getItem("language");
+      TranslateLanguage.loadLocalLanguage( Config.OSS_BASE_URL + TranslateLanguage.Urls[lc], lc);
+    }
+
+
+    static loadUrls(cb:Laya.Handler):void {
+      Laya.loader.load(Config.TRANSLATE_URL, Laya.Loader.JSON).then((json) => {
+          if (json == null || json.data == null|| json.data.data == null) {
+            return;
+          }
+          TranslateLanguage.Urls = json.data.data;
+          cb.run();
       });
-      TranslateLanguage.setLanguage(Laya.LocalStorage.getItem("language"));
     }
 
-    static getIndexOfRegion(local:string) {
-      for(let i  = 0; i < TranslateLanguage.regions.length; ++i) {
-        if (TranslateLanguage.regions[i].local == local) {
-          return i;
-        }
+    static setLanguage(region:string, url:string) {
+       TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
+      if (url != null) {
+        TranslateLanguage.loadLocalLanguage(url, region);
       }
-      return -1;
-    }
-
-    static getRegion(idx:any) {
-      return TranslateLanguage.regions[idx].local;
-    }
-
-    static getRegionNameList() {
-      let regionNames = [];
-      for(let i in TranslateLanguage.regions) {
-        regionNames.push(TranslateLanguage.regions[i].name);
-      }
-      return regionNames;
-    }
-
-    static setLanguage(region:string) {
-      TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
-      TranslateLanguage.loadLocalLanguage("http://oss.touchmagic.cn/locale/" + region + ".json", region);
     }
 
     static loadLocalLanguage(url:string, region:string) {
