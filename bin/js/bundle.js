@@ -14148,7 +14148,7 @@
   };
   __name(Entry, "Entry");
   Entry = __decorateClass([
-    regClass47("67ad1baf-072e-4d2a-9e9b-214c2b99ce5d", "../src/Entry.ts")
+    regClass47("d250ec82-d026-491f-b433-11bd3067cac8", "../src/Entry.ts")
   ], Entry);
 
   // src/Online.ts
