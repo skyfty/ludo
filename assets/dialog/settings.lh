@@ -89,6 +89,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -110,6 +111,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -121,9 +123,9 @@
       "_$id": "ygb41m8l",
       "_$type": "Label",
       "name": "Label",
-      "x": 271,
+      "x": 108,
       "y": 300,
-      "width": 225,
+      "width": 544,
       "height": 60,
       "text": "Settings",
       "fontSize": 55,

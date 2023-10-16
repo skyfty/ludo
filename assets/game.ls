@@ -837,7 +837,8 @@
               "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
               "label": "",
               "labelSize": 20,
-              "labelColors": "#ffffff,#32cc6b,#ff0000,#C0C0C0",
+              "labelColors": "#ffffff,#32cc6b,#ff0000",
+              "labelVAlign": "middle",
               "_$comp": [
                 {
                   "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -873,6 +874,7 @@
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
           "label": "",
           "labelSize": 20,
+          "labelVAlign": "middle",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -1093,8 +1095,8 @@
               "_$index": 3,
               "_$type": "Sprite",
               "name": "path",
-              "x": 257.9999999999999,
-              "y": -374.00000000000006,
+              "x": 259,
+              "y": -379,
               "width": 100,
               "height": 100,
               "_$child": [
@@ -1104,7 +1106,7 @@
                   "name": "0",
                   "active": true,
                   "x": 30,
-                  "y": 284,
+                  "y": 285,
                   "visible": true,
                   "bgColor": null
                 },
@@ -1124,7 +1126,7 @@
                   "name": "2",
                   "active": true,
                   "x": 30,
-                  "y": 199,
+                  "y": 200,
                   "visible": true,
                   "bgColor": null
                 },
@@ -1134,9 +1136,10 @@
                   "name": "3",
                   "active": true,
                   "x": 30,
-                  "y": 157,
+                  "y": 158,
                   "visible": true,
-                  "bgColor": null
+                  "bgColor": null,
+                  "alpha": 1
                 },
                 {
                   "_$id": "4jo8gq9i",
@@ -1144,7 +1147,7 @@
                   "name": "4",
                   "active": true,
                   "x": 30,
-                  "y": 115,
+                  "y": 116,
                   "visible": true,
                   "bgColor": null
                 },
@@ -1167,9 +1170,11 @@
               "_$index": 4,
               "name": "origin",
               "active": true,
-              "x": 32,
-              "y": -218,
+              "x": 34,
+              "y": -220,
               "visible": true,
+              "width": 168,
+              "height": 166,
               "_$child": [
                 {
                   "_$override": "3ubclldw",
@@ -1239,7 +1244,7 @@
               "_$type": "Sprite",
               "name": "groove",
               "x": 77,
-              "y": -174,
+              "y": -178,
               "width": 80,
               "height": 80,
               "_$comp": [
@@ -1254,8 +1259,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "0",
                   "active": true,
-                  "x": 0,
-                  "y": -1.1368683772161603e-13,
+                  "x": 2,
+                  "y": 2.9999999999998863,
                   "visible": true,
                   "width": 38,
                   "height": 38,
@@ -1296,8 +1301,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "1",
                   "active": true,
-                  "x": 41,
-                  "y": -1.1368683772161603e-13,
+                  "x": 44,
+                  "y": 1.9999999999998863,
                   "visible": true,
                   "width": 38,
                   "height": 38,
@@ -1328,8 +1333,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": 0,
-                  "y": 42,
+                  "x": 1,
+                  "y": 44,
                   "visible": true,
                   "width": 38,
                   "height": 38,
@@ -1360,8 +1365,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 41,
-                  "y": 42,
+                  "x": 43,
+                  "y": 44,
                   "visible": true,
                   "width": 38,
                   "height": 38,
@@ -1455,6 +1460,7 @@
               "text": "",
               "fontSize": 15,
               "color": "rgba(254, 255, 0, 1)",
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0"
             }
@@ -1620,9 +1626,10 @@
               "_$index": 2,
               "name": "origin",
               "active": true,
-              "x": 32,
+              "x": 35,
               "y": 123.00000000000006,
               "visible": true,
+              "width": 165,
               "_$child": [
                 {
                   "_$override": "3ubclldw",
@@ -1764,8 +1771,8 @@
               "_$index": 4,
               "_$type": "Sprite",
               "name": "groove",
-              "x": 76,
-              "y": 165.9999999999999,
+              "x": 79,
+              "y": 169,
               "width": 80,
               "height": 80,
               "_$comp": [
@@ -1780,8 +1787,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "0",
                   "active": true,
-                  "x": 0,
-                  "y": 0,
+                  "x": -1,
+                  "y": -2,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1811,7 +1818,7 @@
                   "name": "1",
                   "active": true,
                   "x": 41,
-                  "y": 0,
+                  "y": -1,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1840,8 +1847,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": 0,
-                  "y": 42,
+                  "x": 1,
+                  "y": 40,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1870,8 +1877,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 41,
-                  "y": 42.00000000000017,
+                  "x": 42,
+                  "y": 40.00000000000017,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1966,6 +1973,7 @@
               "text": "",
               "fontSize": 15,
               "color": "rgba(254, 255, 0, 1)",
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0"
             },
@@ -2185,9 +2193,10 @@
               "_$index": 2,
               "name": "origin",
               "active": true,
-              "x": -48,
+              "x": -47,
               "y": -216.9999999999999,
               "visible": true,
+              "width": 167,
               "_$child": [
                 {
                   "_$override": "3ubclldw",
@@ -2369,8 +2378,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "1",
                   "active": true,
-                  "x": 41,
-                  "y": 0,
+                  "x": 43,
+                  "y": 1,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2393,8 +2402,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": 0,
-                  "y": 42,
+                  "x": 2,
+                  "y": 43,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2417,8 +2426,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 41,
-                  "y": 42,
+                  "x": 43,
+                  "y": 43,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2495,6 +2504,7 @@
               "fontSize": 15,
               "color": "rgba(254, 255, 0, 1)",
               "align": "right",
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0"
             },
@@ -2713,9 +2723,11 @@
               "_$index": 2,
               "name": "origin",
               "active": true,
-              "x": -43,
-              "y": 120,
+              "x": -40,
+              "y": 121,
               "visible": true,
+              "width": 166,
+              "height": 167,
               "_$child": [
                 {
                   "_$override": "3ubclldw",
@@ -2873,7 +2885,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "0",
                   "active": true,
-                  "x": 0,
+                  "x": 2,
                   "y": 0,
                   "visible": true,
                   "_$comp": [
@@ -2903,8 +2915,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "1",
                   "active": true,
-                  "x": 41,
-                  "y": 0,
+                  "x": 44,
+                  "y": 1,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2933,7 +2945,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": 0,
+                  "x": 2,
                   "y": 42,
                   "visible": true,
                   "_$comp": [
@@ -2963,7 +2975,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 41,
+                  "x": 43,
                   "y": 42,
                   "visible": true,
                   "_$comp": [
@@ -3061,6 +3073,7 @@
               "fontSize": 15,
               "color": "rgba(254, 255, 0, 1)",
               "align": "right",
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0"
             },

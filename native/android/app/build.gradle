@@ -60,6 +60,14 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    signingConfigs {
+        release {
+            storeFile file('D:/game/user.keystore')
+            storePassword '19830915'
+            keyAlias 'touchmagic'
+            keyPassword '19830915'
+        }
+    }
 }
 
 flutter {

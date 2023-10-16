@@ -45,6 +45,7 @@ export class LanguageList extends Laya.Script {
             let url = TranslateLanguage.Urls != null ? Config.OSS_BASE_URL + TranslateLanguage.Urls[language]:null;
             Laya.LocalStorage.setItem("url", url);
             TranslateLanguage.setLanguage(language, url);
+            (this.owner as Laya.Dialog).close();
         }
     }
 

@@ -68,7 +68,7 @@
       "x": 76.6969239257643,
       "y": 142.26507236964989,
       "width": 592.8183536354472,
-      "height": 886.6958315698572,
+      "height": 887.6958315698572,
       "mouseEnabled": true,
       "itemTemplate": {
         "_$ref": "pal6youk",
@@ -77,7 +77,7 @@
       "repeatX": 2,
       "repeatY": 9,
       "spaceX": 9,
-      "spaceY": 10,
+      "spaceY": 9,
       "scrollType": 2,
       "selectEnable": true,
       "_$child": [
@@ -109,7 +109,7 @@
               "_filters": [],
               "stateNum": 1,
               "skin": "res://238ef9cb-8a20-414b-8d5e-986c5acccb2d",
-              "label": "sdfsdf",
+              "label": "中文",
               "labelSize": 32,
               "labelBold": true,
               "labelColors": "#ffffff,#32cc6b,#ff0000",
