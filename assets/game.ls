@@ -1259,8 +1259,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "0",
                   "active": true,
-                  "x": 2,
-                  "y": 2.9999999999998863,
+                  "x": 0,
+                  "y": 1.9999999999998863,
                   "visible": true,
                   "width": 38,
                   "height": 38,
@@ -1333,7 +1333,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": 1,
+                  "x": 0,
                   "y": 44,
                   "visible": true,
                   "width": 38,
@@ -1365,7 +1365,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 43,
+                  "x": 44,
                   "y": 44,
                   "visible": true,
                   "width": 38,
@@ -1818,7 +1818,7 @@
                   "name": "1",
                   "active": true,
                   "x": 41,
-                  "y": -1,
+                  "y": -2,
                   "visible": true,
                   "_$comp": [
                     {
@@ -1847,7 +1847,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": 1,
+                  "x": -1,
                   "y": 40,
                   "visible": true,
                   "_$comp": [
@@ -1877,8 +1877,8 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 42,
-                  "y": 40.00000000000017,
+                  "x": 41,
+                  "y": 40,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2379,7 +2379,7 @@
                   "name": "1",
                   "active": true,
                   "x": 43,
-                  "y": 1,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2402,7 +2402,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "2",
                   "active": true,
-                  "x": 2,
+                  "x": 0,
                   "y": 43,
                   "visible": true,
                   "_$comp": [
@@ -2916,7 +2916,7 @@
                   "name": "1",
                   "active": true,
                   "x": 44,
-                  "y": 1,
+                  "y": 0,
                   "visible": true,
                   "_$comp": [
                     {
@@ -2975,7 +2975,7 @@
                   "_$prefab": "7fccce01-c779-4446-adce-948a5c3a712d",
                   "name": "3",
                   "active": true,
-                  "x": 43,
+                  "x": 44,
                   "y": 42,
                   "visible": true,
                   "_$comp": [
