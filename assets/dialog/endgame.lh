@@ -37,6 +37,10 @@
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+              "scriptPath": "../src/TranslateButton.ts"
             }
           ]
         },
@@ -58,7 +62,13 @@
           "y": 61,
           "text": "End Current Game?",
           "width": 448,
-          "height": 136
+          "height": 136,
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         },
         {
           "_$override": "9i71029w",

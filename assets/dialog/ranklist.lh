@@ -42,6 +42,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -137,6 +138,7 @@
                   "fontSize": 34,
                   "color": "rgba(243, 202, 13, 1)",
                   "bold": true,
+                  "valign": "top",
                   "leading": 0,
                   "padding": "0,0,0,0"
                 },
@@ -151,6 +153,7 @@
                   "text": "3\n",
                   "fontSize": 34,
                   "color": "#FFFFFF",
+                  "valign": "top",
                   "leading": 0,
                   "padding": "0,0,0,0"
                 }
@@ -185,6 +188,7 @@
               "fontSize": 42,
               "color": "rgba(254, 212, 3, 1)",
               "bold": true,
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0",
               "stroke": 3,
@@ -247,6 +251,7 @@
                   "fontSize": 34,
                   "color": "rgba(243, 202, 13, 1)",
                   "bold": true,
+                  "valign": "top",
                   "leading": 0,
                   "padding": "0,0,0,0"
                 },
@@ -261,6 +266,7 @@
                   "text": "3\n",
                   "fontSize": 34,
                   "color": "#FFFFFF",
+                  "valign": "top",
                   "leading": 0,
                   "padding": "0,0,0,0"
                 }
@@ -302,15 +308,30 @@
           "color": "#ffffff"
         },
         {
-          "_$id": "u8v0e3ke",
-          "_$type": "Image",
-          "name": "Image(4)",
-          "x": 52,
-          "y": 13,
-          "width": 303.49470507469977,
-          "height": 47.24587757099548,
-          "skin": "res://495e2fd7-03cc-4e8a-8959-f2c3c8d70368",
-          "color": "#ffffff"
+          "_$id": "n9yussjp",
+          "_$type": "Label",
+          "name": "Label(2)",
+          "x": -29.00000000000017,
+          "y": 14,
+          "width": 470,
+          "height": 39,
+          "text": "Leaderboard",
+          "fontSize": 52,
+          "color": "rgba(253, 203, 4, 1)",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 2,
+          "padding": "0,0,0,0",
+          "stroke": 7,
+          "strokeColor": "rgba(87, 86, 73, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     }

@@ -158,6 +158,7 @@
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
           "label": "",
           "labelSize": 20,
+          "labelVAlign": "middle",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -173,15 +174,30 @@
           ]
         },
         {
-          "_$id": "oq9gzesv",
-          "_$type": "Image",
-          "name": "Image(2)",
-          "x": -144.62845196263328,
-          "y": -91.96686813531808,
-          "width": 414.05559651077095,
-          "height": 38.04492464111219,
-          "skin": "res://40a11471-15ee-4f99-91c3-45ae2832a417",
-          "color": "#ffffff"
+          "_$id": "7nc0kxe4",
+          "_$type": "Label",
+          "name": "Label(1)",
+          "x": -175.0000000000001,
+          "y": -92,
+          "width": 470,
+          "height": 39,
+          "text": "Select Profle Picture",
+          "fontSize": 37,
+          "color": "rgba(253, 203, 4, 1)",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 2,
+          "padding": "0,0,0,0",
+          "stroke": 7,
+          "strokeColor": "rgba(87, 86, 73, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         },
         {
           "_$id": "sb50k42b",
@@ -243,6 +259,7 @@
           "fontSize": 34,
           "color": "rgba(243, 202, 13, 1)",
           "bold": true,
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -257,6 +274,7 @@
           "text": "3\n",
           "fontSize": 34,
           "color": "#FFFFFF",
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0",
           "_$comp": [
@@ -310,15 +328,30 @@
               "color": "#ffffff"
             },
             {
-              "_$id": "1fs8sdml",
-              "_$type": "Image",
-              "name": "Image(4)",
-              "x": 116,
-              "y": 14,
-              "width": 193.23872861582166,
-              "height": 38.7770023978236,
-              "skin": "res://e4a96311-ccbc-4576-aa82-7862235210cb",
-              "color": "#ffffff"
+              "_$id": "ledep9aa",
+              "_$type": "Label",
+              "name": "Label(2)",
+              "x": -26.00000000000017,
+              "y": 12,
+              "width": 470,
+              "height": 39,
+              "text": "Profile",
+              "fontSize": 52,
+              "color": "rgba(253, 203, 4, 1)",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "wordWrap": true,
+              "leading": 2,
+              "padding": "0,0,0,0",
+              "stroke": 7,
+              "strokeColor": "rgba(87, 86, 73, 1)",
+              "_$comp": [
+                {
+                  "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+                  "scriptPath": "../src/TranslateLabel.ts"
+                }
+              ]
             }
           ]
         }

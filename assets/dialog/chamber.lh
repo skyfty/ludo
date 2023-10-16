@@ -52,7 +52,13 @@
       "labelStrokeColor": null,
       "labelAlign": null,
       "labelPadding": "6,0,0,0",
-      "strokeColors": null
+      "strokeColors": null,
+      "_$comp": [
+        {
+          "_$type": "af3f1d27-46d7-496d-8441-57069404b191",
+          "scriptPath": "../src/TranslateTab.ts"
+        }
+      ]
     },
     {
       "_$id": "qof49bki",
@@ -128,17 +134,6 @@
               ],
               "_$child": [
                 {
-                  "_$id": "9ko3k7ht",
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 148,
-                  "y": -3,
-                  "width": 312.39775624681215,
-                  "height": 35.499745028046796,
-                  "skin": "res://b841ade8-b52b-4027-997e-29db5f6fc910",
-                  "color": "#ffffff"
-                },
-                {
                   "_$id": "3agryvs3",
                   "_$type": "Image",
                   "name": "Image(5)",
@@ -207,6 +202,7 @@
                   "label": "",
                   "labelSize": 20,
                   "labelAlign": "left",
+                  "labelVAlign": "top",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -228,6 +224,7 @@
                   "label": "",
                   "labelSize": 20,
                   "labelAlign": "left",
+                  "labelVAlign": "top",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -249,6 +246,7 @@
                   "label": "",
                   "labelSize": 20,
                   "labelAlign": "left",
+                  "labelVAlign": "top",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -270,23 +268,13 @@
                   "label": "",
                   "labelSize": 20,
                   "labelAlign": "left",
+                  "labelVAlign": "top",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
                       "scriptPath": "../src/ClickSound.ts"
                     }
                   ]
-                },
-                {
-                  "_$id": "kxlkasml",
-                  "_$type": "Image",
-                  "name": "Image(6)",
-                  "x": 147,
-                  "y": 228,
-                  "width": 314.10300866904595,
-                  "height": 35.69352371239155,
-                  "skin": "res://ca3037ad-63f6-4dc1-ab05-13153f01d38f",
-                  "color": "#ffffff"
                 },
                 {
                   "_$id": "8132rh4e",
@@ -315,6 +303,7 @@
                   "label": "",
                   "labelSize": 20,
                   "labelAlign": "left",
+                  "labelVAlign": "top",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -338,6 +327,7 @@
                   "label": "",
                   "labelSize": 20,
                   "labelAlign": "left",
+                  "labelVAlign": "top",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -362,6 +352,7 @@
                   "label": "",
                   "labelSize": 20,
                   "labelAlign": "left",
+                  "labelVAlign": "top",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -384,13 +375,70 @@
                   "label": "CREATE ROOM",
                   "labelFont": "Impact",
                   "labelSize": 32,
-                  "labelColors": "#515113,#c7c719,#ffffff,#c0c0c0",
+                  "labelColors": "#515113,#c7c719,#ffffff",
+                  "labelVAlign": "middle",
                   "labelStroke": 1,
                   "labelStrokeColor": "rgba(4, 3, 4, 1)",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
                       "scriptPath": "../src/ClickSound.ts"
+                    },
+                    {
+                      "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+                      "scriptPath": "../src/TranslateButton.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "1kvmm1yt",
+                  "_$type": "Label",
+                  "name": "Label(2)",
+                  "x": 68,
+                  "y": -6,
+                  "width": 470,
+                  "height": 39,
+                  "text": "Select Your Color",
+                  "fontSize": 39,
+                  "color": "rgba(253, 203, 4, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "wordWrap": true,
+                  "leading": 2,
+                  "padding": "0,0,0,0",
+                  "stroke": 7,
+                  "strokeColor": "rgba(87, 86, 73, 1)",
+                  "_$comp": [
+                    {
+                      "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+                      "scriptPath": "../src/TranslateLabel.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "eyqrb4li",
+                  "_$type": "Label",
+                  "name": "Label(3)",
+                  "x": 75,
+                  "y": 226,
+                  "width": 470,
+                  "height": 39,
+                  "text": "Select Players",
+                  "fontSize": 39,
+                  "color": "rgba(253, 203, 4, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "wordWrap": true,
+                  "leading": 2,
+                  "padding": "0,0,0,0",
+                  "stroke": 7,
+                  "strokeColor": "rgba(87, 86, 73, 1)",
+                  "_$comp": [
+                    {
+                      "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+                      "scriptPath": "../src/TranslateLabel.ts"
                     }
                   ]
                 }
@@ -477,7 +525,8 @@
                   "label": "JOIN ROOM",
                   "labelFont": "Impact",
                   "labelSize": 32,
-                  "labelColors": "#ffffff,#ffffff,#ffffff,#C0C0C0",
+                  "labelColors": "#ffffff,#ffffff,#ffffff",
+                  "labelVAlign": "middle",
                   "labelStroke": 1,
                   "_$comp": [
                     {
@@ -505,6 +554,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",

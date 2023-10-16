@@ -53,6 +53,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -101,7 +102,13 @@
       "labelStrokeColor": null,
       "labelAlign": null,
       "labelPadding": "6,0,0,0",
-      "strokeColors": null
+      "strokeColors": null,
+      "_$comp": [
+        {
+          "_$type": "af3f1d27-46d7-496d-8441-57069404b191",
+          "scriptPath": "../src/TranslateTab.ts"
+        }
+      ]
     },
     {
       "_$id": "0r8ncp3c",
@@ -200,6 +207,7 @@
                       "fontSize": 22,
                       "color": "rgba(193, 193, 193, 1)",
                       "bold": true,
+                      "valign": "top",
                       "leading": 0,
                       "padding": "0,0,0,0",
                       "strokeColor": "rgba(74, 74, 75, 1)"
@@ -218,6 +226,7 @@
                       "label": "",
                       "labelSize": 20,
                       "labelAlign": "left",
+                      "labelVAlign": "top",
                       "_$comp": [
                         {
                           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -353,9 +362,10 @@
                           "label": "",
                           "labelSize": 19,
                           "labelBold": true,
-                          "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+                          "labelColors": "#ffffff,#ffffff,#ffffff",
+                          "labelVAlign": "middle",
                           "labelStrokeColor": "#32556b",
-                          "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0",
+                          "strokeColors": "#32556b,#32cc6b,#ff0000",
                           "_$comp": [
                             {
                               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -386,6 +396,7 @@
                               "fontSize": 24,
                               "color": "#FFFFFF",
                               "bold": true,
+                              "valign": "top",
                               "leading": 0,
                               "padding": "0,0,0,0",
                               "stroke": 2
@@ -424,7 +435,8 @@
                           "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
                           "label": "",
                           "labelSize": 20,
-                          "labelAlign": "left"
+                          "labelAlign": "left",
+                          "labelVAlign": "top"
                         }
                       ]
                     },
@@ -452,6 +464,7 @@
                       "fontSize": 22,
                       "color": "rgba(193, 193, 193, 1)",
                       "bold": true,
+                      "valign": "top",
                       "leading": 0,
                       "padding": "0,0,0,0",
                       "strokeColor": "rgba(74, 74, 75, 1)"
@@ -465,16 +478,29 @@
       ]
     },
     {
-      "_$id": "a5n47huh",
-      "_$type": "Image",
-      "name": "Image(4)",
-      "x": 90,
-      "y": 123,
-      "width": 569,
-      "height": 60,
-      "skin": "res://81ab4f4c-44e1-41ad-b28d-1a7c8a418251",
-      "useSourceSize": true,
-      "color": "#ffffff"
+      "_$id": "nyhsbq7a",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 26,
+      "y": 119,
+      "width": 696,
+      "height": 71,
+      "text": "Select Profile Trim",
+      "fontSize": 53,
+      "color": "rgba(253, 203, 4, 1)",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "leading": 2,
+      "padding": "0,0,0,0",
+      "stroke": 7,
+      "strokeColor": "rgba(87, 86, 73, 1)",
+      "_$comp": [
+        {
+          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+          "scriptPath": "../src/TranslateLabel.ts"
+        }
+      ]
     }
   ]
 }

@@ -14,8 +14,8 @@
       "_$prefab": "fc45a8ff-86ed-4bfe-bdc0-b043f2441912",
       "name": "view",
       "active": true,
-      "x": 0,
-      "y": 331,
+      "x": -2,
+      "y": 329,
       "visible": true,
       "height": 415,
       "width": 750,
@@ -33,6 +33,10 @@
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+              "scriptPath": "../src/TranslateButton.ts"
             }
           ]
         },
@@ -52,7 +56,13 @@
           "_$override": "9r94nh4g",
           "text": "The player has left the room",
           "x": 143,
-          "y": 73
+          "y": 73,
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         },
         {
           "_$override": "9i71029w",

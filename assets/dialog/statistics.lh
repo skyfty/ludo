@@ -80,6 +80,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -168,6 +169,7 @@
       "fontSize": 34,
       "color": "rgba(243, 202, 13, 1)",
       "bold": true,
+      "valign": "top",
       "leading": 0,
       "padding": "0,0,0,0"
     },
@@ -182,6 +184,7 @@
       "text": "0",
       "fontSize": 34,
       "color": "#FFFFFF",
+      "valign": "top",
       "leading": 0,
       "padding": "0,0,0,0"
     },
@@ -229,15 +232,29 @@
           "color": "#ffffff"
         },
         {
-          "_$id": "rq37cr5n",
-          "_$type": "Image",
-          "name": "Image(4)",
-          "x": 120,
-          "y": 13,
-          "width": 218.8142062988572,
-          "height": 43.90920527736254,
-          "skin": "res://183543d2-d564-4f68-9e00-3efad50e5189",
-          "color": "#ffffff"
+          "_$id": "smf1341y",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 12,
+          "y": 14,
+          "width": 436,
+          "height": 43,
+          "text": "Statistics",
+          "fontSize": 49,
+          "color": "rgba(253, 203, 4, 1)",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "leading": 2,
+          "padding": "0,0,0,0",
+          "stroke": 7,
+          "strokeColor": "rgba(87, 86, 73, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     },
@@ -275,6 +292,7 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -407,6 +425,7 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -539,6 +558,7 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },

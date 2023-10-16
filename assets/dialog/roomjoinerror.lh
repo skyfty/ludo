@@ -59,7 +59,13 @@
           "x": 59,
           "y": 69,
           "text": "Can't join the room",
-          "width": 626
+          "width": 626,
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         },
         {
           "_$override": "9i71029w",

@@ -36,6 +36,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -63,17 +64,6 @@
       "width": 639,
       "height": 60,
       "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "8tofz5tu",
-      "_$type": "Image",
-      "name": "Image(8)",
-      "x": 188,
-      "y": 227,
-      "width": 372.7098419173886,
-      "height": 42.35339112697596,
-      "skin": "res://39a89e01-0ff2-4ea3-b7ed-d7347a50c39a",
       "color": "#ffffff"
     },
     {
@@ -144,7 +134,7 @@
               "skin": "res://238ef9cb-8a20-414b-8d5e-986c5acccb2d",
               "label": "",
               "labelSize": 20,
-              "labelColors": "#32556b,#32cc6b,#ff0000,#40406e"
+              "labelVAlign": "middle"
             },
             {
               "_$id": "saaeddnm",
@@ -188,6 +178,7 @@
               "color": "rgba(205, 205, 215, 1)",
               "bold": true,
               "align": "center",
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0"
             },
@@ -238,7 +229,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 1,
+              "index": 0,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -256,7 +247,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 4,
               "interval": 177,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -274,7 +265,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 4,
+              "index": 1,
               "interval": 116,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -292,11 +283,37 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 4,
+              "index": 6,
               "interval": 217,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
           ]
+        }
+      ]
+    },
+    {
+      "_$id": "fh3rq9ke",
+      "_$type": "Label",
+      "name": "Label(2)",
+      "x": 138,
+      "y": 230,
+      "width": 470,
+      "height": 39,
+      "text": "Daily Check In",
+      "fontSize": 48,
+      "color": "rgba(253, 203, 4, 1)",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "wordWrap": true,
+      "leading": 2,
+      "padding": "0,0,0,0",
+      "stroke": 7,
+      "strokeColor": "rgba(87, 86, 73, 1)",
+      "_$comp": [
+        {
+          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+          "scriptPath": "../src/TranslateLabel.ts"
         }
       ]
     }

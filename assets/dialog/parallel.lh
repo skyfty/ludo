@@ -97,15 +97,30 @@
       "color": "#ffffff",
       "_$child": [
         {
-          "_$id": "m0up5dxi",
-          "_$type": "Image",
-          "name": "Image(6)",
-          "x": 89.99999999999997,
-          "y": 10.000000000000028,
-          "width": 315,
-          "height": 35.8414074451809,
-          "skin": "res://b841ade8-b52b-4027-997e-29db5f6fc910",
-          "color": "#ffffff"
+          "_$id": "b4e8ovdw",
+          "_$type": "Label",
+          "name": "Label(2)",
+          "x": 16,
+          "y": 12,
+          "width": 470,
+          "height": 39,
+          "text": "Select Your Color",
+          "fontSize": 39,
+          "color": "rgba(253, 203, 4, 1)",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 2,
+          "padding": "0,0,0,0",
+          "stroke": 7,
+          "strokeColor": "rgba(87, 86, 73, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     },
@@ -132,22 +147,11 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "jk07a06y",
-      "_$type": "Image",
-      "name": "Image",
-      "x": 281.99999999999994,
-      "y": 172.99999999999997,
-      "width": 220.44637972817884,
-      "height": 35.057510522809984,
-      "skin": "res://89d6d660-12cf-44cb-9203-8e2986d053b0",
-      "color": "#ffffff"
-    },
-    {
       "_$id": "og9br2qa",
       "_$type": "CheckBox",
       "name": "magic",
       "x": 220,
-      "y": 171,
+      "y": 168,
       "width": 64.65116279069767,
       "height": 65.62790697674419,
       "scaleX": 0.67,
@@ -305,24 +309,13 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "0gj82t1h",
-      "_$type": "Image",
-      "name": "Image(9)",
-      "x": 217,
-      "y": 514,
-      "width": 314.10300866904595,
-      "height": 35.69352371239155,
-      "skin": "res://ca3037ad-63f6-4dc1-ab05-13153f01d38f",
-      "color": "#ffffff"
-    },
-    {
       "_$id": "q9wzoj1l",
       "_$type": "Image",
       "name": "Image(10)",
       "x": 125.99999999999997,
       "y": 566,
       "width": 500,
-      "height": 171,
+      "height": 149,
       "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
       "color": "#ffffff"
     },
@@ -331,7 +324,7 @@
       "_$type": "CheckBox",
       "name": "4p",
       "x": 470,
-      "y": 587,
+      "y": 581,
       "width": 124,
       "height": 122,
       "mouseEnabled": true,
@@ -353,7 +346,7 @@
       "_$type": "CheckBox",
       "name": "3p",
       "x": 314,
-      "y": 587,
+      "y": 581,
       "width": 124,
       "height": 122,
       "mouseEnabled": true,
@@ -375,7 +368,7 @@
       "_$type": "CheckBox",
       "name": "2p",
       "x": 158,
-      "y": 587,
+      "y": 581,
       "width": 124,
       "height": 122,
       "mouseEnabled": true,
@@ -426,7 +419,7 @@
       "_$type": "Box",
       "name": "Box",
       "x": 137,
-      "y": 722,
+      "y": 746,
       "width": 480,
       "height": 196,
       "mouseEnabled": true,
@@ -445,9 +438,9 @@
               "_$type": "Button",
               "name": "item0",
               "x": 64,
-              "y": 54,
+              "y": 35,
               "width": 352.5282762298359,
-              "height": 80.54016797760296,
+              "height": 106.54016797760296,
               "mouseEnabled": true,
               "stateNum": 2,
               "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
@@ -464,6 +457,10 @@
                 {
                   "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
                   "scriptPath": "../src/ClickSound.ts"
+                },
+                {
+                  "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+                  "scriptPath": "../src/TranslateButton.ts"
                 }
               ]
             },
@@ -471,8 +468,9 @@
               "_$id": "zzz84qte",
               "_$type": "Sprite",
               "name": "item1",
+              "y": -15,
               "width": 480,
-              "height": 196,
+              "height": 223,
               "visible": false,
               "texture": {
                 "_$uuid": "2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
@@ -485,7 +483,7 @@
                   "_$type": "Button",
                   "name": "reduce",
                   "x": 22,
-                  "y": 71,
+                  "y": 45,
                   "width": 50,
                   "height": 50,
                   "mouseEnabled": true,
@@ -506,7 +504,7 @@
                   "_$type": "Button",
                   "name": "plus",
                   "x": 408,
-                  "y": 71,
+                  "y": 45,
                   "width": 50,
                   "height": 50,
                   "mouseEnabled": true,
@@ -529,7 +527,7 @@
                   "x": 97,
                   "y": 16,
                   "width": 301,
-                  "height": 153,
+                  "height": 85,
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -543,7 +541,7 @@
                       "name": "Sprite",
                       "x": -4.9999999999998295,
                       "width": 301,
-                      "height": 151,
+                      "height": 104,
                       "texture": {
                         "_$uuid": "238ef9cb-8a20-414b-8d5e-986c5acccb2d",
                         "_$type": "Texture"
@@ -553,10 +551,10 @@
                       "_$id": "3awa2k31",
                       "_$type": "Image",
                       "name": "Image",
-                      "x": 28,
-                      "y": 14,
-                      "width": 68.15417753089218,
-                      "height": 33.79072667498015,
+                      "x": 7.1705588935494875,
+                      "y": 14.655991384196799,
+                      "width": 96.18750708536442,
+                      "height": 47.689604353247915,
                       "skin": "res://abd14d42-a487-4b98-b355-fdeb3f1a4ade",
                       "color": "#ffffff"
                     },
@@ -564,8 +562,8 @@
                       "_$id": "13ubct1g",
                       "_$type": "Label",
                       "name": "earn",
-                      "x": 35,
-                      "y": 58,
+                      "x": 136,
+                      "y": 16,
                       "width": 142,
                       "height": 32,
                       "text": "1111111111",
@@ -582,8 +580,8 @@
                       "_$id": "jkfmb4re",
                       "_$type": "Image",
                       "name": "Image(1)",
-                      "x": -1.0000000000000284,
-                      "y": 50,
+                      "x": 99.99999999999997,
+                      "y": 8,
                       "width": 48.09081081081082,
                       "height": 45.90486486486488,
                       "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
@@ -593,8 +591,8 @@
                       "_$id": "ozuwse83",
                       "_$type": "Label",
                       "name": "pay",
-                      "x": 11.000000000000114,
-                      "y": 99,
+                      "x": 112.00000000000011,
+                      "y": 57,
                       "width": 166,
                       "height": 32,
                       "text": "1111111111111",
@@ -608,22 +606,11 @@
                       "padding": "0,0,0,0"
                     },
                     {
-                      "_$id": "uq5bgylh",
-                      "_$type": "Image",
-                      "name": "Image(2)",
-                      "x": 180.99999999999994,
-                      "y": 46.000000000000114,
-                      "width": 109.3573370100453,
-                      "height": 43.5951546188694,
-                      "skin": "res://16c2edd8-601f-457d-a614-236163a7df14",
-                      "color": "#ffffff"
-                    },
-                    {
                       "_$id": "sry5oaub",
                       "_$type": "Clip",
                       "name": "Clip",
-                      "x": -6.137375412590011,
-                      "y": 54,
+                      "x": 94.86262458740998,
+                      "y": 12,
                       "width": 38.13737541259,
                       "height": 24.75485523352614,
                       "anchorY": -0.16666666666666666,
@@ -632,7 +619,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 1,
+                      "index": 4,
                       "interval": 226,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     },
@@ -640,8 +627,8 @@
                       "_$id": "ayw8ft4p",
                       "_$type": "Clip",
                       "name": "Clip(1)",
-                      "x": 0.8626245874099894,
-                      "y": 37,
+                      "x": 101.86262458740998,
+                      "y": -5,
                       "width": 47.91462101155327,
                       "height": 30.118005082646032,
                       "anchorY": -0.16666666666666666,
@@ -650,15 +637,97 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 1,
+                      "index": 0,
                       "interval": 140,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "u9t8qvhr",
+                  "_$type": "Button",
+                  "name": "ButtonPlayer",
+                  "x": 90.79776029862686,
+                  "y": 126.3770163978136,
+                  "width": 292.3580589254765,
+                  "height": 81.79341421143847,
+                  "mouseEnabled": true,
+                  "stateNum": 2,
+                  "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
+                  "sizeGrid": "14,15,17,14,0",
+                  "label": "PLAY",
+                  "labelFont": "impact",
+                  "labelSize": 48,
+                  "labelColors": "#ffffff,#ffffff,#ffffff",
+                  "labelVAlign": "middle",
+                  "labelStroke": 2,
+                  "labelStrokeColor": "#32556b",
+                  "strokeColors": "#32556b,#32cc6b,#ff0000",
+                  "_$comp": [
+                    {
+                      "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+                      "scriptPath": "../src/ClickSound.ts"
+                    },
+                    {
+                      "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+                      "scriptPath": "../src/TranslateButton.ts"
                     }
                   ]
                 }
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "_$id": "8o1lvgt4",
+      "_$type": "Label",
+      "name": "Label(2)",
+      "x": 276,
+      "y": 173,
+      "width": 298,
+      "height": 37,
+      "text": "Magic Props",
+      "fontSize": 38,
+      "color": "rgba(253, 203, 4, 1)",
+      "bold": true,
+      "valign": "middle",
+      "wordWrap": true,
+      "leading": 2,
+      "padding": "0,0,0,0",
+      "stroke": 7,
+      "strokeColor": "rgba(87, 86, 73, 1)",
+      "_$comp": [
+        {
+          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+          "scriptPath": "../src/TranslateLabel.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "5jwpeyjk",
+      "_$type": "Label",
+      "name": "Label(3)",
+      "x": 142,
+      "y": 512,
+      "width": 470,
+      "height": 39,
+      "text": "Select Players",
+      "fontSize": 39,
+      "color": "rgba(253, 203, 4, 1)",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "wordWrap": true,
+      "leading": 2,
+      "padding": "0,0,0,0",
+      "stroke": 7,
+      "strokeColor": "rgba(87, 86, 73, 1)",
+      "_$comp": [
+        {
+          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+          "scriptPath": "../src/TranslateLabel.ts"
         }
       ]
     }

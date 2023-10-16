@@ -76,6 +76,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -129,17 +130,6 @@
       "color": "#ffffff"
     },
     {
-      "_$id": "8tofz5tu",
-      "_$type": "Image",
-      "name": "Image(8)",
-      "x": 191,
-      "y": 310,
-      "width": 372.7098419173886,
-      "height": 42.35339112697596,
-      "skin": "res://b841ade8-b52b-4027-997e-29db5f6fc910",
-      "color": "#ffffff"
-    },
-    {
       "_$id": "63d7ofzk",
       "_$type": "Image",
       "name": "Image(2)",
@@ -186,6 +176,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -207,6 +198,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -228,6 +220,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -249,6 +242,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -273,11 +267,42 @@
       "labelFont": "impact",
       "labelSize": 66,
       "labelColors": "#ffffff,#ffffff,#ffffff",
+      "labelVAlign": "middle",
       "labelStroke": 1,
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+          "scriptPath": "../src/TranslateButton.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "5e35cyib",
+      "_$type": "Label",
+      "name": "Label(2)",
+      "x": 145,
+      "y": 313,
+      "width": 470,
+      "height": 39,
+      "text": "Select Your Color",
+      "fontSize": 39,
+      "color": "rgba(253, 203, 4, 1)",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "wordWrap": true,
+      "leading": 2,
+      "padding": "0,0,0,0",
+      "stroke": 7,
+      "strokeColor": "rgba(87, 86, 73, 1)",
+      "_$comp": [
+        {
+          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+          "scriptPath": "../src/TranslateLabel.ts"
         }
       ]
     }

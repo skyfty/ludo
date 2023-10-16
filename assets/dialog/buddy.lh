@@ -435,16 +435,29 @@
       "color": "#ffffff",
       "_$child": [
         {
-          "_$id": "dg4044ni",
-          "_$type": "Image",
-          "name": "Image(3)",
-          "x": 34,
-          "y": 10,
-          "width": 247,
-          "height": 59,
-          "skin": "res://2b7b8a14-fcef-481a-ad0d-03ecfb7666ef",
-          "useSourceSize": true,
-          "color": "#ffffff"
+          "_$id": "hd0tgvpl",
+          "_$type": "Label",
+          "name": "Label(2)",
+          "x": 30,
+          "y": 16,
+          "width": 298,
+          "height": 51,
+          "text": "BUDDIES",
+          "fontSize": 59,
+          "color": "rgba(253, 203, 4, 1)",
+          "bold": true,
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 2,
+          "padding": "0,0,0,0",
+          "stroke": 7,
+          "strokeColor": "rgba(87, 86, 73, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     },

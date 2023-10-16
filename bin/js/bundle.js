@@ -10732,7 +10732,7 @@
             return root.i18n = factory();
           }
         })(typeof self !== "undefined" && self !== null ? self : this, function() {
-          var Translator, i18n4, translator;
+          var Translator, i18n5, translator;
           Translator = function() {
             function Translator2() {
               this.translate = __bind(this.translate, this);
@@ -10936,19 +10936,19 @@
             return Translator2;
           }();
           translator = new Translator();
-          i18n4 = translator.translate;
-          i18n4.translator = translator;
-          i18n4.create = function(data) {
+          i18n5 = translator.translate;
+          i18n5.translator = translator;
+          i18n5.create = function(data) {
             var trans;
             trans = new Translator();
             if (data != null) {
               trans.add(data);
             }
-            trans.translate.create = i18n4.create;
+            trans.translate.create = i18n5.create;
             trans.translate.translator = trans;
             return trans.translate;
           };
-          return i18n4;
+          return i18n5;
         });
       }).call(exports);
     }
@@ -16422,6 +16422,32 @@
   TrimDialog = __decorateClass([
     regClass90("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
   ], TrimDialog);
+
+  // src/TranslateButton.ts
+  var import_roddeh_i18n4 = __toESM(require_i18n());
+  var { regClass: regClass91, property: property91 } = Laya;
+  var TranslateButton = class extends Laya.Script {
+    constructor() {
+      super(...arguments);
+      this.labelText = null;
+    }
+    onAwake() {
+      let button = this.owner;
+      if (button != null) {
+        this.labelText = button.label;
+      }
+    }
+    onUpdate() {
+      let button = this.owner;
+      if (button != null) {
+        button.label = (0, import_roddeh_i18n4.default)(this.labelText);
+      }
+    }
+  };
+  __name(TranslateButton, "TranslateButton");
+  TranslateButton = __decorateClass([
+    regClass91("47b6588a-c8ab-4554-aa14-703633941f2f", "../src/TranslateButton.ts")
+  ], TranslateButton);
 })();
 /*! Bundled license information:
 
