@@ -8,7 +8,6 @@
   "height": 1334,
   "mouseEnabled": true,
   "autoDestroyAtClosed": true,
-  "top": 37,
   "isModal": true,
   "_$comp": [
     {
@@ -158,7 +157,8 @@
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "left"
+      "labelAlign": "left",
+      "labelVAlign": "top"
     },
     {
       "_$id": "101ihuwf",
@@ -218,6 +218,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -239,6 +240,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -260,6 +262,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -281,6 +284,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -336,6 +340,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -357,6 +362,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -379,6 +385,7 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -399,6 +406,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -447,10 +455,11 @@
               "label": "PLAY",
               "labelFont": "impact",
               "labelSize": 57,
-              "labelColors": "#ffffff,#ffffff,#ffffff,#c0c0c0",
+              "labelColors": "#ffffff,#ffffff,#ffffff",
+              "labelVAlign": "middle",
               "labelStroke": 2,
               "labelStrokeColor": "#32556b",
-              "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0",
+              "strokeColors": "#32556b,#32cc6b,#ff0000",
               "_$comp": [
                 {
                   "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -484,6 +493,7 @@
                   "skin": "res://e5f6ffc0-8618-43e0-9c42-8a4483b210c1",
                   "label": "",
                   "labelSize": 20,
+                  "labelVAlign": "middle",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -504,6 +514,7 @@
                   "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
                   "label": "",
                   "labelSize": 20,
+                  "labelVAlign": "middle",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -621,7 +632,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 3,
+                      "index": 1,
                       "interval": 226,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     },
@@ -639,7 +650,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 2,
+                      "index": 1,
                       "interval": 140,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     }

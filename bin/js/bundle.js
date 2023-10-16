@@ -15351,11 +15351,11 @@
       if (Station.isUnconnected()) {
         Laya.Scene.open("dialog/nonet.lh");
       } else {
-        Laya.Scene.open("dialog/parallel.lh", false, null, complete);
+        Laya.Scene.open("dialog/parallel.lh", true, null, complete);
       }
     }
     onSettings() {
-      Laya.Scene.open("dialog/settings.lh", false, null);
+      Laya.Scene.open("dialog/settings.lh", true);
     }
   };
   __name(Menu, "Menu");
