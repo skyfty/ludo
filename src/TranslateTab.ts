@@ -17,7 +17,12 @@ export class TranslateTab extends Laya.Script {
         if (tab != null) {
             let labelsArr = [];
             for(let i in this.labels) {
-                labelsArr.push(i18n(this.labels[i]));
+                let t =  i18n(this.labels[i]);
+                if (t) {
+                    labelsArr.push(t);
+                } else {
+                    labelsArr.push(this.labels[i]);
+                }
             }
             tab.labels = labelsArr.join(",");
         }

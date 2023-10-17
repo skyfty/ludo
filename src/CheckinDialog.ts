@@ -4,6 +4,7 @@ import { Station } from "./Station";
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { CheckinItem } from "./CheckinItem";
 import { Profile } from "./Profile";
+import i18n from "../node_modules/roddeh-i18n";
 
 
 @regClass()
@@ -41,7 +42,7 @@ export class CheckinDialog extends Laya.Script {
         let data: SFS2X.SFSObject = this.checklist.getSFSObject(index);
         let item = cell.getComponent(CheckinItem) as CheckinItem;
         item.gold.text = data.getInt("gold");
-        item.day.text = "Day " + data.getInt("day");
+        item.day.text = i18n('Day %n', data.getInt("day"));
         item.gold.text = data.getInt("gold");
         let checkinDay = Profile.getCheckinDay();
         if (index < checkinDay) {

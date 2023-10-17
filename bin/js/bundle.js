@@ -10732,7 +10732,7 @@
             return root.i18n = factory();
           }
         })(typeof self !== "undefined" && self !== null ? self : this, function() {
-          var Translator, i18n5, translator;
+          var Translator, i18n6, translator;
           Translator = function() {
             function Translator2() {
               this.translate = __bind(this.translate, this);
@@ -10936,19 +10936,19 @@
             return Translator2;
           }();
           translator = new Translator();
-          i18n5 = translator.translate;
-          i18n5.translator = translator;
-          i18n5.create = function(data) {
+          i18n6 = translator.translate;
+          i18n6.translator = translator;
+          i18n6.create = function(data) {
             var trans;
             trans = new Translator();
             if (data != null) {
               trans.add(data);
             }
-            trans.translate.create = i18n5.create;
+            trans.translate.create = i18n6.create;
             trans.translate.translator = trans;
             return trans.translate;
           };
-          return i18n5;
+          return i18n6;
         });
       }).call(exports);
     }
@@ -12281,6 +12281,7 @@
   ], CheckinItem);
 
   // src/CheckinDialog.ts
+  var import_roddeh_i18n = __toESM(require_i18n());
   var { regClass: regClass23, property: property23 } = Laya;
   var CheckinDialog = class extends Laya.Script {
     constructor() {
@@ -12302,7 +12303,7 @@
       let data = this.checklist.getSFSObject(index);
       let item = cell.getComponent(CheckinItem);
       item.gold.text = data.getInt("gold");
-      item.day.text = "Day " + data.getInt("day");
+      item.day.text = (0, import_roddeh_i18n.default)("Day %n", data.getInt("day"));
       item.gold.text = data.getInt("gold");
       let checkinDay = Profile.getCheckinDay();
       if (index < checkinDay) {
@@ -14872,7 +14873,7 @@
   ], LanguageItem);
 
   // src/TranslateLanguage.ts
-  var import_roddeh_i18n = __toESM(require_i18n());
+  var import_roddeh_i18n2 = __toESM(require_i18n());
   var { regClass: regClass60, property: property60 } = Laya;
   var TranslateLanguage = class extends Laya.Script {
     onAwake() {
@@ -14906,7 +14907,7 @@
         if (json == null || json.data == null) {
           return;
         }
-        import_roddeh_i18n.default.translator.add(json.data);
+        import_roddeh_i18n2.default.translator.add(json.data);
         Laya.LocalStorage.setItem("language", region);
       });
     }
@@ -14974,7 +14975,7 @@
     "th": "\u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28\u0E44\u0E17\u0E22",
     "tr": "T\xFCrkiye",
     "vie": "Vi\u1EC7t Nam",
-    "cht": "\u4E2D\u6587"
+    "cht": "\u7E41\u9AD4\u4E2D\u6587"
   };
   __decorateClass([
     property61(Laya.List)
@@ -16069,7 +16070,7 @@
   ], StatisticsDialog);
 
   // src/TranslateButton.ts
-  var import_roddeh_i18n2 = __toESM(require_i18n());
+  var import_roddeh_i18n3 = __toESM(require_i18n());
   var { regClass: regClass83, property: property83 } = Laya;
   var TranslateButton = class extends Laya.Script {
     constructor() {
@@ -16085,7 +16086,12 @@
     onUpdate() {
       let button = this.owner;
       if (button != null) {
-        button.label = (0, import_roddeh_i18n2.default)(this.labelText);
+        let t = (0, import_roddeh_i18n3.default)(this.labelText);
+        if (t) {
+          button.label = t;
+        } else {
+          button.label = this.labelText;
+        }
       }
     }
   };
@@ -16095,7 +16101,7 @@
   ], TranslateButton);
 
   // src/TranslateLabel.ts
-  var import_roddeh_i18n3 = __toESM(require_i18n());
+  var import_roddeh_i18n4 = __toESM(require_i18n());
   var { regClass: regClass84, property: property84 } = Laya;
   var TranslateLabel = class extends Laya.Script {
     constructor() {
@@ -16111,7 +16117,12 @@
     onUpdate() {
       let label = this.owner;
       if (label != null) {
-        label.text = (0, import_roddeh_i18n3.default)(this.labelText);
+        let t = (0, import_roddeh_i18n4.default)(this.labelText);
+        if (t) {
+          label.text = t;
+        } else {
+          label.text = this.labelText;
+        }
       }
     }
   };
@@ -16121,7 +16132,7 @@
   ], TranslateLabel);
 
   // src/TranslateTab.ts
-  var import_roddeh_i18n4 = __toESM(require_i18n());
+  var import_roddeh_i18n5 = __toESM(require_i18n());
   var { regClass: regClass85, property: property85 } = Laya;
   var TranslateTab = class extends Laya.Script {
     onAwake() {
@@ -16135,7 +16146,12 @@
       if (tab != null) {
         let labelsArr = [];
         for (let i in this.labels) {
-          labelsArr.push((0, import_roddeh_i18n4.default)(this.labels[i]));
+          let t = (0, import_roddeh_i18n5.default)(this.labels[i]);
+          if (t) {
+            labelsArr.push(t);
+          } else {
+            labelsArr.push(this.labels[i]);
+          }
         }
         tab.labels = labelsArr.join(",");
       }

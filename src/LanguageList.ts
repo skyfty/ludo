@@ -26,7 +26,7 @@ export class LanguageList extends Laya.Script {
         'th':"ประเทศไทย",
         'tr':"Türkiye",
         'vie':"Việt Nam",
-        'cht':"中文"
+        'cht':"繁體中文"
     };
 
     constructor() {

@@ -15,7 +15,13 @@ export class TranslateButton extends Laya.Script {
     onUpdate(): void {
         let button = this.owner  as Laya.Button;
         if (button != null) {
-            button.label = i18n(this.labelText);
+            let t =  i18n(this.labelText);
+            if (t) {
+                button.label = t;
+            } else {
+                button.label = this.labelText;
+
+            }
         }
     }
 }
