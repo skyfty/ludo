@@ -15182,8 +15182,9 @@
       let item = parallel.viewStack.getChildByName("item1");
       let play = item.getChildByName("play");
       play.on(Laya.Event.CLICK, this, this.onPlay);
-      this.earnLabel = play.getChildByName("earn");
-      this.payLabel = play.getChildByName("pay");
+      let playinput = item.getChildByName("playinput");
+      this.earnLabel = playinput.getChildByName("earn");
+      this.payLabel = playinput.getChildByName("pay");
       for (let idx in parallel.colorCheckBox) {
         parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {
           play.disabled = false;
@@ -16067,9 +16068,35 @@
     regClass82("070994d0-aca8-4fc9-883f-d37c60138ea6", "../src/StatisticsDialog.ts")
   ], StatisticsDialog);
 
-  // src/TranslateLabel.ts
+  // src/TranslateButton.ts
   var import_roddeh_i18n2 = __toESM(require_i18n());
   var { regClass: regClass83, property: property83 } = Laya;
+  var TranslateButton = class extends Laya.Script {
+    constructor() {
+      super(...arguments);
+      this.labelText = null;
+    }
+    onAwake() {
+      let button = this.owner;
+      if (button != null) {
+        this.labelText = button.label;
+      }
+    }
+    onUpdate() {
+      let button = this.owner;
+      if (button != null) {
+        button.label = (0, import_roddeh_i18n2.default)(this.labelText);
+      }
+    }
+  };
+  __name(TranslateButton, "TranslateButton");
+  TranslateButton = __decorateClass([
+    regClass83("47b6588a-c8ab-4554-aa14-703633941f2f", "../src/TranslateButton.ts")
+  ], TranslateButton);
+
+  // src/TranslateLabel.ts
+  var import_roddeh_i18n3 = __toESM(require_i18n());
+  var { regClass: regClass84, property: property84 } = Laya;
   var TranslateLabel = class extends Laya.Script {
     constructor() {
       super(...arguments);
@@ -16084,18 +16111,18 @@
     onUpdate() {
       let label = this.owner;
       if (label != null) {
-        label.text = (0, import_roddeh_i18n2.default)(this.labelText);
+        label.text = (0, import_roddeh_i18n3.default)(this.labelText);
       }
     }
   };
   __name(TranslateLabel, "TranslateLabel");
   TranslateLabel = __decorateClass([
-    regClass83("95d9c950-3df0-48f6-983a-191d7ee0bdd1", "../src/TranslateLabel.ts")
+    regClass84("95d9c950-3df0-48f6-983a-191d7ee0bdd1", "../src/TranslateLabel.ts")
   ], TranslateLabel);
 
   // src/TranslateTab.ts
-  var import_roddeh_i18n3 = __toESM(require_i18n());
-  var { regClass: regClass84, property: property84 } = Laya;
+  var import_roddeh_i18n4 = __toESM(require_i18n());
+  var { regClass: regClass85, property: property85 } = Laya;
   var TranslateTab = class extends Laya.Script {
     onAwake() {
       let tab = this.owner;
@@ -16108,7 +16135,7 @@
       if (tab != null) {
         let labelsArr = [];
         for (let i in this.labels) {
-          labelsArr.push((0, import_roddeh_i18n3.default)(this.labels[i]));
+          labelsArr.push((0, import_roddeh_i18n4.default)(this.labels[i]));
         }
         tab.labels = labelsArr.join(",");
       }
@@ -16116,11 +16143,11 @@
   };
   __name(TranslateTab, "TranslateTab");
   TranslateTab = __decorateClass([
-    regClass84("af3f1d27-46d7-496d-8441-57069404b191", "../src/TranslateTab.ts")
+    regClass85("af3f1d27-46d7-496d-8441-57069404b191", "../src/TranslateTab.ts")
   ], TranslateTab);
 
   // src/TrimItem.ts
-  var { regClass: regClass85, property: property85 } = Laya;
+  var { regClass: regClass86, property: property86 } = Laya;
   var TrimItem = class extends Laya.Script {
     constructor() {
       super();
@@ -16128,20 +16155,20 @@
   };
   __name(TrimItem, "TrimItem");
   __decorateClass([
-    property85(Laya.Label)
+    property86(Laya.Label)
   ], TrimItem.prototype, "title", 2);
   __decorateClass([
-    property85(Laya.Image)
+    property86(Laya.Image)
   ], TrimItem.prototype, "image", 2);
   __decorateClass([
-    property85(Laya.Image)
+    property86(Laya.Image)
   ], TrimItem.prototype, "background", 2);
   TrimItem = __decorateClass([
-    regClass85("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
+    regClass86("506726f2-b31a-4953-8ccb-b083c26f4da0", "../src/TrimItem.ts")
   ], TrimItem);
 
   // src/TrimCoinItem.ts
-  var { regClass: regClass86, property: property86 } = Laya;
+  var { regClass: regClass87, property: property87 } = Laya;
   var TrimCoinItem = class extends TrimItem {
     constructor() {
       super();
@@ -16160,19 +16187,19 @@
   };
   __name(TrimCoinItem, "TrimCoinItem");
   __decorateClass([
-    property86(Laya.Label)
+    property87(Laya.Label)
   ], TrimCoinItem.prototype, "gold", 2);
   __decorateClass([
-    property86(Laya.ViewStack)
+    property87(Laya.ViewStack)
   ], TrimCoinItem.prototype, "viewStack", 2);
   __decorateClass([
-    property86(Laya.Button)
+    property87(Laya.Button)
   ], TrimCoinItem.prototype, "buybutton", 2);
   __decorateClass([
-    property86(Laya.CheckBox)
+    property87(Laya.CheckBox)
   ], TrimCoinItem.prototype, "selectBox", 2);
   TrimCoinItem = __decorateClass([
-    regClass86("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
+    regClass87("a83945b7-ea3b-4af7-a772-46bf8325f2c5", "../src/TrimCoinItem.ts")
   ], TrimCoinItem);
 
   // src/TrimCoinsList.ts
@@ -16233,7 +16260,7 @@
   var TrimConfig = _TrimConfig;
 
   // src/TrimCoinsList.ts
-  var { regClass: regClass87, property: property87 } = Laya;
+  var { regClass: regClass88, property: property88 } = Laya;
   var TrimCoinsList = class extends Laya.Script {
     constructor() {
       super();
@@ -16302,14 +16329,14 @@
   };
   __name(TrimCoinsList, "TrimCoinsList");
   __decorateClass([
-    property87(Laya.List)
+    property88(Laya.List)
   ], TrimCoinsList.prototype, "list", 2);
   TrimCoinsList = __decorateClass([
-    regClass87("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
+    regClass88("8c9a395e-e06c-49c2-8ca6-f2bb5d62fdce", "../src/TrimCoinsList.ts")
   ], TrimCoinsList);
 
   // src/TrimLevelItem.ts
-  var { regClass: regClass88, property: property88 } = Laya;
+  var { regClass: regClass89, property: property89 } = Laya;
   var TrimLevelItem = class extends TrimItem {
     constructor() {
       super();
@@ -16328,14 +16355,14 @@
   };
   __name(TrimLevelItem, "TrimLevelItem");
   __decorateClass([
-    property88(Laya.CheckBox)
+    property89(Laya.CheckBox)
   ], TrimLevelItem.prototype, "button", 2);
   TrimLevelItem = __decorateClass([
-    regClass88("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
+    regClass89("0cbbe0ca-efc5-4639-932e-58e4811acce6", "../src/TrimLevelItem.ts")
   ], TrimLevelItem);
 
   // src/TrimLevelList.ts
-  var { regClass: regClass89, property: property89 } = Laya;
+  var { regClass: regClass90, property: property90 } = Laya;
   var TrimLevelList = class extends Laya.Script {
     constructor() {
       super();
@@ -16371,14 +16398,14 @@
   };
   __name(TrimLevelList, "TrimLevelList");
   __decorateClass([
-    property89(Laya.List)
+    property90(Laya.List)
   ], TrimLevelList.prototype, "list", 2);
   TrimLevelList = __decorateClass([
-    regClass89("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
+    regClass90("e201d219-c8da-498e-b5a0-3d3eb415e08a", "../src/TrimLevelList.ts")
   ], TrimLevelList);
 
   // src/TrimDialog.ts
-  var { regClass: regClass90, property: property90 } = Laya;
+  var { regClass: regClass91, property: property91 } = Laya;
   var TrimDialog = class extends Laya.Script {
     constructor() {
       super();
@@ -16408,46 +16435,20 @@
   };
   __name(TrimDialog, "TrimDialog");
   __decorateClass([
-    property90(Laya.ViewStack)
+    property91(Laya.ViewStack)
   ], TrimDialog.prototype, "viewStack", 2);
   __decorateClass([
-    property90(Laya.Tab)
+    property91(Laya.Tab)
   ], TrimDialog.prototype, "tab", 2);
   __decorateClass([
-    property90(TrimLevelList)
+    property91(TrimLevelList)
   ], TrimDialog.prototype, "trimLevelList", 2);
   __decorateClass([
-    property90(TrimCoinsList)
+    property91(TrimCoinsList)
   ], TrimDialog.prototype, "trimCoinsList", 2);
   TrimDialog = __decorateClass([
-    regClass90("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
+    regClass91("bda5c9ce-4dda-4de2-8989-11dc7b447d88", "../src/TrimDialog.ts")
   ], TrimDialog);
-
-  // src/TranslateButton.ts
-  var import_roddeh_i18n4 = __toESM(require_i18n());
-  var { regClass: regClass91, property: property91 } = Laya;
-  var TranslateButton = class extends Laya.Script {
-    constructor() {
-      super(...arguments);
-      this.labelText = null;
-    }
-    onAwake() {
-      let button = this.owner;
-      if (button != null) {
-        this.labelText = button.label;
-      }
-    }
-    onUpdate() {
-      let button = this.owner;
-      if (button != null) {
-        button.label = (0, import_roddeh_i18n4.default)(this.labelText);
-      }
-    }
-  };
-  __name(TranslateButton, "TranslateButton");
-  TranslateButton = __decorateClass([
-    regClass91("47b6588a-c8ab-4554-aa14-703633941f2f", "../src/TranslateButton.ts")
-  ], TranslateButton);
 })();
 /*! Bundled license information:
 

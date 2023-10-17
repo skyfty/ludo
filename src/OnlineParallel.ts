@@ -27,8 +27,10 @@ export class OnlineParallel extends GameRoom {
         let play = item.getChildByName("play") as Laya.Button;
         play.on(Laya.Event.CLICK, this, this.onPlay);
 
-        this.earnLabel = play.getChildByName("earn") as Laya.Label;
-        this.payLabel = play.getChildByName("pay") as Laya.Label;
+        let playinput = item.getChildByName("playinput");
+
+        this.earnLabel = playinput.getChildByName("earn") as Laya.Label;
+        this.payLabel = playinput.getChildByName("pay") as Laya.Label;
         
         for (let idx in parallel.colorCheckBox) {
             parallel.colorCheckBox[idx].on(Laya.Event.CLICK, this, () => {

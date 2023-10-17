@@ -523,11 +523,11 @@
                 {
                   "_$id": "jwlr5yro",
                   "_$type": "Sprite",
-                  "name": "play",
+                  "name": "playinput",
                   "x": 97,
                   "y": 16,
                   "width": 301,
-                  "height": 85,
+                  "height": 105,
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -619,7 +619,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 4,
+                      "index": 1,
                       "interval": 226,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     },
@@ -637,7 +637,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 0,
+                      "index": 4,
                       "interval": 140,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     }
@@ -646,7 +646,7 @@
                 {
                   "_$id": "u9t8qvhr",
                   "_$type": "Button",
-                  "name": "ButtonPlayer",
+                  "name": "play",
                   "x": 90.79776029862686,
                   "y": 126.3770163978136,
                   "width": 292.3580589254765,

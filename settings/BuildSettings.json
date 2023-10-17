@@ -15,7 +15,8 @@
     "res://:f6",
     "res://:f7",
     "res://:f8",
-    "res://:f7"
+    "res://:f7",
+    "res://:f9"
   ],
   "excludeFilesRule": [],
   "android": {

@@ -474,17 +474,6 @@
               ],
               "_$child": [
                 {
-                  "_$id": "n21otiym",
-                  "_$type": "Image",
-                  "name": "Image",
-                  "x": 99,
-                  "y": 48,
-                  "width": 406.1642019377866,
-                  "height": 46.15502294747574,
-                  "skin": "res://6f976dac-6764-45a5-8c3c-f48e9703c871",
-                  "color": "#ffffff"
-                },
-                {
                   "_$id": "elcxkrqm",
                   "_$type": "TextInput",
                   "name": "TextInput",
@@ -532,6 +521,36 @@
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
                       "scriptPath": "../src/ClickSound.ts"
+                    },
+                    {
+                      "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+                      "scriptPath": "../src/TranslateButton.ts"
+                    }
+                  ]
+                },
+                {
+                  "_$id": "bf719xnk",
+                  "_$type": "Label",
+                  "name": "Label(2)",
+                  "x": 72,
+                  "y": 56,
+                  "width": 470,
+                  "height": 39,
+                  "text": "Enter Room Code",
+                  "fontSize": 39,
+                  "color": "rgba(253, 203, 4, 1)",
+                  "bold": true,
+                  "align": "center",
+                  "valign": "middle",
+                  "wordWrap": true,
+                  "leading": 2,
+                  "padding": "0,0,0,0",
+                  "stroke": 7,
+                  "strokeColor": "rgba(87, 86, 73, 1)",
+                  "_$comp": [
+                    {
+                      "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+                      "scriptPath": "../src/TranslateLabel.ts"
                     }
                   ]
                 }
