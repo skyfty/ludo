@@ -88,6 +88,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -369,21 +370,22 @@
       "_$id": "dxwfyv0n",
       "_$type": "Button",
       "name": "InviteFriends",
-      "x": 240,
-      "y": 752,
-      "width": 267,
-      "height": 60.713670770030895,
+      "x": 143,
+      "y": 748,
+      "width": 478,
+      "height": 81.71367077003089,
       "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
-      "sizeGrid": "14,15,17,14,0",
+      "sizeGrid": "31,13,30,11,0",
       "label": "INVITE FRIENDS",
       "labelFont": "Impact",
       "labelSize": 32,
-      "labelColors": "#ffffff,#ffffff,#c9c6c6,#c0c0c0",
+      "labelColors": "#ffffff,#ffffff,#c9c6c6",
+      "labelVAlign": "middle",
       "labelStroke": 2,
       "labelStrokeColor": "#32556b",
-      "strokeColors": "#32556b,#32cc6b,#ff0000,#C0C0C0"
+      "strokeColors": "#32556b,#32cc6b,#ff0000"
     }
   ]
 }
