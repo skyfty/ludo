@@ -22,7 +22,9 @@
       "avatar": {
         "_$ref": "6gki6n54"
       },
-      "trim": null,
+      "trim": {
+        "_$ref": "kvdnigid"
+      },
       "winsOfVsComputer": {
         "_$ref": "prljwga2"
       },
@@ -99,34 +101,37 @@
       "_$id": "whd1ua5z",
       "_$type": "Sprite",
       "name": "Sprite(1)",
-      "x": 71,
-      "y": 210,
-      "width": 100,
-      "height": 100,
+      "x": 55,
+      "y": 170,
+      "width": 116,
+      "height": 121,
       "_$child": [
         {
           "_$id": "6gki6n54",
           "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
           "name": "avatarclip",
           "active": true,
-          "x": 2.000000000000057,
-          "y": -1.0000000000000568,
+          "x": 17,
+          "y": 22,
           "visible": true,
           "width": 100,
-          "height": 100
+          "height": 100,
+          "index": 6
         },
         {
-          "_$id": "e1ae3dyz",
+          "_$id": "kvdnigid",
           "_$type": "Image",
-          "name": "Image(1)",
-          "x": -7.999999999999886,
-          "y": -17.000000000000057,
-          "width": 121,
-          "height": 131,
-          "mouseEnabled": true,
-          "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
-          "useSourceSize": true,
-          "color": "#ffffff"
+          "name": "trim",
+          "width": 135.5,
+          "height": 135.5,
+          "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
+          "color": "#ffffff",
+          "_$comp": [
+            {
+              "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
+              "scriptPath": "../src/MyselfTrim.ts"
+            }
+          ]
         }
       ]
     },

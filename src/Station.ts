@@ -105,7 +105,6 @@ export class Station extends Laya.Script {
     }
 
     private static onBuddyListUpdate(event: SFS2X.SFSEvent) {
-            console.log("onBuddyListUpdate");
     }
 
     private static onBuddyListInit(event: SFS2X.SFSEvent) {

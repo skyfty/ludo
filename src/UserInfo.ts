@@ -72,7 +72,7 @@ export class UserInfo extends Laya.Script {
         this.userid = profile.getInt("id");
         this.name.text = profile.getUtfString("nickname");
         this.avatar.index = profile.getInt("avatar");
-        this.trim.skin = Profile.getTrimImage(profile.getInt("trim"));
+        this.trim.skin = Profile.getTrimImage(profile.getUtfString("trim"));
         let rank = profile.getInt("rank");
         this.level.text = Math.floor(rank / 100).toString();
 

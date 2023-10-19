@@ -11235,7 +11235,6 @@
       }
     }
     static onBuddyListUpdate(event) {
-      console.log("onBuddyListUpdate");
     }
     static onBuddyListInit(event) {
       Station.sfs.send(new SFS2X2.GoOnlineRequest(true));
@@ -11586,7 +11585,7 @@
       this.userid = profile.getInt("id");
       this.name.text = profile.getUtfString("nickname");
       this.avatar.index = profile.getInt("avatar");
-      this.trim.skin = Profile.getTrimImage(profile.getInt("trim"));
+      this.trim.skin = Profile.getTrimImage(profile.getUtfString("trim"));
       let rank = profile.getInt("rank");
       this.level.text = Math.floor(rank / 100).toString();
       this.winsOfVsComputer.text = profile.getInt("vscomputer_wins");
