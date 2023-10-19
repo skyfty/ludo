@@ -136,7 +136,10 @@ export class Station extends Laya.Script {
     }
 
     private static onConnectionLost() {
-        Laya.timer.once(5000, this, () => {
+        Laya.timer.loop(5000, this, () => {
+            if (Station.sfs.isConnected) {
+                return;
+            }
             Station.sfs.connect();
         });
     }

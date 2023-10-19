@@ -110,6 +110,7 @@
       "skin": "res://81906343-13e7-46b0-99ac-72f789289ed4",
       "label": "",
       "labelSize": 20,
+      "labelBold": true,
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -137,7 +138,7 @@
           "leading": 0,
           "padding": "0,0,0,0",
           "stroke": 6,
-          "strokeColor": "rgba(111, 101, 88, 1)",
+          "strokeColor": "rgba(160, 160, 160, 1)",
           "_$comp": [
             {
               "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
@@ -187,7 +188,7 @@
           "leading": 0,
           "padding": "0,0,0,0",
           "stroke": 6,
-          "strokeColor": "rgba(111, 101, 88, 1)",
+          "strokeColor": "rgba(160, 160, 160, 1)",
           "_$comp": [
             {
               "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
@@ -237,7 +238,7 @@
           "leading": 0,
           "padding": "0,0,0,0",
           "stroke": 6,
-          "strokeColor": "rgba(111, 101, 88, 1)",
+          "strokeColor": "rgba(160, 160, 160, 1)",
           "_$comp": [
             {
               "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
@@ -432,7 +433,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 4,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -450,7 +451,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 5,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

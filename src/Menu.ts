@@ -52,6 +52,7 @@ export class Menu extends Laya.Script {
 
     onAwake(): void {
         this.challengeComputer.on(Laya.Event.CLICK, this, this.onChallengeComputer);
+ 
         this.challengeExtreme.on(Laya.Event.CLICK, this, this.onChallengeExtreme);
         this.challengeFriend.on(Laya.Event.CLICK, this, this.onChallengeFriend);
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);

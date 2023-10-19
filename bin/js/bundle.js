@@ -11261,7 +11261,10 @@
       }
     }
     static onConnectionLost() {
-      Laya.timer.once(5e3, this, () => {
+      Laya.timer.loop(5e3, this, () => {
+        if (Station.sfs.isConnected) {
+          return;
+        }
         Station.sfs.connect();
       });
     }
