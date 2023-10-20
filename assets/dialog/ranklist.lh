@@ -204,18 +204,6 @@
               "height": 100,
               "_$child": [
                 {
-                  "_$id": "tvymj5sb",
-                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
-                  "name": "avatarclip",
-                  "active": true,
-                  "x": 2.000000000000057,
-                  "y": -1.0000000000000568,
-                  "visible": true,
-                  "width": 100,
-                  "height": 100,
-                  "index": 4
-                },
-                {
                   "_$id": "6bphh4tq",
                   "_$type": "Image",
                   "name": "Image(1)",
@@ -227,6 +215,18 @@
                   "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
                   "useSourceSize": true,
                   "color": "#ffffff"
+                },
+                {
+                  "_$id": "tvymj5sb",
+                  "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+                  "name": "avatarclip",
+                  "active": true,
+                  "x": 2.000000000000057,
+                  "y": -0.9999999999999716,
+                  "visible": true,
+                  "width": 100,
+                  "height": 100,
+                  "index": 0
                 }
               ]
             },

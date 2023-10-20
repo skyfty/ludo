@@ -61,6 +61,12 @@ export class Station extends Laya.Script {
         } else {
             Station.sfs.connect();
         }
+        Laya.timer.loop(5000, this, () => {
+            if (Station.sfs.isConnected) {
+                return;
+            }
+            Station.sfs.connect();
+        });
     }
 
     addSmartFoxListener() {
@@ -135,12 +141,10 @@ export class Station extends Laya.Script {
     }
 
     private static onConnectionLost() {
-        Laya.timer.loop(5000, this, () => {
-            if (Station.sfs.isConnected) {
-                return;
-            }
-            Station.sfs.connect();
-        });
+        if (Station.sfs.isConnected) {
+            return;
+        }
+        Station.sfs.connect();
     }
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {

@@ -11198,6 +11198,12 @@
       } else {
         Station.sfs.connect();
       }
+      Laya.timer.loop(5e3, this, () => {
+        if (Station.sfs.isConnected) {
+          return;
+        }
+        Station.sfs.connect();
+      });
     }
     addSmartFoxListener() {
       Station.sfs.addEventListener(SFS2X2.SFSEvent.CONNECTION, Station.onConnection, Station.sfs);
@@ -11260,12 +11266,10 @@
       }
     }
     static onConnectionLost() {
-      Laya.timer.loop(5e3, this, () => {
-        if (Station.sfs.isConnected) {
-          return;
-        }
-        Station.sfs.connect();
-      });
+      if (Station.sfs.isConnected) {
+        return;
+      }
+      Station.sfs.connect();
     }
     onExtensionResponse(evtParams) {
       if ("SyncProfile" == evtParams.cmd) {
