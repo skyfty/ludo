@@ -47,6 +47,7 @@
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -65,9 +66,9 @@
       "_$id": "gx74qtzf",
       "_$type": "List",
       "name": "List",
-      "x": 67,
+      "x": 50,
       "y": 172,
-      "width": 621,
+      "width": 656,
       "height": 727,
       "mouseEnabled": true,
       "itemTemplate": {
@@ -84,7 +85,7 @@
           "_$id": "p1bsr8i7",
           "_$type": "Box",
           "name": "Box",
-          "width": 618,
+          "width": 656,
           "height": 100,
           "mouseEnabled": true,
           "_$comp": [
@@ -111,7 +112,7 @@
               "_$id": "vj2vgf72",
               "_$type": "Image",
               "name": "Image",
-              "width": 618,
+              "width": 654,
               "height": 100,
               "skin": "res://60815850-2a86-4053-8509-e1e77d973722",
               "color": "#ffffff"
@@ -140,6 +141,7 @@
               "fontSize": 42,
               "color": "rgba(254, 212, 3, 1)",
               "bold": true,
+              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0",
               "stroke": 3,
@@ -151,13 +153,14 @@
               "name": "Button",
               "x": 412,
               "y": 13,
-              "width": 192,
+              "width": 227,
               "height": 74,
               "mouseEnabled": true,
               "stateNum": 2,
               "skin": "res://561bd258-f58e-4616-ab1f-e0698916f2f2",
               "label": "",
               "labelSize": 20,
+              "labelVAlign": "middle",
               "_$child": [
                 {
                   "_$id": "4sqkppht",
@@ -165,12 +168,13 @@
                   "name": "Label",
                   "x": 12,
                   "y": 11,
-                  "width": 167,
+                  "width": 199,
                   "height": 21,
                   "text": "BUY FOR",
                   "fontSize": 25,
                   "color": "#FFFFFF",
                   "align": "center",
+                  "valign": "top",
                   "leading": 0,
                   "padding": "0,0,0,0",
                   "stroke": 3,
@@ -182,7 +186,7 @@
                   "name": "Label(1)",
                   "x": 10,
                   "y": 37,
-                  "width": 174,
+                  "width": 200,
                   "height": 28,
                   "text": "0.98",
                   "fontSize": 30,
@@ -210,7 +214,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 0,
+              "index": 2,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -227,7 +231,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 0,
+              "index": 2,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -244,7 +248,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 4,
               "interval": 213,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -261,7 +265,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 6,
+              "index": 4,
               "interval": 198,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

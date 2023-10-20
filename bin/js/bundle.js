@@ -14972,7 +14972,7 @@
     "per": "Peru",
     "pl": "Polska",
     "pt": "Portugal",
-    "ru": "\u0420\u0430\u0441\u0435\u044F",
+    "ru": "\u0420\u0443\u0441\u0441\u043A\u0438\u0439",
     "spa": "Espa\xF1a",
     "th": "\u0E1B\u0E23\u0E30\u0E40\u0E17\u0E28\u0E44\u0E17\u0E22",
     "tr": "T\xFCrkiye",

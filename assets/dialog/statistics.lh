@@ -102,9 +102,9 @@
       "_$type": "Sprite",
       "name": "Sprite(1)",
       "x": 55,
-      "y": 170,
-      "width": 116,
-      "height": 121,
+      "y": 189,
+      "width": 138,
+      "height": 141,
       "_$child": [
         {
           "_$id": "6gki6n54",
@@ -209,9 +209,9 @@
       "_$id": "8z63wk9t",
       "_$type": "Sprite",
       "name": "Sprite(5)",
-      "x": 144.9999999999999,
+      "x": 91.99999999999989,
       "y": 113.00000000000001,
-      "width": 460,
+      "width": 584,
       "height": 70,
       "_$child": [
         {
@@ -231,7 +231,7 @@
           "name": "Image(3)",
           "x": -1,
           "y": 3.0000000000000284,
-          "width": 460,
+          "width": 569,
           "height": 66,
           "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
           "color": "#ffffff"
@@ -241,9 +241,9 @@
           "_$type": "Label",
           "name": "Label",
           "x": 12,
-          "y": 14,
-          "width": 436,
-          "height": 43,
+          "y": 7,
+          "width": 543,
+          "height": 55,
           "text": "Statistics",
           "fontSize": 49,
           "color": "rgba(253, 203, 4, 1)",

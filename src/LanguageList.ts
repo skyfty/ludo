@@ -21,7 +21,7 @@ export class LanguageList extends Laya.Script {
         'per':"Peru",
         'pl':"Polska",
         'pt':"Portugal",
-        'ru':"Расея",
+        'ru':"Русский",
         'spa':"España",
         'th':"ประเทศไทย",
         'tr':"Türkiye",

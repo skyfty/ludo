@@ -103,7 +103,7 @@
       "x": 8,
       "y": 850,
       "width": 733,
-      "height": 50,
+      "height": 53,
       "text": "Waiting for Friends to join...",
       "fontSize": 35,
       "color": "rgba(225, 224, 224, 1)",
@@ -111,7 +111,13 @@
       "align": "center",
       "valign": "middle",
       "leading": 0,
-      "padding": "0,0,0,0"
+      "padding": "0,0,0,0",
+      "_$comp": [
+        {
+          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+          "scriptPath": "../src/TranslateLabel.ts"
+        }
+      ]
     },
     {
       "_$id": "02j2gvgx",
@@ -296,7 +302,8 @@
           "_$id": "1of5aoo5",
           "_$type": "Image",
           "name": "Image(2)",
-          "width": 493,
+          "x": -21,
+          "width": 531,
           "height": 81,
           "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
           "color": "#ffffff"
@@ -305,13 +312,14 @@
           "_$id": "kyj2a6xi",
           "_$type": "Label",
           "name": "Label",
-          "x": 36,
+          "x": 6,
           "y": 11.999999999999972,
-          "width": 180,
+          "width": 210,
           "height": 58,
           "text": "Room Code",
           "fontSize": 32,
           "color": "#FFFFFF",
+          "bold": true,
           "align": "right",
           "valign": "middle",
           "leading": 0,
@@ -323,7 +331,7 @@
           "name": "RoomCode",
           "x": 232,
           "y": 11.999999999999972,
-          "width": 222,
+          "width": 256,
           "height": 58,
           "text": "123123",
           "fontSize": 48,
@@ -352,9 +360,9 @@
           "_$type": "Label",
           "name": "clock",
           "x": 110,
-          "y": 74,
+          "y": 70,
           "width": 82,
-          "height": 38,
+          "height": 52,
           "text": "290",
           "fontSize": 47,
           "color": "rgba(68, 4, 4, 1)",
@@ -370,9 +378,9 @@
       "_$id": "dxwfyv0n",
       "_$type": "Button",
       "name": "InviteFriends",
-      "x": 143,
+      "x": 133,
       "y": 748,
-      "width": 478,
+      "width": 496,
       "height": 81.71367077003089,
       "mouseEnabled": true,
       "stateNum": 2,
@@ -385,7 +393,13 @@
       "labelVAlign": "middle",
       "labelStroke": 2,
       "labelStrokeColor": "#32556b",
-      "strokeColors": "#32556b,#32cc6b,#ff0000"
+      "strokeColors": "#32556b,#32cc6b,#ff0000",
+      "_$comp": [
+        {
+          "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
+          "scriptPath": "../src/TranslateButton.ts"
+        }
+      ]
     }
   ]
 }
