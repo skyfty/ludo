@@ -1,12 +1,1 @@
-{
-    "values":{
-        "LV.": "aaa",
-        "Settings":"Settings",
-        "VS COMPUTER":"VS COMPUTER",
-        "ONLINE MULTIPLAYER":"ONLINE MULTIPLAYER",
-        "PLAY WITH FRIENDS":"PLAY WITH FRIENDS",
-        "BUDDIES":"BUDDIES",
-        "RECENT":"RECENT"
-    }
-  }
-       
+{"values":{"Settings":"Settings","VS COMPUTER":"VS COMPUTER","ONLINE MULTIPLAYER":"ONLINE MULTIPLAYER","PLAY WITH FRIENDS":"PLAY WITH FRIENDS","BUDDIES":"BUDDIES","RECENT":"RECENT","PLAY":"PLAY","BUY FOR":"BUY FOR","Select Your Color":"Select Your Color","Select Players":"Select Players","CREATE ROOM":"CREATE ROOM","Create":"Create","Join":"Join","Daily Check In":"Daily Check In","You Are The Winner":"You Are The Winner","Win":"Win","Lose":"Lose","YOU WIN":"YOU WIN","Well Played":"Well Played","OKAY":"OKAY","End Current Game?":"End Current Game?","The player has left the room":"The player has left the room","You don't have enough gold!":"You don't have enough gold!","No internet connection!":"No internet connection!","Magic Props":"Magic Props","Profile":"Profile","Choose Avatar":"Choose Avatar","Leaderboard":"Leaderboard","Can't join the room":"Can't join the room","Searching Timeout.":"Searching Timeout.","Statistics":"Statistics","Select Profile Trim":"Select Profile Trim","LEVEL":"LEVEL","COINS":"COINS","Room Code":"Room Code","Enter Room Code":"Enter Room Code","JOIN ROOM":"JOIN ROOM","Day %n":"Day %n","INVITE FRIENDS":"INVITE FRIENDS","Waiting for Friends to join...":"Waiting for Friends to join...","Level up to obtain":"Level up to obtain","Gold coin purchase":"Gold coin purchase"}}

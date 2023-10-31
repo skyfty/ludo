@@ -16267,15 +16267,99 @@
   ];
   _TrimConfig.Coins = [
     {
-      image: "0.png",
+      image: "8.png",
       gold: 0
     },
     {
-      image: "1.png",
+      image: "9.png",
       gold: 100
     },
     {
-      image: "8.png",
+      image: "10.png",
+      gold: 100
+    },
+    {
+      image: "11.png",
+      gold: 100
+    },
+    {
+      image: "12.png",
+      gold: 100
+    },
+    {
+      image: "13.png",
+      gold: 100
+    },
+    {
+      image: "14.png",
+      gold: 100
+    },
+    {
+      image: "15.png",
+      gold: 100
+    },
+    {
+      image: "16.png",
+      gold: 100
+    },
+    {
+      image: "17.png",
+      gold: 100
+    },
+    {
+      image: "18.png",
+      gold: 100
+    },
+    {
+      image: "19.png",
+      gold: 100
+    },
+    {
+      image: "20.png",
+      gold: 100
+    },
+    {
+      image: "21.png",
+      gold: 100
+    },
+    {
+      image: "22.png",
+      gold: 100
+    },
+    {
+      image: "23.png",
+      gold: 100
+    },
+    {
+      image: "24.png",
+      gold: 100
+    },
+    {
+      image: "25.png",
+      gold: 100
+    },
+    {
+      image: "26.png",
+      gold: 100
+    },
+    {
+      image: "27.png",
+      gold: 100
+    },
+    {
+      image: "28.png",
+      gold: 100
+    },
+    {
+      image: "29.png",
+      gold: 100
+    },
+    {
+      image: "30.png",
+      gold: 100
+    },
+    {
+      image: "31.png",
       gold: 100
     }
   ];

@@ -254,7 +254,7 @@
       "name": "title",
       "x": 3,
       "width": 745,
-      "height": 120,
+      "height": 137,
       "mouseEnabled": true,
       "_$child": [
         {
@@ -339,7 +339,7 @@
               "y": 1.5000000000000142,
               "width": 129,
               "height": 129,
-              "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
+              "skin": "res://00052eb8-8712-4a40-bfc0-0e9709fb2c69",
               "color": "#ffffff",
               "_$comp": [
                 {
@@ -433,7 +433,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 4,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -451,7 +451,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 1,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

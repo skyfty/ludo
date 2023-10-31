@@ -195,7 +195,8 @@
           "stateNum": 2,
           "skin": "res://fbeeb648-45ae-4d2c-9cfd-02dc13d51864",
           "label": "",
-          "labelSize": 20
+          "labelSize": 20,
+          "labelVAlign": "middle"
         },
         {
           "_$id": "z8ybkgsg",
@@ -204,7 +205,7 @@
           "x": -11,
           "width": 119,
           "height": 119,
-          "skin": "res://e8f304a1-112e-4ad4-b97f-42c929cb2d38",
+          "skin": "res://00052eb8-8712-4a40-bfc0-0e9709fb2c69",
           "color": "#ffffff"
         },
         {

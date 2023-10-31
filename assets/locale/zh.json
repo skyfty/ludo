@@ -1,11 +1,1 @@
-{
-    "values":{
-        "Settings":"设置",
-        "VS COMPUTER":"挑战电脑",
-        "ONLINE MULTIPLAYER":"在线多人对战",
-        "PLAY WITH FRIENDS":"挑战好友",
-        "BUDDIES":"好友",
-        "RECENT":"最近"
-    }
-  }
-       
+{"values":{"Settings":"设置","VS COMPUTER":"挑战电脑","ONLINE MULTIPLAYER":"在线多人游戏","PLAY WITH FRIENDS":"和朋友一起玩","BUDDIES":"好友","RECENT":"最近的","PLAY":"挑战","BUY FOR":"购买","Select Your Color":"选择您的颜色","Select Players":"选择玩家","CREATE ROOM":"创建房间","Create":"创造","Join":"参加","Daily Check In":"每日签到","You Are The Winner":"你是赢家","Win":"赢","Lose":"失去","YOU WIN":"你赢了","Well Played":"玩得好","OKAY":"好的","End Current Game?":"结束当前游戏？","The player has left the room":"玩家已离开房间","You don't have enough gold!":"你没有足够的金子！","No internet connection!":"没有互联网连接！","Magic Props":"魔术道具","Profile":"配置","Choose Avatar":"选择头像","Leaderboard":"排行榜","Can't join the room":"无法加入房间","Searching Timeout.":"搜索超时。","Statistics":"战绩","Select Profile Trim":"选择轮廓修剪","LEVEL":"水准仪","COINS":"硬币","Room Code":"房间代码","Enter Room Code":"输入房间代码","JOIN ROOM":"进入房间","Day %n":"第%n天","INVITE FRIENDS":"邀请朋友","Waiting for Friends to join...":"正在等待朋友加入。。。","Level up to obtain":"升级以获得","Gold coin purchase":"金币购买"}}

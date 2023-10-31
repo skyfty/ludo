@@ -1601,7 +1601,8 @@
               "useSourceSize": false,
               "height": 119,
               "x": -12,
-              "y": 0
+              "y": 0,
+              "skin": "res://36b026dc-4389-442d-8c92-d07a18b54530"
             },
             {
               "_$id": "60j9qyf3",

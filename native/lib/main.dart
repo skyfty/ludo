@@ -5,6 +5,7 @@ import 'package:archive/archive.dart';
 import 'package:archive/archive_io.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mime/mime.dart';
+import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
