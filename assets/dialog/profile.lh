@@ -65,11 +65,11 @@
               "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "avatarclip",
               "active": true,
-              "x": 2.000000000000057,
-              "y": -1.0000000000000568,
+              "x": -2.499999999999943,
+              "y": -2.5,
               "visible": true,
-              "width": 100,
-              "height": 100,
+              "width": 108,
+              "height": 108,
               "_$comp": [
                 {
                   "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
@@ -85,7 +85,7 @@
               "y": -11.499999999999982,
               "width": 125,
               "height": 125,
-              "skin": "res://36b026dc-4389-442d-8c92-d07a18b54530",
+              "skin": "res://00052eb8-8712-4a40-bfc0-0e9709fb2c69",
               "color": "#ffffff",
               "_$comp": [
                 {
@@ -204,16 +204,16 @@
           "_$type": "List",
           "name": "List",
           "x": -144.99999999999986,
-          "y": -41,
+          "y": -52,
           "width": 413,
-          "height": 315,
+          "height": 326,
           "mouseEnabled": true,
           "itemTemplate": {
             "_$ref": "3ms190lj",
             "_$tmpl": "itemRender"
           },
           "repeatX": 3,
-          "repeatY": 3,
+          "repeatY": 10,
           "spaceX": 15,
           "spaceY": 5,
           "scrollType": 2,

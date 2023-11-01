@@ -32,7 +32,7 @@ export interface Profile {
     nickname: string;
     avatar: number;
     trim: string;
-
+    pawns:number;
     level:string;
     gold:number;
 }
@@ -349,10 +349,6 @@ export class Player extends Laya.Script {
     
     public setAttire(color:string) {
         this.color = color;
-        for(let i = 0; i < this.groove.numChildren;++i) {
-            let chess = this.groove.getChildAt(i) as Laya.Sprite;
-            chess.getComponent(Chess).image.skin =   "resources/images/pawns_"+color+".png";
-        }
         for(let i = 0; i < this.personal.numChildren;++i) {
             let route = this.personal.getChildAt(i) as Laya.Box;
             route.bgColor = Config.ColorValue[color];
@@ -369,6 +365,10 @@ export class Player extends Laya.Script {
         trade.trim.skin = "resources/images/trims/" + this.profile.trim;
         this.gold.text = profile.gold.toString();
         this.level.text = "LV. " + profile.level.toString();
+        for(let i = 0; i < this.groove.numChildren;++i) {
+            let chess = this.groove.getChildAt(i) as Laya.Sprite;
+            chess.getComponent(Chess).image.skin =   "resources/images/pawns_"+this.color+ this.profile.pawns+".png";
+        }
     }
 
     

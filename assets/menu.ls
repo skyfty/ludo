@@ -318,12 +318,13 @@
               "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
               "name": "avatarclip",
               "active": true,
-              "x": 20.000000000000004,
-              "y": 19.99999999999999,
+              "x": 16.000000000000004,
+              "y": 16,
               "visible": true,
-              "width": 95,
-              "height": 95,
-              "index": 6,
+              "width": 105,
+              "height": 105,
+              "index": 0,
+              "clipY": 10,
               "_$comp": [
                 {
                   "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
@@ -433,7 +434,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 4,
+              "index": 6,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -451,7 +452,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 1,
+              "index": 3,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

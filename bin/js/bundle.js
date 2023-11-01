@@ -11035,6 +11035,10 @@
       if (trim != null) {
         params.putUtfString("trim", trim);
       }
+      let pawns = Laya.LocalStorage.getItem("pawns");
+      if (pawns != null) {
+        params.putUtfString("pawns", pawns);
+      }
       let checkinday = Laya.LocalStorage.getItem("checkinday");
       if (checkinday != null) {
         params.putInt("checkinday", Number.parseInt(checkinday));
@@ -11064,6 +11068,12 @@
         Laya.LocalStorage.setItem("trim", trim);
       } else {
         Laya.LocalStorage.setItem("trim", "0.png");
+      }
+      let pawns = params.get("pawns");
+      if (pawns != null) {
+        Laya.LocalStorage.setItem("pawns", pawns);
+      } else {
+        Laya.LocalStorage.setItem("pawns", "00");
       }
       let rank = params.get("rank");
       if (rank != null) {
@@ -11097,6 +11107,12 @@
       Station.sync();
       Station.updateBuddyInfo();
     }
+    static setPawns(pawns) {
+      Laya.LocalStorage.setItem("pawns", pawns);
+      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
+      Station.sync();
+      Station.updateBuddyInfo();
+    }
     static setTrim(trim) {
       Laya.LocalStorage.setItem("trim", trim);
       Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
@@ -11124,6 +11140,10 @@
     }
     static getTrimImage(trim) {
       return "resources/images/trims/" + trim;
+    }
+    static getPawns() {
+      let pawns = Laya.LocalStorage.getItem("pawns");
+      return pawns != null ? pawns : "00";
     }
     static getGold() {
       let gold = Laya.LocalStorage.getItem("gold");
@@ -13519,10 +13539,6 @@
     }
     setAttire(color) {
       this.color = color;
-      for (let i = 0; i < this.groove.numChildren; ++i) {
-        let chess = this.groove.getChildAt(i);
-        chess.getComponent(Chess).image.skin = "resources/images/pawns_" + color + ".png";
-      }
       for (let i = 0; i < this.personal.numChildren; ++i) {
         let route = this.personal.getChildAt(i);
         route.bgColor = Config.ColorValue[color];
@@ -13536,6 +13552,10 @@
       trade.trim.skin = "resources/images/trims/" + this.profile.trim;
       this.gold.text = profile.gold.toString();
       this.level.text = "LV. " + profile.level.toString();
+      for (let i = 0; i < this.groove.numChildren; ++i) {
+        let chess = this.groove.getChildAt(i);
+        chess.getComponent(Chess).image.skin = "resources/images/pawns_" + this.color + this.profile.pawns + ".png";
+      }
     }
     plusAni(hold) {
       let plus = this.plus.create();
@@ -14626,6 +14646,7 @@
         let nickname = users[i].getVariable("nickname");
         let avatar = users[i].getVariable("avatar");
         let trim = users[i].getVariable("trim");
+        let pawns = users[i].getVariable("pawns");
         let userid = users[i].getVariable("userid");
         let rank = users[i].getVariable("rank");
         let gold = users[i].getVariable("gold");
@@ -14635,6 +14656,7 @@
           "nickname": nickname.value,
           "avatar": avatar.value,
           "trim": trim.value,
+          "pawns": pawns.value,
           "level": Profile.getLevel(rank.value),
           "gold": gold.value
         });
@@ -14654,6 +14676,7 @@
         "nickname": Profile.getNickname(),
         "avatar": Profile.getAvatar(),
         "trim": Profile.getTrim(),
+        "pawns": Profile.getPawns(),
         "gold": Profile.getGold(),
         "level": Profile.getMyLevel()
       });
@@ -14662,20 +14685,21 @@
       let num = Math.min(this.room.numberOfPlayer - 1, 3);
       if (num == 1) {
         idx = idx % 2 == 0 ? idx == 0 ? 2 : 0 : idx == 1 ? 3 : 1;
-        this.addComputerPlayer(colors[idx], 1);
+        this.addComputerPlayer(colors[idx], 1, Profile.getPawns());
       } else {
         colors.splice(idx, 1);
         for (let i = 0; i < num; ++i) {
-          this.addComputerPlayer(colors[i], i + 1);
+          this.addComputerPlayer(colors[i], i + 1, Profile.getPawns());
         }
       }
     }
-    addComputerPlayer(color, id) {
+    addComputerPlayer(color, id, pawns) {
       this.room.addPlayer(color, 1 /* Computer */, {
         "id": id,
         "nickname": "Computer",
         "avatar": 0,
         "trim": "0.png",
+        "pawns": pawns,
         "gold": 0,
         "level": 0
       });
@@ -15037,10 +15061,10 @@
           "resources/images/menu_title_bk.png",
           "resources/images/music_checkbox.png",
           "resources/images/onlinemultiplayer.png",
-          "resources/images/pawns_red.png",
-          "resources/images/pawns_yellow.png",
-          "resources/images/pawns_blue.png",
-          "resources/images/pawns_green.png",
+          "resources/images/pawns_red00.png",
+          "resources/images/pawns_yellow00.png",
+          "resources/images/pawns_blue00.png",
+          "resources/images/pawns_green00.png",
           "resources/images/play2.png",
           "resources/images/playwithfriends.png",
           "resources/images/plusbtn.png",

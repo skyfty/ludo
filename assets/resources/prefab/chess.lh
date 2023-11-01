@@ -46,6 +46,16 @@
               "states": [
                 {
                   "_$type": "AnimatorState2D",
+                  "name": "defender",
+                  "clipStart": 0,
+                  "clip": {
+                    "_$uuid": "63c41487-a5b3-474d-92c6-82af84c5e93e",
+                    "_$type": "AnimationClip2D"
+                  },
+                  "soloTransitions": []
+                },
+                {
+                  "_$type": "AnimatorState2D",
                   "name": "kick",
                   "clipStart": 0,
                   "clip": {
@@ -90,7 +100,7 @@
           "y": -5.5,
           "width": 48,
           "height": 48,
-          "skin": "res://0f9d0783-24c3-4e4d-a0cf-f61a6793c5fa",
+          "skin": "res://0679e0a9-a5cc-4e5c-82b7-2743e3481841",
           "color": "#ffffff"
         },
         {

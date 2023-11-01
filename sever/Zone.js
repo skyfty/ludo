@@ -222,10 +222,11 @@ function getUser(id) {
 	return user.getSFSObject(0);
 }
 
-function syncUserVariable(userId, nickname, avatar, sender) {
+function syncUserVariable(userId, nickname, avatar, pawns, sender) {
 	var userVars = [];
 	userVars.push(new SFSUserVariable("userid", userId, VariableType.INT));
 	userVars.push(new SFSUserVariable("avatar", avatar, VariableType.INT));
+	userVars.push(new SFSUserVariable("pawns", pawns, VariableType.STRING));
 	userVars.push(new SFSUserVariable("nickname", nickname, VariableType.STRING));
 	getApi().setUserVariables(sender, userVars, true);
 }
@@ -249,6 +250,10 @@ function onSyncProfileRequest(inParams, sender) {
 	if (avatar == null) {
 		avatar = 0;
 	}
+	var pawns = inParams.getInt("pawns");
+	if (pawns == null) {
+		pawns = "00";
+	}
 	var userId = inParams.getInt("id");
 
 	if (userId == null) {
@@ -268,7 +273,7 @@ function onSyncProfileRequest(inParams, sender) {
 		inParams.putInt("rank", countRank(userId));
 		inParams.putInt("gold", 0);
 		inParams.putInt("id", userId);
-		syncUserVariable(userId, nickname, avatar, sender);
+		syncUserVariable(userId, nickname, avatar,pawns, sender);
 	} else {
 		var user = getUser(userId);
 		if (user != null) {
@@ -277,15 +282,18 @@ function onSyncProfileRequest(inParams, sender) {
 				inParams = user;
 				nickname = inParams.getUtfString("nickname");
 				avatar = inParams.getInt("avatar");
+				pawns = inParams.getInt("pawns");
+
 			} else {
 				userId = user.getInt("id");
 				var data = [
 					nickname,
 					avatar,
+					pawns,
 					syncTime,
 					userId
 				];
-				db.executeUpdate("UPDATE users SET nickname=?,avatar=?,updatetime=? WHERE id=?", data);
+				db.executeUpdate("UPDATE users SET nickname=?,avatar=?,pawns=?,updatetime=? WHERE id=?", data);
 				inParams.putInt("rank", user.getInt("rank"));
 				inParams.putInt("gold", user.getInt("gold"));
 			}

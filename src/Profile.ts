@@ -27,6 +27,10 @@ export class Profile {
             params.putUtfString("trim", trim);
         }
 
+        let pawns = Laya.LocalStorage.getItem("pawns");
+        if (pawns != null) {
+            params.putUtfString("pawns", pawns);
+        }
         let checkinday = Laya.LocalStorage.getItem("checkinday");
         if (checkinday != null) {
             params.putInt("checkinday", Number.parseInt(checkinday));
@@ -58,6 +62,13 @@ export class Profile {
             Laya.LocalStorage.setItem("trim", trim);
         } else {
             Laya.LocalStorage.setItem("trim", "0.png");
+        }
+        
+        let pawns = params.get("pawns");
+        if (pawns != null) {
+            Laya.LocalStorage.setItem("pawns", pawns);
+        } else {
+            Laya.LocalStorage.setItem("pawns", "00");
         }
         let rank = params.get("rank");
         if (rank != null) {
@@ -95,13 +106,19 @@ export class Profile {
         Station.updateBuddyInfo();
     }
 
+    public static setPawns(pawns:string) {
+        Laya.LocalStorage.setItem("pawns",pawns);
+        Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
+        Station.sync();
+        Station.updateBuddyInfo();
+    }
+
     public static setTrim(trim:string) {
         Laya.LocalStorage.setItem("trim",trim);
         Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
         Station.sync();
         Station.updateBuddyInfo();
     }
-
     public static getUserId() {
         let userId = Laya.LocalStorage.getItem("userid");
         return userId == null?null:Number.parseInt(userId);
@@ -129,6 +146,10 @@ export class Profile {
         return "resources/images/trims/" + trim;
     }
 
+    public static getPawns() {
+        let pawns = Laya.LocalStorage.getItem("pawns");
+        return pawns != null ? pawns:"00";
+    }
     public static getGold() {
         let gold = Laya.LocalStorage.getItem("gold");
         return gold == null?0:Number.parseInt(gold);
