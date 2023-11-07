@@ -434,7 +434,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 6,
+              "index": 2,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -452,7 +452,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 6,
               "interval": 199,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

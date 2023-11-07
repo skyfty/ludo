@@ -10,13 +10,12 @@
     "res://d1a07803-b473-4777-b72e-4e6b01690aed"
   ],
   "alwaysIncluded": [
-    "res://:f4",
-    "res://:f5",
-    "res://:f6",
-    "res://:f7",
-    "res://:f8",
-    "res://:f7",
-    "res://:f9"
+    "res://f4",
+    "res://f5",
+    "res://f6",
+    "res://f7",
+    "res://f8",
+    "res://f9"
   ],
   "excludeFilesRule": [],
   "android": {

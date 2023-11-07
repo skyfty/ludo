@@ -1,4 +1,3 @@
-"use strict";
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -39,7 +38,6 @@
   // node_modules/sfs2x-api/sfs2x-api.js
   var require_sfs2x_api = __commonJS({
     "node_modules/sfs2x-api/sfs2x-api.js"(exports, module) {
-      "use strict";
       !function(e, t) {
         "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.SFS2X = t() : e.SFS2X = t();
       }(exports, function() {
@@ -10127,7 +10125,7 @@
           }, "_"), p = /* @__PURE__ */ __name(function(e2, t2, n2) {
             return 0 === t2 ? n2 : t2 % 2 == 1 ? p(e2, t2 - 1, n2 * e2) : p(e2 * e2, t2 / 2, n2);
           }, "p");
-          r(r.P + r.F * (!!a && ("0.000" !== 8e-5.toFixed(3) || "1" !== 0.9.toFixed(0) || "1.25" !== 1.255.toFixed(2) || "1000000000000000128" !== 1000000000000000100 .toFixed(0)) || !n(3)(function() {
+          r(r.P + r.F * (!!a && ("0.000" !== 8e-5 .toFixed(3) || "1" !== 0.9 .toFixed(0) || "1.25" !== 1.255 .toFixed(2) || "1000000000000000128" !== 1000000000000000100 .toFixed(0)) || !n(3)(function() {
             a.call({});
           })), "Number", { toFixed: function(e2) {
             var t2, n2, r2, a2, u2 = o(this, l), c2 = i(e2), y = "", d = "0";
@@ -10713,7 +10711,6 @@
   // node_modules/roddeh-i18n/dist/i18n.js
   var require_i18n = __commonJS({
     "node_modules/roddeh-i18n/dist/i18n.js"(exports, module) {
-      "use strict";
       (function() {
         "use strict";
         var __bind = /* @__PURE__ */ __name(function(fn, me) {
@@ -11016,7 +11013,7 @@
   // src/Profile.ts
   var SFS2X = __toESM(require_sfs2x_api());
   var { regClass: regClass4, property: property4 } = Laya;
-  var _Profile = class _Profile {
+  var Profile = class {
     static getSyncParam() {
       let params = new SFS2X.SFSObject();
       let userId = Laya.LocalStorage.getItem("userid");
@@ -11045,7 +11042,7 @@
       }
       let updatetime = Laya.LocalStorage.getItem("updatetime");
       if (updatetime == null) {
-        updatetime = _Profile.getCurrentUpdateTime();
+        updatetime = Profile.getCurrentUpdateTime();
       }
       params.putLong("updatetime", Number.parseInt(updatetime));
       return params;
@@ -11097,25 +11094,25 @@
     }
     static setNickname(nickname) {
       Laya.LocalStorage.setItem("nickname", nickname);
-      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
+      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
       Station.sync();
       Station.updateBuddyInfo();
     }
     static setAvatar(avatar) {
       Laya.LocalStorage.setItem("avatar", avatar.toString());
-      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
+      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
       Station.sync();
       Station.updateBuddyInfo();
     }
     static setPawns(pawns) {
       Laya.LocalStorage.setItem("pawns", pawns);
-      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
+      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
       Station.sync();
       Station.updateBuddyInfo();
     }
     static setTrim(trim) {
       Laya.LocalStorage.setItem("trim", trim);
-      Laya.LocalStorage.setItem("updatetime", _Profile.getCurrentUpdateTime());
+      Laya.LocalStorage.setItem("updatetime", Profile.getCurrentUpdateTime());
       Station.sync();
       Station.updateBuddyInfo();
     }
@@ -11170,25 +11167,23 @@
       return Math.floor(rank / 100).toString();
     }
     static getMyLevel() {
-      let rank = _Profile.getRank();
-      return _Profile.getLevel(rank);
+      let rank = Profile.getRank();
+      return Profile.getLevel(rank);
     }
   };
-  __name(_Profile, "Profile");
-  var Profile = _Profile;
+  __name(Profile, "Profile");
 
   // src/Station.ts
   var { regClass: regClass5, property: property5 } = Laya;
-  var _Event = class _Event {
+  var Event = class {
   };
-  __name(_Event, "Event");
-  _Event.Login = "LOGIN";
-  _Event.Join = "ROOM_JOIN";
-  _Event.Disconnect = "DISCONNECT";
-  _Event.Exit = "ROOM_EXIT";
-  _Event.Error = "ROOM_ERROR";
-  _Event.LoginError = "LOGIN_ERROR";
-  var Event = _Event;
+  __name(Event, "Event");
+  Event.Login = "LOGIN";
+  Event.Join = "ROOM_JOIN";
+  Event.Disconnect = "DISCONNECT";
+  Event.Exit = "ROOM_EXIT";
+  Event.Error = "ROOM_ERROR";
+  Event.LoginError = "LOGIN_ERROR";
   var Station = class extends Laya.Script {
     constructor() {
       super();
@@ -11863,11 +11858,12 @@
     }
     onSelected(index) {
       let data = this.list.array[index];
-      var params = new SFS2X9.SFSObject();
-      params.putInt("id", Profile.getUserId());
-      params.putInt("amount", data.getInt("amount"));
-      params.putInt("selectindex", index);
-      Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
+      console.log("aaaaaaaaaaaaaaaa");
+      window.flutter_inappwebview.callHandler("buy", "gold1000").then(function(result) {
+        console.log(result);
+        console.log("bbbbbbbbbbbbbb");
+        console.log("bbbbbbbbbbbbbb");
+      });
     }
     updateItem(cell, index) {
       if (this.coins != null) {
@@ -11990,20 +11986,20 @@
   ], GameRoom);
 
   // src/Config.ts
-  var _Config = class _Config {
+  var _Config = class {
   };
-  __name(_Config, "Config");
-  _Config.NUMBER_UNIVERSAL_HOLD = 52;
-  _Config.NUMBER_PERSONAL_HOLD = 6;
-  _Config.TIMEOUT_CHOOSE_CHESS = 30;
-  _Config.TIMEOUT_CHUNK = 30;
-  _Config.Colors = ["red", "green", "yellow", "blue"];
-  _Config.ColorValue = { "red": "#8a3225", "green": "#3f7d41", "yellow": "#8d721e", "blue": "#1d4d92" };
-  _Config.MagicMap = [{ "makeup": { "6": { "name": "plus", "clip": 1 }, "11": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "15": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "23": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "defender", "clip": 0 } } }, { "makeup": { "14": { "name": "defender", "clip": 0 }, "15": { "name": "defender", "clip": 0 }, "18": { "name": "defender", "clip": 0 }, "25": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "33": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "3": { "name": "plus", "clip": 1 }, "11": { "name": "defender", "clip": 0 }, "22": { "name": "rocket", "clip": 2 }, "28": { "name": "rocket", "clip": 2 }, "31": { "name": "rocket", "clip": 2 }, "33": { "name": "defender", "clip": 0 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 }, "51": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "12": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "23": { "name": "plus", "clip": 1 }, "33": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "46": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "12": { "name": "rocket", "clip": 2 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 } } }, { "makeup": { "12": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "19": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "27": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "40": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "43": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "7": { "name": "rocket", "clip": 2 }, "11": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "17": { "name": "plus", "clip": 1 }, "18": { "name": "defender", "clip": 0 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "11": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "28": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "2": { "name": "rocket", "clip": 2 }, "7": { "name": "defender", "clip": 0 }, "11": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "29": { "name": "plus", "clip": 1 }, "38": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "defender", "clip": 0 }, "6": { "name": "plus", "clip": 1 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "plus", "clip": 1 }, "44": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "defender", "clip": 0 }, "5": { "name": "plus", "clip": 1 }, "7": { "name": "defender", "clip": 0 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "25": { "name": "plus", "clip": 1 }, "42": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "18": { "name": "plus", "clip": 1 }, "24": { "name": "rocket", "clip": 2 }, "31": { "name": "defender", "clip": 0 }, "33": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "44": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "25": { "name": "rocket", "clip": 2 }, "27": { "name": "rocket", "clip": 2 }, "35": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "50": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "10": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "rocket", "clip": 2 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "plus", "clip": 1 }, "9": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "25": { "name": "defender", "clip": 0 }, "32": { "name": "plus", "clip": 1 }, "36": { "name": "rocket", "clip": 2 }, "37": { "name": "defender", "clip": 0 }, "42": { "name": "rocket", "clip": 2 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "12": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "35": { "name": "rocket", "clip": 2 }, "41": { "name": "rocket", "clip": 2 }, "43": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 }, "49": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "defender", "clip": 0 }, "19": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "44": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "50": { "name": "defender", "clip": 0 } } }, { "makeup": { "4": { "name": "defender", "clip": 0 }, "12": { "name": "plus", "clip": 1 }, "17": { "name": "plus", "clip": 1 }, "19": { "name": "rocket", "clip": 2 }, "28": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "plus", "clip": 1 }, "37": { "name": "defender", "clip": 0 }, "41": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 } } }, { "makeup": { "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "10": { "name": "defender", "clip": 0 }, "15": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "18": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "6": { "name": "rocket", "clip": 2 }, "14": { "name": "plus", "clip": 1 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "14": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "plus", "clip": 1 }, "30": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "42": { "name": "plus", "clip": 1 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "7": { "name": "rocket", "clip": 2 }, "9": { "name": "plus", "clip": 1 }, "30": { "name": "plus", "clip": 1 }, "31": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "50": { "name": "rocket", "clip": 2 } } }, { "makeup": { "7": { "name": "plus", "clip": 1 }, "15": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "24": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "42": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "10": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "defender", "clip": 0 }, "28": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "plus", "clip": 1 }, "37": { "name": "rocket", "clip": 2 }, "40": { "name": "plus", "clip": 1 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "5": { "name": "rocket", "clip": 2 }, "17": { "name": "defender", "clip": 0 }, "20": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "30": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "46": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "3": { "name": "rocket", "clip": 2 }, "4": { "name": "plus", "clip": 1 }, "16": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "25": { "name": "defender", "clip": 0 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 }, "48": { "name": "defender", "clip": 0 }, "51": { "name": "rocket", "clip": 2 } } }, { "makeup": { "3": { "name": "defender", "clip": 0 }, "10": { "name": "rocket", "clip": 2 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "defender", "clip": 0 }, "32": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "42": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "plus", "clip": 1 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "35": { "name": "rocket", "clip": 2 }, "38": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "45": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "51": { "name": "plus", "clip": 1 } } }];
-  _Config.MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
-  _Config.OSS_BASE_URL = "http://oss.touchmagic.cn/";
-  _Config.TRANSLATE_URL = _Config.OSS_BASE_URL + "promotion/translates/name/LudoFans";
   var Config = _Config;
+  __name(Config, "Config");
+  Config.NUMBER_UNIVERSAL_HOLD = 52;
+  Config.NUMBER_PERSONAL_HOLD = 6;
+  Config.TIMEOUT_CHOOSE_CHESS = 30;
+  Config.TIMEOUT_CHUNK = 30;
+  Config.Colors = ["red", "green", "yellow", "blue"];
+  Config.ColorValue = { "red": "#8a3225", "green": "#3f7d41", "yellow": "#8d721e", "blue": "#1d4d92" };
+  Config.MagicMap = [{ "makeup": { "6": { "name": "plus", "clip": 1 }, "11": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "15": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "23": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "defender", "clip": 0 } } }, { "makeup": { "14": { "name": "defender", "clip": 0 }, "15": { "name": "defender", "clip": 0 }, "18": { "name": "defender", "clip": 0 }, "25": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "33": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "3": { "name": "plus", "clip": 1 }, "11": { "name": "defender", "clip": 0 }, "22": { "name": "rocket", "clip": 2 }, "28": { "name": "rocket", "clip": 2 }, "31": { "name": "rocket", "clip": 2 }, "33": { "name": "defender", "clip": 0 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 }, "51": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "12": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "23": { "name": "plus", "clip": 1 }, "33": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "46": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "12": { "name": "rocket", "clip": 2 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 }, "41": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 } } }, { "makeup": { "12": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "19": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "27": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "40": { "name": "rocket", "clip": 2 }, "42": { "name": "defender", "clip": 0 }, "43": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "7": { "name": "rocket", "clip": 2 }, "11": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "17": { "name": "plus", "clip": 1 }, "18": { "name": "defender", "clip": 0 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "11": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "25": { "name": "defender", "clip": 0 }, "28": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "2": { "name": "rocket", "clip": 2 }, "7": { "name": "defender", "clip": 0 }, "11": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "29": { "name": "plus", "clip": 1 }, "38": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "defender", "clip": 0 }, "6": { "name": "plus", "clip": 1 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "defender", "clip": 0 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "35": { "name": "plus", "clip": 1 }, "41": { "name": "plus", "clip": 1 }, "44": { "name": "defender", "clip": 0 } } }, { "makeup": { "2": { "name": "defender", "clip": 0 }, "5": { "name": "plus", "clip": 1 }, "7": { "name": "defender", "clip": 0 }, "14": { "name": "rocket", "clip": 2 }, "18": { "name": "rocket", "clip": 2 }, "22": { "name": "rocket", "clip": 2 }, "25": { "name": "plus", "clip": 1 }, "42": { "name": "defender", "clip": 0 }, "50": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "18": { "name": "plus", "clip": 1 }, "24": { "name": "rocket", "clip": 2 }, "31": { "name": "defender", "clip": 0 }, "33": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "44": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "plus", "clip": 1 }, "14": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "25": { "name": "rocket", "clip": 2 }, "27": { "name": "rocket", "clip": 2 }, "35": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "50": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "defender", "clip": 0 }, "6": { "name": "rocket", "clip": 2 }, "10": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "37": { "name": "plus", "clip": 1 }, "41": { "name": "defender", "clip": 0 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "24": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "rocket", "clip": 2 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 } } }, { "makeup": { "2": { "name": "plus", "clip": 1 }, "4": { "name": "plus", "clip": 1 }, "9": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "25": { "name": "defender", "clip": 0 }, "32": { "name": "plus", "clip": 1 }, "36": { "name": "rocket", "clip": 2 }, "37": { "name": "defender", "clip": 0 }, "42": { "name": "rocket", "clip": 2 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "12": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "28": { "name": "defender", "clip": 0 }, "35": { "name": "rocket", "clip": 2 }, "41": { "name": "rocket", "clip": 2 }, "43": { "name": "defender", "clip": 0 }, "48": { "name": "plus", "clip": 1 }, "49": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "defender", "clip": 0 }, "19": { "name": "plus", "clip": 1 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "30": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "44": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "50": { "name": "defender", "clip": 0 } } }, { "makeup": { "4": { "name": "defender", "clip": 0 }, "12": { "name": "plus", "clip": 1 }, "17": { "name": "plus", "clip": 1 }, "19": { "name": "rocket", "clip": 2 }, "28": { "name": "defender", "clip": 0 }, "37": { "name": "rocket", "clip": 2 }, "41": { "name": "plus", "clip": 1 }, "48": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "1": { "name": "rocket", "clip": 2 }, "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "plus", "clip": 1 }, "37": { "name": "defender", "clip": 0 }, "41": { "name": "plus", "clip": 1 }, "45": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 } } }, { "makeup": { "2": { "name": "rocket", "clip": 2 }, "3": { "name": "plus", "clip": 1 }, "10": { "name": "defender", "clip": 0 }, "15": { "name": "plus", "clip": 1 }, "17": { "name": "defender", "clip": 0 }, "18": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "38": { "name": "plus", "clip": 1 } } }, { "makeup": { "5": { "name": "plus", "clip": 1 }, "6": { "name": "rocket", "clip": 2 }, "14": { "name": "plus", "clip": 1 }, "16": { "name": "defender", "clip": 0 }, "22": { "name": "plus", "clip": 1 }, "28": { "name": "rocket", "clip": 2 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "defender", "clip": 0 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "6": { "name": "rocket", "clip": 2 }, "14": { "name": "defender", "clip": 0 }, "15": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "28": { "name": "plus", "clip": 1 }, "30": { "name": "rocket", "clip": 2 }, "40": { "name": "defender", "clip": 0 }, "42": { "name": "plus", "clip": 1 }, "49": { "name": "defender", "clip": 0 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "7": { "name": "rocket", "clip": 2 }, "9": { "name": "plus", "clip": 1 }, "30": { "name": "plus", "clip": 1 }, "31": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "36": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "50": { "name": "rocket", "clip": 2 } } }, { "makeup": { "7": { "name": "plus", "clip": 1 }, "15": { "name": "defender", "clip": 0 }, "20": { "name": "plus", "clip": 1 }, "24": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "41": { "name": "defender", "clip": 0 }, "42": { "name": "defender", "clip": 0 }, "46": { "name": "rocket", "clip": 2 }, "48": { "name": "rocket", "clip": 2 } } }, { "makeup": { "5": { "name": "rocket", "clip": 2 }, "10": { "name": "rocket", "clip": 2 }, "23": { "name": "defender", "clip": 0 }, "27": { "name": "defender", "clip": 0 }, "28": { "name": "defender", "clip": 0 }, "31": { "name": "plus", "clip": 1 }, "32": { "name": "plus", "clip": 1 }, "37": { "name": "rocket", "clip": 2 }, "40": { "name": "plus", "clip": 1 } } }, { "makeup": { "1": { "name": "plus", "clip": 1 }, "5": { "name": "rocket", "clip": 2 }, "17": { "name": "defender", "clip": 0 }, "20": { "name": "rocket", "clip": 2 }, "27": { "name": "plus", "clip": 1 }, "30": { "name": "defender", "clip": 0 }, "35": { "name": "plus", "clip": 1 }, "46": { "name": "rocket", "clip": 2 }, "51": { "name": "defender", "clip": 0 } } }, { "makeup": { "3": { "name": "rocket", "clip": 2 }, "4": { "name": "plus", "clip": 1 }, "16": { "name": "plus", "clip": 1 }, "20": { "name": "rocket", "clip": 2 }, "25": { "name": "defender", "clip": 0 }, "29": { "name": "defender", "clip": 0 }, "46": { "name": "plus", "clip": 1 }, "48": { "name": "defender", "clip": 0 }, "51": { "name": "rocket", "clip": 2 } } }, { "makeup": { "3": { "name": "defender", "clip": 0 }, "10": { "name": "rocket", "clip": 2 }, "19": { "name": "rocket", "clip": 2 }, "22": { "name": "plus", "clip": 1 }, "29": { "name": "rocket", "clip": 2 }, "30": { "name": "defender", "clip": 0 }, "32": { "name": "defender", "clip": 0 }, "40": { "name": "plus", "clip": 1 }, "42": { "name": "plus", "clip": 1 } } }, { "makeup": { "17": { "name": "plus", "clip": 1 }, "27": { "name": "defender", "clip": 0 }, "31": { "name": "rocket", "clip": 2 }, "35": { "name": "rocket", "clip": 2 }, "38": { "name": "defender", "clip": 0 }, "40": { "name": "defender", "clip": 0 }, "45": { "name": "plus", "clip": 1 }, "49": { "name": "rocket", "clip": 2 }, "51": { "name": "plus", "clip": 1 } } }];
+  Config.MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
+  Config.OSS_BASE_URL = "http://oss.touchmagic.cn/";
+  Config.TRANSLATE_URL = _Config.OSS_BASE_URL + "promotion/translates/name/LudoFans";
 
   // src/CreateRoom.ts
   var SFS2X11 = __toESM(require_sfs2x_api());
@@ -12417,12 +12413,11 @@
     Safe2[Safe2["yes"] = 1] = "yes";
     return Safe2;
   })(Safe || {});
-  var _Event2 = class _Event2 {
+  var Event2 = class {
   };
-  __name(_Event2, "Event");
-  _Event2.Enter = "ROUTE_ENTER";
-  _Event2.Exit = "ROUTE_EXIT";
-  var Event2 = _Event2;
+  __name(Event2, "Event");
+  Event2.Enter = "ROUTE_ENTER";
+  Event2.Exit = "ROUTE_EXIT";
   var Route = class extends Laya.Script {
     constructor() {
       super();
@@ -13292,24 +13287,23 @@
 
   // src/Player.ts
   var { regClass: regClass35, property: property35, SoundManager: SoundManager4 } = Laya;
-  var _Event3 = class _Event3 {
+  var Event3 = class {
   };
-  __name(_Event3, "Event");
-  _Event3.EntryRoom = "ENTRY_ROOM";
-  _Event3.ExitRoom = "EXIT_ROOM";
-  _Event3.StateChange = "STATE_CHANGE";
-  _Event3.Countdown = "COUNTDOWN";
-  _Event3.CountdownStop = "COUNTDOWN_STOP";
-  _Event3.Hurl = "Hurl";
-  _Event3.RollStart = "ROLL_START";
-  _Event3.RollEnd = "ROLL_END";
-  _Event3.Choose = "CHOOSE";
-  _Event3.Achieve = "ACHIEVE";
-  _Event3.Victory = "VICTORY";
-  _Event3.Rocket = "Rocket";
-  _Event3.GenerateMagic = "GenerateMagic";
-  _Event3.UseProps = "UseProps";
-  var Event3 = _Event3;
+  __name(Event3, "Event");
+  Event3.EntryRoom = "ENTRY_ROOM";
+  Event3.ExitRoom = "EXIT_ROOM";
+  Event3.StateChange = "STATE_CHANGE";
+  Event3.Countdown = "COUNTDOWN";
+  Event3.CountdownStop = "COUNTDOWN_STOP";
+  Event3.Hurl = "Hurl";
+  Event3.RollStart = "ROLL_START";
+  Event3.RollEnd = "ROLL_END";
+  Event3.Choose = "CHOOSE";
+  Event3.Achieve = "ACHIEVE";
+  Event3.Victory = "VICTORY";
+  Event3.Rocket = "Rocket";
+  Event3.GenerateMagic = "GenerateMagic";
+  Event3.UseProps = "UseProps";
   var Type = /* @__PURE__ */ ((Type2) => {
     Type2[Type2["Extreme"] = 0] = "Extreme";
     Type2[Type2["Computer"] = 1] = "Computer";
@@ -14175,7 +14169,7 @@
   };
   __name(Entry, "Entry");
   Entry = __decorateClass([
-    regClass47("d250ec82-d026-491f-b433-11bd3067cac8", "../src/Entry.ts")
+    regClass47("27637d4a-50b8-401f-a9c7-73a8be42aba4", "../src/Entry.ts")
   ], Entry);
 
   // src/Online.ts
@@ -16252,10 +16246,10 @@
   var SFS2X26 = __toESM(require_sfs2x_api());
 
   // src/TrimConfig.ts
-  var _TrimConfig = class _TrimConfig {
+  var TrimConfig = class {
   };
-  __name(_TrimConfig, "TrimConfig");
-  _TrimConfig.Level = [
+  __name(TrimConfig, "TrimConfig");
+  TrimConfig.Level = [
     {
       image: "0.png",
       level: 0
@@ -16289,7 +16283,7 @@
       level: 100
     }
   ];
-  _TrimConfig.Coins = [
+  TrimConfig.Coins = [
     {
       image: "8.png",
       gold: 0
@@ -16387,7 +16381,6 @@
       gold: 100
     }
   ];
-  var TrimConfig = _TrimConfig;
 
   // src/TrimCoinsList.ts
   var { regClass: regClass88, property: property88 } = Laya;

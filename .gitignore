@@ -3,3 +3,4 @@ library
 local
 /node_modules
 /release
+/.idea

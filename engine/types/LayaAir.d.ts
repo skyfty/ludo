@@ -302,6 +302,8 @@ declare module Laya {
         hideHeader: boolean;
         /** 对对象类型属性适用。对象创建时可以下拉选择一个类型。如果显示设置为null，则禁止菜单。默认是显示一个创建基类的菜单。*/
         createObjectMenu: Array<string>;
+        /** 说明此属性是引用一个资源 */
+        isAsset?: boolean;
         /** 对资源类型的属性适用。多个资源类型用逗号分隔，例如“Image,Audio"。*/
         assetTypeFilter: string;
         /** 如果属性类型是string，并且进行资源选择时，这个选项决定属性值是资源原始路径还是res://uuid这样的格式。如果是true，则是资源原始路径。默认false。*/
@@ -1698,7 +1700,7 @@ declare module Laya {
         states: TypeAnimatorState[];
         playOnWake: boolean;
         defaultWeight: number;
-        avatarMask?: Record<string, boolean>;
+        avatarMask?: any;
         stageX?: number;
         stageY?: number;
         stageScale?: number;
@@ -2889,7 +2891,7 @@ declare module Laya {
         /**
          * 创建一个<code>AvatarMask</code>实例
          */
-        constructor(data?: Record<string, boolean>);
+        constructor(data?: any);
         /**
          * 查找节点路径遮罩
          * @param path
@@ -10371,6 +10373,11 @@ declare module Laya {
         set renderMode(value: MaterialRenderMode);
         get renderMode(): MaterialRenderMode;
         /**
+         * UI剔除模式
+         */
+        set cull(value: number);
+        get cull(): number;
+        /**
          * 分辨率比例
          */
         get resolutionRate(): number;
@@ -16794,7 +16801,7 @@ declare module Laya {
          */
         clear(recoverCmds?: boolean): void;
         /**@private */
-        private _clearBoundsCache;
+        _clearBoundsCache(onSizeChanged?: boolean): void;
         /**@private */
         private _initGraphicBounds;
         /**
@@ -17178,15 +17185,11 @@ declare module Laya {
         protected static confirmButton: any;
         /**@private */
         protected static promptStyleDOM: any;
-        /**@private */
         protected _focus: boolean;
-        /**@private */
         protected _multiline: boolean;
-        /**@private */
         protected _editable: boolean;
-        /**@private */
+        protected _restrict: string;
         protected _restrictPattern: any;
-        /**@private */
         protected _maxChars: number;
         private _type;
         /**@private */
@@ -17256,7 +17259,7 @@ declare module Laya {
         get bgColor(): string;
         /**限制输入的字符。*/
         get restrict(): string;
-        set restrict(pattern: string);
+        set restrict(value: string);
         /**
          * 是否可编辑。
          */
@@ -17345,7 +17348,7 @@ declare module Laya {
         get destroyed(): boolean;
         constructor();
         protected onStartListeningToType(type: string): void;
-        bubbleEvent(type: string, ev: Event): void;
+        bubbleEvent(type: string, data?: any): void;
         hasHideFlag(flag: number): boolean;
         /**
          * <p>销毁此对象。destroy对象默认会把自己从父节点移除，并且清理自身引用关系，等待js自动垃圾回收机制回收。destroy后不能再使用。</p>
@@ -18396,7 +18399,6 @@ declare module Laya {
          * @param elasticDistance	（可选）橡皮筋效果的距离值，0为无橡皮筋效果，默认为0，可选。
          * @param elasticBackTime	（可选）橡皮筋回弹时间，单位为毫秒，默认为300毫秒，可选。
          * @param data				（可选）拖动事件携带的数据，可选。
-         * @param disableMouseEvent	（可选）禁用其他对象的鼠标检测，默认为false，设置为true能提高性能。
          * @param ratio				（可选）惯性阻尼系数，影响惯性力度和时长。
          */
         startDrag(area?: Rectangle, hasInertia?: boolean, elasticDistance?: number, elasticBackTime?: number, data?: any, ratio?: number): void;
@@ -18874,8 +18876,10 @@ declare module Laya {
         static SCROLL: string;
         /**hidden 不显示超出文本域的字符。*/
         static HIDDEN: string;
-        static FIT_HEIGHT: string;
-        static FIT_BOTH: string;
+        /**shrink 超出文本域时，文本整体缩小以适应文本框。*/
+        static SHRINK: string;
+        /**ellipsis 超出文本域时，文本被截断，并且文本最后显示省略号。*/
+        static ELLIPSIS: string;
         /**语言包，是一个包含key:value的集合，用key索引，替换为目标value语言*/
         static langPacks: Record<string, string>;
         /**是否是从右向左的显示顺序*/
@@ -18935,7 +18939,11 @@ declare module Laya {
         protected _elements: Array<HtmlElement>;
         protected _objContainer: Sprite;
         protected _maxWidth: number;
+        protected _hideText: boolean;
         private _updatingLayout;
+        private _fontSizeScale;
+        /**是否将字符串中的\n,\t转换为实际功能的字符 */
+        _parseEscapeChars: boolean;
         _onPostLayout: () => void;
         /**
          * 创建一个新的 <code>Text</code> 实例。
@@ -18991,23 +18999,7 @@ declare module Laya {
         get textHeight(): number;
         /** 当前文本的内容字符串。*/
         get text(): string;
-        set_text(value: string): void;
         set text(value: string);
-        /**
-         * <p>根据指定的文本，从语言包中取当前语言的文本内容。并对此文本中的{i}文本进行替换。</p>
-         * <p>设置Text.langPacks语言包后，即可使用lang获取里面的语言</p>
-         * <p>例如：
-         * <li>（1）text 的值为“我的名字”，先取到这个文本对应的当前语言版本里的值“My name”，将“My name”设置为当前文本的内容。</li>
-         * <li>（2）text 的值为“恭喜你赢得{0}个钻石，{1}经验。”，arg1 的值为100，arg2 的值为200。
-         * 			则先取到这个文本对应的当前语言版本里的值“Congratulations on your winning {0} diamonds, {1} experience.”，
-         * 			然后将文本里的{0}、{1}，依据括号里的数字从0开始替换为 arg1、arg2 的值。
-         * 			将替换处理后的文本“Congratulations on your winning 100 diamonds, 200 experience.”设置为当前文本的内容。
-         * </li>
-         * </p>
-         * @param	text 文本内容。
-         * @param	args 文本替换参数。
-         */
-        lang(text: string, ...args: any[]): void;
         /** @deprecated **/
         changeText(text: string): void;
         /**
@@ -19169,7 +19161,7 @@ declare module Laya {
          * <p>排版文本。</p>
          * <p>进行宽高计算，渲染、重绘文本。</p>
          */
-        private _typeset;
+        protected _typeset(): void;
         /**
          * @private
          * 分析文本换行。
@@ -19442,6 +19434,15 @@ declare module Laya {
         isDblClick: boolean;
         /**滚轮滑动增量*/
         delta: number;
+        /**
+         * 鼠标按键，
+         * 0：主按键，通常指鼠标左键
+         * 1：辅助按键，通常指鼠标滚轮中键
+         * 2：次按键，通常指鼠标右键
+         * 3：第四个按钮，通常指浏览器后退按钮
+         * 4：第五个按钮，通常指浏览器的前进按钮
+         */
+        button: number;
         /** 原生浏览器事件。*/
         nativeEvent: MouseEvent | TouchEvent | WheelEvent | KeyboardEvent;
         constructor();
@@ -19461,15 +19462,6 @@ declare module Laya {
          * 触摸点列表。
          */
         get touches(): ReadonlyArray<Readonly<ITouchInfo>>;
-        /**
-         * 鼠标按键，
-         * 0：主按键，通常指鼠标左键
-         * 1：辅助按键，通常指鼠标滚轮中键
-         * 2：次按键，通常指鼠标右键
-         * 3：第四个按钮，通常指浏览器后退按钮
-         * 4：第五个按钮，通常指浏览器的前进按钮
-         */
-        get button(): number;
         /**
          * 表示 Alt 键是处于活动状态 (true) 还是非活动状态 (false)。
          */
@@ -20092,42 +20084,12 @@ declare module Laya {
         get type(): number;
         static _filter: (this: RenderSprite, sprite: Sprite, context: any, x: number, y: number) => void;
     }
-    module "../glTFInterface" {
-        interface glTFMaterialAnisotropy {
-            /** The anisotropy strength. When anisotropyTexture is present, this value is multiplied by the blue channel. default: 0.0 */
-            anisotropyStrength: number;
-            /** The rotation of the anisotropy in tangent, bitangent space, measured in radians counter-clockwise from the tangent. When anisotropyTexture is present, anisotropyRotation provides additional rotation to the vectors in the texture. default: 0.0 */
-            anisotropyRotation: number;
-            /** The anisotropy texture. Red and green channels represent the anisotropy direction in [-1, 1] tangent, bitangent space, to be rotated by anisotropyRotation. The blue channel contains strength as [0, 1] to be multiplied by anisotropyStrength. */
-            anisotropyTexture: glTFTextureInfo;
-        }
-    }
     class KHR_materials_anisotropy implements glTFExtension {
         readonly name: string;
         private _resource;
         constructor(resource: glTFResource);
         loadTextures(basePath: string, progress?: IBatchProgress): Promise<any>;
         additionMaterialProperties(glTFMaterial: glTFMaterial, material: Material): void;
-    }
-    module "../glTFInterface" {
-        interface glTFMaterialClearCoat {
-            /** The clearcoat layer intensity. default: 0.0*/
-            clearcoatFactor?: number;
-            /** The base color texture */
-            clearcoatTexture?: glTFTextureInfo;
-            /** The clearcoat layer roughness.  default: 0.0*/
-            clearcoatRoughnessFactor?: number;
-            /** The clearcoat layer roughness texture.*/
-            clearcoatRoughnessTexture?: glTFTextureInfo;
-            /** The clearcoat normal map texture. */
-            clearcoatNormalTexture?: glTFMaterialNormalTextureInfo;
-        }
-    }
-    module "../glTFInterface" {
-        interface glTFMaterialEmissionStrength {
-            /** The strength adjustment to be multiplied with the material's emissive value. default: 1.0 */
-            emissiveStrength: number;
-        }
     }
     class KHR_materials_emissive_strength implements glTFExtension {
         readonly name: string;
@@ -23185,6 +23147,7 @@ declare module Laya {
         private static _setVolume;
     }
     /**
+     * 用于播放背景音乐或者音效的节点
      */
     class SoundNode extends Sprite {
         private _channel;
@@ -23192,9 +23155,27 @@ declare module Laya {
         private _playEvents;
         private _stopEvents;
         private _source;
+        private _isMusic;
+        private _autoPlay;
+        private _loop;
         constructor();
         get source(): string;
         set source(value: string);
+        /**
+         * 如果是，音乐类型为背景音乐，否则为音效
+         */
+        get isMusic(): boolean;
+        set isMusic(value: boolean);
+        /**
+         * 循环次数
+         */
+        get loop(): number;
+        set loop(value: number);
+        /**
+         * 是否自动播放
+         */
+        get autoPlay(): boolean;
+        set autoPlay(value: boolean);
         /**@private */
         private _onParentChange;
         /**
@@ -23962,16 +23943,25 @@ declare module Laya {
         get loading(): boolean;
         /**
          * <p>加载资源。</p>
-         * @param url 要加载的单个资源地址或资源地址数组。
-         * @return 加载成功返回资源对象，加载失败返回null。
+         * @param url 要加载的资源地址或资源地址数组。
+         * @param type 资源类型。比如：Loader.IMAGE。
+         * @param onProgress 进度回调函数。
+         * @return 根据url类型不同分为2种情况：1. url为String或ILoadURL类型，也就是单个资源地址，如果加载成功，则回调参数值为加载完成的资源，否则为null；2. url为数组类型，则返回一个数组，数组每个元素为加载完成的资源或null。
          */
         load(url: string | ILoadURL | (string | Readonly<ILoadURL>)[], type?: string, onProgress?: ProgressCallback): Promise<any>;
+        /**
+         * <p>加载资源。</p>
+         * @param url 要加载的资源地址或资源地址数组。
+         * @param options 加载选项。
+         * @param onProgress 进度回调函数。
+         * @return 根据url类型不同分为2种情况：1. url为String或ILoadURL类型，也就是单个资源地址，如果加载成功，则回调参数值为加载完成的资源，否则为null；2. url为数组类型，则返回一个数组，数组每个元素为加载完成的资源或null。
+         */
         load(url: string | ILoadURL | (string | Readonly<ILoadURL>)[], options?: Readonly<ILoadOptions>, onProgress?: ProgressCallback): Promise<any>;
         /**
          * <p>这是兼容2.0引擎的加载接口</p>
          * <p>加载资源。</p>
          * @param url		要加载的单个资源地址或资源信息数组。比如：简单数组：["a.png","b.png"]；复杂数组[{url:"a.png",type:Loader.IMAGE,size:100,priority:1},{url:"b.json",type:Loader.JSON,size:50,priority:1}]。
-         * @param complete	加载结束回调。根据url类型不同分为2种情况：1. url为String类型，也就是单个资源地址，如果加载成功，则回调参数值为加载完成的资源，否则为null；2. url为数组类型，指定了一组要加载的资源，如果全部加载成功，则回调参数值为true，否则为false。
+         * @param complete	加载结束回调。根据url类型不同分为2种情况：1. url为String类型，也就是单个资源地址，如果加载成功，则回调参数值为加载完成的资源，否则为null；2. url为数组类型，则返回一个数组，数组每个元素为加载完成的资源或null。
          * @param progress	加载进度回调。回调参数值为当前资源的加载进度信息(0-1)。
          * @param type		资源类型。比如：Loader.IMAGE。
          * @param priority	(default = 0)加载的优先级，数字越大优先级越高，优先级高的优先加载。
@@ -24360,43 +24350,26 @@ declare module Laya {
         static overrideExtension(originalExts: Array<string>, targetExt: string): void;
     }
     /**
-     * @private
      * Worker Image加载器
      */
-    class WorkerLoader extends EventDispatcher {
-        /**单例*/
-        static I: WorkerLoader;
+    class WorkerLoader {
         /**worker.js的路径 */
         static workerPath: string;
-        /**@private */
+        private static _worker;
+        private static _dispatcher;
         private static _enable;
-        /**使用的Worker对象。*/
-        worker: Worker;
-        /**@private */
-        protected _useWorkerLoader: boolean;
-        constructor();
         /**
          * 是否支持worker
          * @return 是否支持worker
          */
         static workerSupported(): boolean;
         /**
-         * 尝试启用WorkerLoader,只有第一次调用有效
-         */
-        static enableWorkerLoader(): void;
-        /**
          * 是否启用。
          */
         static set enable(value: boolean);
         static get enable(): boolean;
-        /**
-         * @private
-         */
-        private workerMessage;
-        /**
-         * @private
-         */
-        private imageLoaded;
+        static load(url: string, options: any): Promise<any>;
+        private static workerMessage;
     }
     /**
      *
@@ -26126,7 +26099,7 @@ declare module Laya {
     /**
      * 将继承修改为类似 WebGLRenderingContextBase, WebGLRenderingContextOverloads 多继承 ?
      */
-    class GL2TextureContext extends GLTextureContext {
+    class GL2TextureContext extends GLTextureContext implements ITexture3DContext {
         protected _gl: WebGL2RenderingContext;
         constructor(engine: WebGLEngine);
         protected getTarget(dimension: TextureDimension): number;
@@ -26215,7 +26188,8 @@ declare module Laya {
         WEBGL_compressed_texture_pvrtc = 15,
         WEBGL_compressed_texture_etc1 = 16,
         WEBGL_compressed_texture_etc = 17,
-        WEBGL_compressed_texture_astc = 18
+        WEBGL_compressed_texture_astc = 18,
+        OES_standard_derivatives = 19
     }
     /**
      * WebGL mode.
@@ -26366,9 +26340,6 @@ declare module Laya {
         createTextureInternal(dimension: TextureDimension, width: number, height: number, format: TextureFormat, generateMipmap: boolean, sRGB: boolean): InternalTexture;
         setTextureImageData(texture: WebGLInternalTex, source: HTMLImageElement | HTMLCanvasElement | ImageBitmap, premultiplyAlpha: boolean, invertY: boolean): void;
         setTextureSubImageData(texture: WebGLInternalTex, source: HTMLImageElement | HTMLCanvasElement | ImageBitmap, x: number, y: number, premultiplyAlpha: boolean, invertY: boolean): void;
-        setTexture3DImageData(texture: WebGLInternalTex, sources: HTMLImageElement[] | HTMLCanvasElement[] | ImageBitmap[], depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
-        setTexture3DPixlesData(texture: InternalTexture, source: ArrayBufferView, depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
-        setTexture3DSubPixelsData(texture: InternalTexture, source: ArrayBufferView, mipmapLevel: number, generateMipmap: boolean, xOffset: number, yOffset: number, zOffset: number, width: number, height: number, depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
         initVideoTextureData(texture: WebGLInternalTex): void;
         setTexturePixelsData(texture: WebGLInternalTex, source: ArrayBufferView, premultiplyAlpha: boolean, invertY: boolean): void;
         setTextureSubPixelsData(texture: WebGLInternalTex, source: ArrayBufferView, mipmapLevel: number, generateMipmap: boolean, xOffset: number, yOffset: number, width: number, height: number, premultiplyAlpha: boolean, invertY: boolean): void;
@@ -26712,7 +26683,9 @@ declare module Laya {
         MSAA = 17,
         UnifromBufferObject = 18,
         GRAPHICS_API_GLES3 = 19,
-        Texture3D = 20
+        Texture3D = 20,
+        Texture_FloatLinearFiltering = 21,
+        Texture_HalfFloatLinearFiltering = 22
     }
     enum RenderClearFlag {
         Nothing = 0,
@@ -27088,9 +27061,6 @@ declare module Laya {
         setTextureImageData(texture: InternalTexture, source: HTMLImageElement | HTMLCanvasElement | ImageBitmap, premultiplyAlpha: boolean, invertY: boolean): void;
         setTextureSubImageData(texture: InternalTexture, source: HTMLImageElement | HTMLCanvasElement | ImageBitmap, x: number, y: number, premultiplyAlpha: boolean, invertY: boolean): void;
         setTexturePixelsData(texture: InternalTexture, source: ArrayBufferView, premultiplyAlpha: boolean, invertY: boolean): void;
-        setTexture3DImageData(texture: InternalTexture, source: HTMLImageElement[] | HTMLCanvasElement[] | ImageBitmap[], depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
-        setTexture3DPixlesData(texture: InternalTexture, source: ArrayBufferView, depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
-        setTexture3DSubPixelsData(texture: InternalTexture, source: ArrayBufferView, mipmapLevel: number, generateMipmap: boolean, xOffset: number, yOffset: number, zOffset: number, width: number, height: number, depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
         initVideoTextureData(texture: InternalTexture): void;
         setTextureSubPixelsData(texture: InternalTexture, source: ArrayBufferView, mipmapLevel: number, generateMipmap: boolean, xOffset: number, yOffset: number, width: number, height: number, premultiplyAlpha: boolean, invertY: boolean): void;
         setTextureDDSData(texture: InternalTexture, ddsInfo: DDSTextureInfo): void;
@@ -27112,6 +27082,11 @@ declare module Laya {
         readRenderTargetPixelData(renderTarget: InternalRenderTarget, xOffset: number, yOffset: number, width: number, height: number, out: ArrayBufferView): ArrayBufferView;
         updateVideoTexture(texture: InternalTexture, video: HTMLVideoElement, premultiplyAlpha: boolean, invertY: boolean): void;
         getRenderTextureData(internalTex: InternalRenderTarget, x: number, y: number, width: number, height: number): ArrayBufferView;
+    }
+    interface ITexture3DContext extends ITextureContext {
+        setTexture3DImageData(texture: InternalTexture, source: HTMLImageElement[] | HTMLCanvasElement[] | ImageBitmap[], depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
+        setTexture3DPixlesData(texture: InternalTexture, source: ArrayBufferView, depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
+        setTexture3DSubPixelsData(texture: InternalTexture, source: ArrayBufferView, mipmapLevel: number, generateMipmap: boolean, xOffset: number, yOffset: number, zOffset: number, width: number, height: number, depth: number, premultiplyAlpha: boolean, invertY: boolean): void;
     }
     /**
      * 基本渲染单元
@@ -28435,7 +28410,7 @@ declare module Laya {
         private static _getTypeRender;
         constructor(type: number, next: RenderSprite | null);
         protected onCreate(type: number): void;
-        _maskNative(sprite: Sprite, context: Context, x: number, y: number): void;
+        _maskNative(sprite: Sprite, ctx: Context, x: number, y: number): void;
         static tmpTarget(ctx: Context, rt: RenderTexture2D, w: number, h: number): void;
         static recycleTarget(rt: RenderTexture2D): void;
         static setBlendMode(blendMode: string): void;
@@ -30503,9 +30478,16 @@ declare module Laya {
          */
         get labelFont(): string;
         set labelFont(value: string);
-        /**标签对齐模式，默认为居中对齐。*/
+        /**
+         * 标签对齐模式，
+         */
         get labelAlign(): string;
         set labelAlign(value: string);
+        /**
+         * 标签垂直对齐模式，
+         */
+        get labelVAlign(): string;
+        set labelVAlign(value: string);
         /**
          * 对象的点击事件处理器函数（无默认参数）。
          * @implements
@@ -31303,6 +31285,7 @@ declare module Laya {
          * @private
          */
         protected _scrollBarSkin: string;
+        protected _scrollType: ScrollType;
         /**
          * @private
          */
@@ -31441,6 +31424,11 @@ declare module Laya {
          * 关闭下拉列表。
          */
         protected removeList(e: Event): void;
+        /**
+         * 滚动类型
+         */
+        get scrollType(): ScrollType;
+        set scrollType(value: ScrollType);
         /**
          * 滚动条皮肤。
          */
@@ -32315,6 +32303,7 @@ declare module Laya {
          */
         clickHandler: Handler;
     }
+    type LabelFitContent = "no" | "yes" | "height";
     /**
      * 文本内容发生改变后调度。
      * @eventType laya.events.Event
@@ -32430,7 +32419,7 @@ declare module Laya {
          * 文本 <code>Text</code> 实例。
          */
         protected _tf: Text;
-        protected _fitContent: boolean;
+        protected _fitContent: LabelFitContent;
         /**
          * 创建一个新的 <code>Label</code> 实例。
          * @param text 文本内容字符串。
@@ -32531,9 +32520,9 @@ declare module Laya {
         get maxWidth(): number;
         /** 设置当文本达到最大允许的宽度时，自定换行，设置为0则此限制不生效。*/
         set maxWidth(value: number);
-        get fitContent(): boolean;
+        get fitContent(): LabelFitContent;
         /** 设置文本框大小是否自动适应文本内容的大小。可取值为both或者height */
-        set fitContent(value: boolean);
+        set fitContent(value: LabelFitContent);
         /**
          * 文本控件实体 <code>Text</code> 实例。
          */
@@ -32553,6 +32542,7 @@ declare module Laya {
          * @override
          */
         get_width(): number;
+        set_width(value: number): void;
         /**
          * @inheritDoc
          * @override
@@ -32563,6 +32553,7 @@ declare module Laya {
          * @override
          */
         get_height(): number;
+        set_height(value: number): void;
         /**
          * @inheritDoc
          * @override
@@ -32891,6 +32882,9 @@ declare module Laya {
          * 获取对 <code>List</code> 组件所包含的内容容器 <code>Box</code> 组件的引用。
          */
         get content(): Box;
+        /**
+         * 滚动类型
+         */
         get scrollType(): ScrollType;
         set scrollType(value: ScrollType);
         /**
@@ -34456,6 +34450,7 @@ declare module Laya {
         /** @private */
         protected _skin: string;
         _graphics: AutoBitmap;
+        _tf: Input;
         /**
          * 创建一个新的 <code>TextInput</code> 类实例。
          * @param text 文本内容。
@@ -34471,22 +34466,6 @@ declare module Laya {
          * @override
         */
         protected createChildren(): void;
-        /**
-         * @private
-         */
-        private _onFocus;
-        /**
-         * @private
-         */
-        private _onBlur;
-        /**
-         * @private
-         */
-        private _onInput;
-        /**
-         * @private
-         */
-        private _onEnter;
         /**
          * @inheritDoc
          * @override
@@ -34506,16 +34485,6 @@ declare module Laya {
          */
         get sizeGrid(): string;
         set sizeGrid(value: string);
-        /**
-         * 当前文本内容字符串。
-         * @see laya.display.Text.text
-         * @override
-         */
-        set text(value: string);
-        /**
-         * @override
-         */
-        get text(): string;
         /**
          * @inheritDoc
          * @override
@@ -35421,10 +35390,6 @@ declare module Laya {
     class UIUtils {
         private static grayFilter;
         /**
-         * 需要替换的转义字符表
-         */
-        static escapeSequence: any;
-        /**
          * 用字符串填充数组，并返回数组副本。
          * @param	arr 源数组对象。
          * @param	str 用逗号连接的字符串。如"p1,p2,p3,p4"。
@@ -35444,18 +35409,6 @@ declare module Laya {
          * @param	isGray 如果值true，则添加灰度滤镜，否则移除灰度滤镜。
          */
         static gray(target: Sprite, isGray?: boolean): void;
-        /**
-         * 获取当前要替换的转移字符
-         * @param word
-         * @return
-         *
-         */
-        private static _getReplaceStr;
-        /**
-         * 替换字符串中的转义字符
-         * @param str
-         */
-        static adptString(str: string): string;
         /**@private */
         private static _funMap;
         /**
@@ -37738,6 +37691,12 @@ declare module Laya {
          */
         runCallLater(caller: any, method: Function): void;
         /**
+         * 取消执行 callLater 。
+         * @param	caller 执行域(this)。
+         * @param	method 定时器回调函数。
+         */
+        clearCallLater(caller: any, method: Function): void;
+        /**
          * 立即提前执行定时器，执行之后从队列中删除
          * @param	caller 执行域(this)。
          * @param	method 定时器回调函数。
@@ -38876,6 +38835,7 @@ declare module Laya {
         static forceSplitRender: boolean;
         static forceWholeRender: boolean;
         static scaleFontWithCtx: boolean;
+        static maxFontScale: number;
         static standardFontSize: number;
         static destroyAtlasDt: number;
         static checkCleanTextureDt: number;
