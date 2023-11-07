@@ -11858,11 +11858,16 @@
     }
     onSelected(index) {
       let data = this.list.array[index];
-      console.log("aaaaaaaaaaaaaaaa");
       window.flutter_inappwebview.callHandler("buy", "gold1000").then(function(result) {
+        if (result === "0") {
+          var params = new SFS2X9.SFSObject();
+          params.putInt("id", Profile.getUserId());
+          params.putInt("amount", data.getInt("amount"));
+          params.putInt("selectindex", index);
+          Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
+        } else {
+        }
         console.log(result);
-        console.log("bbbbbbbbbbbbbb");
-        console.log("bbbbbbbbbbbbbb");
       });
     }
     updateItem(cell, index) {

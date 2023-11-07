@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter/services.dart';
@@ -28,6 +30,98 @@ class GameState extends State<Game> {
   final GlobalKey webViewKey = GlobalKey();
   static const platform = MethodChannel("touchmagic.com/buy");
 
+  late dynamic _purchaseUpdatedSubscription;
+  late dynamic _purchaseErrorSubscription;
+  late dynamic _connectionSubscription;
+  final List<String> _productLists = Platform.isAndroid
+      ? [
+    'android.test.purchased',
+    'point_1000',
+    '5000_point',
+    'android.test.canceled',
+  ]
+      : ['com.cooni.point1000', 'com.cooni.point5000'];
+
+  List<IAPItem> _items = [];
+  List<PurchasedItem> _purchases = [];
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+  @override
+  void dispose() {
+    if (_connectionSubscription != null) {
+      _connectionSubscription.cancel();
+      _connectionSubscription = null;
+    }
+    super.dispose();
+  }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    // prepare
+    var result = await FlutterInappPurchase.instance.initialize();
+    print('result: $result');
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
+
+    // refresh items for android
+    try {
+      String msg = await FlutterInappPurchase.instance.consumeAll();
+      print('consumeAllItems: $msg');
+    } catch (err) {
+      print('consumeAllItems error: $err');
+    }
+
+    _connectionSubscription =
+        FlutterInappPurchase.connectionUpdated.listen((connected) {
+          print('connected: $connected');
+        });
+
+    _purchaseUpdatedSubscription =
+        FlutterInappPurchase.purchaseUpdated.listen((productItem) {
+          print('purchase-updated: $productItem');
+        });
+
+    _purchaseErrorSubscription =
+        FlutterInappPurchase.purchaseError.listen((purchaseError) {
+          print('purchase-error: $purchaseError');
+        });
+  }
+  void _requestPurchase(IAPItem item) {
+    FlutterInappPurchase.instance.requestPurchase(item.productId!);
+  }
+  Future _getPurchases() async {
+    List<PurchasedItem>? items =
+    await FlutterInappPurchase.instance.getAvailablePurchases();
+    for (var item in items!) {
+      print('${item.toString()}');
+      this._purchases.add(item);
+    }
+
+    setState(() {
+      this._items = [];
+      this._purchases = items;
+    });
+  }
+  Future _getPurchaseHistory() async {
+    List<PurchasedItem>? items =
+    await FlutterInappPurchase.instance.getPurchaseHistory();
+    for (var item in items!) {
+      print('${item.toString()}');
+      this._purchases.add(item);
+    }
+
+    setState(() {
+      this._items = [];
+      this._purchases = items;
+    });
+  }
   InAppWebViewSettings settings = InAppWebViewSettings(
       mediaPlaybackRequiresUserGesture: false,
       useShouldInterceptRequest: true,
@@ -65,13 +159,15 @@ class GameState extends State<Game> {
           // it will print: {message: {"bar":"bar_value","baz":"baz_value"}, messageLevel: 1}
         },
         onWebViewCreated: (controller) {
+
           platform.invokeMethod("init");
           controller.addJavaScriptHandler(handlerName: 'buy', callback: (args) async {
              final String result = await platform.invokeMethod("buy", args);
              return result;
              // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
           });
-        }
+        },
+
     );
   }
 }
