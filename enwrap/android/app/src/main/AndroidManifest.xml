@@ -11,7 +11,7 @@
         android:usesCleartextTraffic="true"
 
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         tools:targetApi="m">
         <activity
             android:name="cn.touchmagic.ludo.MainActivity"
