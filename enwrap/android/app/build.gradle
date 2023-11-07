@@ -72,5 +72,4 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.xiaomi.billingclient:billing:1.0.9'
 }
