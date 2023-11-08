@@ -30,18 +30,12 @@ class MainActivity: FlutterActivity() {
         PurchasesUpdatedListener { billingResult, list ->
             val code = billingResult.responseCode
             Log.d("TAG", "onPurchasesUpdated.code = $code")
-            if (code == BillingClient.BillingResponseCode.PAYMENT_SHOW_DIALOG) { //可根据自己业务需要处理该状态，不可当做交易失败处理
+            if (code == BillingClient.BillingResponseCode.PAYMENT_SHOW_DIALOG) {
 //                resultTv.setText("收银台启动")
             } else if (code == BillingClient.BillingResponseCode.OK) {
                 resultCb.success("${code}");
-//                resultTv.setText("支付成功")
-                if (list != null && list.size > 0) {
-//                    purchasesList = list
-//                    purchaseListAdapter.updateList(list)
-                }
             } else { //其他失败状态  比如断网、服务异常等
                 resultCb.success("${code}");
-//                resultTv.setText(billingResult.debugMessage)
             }
         }
     private val billingClientStateListener: BillingClientStateListener =
@@ -54,14 +48,6 @@ class MainActivity: FlutterActivity() {
             @Override
             override fun onBillingSetupFinished(billingResult: BillingResult) {
                 val code: Int = billingResult.getResponseCode()
-//                Log.d("TAG", "Service.code : $code")
-//                if (code == BillingClient.BillingResponseCode.OK) {
-//                    querySkuList(object : Callback() {
-//                        override fun payCallback() {
-//                            TODO("Not yet implemented")
-//                        }
-//                    })
-//                }
             }
         }
     fun initSdk() {
@@ -142,31 +128,6 @@ class MainActivity: FlutterActivity() {
                     result.notImplemented()
                 }
             }
-//            if (call.method == "buy") {
-//                result.success(12)
-//
-//
-////                channel.invokeMethod("getBatteryLevelFromDart", args,
-////                    object : MethodChannel.Result {
-////                        override fun success(value: Any?) {
-////                            //���ý��
-////                            result.success("value is ${value}")
-////                        }
-////
-////                        override fun error(
-////                            errorCode: String,
-////                            errorMessage: String?,
-////                            errorDetails: Any?
-////                        ) {
-////                        }
-////
-////                        override fun notImplemented() {
-////                        }
-////
-////                    })
-//            } else {
-//                result.notImplemented()
-//            }
         }
     }
 }
