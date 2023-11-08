@@ -107,6 +107,21 @@
       "height": 141,
       "_$child": [
         {
+          "_$id": "kvdnigid",
+          "_$type": "Image",
+          "name": "trim",
+          "width": 135.5,
+          "height": 135.5,
+          "skin": "res://00052eb8-8712-4a40-bfc0-0e9709fb2c69",
+          "color": "#ffffff",
+          "_$comp": [
+            {
+              "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
+              "scriptPath": "../src/MyselfTrim.ts"
+            }
+          ]
+        },
+        {
           "_$id": "6gki6n54",
           "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
           "name": "avatarclip",
@@ -117,21 +132,6 @@
           "width": 100,
           "height": 100,
           "index": 6
-        },
-        {
-          "_$id": "kvdnigid",
-          "_$type": "Image",
-          "name": "trim",
-          "width": 135.5,
-          "height": 135.5,
-          "skin": "res://36b026dc-4389-442d-8c92-d07a18b54530",
-          "color": "#ffffff",
-          "_$comp": [
-            {
-              "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
-              "scriptPath": "../src/MyselfTrim.ts"
-            }
-          ]
         }
       ]
     },
@@ -174,7 +174,6 @@
       "fontSize": 34,
       "color": "rgba(243, 202, 13, 1)",
       "bold": true,
-      "valign": "top",
       "leading": 0,
       "padding": "0,0,0,0"
     },
@@ -189,7 +188,6 @@
       "text": "0",
       "fontSize": 34,
       "color": "#FFFFFF",
-      "valign": "top",
       "leading": 0,
       "padding": "0,0,0,0"
     },
@@ -297,7 +295,6 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -430,7 +427,6 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -563,7 +559,6 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },

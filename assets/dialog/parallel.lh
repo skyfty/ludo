@@ -88,8 +88,8 @@
       "_$id": "y5k7741v",
       "_$type": "Image",
       "name": "Image(5)",
-      "x": 126,
-      "y": 232,
+      "x": 125,
+      "y": 154,
       "width": 496,
       "height": 60,
       "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
@@ -128,171 +128,197 @@
       "_$id": "gdonbu8k",
       "_$type": "Image",
       "name": "Image(7)",
-      "x": 132,
-      "y": 299,
+      "x": 131,
+      "y": 223,
       "width": 485,
       "height": 191,
+      "mouseEnabled": true,
       "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
-      "color": "#ffffff"
+      "color": "#ffffff",
+      "_$child": [
+        {
+          "_$id": "101ihuwf",
+          "_$type": "Image",
+          "name": "Image(1)",
+          "x": 358,
+          "y": 16.040014602710926,
+          "width": 74,
+          "height": 73,
+          "skin": "res://0679e0a9-a5cc-4e5c-82b7-2743e3481841",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "yeswoxho",
+          "_$type": "Image",
+          "name": "Image(2)",
+          "x": 153,
+          "y": 16.040014602710926,
+          "width": 74,
+          "height": 73,
+          "skin": "res://9752f121-7e29-41d2-b188-60237f8b878b",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "vmmdo6cr",
+          "_$type": "Image",
+          "name": "Image(3)",
+          "x": 50.45633471953272,
+          "y": 16.040014602710926,
+          "width": 74,
+          "height": 73,
+          "skin": "res://3f967457-ba1d-44f5-90de-4d48ed5ce62d",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "4v9lzilg",
+          "_$type": "Image",
+          "name": "Image(4)",
+          "x": 256,
+          "y": 16.040014602710926,
+          "width": 73,
+          "height": 73,
+          "skin": "res://5e979040-af75-4253-a9aa-893a54643a30",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "ca2qmnut",
+          "_$type": "CheckBox",
+          "name": "red",
+          "x": 53,
+          "y": 102,
+          "width": 77,
+          "height": 64,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "2rf31ts7",
+          "_$type": "CheckBox",
+          "name": "green",
+          "x": 156,
+          "y": 102,
+          "width": 77,
+          "height": 64,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "82au31kz",
+          "_$type": "CheckBox",
+          "name": "yellow",
+          "x": 258,
+          "y": 102,
+          "width": 77,
+          "height": 64,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "bkpyh24y",
+          "_$type": "CheckBox",
+          "name": "blue",
+          "x": 360,
+          "y": 102,
+          "width": 77,
+          "height": 64,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        }
+      ]
     },
     {
       "_$id": "witdtfyr",
       "_$type": "Image",
       "name": "Image(11)",
-      "x": 132.99999999999997,
-      "y": 160,
+      "x": 131,
+      "y": 654,
       "width": 485,
       "height": 65,
+      "mouseEnabled": true,
       "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "og9br2qa",
-      "_$type": "CheckBox",
-      "name": "magic",
-      "x": 184,
-      "y": 170,
-      "width": 64.65116279069767,
-      "height": 65.62790697674419,
-      "scaleX": 0.67,
-      "scaleY": 0.67,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top"
-    },
-    {
-      "_$id": "101ihuwf",
-      "_$type": "Image",
-      "name": "Image(1)",
-      "x": 484,
-      "y": 315.040014602711,
-      "width": 74,
-      "height": 73,
-      "skin": "res://0679e0a9-a5cc-4e5c-82b7-2743e3481841",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "yeswoxho",
-      "_$type": "Image",
-      "name": "Image(2)",
-      "x": 279,
-      "y": 315.040014602711,
-      "width": 74,
-      "height": 73,
-      "skin": "res://9752f121-7e29-41d2-b188-60237f8b878b",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "vmmdo6cr",
-      "_$type": "Image",
-      "name": "Image(3)",
-      "x": 176.45633471953272,
-      "y": 315.040014602711,
-      "width": 74,
-      "height": 73,
-      "skin": "res://3f967457-ba1d-44f5-90de-4d48ed5ce62d",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "4v9lzilg",
-      "_$type": "Image",
-      "name": "Image(4)",
-      "x": 382,
-      "y": 315.040014602711,
-      "width": 73,
-      "height": 73,
-      "skin": "res://5e979040-af75-4253-a9aa-893a54643a30",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "ca2qmnut",
-      "_$type": "CheckBox",
-      "name": "red",
-      "x": 185,
-      "y": 401,
-      "width": 77,
-      "height": 64,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top",
-      "_$comp": [
+      "color": "#ffffff",
+      "_$child": [
         {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "2rf31ts7",
-      "_$type": "CheckBox",
-      "name": "green",
-      "x": 288,
-      "y": 401,
-      "width": 77,
-      "height": 64,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top",
-      "_$comp": [
+          "_$id": "og9br2qa",
+          "_$type": "CheckBox",
+          "name": "magic",
+          "x": 51.00000000000003,
+          "y": 8,
+          "width": 64.65116279069767,
+          "height": 65.62790697674419,
+          "scaleX": 0.67,
+          "scaleY": 0.67,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left"
+        },
         {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "82au31kz",
-      "_$type": "CheckBox",
-      "name": "yellow",
-      "x": 390,
-      "y": 401,
-      "width": 77,
-      "height": 64,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top",
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "bkpyh24y",
-      "_$type": "CheckBox",
-      "name": "blue",
-      "x": 492,
-      "y": 401,
-      "width": 77,
-      "height": 64,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top",
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
+          "_$id": "8o1lvgt4",
+          "_$type": "Label",
+          "name": "Label(2)",
+          "x": 100.00000000000003,
+          "y": 17,
+          "width": 358,
+          "height": 30,
+          "text": "Magic Props",
+          "fontSize": 30,
+          "color": "rgba(253, 203, 4, 1)",
+          "bold": true,
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 2,
+          "padding": "0,0,0,0",
+          "stroke": 7,
+          "strokeColor": "rgba(87, 86, 73, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     },
@@ -300,89 +326,117 @@
       "_$id": "bn07lcq8",
       "_$type": "Image",
       "name": "Image(8)",
-      "x": 127,
-      "y": 502,
+      "x": 125,
+      "y": 421,
       "width": 496,
       "height": 60,
       "skin": "res://9dbf52d2-836f-4a56-826b-717e7e77f8f1",
       "useSourceSize": true,
-      "color": "#ffffff"
+      "color": "#ffffff",
+      "_$child": [
+        {
+          "_$id": "5jwpeyjk",
+          "_$type": "Label",
+          "name": "Label(3)",
+          "x": 15,
+          "y": 10,
+          "width": 470,
+          "height": 39,
+          "text": "Select Players",
+          "fontSize": 39,
+          "color": "rgba(253, 203, 4, 1)",
+          "bold": true,
+          "align": "center",
+          "valign": "middle",
+          "wordWrap": true,
+          "leading": 2,
+          "padding": "0,0,0,0",
+          "stroke": 7,
+          "strokeColor": "rgba(87, 86, 73, 1)",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
+        }
+      ]
     },
     {
       "_$id": "q9wzoj1l",
       "_$type": "Image",
       "name": "Image(10)",
-      "x": 125.99999999999997,
-      "y": 566,
+      "x": 123,
+      "y": 492,
       "width": 500,
       "height": 149,
+      "mouseEnabled": true,
       "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
-      "color": "#ffffff"
-    },
-    {
-      "_$id": "5ibbci1l",
-      "_$type": "CheckBox",
-      "name": "4p",
-      "x": 470,
-      "y": 581,
-      "width": 124,
-      "height": 122,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top",
-      "_$comp": [
+      "color": "#ffffff",
+      "_$child": [
         {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "qh84t4ba",
-      "_$type": "CheckBox",
-      "name": "3p",
-      "x": 314,
-      "y": 581,
-      "width": 124,
-      "height": 122,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "skin": "res://bf147980-14ee-4e11-8d74-e2601ba5f59f",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top",
-      "_$comp": [
+          "_$id": "5ibbci1l",
+          "_$type": "CheckBox",
+          "name": "4p",
+          "x": 344,
+          "y": 15,
+          "width": 124,
+          "height": 122,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        },
         {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "7p1j40su",
-      "_$type": "CheckBox",
-      "name": "2p",
-      "x": 158,
-      "y": 581,
-      "width": 124,
-      "height": 122,
-      "mouseEnabled": true,
-      "stateNum": 2,
-      "selected": true,
-      "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
-      "label": "",
-      "labelSize": 20,
-      "labelAlign": "left",
-      "labelVAlign": "top",
-      "_$comp": [
+          "_$id": "qh84t4ba",
+          "_$type": "CheckBox",
+          "name": "3p",
+          "x": 188.00000000000003,
+          "y": 15,
+          "width": 124,
+          "height": 122,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://bf147980-14ee-4e11-8d74-e2601ba5f59f",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
+        },
         {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
+          "_$id": "7p1j40su",
+          "_$type": "CheckBox",
+          "name": "2p",
+          "x": 32.00000000000003,
+          "y": 15,
+          "width": 124,
+          "height": 122,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "selected": true,
+          "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "left",
+          "_$comp": [
+            {
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            }
+          ]
         }
       ]
     },
@@ -619,7 +673,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 6,
+                      "index": 5,
                       "interval": 226,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     },
@@ -637,7 +691,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 3,
+                      "index": 2,
                       "interval": 140,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     }
@@ -677,57 +731,6 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "_$id": "8o1lvgt4",
-      "_$type": "Label",
-      "name": "Label(2)",
-      "x": 233,
-      "y": 179,
-      "width": 358,
-      "height": 30,
-      "text": "Magic Props",
-      "fontSize": 30,
-      "color": "rgba(253, 203, 4, 1)",
-      "bold": true,
-      "valign": "middle",
-      "wordWrap": true,
-      "leading": 2,
-      "padding": "0,0,0,0",
-      "stroke": 7,
-      "strokeColor": "rgba(87, 86, 73, 1)",
-      "_$comp": [
-        {
-          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
-          "scriptPath": "../src/TranslateLabel.ts"
-        }
-      ]
-    },
-    {
-      "_$id": "5jwpeyjk",
-      "_$type": "Label",
-      "name": "Label(3)",
-      "x": 142,
-      "y": 512,
-      "width": 470,
-      "height": 39,
-      "text": "Select Players",
-      "fontSize": 39,
-      "color": "rgba(253, 203, 4, 1)",
-      "bold": true,
-      "align": "center",
-      "valign": "middle",
-      "wordWrap": true,
-      "leading": 2,
-      "padding": "0,0,0,0",
-      "stroke": 7,
-      "strokeColor": "rgba(87, 86, 73, 1)",
-      "_$comp": [
-        {
-          "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
-          "scriptPath": "../src/TranslateLabel.ts"
         }
       ]
     }

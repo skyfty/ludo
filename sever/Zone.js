@@ -87,7 +87,7 @@ function onGeneralizeRequest(inParams, sender) {
 
 function onGetJettonRequest(inParams, sender) {
 	var db = getParentZone().getDBManager();
-	var result = db.executeQuery("SELECT * FROM jetton");
+	var result = db.executeQuery("SELECT * FROM jetton order by id asc");
 	var params = new SFSObject();
 	params.putSFSArray("list", result);
 	send("GetJettonRequest", params, [sender]);
@@ -250,9 +250,11 @@ function onSyncProfileRequest(inParams, sender) {
 	if (avatar == null) {
 		avatar = 0;
 	}
-	var pawns = inParams.getInt("pawns");
-	if (pawns == null) {
+	var pawns = inParams.getUtfString("pawns");
+	if (pawns == null || pawns == "") {
 		pawns = "00";
+		inParams.putUtfString("pawns", pawns)
+
 	}
 	var userId = inParams.getInt("id");
 
@@ -260,9 +262,10 @@ function onSyncProfileRequest(inParams, sender) {
 		var data = [
 			nickname,
 			avatar,
+			pawns,
 			syncTime,
 		];
-		userId = db.executeInsert("INSERT INTO users(nickname,avatar,updatetime) VALUES(?,?,?)", data);
+		userId = db.executeInsert("INSERT INTO users(nickname,avatar,pawns,updatetime) VALUES(?,?,?,?)", data);
 		var scoreData = [
 			userId,
 			20,
@@ -282,7 +285,7 @@ function onSyncProfileRequest(inParams, sender) {
 				inParams = user;
 				nickname = inParams.getUtfString("nickname");
 				avatar = inParams.getInt("avatar");
-				pawns = inParams.getInt("pawns");
+				pawns = inParams.getUtfString("pawns");
 
 			} else {
 				userId = user.getInt("id");
@@ -307,7 +310,7 @@ function onSyncProfileRequest(inParams, sender) {
 				db.executeInsert("INSERT INTO rank(userid,amount,createtime,reason) VALUES(?,?,?,?)", scoreData);
 				inParams.putInt("rank", countRank(userId));
 			}
-			syncUserVariable(userId, nickname, avatar, sender);
+			syncUserVariable(userId, nickname, avatar,pawns, sender);
 		}
 	}
 	send("SyncProfile", inParams, [sender]);

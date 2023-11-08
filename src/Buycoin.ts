@@ -42,18 +42,19 @@ export class Buycoin extends Laya.Script {
 
     public onSelected(index: number){
         let data = this.list.array[index];
-        window.flutter_inappwebview.callHandler('buy', "gold1000").then(function(result){
-            if (result === "0") {
-                var params = new SFS2X.SFSObject();
-                params.putInt("id", Profile.getUserId());
-                params.putInt("amount", data.getInt("amount"));
-                params.putInt("selectindex", index);
-                Station.sfs.send(new SFS2X.ExtensionRequest("BuyGoldRequest", params));
-            } else {
-
-            }
-            console.log(result);
-        });
+        if (window.flutter_ != null) {
+            window.flutter_inappwebview.callHandler('buy',data.getUtfString("name")).then(function(result){
+                if (result === "0") {
+                    var params = new SFS2X.SFSObject();
+                    params.putInt("id", Profile.getUserId());
+                    params.putInt("amount", data.getInt("amount"));
+                    params.putInt("selectindex", index);
+                    Station.sfs.send(new SFS2X.ExtensionRequest("BuyGoldRequest", params));
+                } else {
+    
+                }
+            });
+        }
     }
 
 
