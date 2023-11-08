@@ -11858,18 +11858,16 @@
     }
     onSelected(index) {
       let data = this.list.array[index];
-      if (window.flutter_ != null) {
-        window.flutter_inappwebview.callHandler("buy", data.getUtfString("name")).then(function(result) {
-          if (result === "0") {
-            var params = new SFS2X9.SFSObject();
-            params.putInt("id", Profile.getUserId());
-            params.putInt("amount", data.getInt("amount"));
-            params.putInt("selectindex", index);
-            Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
-          } else {
-          }
-        });
-      }
+      window.flutter_inappwebview.callHandler("buy", data.getUtfString("name")).then(function(result) {
+        if (result === "0") {
+          var params = new SFS2X9.SFSObject();
+          params.putInt("id", Profile.getUserId());
+          params.putInt("amount", data.getInt("amount"));
+          params.putInt("selectindex", index);
+          Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
+        } else {
+        }
+      });
     }
     updateItem(cell, index) {
       if (this.coins != null) {
