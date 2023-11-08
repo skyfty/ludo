@@ -54,9 +54,9 @@ class MainActivity: FlutterActivity() {
         this.billingClient = BillingClient.newBuilder(this).setListener(purchasesUpdatedListener).build()
         this.billingClient.startConnection(billingClientStateListener)
     }
-    fun querySkuList(cb:Callback) {
+    fun querySkuList(cb:Callback, skuList: ArrayList<String>) {
         if (skuDetailsList.isEmpty()) {
-            val skuList = arrayOf("gold1000","gold5000","gold10000","gold25000","gold100000","gold500000","gold1000000")
+//            val skuList = arrayOf("gold1000","gold5000","gold10000","gold25000","gold100000","gold500000","gold1000000")
             val params: SkuDetailsParams.Builder = SkuDetailsParams.newBuilder()
             params.setSkusList(skuList.toMutableList()).setType(BillingClient.SkuType.INAPP)
             billingClient.querySkuDetailsAsync(params.build()) { billingResult, list ->
@@ -74,9 +74,16 @@ class MainActivity: FlutterActivity() {
     /**
      * 查询商品
      */
-    fun querySkuDetails(): Array<SkuDetails?>? {
-        val temp: Array<SkuDetails?> = arrayOfNulls(skuDetailsList.size)
-        return skuDetailsList.toArray(temp)
+    fun querySkuDetails(result: MethodChannel.Result, arguments: ArrayList<Object>) {
+        querySkuList(object : Callback() {
+            override fun payCallback() {
+                val result2 = HashMap<String, String>()
+                for(sku in skuDetailsList) {
+                    result2[sku.sku] = sku.price;
+                }
+                result.success(result2);
+            }
+        }, arguments[0] as ArrayList<String>)
     }
 
     /**
@@ -93,24 +100,16 @@ class MainActivity: FlutterActivity() {
             .build()
         billingClient.launchBillingFlow(this, params)
     }
-    private fun isBillingReady(): Boolean {
-        return billingClient.isReady
-    }
-
     lateinit var resultCb:MethodChannel.Result
 
     private  fun buy(result: MethodChannel.Result, arguments: ArrayList<String>) {
         resultCb = result
-        querySkuList(object : Callback() {
-            override fun payCallback() {
-                for(sku in skuDetailsList) {
-                    if (sku.sku == arguments[0]) {
-                        launchBillingFlow(sku, "aaaa", "sssss");
-                        break;
-                    }
-                }
+        for(sku in skuDetailsList) {
+            if (sku.sku == arguments[0]) {
+                launchBillingFlow(sku, "aaaa", "sssss");
+                break;
             }
-        });
+        }
     }
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
@@ -118,6 +117,9 @@ class MainActivity: FlutterActivity() {
         val channel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL)
         channel.setMethodCallHandler {call, result ->
             when(call.method) {
+                "skus"->{
+                    querySkuDetails(result, call.arguments as ArrayList<Object>)
+                }
                 "buy"->{
                     buy(result, call.arguments as ArrayList<String>)
                 }

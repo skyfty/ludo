@@ -11875,7 +11875,14 @@
         let item = cell.getComponent(BuyItem);
         item.index = index;
         item.coin.text = data.getInt("amount").toLocaleString("en-US");
-        item.price.text = data.getDouble("price");
+        let name = data.getUtfString("name");
+        if (this.priceNameList != void 0 && typeof this.priceNameList[name] !== "undefined") {
+          console.log(this.priceNameList[name]);
+          item.price.text = this.priceNameList[name];
+        } else {
+          console.log(data.getDouble("price"));
+          item.price.text = data.getDouble("price");
+        }
       }
     }
     startGoldCoin(selectindex) {
@@ -11900,14 +11907,24 @@
       }
       Laya.SoundManager.playSound("sounds/jinbi.mp3", 1);
     }
+    onSkus(result2) {
+      this.priceNameList = result2;
+      this.list.refresh();
+    }
     onExtensionResponse(evtParams) {
       if ("GetCoinRequest" == evtParams.cmd) {
         this.coins = evtParams.params.getSFSArray("list");
+        var skus = [];
         var data = [];
         for (var m = 0; m < this.coins.size(); m++) {
-          data.push(this.coins.getSFSObject(m));
+          let item = this.coins.getSFSObject(m);
+          data.push(item);
+          skus.push(item.getUtfString("name"));
         }
         this.list.array = data;
+        if (window.flutter_inappwebview) {
+          window.flutter_inappwebview.callHandler("skus", skus).then(this.onSkus.bind(this));
+        }
       } else if ("BuyGoldRequest" == evtParams.cmd) {
         let gold = evtParams.params.get("gold");
         if (gold != null) {

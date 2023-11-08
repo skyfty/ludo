@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter/services.dart';
@@ -69,6 +71,11 @@ class GameState extends State<Game> {
              final String result = await platform.invokeMethod("buy", args);
              return result;
              // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
+          });
+          controller.addJavaScriptHandler(handlerName: 'skus', callback: (args) async {
+            final Map<Object?, Object?> result = await platform.invokeMethod("skus", args);
+            return result;
+            // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
           });
         }
     );
