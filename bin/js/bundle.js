@@ -11858,17 +11858,18 @@
     }
     onSelected(index) {
       let data = this.list.array[index];
-      window.flutter_inappwebview.callHandler("buy", "gold1000").then(function(result) {
-        if (result === "0") {
-          var params = new SFS2X9.SFSObject();
-          params.putInt("id", Profile.getUserId());
-          params.putInt("amount", data.getInt("amount"));
-          params.putInt("selectindex", index);
-          Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
-        } else {
-        }
-        console.log(result);
-      });
+      if (window.flutter_ != null) {
+        window.flutter_inappwebview.callHandler("buy", data.getUtfString("name")).then(function(result) {
+          if (result === "0") {
+            var params = new SFS2X9.SFSObject();
+            params.putInt("id", Profile.getUserId());
+            params.putInt("amount", data.getInt("amount"));
+            params.putInt("selectindex", index);
+            Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
+          } else {
+          }
+        });
+      }
     }
     updateItem(cell, index) {
       if (this.coins != null) {
@@ -15228,7 +15229,7 @@
         this.refreshEarnPayLabel();
       });
       item.getChildByName("plus").on(Laya.Event.CLICK, this, () => {
-        if (this.idx < this.jettons.size() - 1) {
+        if (this.idx < this.jettons.length - 1) {
           this.idx++;
         }
         this.refreshEarnPayLabel();
@@ -15238,7 +15239,7 @@
       Station.sfs.send(new SFS2X20.ExtensionRequest("GetJettonRequest", params));
     }
     refreshEarnPayLabel() {
-      let item = this.jettons.getSFSObject(this.idx);
+      let item = this.jettons[this.idx];
       this.earnLabel.text = item.getDouble("earn");
       this.payLabel.text = item.getDouble("pay");
     }
@@ -15246,7 +15247,7 @@
       Laya.Dialog.closeAll();
       let roomVars = [];
       let varname = Station.getUserJettonName();
-      roomVars.push(new SFS2X20.SFSRoomVariable(varname, this.jettons.getSFSObject(this.idx)));
+      roomVars.push(new SFS2X20.SFSRoomVariable(varname, this.jettons[this.idx]));
       Station.sfs.send(new SFS2X20.SetRoomVariablesRequest(roomVars));
       Laya.Scene.open("militant.ls", true, { "color": Config.Colors[this.colorIdx] });
     }
@@ -15255,7 +15256,7 @@
       if (this.colorIdx == -1) {
         return;
       }
-      let jetton = this.jettons.getSFSObject(this.idx);
+      let jetton = this.jettons[this.idx];
       let pay = jetton.getDouble("pay");
       if (Profile.getGold() < pay) {
         Laya.Scene.open("dialog/nogold.lh", false);
@@ -15275,7 +15276,15 @@
     }
     onExtensionResponse(evtParams) {
       if ("GetJettonRequest" == evtParams.cmd) {
-        this.jettons = evtParams.params.getSFSArray("list");
+        let jettons = evtParams.params.getSFSArray("list");
+        let data = [];
+        for (var m = 0; m < jettons.size(); m++) {
+          let item = jettons.getSFSObject(m);
+          if (item.getUtfString("scope") == "extreme") {
+            data.push(item);
+          }
+        }
+        this.jettons = data;
         this.refreshEarnPayLabel();
       }
     }
@@ -15307,7 +15316,7 @@
       this.challengeFriend.on(Laya.Event.CLICK, this, this.onChallengeFriend);
       this.settings.on(Laya.Event.CLICK, this, this.onSettings);
       this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
-      this.goldcoin.on(Laya.Event.CLICK, this, () => {
+      this.buygoldcoin.on(Laya.Event.CLICK, this, () => {
         if (Station.isUnconnected()) {
           Laya.Scene.open("dialog/nonet.lh");
         } else {
@@ -15411,6 +15420,9 @@
   __decorateClass([
     property65(Laya.Sprite)
   ], Menu.prototype, "goldcoin", 2);
+  __decorateClass([
+    property65(Laya.Sprite)
+  ], Menu.prototype, "buygoldcoin", 2);
   __decorateClass([
     property65(Laya.Sprite)
   ], Menu.prototype, "ranklist", 2);

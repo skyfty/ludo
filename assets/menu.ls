@@ -37,6 +37,9 @@
       "goldcoin": {
         "_$ref": "pizo50xh"
       },
+      "buygoldcoin": {
+        "_$ref": "ydixce6u"
+      },
       "ranklist": {
         "_$ref": "ki4a9dg1"
       },
@@ -44,7 +47,7 @@
         "_$ref": "ufuvvwdb"
       },
       "level": {
-        "_$ref": "6j8qzh0l"
+        "_$ref": "95eiddvv"
       },
       "trims": {
         "_$ref": "jutu8ny7"
@@ -101,8 +104,8 @@
       "_$id": "pklrsvsb",
       "_$type": "Button",
       "name": "vscomputer",
-      "x": 62,
-      "y": 368.73516342582855,
+      "x": 72,
+      "y": 544.7351634258285,
       "width": 616.7393978935586,
       "height": 151.40963743126107,
       "mouseEnabled": true,
@@ -152,8 +155,8 @@
       "_$id": "mqsu2s73",
       "_$type": "Button",
       "name": "online",
-      "x": 62,
-      "y": 535,
+      "x": 72,
+      "y": 711,
       "width": 616.7393978935586,
       "height": 152.40963743126107,
       "mouseEnabled": true,
@@ -202,8 +205,8 @@
       "_$id": "5wbt1gd9",
       "_$type": "Button",
       "name": "friends",
-      "x": 62,
-      "y": 701,
+      "x": 72,
+      "y": 877,
       "width": 616.7393978935586,
       "height": 157.40963743126107,
       "mouseEnabled": true,
@@ -249,266 +252,6 @@
       ]
     },
     {
-      "_$id": "rzs1mya0",
-      "_$type": "Box",
-      "name": "title",
-      "x": 3,
-      "width": 745,
-      "height": 137,
-      "mouseEnabled": true,
-      "_$child": [
-        {
-          "_$id": "f50fmlg3",
-          "_$type": "Box",
-          "name": "Box",
-          "x": 17,
-          "width": 714,
-          "height": 56,
-          "bgColor": "rgba(128, 86, 172, 1)"
-        },
-        {
-          "_$id": "usjzxsk3",
-          "_$type": "Image",
-          "name": "Image",
-          "x": 14.99999999999995,
-          "width": 715,
-          "height": 60,
-          "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
-          "color": "#ffffff"
-        },
-        {
-          "_$id": "upjap8ug",
-          "_$type": "Box",
-          "name": "avatar",
-          "x": -1,
-          "width": 137,
-          "height": 136,
-          "_$comp": [
-            {
-              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-              "scriptPath": "../src/ClickSound.ts"
-            }
-          ],
-          "_$child": [
-            {
-              "_$id": "r6sdsz57",
-              "_$type": "Image",
-              "name": "Image(1)",
-              "x": 10.465059856708397,
-              "y": 12.57201599216338,
-              "width": 101.84417892087066,
-              "height": 99.44219356896335,
-              "visible": false,
-              "skin": "res://00000000-0000-0000-0001-000000000000",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "7orvzytu",
-              "_$type": "Image",
-              "name": "Image",
-              "x": -0.9999999999999982,
-              "y": 1.7763568394002505e-14,
-              "width": 136.5,
-              "height": 136.5,
-              "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "qyjdg8vb",
-              "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
-              "name": "avatarclip",
-              "active": true,
-              "x": 16.000000000000004,
-              "y": 16,
-              "visible": true,
-              "width": 105,
-              "height": 105,
-              "index": 0,
-              "clipY": 10,
-              "_$comp": [
-                {
-                  "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
-                  "scriptPath": "../src/MyselfAvatar.ts"
-                }
-              ]
-            },
-            {
-              "_$id": "89vysct8",
-              "_$type": "Image",
-              "name": "trim",
-              "x": 3.5000000000000018,
-              "y": 1.5000000000000142,
-              "width": 129,
-              "height": 129,
-              "skin": "res://00052eb8-8712-4a40-bfc0-0e9709fb2c69",
-              "color": "#ffffff",
-              "_$comp": [
-                {
-                  "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
-                  "scriptPath": "../src/MyselfTrim.ts"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "_$id": "foe94s5k",
-          "_$type": "Button",
-          "name": "settings",
-          "x": 662,
-          "width": 83,
-          "height": 83,
-          "mouseEnabled": true,
-          "stateNum": 2,
-          "skin": "res://c35ba747-0789-4a01-a091-24514ed42549",
-          "label": "",
-          "labelSize": 20,
-          "labelVAlign": "middle",
-          "_$comp": [
-            {
-              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-              "scriptPath": "../src/ClickSound.ts"
-            }
-          ]
-        },
-        {
-          "_$id": "pizo50xh",
-          "_$type": "Image",
-          "name": "goldcoin",
-          "x": 379,
-          "y": 7,
-          "width": 254.68106970409812,
-          "height": 43.733316825554034,
-          "skin": "res://60a21851-71fd-44f0-a297-b362629a30f8",
-          "color": "#ffffff",
-          "_$comp": [
-            {
-              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-              "scriptPath": "../src/ClickSound.ts"
-            }
-          ],
-          "_$child": [
-            {
-              "_$id": "yp0qtw8z",
-              "_$type": "Image",
-              "name": "Image",
-              "x": -10,
-              "y": -2,
-              "width": 50.899408284023664,
-              "height": 43.958579881656796,
-              "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
-              "color": "#ffffff"
-            },
-            {
-              "_$id": "l1m23pig",
-              "_$type": "Label",
-              "name": "gold",
-              "x": 45,
-              "y": 5,
-              "width": 192.3109959274343,
-              "height": 34.413920770085156,
-              "text": "0",
-              "fontSize": 28,
-              "color": "#FFFFFF",
-              "valign": "bottom",
-              "leading": 0,
-              "padding": "0,0,0,0",
-              "_$comp": [
-                {
-                  "_$type": "12b679ee-f2ac-4f30-9b77-97dedf5b62a2",
-                  "scriptPath": "../src/MyselfGold.ts"
-                }
-              ]
-            },
-            {
-              "_$id": "pqkkxy1v",
-              "_$type": "Clip",
-              "name": "Clip",
-              "x": 4.862624587409989,
-              "y": -7,
-              "width": 38.13737541259,
-              "height": 24.75485523352614,
-              "anchorY": -0.16666666666666666,
-              "autoPlay": true,
-              "clipWidth": 30,
-              "clipHeight": 30,
-              "clipX": 7,
-              "clipY": 1,
-              "index": 2,
-              "interval": 226,
-              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
-            },
-            {
-              "_$id": "1q3xbgcs",
-              "_$type": "Clip",
-              "name": "Clip(1)",
-              "x": -18.13737541259001,
-              "y": 10,
-              "width": 47.91075781155648,
-              "height": 30.108639620724137,
-              "anchorY": -0.16666666666666666,
-              "autoPlay": true,
-              "clipWidth": 30,
-              "clipHeight": 30,
-              "clipX": 7,
-              "clipY": 1,
-              "index": 6,
-              "interval": 199,
-              "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
-            }
-          ]
-        },
-        {
-          "_$id": "6j8qzh0l",
-          "_$type": "Sprite",
-          "name": "Sprite",
-          "x": 135,
-          "y": 6,
-          "width": 207,
-          "height": 46,
-          "_$child": [
-            {
-              "_$id": "hcfkoj97",
-              "_$type": "Label",
-              "name": "Label",
-              "x": 19.000000000000085,
-              "y": 6.999999999999979,
-              "width": 59,
-              "height": 32,
-              "text": "LV.",
-              "fontSize": 34,
-              "color": "rgba(243, 202, 13, 1)",
-              "bold": true,
-              "valign": "top",
-              "leading": 0,
-              "padding": "0,0,0,0"
-            },
-            {
-              "_$id": "9ufohixi",
-              "_$type": "Label",
-              "name": "lv",
-              "x": 79,
-              "y": 6.999999999999979,
-              "width": 120,
-              "height": 31,
-              "text": "???",
-              "fontSize": 34,
-              "color": "#FFFFFF",
-              "valign": "top",
-              "leading": 0,
-              "padding": "0,0,0,0",
-              "_$comp": [
-                {
-                  "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
-                  "scriptPath": "../src/MyselfLv.ts"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "_$id": "lsq01jcr",
       "_$type": "Image",
       "name": "Image(1)",
@@ -516,6 +259,7 @@
       "y": 82,
       "width": 264.5,
       "height": 264.5,
+      "visible": false,
       "skin": "res://9a029446-e9cb-4e8e-9909-e389aff3b283",
       "color": "#ffffff"
     },
@@ -523,7 +267,7 @@
       "_$id": "ki4a9dg1",
       "_$type": "Button",
       "name": "ranklist",
-      "x": 638,
+      "x": 644,
       "y": 259.25157629255983,
       "width": 83.19672131147536,
       "height": 103.16393442622945,
@@ -544,8 +288,8 @@
       "_$id": "ufuvvwdb",
       "_$type": "Button",
       "name": "checkin",
-      "x": 623.473510924873,
-      "y": 121.57767135588148,
+      "x": 629,
+      "y": 138.57767135588148,
       "width": 113.57497755163129,
       "height": 86.41574378928465,
       "mouseEnabled": true,
@@ -559,13 +303,13 @@
       "_$id": "p9nfamtu",
       "_$type": "Button",
       "name": "buddy",
-      "x": 30,
-      "y": 1221,
+      "x": 467,
+      "y": 1205,
       "width": 83,
       "height": 83,
       "mouseEnabled": true,
-      "left": 30,
-      "bottom": 30,
+      "left": 467,
+      "bottom": 46,
       "stateNum": 2,
       "skin": "res://77bd2846-9777-435a-96de-f3a0a98199d0",
       "label": "",
@@ -576,16 +320,307 @@
       "_$id": "jutu8ny7",
       "_$type": "Button",
       "name": "trims",
-      "x": 22,
-      "y": 195,
+      "x": 77,
+      "y": 1205,
       "width": 83,
-      "height": 89,
+      "height": 83,
       "mouseEnabled": true,
+      "left": 77,
+      "bottom": 46,
       "stateNum": 2,
       "skin": "res://119274e4-8e4b-48da-ab33-f491f7513b22",
       "label": "",
       "labelSize": 20,
       "labelVAlign": "middle"
+    },
+    {
+      "_$id": "uovhow40",
+      "_$type": "Button",
+      "name": "chess",
+      "x": 337,
+      "y": 1205,
+      "width": 83,
+      "height": 83,
+      "mouseEnabled": true,
+      "left": 337,
+      "bottom": 46,
+      "stateNum": 2,
+      "skin": "res://36a4dbb9-727d-439d-8917-ad6f204e057f",
+      "label": "",
+      "labelSize": 20,
+      "labelVAlign": "middle"
+    },
+    {
+      "_$id": "aygeyek4",
+      "_$type": "Button",
+      "name": "dice",
+      "x": 207,
+      "y": 1205,
+      "width": 83,
+      "height": 83,
+      "mouseEnabled": true,
+      "left": 207,
+      "bottom": 46,
+      "stateNum": 2,
+      "skin": "res://dabe26ed-0db8-4b24-be5c-0d2d5dea9ac5",
+      "label": "",
+      "labelSize": 20,
+      "labelVAlign": "middle"
+    },
+    {
+      "_$id": "95eiddvv",
+      "_$type": "Button",
+      "name": "gains",
+      "x": 597,
+      "y": 1205,
+      "width": 83,
+      "height": 83,
+      "mouseEnabled": true,
+      "left": 597,
+      "bottom": 46,
+      "stateNum": 2,
+      "skin": "res://96ebfe08-9c70-4bc5-95e2-4c533f89dc6a",
+      "label": "",
+      "labelSize": 20,
+      "labelVAlign": "middle"
+    },
+    {
+      "_$id": "foe94s5k",
+      "_$type": "Button",
+      "name": "settings",
+      "x": 644.9999999999999,
+      "y": 14.000000000000004,
+      "width": 83,
+      "height": 83,
+      "mouseEnabled": true,
+      "stateNum": 2,
+      "skin": "res://c35ba747-0789-4a01-a091-24514ed42549",
+      "label": "",
+      "labelSize": 20,
+      "labelVAlign": "middle",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ]
+    },
+    {
+      "_$id": "6j8qzh0l",
+      "_$type": "Sprite",
+      "name": "level",
+      "x": 16.999999999999993,
+      "y": 170.00000000000003,
+      "width": 207,
+      "height": 46,
+      "texture": {
+        "_$uuid": "56607fd2-cf78-42c5-b515-0ae43368d50b",
+        "_$type": "Texture"
+      },
+      "_$child": [
+        {
+          "_$id": "hcfkoj97",
+          "_$type": "Label",
+          "name": "Label",
+          "x": 7.000000000000085,
+          "y": 7.999999999999979,
+          "width": 59,
+          "height": 32,
+          "text": "LV.",
+          "fontSize": 34,
+          "color": "rgba(243, 202, 13, 1)",
+          "bold": true,
+          "leading": 0,
+          "padding": "0,0,0,0"
+        },
+        {
+          "_$id": "9ufohixi",
+          "_$type": "Label",
+          "name": "lv",
+          "x": 72,
+          "y": 7.999999999999979,
+          "width": 120,
+          "height": 31,
+          "text": "???",
+          "fontSize": 34,
+          "color": "#FFFFFF",
+          "leading": 0,
+          "padding": "0,0,0,0",
+          "_$comp": [
+            {
+              "_$type": "360a2a0b-2e0c-429a-a557-81908ba925ac",
+              "scriptPath": "../src/MyselfLv.ts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_$id": "pizo50xh",
+      "_$type": "Image",
+      "name": "goldcoin",
+      "x": 264,
+      "y": 21.999999999999975,
+      "width": 221.68106970409812,
+      "height": 43.733316825554034,
+      "mouseEnabled": true,
+      "skin": "res://56607fd2-cf78-42c5-b515-0ae43368d50b",
+      "color": "#ffffff",
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "ydixce6u",
+          "_$type": "Button",
+          "name": "buygoldcoin",
+          "x": 231,
+          "width": 42.5,
+          "height": 42.5,
+          "mouseEnabled": true,
+          "stateNum": 2,
+          "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
+          "label": "",
+          "labelSize": 20,
+          "labelVAlign": "middle"
+        },
+        {
+          "_$id": "yp0qtw8z",
+          "_$type": "Image",
+          "name": "Image",
+          "x": -2,
+          "y": -5,
+          "width": 50.899408284023664,
+          "height": 43.958579881656796,
+          "skin": "res://aec558ec-3c6a-4cb2-8c19-0e8e68019854",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "l1m23pig",
+          "_$type": "Label",
+          "name": "gold",
+          "x": 45,
+          "y": 5,
+          "width": 167.3109959274343,
+          "height": 34.413920770085156,
+          "text": "0",
+          "fontSize": 28,
+          "color": "#FFFFFF",
+          "align": "center",
+          "valign": "bottom",
+          "leading": 0,
+          "padding": "0,0,0,0",
+          "_$comp": [
+            {
+              "_$type": "12b679ee-f2ac-4f30-9b77-97dedf5b62a2",
+              "scriptPath": "../src/MyselfGold.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "pqkkxy1v",
+          "_$type": "Clip",
+          "name": "Clip",
+          "x": 4.862624587409989,
+          "y": -7,
+          "width": 38.13737541259,
+          "height": 24.75485523352614,
+          "anchorY": -0.16666666666666666,
+          "autoPlay": true,
+          "clipWidth": 30,
+          "clipHeight": 30,
+          "clipX": 7,
+          "clipY": 1,
+          "index": 0,
+          "interval": 226,
+          "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+        },
+        {
+          "_$id": "1q3xbgcs",
+          "_$type": "Clip",
+          "name": "Clip(1)",
+          "x": -18.13737541259001,
+          "y": -5,
+          "width": 47.91075781155648,
+          "height": 30.108639620724137,
+          "anchorY": -0.16666666666666666,
+          "autoPlay": true,
+          "clipWidth": 30,
+          "clipHeight": 30,
+          "clipX": 7,
+          "clipY": 1,
+          "index": 5,
+          "interval": 199,
+          "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
+        }
+      ]
+    },
+    {
+      "_$id": "upjap8ug",
+      "_$type": "Box",
+      "name": "avatar",
+      "x": 16.999999999999993,
+      "y": 20.99999999999998,
+      "width": 137,
+      "height": 136,
+      "_$comp": [
+        {
+          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+          "scriptPath": "../src/ClickSound.ts"
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "7orvzytu",
+          "_$type": "Image",
+          "name": "Image",
+          "x": -0.9999999999999982,
+          "y": 1.7763568394002505e-14,
+          "width": 136.5,
+          "height": 136.5,
+          "skin": "res://56607fd2-cf78-42c5-b515-0ae43368d50b",
+          "color": "#ffffff"
+        },
+        {
+          "_$id": "qyjdg8vb",
+          "_$prefab": "09d5a55d-fe97-4b13-b580-b9f48d020006",
+          "name": "avatarclip",
+          "active": true,
+          "x": 16.000000000000004,
+          "y": 16,
+          "visible": true,
+          "width": 105,
+          "height": 105,
+          "index": 0,
+          "clipY": 10,
+          "_$comp": [
+            {
+              "_$type": "6391ac00-78b9-4858-83c1-49b4c5192fc5",
+              "scriptPath": "../src/MyselfAvatar.ts"
+            }
+          ]
+        },
+        {
+          "_$id": "89vysct8",
+          "_$type": "Image",
+          "name": "trim",
+          "x": 3.5000000000000018,
+          "y": 1.5000000000000142,
+          "width": 129,
+          "height": 129,
+          "skin": "res://00052eb8-8712-4a40-bfc0-0e9709fb2c69",
+          "color": "#ffffff",
+          "_$comp": [
+            {
+              "_$type": "de3ddc02-0b18-42f2-9cc9-7367db4fcf46",
+              "scriptPath": "../src/MyselfTrim.ts"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

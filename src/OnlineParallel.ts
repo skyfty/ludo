@@ -47,7 +47,7 @@ export class OnlineParallel extends GameRoom {
         });
 
         item.getChildByName("plus").on(Laya.Event.CLICK, this, () => {
-            if (this.idx < this.jettons.size() - 1) {
+            if (this.idx < this.jettons.length - 1) {
                 this.idx++;
             }
             this.refreshEarnPayLabel();
@@ -58,7 +58,7 @@ export class OnlineParallel extends GameRoom {
     }
 
     private refreshEarnPayLabel() {
-        let item = this.jettons.getSFSObject(this.idx);
+        let item = this.jettons[this.idx];
         this.earnLabel.text =  item.getDouble("earn");
         this.payLabel.text =  item.getDouble("pay");
     }
@@ -67,7 +67,7 @@ export class OnlineParallel extends GameRoom {
         Laya.Dialog.closeAll();
         let roomVars = [];
         let varname = Station.getUserJettonName();
-        roomVars.push(new SFS2X.SFSRoomVariable(varname, this.jettons.getSFSObject(this.idx)));
+        roomVars.push(new SFS2X.SFSRoomVariable(varname, this.jettons[this.idx]));
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
         Laya.Scene.open("militant.ls", true,{"color":Config.Colors[this.colorIdx]});
     }
@@ -77,7 +77,7 @@ export class OnlineParallel extends GameRoom {
         if (this.colorIdx == -1) {
             return;
         }
-        let jetton = this.jettons.getSFSObject(this.idx);
+        let jetton = this.jettons[this.idx];
         let pay =  jetton.getDouble("pay");
         if (Profile.getGold() < pay) {
             Laya.Scene.open("dialog/nogold.lh", false);
@@ -104,7 +104,15 @@ export class OnlineParallel extends GameRoom {
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
         if ("GetJettonRequest" == evtParams.cmd) {
-            this.jettons = evtParams.params.getSFSArray("list");
+            let jettons = evtParams.params.getSFSArray("list");
+            let data: Array<SFS2X.SFSObject> = [];
+            for (var m: number = 0; m < jettons.size(); m++) {
+                let item = jettons.getSFSObject(m);
+                if (item.getUtfString("scope") == "extreme") {
+                    data.push(item);
+                }
+            }
+            this.jettons = data;
             this.refreshEarnPayLabel();
         }
     }

@@ -33,6 +33,10 @@ export class Menu extends Laya.Script {
     @property(Laya.Sprite)
     public goldcoin: Laya.Sprite;
 
+    
+    @property(Laya.Sprite)
+    public buygoldcoin: Laya.Sprite;
+
     @property(Laya.Sprite)
     public ranklist: Laya.Sprite;
 
@@ -57,7 +61,7 @@ export class Menu extends Laya.Script {
         this.challengeFriend.on(Laya.Event.CLICK, this, this.onChallengeFriend);
         this.settings.on(Laya.Event.CLICK, this, this.onSettings);
         this.avatar.on(Laya.Event.CLICK, this, this.onAvatarClick);
-        this.goldcoin.on(Laya.Event.CLICK, this, () => {
+        this.buygoldcoin.on(Laya.Event.CLICK, this, () => {
             if (Station.isUnconnected()) {
                 Laya.Scene.open("dialog/nonet.lh");
             } else {
