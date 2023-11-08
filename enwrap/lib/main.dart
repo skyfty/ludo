@@ -41,20 +41,6 @@ class GameState extends State<Game> {
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
   List<ProductDetails> _products = <ProductDetails>[];
 
-// 调用此函数以启动购买过程
-  void startPurchase(String productId) async {
-    if (_products.isNotEmpty) {
-      try {
-        ProductDetails productDetails = _getProduct(productId);
-        // Log.d("一切正常，开始购买,信息如下：title: ${productDetails.title}  desc:${productDetails.description} "
-        //     "price:${productDetails.price}  currencyCode:${productDetails.currencyCode}  currencySymbol:${productDetails.currencySymbol}");
-        _inAppPurchase.buyConsumable(purchaseParam: PurchaseParam(productDetails: productDetails));
-      } catch (e) {
-
-      }
-    } else {
-    }
-  }
   /// 内购的购买更新监听
   void _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) async {
     for (PurchaseDetails purchase in purchaseDetailsList) {
@@ -153,10 +139,15 @@ class GameState extends State<Game> {
         onWebViewCreated: (controller) {
           platform.invokeMethod("init");
           controller.addJavaScriptHandler(handlerName: 'buy', callback: (args) async {
-            startPurchase(args[0]);
-             final String result = await platform.invokeMethod("buy", args);
-             return result;
-             // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
+            if (_products.isNotEmpty) {
+              ProductDetails productDetails = _getProduct(args[0]);
+              // Log.d("一切正常，开始购买,信息如下：title: ${productDetails.title}  desc:${productDetails.description} "
+              //     "price:${productDetails.price}  currencyCode:${productDetails.currencyCode}  currencySymbol:${productDetails.currencySymbol}");
+              var b = await _inAppPurchase.buyConsumable(purchaseParam: PurchaseParam(productDetails: productDetails));
+              return b ? "0":"-1";
+            } else {
+              return "-1";
+            }
           });
         },
 
