@@ -11877,10 +11877,8 @@
         item.coin.text = data.getInt("amount").toLocaleString("en-US");
         let name = data.getUtfString("name");
         if (this.priceNameList != void 0 && typeof this.priceNameList[name] !== "undefined") {
-          console.log(this.priceNameList[name]);
           item.price.text = this.priceNameList[name];
         } else {
-          console.log(data.getDouble("price"));
           item.price.text = data.getDouble("price");
         }
       }

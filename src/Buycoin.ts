@@ -34,7 +34,6 @@ export class Buycoin extends Laya.Script {
     }
 
     onStart(): void {
-
         Station.sfs.send(new SFS2X.ExtensionRequest("GetCoinRequest"));
     }
 
@@ -66,11 +65,8 @@ export class Buycoin extends Laya.Script {
             item.coin.text = data.getInt("amount").toLocaleString('en-US');
             let name = data.getUtfString("name");
             if (this.priceNameList!= undefined && typeof this.priceNameList[name] !== "undefined") {
-                console.log(this.priceNameList[name]);
                 item.price.text = this.priceNameList[name];
             } else {
-                console.log(data.getDouble("price"));
-
                 item.price.text = data.getDouble("price");
             }
         }
@@ -104,10 +100,6 @@ export class Buycoin extends Laya.Script {
     private onSkus(result2) {
         this.priceNameList = result2;
         this.list.refresh();
-        // for(var i in result2) {
-        //     console.log(i);
-        //     console.log(result2[i]);
-        // }
     }
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
