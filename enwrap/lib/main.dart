@@ -5,7 +5,6 @@ import 'package:archive/archive.dart';
 import 'package:archive/archive_io.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mime/mime.dart';
-import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,6 +69,11 @@ class GameState extends State<Game> {
              final String result = await platform.invokeMethod("buy", args);
              return result;
              // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
+          });
+          controller.addJavaScriptHandler(handlerName: 'skus', callback: (args) async {
+            final Map<Object?, Object?> result = await platform.invokeMethod("skus", args);
+            return result;
+            // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
           });
         }
     );
