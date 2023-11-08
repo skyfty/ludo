@@ -9,6 +9,7 @@ export class Buycoin extends Laya.Script {
 
     @property(Laya.List)
     public list: Laya.List;
+    private priceNameList:[];
 
     @property(Laya.Prefab)
     public goldcoin: Laya.Prefab;
@@ -42,19 +43,17 @@ export class Buycoin extends Laya.Script {
 
     public onSelected(index: number){
         let data = this.list.array[index];
-        if (window.flutter_ != null) {
-            window.flutter_inappwebview.callHandler('buy',data.getUtfString("name")).then(function(result){
-                if (result === "0") {
-                    var params = new SFS2X.SFSObject();
-                    params.putInt("id", Profile.getUserId());
-                    params.putInt("amount", data.getInt("amount"));
-                    params.putInt("selectindex", index);
-                    Station.sfs.send(new SFS2X.ExtensionRequest("BuyGoldRequest", params));
-                } else {
-    
-                }
-            });
-        }
+        window.flutter_inappwebview.callHandler('buy',data.getUtfString("name")).then(function(result){
+            if (result === "0") {
+                var params = new SFS2X.SFSObject();
+                params.putInt("id", Profile.getUserId());
+                params.putInt("amount", data.getInt("amount"));
+                params.putInt("selectindex", index);
+                Station.sfs.send(new SFS2X.ExtensionRequest("BuyGoldRequest", params));
+            } else {
+
+            }
+        });
     }
 
 
@@ -64,7 +63,15 @@ export class Buycoin extends Laya.Script {
             let item = cell.getComponent(BuyItem) as BuyItem;
             item.index = index;
             item.coin.text = data.getInt("amount").toLocaleString('en-US');
-            item.price.text = data.getDouble("price");
+            let name = data.getUtfString("name");
+            if (this.priceNameList!= undefined && typeof this.priceNameList[name] !== "undefined") {
+                console.log(this.priceNameList[name]);
+                item.price.text = this.priceNameList[name];
+            } else {
+                console.log(data.getDouble("price"));
+
+                item.price.text = data.getDouble("price");
+            }
         }
     }
 
@@ -93,14 +100,30 @@ export class Buycoin extends Laya.Script {
     }
 
 
+    private onSkus(result2) {
+        this.priceNameList = result2;
+        this.list.refresh();
+        // for(var i in result2) {
+        //     console.log(i);
+        //     console.log(result2[i]);
+        // }
+    }
+
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {
         if ("GetCoinRequest" == evtParams.cmd) {
             this.coins = evtParams.params.getSFSArray("list");
+            var skus = [];
             var data: Array<SFS2X.SFSObject> = [];
             for (var m: number = 0; m < this.coins.size(); m++) {
-                data.push(this.coins.getSFSObject(m));
+                let item = this.coins.getSFSObject(m);
+                data.push(item);
+                skus.push(item.getUtfString("name"))
             }
             this.list.array = data;
+
+            if (window.flutter_inappwebview) {
+                window.flutter_inappwebview.callHandler('skus', skus).then(this.onSkus.bind(this));
+            }
         } else if ("BuyGoldRequest" == evtParams.cmd) {
             let gold = evtParams.params.get("gold");
             if (gold != null) {

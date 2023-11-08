@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter/services.dart';
@@ -7,8 +5,7 @@ import 'package:archive/archive.dart';
 import 'package:archive/archive_io.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mime/mime.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
-import 'package:toast/toast.dart';
+import 'package:flutter_inapp_purchase/flutter_inapp_purchase.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,12 +15,6 @@ Future main() async {
   Archive archive = ZipDecoder().decodeBytes(bytes.buffer.asUint8List());
   runApp(MaterialApp(home: Game(archive)));
 }
-
-const List<String> _kProductIds = <String>[
-  'cn.touchmagic.cn.test1',
-  'gold5000',
-  'com.touchmagicn.ludo.gold'
-];
 
 // ignore: must_be_immutable
 class Game extends StatefulWidget {
@@ -36,69 +27,6 @@ class Game extends StatefulWidget {
 class GameState extends State<Game> {
   final GlobalKey webViewKey = GlobalKey();
   static const platform = MethodChannel("touchmagic.com/buy");
-  late StreamSubscription<List<PurchaseDetails>> _subscription;
-
-  final InAppPurchase _inAppPurchase = InAppPurchase.instance;
-  List<ProductDetails> _products = <ProductDetails>[];
-
-  /// 内购的购买更新监听
-  void _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) async {
-    for (PurchaseDetails purchase in purchaseDetailsList) {
-      if (purchase.status == PurchaseStatus.pending) {
-        // 等待支付完成
-        // _handlePending();
-      } else if (purchase.status == PurchaseStatus.error) {
-        // 购买失败
-        // _handleError(purchase.error);
-      } else if (purchase.status == PurchaseStatus.purchased || purchase.status == PurchaseStatus.restored) {
-        //完成购买, 到服务器验证
-        // if (Device.isAndroid) {
-        //   var googleDetail = purchase as GooglePlayPurchaseDetails;
-        //   loadAndroidGetPayInfo(googleDetail);
-        // }
-      }
-    }
-  }
-
-  // 根据产品ID获取产品信息
-  ProductDetails _getProduct(String productId) {
-    return _products.firstWhere((product) => product.id == productId);
-  }
-
-  @override
-  void initState() {
-    final Stream<List<PurchaseDetails>> purchaseUpdated = _inAppPurchase.purchaseStream;
-    _subscription = purchaseUpdated.listen((purchaseDetailsList) {
-      _listenToPurchaseUpdated(purchaseDetailsList);
-    }, onDone: () {
-    }, onError: (error) {
-      error.printError();
-    });
-    initStoreInfo();
-    super.initState();
-  }
-  Future<void> initStoreInfo() async {
-    final bool isAvailable = await _inAppPurchase.isAvailable();
-    if (!isAvailable) {
-      setState(() {
-        _products = <ProductDetails>[];
-      });
-      return;
-    }
-    final ProductDetailsResponse productDetailResponse = await _inAppPurchase.queryProductDetails(_kProductIds.toSet());
-    if (productDetailResponse.notFoundIDs.isNotEmpty) {
-      return;
-    }
-    setState(() {
-       _products = productDetailResponse.productDetails;
-    });
-  }
-
-  @override
-  void dispose() {
-    _subscription.cancel();
-    super.dispose();
-  }
 
   InAppWebViewSettings settings = InAppWebViewSettings(
       mediaPlaybackRequiresUserGesture: false,
@@ -149,8 +77,12 @@ class GameState extends State<Game> {
               return "-1";
             }
           });
-        },
-
+          controller.addJavaScriptHandler(handlerName: 'skus', callback: (args) async {
+            final Map<Object?, Object?> result = await platform.invokeMethod("skus", args);
+            return result;
+            // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
+          });
+        }
     );
   }
 }
