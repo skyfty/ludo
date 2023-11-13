@@ -14940,6 +14940,9 @@
       });
     }
     static setLanguage(region, url) {
+      if (region == null) {
+        return;
+      }
       TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
       if (url != null) {
         TranslateLanguage.loadLocalLanguage(url, region);
