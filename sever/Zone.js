@@ -222,11 +222,14 @@ function getUser(id) {
 	return user.getSFSObject(0);
 }
 
-function syncUserVariable(userId, nickname, avatar, pawns, sender) {
+function syncUserVariable(userId, nickname, avatar, pawns,trim,rank,gold, sender) {
 	var userVars = [];
 	userVars.push(new SFSUserVariable("userid", userId, VariableType.INT));
 	userVars.push(new SFSUserVariable("avatar", avatar, VariableType.INT));
 	userVars.push(new SFSUserVariable("pawns", pawns, VariableType.STRING));
+	userVars.push(new SFSUserVariable("trim", trim, VariableType.STRING));
+	userVars.push(new SFSUserVariable("rank", rank, VariableType.INT));
+	userVars.push(new SFSUserVariable("gold", gold, VariableType.INT));
 	userVars.push(new SFSUserVariable("nickname", nickname, VariableType.STRING));
 	getApi().setUserVariables(sender, userVars, true);
 }
@@ -256,6 +259,12 @@ function onSyncProfileRequest(inParams, sender) {
 		inParams.putUtfString("pawns", pawns)
 
 	}
+	var trim = inParams.getUtfString("trim");
+	if (trim == null || trim == "") {
+		trim = "0.png";
+		inParams.putUtfString("trim", trim)
+
+	}
 	var userId = inParams.getInt("id");
 
 	if (userId == null) {
@@ -263,9 +272,10 @@ function onSyncProfileRequest(inParams, sender) {
 			nickname,
 			avatar,
 			pawns,
+			trim,
 			syncTime,
 		];
-		userId = db.executeInsert("INSERT INTO users(nickname,avatar,pawns,updatetime) VALUES(?,?,?,?)", data);
+		userId = db.executeInsert("INSERT INTO users(nickname,avatar,pawns,trim,updatetime) VALUES(?,?,?,?,?)", data);
 		var scoreData = [
 			userId,
 			20,
@@ -276,7 +286,7 @@ function onSyncProfileRequest(inParams, sender) {
 		inParams.putInt("rank", countRank(userId));
 		inParams.putInt("gold", 0);
 		inParams.putInt("id", userId);
-		syncUserVariable(userId, nickname, avatar,pawns, sender);
+		syncUserVariable(userId, nickname, avatar,pawns,trim,inParams.getInt("rank"),0, sender);
 	} else {
 		var user = getUser(userId);
 		if (user != null) {
@@ -286,17 +296,18 @@ function onSyncProfileRequest(inParams, sender) {
 				nickname = inParams.getUtfString("nickname");
 				avatar = inParams.getInt("avatar");
 				pawns = inParams.getUtfString("pawns");
-
+				trim = inParams.getUtfString("trim");
 			} else {
 				userId = user.getInt("id");
 				var data = [
 					nickname,
 					avatar,
 					pawns,
+					trim,
 					syncTime,
 					userId
 				];
-				db.executeUpdate("UPDATE users SET nickname=?,avatar=?,pawns=?,updatetime=? WHERE id=?", data);
+				db.executeUpdate("UPDATE users SET nickname=?,avatar=?,pawns=?,trim=?,updatetime=? WHERE id=?", data);
 				inParams.putInt("rank", user.getInt("rank"));
 				inParams.putInt("gold", user.getInt("gold"));
 			}
@@ -310,7 +321,7 @@ function onSyncProfileRequest(inParams, sender) {
 				db.executeInsert("INSERT INTO rank(userid,amount,createtime,reason) VALUES(?,?,?,?)", scoreData);
 				inParams.putInt("rank", countRank(userId));
 			}
-			syncUserVariable(userId, nickname, avatar,pawns, sender);
+			syncUserVariable(userId, nickname, avatar,pawns,trim,inParams.getInt("rank"),user.getInt("gold"), sender);
 		}
 	}
 	send("SyncProfile", inParams, [sender]);

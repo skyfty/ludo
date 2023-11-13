@@ -32,6 +32,9 @@ export class TranslateLanguage extends Laya.Script {
     }
 
     static setLanguage(region:string, url:string) {
+      if (region == null) {
+        return;
+      }
        TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
       if (url != null) {
         TranslateLanguage.loadLocalLanguage(url, region);
