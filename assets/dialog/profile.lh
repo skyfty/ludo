@@ -19,7 +19,7 @@
       "avatarList": {
         "_$ref": "sb50k42b"
       },
-      "avatarNumber": 15,
+      "avatarNumber": 30,
       "level": {
         "_$ref": "jb0pcfyx"
       },
@@ -122,17 +122,6 @@
           "promptColor": "#A9A9A9"
         },
         {
-          "_$id": "3w0hngvw",
-          "_$type": "Box",
-          "name": "Box",
-          "x": -187.99999999999972,
-          "y": -105.00000000000011,
-          "width": 496,
-          "height": 382,
-          "visible": false,
-          "bgColor": "rgba(78, 56, 102, 1)"
-        },
-        {
           "_$id": "0bqqzxd3",
           "_$type": "Sprite",
           "name": "Sprite",
@@ -214,7 +203,8 @@
           },
           "repeatX": 3,
           "repeatY": 10,
-          "spaceX": 15,
+          "elasticEnabled": true,
+          "spaceX": 25,
           "spaceY": 5,
           "scrollType": 2,
           "selectEnable": true,
@@ -259,7 +249,6 @@
           "fontSize": 34,
           "color": "rgba(243, 202, 13, 1)",
           "bold": true,
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -274,7 +263,6 @@
           "text": "3\n",
           "fontSize": 34,
           "color": "#FFFFFF",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0",
           "_$comp": [

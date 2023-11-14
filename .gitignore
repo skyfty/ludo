@@ -5,3 +5,6 @@ local
 /release
 /.idea
 /bin
+/bin/js
+bin/js/bundle.js
+bin/js/bundle.js.map
