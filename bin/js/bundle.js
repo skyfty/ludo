@@ -11856,18 +11856,24 @@
     setCollectPoint(point) {
       this.collectPoint = point;
     }
+    static onBuyComplete(data, index) {
+      var params = new SFS2X9.SFSObject();
+      params.putInt("id", Profile.getUserId());
+      params.putInt("amount", data.getInt("amount"));
+      params.putInt("selectindex", index);
+      Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
+    }
     onSelected(index) {
       let data = this.list.array[index];
-      window.flutter_inappwebview.callHandler("buy", data.getUtfString("name")).then(function(result) {
-        if (result === "0") {
-          var params = new SFS2X9.SFSObject();
-          params.putInt("id", Profile.getUserId());
-          params.putInt("amount", data.getInt("amount"));
-          params.putInt("selectindex", index);
-          Station.sfs.send(new SFS2X9.ExtensionRequest("BuyGoldRequest", params));
-        } else {
-        }
-      });
+      if (typeof window.flutter_inappwebview == "undefined") {
+        Buycoin.onBuyComplete(data, index);
+      } else {
+        window.flutter_inappwebview.callHandler("buy", data.getUtfString("name")).then(function(result) {
+          if (result === "0") {
+            Buycoin.onBuyComplete(data, index);
+          }
+        });
+      }
     }
     updateItem(cell, index) {
       if (this.coins != null) {
@@ -14942,6 +14948,9 @@
       });
     }
     static setLanguage(region, url) {
+      if (region == null) {
+        return;
+      }
       TranslateLanguage.loadLocalLanguage("locale/" + region + ".json", region);
       if (url != null) {
         TranslateLanguage.loadLocalLanguage(url, region);
