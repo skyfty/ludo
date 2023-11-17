@@ -176,7 +176,6 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
-      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -198,7 +197,6 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
-      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -220,7 +218,6 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
-      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -242,7 +239,6 @@
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
-      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -266,7 +262,7 @@
       "label": "PLAY",
       "labelFont": "impact",
       "labelSize": 66,
-      "labelColors": "#ffffff,#ffffff,#ffffff",
+      "labelColors": "#535553,#ffffff,#ffffff",
       "labelVAlign": "middle",
       "labelStroke": 1,
       "_$comp": [
