@@ -590,7 +590,7 @@ function syncUserVariable(userId, inParams, sender) {
 	userVars.push(new SFSUserVariable("trim", inParams.getUtfString("trim"), VariableType.STRING));
 	userVars.push(new SFSUserVariable("rank", inParams.getInt("rank"), VariableType.INT));
 	userVars.push(new SFSUserVariable("gold", inParams.getInt("gold"), VariableType.INT));
-	userVars.push(new SFSUserVariable("pawns", inParams.getInt("pawns"), VariableType.STRING));
+	userVars.push(new SFSUserVariable("pawns", inParams.getUtfString("pawns"), VariableType.STRING));
 	getApi().setUserVariables(sender, userVars, true);
 }
 
@@ -612,11 +612,13 @@ function onSyncProfileRequest(inParams, sender) {
 	var avatar = inParams.getInt("avatar");
 	if (avatar == null) {
 		avatar = 0;
+		inParams.putInt("avatar", avatar);
 	}
 	
 	var trim = inParams.getUtfString("trim");
 	if (trim == null || trim == "") {
 		trim = "0.png";
+		inParams.putUtfString("trim", trim)
 	}
 	
 	var pawns = inParams.getUtfString("pawns");
@@ -624,6 +626,7 @@ function onSyncProfileRequest(inParams, sender) {
 		pawns = "00";
 		inParams.putUtfString("pawns", pawns)
 	}
+
 	var user = getUser(inParams.getInt("id"));
 	if (user == null) {
 		userId = addUser(nickname, avatar,trim,pawns, syncTime);
@@ -640,7 +643,6 @@ function onSyncProfileRequest(inParams, sender) {
 			avatar = inParams.getInt("avatar");
 			trim = inParams.getUtfString("trim");
 			pawns = inParams.getUtfString("pawns");
-
 		} else {
 			userId = user.getInt("id");
 			var data = [
