@@ -8,3 +8,6 @@ local
 /bin/js
 bin/js/bundle.js
 bin/js/bundle.js.map
+
+bin/js/bundles
+native/.dart_tool
