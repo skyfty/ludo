@@ -767,7 +767,7 @@
       "y": 1007,
       "width": 630,
       "height": 53,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "_$comp": [
         {
           "_$type": "2eaec3fb-1805-4cbc-89c7-008aa7b68c01",
@@ -785,7 +785,7 @@
           "x": 122,
           "width": 508,
           "height": 53,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "_$comp": [
             {
               "_$type": "cd5a3964-355e-49cf-9ce1-1882775bf810",
@@ -807,7 +807,7 @@
               "y": 1,
               "width": 395,
               "height": 53,
-              "mouseEnabled": true,
+              "_mouseState": 2,
               "text": "",
               "fontSize": 29,
               "color": "#A9A9A9",
@@ -832,17 +832,22 @@
               "y": 1,
               "width": 72.6485674965595,
               "height": 53.47741774052296,
-              "mouseEnabled": true,
+              "_mouseState": 2,
               "stateNum": 2,
               "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
               "label": "",
               "labelSize": 20,
               "labelColors": "#ffffff,#32cc6b,#ff0000",
-              "labelVAlign": "middle",
               "_$comp": [
                 {
                   "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
                   "scriptPath": "../src/ClickSound.ts"
+                },
+                {
+                  "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+                  "scriptPath": "../src/Cause.ts",
+                  "act": "click",
+                  "trap": "messageSend"
                 }
               ],
               "_$child": [
@@ -869,16 +874,21 @@
           "y": 1,
           "width": 53,
           "height": 53,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "stateNum": 2,
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
           "label": "",
           "labelSize": 20,
-          "labelVAlign": "middle",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "gameBack"
             }
           ]
         }
@@ -892,7 +902,7 @@
       "y": 468.99999999999994,
       "width": 100,
       "height": 100,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "_$child": [
         {
           "_$id": "hqy9lgmf",

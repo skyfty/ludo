@@ -108,17 +108,22 @@
       "y": 544.7351634258285,
       "width": 616.7393978935586,
       "height": 151.40963743126107,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://81906343-13e7-46b0-99ac-72f789289ed4",
       "label": "",
       "labelSize": 20,
       "labelBold": true,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "vscomputer"
         }
       ],
       "_$child": [
@@ -159,16 +164,21 @@
       "y": 711,
       "width": 616.7393978935586,
       "height": 152.40963743126107,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "vsonline"
         }
       ],
       "_$child": [
@@ -209,16 +219,21 @@
       "y": 877,
       "width": 616.7393978935586,
       "height": 157.40963743126107,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://687a6406-d29a-4b76-99b3-0d8343323c24",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "vsfriends"
         }
       ],
       "_$child": [
@@ -271,16 +286,21 @@
       "y": 259.25157629255983,
       "width": 83.19672131147536,
       "height": 103.16393442622945,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://b86621ff-1319-4a8d-8963-40698e57ad65",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "ranklist"
         }
       ]
     },
@@ -292,12 +312,19 @@
       "y": 138.57767135588148,
       "width": 113.57497755163129,
       "height": 86.41574378928465,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://845d7c64-1a5d-4065-bc8f-c5abd4b9557a",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle"
+      "_$comp": [
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "checkin"
+        }
+      ]
     },
     {
       "_$id": "p9nfamtu",
@@ -307,14 +334,21 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "left": 467,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://77bd2846-9777-435a-96de-f3a0a98199d0",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle"
+      "_$comp": [
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "buddy"
+        }
+      ]
     },
     {
       "_$id": "jutu8ny7",
@@ -324,14 +358,21 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "left": 77,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://119274e4-8e4b-48da-ab33-f491f7513b22",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle"
+      "_$comp": [
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "trims"
+        }
+      ]
     },
     {
       "_$id": "uovhow40",
@@ -341,14 +382,21 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "left": 337,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://36a4dbb9-727d-439d-8917-ad6f204e057f",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle"
+      "_$comp": [
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "chess"
+        }
+      ]
     },
     {
       "_$id": "aygeyek4",
@@ -358,14 +406,21 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "left": 207,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://dabe26ed-0db8-4b24-be5c-0d2d5dea9ac5",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle"
+      "_$comp": [
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "dice"
+        }
+      ]
     },
     {
       "_$id": "95eiddvv",
@@ -375,14 +430,21 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "left": 597,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://96ebfe08-9c70-4bc5-95e2-4c533f89dc6a",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle"
+      "_$comp": [
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "gains"
+        }
+      ]
     },
     {
       "_$id": "foe94s5k",
@@ -392,16 +454,21 @@
       "y": 14.000000000000004,
       "width": 83,
       "height": 83,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://c35ba747-0789-4a01-a091-24514ed42549",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "settings"
         }
       ]
     },
@@ -430,6 +497,7 @@
           "fontSize": 34,
           "color": "rgba(243, 202, 13, 1)",
           "bold": true,
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -444,6 +512,7 @@
           "text": "???",
           "fontSize": 34,
           "color": "#FFFFFF",
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0",
           "_$comp": [
@@ -463,13 +532,19 @@
       "y": 21.999999999999975,
       "width": 221.68106970409812,
       "height": 43.733316825554034,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "skin": "res://56607fd2-cf78-42c5-b515-0ae43368d50b",
       "color": "#ffffff",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "goldcoin"
         }
       ],
       "_$child": [
@@ -480,12 +555,11 @@
           "x": 231,
           "width": 42.5,
           "height": 42.5,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "stateNum": 2,
           "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
           "label": "",
-          "labelSize": 20,
-          "labelVAlign": "middle"
+          "labelSize": 20
         },
         {
           "_$id": "yp0qtw8z",
@@ -534,7 +608,7 @@
           "clipHeight": 30,
           "clipX": 7,
           "clipY": 1,
-          "index": 0,
+          "index": 6,
           "interval": 226,
           "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
         },
@@ -552,7 +626,7 @@
           "clipHeight": 30,
           "clipX": 7,
           "clipY": 1,
-          "index": 5,
+          "index": 0,
           "interval": 199,
           "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
         }
@@ -570,6 +644,12 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "avatar"
         }
       ],
       "_$child": [

@@ -5,7 +5,7 @@
   "name": "Dialog",
   "width": 750,
   "height": 1334,
-  "mouseEnabled": true,
+  "_mouseState": 2,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$comp": [
@@ -71,16 +71,21 @@
       "y": 784.5315104727341,
       "width": 72.53517054716575,
       "height": 71.96848952726602,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "selectcolorBack"
         }
       ]
     },
@@ -170,12 +175,13 @@
       "y": 467,
       "width": 77,
       "height": 64,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -191,12 +197,13 @@
       "y": 467,
       "width": 77,
       "height": 64,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -212,12 +219,13 @@
       "y": 467,
       "width": 77,
       "height": 64,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -233,12 +241,13 @@
       "y": 467,
       "width": 77,
       "height": 64,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
       "label": "",
       "labelSize": 20,
       "labelAlign": "left",
+      "labelVAlign": "top",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -254,6 +263,7 @@
       "y": 609,
       "width": 411.905875038856,
       "height": 102.03655579732676,
+      "_mouseState": 1,
       "disabled": true,
       "gray": true,
       "stateNum": 2,
@@ -263,7 +273,6 @@
       "labelFont": "impact",
       "labelSize": 66,
       "labelColors": "#535553,#ffffff,#ffffff",
-      "labelVAlign": "middle",
       "labelStroke": 1,
       "_$comp": [
         {
@@ -273,6 +282,12 @@
         {
           "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
           "scriptPath": "../src/TranslateButton.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "selectcolorPlay"
         }
       ]
     },
@@ -291,7 +306,6 @@
       "align": "center",
       "valign": "middle",
       "wordWrap": true,
-      "leading": 2,
       "padding": "0,0,0,0",
       "stroke": 7,
       "strokeColor": "rgba(87, 86, 73, 1)",

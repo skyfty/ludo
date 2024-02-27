@@ -114,7 +114,7 @@
       "y": 871,
       "width": 60.539769571358306,
       "height": 60.88180216780663,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
@@ -123,6 +123,12 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "militantBack"
         }
       ]
     },

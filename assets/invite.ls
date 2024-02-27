@@ -83,16 +83,21 @@
       "y": 904,
       "width": 60.539769571358306,
       "height": 60.88180216780663,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "InviteFriendsBack"
         }
       ]
     },
@@ -382,7 +387,7 @@
       "y": 748,
       "width": 496,
       "height": 81.71367077003089,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
       "sizeGrid": "31,13,30,11,0",
@@ -390,7 +395,6 @@
       "labelFont": "Impact",
       "labelSize": 32,
       "labelColors": "#ffffff,#ffffff,#c9c6c6",
-      "labelVAlign": "middle",
       "labelStroke": 2,
       "labelStrokeColor": "#32556b",
       "strokeColors": "#32556b,#32cc6b,#ff0000",
@@ -398,6 +402,12 @@
         {
           "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
           "scriptPath": "../src/TranslateButton.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "InviteFriends"
         }
       ]
     }

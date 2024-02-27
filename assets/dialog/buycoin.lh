@@ -5,7 +5,7 @@
   "name": "Dialog",
   "width": 750,
   "height": 1334,
-  "mouseEnabled": true,
+  "_mouseState": 2,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$comp": [
@@ -42,12 +42,11 @@
       "y": 958,
       "width": 64,
       "height": 64,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -59,6 +58,12 @@
           "dialog": {
             "_$ref": "w6erjt2x"
           }
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "buycoinBack"
         }
       ]
     },
@@ -70,7 +75,7 @@
       "y": 172,
       "width": 656,
       "height": 727,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "itemTemplate": {
         "_$ref": "p1bsr8i7",
         "_$tmpl": "itemRender"
@@ -87,7 +92,7 @@
           "name": "Box",
           "width": 656,
           "height": 100,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "_$comp": [
             {
               "_$type": "2bc20bce-e76f-4a7b-8384-a3478d38053b",
@@ -155,12 +160,11 @@
               "y": 13,
               "width": 227,
               "height": 74,
-              "mouseEnabled": true,
+              "_mouseState": 2,
               "stateNum": 2,
               "skin": "res://561bd258-f58e-4616-ab1f-e0698916f2f2",
               "label": "",
               "labelSize": 20,
-              "labelVAlign": "middle",
               "_$child": [
                 {
                   "_$id": "4sqkppht",
@@ -214,7 +218,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 4,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -231,7 +235,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 4,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -265,7 +269,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 4,
+              "index": 1,
               "interval": 198,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }

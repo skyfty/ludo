@@ -5,7 +5,7 @@
   "name": "Dialog",
   "width": 750,
   "height": 1334,
-  "mouseEnabled": true,
+  "_mouseState": 2,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$comp": [
@@ -55,12 +55,11 @@
       "y": 719,
       "width": 77,
       "height": 77,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -83,7 +82,7 @@
       "y": 440,
       "width": 95,
       "height": 88,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://0dfe8aa1-5809-4a32-8bc0-fc90e924e2f4",
       "label": "",
@@ -94,6 +93,12 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "soundMuted"
         }
       ]
     },
@@ -105,7 +110,7 @@
       "y": 440,
       "width": 92,
       "height": 85,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://039a540e-3b49-4265-9c7b-8071f18afe6c",
       "label": "",
@@ -116,6 +121,12 @@
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
           "scriptPath": "../src/ClickSound.ts"
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "musicMuted"
         }
       ]
     },
@@ -133,7 +144,6 @@
       "bold": true,
       "align": "center",
       "valign": "middle",
-      "leading": 2,
       "padding": "0,0,0,0",
       "stroke": 7,
       "strokeColor": "rgba(87, 86, 73, 1)",
@@ -152,12 +162,19 @@
       "y": 440,
       "width": 95,
       "height": 88,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://a73a32f1-18da-4c46-81f5-e13edda4d127",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle"
+      "_$comp": [
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "language"
+        }
+      ]
     }
   ]
 }

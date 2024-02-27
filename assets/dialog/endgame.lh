@@ -5,7 +5,7 @@
   "name": "dialog",
   "width": 750,
   "height": 1334,
-  "mouseEnabled": true,
+  "_mouseState": 2,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$child": [
@@ -41,6 +41,12 @@
             {
               "_$type": "47b6588a-c8ab-4554-aa14-703633941f2f",
               "scriptPath": "../src/TranslateButton.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "endgameOkay"
             }
           ]
         },
@@ -87,6 +93,12 @@
               "dialog": {
                 "_$ref": "k4g6nc8i"
               }
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "endgameBack"
             }
           ]
         }

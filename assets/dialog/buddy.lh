@@ -5,7 +5,7 @@
   "name": "Dialog",
   "width": 750,
   "height": 1334,
-  "mouseEnabled": true,
+  "_mouseState": 2,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$comp": [
@@ -63,12 +63,11 @@
       "y": 1061.5,
       "width": 82.5,
       "height": 82.5,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
-      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -80,6 +79,12 @@
           "dialog": {
             "_$ref": "e9x057bl"
           }
+        },
+        {
+          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+          "scriptPath": "../src/Cause.ts",
+          "act": "click",
+          "trap": "buddyBack"
         }
       ]
     },
@@ -91,7 +96,7 @@
       "y": 217,
       "width": 567,
       "height": 57,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "skin": "res://27500e65-93c0-47aa-8262-e23e43002041",
       "stateNum": 2,
       "labels": "BUDDIES,RECENT",
@@ -121,7 +126,7 @@
       "y": 280,
       "width": 651,
       "height": 705,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "selectedIndex": null,
       "_$child": [
         {
@@ -131,7 +136,7 @@
           "width": 657,
           "height": 709,
           "visible": false,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "_$comp": [
             {
               "_$type": "cab6d964-0574-4c06-bbbf-da75941d2329",
@@ -148,7 +153,7 @@
               "name": "List",
               "width": 653,
               "height": 707,
-              "mouseEnabled": true,
+              "_mouseState": 2,
               "itemTemplate": {
                 "_$ref": "6tzxdfpo",
                 "_$tmpl": "itemRender"
@@ -164,7 +169,7 @@
                   "name": "Box",
                   "width": 650,
                   "height": 125,
-                  "mouseEnabled": true,
+                  "_mouseState": 2,
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -242,7 +247,7 @@
                           "y": 2,
                           "width": 96.87761775988932,
                           "height": 104.8840324507891,
-                          "mouseEnabled": true,
+                          "_mouseState": 2,
                           "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
                           "color": "#ffffff"
                         }
@@ -256,12 +261,11 @@
                       "y": 1.1368683772161603e-13,
                       "width": 30,
                       "height": 30,
-                      "mouseEnabled": true,
+                      "_mouseState": 2,
                       "stateNum": 1,
                       "skin": "res://63e2b7e1-33cd-4780-a5a5-a805c9738bf0",
                       "label": "",
-                      "labelSize": 20,
-                      "labelVAlign": "middle"
+                      "labelSize": 20
                     }
                   ]
                 }
@@ -276,7 +280,7 @@
           "width": 657,
           "height": 709,
           "visible": false,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "_$comp": [
             {
               "_$type": "173ce835-5963-4992-8ff0-6644c585016d",
@@ -294,7 +298,7 @@
               "x": 3.552713678800501e-14,
               "width": 653,
               "height": 709,
-              "mouseEnabled": true,
+              "_mouseState": 2,
               "itemTemplate": {
                 "_$ref": "8szpuojf",
                 "_$tmpl": "itemRender"
@@ -310,7 +314,7 @@
                   "name": "Box",
                   "width": 650,
                   "height": 125,
-                  "mouseEnabled": true,
+                  "_mouseState": 2,
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -367,7 +371,7 @@
                       "y": 27,
                       "width": 175,
                       "height": 67,
-                      "mouseEnabled": true,
+                      "_mouseState": 2,
                       "stateNum": 2,
                       "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
                       "sizeGrid": "16,15,17,15,0",
@@ -375,7 +379,6 @@
                       "labelSize": 19,
                       "labelBold": true,
                       "labelColors": "#ffffff,#ffffff,#ffffff",
-                      "labelVAlign": "middle",
                       "labelStrokeColor": "#32556b",
                       "strokeColors": "#32556b,#32cc6b,#ff0000"
                     },
@@ -408,7 +411,7 @@
                           "y": 2,
                           "width": 96.87761775988932,
                           "height": 104.8840324507891,
-                          "mouseEnabled": true,
+                          "_mouseState": 2,
                           "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
                           "color": "#ffffff"
                         }
@@ -448,7 +451,6 @@
           "bold": true,
           "valign": "middle",
           "wordWrap": true,
-          "leading": 2,
           "padding": "0,0,0,0",
           "stroke": 7,
           "strokeColor": "rgba(87, 86, 73, 1)",
