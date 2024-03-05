@@ -52,6 +52,10 @@ export class TrimCoinsList extends Laya.Script {
             }
             this.list.refresh();
         } else  if ("BuyTrimRequest" == evtParams.cmd) {
+            let gold = evtParams.params.get("gold");
+            if (gold != null) {
+                Profile.setGold(gold)
+            }
             this.trims.push(evtParams.params.getUtfString("fund"))
             this.list.refresh();
         } 

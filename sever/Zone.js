@@ -64,9 +64,28 @@ function onBuyTrimRequest(inParams, sender) {
 		];
 		var db = getParentZone().getDBManager();
 		db.executeInsert("INSERT INTO trims(userid,createtime,type,fund) VALUES(?,?,?,?)", data);
-		send("BuyTrimRequest", inParams, [sender]);
+
+		var goldData = [
+			myselfid,
+			-1,
+			amount,
+			nowtime,
+			"buyTrim"
+		];
+		db.executeInsert("INSERT INTO gold(userid,ie,amount,createtime,reason) VALUES(?,?,?,?,?)", goldData);
+		var earnGold = countGold(myselfid);
+		var data = [
+			earnGold,
+			myselfid
+		];
+		db.executeUpdate("UPDATE users SET gold=? WHERE id=?", data);
+		inParams.putInt("gold", earnGold);
+	} else {
+		inParams.putInt("amount", -1);
 	}
+	send("BuyTrimRequest", inParams, [sender]);
 }
+
 function onUsePropsRequest(inParams, sender) {
 	var nowtime = Date.now() / 1000;
 	var myselfid = sender.getVariable("userid").value;

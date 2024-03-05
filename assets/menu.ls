@@ -424,6 +424,40 @@
           "scriptPath": "../src/Cause.ts",
           "act": "click",
           "trap": "chess"
+        },
+        {
+          "_$type": "6f6d36c0-eff9-425c-8973-1f6d7fda2883",
+          "scriptPath": "../src/Unfulfilment.ts",
+          "tipLabel": {
+            "_$ref": "kpjx8o6l"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "kpjx8o6l",
+          "_$type": "Label",
+          "name": "Label",
+          "x": -43.00000000000006,
+          "y": -45,
+          "width": 206,
+          "height": 40,
+          "visible": false,
+          "text": "it's comming soon",
+          "fontSize": 20,
+          "color": "rgba(255, 255, 255, 1)",
+          "align": "center",
+          "valign": "middle",
+          "bgColor": "rgba(72, 72, 72, 1)",
+          "borderColor": "rgba(255, 255, 255, 1)",
+          "overflow": "hidden",
+          "padding": "0,0,0,0",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     },
@@ -450,6 +484,40 @@
           "scriptPath": "../src/Cause.ts",
           "act": "click",
           "trap": "dice"
+        },
+        {
+          "_$type": "6f6d36c0-eff9-425c-8973-1f6d7fda2883",
+          "scriptPath": "../src/Unfulfilment.ts",
+          "tipLabel": {
+            "_$ref": "wvg92dyz"
+          }
+        }
+      ],
+      "_$child": [
+        {
+          "_$id": "wvg92dyz",
+          "_$type": "Label",
+          "name": "Label",
+          "x": -56,
+          "y": -47,
+          "width": 206,
+          "height": 44,
+          "visible": false,
+          "text": "it's comming soon",
+          "fontSize": 20,
+          "color": "rgba(255, 255, 255, 1)",
+          "align": "center",
+          "valign": "middle",
+          "bgColor": "rgba(72, 72, 72, 1)",
+          "borderColor": "rgba(255, 255, 255, 1)",
+          "overflow": "hidden",
+          "padding": "0,0,0,0",
+          "_$comp": [
+            {
+              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+              "scriptPath": "../src/TranslateLabel.ts"
+            }
+          ]
         }
       ]
     },
@@ -645,7 +713,7 @@
           "clipHeight": 30,
           "clipX": 7,
           "clipY": 1,
-          "index": 6,
+          "index": 0,
           "interval": 226,
           "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
         },
@@ -663,7 +731,7 @@
           "clipHeight": 30,
           "clipX": 7,
           "clipY": 1,
-          "index": 3,
+          "index": 2,
           "interval": 199,
           "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
         }

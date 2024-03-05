@@ -72,10 +72,8 @@ export class Buycoin extends Laya.Script {
             item.coin.text = data.getInt("amount").toLocaleString('en-US');
             let name = data.getUtfString("name");
             if (this.priceNameList!= undefined && typeof this.priceNameList[name] !== "undefined") {
-                console.log(this.priceNameList[name]);
                 item.price.text = this.priceNameList[name];
             } else {
-                console.log(data.getDouble("price"));
                 item.price.text = data.getDouble("price");
             }
         }
