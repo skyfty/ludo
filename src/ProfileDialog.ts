@@ -25,6 +25,10 @@ export class ProfileDialog extends Laya.Script {
     public levelProcess: Laya.ProgressBar;
  
 
+    
+    @property(Laya.Label)
+    public levelProcessLabel: Laya.Label;
+
     private playerName:string;
 
     constructor() {
@@ -49,6 +53,7 @@ export class ProfileDialog extends Laya.Script {
 
         let processValue = Profile.getRank() % 100;
         this.levelProcess.value = processValue / 100;
+        this.levelProcessLabel.text = processValue + "/100";
     }
 
     private onNameInputBlur() {

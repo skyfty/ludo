@@ -101,166 +101,185 @@
       ]
     },
     {
-      "_$id": "pklrsvsb",
-      "_$type": "Button",
-      "name": "vscomputer",
-      "x": 72,
-      "y": 544.7351634258285,
-      "width": 616.7393978935586,
-      "height": 151.40963743126107,
+      "_$id": "w9fa3pkt",
+      "_$type": "Box",
+      "name": "Box",
+      "x": 71,
+      "y": 533,
+      "width": 619,
+      "height": 502,
       "_mouseState": 2,
-      "stateNum": 2,
-      "skin": "res://81906343-13e7-46b0-99ac-72f789289ed4",
-      "label": "",
-      "labelSize": 20,
-      "labelBold": true,
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
-        },
-        {
-          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
-          "scriptPath": "../src/Cause.ts",
-          "act": "click",
-          "trap": "vscomputer"
-        }
-      ],
+      "bottom": 299,
       "_$child": [
         {
-          "_$id": "g1etl9n5",
-          "_$type": "Label",
-          "name": "Label",
-          "x": 234,
-          "y": 16,
-          "width": 343,
-          "height": 114,
-          "text": "VS COMPUTER",
-          "font": "Tahoma",
-          "fontSize": 33,
-          "color": "#FFFFFF",
-          "bold": true,
-          "align": "center",
-          "valign": "middle",
-          "wordWrap": true,
-          "leading": 0,
-          "padding": "0,0,0,0",
-          "stroke": 6,
-          "strokeColor": "rgba(160, 160, 160, 1)",
+          "_$id": "pklrsvsb",
+          "_$type": "Button",
+          "name": "vscomputer",
+          "x": 1.000000000000071,
+          "y": 11.735163425828546,
+          "width": 616.7393978935586,
+          "height": 151.40963743126107,
+          "_mouseState": 2,
+          "stateNum": 2,
+          "skin": "res://81906343-13e7-46b0-99ac-72f789289ed4",
+          "label": "",
+          "labelSize": 20,
+          "labelBold": true,
+          "labelAlign": "center",
+          "labelVAlign": "middle",
           "_$comp": [
             {
-              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
-              "scriptPath": "../src/TranslateLabel.ts"
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "vscomputer"
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "g1etl9n5",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 234,
+              "y": 16,
+              "width": 343,
+              "height": 114,
+              "text": "VS COMPUTER",
+              "font": "Tahoma",
+              "fontSize": 33,
+              "color": "#FFFFFF",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "wordWrap": true,
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "stroke": 6,
+              "strokeColor": "rgba(160, 160, 160, 1)",
+              "_$comp": [
+                {
+                  "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+                  "scriptPath": "../src/TranslateLabel.ts"
+                }
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "_$id": "mqsu2s73",
-      "_$type": "Button",
-      "name": "online",
-      "x": 72,
-      "y": 711,
-      "width": 616.7393978935586,
-      "height": 152.40963743126107,
-      "_mouseState": 2,
-      "stateNum": 2,
-      "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
-      "label": "",
-      "labelSize": 20,
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
         },
         {
-          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
-          "scriptPath": "../src/Cause.ts",
-          "act": "click",
-          "trap": "vsonline"
-        }
-      ],
-      "_$child": [
-        {
-          "_$id": "cqpp4gng",
-          "_$type": "Label",
-          "name": "Label",
-          "x": 223,
-          "y": 18,
-          "width": 355,
-          "height": 114,
-          "text": "ONLINE MULTIPLAYER",
-          "font": "Tahoma",
-          "fontSize": 33,
-          "color": "#FFFFFF",
-          "bold": true,
-          "align": "center",
-          "valign": "middle",
-          "wordWrap": true,
-          "leading": 0,
-          "padding": "0,0,0,0",
-          "stroke": 6,
-          "strokeColor": "rgba(160, 160, 160, 1)",
+          "_$id": "mqsu2s73",
+          "_$type": "Button",
+          "name": "online",
+          "x": 1.000000000000071,
+          "y": 178.0000000000001,
+          "width": 616.7393978935586,
+          "height": 152.40963743126107,
+          "_mouseState": 2,
+          "stateNum": 2,
+          "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle",
           "_$comp": [
             {
-              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
-              "scriptPath": "../src/TranslateLabel.ts"
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "vsonline"
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "cqpp4gng",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 223,
+              "y": 18,
+              "width": 355,
+              "height": 114,
+              "text": "ONLINE MULTIPLAYER",
+              "font": "Tahoma",
+              "fontSize": 33,
+              "color": "#FFFFFF",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "wordWrap": true,
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "stroke": 6,
+              "strokeColor": "rgba(160, 160, 160, 1)",
+              "_$comp": [
+                {
+                  "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+                  "scriptPath": "../src/TranslateLabel.ts"
+                }
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "_$id": "5wbt1gd9",
-      "_$type": "Button",
-      "name": "friends",
-      "x": 72,
-      "y": 877,
-      "width": 616.7393978935586,
-      "height": 157.40963743126107,
-      "_mouseState": 2,
-      "stateNum": 2,
-      "skin": "res://687a6406-d29a-4b76-99b3-0d8343323c24",
-      "label": "",
-      "labelSize": 20,
-      "_$comp": [
-        {
-          "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
-          "scriptPath": "../src/ClickSound.ts"
         },
         {
-          "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
-          "scriptPath": "../src/Cause.ts",
-          "act": "click",
-          "trap": "vsfriends"
-        }
-      ],
-      "_$child": [
-        {
-          "_$id": "7g752mun",
-          "_$type": "Label",
-          "name": "Label",
-          "x": 240,
-          "y": 22,
-          "width": 336,
-          "height": 114,
-          "text": "PLAY WITH FRIENDS",
-          "font": "Tahoma",
-          "fontSize": 33,
-          "color": "#FFFFFF",
-          "bold": true,
-          "align": "center",
-          "valign": "middle",
-          "wordWrap": true,
-          "leading": 0,
-          "padding": "0,0,0,0",
-          "stroke": 6,
-          "strokeColor": "rgba(160, 160, 160, 1)",
+          "_$id": "5wbt1gd9",
+          "_$type": "Button",
+          "name": "friends",
+          "x": 1.000000000000071,
+          "y": 344,
+          "width": 616.7393978935586,
+          "height": 157.40963743126107,
+          "_mouseState": 2,
+          "stateNum": 2,
+          "skin": "res://687a6406-d29a-4b76-99b3-0d8343323c24",
+          "label": "",
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle",
           "_$comp": [
             {
-              "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
-              "scriptPath": "../src/TranslateLabel.ts"
+              "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
+              "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "vsfriends"
+            }
+          ],
+          "_$child": [
+            {
+              "_$id": "7g752mun",
+              "_$type": "Label",
+              "name": "Label",
+              "x": 240,
+              "y": 22,
+              "width": 336,
+              "height": 114,
+              "text": "PLAY WITH FRIENDS",
+              "font": "Tahoma",
+              "fontSize": 33,
+              "color": "#FFFFFF",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "wordWrap": true,
+              "leading": 0,
+              "padding": "0,0,0,0",
+              "stroke": 6,
+              "strokeColor": "rgba(160, 160, 160, 1)",
+              "_$comp": [
+                {
+                  "_$type": "95d9c950-3df0-48f6-983a-191d7ee0bdd1",
+                  "scriptPath": "../src/TranslateLabel.ts"
+                }
+              ]
             }
           ]
         }
@@ -291,6 +310,8 @@
       "skin": "res://b86621ff-1319-4a8d-8963-40698e57ad65",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -317,6 +338,8 @@
       "skin": "res://845d7c64-1a5d-4065-bc8f-c5abd4b9557a",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
@@ -341,6 +364,8 @@
       "skin": "res://77bd2846-9777-435a-96de-f3a0a98199d0",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
@@ -365,6 +390,8 @@
       "skin": "res://119274e4-8e4b-48da-ab33-f491f7513b22",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
@@ -389,6 +416,8 @@
       "skin": "res://36a4dbb9-727d-439d-8917-ad6f204e057f",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
@@ -413,6 +442,8 @@
       "skin": "res://dabe26ed-0db8-4b24-be5c-0d2d5dea9ac5",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
@@ -437,6 +468,8 @@
       "skin": "res://96ebfe08-9c70-4bc5-95e2-4c533f89dc6a",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
@@ -459,6 +492,8 @@
       "skin": "res://c35ba747-0789-4a01-a091-24514ed42549",
       "label": "",
       "labelSize": 20,
+      "labelAlign": "center",
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -559,7 +594,9 @@
           "stateNum": 2,
           "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
           "label": "",
-          "labelSize": 20
+          "labelSize": 20,
+          "labelAlign": "center",
+          "labelVAlign": "middle"
         },
         {
           "_$id": "yp0qtw8z",
@@ -626,7 +663,7 @@
           "clipHeight": 30,
           "clipX": 7,
           "clipY": 1,
-          "index": 0,
+          "index": 3,
           "interval": 199,
           "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
         }

@@ -5,7 +5,7 @@
   "name": "Dialog",
   "width": 750,
   "height": 1334,
-  "mouseEnabled": true,
+  "_mouseState": 2,
   "_filters": [],
   "autoDestroyAtClosed": true,
   "isModal": true,
@@ -25,6 +25,9 @@
       },
       "levelProcess": {
         "_$ref": "tvc7cvxq"
+      },
+      "levelProcessLabel": {
+        "_$ref": "did67hc1"
       }
     }
   ],
@@ -37,7 +40,7 @@
       "y": 521,
       "width": 100,
       "height": 100,
-      "mouseEnabled": true,
+      "_mouseState": 2,
       "_$child": [
         {
           "_$id": "qof49bki",
@@ -47,7 +50,7 @@
           "y": -313,
           "width": 580.2627424412262,
           "height": 669.4933733288465,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "skin": "res://1742e0f8-3a8c-447d-adfd-f13ea4ee5404",
           "color": "#ffffff"
         },
@@ -104,7 +107,7 @@
           "y": -246.50070507839467,
           "width": 364,
           "height": 56,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "text": "",
           "fontSize": 38,
           "color": "#A9A9A9",
@@ -142,11 +145,12 @@
           "y": 359.9999999999998,
           "width": 61.5,
           "height": 61.5,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "stateNum": 2,
           "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
           "label": "",
           "labelSize": 20,
+          "labelAlign": "center",
           "labelVAlign": "middle",
           "_$comp": [
             {
@@ -177,7 +181,6 @@
           "align": "center",
           "valign": "middle",
           "wordWrap": true,
-          "leading": 2,
           "padding": "0,0,0,0",
           "stroke": 7,
           "strokeColor": "rgba(87, 86, 73, 1)",
@@ -196,7 +199,7 @@
           "y": -52,
           "width": 413,
           "height": 326,
-          "mouseEnabled": true,
+          "_mouseState": 2,
           "itemTemplate": {
             "_$ref": "3ms190lj",
             "_$tmpl": "itemRender"
@@ -249,6 +252,7 @@
           "fontSize": 34,
           "color": "rgba(243, 202, 13, 1)",
           "bold": true,
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -263,6 +267,7 @@
           "text": "3\n",
           "fontSize": 34,
           "color": "#FFFFFF",
+          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0",
           "_$comp": [
@@ -277,12 +282,28 @@
           "_$type": "ProgressBar",
           "name": "ProgressBar",
           "x": 52,
-          "y": -173,
+          "y": -175,
           "width": 246,
-          "height": 24,
+          "height": 37,
           "skin": "res://267ce008-8b89-4ac5-bc0a-c4c4a589b081",
           "sizeGrid": "2,2,2,2,0",
-          "value": 0
+          "value": 0,
+          "_$child": [
+            {
+              "_$id": "did67hc1",
+              "_$type": "Label",
+              "name": "ProgressBarLabel",
+              "width": 246,
+              "height": 35,
+              "text": "50/100",
+              "fontSize": 22,
+              "color": "#FFFFFF",
+              "bold": true,
+              "align": "center",
+              "valign": "middle",
+              "padding": "0,0,0,0"
+            }
+          ]
         },
         {
           "_$id": "bdlx6smm",
@@ -330,7 +351,6 @@
               "align": "center",
               "valign": "middle",
               "wordWrap": true,
-              "leading": 2,
               "padding": "0,0,0,0",
               "stroke": 7,
               "strokeColor": "rgba(87, 86, 73, 1)",
