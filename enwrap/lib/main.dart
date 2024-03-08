@@ -9,6 +9,7 @@ import 'package:mime/mime.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  await InAppWebViewController.setWebContentsDebuggingEnabled(true);
 
   var bytes = await  rootBundle.load("assets/web.zip");
   Archive archive = ZipDecoder().decodeBytes(bytes.buffer.asUint8List());
