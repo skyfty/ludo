@@ -8,13 +8,36 @@ function init() {
     addRequestHandler("EventRequest", onEventRequest);
 	addRequestHandler("Hurl", onHurl);
     addRequestHandler("UsePropsRequest", onUsePropsRequest);
+	addEventHandler(SFSEventType.ROOM_VARIABLES_UPDATE, onRoomVariablesUpdate);
+
 }
 
 function destroy() {
-	trace("Simple JS Example destroyed");
     if (taskHandle != null) {
         taskHandle.cancel(true);
     }
+}
+
+function onRoomVariablesUpdate(event) {
+	var db = getParentZone().getDBManager();
+	var room = getParentRoom();
+	var users = room.getUserList();
+	var cnt = 0;
+	var roomVars = room.getVariables();
+	for (var i in users) {
+		var user = users[i];
+		var color = getUserColor(user, roomVars);
+		var stateName = getUserStateName(color, user.getId());
+		if (room.containsVariable(stateName)) {
+			cnt++;	
+		}
+	}
+			trace("aaaaaaaaaaaaaa");
+
+	if (users.length == room.getMaxUsers() && cnt == users.length) {
+			trace(cnt);
+
+	}
 }
 
 
@@ -23,7 +46,10 @@ function onEventRequest(inParams, sender) {
 	if (userid != null) {
 		var user = getUser(userid.value);
 		if (user != null) {
-			switch (inParams.getUtfString("event")) {
+			var event = inParams.getUtfString("event");
+			trace(event);
+
+			switch (event) {
 				case "VICTORY": {
 					onVictory(inParams, sender);
 					break;

@@ -22,21 +22,17 @@ export class Sender extends Laya.Script {
     onAchieve() {
         var params = new SFS2X.SFSObject();
         params.putUtfString("event", Player.Event.Achieve);
-        this.sendEventRequest(params);
+        Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", params, Station.sfs.lastJoinedRoom));
     }
     onVictory() {
         var params = new SFS2X.SFSObject();
         params.putUtfString("event", Player.Event.Victory);
-        this.sendEventRequest(params);
+        Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", params, Station.sfs.lastJoinedRoom));
     }
     onChoose(name:string) {
         var params = new SFS2X.SFSObject();
         params.putUtfString("event", Player.Event.Choose);
         params.putUtfString("name", name);
-        this.sendEventRequest(params);
-    }
-
-    private sendEventRequest(params: SFS2X.SFSObject) {
         Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", params, Station.sfs.lastJoinedRoom));
     }
 
@@ -45,27 +41,27 @@ export class Sender extends Laya.Script {
         dataObj.putUtfString("event", Player.Event.GenerateMagic);
         dataObj.putInt("num", num);
         dataObj.putUtfString("type", type);
-        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj, Station.sfs.lastJoinedRoom));
+        Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", dataObj, Station.sfs.lastJoinedRoom));
     }
     onRocket(name:string,num:number) {
         var dataObj = new SFS2X.SFSObject();
         dataObj.putUtfString("event", Player.Event.Rocket);
         dataObj.putInt("num", num);
         dataObj.putUtfString("name", name);
-        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj, Station.sfs.lastJoinedRoom));
+        Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", dataObj, Station.sfs.lastJoinedRoom));
     }
 
     onRollEnd(num:number) {
         var dataObj = new SFS2X.SFSObject();
         dataObj.putUtfString("event", Player.Event.RollEnd);
         dataObj.putInt("num", num);
-        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj, Station.sfs.lastJoinedRoom));
+        Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", dataObj, Station.sfs.lastJoinedRoom));
     }
     
     onRollStart() {  
         var dataObj = new SFS2X.SFSObject();
         dataObj.putUtfString("event", Player.Event.RollStart);
-        Station.sfs.send(new SFS2X.ObjectMessageRequest(dataObj, Station.sfs.lastJoinedRoom));
+        Station.sfs.send(new SFS2X.ExtensionRequest("EventRequest", dataObj, Station.sfs.lastJoinedRoom));
     }
 
 }

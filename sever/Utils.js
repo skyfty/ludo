@@ -13,6 +13,23 @@ function countGold(userId) {
 	return num;
 }
 
+function getUserColor(user, roomVars) {
+	for (var rvidx in roomVars) {
+		var rv = roomVars[rvidx];
+		if (rv.isNull() || rv.getType() !== VariableType.INT) {
+			continue;
+		}
+		var rvvalue = rv.getIntValue();
+		if (rvvalue !== -1 && rvvalue === user.getId()) {
+			return rv.name;
+		}
+	}
+	return null;
+}
+
+function getUserStateName(color, id) {
+	return color + id;
+}
 
 
 function getUser(id) {

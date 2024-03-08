@@ -59,8 +59,9 @@ function onInviteNPC(inParams, sender) {
 		var color = userColor[idx];
 		var colorVal = room.getVariable(color).value;
 		if (colorVal == -1) {
-			roomVars.push(new SFSRoomVariable(color + npcUser.id, "ready", VariableType.STRING));
-			roomVars.push(new SFSRoomVariable(color, npcUser.id, VariableType.INT));
+			var stateName = getUserStateName(color, npcUser.getId());
+			roomVars.push(new SFSRoomVariable(stateName, "ready", VariableType.STRING));
+			roomVars.push(new SFSRoomVariable(color, npcUser.getId(), VariableType.INT));
 			break;
 		}
 	}
@@ -71,6 +72,7 @@ function onInviteNPC(inParams, sender) {
 	getApi().setUserVariables(npcUser, userVars, true);
 	send("InviteNPC", inParams, [sender]);
 }
+
 function onUserLogout(event)
 {
 }
