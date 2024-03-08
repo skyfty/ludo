@@ -55,6 +55,7 @@ export class GameRoom extends Laya.Script {
         settings.maxUsers = maxUsers;
         settings.minPlayersToStartGame = maxUsers;
         settings.leaveLastJoinedRoom = true;
+        settings.extension  = new SFS2X.RoomExtension("Ludo", "Room.js");
         settings.notifyGameStarted = true;
         return settings;
     }

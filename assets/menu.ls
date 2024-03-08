@@ -56,7 +56,7 @@
     {
       "_$type": "7e713f81-07d8-440c-a6dd-6f4538227cee",
       "scriptPath": "../src/Station.ts",
-      "host": "39.104.230.103",
+      "host": "127.0.0.1",
       "port": 8080,
       "zone": "Ludo",
       "debug": false
@@ -108,7 +108,7 @@
       "y": 533,
       "width": 619,
       "height": 502,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "bottom": 299,
       "_$child": [
         {
@@ -119,13 +119,12 @@
           "y": 11.735163425828546,
           "width": 616.7393978935586,
           "height": 151.40963743126107,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://81906343-13e7-46b0-99ac-72f789289ed4",
           "label": "",
           "labelSize": 20,
           "labelBold": true,
-          "labelAlign": "center",
           "labelVAlign": "middle",
           "_$comp": [
             {
@@ -177,12 +176,11 @@
           "y": 178.0000000000001,
           "width": 616.7393978935586,
           "height": 152.40963743126107,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://0e58c1b4-0806-4eee-adb5-1723c7de554b",
           "label": "",
           "labelSize": 20,
-          "labelAlign": "center",
           "labelVAlign": "middle",
           "_$comp": [
             {
@@ -234,12 +232,11 @@
           "y": 344,
           "width": 616.7393978935586,
           "height": 157.40963743126107,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://687a6406-d29a-4b76-99b3-0d8343323c24",
           "label": "",
           "labelSize": 20,
-          "labelAlign": "center",
           "labelVAlign": "middle",
           "_$comp": [
             {
@@ -305,12 +302,11 @@
       "y": 259.25157629255983,
       "width": 83.19672131147536,
       "height": 103.16393442622945,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://b86621ff-1319-4a8d-8963-40698e57ad65",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -333,12 +329,11 @@
       "y": 138.57767135588148,
       "width": 113.57497755163129,
       "height": 86.41574378928465,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://845d7c64-1a5d-4065-bc8f-c5abd4b9557a",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -357,14 +352,13 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "left": 467,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://77bd2846-9777-435a-96de-f3a0a98199d0",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -383,14 +377,13 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "left": 77,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://119274e4-8e4b-48da-ab33-f491f7513b22",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -409,14 +402,13 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "left": 337,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://36a4dbb9-727d-439d-8917-ad6f204e057f",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -451,6 +443,7 @@
           "bgColor": "rgba(72, 72, 72, 1)",
           "borderColor": "rgba(255, 255, 255, 1)",
           "overflow": "hidden",
+          "leading": 2,
           "padding": "0,0,0,0",
           "_$comp": [
             {
@@ -469,14 +462,13 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "left": 207,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://dabe26ed-0db8-4b24-be5c-0d2d5dea9ac5",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -511,6 +503,7 @@
           "bgColor": "rgba(72, 72, 72, 1)",
           "borderColor": "rgba(255, 255, 255, 1)",
           "overflow": "hidden",
+          "leading": 2,
           "padding": "0,0,0,0",
           "_$comp": [
             {
@@ -529,14 +522,13 @@
       "y": 1205,
       "width": 83,
       "height": 83,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "left": 597,
       "bottom": 46,
       "stateNum": 2,
       "skin": "res://96ebfe08-9c70-4bc5-95e2-4c533f89dc6a",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -555,12 +547,11 @@
       "y": 14.000000000000004,
       "width": 83,
       "height": 83,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://c35ba747-0789-4a01-a091-24514ed42549",
       "label": "",
       "labelSize": 20,
-      "labelAlign": "center",
       "labelVAlign": "middle",
       "_$comp": [
         {
@@ -600,7 +591,6 @@
           "fontSize": 34,
           "color": "rgba(243, 202, 13, 1)",
           "bold": true,
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -615,7 +605,6 @@
           "text": "???",
           "fontSize": 34,
           "color": "#FFFFFF",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0",
           "_$comp": [
@@ -635,7 +624,7 @@
       "y": 21.999999999999975,
       "width": 221.68106970409812,
       "height": 43.733316825554034,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "skin": "res://56607fd2-cf78-42c5-b515-0ae43368d50b",
       "color": "#ffffff",
       "_$comp": [
@@ -658,12 +647,11 @@
           "x": 231,
           "width": 42.5,
           "height": 42.5,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
           "label": "",
           "labelSize": 20,
-          "labelAlign": "center",
           "labelVAlign": "middle"
         },
         {

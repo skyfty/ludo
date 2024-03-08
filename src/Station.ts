@@ -191,7 +191,7 @@ export class Station extends Laya.Script {
             if (rv.isNull) {
                 continue;
             }
-            if (rv.value != -1 && rv.value == user.id) {
+            if (rv.value !== -1 && rv.value === user.id) {
                 return rv.name;
             }
         }

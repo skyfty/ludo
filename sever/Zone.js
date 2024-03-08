@@ -1,14 +1,16 @@
+include("Utils.js")
+
 function init() {
+	
 	addEventHandler(SFSEventType.USER_LOGIN, onUserLogin);
 	addEventHandler(SFSEventType.USER_LOGOUT, onUserLogout);
     addEventHandler(SFSEventType.SERVER_READY, onExtensionReady);
 
-	addRequestHandler("Hurl", onHurl);
 	addRequestHandler("SyncProfile", onSyncProfileRequest);
-	addRequestHandler("EventRequest", onEventRequest);
 	addRequestHandler("GetJettonRequest", onGetJettonRequest);
 	addRequestHandler("GetCoinRequest", onGetCoinRequest);
 	addRequestHandler("BuyGoldRequest", onBuyGoldRequest);
+	addRequestHandler("InviteNPC", onInviteNPC);
 
 	addRequestHandler("GetProfileRequest", onGetProfileRequest);
 	addRequestHandler("GeneralizeRequest", onGeneralizeRequest);
@@ -20,20 +22,55 @@ function init() {
 	addRequestHandler("AddRecentRequest", onAddRecentRequest);
 	addRequestHandler("GetRecentRequest", onGetRecentRequest);
 	addRequestHandler("AddRecentBuddyRequest", onAddRecentBuddyRequest);
-	addRequestHandler("UsePropsRequest", onUsePropsRequest);
 	addRequestHandler("BuyTrimRequest", onBuyTrimRequest);
 	addRequestHandler("GetTrimRequest", onGetTrimRequest);
-
 }
 
 function destroy() {
-	trace("Simple JS Example destroyed");
+
 }
+
+var allNPCUsers = [];
+
 function onExtensionReady(event)
 {
     trace("Extension is ready");
+	for(var i = 1; i < 5; ++i) {
+		var npcUser = getApi().createNPC("NPC#" +i, getParentZone(), false);
+		allNPCUsers.push(npcUser);
+		var userVars = [];
+		userVars.push(new SFSUserVariable("userid", 10000000 + i, VariableType.INT));
+		userVars.push(new SFSUserVariable("avatar", 1, VariableType.INT));
+		userVars.push(new SFSUserVariable("nickname", "eeee", VariableType.STRING));
+		userVars.push(new SFSUserVariable("trim", "11", VariableType.STRING));
+		userVars.push(new SFSUserVariable("rank", 111111, VariableType.INT));
+		userVars.push(new SFSUserVariable("gold", 111111, VariableType.INT));
+		userVars.push(new SFSUserVariable("pawns", "00", VariableType.STRING));
+		getApi().setUserVariables(npcUser, userVars, true);
+	}
 }
+var userColor = ['red', 'green', 'yellow', 'blue'];
 
+function onInviteNPC(inParams, sender) {	
+	var npcUser = allNPCUsers[0];
+	var room = sender.getLastJoinedRoom();
+	var roomVars = [];
+	for(var idx in userColor) {
+		var color = userColor[idx];
+		var colorVal = room.getVariable(color).value;
+		if (colorVal == -1) {
+			roomVars.push(new SFSRoomVariable(color + npcUser.id, "ready", VariableType.STRING));
+			roomVars.push(new SFSRoomVariable(color, npcUser.id, VariableType.INT));
+			break;
+		}
+	}
+	getApi().joinRoom(npcUser, room, null, false, null, true, true);
+	getApi().setRoomVariables(null, room, roomVars, true, true);
+	var userVars = [];
+	userVars.push(new SFSUserVariable("currentIdx", 0, VariableType.INT));
+	getApi().setUserVariables(npcUser, userVars, true);
+	send("InviteNPC", inParams, [sender]);
+}
 function onUserLogout(event)
 {
 }
@@ -84,39 +121,6 @@ function onBuyTrimRequest(inParams, sender) {
 		inParams.putInt("amount", -1);
 	}
 	send("BuyTrimRequest", inParams, [sender]);
-}
-
-function onUsePropsRequest(inParams, sender) {
-	var nowtime = Date.now() / 1000;
-	var myselfid = sender.getVariable("userid").value;
-	var userid = inParams.getInt("id");
-	var prop = inParams.getInt("prop");
-	var room = sender.getLastJoinedRoom();
-	var myselfgold = sender.getVariable("gold").value;
-	var amount = inParams.getInt("amount");
-
-	if (myselfgold > amount) {
-		var recipient = getApi().getUserByName(getParentZone(),userid);
-		if (recipient != null) {
-			var db = getParentZone().getDBManager();
-			var data = [
-				myselfid,
-				-1,
-				amount,
-				nowtime,
-				"props"
-			];
-			db.executeInsert("INSERT INTO gold(userid,ie,amount,createtime,reason) VALUES(?,?,?,?,?)", data);
-			inParams.putInt("gold", countGold(myselfid));
-		
-			var params = new SFSObject();
-			params.putInt("prop", prop);
-			params.putInt("userid", userid);
-			params.putUtfString("event", "UseProps");
-			getApi().sendObjectMessage(room, sender ,params);
-		}
-	}
-	send("UsePropsRequest", inParams, [sender]);
 }
 
 function onUserLogin(event) {
@@ -255,47 +259,6 @@ function onRanklistRequest(inParams, sender) {
 	send("RanklistRequest", params, [sender]);
 }
 
-function countRank(userId) {
-	var db = getParentZone().getDBManager();
-	var nowtime = Date.now() / 1000;
-	var sumRankResult = db.executeQuery("SELECT SUM(amount*ie) AS num FROM rank WHERE userid=?", [userId]);
-	var rank = sumRankResult.getSFSObject(0).getDouble("num");
-	var data = [
-		rank,
-		nowtime,
-		userId
-	];
-	db.executeUpdate("UPDATE users SET rank=?,updatetime=? WHERE id=?", data);
-	return rank;
-}
-
-function getContestData(userId, type) {
-	var db = getParentZone().getDBManager();
-	var sumRankResult = db.executeQuery("SELECT COUNT(id) as WinsCount, SUM(rate) AS RateSum, SUM(duration) AS DurationSum FROM contest WHERE userid=? AND type=?", [userId, type]);
-	var result = sumRankResult.getSFSObject(0);
-	var RateSum = result.getDouble("RateSum");
-	var DurationSum = result.getDouble("DurationSum");
-	var WinsCount = result.getLong("WinsCount");
-	return [WinsCount, RateSum, DurationSum, userId];
-}
-
-function countTotalData(userId) {
-	var db = getParentZone().getDBManager();
-	sumRankResult = db.executeQuery("SELECT (vscomputer_wins + online_wins + vsfriend_wins) AS WinTotal, (vscomputer_lost + online_lost + vsfriend_lost) AS LostTotal, (vscomputer_timer + online_timer + vsfriend_timer) AS TimerTotal FROM users WHERE id=?", [userId]);
-	var result = sumRankResult.getSFSObject(0);
-	var WinTotal = result.getLong("WinTotal");
-	var LostTotal = result.getLong("LostTotal");
-	var TimerTotal = result.getLong("TimerTotal");
-	var data = [
-		WinTotal,
-		LostTotal,
-		TimerTotal,
-		userId
-	];
-	db.executeUpdate("UPDATE users SET wins=?, losts=?, timers=? WHERE id=?", data);
-	return [WinTotal,LostTotal,TimerTotal];
-}
-
 function onGeneralizeRequest(inParams, sender) {
 	var db = getParentZone().getDBManager();
 	var params = new SFSObject();
@@ -357,22 +320,6 @@ function onGetProfileRequest(inParams, sender) {
 	var user = getUser(userId);
 	send("GetProfileRequest", user, [sender]);
 }
-
-function countGold(userId) {
-	var db = getParentZone().getDBManager();
-	var nowtime = Date.now() / 1000;
-	var sumRankResult = db.executeQuery("SELECT SUM(amount*ie) AS num FROM gold WHERE userid=?", [userId]);
-	var num = sumRankResult.getSFSObject(0).getDouble("num");
-	var data = [
-		num,
-		nowtime,
-		userId
-	];
-	db.executeUpdate("UPDATE users SET gold=?,updatetime=? WHERE id=?", data);
-	return num;
-}
-
-
 
 function onBuyGoldRequest(inParams, sender) {
 	var nowtime = Date.now() / 1000;
@@ -471,148 +418,6 @@ function onCombatRequest(inParams, sender) {
 		send("CombatRequest", params, [sender]);
 	}
 }
-
-
-function onVictory(inParams, sender) {
-	var db = getParentZone().getDBManager();
-	var room = sender.getLastJoinedRoom();
-	var nowtime = Date.now() / 1000;
-
-	var players = room.getUserList();
-	for (i = 0; i < players.length; ++i) {
-		var player = players[i];
-		var userid = player.getVariable("userid");
-		if (userid == null) {
-			continue;
-		}
-		var jetton = room.getVariable("jetton" + player.id);
-		if (jetton == null) {
-			continue;
-		}
-
-		var session = player.getSession();
-		if (player.id == sender.id) {
-			var earn = jetton.value.getDouble("earn");
-			if (earn > 0) {
-				var data = [
-					userid.value,
-					1,
-					earn,
-					nowtime,
-					"victory"
-				];
-				db.executeInsert("INSERT INTO gold(userid,ie,amount,createtime,reason) VALUES(?,?,?,?,?)", data);
-			}
-			var amount = countGold(userid.value);
-
-			var params = new SFSObject();
-			params.putInt("earn", earn);
-			params.putInt("amount", amount);
-			params.putInt("winner", sender.id);
-			getApi().sendModeratorMessage(null, "Winner", params, [session]);
-		} else {
-			var pay = jetton.value.getDouble("pay");
-			if (pay > 0) {
-				var data = [
-					userid.value,
-					-1,
-					pay,
-					nowtime,
-					"lost"
-				];
-				db.executeInsert("INSERT INTO gold(userid,ie,amount,createtime,reason) VALUES(?,?,?,?,?)", data);
-			}
-			var amount = countGold(userid.value);
-
-			var params = new SFSObject();
-			params.putInt("pay", pay);
-			params.putInt("amount", amount);
-			params.putInt("winner", sender.id);
-			getApi().sendModeratorMessage(null, "Loser", params, [session]);
-		}
-	}
-
-	var gameOver = new SFSRoomVariable("GameOver", nowtime, VariableType.INT);
-	var winner = new SFSRoomVariable("Winner", sender.id, VariableType.INT);
-	getApi().setRoomVariables(null, room, [gameOver, winner], true);
-}
-
-function onEventRequest(inParams, sender) {
-	var userid = sender.getVariable("userid");
-	if (userid != null) {
-		var user = getUser(userid.value);
-		if (user != null) {
-			var room = sender.getLastJoinedRoom();
-			switch (inParams.getUtfString("event")) {
-				case "VICTORY": {
-					onVictory(inParams, sender);
-					break;
-				}
-			}
-			getApi().sendObjectMessage(room, sender, inParams);
-		}
-	}
-}
-
-function onHurl(params, sender) {
-	var userid = sender.getVariable("userid");
-	if (userid != null) {
-		var user = getUser(userid.value);
-		if (user != null) {
-			var num = Math.floor(Math.random() * 6);
-			var params = new SFSObject();
-			params.putInt("number", num);
-			params.putInt("playerid", sender.id);
-			send("Hurl", params, [sender]);
-		}
-	}
-}
-
-function getUser(id) {
-	if (id == null) {
-		return null;
-	}
-	var db = getParentZone().getDBManager();
-	var user = db.executeQuery("SELECT * FROM users WHERE id=?", [id]);
-	if (user == null || user.size() != 1) {
-		return null;
-	}
-	return user.getSFSObject(0);
-}
-
-function addUser(nickname, avatar, trim,pawns, syncTime) {
-	var db = getParentZone().getDBManager();
-	var data = [
-		nickname,
-		avatar,
-		trim,
-		pawns,
-		syncTime,
-	];
-	var userId = db.executeInsert("INSERT INTO users(nickname,avatar,trim,pawns,updatetime) VALUES(?,?,?,?,?)", data);
-	var scoreData = [
-		userId,
-		20,
-		syncTime,
-		"newuser"
-	];
-	db.executeInsert("INSERT INTO rank(userid,amount,createtime,reason) VALUES(?,?,?,?)", scoreData);
-
-	return userId;
-}
-
-function syncUserVariable(userId, inParams, sender) {
-	var userVars = [];
-	userVars.push(new SFSUserVariable("userid", userId, VariableType.INT));
-	userVars.push(new SFSUserVariable("avatar", inParams.getInt("avatar"), VariableType.INT));
-	userVars.push(new SFSUserVariable("nickname", inParams.getUtfString("nickname"), VariableType.STRING));
-	userVars.push(new SFSUserVariable("trim", inParams.getUtfString("trim"), VariableType.STRING));
-	userVars.push(new SFSUserVariable("rank", inParams.getInt("rank"), VariableType.INT));
-	userVars.push(new SFSUserVariable("gold", inParams.getInt("gold"), VariableType.INT));
-	userVars.push(new SFSUserVariable("pawns", inParams.getUtfString("pawns"), VariableType.STRING));
-	getApi().setUserVariables(sender, userVars, true);
-}
-
 
 function onSyncProfileRequest(inParams, sender) {
 	var nowtime = Date.now() / 1000;
