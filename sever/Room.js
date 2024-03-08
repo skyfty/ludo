@@ -1,6 +1,10 @@
 include("Utils.js")
 
+var scheduler;
+var taskHandle;
+
 function init() {
+    scheduler = getApi().newScheduler();
     addRequestHandler("EventRequest", onEventRequest);
 	addRequestHandler("Hurl", onHurl);
     addRequestHandler("UsePropsRequest", onUsePropsRequest);
@@ -8,8 +12,11 @@ function init() {
 
 function destroy() {
 	trace("Simple JS Example destroyed");
-	
+    if (taskHandle != null) {
+        taskHandle.cancel(true);
+    }
 }
+
 
 function onEventRequest(inParams, sender) {
 	var userid = sender.getVariable("userid");
@@ -143,13 +150,27 @@ function onVictory(inParams, sender) {
 }
 
 function onAchieve(inParams, sender) {
-	var db = getParentZone().getDBManager();
-	var room = sender.getLastJoinedRoom();
-	var nowtime = Date.now() / 1000;
-	var players = room.getUserList();
+	var room = getParentRoom();
+    var user = getApi().getUserByName(getParentZone(), "NPC#1");
+    var params = new SFSObject();
+    params.putUtfString("event", "ROLL_START");
+    getApi().sendObjectMessage(room, user, params);
+    taskHandle = scheduler.schedule(onRollEnd, 1000);
+}
 
-	trace("onAchieve");
+function onRollEnd() {
+    var num = Math.floor(Math.random() * 6) + 1;
+    var room = getParentRoom();
+    var user = getApi().getUserByName(getParentZone(), "NPC#1");
+    var params = new SFSObject();
+    params.putUtfString("event", "ROLL_END");
+    params.putInt("num", num);
+    getApi().sendObjectMessage(room, user, params);
 
+    
 
 }
 
+function onReckonChess() {
+
+}
