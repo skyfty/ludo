@@ -1,3 +1,4 @@
+var colorOfPlayer = ["red", "green", "yellow", "blue"];
 
 function countGold(userId) {
 	var db = getParentZone().getDBManager();

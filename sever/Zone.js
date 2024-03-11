@@ -31,32 +31,48 @@ function destroy() {
 }
 
 var allNPCUsers = [];
+var currentNPCIndex = 0;
 
 function onExtensionReady(event)
 {
-    trace("Extension is ready");
-	for(var i = 1; i < 5; ++i) {
-		var npcUser = getApi().createNPC("NPC#" +i, getParentZone(), false);
-		allNPCUsers.push(npcUser);
-		var userVars = [];
-		userVars.push(new SFSUserVariable("userid", 10000000 + i, VariableType.INT));
-		userVars.push(new SFSUserVariable("avatar", 1, VariableType.INT));
-		userVars.push(new SFSUserVariable("nickname", "eeee", VariableType.STRING));
-		userVars.push(new SFSUserVariable("trim", "11", VariableType.STRING));
-		userVars.push(new SFSUserVariable("rank", 111111, VariableType.INT));
-		userVars.push(new SFSUserVariable("gold", 111111, VariableType.INT));
-		userVars.push(new SFSUserVariable("pawns", "00", VariableType.STRING));
-		getApi().setUserVariables(npcUser, userVars, true);
-	}
+    // trace("Extension is ready");
+	// for(var i = 1; i < 5; ++i) {
+	// 	var npcUser = getApi().createNPC("NPC#" +i, getParentZone(), false);
+	// 	var userVars = [];
+	// 	userVars.push(new SFSUserVariable("userid", 10000000 + i, VariableType.INT));
+	// 	userVars.push(new SFSUserVariable("avatar", 1, VariableType.INT));
+	// 	userVars.push(new SFSUserVariable("nickname", "eeee", VariableType.STRING));
+	// 	userVars.push(new SFSUserVariable("trim", "11", VariableType.STRING));
+	// 	userVars.push(new SFSUserVariable("rank", 111111, VariableType.INT));
+	// 	userVars.push(new SFSUserVariable("gold", 111111, VariableType.INT));
+	// 	userVars.push(new SFSUserVariable("pawns", "00", VariableType.STRING));
+	// 	getApi().setUserVariables(npcUser, userVars, true);
+	// 	allNPCUsers.push(npcUser);
+
+	// }
 }
-var userColor = ['red', 'green', 'yellow', 'blue'];
+
+function createNPCUser() {
+	var npcUser = getApi().createNPC("NPC#" +currentNPCIndex++, getParentZone(), false);
+	var userVars = [];
+	userVars.push(new SFSUserVariable("userid", 10000000 + currentNPCIndex, VariableType.INT));
+	userVars.push(new SFSUserVariable("avatar", 1, VariableType.INT));
+	userVars.push(new SFSUserVariable("nickname", "eeee", VariableType.STRING));
+	userVars.push(new SFSUserVariable("trim", "11", VariableType.STRING));
+	userVars.push(new SFSUserVariable("rank", 111111, VariableType.INT));
+	userVars.push(new SFSUserVariable("gold", 111111, VariableType.INT));
+	userVars.push(new SFSUserVariable("pawns", "00", VariableType.STRING));
+	getApi().setUserVariables(npcUser, userVars, true);
+	return npcUser;
+}
 
 function onInviteNPC(inParams, sender) {	
-	var npcUser = allNPCUsers[0];
+	var npcUser = createNPCUser();
+
 	var room = sender.getLastJoinedRoom();
 	var roomVars = [];
-	for(var idx in userColor) {
-		var color = userColor[idx];
+	for(var idx in colorOfPlayer) {
+		var color = colorOfPlayer[idx];
 		var colorVal = room.getVariable(color).value;
 		if (colorVal == -1) {
 			var stateName = getUserStateName(color, npcUser.getId());

@@ -2,6 +2,8 @@ include("Utils.js")
 
 var scheduler;
 var taskHandle;
+var playerOrder = [];
+var currentIdx = 0;
 
 function init() {
     scheduler = getApi().newScheduler();
@@ -9,6 +11,8 @@ function init() {
 	addRequestHandler("Hurl", onHurl);
     addRequestHandler("UsePropsRequest", onUsePropsRequest);
 	addEventHandler(SFSEventType.ROOM_VARIABLES_UPDATE, onRoomVariablesUpdate);
+	addEventHandler(SFSEventType.USER_LEAVE_ROOM, onUserLeaveRoom);
+	addEventHandler(SFSEventType.USER_DISCONNECT, onUserLeaveRoom);
 
 }
 
@@ -18,28 +22,107 @@ function destroy() {
     }
 }
 
-function onRoomVariablesUpdate(event) {
-	var db = getParentZone().getDBManager();
+function onUserLeaveRoom(event) {
 	var room = getParentRoom();
 	var users = room.getUserList();
 	var cnt = 0;
-	var roomVars = room.getVariables();
 	for (var i in users) {
-		var user = users[i];
-		var color = getUserColor(user, roomVars);
-		var stateName = getUserStateName(color, user.getId());
-		if (room.containsVariable(stateName)) {
-			cnt++;	
+		if (users[i].isNpc()) {
+			cnt++
 		}
 	}
-			trace("aaaaaaaaaaaaaa");
-
-	if (users.length == room.getMaxUsers() && cnt == users.length) {
-			trace(cnt);
-
+	if (cnt === users.length) {
+		for (var i in users) {
+			getApi().leaveRoom(users[i], room);
+		}
 	}
 }
 
+function getInitPlayer(id, color) {
+	return {
+		id:id,
+		color:color,
+		currentDiceNumber:-1,
+		chesses:{
+			c0:{
+				pos:-1
+			},
+			c1:{
+				pos:-1
+			},
+			c2:{
+				pos:-1
+			},
+			c3:{
+				pos:-1
+			},
+		}
+	};
+}
+
+function sortSeat(roomPlayers) {
+	var playerInSeat = [];
+	for(var i in colorOfPlayer) {
+		for(var j in roomPlayers) {
+			if (roomPlayers[j].color == colorOfPlayer[i]) {
+				playerInSeat.push(roomPlayers[j]);
+				break;
+			}
+		}
+	}
+	return playerInSeat;
+}
+
+function onRoomVariablesUpdate(event) {
+	var room = getParentRoom();
+	var users = room.getUserList();
+	var roomVars = room.getVariables();
+	var roomPlayers = [];
+	for (var i in users) {
+		var color = getUserColor(users[i], roomVars);
+		var stateName = getUserStateName(color, users[i].getId());
+		if (room.containsVariable(stateName)) {
+			roomPlayers.push(getInitPlayer(users[i].getId(), color));	
+		}
+	}
+	if (users.length == room.getMaxUsers() && roomPlayers.length == users.length) {
+		playerOrder = sortSeat(roomPlayers);
+		var user = getApi().getUserById(playerOrder[currentIdx].id);
+		if (user !== null && user.isNpc()) {
+			taskHandle = scheduler.schedule(advance, 1000);
+		}
+	}
+}
+
+function advance() {
+	var user = getApi().getUserById(playerOrder[currentIdx].id);
+	if (user === null || !user.isNpc()) {
+		return;
+	}
+	var room = getParentRoom();
+    var params = new SFSObject();
+    params.putUtfString("event", "ROLL_START");
+    getApi().sendObjectMessage(room, user, params);
+    taskHandle = scheduler.schedule(infer, 1000);
+}
+
+function infer() {
+    var num = Math.floor(Math.random() * 6) + 1;
+    var room = getParentRoom();
+	var user = getApi().getUserById(playerOrder[currentIdx].id);
+	playerOrder[currentIdx].currentDiceNumber = num
+    var params = new SFSObject();
+    params.putUtfString("event", "ROLL_END");
+    params.putInt("num", num);
+    getApi().sendObjectMessage(room, user, params);
+	reckon();
+}
+
+function reckon() {
+	var room = getParentRoom();
+	var user = getApi().getUserById(playerOrder[currentIdx].id);
+
+}
 
 function onEventRequest(inParams, sender) {
 	var userid = sender.getVariable("userid");
@@ -47,8 +130,6 @@ function onEventRequest(inParams, sender) {
 		var user = getUser(userid.value);
 		if (user != null) {
 			var event = inParams.getUtfString("event");
-			trace(event);
-
 			switch (event) {
 				case "VICTORY": {
 					onVictory(inParams, sender);
@@ -56,6 +137,10 @@ function onEventRequest(inParams, sender) {
 				}
 				case "ACHIEVE": {
 					onAchieve(inParams, sender);
+					break;
+				}
+				case "ROLL_END": {
+					onRollEnd(inParams, sender);
 					break;
 				}
 			}
@@ -176,27 +261,15 @@ function onVictory(inParams, sender) {
 }
 
 function onAchieve(inParams, sender) {
-	var room = getParentRoom();
-    var user = getApi().getUserByName(getParentZone(), "NPC#1");
-    var params = new SFSObject();
-    params.putUtfString("event", "ROLL_START");
-    getApi().sendObjectMessage(room, user, params);
-    taskHandle = scheduler.schedule(onRollEnd, 1000);
+	if (currentIdx == playerOrder.length - 1) {
+		currentIdx = 0;
+	} else {
+		currentIdx++;
+	}
+	advance();
 }
 
-function onRollEnd() {
-    var num = Math.floor(Math.random() * 6) + 1;
-    var room = getParentRoom();
-    var user = getApi().getUserByName(getParentZone(), "NPC#1");
-    var params = new SFSObject();
-    params.putUtfString("event", "ROLL_END");
-    params.putInt("num", num);
-    getApi().sendObjectMessage(room, user, params);
-
-    
-
-}
-
-function onReckonChess() {
-
+function onRollEnd(inParams, sender) {
+	playerOrder[currentIdx].currentDiceNumber = inParams.getInt("num");
+	reckon();
 }

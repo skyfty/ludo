@@ -95,7 +95,7 @@
           "y": 74,
           "width": 82,
           "height": 38,
-          "text": "250\n",
+          "text": "7",
           "fontSize": 47,
           "color": "rgba(68, 4, 4, 1)",
           "bold": true,
