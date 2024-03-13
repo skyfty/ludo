@@ -47,34 +47,34 @@ function getInitPlayer(id, color) {
 		routeBase:routeBaseOfPlayer[colorOfPlayer.indexOf(color)],
 		chesses:[
 			{
+				place:"groove",
 				hole:0,
 				defended:false,
 				safe:false,
 				route:0
 			},
 			{
+				place:"groove",
 				hole:0,
 				defended:false,
 				safe:false,
 				route:0
 			},
 			{
+				place:"groove",
 				hole:0,
 				defended:false,
 				safe:false,
 				route:0
 			},
 			{
+				place:"groove",
 				hole:0,
 				defended:false,
 				safe:false,
 				route:0
 			},
-		],
-		chippy:[],
-		home:[],
-		personal:[],
-		groove:[0, 1, 2, 3]
+		]
 	};
 }
 
@@ -82,38 +82,21 @@ function getInitPlayer(id, color) {
 function tracePlayerOrder(tag) {
 	var log = "";
 	for(var i = 0; i < playerOrder.length; ++i) {
-		var chesses = "[ ";
+		var chesses = "";
 		for(var j = 0; j < playerOrder[i].chesses.length; ++j) {
-			chesses += "hole: " + playerOrder[i].chesses[j].hole + "," + "route: " + playerOrder[i].chesses[j].route + "," + "safe: " + playerOrder[i].chesses[j].safe + ","
-		}
-		chesses += " ]";
-
-		var chippy = "";
-		for(var j = 0; j < playerOrder[i].chippy.length; ++j) {
-			chippy += playerOrder[i].chippy[j] + ","
-		}
-		var home = "";
-		for(var j = 0; j < playerOrder[i].home.length; ++j) {
-			home += playerOrder[i].home[j] + ","
+			chesses += "[ " +
+			"place: " + playerOrder[i].chesses[j].place + "," + 
+			"hole: " + playerOrder[i].chesses[j].hole + "," + 
+			"route: " + playerOrder[i].chesses[j].route + "," + 
+			"safe: " + playerOrder[i].chesses[j].safe + ","
+			chesses += " ]";
 		}
 
-		var groove = "";
-		for(var j = 0; j < playerOrder[i].groove.length; ++j) {
-			groove += playerOrder[i].groove[j] + ","
-		}
-		var personal = "";
-		for(var j = 0; j < playerOrder[i].personal.length; ++j) {
-			personal += playerOrder[i].personal[j] + ","
-		}
 		log += "id=" + playerOrder[i].id 
 		+ "  color=" + playerOrder[i].color 
 		+ "  routeBase=" + playerOrder[i].routeBase 
 		+ "  currentDiceNumber="  + playerOrder[i].currentDiceNumber
 		+ "  chesses: "  + chesses
-		+ "  groove: "  + groove
-		+ "  chippy: "  + chippy
-		+ "  personal: "  + personal
-		+ "  home: "  + home;
 		log += "\n";
 	}
 	trace("\n[" + tag + "]"  +" currentIdx=" + currentIdx +"\n" + log);
@@ -201,13 +184,13 @@ function setNextPlayerIndex() {
 }
 
 function getHurlNumber() {
-	var num = Math.floor(Math.random() * 6);
-	var currentPlayer = playerOrder[currentIdx];
-	if (currentPlayer.groove.length == 4) {
-		num = 5;
-	} else {
-		num = 0;
-	}
+	var num = 5;//Math.floor(Math.random() * 6);
+	// var currentPlayer = playerOrder[currentIdx];
+	// if (currentPlayer.groove.length == 4) {
+	// 	num = 5;
+	// } else {
+	// 	num = 0;
+	// }
 	return num;
 }
 
@@ -218,6 +201,16 @@ function rollStart() {
 	}
 	sendEventMessage("ROLL_START");
     taskHandle = scheduler.schedule(hurl, 1000);
+}
+
+function isAllHome(currentPlayer) {
+	var cnt = 0;
+	for(var i in currentPlayer.chesses) {
+		if (currentPlayer.chesses[i].place === "home") {
+			cnt++;
+		}
+	}
+	return cnt === 4;
 }
 
 function infer() {
@@ -231,7 +224,7 @@ function infer() {
 		}
 	}	
 	sendEventMessage("ACHIEVE");
-	if (currentPlayer.home.length === 4) {
+	if (isAllHome(currentPlayer)) {
 		sendEventMessage("VICTORY");
 	} else {
 		setNextPlayerIndex();
@@ -247,15 +240,11 @@ function hurl() {
 
 function kick(playerChesses) {
 	for(var i1 in playerChesses) {
-		var playerIndex = playerChesses[i1].playerIndex;
-		var currentPlayer = playerOrder[playerIndex];
 		var chess = playerChesses[i1].chess;
-		var chippyIndex = currentPlayer.chippy.indexOf(chess);
-		if (chippyIndex !== -1) {
-			currentPlayer.groove.push(chess);
-			currentPlayer.chippy.splice(chippyIndex, 1);
+		if (chess.place === "chippy") {
+			chess.place = "groove";
+			chess.hole = 0;
 		}
-		currentPlayer.chesses[chess].hole = 0;	
 	}
 }
 
@@ -286,119 +275,105 @@ function getNextRoute(currentDiceNumber,currentPlayer, chess) {
 }
 
 function isSafeRoute(hole) {
-	return hole == 0 ||  
-	hole == 8 ||  
-	hole == 13 ||  
-	hole == 21 ||  
-	hole == 26 ||  
-	hole == 34 ||  
-	hole == 39 ||  
-	hole == 47 ;
+	return hole == 0 ||  hole == 8 ||  hole == 13 ||  hole == 21 ||   hole == 26 ||   hole == 34 ||  hole == 39 ||  hole == 47 ;
 }
 
 function advance(chess) {
 	var currentPlayer = playerOrder[currentIdx];
-	if (currentPlayer.home.indexOf(chess) !== -1) {
+	var currentChess = currentPlayer.chesses[chess];
+	if (currentChess.place === "home") {
 		return;
 	}
 	var currentDiceNumber = currentPlayer.currentDiceNumber + 1;
-	var chippyIndex = currentPlayer.chippy.indexOf(chess);
-	if (chippyIndex !== -1) {
-		currentPlayer.chesses[chess].hole += currentDiceNumber;
-		currentPlayer.chesses[chess].route = getNextRoute(currentDiceNumber, currentPlayer, chess);
-		currentPlayer.chesses[chess].safe = isSafeRoute(currentPlayer.chesses[chess].hole);
-		if (currentPlayer.chesses[chess].hole > NUMBER_UNIVERSAL_HOLD) {
-			currentPlayer.chippy.splice(chippyIndex, 1);
-			currentPlayer.personal.push(chess);
-			currentPlayer.chesses[chess].hole = currentPlayer.chesses[chess].hole - NUMBER_UNIVERSAL_HOLD - 1;
-			currentPlayer.chesses[chess].route = 0;
-			chippyIndex = -1;
+	if (currentChess.place === "chippy") {
+		currentChess.hole += currentDiceNumber;
+		currentChess.route = getNextRoute(currentDiceNumber, currentPlayer, chess);
+		currentChess.safe = isSafeRoute(currentChess.hole);
+		if (currentChess.hole > NUMBER_UNIVERSAL_HOLD) {
+			currentChess.place = "personal";
+			currentChess.hole = currentChess.hole - NUMBER_UNIVERSAL_HOLD - 1;
+			currentChess.route = 0;
 		}
 	} else  {
-		var grooveIndex = currentPlayer.groove.indexOf(chess);
-		if (grooveIndex !== -1) {
-			currentPlayer.chesses[chess].hole = 0;
-			currentPlayer.chesses[chess].route = currentPlayer.routeBase;
-			currentPlayer.chesses[chess].safe = true;
-			currentPlayer.chippy.push(chess);
-			currentPlayer.groove.splice(grooveIndex, 1);
+		if (currentChess.place === "groove") {
+			currentChess.hole = 0;
+			currentChess.route = currentPlayer.routeBase;
+			currentChess.safe = true;
+			currentChess.place = "chippy";
 		} else {
-			var personalIndex = currentPlayer.personal.indexOf(chess);
-			if (personalIndex !== -1) {
+			if (currentChessplace === "personal") {
 				var direction = 1;
-				var currentHoleNumber = currentPlayer.chesses[chess].hole;
+				var currentHoleNumber = currentChess.hole;
 				for(var i = 0; i < currentDiceNumber; ++i) {
 					if (currentHoleNumber >= NUMBER_HOME_HOLD || currentHoleNumber < 0) {
 						direction *=-1;
 					}
 					currentHoleNumber += direction;
 				}
-				currentPlayer.chesses[chess].hole = currentHoleNumber;
-
-				if (currentPlayer.chesses[chess].hole === NUMBER_HOME_HOLD) {
-					currentPlayer.personal.splice(personalIndex, 1);
-					currentPlayer.home.push(chess);
-					currentPlayer.chesses[chess].hole = 0;
+				currentChess.hole = currentHoleNumber;
+				if (currentChess.hole === NUMBER_HOME_HOLD) {
+					currentChess.place = "home";
+					currentChess.hole = 0;
 				}
 			}
 		}
 	}
 
-	var chessHole = currentPlayer.chesses[chess].hole;
-	var kickChesses = getKickChesses(chessHole);
-	if (chippyIndex !== -1 && kickChesses != null && kickChesses.length > 0) {
+	if (currentChess.place === "chippy") {
+		trap(currentChess);
+	}
+	tracePlayerOrder("advance   ");
+}
+
+function trap(currentChess) {
+	var route = currentChess.route;
+	var kickChesses = getKickChesses(route);
+	if (kickChesses != null && kickChesses.length > 0) {
 		kick(kickChesses);
 	} else {
-		if (chippyIndex !== -1 && routes[chessHole] && routes[chessHole].magic) {
-			switch(routes[chessHole].magic) {
+		if (routes[route] && routes[route].magic) {
+			switch(routes[route].magic) {
 				case "defender": {
-					currentPlayer.chesses[chess].defended = true;
+					currentChess.defended = true;
 					break;
 				}
 				case "rocket": {
-					routes[chessHole].magic = null;
+					routes[route].magic = null;
 					break;
 				}
 				case "plus": {
-					routes[chessHole].magic = null;
+					routes[route].magic = null;
 					break;
 				}
 			}
-			generateMagic(routes[chessHole].magic);
-			routes[chessHole].magic = null;
+			generateMagic(routes[route].magic);
+			routes[route].magic = null;
 		}
 	}
-	tracePlayerOrder("advance   ");
-	return chessHole;
 }
+ 
 
 function reckon() {
-	var currentPlayer = playerOrder[currentIdx];
 	var chesses= [];
+	var currentPlayer = playerOrder[currentIdx];
 	var currentDiceNumber = currentPlayer.currentDiceNumber;
-	var chippy = currentPlayer.chippy;
-	if (currentDiceNumber !== 5 && chippy.length > 0) {
-		if (chippy.length > 1) {
-			chesses = chippy;
-		} else {
-			chesses.push(chippy[0]);
+	for(var i in currentPlayer.chesses) {
+		var chess = currentPlayer.chesses[i];
+		if(currentDiceNumber === 5) {
+			if (chess.place === "chippy" || chess.place === "groove" ) {
+				chesses.push(i);
+			}
+		} else if (chess.place === "chippy") {
+			chesses.push(i);
 		}
-
-	} else if (currentDiceNumber === 5) {
-		chesses = chesses.concat(chippy);
-		for (var i = 0; i < currentPlayer.groove.length; ++i) {
-			chesses.push(currentPlayer.groove[i]);
-		}
-	}
-	if (currentPlayer.personal.length > 0) {
-		for (var i = 0; i < currentPlayer.personal.length; ++i) {
-			chesses.push(currentPlayer.personal[i]);
+		if (chess.place === "personal") {
+			chesses.push(i);
 		}
 	}
 	return chesses;
 }
 
-function getKickChesses(nextRouteNumber) {
+function getKickChesses(route) {
 	var resultChesses = [];
 	for(var i = 0; i < playerOrder.length; ++i) {
 		if (i == currentIdx) {
@@ -410,7 +385,7 @@ function getKickChesses(nextRouteNumber) {
 			if (chess.defended || chess.safe) {
 				continue;
 			}
-			if (chess.route === nextRouteNumber) {
+			if (chess.route === route) {
 				playerChesses.push(chess);
 			}
 		}
@@ -428,9 +403,9 @@ function deduce(chesses) {
 
 	for(var i in chesses) {
 		var currentNumber = currentPlayer.chesses[chesses[i]].hole;
-		if (currentPlayer.groove.indexOf(chesses[i]) !== -1 && currentPlayer.currentDiceNumber === 5) {
+		if (currentPlayer.chesses[chesses[i]].place==="groove" && currentPlayer.currentDiceNumber === 5) {
 			deduceResult.push(chesses[i]);
-		} else if (currentPlayer.chippy.indexOf(chesses[i]) !== -1) {
+		} else if (currentPlayer.chesses[chesses[i]].place==="chippy") {
 			var nextStep = currentPlayer.currentDiceNumber + 1;
 			if (currentNumber + nextStep > NUMBER_UNIVERSAL_HOLD) {
 				deduceLast.push(chesses[i]);
