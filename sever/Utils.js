@@ -1,6 +1,11 @@
 var colorOfPlayer = ["red", "green", "yellow", "blue"];
-var NUMBER_UNIVERSAL_HOLD = 52;
+var routeBaseOfPlayer = [0, 13, 26, 39];
+
+var NUMBER_UNIVERSAL_HOLD = 50;
 var MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
+var NUMBER_PERSONAL_HOLD = 6;
+var NUMBER_HOME_HOLD = NUMBER_PERSONAL_HOLD -1;
+var NUMBER_ROUTE = 51;
 
 function countGold(userId) {
 	var db = getParentZone().getDBManager();

@@ -44,22 +44,31 @@ function getInitPlayer(id, color) {
 		id:id,
 		color:color,
 		currentDiceNumber:-1,
+		routeBase:routeBaseOfPlayer[colorOfPlayer.indexOf(color)],
 		chesses:[
 			{
-				hole:-1,
-				defended:false
+				hole:0,
+				defended:false,
+				safe:false,
+				route:0
 			},
 			{
-				hole:-1,
-				defended:false
+				hole:0,
+				defended:false,
+				safe:false,
+				route:0
 			},
 			{
-				hole:-1,
-				defended:false
+				hole:0,
+				defended:false,
+				safe:false,
+				route:0
 			},
 			{
-				hole:-1,
-				defended:false
+				hole:0,
+				defended:false,
+				safe:false,
+				route:0
 			},
 		],
 		chippy:[],
@@ -73,34 +82,41 @@ function getInitPlayer(id, color) {
 function tracePlayerOrder(tag) {
 	var log = "";
 	for(var i = 0; i < playerOrder.length; ++i) {
-		var chesses = "";
+		var chesses = "[ ";
 		for(var j = 0; j < playerOrder[i].chesses.length; ++j) {
-			chesses += j + "=" + playerOrder[i].chesses[j].hole + ","
+			chesses += "hole: " + playerOrder[i].chesses[j].hole + "," + "route: " + playerOrder[i].chesses[j].route + "," + "safe: " + playerOrder[i].chesses[j].safe + ","
 		}
+		chesses += " ]";
 
 		var chippy = "";
 		for(var j = 0; j < playerOrder[i].chippy.length; ++j) {
-			chippy += j + "=" + playerOrder[i].chippy[j] + ","
+			chippy += playerOrder[i].chippy[j] + ","
 		}
 		var home = "";
 		for(var j = 0; j < playerOrder[i].home.length; ++j) {
-			home += j + "=" + playerOrder[i].home[j] + ","
+			home += playerOrder[i].home[j] + ","
 		}
 
 		var groove = "";
 		for(var j = 0; j < playerOrder[i].groove.length; ++j) {
-			groove += j + "=" + playerOrder[i].groove[j] + ","
+			groove += playerOrder[i].groove[j] + ","
 		}
-		log += ", id=" + playerOrder[i].id 
-		+ ", color=" + playerOrder[i].color 
-		+ ",currentDiceNumber="  + playerOrder[i].currentDiceNumber
-		+ ",chesses: "  + chesses
-		+ ",chippy: "  + chippy
-		+ ",home: "  + home
-		+ ",groove: "  + groove;
+		var personal = "";
+		for(var j = 0; j < playerOrder[i].personal.length; ++j) {
+			personal += playerOrder[i].personal[j] + ","
+		}
+		log += "id=" + playerOrder[i].id 
+		+ "  color=" + playerOrder[i].color 
+		+ "  routeBase=" + playerOrder[i].routeBase 
+		+ "  currentDiceNumber="  + playerOrder[i].currentDiceNumber
+		+ "  chesses: "  + chesses
+		+ "  groove: "  + groove
+		+ "  chippy: "  + chippy
+		+ "  personal: "  + personal
+		+ "  home: "  + home;
 		log += "\n";
 	}
-	trace("[" + tag + "]"  +" currentIdx=" + currentIdx + log);
+	trace("\n[" + tag + "]"  +" currentIdx=" + currentIdx +"\n" + log);
 }
 
 function sortSeat(roomPlayers) {
@@ -137,14 +153,6 @@ function onRoomVariablesUpdate(event) {
 	}
 }
 
-function rollStart() {
-	var user = getApi().getUserById(playerOrder[currentIdx].id);
-	if (user === null || !user.isNpc()) {
-		return;
-	}
-	sendEventMessage("ROLL_START");
-    taskHandle = scheduler.schedule(infer, 1000);
-}
 
 function sendRollEndMessage(num) {
 	var user = getApi().getUserById(playerOrder[currentIdx].id);
@@ -192,22 +200,49 @@ function setNextPlayerIndex() {
 	}
 }
 
+function getHurlNumber() {
+	var num = Math.floor(Math.random() * 6);
+	var currentPlayer = playerOrder[currentIdx];
+	if (currentPlayer.groove.length == 4) {
+		num = 5;
+	} else {
+		num = 0;
+	}
+	return num;
+}
+
+function rollStart() {
+	var user = getApi().getUserById(playerOrder[currentIdx].id);
+	if (user === null || !user.isNpc()) {
+		return;
+	}
+	sendEventMessage("ROLL_START");
+    taskHandle = scheduler.schedule(hurl, 1000);
+}
+
 function infer() {
 	var currentPlayer = playerOrder[currentIdx];
-	currentPlayer.currentDiceNumber = Math.floor(Math.random() * 6);
-	sendRollEndMessage(currentPlayer.currentDiceNumber);
-	var chesses= reckon();
+	var chesses = reckon();
 	if (chesses.length > 0) {
 		var deduceResult = deduce(chesses);
 		advance(deduceResult[0]);
-		sendChooseMessage(deduceResult[0]);
+		if (deduceResult.length > 1) {
+			sendChooseMessage(deduceResult[0]);
+		}
 	}	
 	sendEventMessage("ACHIEVE");
-	if (currentPlayer.home.length ===4) {
+	if (currentPlayer.home.length === 4) {
 		sendEventMessage("VICTORY");
 	} else {
 		setNextPlayerIndex();
 	}
+}
+
+function hurl() {
+	var currentPlayer = playerOrder[currentIdx];
+	currentPlayer.currentDiceNumber = getHurlNumber();;
+	sendRollEndMessage(currentPlayer.currentDiceNumber);
+    taskHandle = scheduler.schedule(infer, 1000);
 }
 
 function kick(playerChesses) {
@@ -220,14 +255,14 @@ function kick(playerChesses) {
 			currentPlayer.groove.push(chess);
 			currentPlayer.chippy.splice(chippyIndex, 1);
 		}
-		currentPlayer.chesses[chess].hole = -1;	
+		currentPlayer.chesses[chess].hole = 0;	
 	}
 }
 
 function generateMagic(type) {
 	var num = -1;
 	while(true) {
-		num = Math.floor(Math.random() * Config.NUMBER_UNIVERSAL_HOLD);
+		num = Math.floor(Math.random() * NUMBER_ROUTE);
 		if (MagicPersevere.indexOf(num) == -1) {
 			break;
 		}
@@ -238,33 +273,83 @@ function generateMagic(type) {
 	}
 }
 
+function getNextStepNumber(from, step) {
+	var num = from + step;
+	if (num > NUMBER_ROUTE) {
+		num = num - NUMBER_ROUTE - 1
+	}
+	return num;
+}
+
+function getNextRoute(currentDiceNumber,currentPlayer, chess) {
+	return getNextStepNumber(currentPlayer.chesses[chess].route, currentDiceNumber)
+}
+
+function isSafeRoute(hole) {
+	return hole == 0 ||  
+	hole == 8 ||  
+	hole == 13 ||  
+	hole == 21 ||  
+	hole == 26 ||  
+	hole == 34 ||  
+	hole == 39 ||  
+	hole == 47 ;
+}
+
 function advance(chess) {
 	var currentPlayer = playerOrder[currentIdx];
+	if (currentPlayer.home.indexOf(chess) !== -1) {
+		return;
+	}
+	var currentDiceNumber = currentPlayer.currentDiceNumber + 1;
 	var chippyIndex = currentPlayer.chippy.indexOf(chess);
 	if (chippyIndex !== -1) {
-		currentPlayer.chesses[chess].hole += (currentPlayer.currentDiceNumber + 1);
+		currentPlayer.chesses[chess].hole += currentDiceNumber;
+		currentPlayer.chesses[chess].route = getNextRoute(currentDiceNumber, currentPlayer, chess);
+		currentPlayer.chesses[chess].safe = isSafeRoute(currentPlayer.chesses[chess].hole);
+		if (currentPlayer.chesses[chess].hole > NUMBER_UNIVERSAL_HOLD) {
+			currentPlayer.chippy.splice(chippyIndex, 1);
+			currentPlayer.personal.push(chess);
+			currentPlayer.chesses[chess].hole = currentPlayer.chesses[chess].hole - NUMBER_UNIVERSAL_HOLD - 1;
+			currentPlayer.chesses[chess].route = 0;
+			chippyIndex = -1;
+		}
 	} else  {
 		var grooveIndex = currentPlayer.groove.indexOf(chess);
 		if (grooveIndex !== -1) {
 			currentPlayer.chesses[chess].hole = 0;
+			currentPlayer.chesses[chess].route = currentPlayer.routeBase;
+			currentPlayer.chesses[chess].safe = true;
 			currentPlayer.chippy.push(chess);
 			currentPlayer.groove.splice(grooveIndex, 1);
-		}
-	}
+		} else {
+			var personalIndex = currentPlayer.personal.indexOf(chess);
+			if (personalIndex !== -1) {
+				var direction = 1;
+				var currentHoleNumber = currentPlayer.chesses[chess].hole;
+				for(var i = 0; i < currentDiceNumber; ++i) {
+					if (currentHoleNumber >= NUMBER_HOME_HOLD || currentHoleNumber < 0) {
+						direction *=-1;
+					}
+					currentHoleNumber += direction;
+				}
+				currentPlayer.chesses[chess].hole = currentHoleNumber;
 
-	if (currentPlayer.chesses[chess].hole == NUMBER_UNIVERSAL_HOLD) {
-		if (chippyIndex !== -1) {
-			currentPlayer.chippy.splice(chippyIndex, 1);
-			currentPlayer.home.push(chess);
+				if (currentPlayer.chesses[chess].hole === NUMBER_HOME_HOLD) {
+					currentPlayer.personal.splice(personalIndex, 1);
+					currentPlayer.home.push(chess);
+					currentPlayer.chesses[chess].hole = 0;
+				}
+			}
 		}
 	}
 
 	var chessHole = currentPlayer.chesses[chess].hole;
 	var kickChesses = getKickChesses(chessHole);
-	if (kickChesses != null && kickChesses.length > 0) {
-		kick(chesses);
+	if (chippyIndex !== -1 && kickChesses != null && kickChesses.length > 0) {
+		kick(kickChesses);
 	} else {
-		if (routes[chessHole] && routes[chessHole].magic) {
+		if (chippyIndex !== -1 && routes[chessHole] && routes[chessHole].magic) {
 			switch(routes[chessHole].magic) {
 				case "defender": {
 					currentPlayer.chesses[chess].defended = true;
@@ -283,14 +368,15 @@ function advance(chess) {
 			routes[chessHole].magic = null;
 		}
 	}
-
+	tracePlayerOrder("advance   ");
 	return chessHole;
 }
 
 function reckon() {
+	var currentPlayer = playerOrder[currentIdx];
 	var chesses= [];
-	var currentDiceNumber = playerOrder[currentIdx].currentDiceNumber;
-	var chippy = playerOrder[currentIdx].chippy;
+	var currentDiceNumber = currentPlayer.currentDiceNumber;
+	var chippy = currentPlayer.chippy;
 	if (currentDiceNumber !== 5 && chippy.length > 0) {
 		if (chippy.length > 1) {
 			chesses = chippy;
@@ -300,29 +386,20 @@ function reckon() {
 
 	} else if (currentDiceNumber === 5) {
 		chesses = chesses.concat(chippy);
-		var groove = playerOrder[currentIdx].groove;
-		for (var i = 0; i < groove.length; ++i) {
-			chesses.push(groove[i]);
+		for (var i = 0; i < currentPlayer.groove.length; ++i) {
+			chesses.push(currentPlayer.groove[i]);
 		}
-	} 
+	}
+	if (currentPlayer.personal.length > 0) {
+		for (var i = 0; i < currentPlayer.personal.length; ++i) {
+			chesses.push(currentPlayer.personal[i]);
+		}
+	}
 	return chesses;
 }
 
-function getNextNumber(currentDiceNumber, step) {
-	var num = currentDiceNumber + step;
-	if (num > NUMBER_UNIVERSAL_HOLD) {
-		num = num - NUMBER_UNIVERSAL_HOLD + 1
-	} else if (num < 0) {
-		num = NUMBER_UNIVERSAL_HOLD - num;
-	}
-	return num;
-}
-
-function getKickChesses(nextNumber) {
+function getKickChesses(nextRouteNumber) {
 	var resultChesses = [];
-	if (routes[nextNumber] && routes[nextNumber].safe == true) {
-		return resultChesses;
-	}
 	for(var i = 0; i < playerOrder.length; ++i) {
 		if (i == currentIdx) {
 			continue;
@@ -330,10 +407,12 @@ function getKickChesses(nextNumber) {
 		var playerChesses = [];
 		for(var j = 0; j < playerOrder[i].chesses.length; ++j) {
 			var chess = playerOrder[i].chesses[j]
-			if (chess.defended) {
+			if (chess.defended || chess.safe) {
 				continue;
 			}
-			playerChesses.push(chess);
+			if (chess.route === nextRouteNumber) {
+				playerChesses.push(chess);
+			}
 		}
 		if (playerChesses.length ==1) {
 			resultChesses.push({playerIndex:i, chess:playerChesses[0]});
@@ -351,15 +430,14 @@ function deduce(chesses) {
 		var currentNumber = currentPlayer.chesses[chesses[i]].hole;
 		if (currentPlayer.groove.indexOf(chesses[i]) !== -1 && currentPlayer.currentDiceNumber === 5) {
 			deduceResult.push(chesses[i]);
-		} else if (currentNumber !== -1) {
+		} else if (currentPlayer.chippy.indexOf(chesses[i]) !== -1) {
 			var nextStep = currentPlayer.currentDiceNumber + 1;
-			var nextNumber = currentNumber + nextStep;
-			if (nextNumber > 50) {
+			if (currentNumber + nextStep > NUMBER_UNIVERSAL_HOLD) {
 				deduceLast.push(chesses[i]);
 			} else {
-				var nextNumber = getNextNumber(currentNumber, nextStep);
-				if (nextNumber != -1) {
-					var resultChesses = getKickChesses(nextNumber);
+				var nextRoute = getNextRoute(nextStep, currentPlayer, chesses[i]);
+				if (nextRoute != -1) {
+					var resultChesses = getKickChesses(nextRoute);
 					if (resultChesses && resultChesses.length > 0) {
 						kick(resultChesses);
 						deduceResult.push(chesses[i]);
@@ -494,7 +572,7 @@ function onHurl(params, sender) {
 	if (userid != null) {
 		var user = getUser(userid.value);
 		if (user != null) {
-			var num = Math.floor(Math.random() * 6);
+			var num = getHurlNumber();;
 			var params = new SFSObject();
 			params.putInt("number", num);
 			params.putInt("playerid", sender.id);
