@@ -1,4 +1,6 @@
 var colorOfPlayer = ["red", "green", "yellow", "blue"];
+var NUMBER_UNIVERSAL_HOLD = 52;
+var MagicPersevere = [0, 8, 13, 21, 26, 34, 39, 47];
 
 function countGold(userId) {
 	var db = getParentZone().getDBManager();

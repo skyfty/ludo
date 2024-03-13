@@ -58,7 +58,7 @@ function createNPCUser() {
 	userVars.push(new SFSUserVariable("userid", 10000000 + currentNPCIndex, VariableType.INT));
 	userVars.push(new SFSUserVariable("avatar", 1, VariableType.INT));
 	userVars.push(new SFSUserVariable("nickname", "eeee", VariableType.STRING));
-	userVars.push(new SFSUserVariable("trim", "11", VariableType.STRING));
+	userVars.push(new SFSUserVariable("trim", "0.png", VariableType.STRING));
 	userVars.push(new SFSUserVariable("rank", 111111, VariableType.INT));
 	userVars.push(new SFSUserVariable("gold", 111111, VariableType.INT));
 	userVars.push(new SFSUserVariable("pawns", "00", VariableType.STRING));
