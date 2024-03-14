@@ -110,7 +110,7 @@ export class Oneself extends Performer {
     }
 
     private rocket(node: Laya.Sprite) {
-        let num = Math.floor(Math.random() * 6) + 1;
+        let num = 1;//Math.floor(Math.random() * 6) + 1;
         this.owner.event(Player.Event.Rocket,[node.name, num]);
         this.player.rocket(node, num, Laya.Handler.create(this, this.onAdvanceComplete));
     }

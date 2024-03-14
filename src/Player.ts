@@ -201,7 +201,6 @@ export class Player extends Laya.Script {
                 }
             }
         }
-        deduceLast.sort(() => Math.random() - 0.5);
         complete.runWith([deduceResult.concat(deduceLast)]);
     }
 

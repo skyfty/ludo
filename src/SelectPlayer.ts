@@ -59,7 +59,7 @@ export class SelectPlayer extends Laya.Script {
     }
 
     public randomMagic() {
-        return Math.floor(Math.random() * Config.MagicMap.length);
+        return 0;//Math.floor(Math.random() * Config.MagicMap.length);
     }
 
 }
