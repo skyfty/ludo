@@ -6,7 +6,7 @@
   "name": "Dialog",
   "width": 750,
   "height": 1334,
-  "_mouseState": 2,
+  "mouseEnabled": true,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$comp": [
@@ -22,7 +22,9 @@
       "avatar": {
         "_$ref": "6gki6n54"
       },
-      "trim": null,
+      "trim": {
+        "_$ref": "e1ae3dyz"
+      },
       "winsOfVsComputer": {
         "_$ref": "prljwga2"
       },
@@ -45,7 +47,7 @@
         "_$ref": "s93al5rd"
       },
       "timerOfVsFriend": {
-        "_$ref": "49uf4ay6"
+        "_$ref": "6t8g6odv"
       },
       "rateOfVsFriend": {
         "_$ref": "pkt8s2vt"
@@ -78,11 +80,12 @@
       "y": 953,
       "width": 67,
       "height": 67,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -130,10 +133,9 @@
           "x": -7.999999999999886,
           "y": -17.000000000000057,
           "width": 121,
-          "height": 131,
-          "_mouseState": 2,
+          "height": 121,
+          "mouseEnabled": true,
           "skin": "res://0fda9958-06ee-4b6a-ab1c-fe9dfbf9a8f8",
-          "useSourceSize": true,
           "color": "#ffffff"
         }
       ]
@@ -177,7 +179,6 @@
       "fontSize": 34,
       "color": "rgba(243, 202, 13, 1)",
       "bold": true,
-      "valign": "top",
       "leading": 0,
       "padding": "0,0,0,0"
     },
@@ -192,7 +193,6 @@
       "text": "0",
       "fontSize": 34,
       "color": "#FFFFFF",
-      "valign": "top",
       "leading": 0,
       "padding": "0,0,0,0"
     },
@@ -230,7 +230,6 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -363,7 +362,6 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -496,7 +494,6 @@
           "fontSize": 23,
           "color": "rgba(255, 251, 3, 1)",
           "align": "center",
-          "valign": "top",
           "leading": 0,
           "padding": "0,0,0,0"
         },
@@ -604,7 +601,7 @@
       "width": 540,
       "height": 128,
       "visible": false,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "selectedIndex": null,
       "_$child": [
         {
@@ -615,7 +612,7 @@
           "width": 551,
           "height": 106,
           "visible": false,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "_$child": [
             {
               "_$id": "d2g89bw0",
@@ -625,7 +622,7 @@
               "y": 14,
               "width": 351,
               "height": 89,
-              "_mouseState": 2,
+              "mouseEnabled": true,
               "stateNum": 2,
               "skin": "res://561bd258-f58e-4616-ab1f-e0698916f2f2",
               "sizeGrid": "14,19,17,18,0",
@@ -633,6 +630,7 @@
               "labelSize": 29,
               "labelBold": true,
               "labelColors": "#ffffff,#ffffff,#ffffff",
+              "labelVAlign": "middle",
               "labelStrokeColor": "#32556b",
               "strokeColors": "#32556b,#32cc6b,#ff0000"
             }

@@ -35,39 +35,43 @@ var currentNPCIndex = 0;
 
 function onExtensionReady(event)
 {
-    // trace("Extension is ready");
-	// for(var i = 1; i < 5; ++i) {
-	// 	var npcUser = getApi().createNPC("NPC#" +i, getParentZone(), false);
-	// 	var userVars = [];
-	// 	userVars.push(new SFSUserVariable("userid", 10000000 + i, VariableType.INT));
-	// 	userVars.push(new SFSUserVariable("avatar", 1, VariableType.INT));
-	// 	userVars.push(new SFSUserVariable("nickname", "eeee", VariableType.STRING));
-	// 	userVars.push(new SFSUserVariable("trim", "11", VariableType.STRING));
-	// 	userVars.push(new SFSUserVariable("rank", 111111, VariableType.INT));
-	// 	userVars.push(new SFSUserVariable("gold", 111111, VariableType.INT));
-	// 	userVars.push(new SFSUserVariable("pawns", "00", VariableType.STRING));
-	// 	getApi().setUserVariables(npcUser, userVars, true);
-	// 	allNPCUsers.push(npcUser);
-
-	// }
+	for(var i = 1; i < 5; ++i) {
+		var npcUser = getApi().createNPC("NPC#" +i, getParentZone(), false);
+		var userVars = [];
+		userVars.push(new SFSUserVariable("userid", 10000000 + i, VariableType.INT));
+		getApi().setUserVariables(npcUser, userVars, true);
+		allNPCUsers.push(npcUser);
+	}
 }
 
-function createNPCUser() {
-	var npcUser = getApi().createNPC("NPC#" +currentNPCIndex++, getParentZone(), false);
+var NICK_NAMES = ["Eyal","Sanford","Tate","Kamau","Khalid","Pendant","Kevina","Wynne","Desta","Jerzy","Eyal","Iolana","Kazuko","Sho","Cammie","Nahilla","Haruka","Uorsin","Yezivel","Hawise","Roger","Amerigo","Kilohana","Elkanah", ];
+
+function setNpcUserVariable(npcUser) {
 	var userVars = [];
-	userVars.push(new SFSUserVariable("userid", 10000000 + currentNPCIndex, VariableType.INT));
-	userVars.push(new SFSUserVariable("avatar", 1, VariableType.INT));
-	userVars.push(new SFSUserVariable("nickname", "eeee", VariableType.STRING));
-	userVars.push(new SFSUserVariable("trim", "0.png", VariableType.STRING));
-	userVars.push(new SFSUserVariable("rank", 111111, VariableType.INT));
-	userVars.push(new SFSUserVariable("gold", 111111, VariableType.INT));
+	userVars.push(new SFSUserVariable("avatar", Math.floor(Math.random() * 30), VariableType.INT));
+	userVars.push(new SFSUserVariable("nickname", NICK_NAMES[Math.floor(Math.random() * NICK_NAMES.length)], VariableType.STRING));
+	userVars.push(new SFSUserVariable("trim", Math.floor(Math.random() * 9).toString() +".png", VariableType.STRING));
+	userVars.push(new SFSUserVariable("rank", Math.floor(Math.random()*(1000-10+1)+300), VariableType.INT));
+	userVars.push(new SFSUserVariable("gold", Math.floor(Math.random()*(877434-20000+1)+20000), VariableType.INT));
 	userVars.push(new SFSUserVariable("pawns", "00", VariableType.STRING));
 	getApi().setUserVariables(npcUser, userVars, true);
-	return npcUser;
 }
 
+
 function onInviteNPC(inParams, sender) {	
-	var npcUser = createNPCUser();
+	var npcUser = null;
+	for(var npci in allNPCUsers) {
+		if (!allNPCUsers[npci].isPlayer() && !allNPCUsers[npci].isJoining()) {
+			npcUser = allNPCUsers[npci];
+			break;
+		}
+	}
+	if (npcUser == null) {
+		inParams.putInt("npcid", -1);
+		send("InviteNPC", inParams, [sender]);
+		return;
+	}
+	setNpcUserVariable(npcUser);
 
 	var room = sender.getLastJoinedRoom();
 	var roomVars = [];
@@ -86,6 +90,7 @@ function onInviteNPC(inParams, sender) {
 	var userVars = [];
 	userVars.push(new SFSUserVariable("currentIdx", 0, VariableType.INT));
 	getApi().setUserVariables(npcUser, userVars, true);
+	inParams.putInt("npcid", npcUser.getId());
 	send("InviteNPC", inParams, [sender]);
 }
 
@@ -182,7 +187,7 @@ function onAddRecentRequest(inParams, sender) {
 	var players = room.getUserList();
 	for (i = 0; i < players.length; ++i) {
 		var playerId =  players[i].getVariable("userid");
-		if (playerId == null) {
+		if (playerId == null || players[i].isNpc()) {
 			break;
 		}
 		var user = getUser(playerId.value);
@@ -333,10 +338,14 @@ function onGetJettonRequest(inParams, sender) {
 	send("GetJettonRequest", params, [sender]);
 }
 
-function onGetProfileRequest(inParams, sender) {
-	var userId = inParams.getInt("id");
-	var user = getUser(userId);
-	send("GetProfileRequest", user, [sender]);
+function getNPCUser(userId) {
+	for(var npci in allNPCUsers) {
+		var playerId = allNPCUsers[npci].getVariable("userid");;
+		if (userId == playerId.getIntValue()) {
+			 return allNPCUsers[npci];
+		}
+	}
+	return null;
 }
 
 function onBuyGoldRequest(inParams, sender) {
@@ -436,6 +445,40 @@ function onCombatRequest(inParams, sender) {
 		send("CombatRequest", params, [sender]);
 	}
 }
+
+function setUserWinState(user, nv) {
+	var lost = Math.floor(Math.random() * 200);
+	var wins = Math.floor(Math.random() * 50);
+	var timers = lost + wins;
+	var rate = Math.floor(Math.random()*(1434-300+1)+300);
+	user.putInt(nv + "_lost", lost);
+	user.putInt(nv + "_wins", wins);
+	user.putInt(nv + "_rate", rate);
+	user.putInt(nv + "_timer", timers);
+}
+
+function onGetProfileRequest(inParams, sender) {
+	var user = null;
+	var userId = inParams.getInt("id");
+	var player = getNPCUser(userId);
+	if (player !== null) {
+		user = new SFSObject();
+		user.putInt("wins", 50);
+		user.putInt("losts", 3);
+		setUserWinState(user, "vscomputer");
+		setUserWinState(user, "online");
+		setUserWinState(user, "vsfriend");
+		user.putUtfString("nickname", player.getVariable("nickname").getStringValue());
+		user.putInt("avatar", player.getVariable("avatar").getIntValue());
+		user.putUtfString("trim", player.getVariable("trim").getStringValue());
+		user.putUtfString("pawns", player.getVariable("pawns").getStringValue());
+		user.putInt("rank", player.getVariable("rank").getIntValue());
+	} else {
+		user = getUser(userId);
+	}
+	send("GetProfileRequest", user, [sender]);
+}
+
 
 function onSyncProfileRequest(inParams, sender) {
 	var nowtime = Date.now() / 1000;

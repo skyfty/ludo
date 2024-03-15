@@ -46,29 +46,24 @@ export class Militant extends Laya.Scene {
         roomVars.push(new SFS2X.SFSRoomVariable(stateName, "ready"));
         roomVars.push(new SFS2X.SFSRoomVariable(this.color, Station.mySelfId()));
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
-   
-        var params = new SFS2X.SFSObject();
-        Station.sfs.send(new SFS2X.ExtensionRequest("InviteNPC", params));
 
-
-        // Laya.timer.loop(1000, this, () => {
-        //     let timeout = Number.parseInt(this.clock.text) - 1;
-        //     if (timeout <= 0) {
-        //         Laya.timer.clearAll(this);
-        //         Laya.Scene.open("dialog/searchtimeout.lh", false, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
-        //             let view = dlg.getChildByName("view");
-        //             view.getChildByName("return").on(Laya.Event.CLICK, this,this.endGameRoom);
-        //         }));
-        //     }
-        //     else {
-        //         if (timeout == 5) {
-        //             var params = new SFS2X.SFSObject();
-        //             Station.sfs.send(new SFS2X.ExtensionRequest("InviteNPC", params));
-            
-        //         }
-        //         this.clock.text = timeout.toString();
-        //     }
-        // });
+        var rate = Math.floor(Math.random()*(50-20+1)+20);
+        Laya.timer.loop(1000, this, () => {
+            let timeout = Number.parseInt(this.clock.text) - 1;
+            if (timeout <= 0) {
+                Laya.timer.clearAll(this);
+                Laya.Scene.open("dialog/searchtimeout.lh", false, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
+                    let view = dlg.getChildByName("view");
+                    view.getChildByName("return").on(Laya.Event.CLICK, this,this.endGameRoom);
+                }));
+            } else {
+                if ((timeout % 5) === 0) {
+                    var params = new SFS2X.SFSObject();
+                    Station.sfs.send(new SFS2X.ExtensionRequest("InviteNPC", params));
+                }
+                this.clock.text = timeout.toString();
+            }
+        });
     }
 
     private endGameRoom() {

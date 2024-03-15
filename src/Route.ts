@@ -13,6 +13,9 @@ export class Event {
 @regClass()
 export class Route extends Laya.Script {
     
+    @property(Laya.Label)
+    public lab:Laya.Label;
+
     @property(Laya.Clip)
     public puddle:Laya.Clip;
 
@@ -36,6 +39,7 @@ export class Route extends Laya.Script {
         super.onAwake();
         this.owner.on(Event.Enter, this, this.scaleChess);
         this.owner.on(Event.Exit, this, this.scaleChess);
+        this.lab.text = this.owner.name;
     }
 
     public setMagic(magic:any) {

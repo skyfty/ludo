@@ -1,8 +1,8 @@
 export class Config {
     static NUMBER_UNIVERSAL_HOLD = 52;
     static NUMBER_PERSONAL_HOLD = 6;
-    static TIMEOUT_CHOOSE_CHESS = 5;
-    static TIMEOUT_CHUNK = 10;
+    static TIMEOUT_CHOOSE_CHESS = 30;
+    static TIMEOUT_CHUNK = 30;
 
     static Colors = ["red", "green", "yellow", "blue"];
     static ColorValue: any = { "red": "#8a3225", "green": "#3f7d41", "yellow": "#8d721e", "blue": "#1d4d92" };

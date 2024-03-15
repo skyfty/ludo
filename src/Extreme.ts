@@ -99,14 +99,16 @@ export class Extreme extends Performer {
         }));
         for(let i = 0; i < chesses.length; ++i) {
             if(name ==  chesses[i].name) {
-                this.onChooseChessesComplete(chesses[i]);
+                this.player.advance(chesses[i], this.currentDiceNumber,Laya.Handler.create(this,  this.onAdvanceComplete));
                 break;
             }
         }
     }
 
     onGenerateMagic(num:number,type:string) {
-        let route = this.player.universal.getChildByName(Room.getMagicRoute(this.player.color, num)).getComponent(Route);
+        var routeName = Room.getMagicRoute(this.player.color, num);
+        let route = this.player.universal.getChildByName(routeName).getComponent(Route);
+        console.log(this.player.color + "," + num + "," + routeName + "," + type);
         route.setMagic({name:type});
     }
 
@@ -123,10 +125,6 @@ export class Extreme extends Performer {
         }
     }
 
-    private onChooseChessesComplete(chess:Laya.Sprite) {
-        this.player.advance(chess, this.currentDiceNumber,Laya.Handler.create(this,  this.onAdvanceComplete));
-    }
-
     private onRollStop() {
         this.player.trade.getComponent(Dice).setDiceNumber(this.currentDiceNumber);
         let chesses = this.player.reckonChess(this.currentDiceNumber);
@@ -134,20 +132,12 @@ export class Extreme extends Performer {
             this.player.deduce(this.currentDiceNumber, chesses, Laya.Handler.create(this, (deduceResult:any[])=>{
                 if (chesses.length == 1) {
                     this.stopChessDecuce(["kick"], deduceResult);
-                } 
-                this.onReckonChessComplete(chesses, Laya.Handler.create(this,  this.onChooseChessesComplete));
+                }  else {
+                    this.player.hopChesses(chesses);
+                }
             }));
         }
     }
-
-    private onReckonChessComplete(chesses:Laya.Sprite[], complete: Laya.Handler) {
-        if (chesses.length == 1) {
-            complete.runWith(chesses[0]);
-        } else {
-            this.player.hopChesses(chesses);
-        }
-    }
-
     
     private onUseProps(evtParams: SFS2X.SFSEvent) {
         let prop = evtParams.get("prop");

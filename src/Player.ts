@@ -262,17 +262,17 @@ export class Player extends Laya.Script {
     }
 
     public generateMagic(type:string) {
-        let num = -1;
         while(true) {
-            num = Math.floor(Math.random() * Config.NUMBER_UNIVERSAL_HOLD);
+            let num = Math.floor(Math.random() * Config.NUMBER_UNIVERSAL_HOLD);
             if (Config.MagicPersevere.indexOf(num) == -1) {
-                break;
+                var routeName = Room.getMagicRoute(this.color, num);
+                let route = this.universal.getChildByName(routeName).getComponent(Route.Route);
+                if (route.magic == null) {
+                    route.setMagic({name:type});
+                    this.owner.event(Event.GenerateMagic,[num, type]);
+                    break;
+                }
             }
-        }
-        if (num != -1) {
-            let route = this.universal.getChildByName(Room.getMagicRoute(this.color, num)).getComponent(Route.Route);
-            route.setMagic({name:type});
-            this.owner.event(Event.GenerateMagic,[num, type]);
         }
     }
     public onAdvanceComplete(node: Laya.Sprite, complete: Laya.Handler) {

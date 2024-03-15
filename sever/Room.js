@@ -202,12 +202,18 @@ function setNextPlayerIndex() {
 
 function getHurlNumber() {
 	var num = Math.floor(Math.random() * 6);
-	var currentPlayer = playerOrder[currentIdx];
-	if (isAnyIn(currentPlayer, "groove")) {
-		num = 5;
-	} else {
-		num = 0;
-	}
+	// var currentPlayer = playerOrder[currentIdx];
+	// if (isAnyIn(currentPlayer, "personal")) {
+	// 	num = 0;
+
+	// }else if (isAnyIn(currentPlayer, "groove")) {
+	// 	num = 5;
+	// } else if (isAnyIn(currentPlayer, "chippy")) {
+	// 	num = 5;
+
+	// }  else {
+	// 	num = 0;
+	// }
 	return num;
 }
 
@@ -247,32 +253,31 @@ function infer() {
 		var deduceResult = deduce(chesses);
 		var chess = deduceResult[0];
 		sendChooseMessage(chess);
-
 		var route = advance(chess, currentPlayer.currentDiceNumber);
 		gather(chess, route);
-	}	
+	} else {
+		achieve();
+	}
 }
 
 function rocket(chess) {
-	var step = 1;//Math.floor(Math.random() * 6) + 1
+	var step = Math.floor(Math.random() * 6) + 1
 	sendRocketMessage(chess, step);
-
 	var diceNumber = step - 1;
 	var route = advance(chess, diceNumber);
 	gather(chess, route);
 }
 
 function gather(chess, route) {
-	var currentPlayer = playerOrder[currentIdx];
 	var isPlusMagic = false;
 	if (route !== -1 && magics[route]) {
 		switch(magics[route]) {
 			case "rocket": {
+				generateMagic(magics[route]);
+				magics[route] = null;
 				return scheduler.schedule(function(){
-					generateMagic(magics[route]);
-					magics[route] = null;
 					rocket(chess);
-				}, 600);
+				}, 1000);
 			}
 			case "plus": {
 				isPlusMagic = true;
@@ -285,21 +290,25 @@ function gather(chess, route) {
 	if (isPlusMagic) {
 		rollStart();
 	} else {
-		sendEventMessage("ACHIEVE");
-		if (isAllIn(currentPlayer, "home")) {
-			sendEventMessage("VICTORY");
-		} else {
-			setNextPlayerIndex();
-		}
+		scheduler.schedule(achieve, 1500);
 	}
-	tracePlayerOrder("gather");
+}
+
+function achieve() {
+	var currentPlayer = playerOrder[currentIdx];
+	sendEventMessage("ACHIEVE");
+	if (isAllIn(currentPlayer, "home")) {
+		sendEventMessage("VICTORY");
+	} else {
+		setNextPlayerIndex();
+	}
 }
 
 function hurl() {
 	var currentPlayer = playerOrder[currentIdx];
 	currentPlayer.currentDiceNumber = getHurlNumber();;
 	sendRollEndMessage(currentPlayer.currentDiceNumber);
-    taskHandle = scheduler.schedule(infer, 1000);
+    scheduler.schedule(infer, 1000);
 }
 
 function kick(playerChesses) {
@@ -318,7 +327,7 @@ function generateMagic(type) {
 	var num = -1;
 	while(true) {
 		num = Math.floor(Math.random() * NUMBER_ROUTE);
-		if (MagicPersevere.indexOf(num) == -1) {
+		if (MagicPersevere.indexOf(num) == -1 && !magics[num]) {
 			break;
 		}
 	}
@@ -326,7 +335,6 @@ function generateMagic(type) {
 		magics[num] = type;
 		sendGenerateMagicMessage(num, type);
 	}
-	
 }
 
 function getNextStepNumber(from, step) {
@@ -584,8 +592,6 @@ function onRocket(inParams, sender) {
 function onGenerateMagic(inParams, sender) {
 	var num = inParams.getInt("num");
 	magics[num] = inParams.getUtfString("type");
-	traceMagics("onGenerateMagic  ");
-
 }
 
 function onChoose(inParams, sender) {
@@ -596,7 +602,6 @@ function onChoose(inParams, sender) {
 		if(name ==  chesses[i]) {
 			var route = advance(chesses[i], currentPlayer.currentDiceNumber);
 			conclude(route);
-			tracePlayerOrder("onChoose  ");
 			break;
 		}
 	}
@@ -682,19 +687,10 @@ function onVictory(inParams, sender) {
 
 function onAchieve(inParams, sender) {
 	setNextPlayerIndex();
-	rollStart();
+	scheduler.schedule(rollStart, 1000);
 }
 
 function onRollEnd(inParams, sender) {
 	var currentPlayer = playerOrder[currentIdx];
 	currentPlayer.currentDiceNumber = inParams.getInt("num");
-	var chesses = reckon();
-	if (chesses.length > 0) {
-		chesses = deduce(chesses);
-		if (chesses.length === 1) {
-			var route = advance(chesses[0], currentPlayer.currentDiceNumber);
-			conclude(route);
-			tracePlayerOrder("onRollEnd");
-		}
-	}
 }

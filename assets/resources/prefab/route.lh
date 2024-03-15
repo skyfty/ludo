@@ -10,6 +10,9 @@
     {
       "_$type": "f65b0a36-8072-43b6-ba82-0cc45e25162f",
       "scriptPath": "../src/Route.ts",
+      "lab": {
+        "_$ref": "o4smey7x"
+      },
       "puddle": {
         "_$ref": "jpxjv1gb"
       },
@@ -53,6 +56,24 @@
       "interval": 100,
       "skin": "res://86436151-c880-4b5c-9bd7-e681bded4cc4",
       "sizeGrid": "0,0,0,0,0"
+    },
+    {
+      "_$id": "o4smey7x",
+      "_$type": "Label",
+      "name": "Label",
+      "x": 7,
+      "y": 10,
+      "width": 26,
+      "height": 19,
+      "visible": false,
+      "text": "22",
+      "fontSize": 20,
+      "color": "rgba(0, 0, 0, 1)",
+      "bold": true,
+      "align": "center",
+      "valign": "middle",
+      "leading": 2,
+      "padding": "0,0,0,0"
     }
   ]
 }
