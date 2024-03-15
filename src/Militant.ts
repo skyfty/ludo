@@ -57,7 +57,7 @@ export class Militant extends Laya.Scene {
                     view.getChildByName("return").on(Laya.Event.CLICK, this,this.endGameRoom);
                 }));
             } else {
-                if ((timeout % 5) === 0) {
+                if ((timeout % rate) === 0) {
                     var params = new SFS2X.SFSObject();
                     Station.sfs.send(new SFS2X.ExtensionRequest("InviteNPC", params));
                 }
