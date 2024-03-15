@@ -35,7 +35,7 @@ var currentNPCIndex = 0;
 
 function onExtensionReady(event)
 {
-	for(var i = 1; i < 5; ++i) {
+	for(var i = 1; i < 200; ++i) {
 		var npcUser = getApi().createNPC("NPC#" +i, getParentZone(), false);
 		var userVars = [];
 		userVars.push(new SFSUserVariable("userid", 10000000 + i, VariableType.INT));

@@ -47,7 +47,7 @@ export class Militant extends Laya.Scene {
         roomVars.push(new SFS2X.SFSRoomVariable(this.color, Station.mySelfId()));
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
 
-        var rate = Math.floor(Math.random()*(50-20+1)+20);
+        var rate = Math.floor(Math.random()*(50-10+1)+10);
         Laya.timer.loop(1000, this, () => {
             let timeout = Number.parseInt(this.clock.text) - 1;
             if (timeout <= 0) {
