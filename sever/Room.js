@@ -301,6 +301,7 @@ function achieve() {
 		sendEventMessage("VICTORY");
 	} else {
 		setNextPlayerIndex();
+		scheduler.schedule(rollStart, 1000);
 	}
 }
 
@@ -686,6 +687,7 @@ function onVictory(inParams, sender) {
 }
 
 function onAchieve(inParams, sender) {
+	tracePlayerOrder("onAchieve      ");
 	setNextPlayerIndex();
 	scheduler.schedule(rollStart, 1000);
 }

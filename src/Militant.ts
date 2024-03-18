@@ -33,6 +33,12 @@ export class Militant extends Laya.Scene {
         this.removeStationListener();
     }
 
+    randRate() {
+        const min = 10;
+        const max = 30;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     onOpened(param: any) {
         this.color = param.color;
         this.numberOfPlayer = Station.sfs.lastJoinedRoom.maxUsers;
@@ -47,7 +53,8 @@ export class Militant extends Laya.Scene {
         roomVars.push(new SFS2X.SFSRoomVariable(this.color, Station.mySelfId()));
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
 
-        var rate = Math.floor(Math.random()*(50-10+1)+10);
+        var rate = this.randRate();
+        console.log(rate);
         Laya.timer.loop(1000, this, () => {
             let timeout = Number.parseInt(this.clock.text) - 1;
             if (timeout <= 0) {
