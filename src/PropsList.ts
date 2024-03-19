@@ -1,6 +1,7 @@
 const { regClass, property } = Laya;
 import { PropsItem } from "./PropsItem";
 import * as Player from "./Player";
+import { Cause } from "./Cause";
 
 @regClass()
 export class PropsList extends  Laya.Script{
@@ -15,6 +16,7 @@ export class PropsList extends  Laya.Script{
         this.list.renderHandler = new Laya.Handler(this, this.updateItem);
         this.list.selectHandler = new Laya.Handler(this, (index: number)=>{
             this.owner.event(Player.Event.UseProps, [index]);
+            Cause.bi("select", "props");
         });
     }
 

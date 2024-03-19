@@ -6,7 +6,7 @@
   "y": 37,
   "width": 750,
   "height": 1334,
-  "_mouseState": 2,
+  "mouseEnabled": true,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$comp": [
@@ -111,6 +111,7 @@
           "align": "center",
           "valign": "middle",
           "wordWrap": true,
+          "leading": 2,
           "padding": "0,0,0,0",
           "stroke": 7,
           "strokeColor": "rgba(87, 86, 73, 1)",
@@ -131,7 +132,7 @@
       "y": 223,
       "width": 485,
       "height": 191,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
       "color": "#ffffff",
       "_$child": [
@@ -187,17 +188,23 @@
           "y": 102,
           "width": 77,
           "height": 64,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "selectColorRed",
+              "data": ""
             }
           ]
         },
@@ -209,17 +216,23 @@
           "y": 102,
           "width": 77,
           "height": 64,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "selectColorGreen",
+              "data": ""
             }
           ]
         },
@@ -231,17 +244,23 @@
           "y": 102,
           "width": 77,
           "height": 64,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "selectColorYellow",
+              "data": ""
             }
           ]
         },
@@ -253,17 +272,23 @@
           "y": 102,
           "width": 77,
           "height": 64,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
               "scriptPath": "../src/ClickSound.ts"
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "selectColorBlue",
+              "data": ""
             }
           ]
         }
@@ -277,7 +302,7 @@
       "y": 654,
       "width": 485,
       "height": 65,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "skin": "res://8411c299-45f9-4865-aa35-709aca144e86",
       "color": "#ffffff",
       "_$child": [
@@ -291,19 +316,19 @@
           "height": 65.62790697674419,
           "scaleX": 0.67,
           "scaleY": 0.67,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://539e0e57-1cd9-4d2a-912f-4701c8b2d413",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
               "scriptPath": "../src/Cause.ts",
               "act": "click",
-              "trap": "parailelMagic"
+              "trap": "parailelMagic",
+              "data": ""
             }
           ]
         },
@@ -321,6 +346,7 @@
           "bold": true,
           "valign": "middle",
           "wordWrap": true,
+          "leading": 2,
           "padding": "0,0,0,0",
           "stroke": 7,
           "strokeColor": "rgba(87, 86, 73, 1)",
@@ -360,6 +386,7 @@
           "align": "center",
           "valign": "middle",
           "wordWrap": true,
+          "leading": 2,
           "padding": "0,0,0,0",
           "stroke": 7,
           "strokeColor": "rgba(87, 86, 73, 1)",
@@ -380,7 +407,7 @@
       "y": 492,
       "width": 500,
       "height": 149,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "skin": "res://2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
       "color": "#ffffff",
       "_$child": [
@@ -392,13 +419,12 @@
           "y": 15,
           "width": 124,
           "height": 122,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://6ca51dc7-3175-44a6-9aaf-0f1dbaf12410",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -408,7 +434,8 @@
               "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
               "scriptPath": "../src/Cause.ts",
               "act": "click",
-              "trap": "parailel4p"
+              "trap": "parailel4p",
+              "data": ""
             }
           ]
         },
@@ -420,13 +447,12 @@
           "y": 15,
           "width": 124,
           "height": 122,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "skin": "res://bf147980-14ee-4e11-8d74-e2601ba5f59f",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -436,7 +462,8 @@
               "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
               "scriptPath": "../src/Cause.ts",
               "act": "click",
-              "trap": "parailel3p"
+              "trap": "parailel3p",
+              "data": ""
             }
           ]
         },
@@ -448,14 +475,13 @@
           "y": 15,
           "width": 124,
           "height": 122,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "stateNum": 2,
           "selected": true,
           "skin": "res://9dbcdda1-c9fa-4501-a962-e05a4c811d26",
           "label": "",
           "labelSize": 20,
           "labelAlign": "left",
-          "labelVAlign": "top",
           "_$comp": [
             {
               "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -465,7 +491,8 @@
               "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
               "scriptPath": "../src/Cause.ts",
               "act": "click",
-              "trap": "parailel2p"
+              "trap": "parailel2p",
+              "data": ""
             }
           ]
         }
@@ -479,11 +506,12 @@
       "y": 977,
       "width": 68.01956140620675,
       "height": 67.48815858272076,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -506,7 +534,7 @@
       "y": 746,
       "width": 480,
       "height": 196,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "_$child": [
         {
           "_$id": "c9zne9cs",
@@ -514,7 +542,7 @@
           "name": "ViewStack",
           "width": 480,
           "height": 196,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "selectedIndex": 0,
           "_$child": [
             {
@@ -525,7 +553,7 @@
               "y": 35,
               "width": 478.5282762298359,
               "height": 106.54016797760296,
-              "_mouseState": 2,
+              "mouseEnabled": true,
               "stateNum": 2,
               "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
               "sizeGrid": "14,15,17,14,0",
@@ -533,6 +561,7 @@
               "labelFont": "impact",
               "labelSize": 57,
               "labelColors": "#ffffff,#ffffff,#ffffff",
+              "labelVAlign": "middle",
               "labelStroke": 2,
               "labelStrokeColor": "#32556b",
               "strokeColors": "#32556b,#32cc6b,#ff0000",
@@ -549,7 +578,8 @@
                   "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
                   "scriptPath": "../src/Cause.ts",
                   "act": "click",
-                  "trap": "paralilelPlay"
+                  "trap": "paralilelPlay",
+                  "data": ""
                 }
               ]
             },
@@ -565,7 +595,7 @@
                 "_$uuid": "2aee250f-0d15-454d-a2f1-0c8c3d617f3f",
                 "_$type": "Texture"
               },
-              "_mouseState": 2,
+              "mouseEnabled": true,
               "_$child": [
                 {
                   "_$id": "ofxnxy9k",
@@ -575,11 +605,12 @@
                   "y": 45,
                   "width": 50,
                   "height": 50,
-                  "_mouseState": 2,
+                  "mouseEnabled": true,
                   "stateNum": 2,
                   "skin": "res://e5f6ffc0-8618-43e0-9c42-8a4483b210c1",
                   "label": "",
                   "labelSize": 20,
+                  "labelVAlign": "middle",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -595,11 +626,12 @@
                   "y": 45,
                   "width": 50,
                   "height": 50,
-                  "_mouseState": 2,
+                  "mouseEnabled": true,
                   "stateNum": 2,
                   "skin": "res://bddd4ab0-249f-4df4-943b-ff1011c1226e",
                   "label": "",
                   "labelSize": 20,
+                  "labelVAlign": "middle",
                   "_$comp": [
                     {
                       "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -706,7 +738,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 0,
+                      "index": 6,
                       "interval": 226,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     },
@@ -724,7 +756,7 @@
                       "clipHeight": 30,
                       "clipX": 7,
                       "clipY": 1,
-                      "index": 1,
+                      "index": 0,
                       "interval": 140,
                       "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
                     }
@@ -738,7 +770,7 @@
                   "y": 126.3770163978136,
                   "width": 412.3580589254765,
                   "height": 81.79341421143847,
-                  "_mouseState": 2,
+                  "mouseEnabled": true,
                   "stateNum": 2,
                   "skin": "res://1ff8c7bf-27cb-4fc7-bd42-0ebf0b4ba8a7",
                   "sizeGrid": "14,15,17,14,0",
@@ -746,6 +778,7 @@
                   "labelFont": "impact",
                   "labelSize": 48,
                   "labelColors": "#ffffff,#ffffff,#ffffff",
+                  "labelVAlign": "middle",
                   "labelStroke": 2,
                   "labelStrokeColor": "#32556b",
                   "strokeColors": "#32556b,#32cc6b,#ff0000",

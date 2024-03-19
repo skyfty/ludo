@@ -8,6 +8,7 @@ import { Buycoin } from "./Buycoin";
 import { Station } from "./Station";
 import { Config } from "./Config";
 import i18n from "../node_modules/roddeh-i18n";
+import { Cause } from "./Cause";
 
 @regClass()
 export class Menu extends Laya.Script {
@@ -112,6 +113,7 @@ export class Menu extends Laya.Script {
         });
     }
     onStart(): void {
+        Cause.bi("start", "menuscreen");
         Laya.SoundManager.musicMuted = Laya.LocalStorage.getItem("musicMuted") == "on";
         Laya.SoundManager.soundMuted = Laya.LocalStorage.getItem("soundMuted") == "on";
         SoundManager.playMusic("sounds/menu.mp3", 0);

@@ -5,6 +5,7 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 import { Station } from "./Station";
 import { Config } from "./Config";
 import { Profile } from "./Profile";
+import { Cause } from "./Cause";
 
 @regClass()
 export class OnlineParallel extends GameRoom {
@@ -100,6 +101,7 @@ export class OnlineParallel extends GameRoom {
         settings.variables = roomVars;
 
         Station.sfs.send(new SFS2X.QuickJoinOrCreateRoomRequest(exp, ["default"], settings, Station.sfs.lastJoinedRoom));
+        Cause.bi("play", "parallel", pay + ";" + this.colorIdx +";"+parallel.magic.selected + ";"+parallel.numberOfPlayer);
     }
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {

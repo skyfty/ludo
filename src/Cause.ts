@@ -1,4 +1,5 @@
 const { regClass, property } = Laya;
+import { Profile } from "./Profile";
 
 @regClass()
 export class Cause extends Laya.Script {
@@ -14,9 +15,16 @@ export class Cause extends Laya.Script {
     @property(String)
     public trap: string = "";
 
+    @property(String)
+    public data: string = "";
+
     public static bi(act:String, trap:String, data:any = null) {
         let hr:Laya.HttpRequest = new Laya.HttpRequest();
-        var reqstr = "game="+Cause.game + "&act=" + act + "&channel=" + Cause.channel + "&trap=" + trap;
+        let reqstr = "game="+Cause.game + "&act=" + act + "&channel=" + Cause.channel + "&trap=" + trap;
+        let userId = Profile.getUserId();
+        if (userId) {
+            reqstr += "&uid=" + userId;
+        }
         if (data) {
             reqstr += "&data=" + data;
         }
@@ -31,6 +39,6 @@ export class Cause extends Laya.Script {
             trap = this.owner.name;
         }
         var e = this.owner as Laya.CheckBox;
-        Cause.bi(this.act, trap,e?e.selected:null);
+        Cause.bi(this.act, trap,e?e.selected:this.data);
     }
 }

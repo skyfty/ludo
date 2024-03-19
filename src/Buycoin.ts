@@ -3,6 +3,7 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 import { BuyItem } from "./BuyItem";
 import { Station } from "./Station";
 import { Profile } from "./Profile";
+import { Cause } from "./Cause";
 
 @regClass()
 export class Buycoin extends Laya.Script {
@@ -48,12 +49,12 @@ export class Buycoin extends Laya.Script {
         params.putInt("amount", data.getInt("amount"));
         params.putInt("selectindex", index);
         Station.sfs.send(new SFS2X.ExtensionRequest("BuyGoldRequest", params));
+        Cause.bi("buy", "coin", index);
     }
 
     public onSelected(index: number){
         let data = this.list.array[index];
         Buycoin.onBuyComplete(data, index);
-
 
         // if (typeof window.flutter_inappwebview == "undefined") {
         //     Buycoin.onBuyComplete(data, index);
@@ -136,7 +137,9 @@ export class Buycoin extends Laya.Script {
             if (gold != null) {
                 Profile.setGold(gold)
             }
-            this.startGoldCoin( evtParams.params.getInt("selectindex"));
+            let index =  evtParams.params.getInt("selectindex");
+            this.startGoldCoin(index);
+            Cause.bi("bought", "coin", index);
         }
     }
     protected addStationListener() {

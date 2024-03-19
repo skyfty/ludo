@@ -4,6 +4,7 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 import { TrimCoinItem } from "./TrimCoinItem";
 import { TrimConfig } from "./TrimConfig";
 import { Profile } from "./Profile";
+import { Cause } from "./Cause";
 
 @regClass()
 export class TrimCoinsList extends Laya.Script {
@@ -56,8 +57,10 @@ export class TrimCoinsList extends Laya.Script {
             if (gold != null) {
                 Profile.setGold(gold)
             }
-            this.trims.push(evtParams.params.getUtfString("fund"))
+            let fund = evtParams.params.getUtfString("fund");
+            this.trims.push(fund)
             this.list.refresh();
+            Cause.bi("bought", "trim", fund);
         } 
     }
 
@@ -72,6 +75,8 @@ export class TrimCoinsList extends Laya.Script {
             params.putUtfString("fund", data.image);
             Station.sfs.send(new SFS2X.ExtensionRequest("BuyTrimRequest", params));
         }
+        
+        Cause.bi("buy", "trim", data.image);
     }
     public onSelected(index: number){
         let data = this.list.array[index];

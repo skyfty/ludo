@@ -2,6 +2,7 @@ const { regClass, property, SoundManager } = Laya;
 import { Station } from "./Station";
 import * as SFS2X from "../node_modules/sfs2x-api";
 import { Dialog } from "./Dialog";
+import { Cause } from "./Cause";
 
 @regClass()
 export class Militant extends Laya.Scene {
@@ -54,7 +55,6 @@ export class Militant extends Laya.Scene {
         Station.sfs.send(new SFS2X.SetRoomVariablesRequest(roomVars));
 
         var rate = this.randRate();
-        console.log(rate);
         Laya.timer.loop(1000, this, () => {
             let timeout = Number.parseInt(this.clock.text) - 1;
             if (timeout <= 0) {
@@ -62,6 +62,7 @@ export class Militant extends Laya.Scene {
                 Laya.Scene.open("dialog/searchtimeout.lh", false, null, Laya.Handler.create(this, (dlg: Laya.Dialog) => {
                     let view = dlg.getChildByName("view");
                     view.getChildByName("return").on(Laya.Event.CLICK, this,this.endGameRoom);
+                    Cause.bi("searchtimeout", "parallel");
                 }));
             } else {
                 if ((timeout % rate) === 0) {
@@ -111,6 +112,7 @@ export class Militant extends Laya.Scene {
                 Dialog.closeAll();
                 Laya.Scene.open("menu.ls");
             });
+            Cause.bi("roomjoinerror", "parallel");
         }));
     }
 
@@ -161,6 +163,7 @@ export class Militant extends Laya.Scene {
                 param.magic = magic.value;
             }
             this.addRecentRequest();
+            Cause.bi("join", "room");
             Laya.Scene.open("game.ls", true,param);
         }
     }

@@ -5,6 +5,7 @@ import * as SFS2X from "../node_modules/sfs2x-api";
 import { CheckinItem } from "./CheckinItem";
 import { Profile } from "./Profile";
 import i18n from "../node_modules/roddeh-i18n";
+import { Cause } from "./Cause";
 
 
 @regClass()
@@ -58,6 +59,7 @@ export class CheckinDialog extends Laya.Script {
         var params = new SFS2X.SFSObject();
         params.putInt("id", Profile.getUserId());
         Station.sfs.send(new SFS2X.ExtensionRequest("CheckinRequest", params));
+
     }
 
     private onExtensionResponse(evtParams: SFS2X.SFSEvent) {

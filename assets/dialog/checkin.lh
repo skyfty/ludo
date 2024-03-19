@@ -5,7 +5,7 @@
   "name": "Dialog",
   "width": 750,
   "height": 1334,
-  "_mouseState": 2,
+  "mouseEnabled": true,
   "autoDestroyAtClosed": true,
   "isModal": true,
   "_$comp": [
@@ -31,11 +31,12 @@
       "y": 805,
       "width": 64,
       "height": 63.5,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "stateNum": 2,
       "skin": "res://5f04006f-a667-40e2-a42d-0feb9cbb4e4a",
       "label": "",
       "labelSize": 20,
+      "labelVAlign": "middle",
       "_$comp": [
         {
           "_$type": "f4a9ed67-7b7a-43be-945e-88ba9965a9d4",
@@ -45,7 +46,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "checkinBack"
+          "trap": "checkinBack",
+          "data": ""
         }
       ]
     },
@@ -90,7 +92,7 @@
       "y": 336,
       "width": 617,
       "height": 432,
-      "_mouseState": 2,
+      "mouseEnabled": true,
       "itemTemplate": {
         "_$ref": "pal6youk",
         "_$tmpl": "itemRender"
@@ -106,7 +108,7 @@
           "name": "Box",
           "width": 202,
           "height": 202,
-          "_mouseState": 2,
+          "mouseEnabled": true,
           "_filters": [],
           "_$comp": [
             {
@@ -124,6 +126,13 @@
               "checkinBtn": {
                 "_$ref": "rc8qudja"
               }
+            },
+            {
+              "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
+              "scriptPath": "../src/Cause.ts",
+              "act": "click",
+              "trap": "dailycheckin",
+              "data": ""
             }
           ],
           "_$child": [
@@ -133,20 +142,13 @@
               "name": "Button",
               "width": 202,
               "height": 202,
-              "_mouseState": 2,
+              "mouseEnabled": true,
               "_filters": [],
               "stateNum": 1,
               "skin": "res://238ef9cb-8a20-414b-8d5e-986c5acccb2d",
               "label": "",
               "labelSize": 20,
-              "_$comp": [
-                {
-                  "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
-                  "scriptPath": "../src/Cause.ts",
-                  "act": "click",
-                  "trap": "dailycheckin"
-                }
-              ]
+              "labelVAlign": "middle"
             },
             {
               "_$id": "saaeddnm",
@@ -190,7 +192,6 @@
               "color": "rgba(205, 205, 215, 1)",
               "bold": true,
               "align": "center",
-              "valign": "top",
               "leading": 0,
               "padding": "0,0,0,0"
             },
@@ -241,7 +242,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 6,
               "interval": 226,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -259,7 +260,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 2,
               "interval": 177,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -277,7 +278,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 3,
+              "index": 6,
               "interval": 116,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             },
@@ -295,7 +296,7 @@
               "clipHeight": 30,
               "clipX": 7,
               "clipY": 1,
-              "index": 2,
+              "index": 3,
               "interval": 217,
               "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
             }
@@ -318,6 +319,7 @@
       "align": "center",
       "valign": "middle",
       "wordWrap": true,
+      "leading": 2,
       "padding": "0,0,0,0",
       "stroke": 7,
       "strokeColor": "rgba(87, 86, 73, 1)",

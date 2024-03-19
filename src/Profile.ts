@@ -1,6 +1,7 @@
 const { regClass, property } = Laya;
 import { Station } from "./Station";
 import * as SFS2X from "../node_modules/sfs2x-api";
+import { Cause } from "./Cause";
 
 export class Profile {
     
@@ -97,6 +98,7 @@ export class Profile {
         Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
         Station.sync();
         Station.updateBuddyInfo();
+        Cause.bi("nickname", "profile",nickname);
     }
 
     public static setAvatar(avatar:number) {
@@ -104,6 +106,8 @@ export class Profile {
         Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
         Station.sync();
         Station.updateBuddyInfo();
+        Cause.bi("avatar", "profile", avatar);
+        
     }
 
     public static setPawns(pawns:string) {
@@ -111,6 +115,7 @@ export class Profile {
         Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
         Station.sync();
         Station.updateBuddyInfo();
+        Cause.bi("pawns", "profile", pawns);
     }
 
     public static setTrim(trim:string) {
@@ -118,6 +123,7 @@ export class Profile {
         Laya.LocalStorage.setItem("updatetime",Profile.getCurrentUpdateTime());
         Station.sync();
         Station.updateBuddyInfo();
+        Cause.bi("trim", "profile", trim);
     }
     public static getUserId() {
         let userId = Laya.LocalStorage.getItem("userid");

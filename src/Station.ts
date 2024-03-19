@@ -1,5 +1,6 @@
 const { regClass, property } = Laya;
 import * as SFS2X from "../node_modules/sfs2x-api";
+import { Cause } from "./Cause";
 import { Profile } from "./Profile";
 import { Rank } from "./Rank";
 
@@ -167,6 +168,8 @@ export class Station extends Laya.Script {
         if (event.data != null) {
             userid = event.data.getInt("userid");
         }
+
+        Cause.bi("login", "loginin");
         if (userid != null) {
             Profile.setUserId(userid)
             Station.sfs.send(new SFS2X.LogoutRequest());

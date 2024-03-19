@@ -56,6 +56,7 @@ export class ProfileDialog extends Laya.Script {
         this.levelProcessLabel.text = processValue + "/100";
     }
 
+
     private onNameInputBlur() {
         if (this.name.text != "" && this.name.text !=  this.playerName) {
             Profile.setNickname(this.name.text);
