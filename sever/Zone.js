@@ -150,15 +150,22 @@ function onUserLogin(event) {
 	var outData =event.getParameter(SFSEventParam.LOGIN_OUT_DATA);
 	var nowtime = Date.now() / 1000;
 	var userid =event.getParameter(SFSEventParam.LOGIN_NAME);
-
+	var db = getParentZone().getDBManager();
 	var user = getUser(userid);
 
 	if (user == null) {
-		var resultSet =  getParentZone().getDBManager().executeQuery("SELECT count(*) cnt FROM users");
+		var resultSet = db.executeQuery("SELECT count(*) cnt FROM users");
 		var rowCount = resultSet.getSFSObject(0).getLong("cnt");
 		var nickname = "Guest" + rowCount;
 		userid = addUser(nickname, 0, "0.png", nowtime);
 		outData.putInt("userid",userid);
+	} else {
+		var data = [
+			user.logintime,
+			nowtime,
+			userId
+		];
+		db.executeUpdate("UPDATE users SET prevtime=?,logintime=? WHERE id=?", data);
 	}
 }
 
