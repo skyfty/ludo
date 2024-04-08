@@ -161,9 +161,9 @@ function onUserLogin(event) {
 		outData.putInt("userid",userid);
 	} else {
 		var data = [
-			user.logintime,
+			user.getInt("logintime"),
 			nowtime,
-			userId
+			userid
 		];
 		db.executeUpdate("UPDATE users SET prevtime=?,logintime=? WHERE id=?", data);
 	}

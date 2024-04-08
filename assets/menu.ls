@@ -135,7 +135,8 @@
               "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
               "scriptPath": "../src/Cause.ts",
               "act": "click",
-              "trap": "vscomputer"
+              "trap": "vscomputer",
+              "data": ""
             }
           ],
           "_$child": [
@@ -191,7 +192,8 @@
               "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
               "scriptPath": "../src/Cause.ts",
               "act": "click",
-              "trap": "vsonline"
+              "trap": "vsonline",
+              "data": ""
             }
           ],
           "_$child": [
@@ -247,7 +249,8 @@
               "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
               "scriptPath": "../src/Cause.ts",
               "act": "click",
-              "trap": "vsfriends"
+              "trap": "vsfriends",
+              "data": ""
             }
           ],
           "_$child": [
@@ -317,7 +320,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "ranklist"
+          "trap": "ranklist",
+          "data": ""
         }
       ]
     },
@@ -340,7 +344,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "checkin"
+          "trap": "checkin",
+          "data": ""
         }
       ]
     },
@@ -365,7 +370,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "buddy"
+          "trap": "buddy",
+          "data": ""
         }
       ]
     },
@@ -390,7 +396,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "trims"
+          "trap": "trims",
+          "data": ""
         }
       ]
     },
@@ -415,7 +422,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "chess"
+          "trap": "chess",
+          "data": ""
         },
         {
           "_$type": "6f6d36c0-eff9-425c-8973-1f6d7fda2883",
@@ -475,7 +483,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "dice"
+          "trap": "dice",
+          "data": ""
         },
         {
           "_$type": "6f6d36c0-eff9-425c-8973-1f6d7fda2883",
@@ -535,7 +544,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "gains"
+          "trap": "gains",
+          "data": ""
         }
       ]
     },
@@ -562,7 +572,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "settings"
+          "trap": "settings",
+          "data": ""
         }
       ]
     },
@@ -636,7 +647,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "goldcoin"
+          "trap": "goldcoin",
+          "data": ""
         }
       ],
       "_$child": [
@@ -701,7 +713,7 @@
           "clipHeight": 30,
           "clipX": 7,
           "clipY": 1,
-          "index": 1,
+          "index": 2,
           "interval": 226,
           "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
         },
@@ -719,7 +731,7 @@
           "clipHeight": 30,
           "clipX": 7,
           "clipY": 1,
-          "index": 6,
+          "index": 0,
           "interval": 199,
           "skin": "res://43f3f361-b36c-4ed2-9c1f-5e85c9776d7a"
         }
@@ -742,7 +754,8 @@
           "_$type": "930ddec0-d69d-475f-941b-734ec9d3d719",
           "scriptPath": "../src/Cause.ts",
           "act": "click",
-          "trap": "avatar"
+          "trap": "avatar",
+          "data": ""
         }
       ],
       "_$child": [

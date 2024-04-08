@@ -104,8 +104,9 @@ function addUser(nickname, avatar, trim,pawns, syncTime) {
 		pawns,
 		syncTime,
 		syncTime,
+		syncTime,
 	];
-	var userId = db.executeInsert("INSERT INTO users(nickname,avatar,trim,pawns,updatetime,createtime) VALUES(?,?,?,?,?,?)", data);
+	var userId = db.executeInsert("INSERT INTO users(nickname,avatar,trim,pawns,updatetime,createtime,logintime) VALUES(?,?,?,?,?,?,?)", data);
 	var scoreData = [
 		userId,
 		20,
