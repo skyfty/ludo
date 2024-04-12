@@ -78,4 +78,6 @@ flutter {
 
 dependencies {
     implementation 'com.xiaomi.billingclient:billing:1.0.9'
+    implementation 'com.google.android.gms:play-services-ads:23.0.0'
+
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter/services.dart';
@@ -13,9 +15,9 @@ Future main() async {
 
   var bytes = await  rootBundle.load("assets/web.zip");
   Archive archive = ZipDecoder().decodeBytes(bytes.buffer.asUint8List());
+
   runApp(MaterialApp(home: Game(archive)));
 }
-
 // ignore: must_be_immutable
 class Game extends StatefulWidget {
   Game(this.archive, {super.key});
@@ -28,12 +30,19 @@ class GameState extends State<Game> {
   final GlobalKey webViewKey = GlobalKey();
   static const platform = MethodChannel("touchmagic.com/buy");
 
+
   InAppWebViewSettings settings = InAppWebViewSettings(
       mediaPlaybackRequiresUserGesture: false,
       useShouldInterceptRequest: true,
       allowsInlineMediaPlayback: true,
       iframeAllow: "camera; microphone",
       iframeAllowFullscreen: true);
+
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +76,10 @@ class GameState extends State<Game> {
         onWebViewCreated: (controller) {
           platform.invokeMethod("init");
           controller.addJavaScriptHandler(handlerName: 'buy', callback: (args) async {
-             final String result = await platform.invokeMethod("buy", args);
-             return result;
+            final String result = await platform.invokeMethod("buy", args);
+            return result;
+            // String ggg = await _showRewardedAd();
+            // return ggg;
              // controller.evaluateJavascript(source:"""window.flutter_inappwebview.callHandler("handlerName").then(function(result) {console.log(result);});""");
           });
           controller.addJavaScriptHandler(handlerName: 'skus', callback: (args) async {

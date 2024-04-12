@@ -54,17 +54,17 @@ export class Buycoin extends Laya.Script {
 
     public onSelected(index: number){
         let data = this.list.array[index];
-        Buycoin.onBuyComplete(data, index);
+        // Buycoin.onBuyComplete(data, index);
 
-        // if (typeof window.flutter_inappwebview == "undefined") {
-        //     Buycoin.onBuyComplete(data, index);
-        // } else {
-        //     window.flutter_inappwebview.callHandler('buy',data.getUtfString("name")).then(function(result){
-        //         if (result === "0") {
-        //             Buycoin.onBuyComplete(data, index);
-        //         } 
-        //     });
-        // }
+        if (typeof window.flutter_inappwebview == "undefined") {
+            Buycoin.onBuyComplete(data, index);
+        } else {
+            window.flutter_inappwebview.callHandler('buy',data.getUtfString("name")).then(function(result){
+                if (result === "0") {
+                    Buycoin.onBuyComplete(data, index);
+                } 
+            });
+        }
     }
 
 
